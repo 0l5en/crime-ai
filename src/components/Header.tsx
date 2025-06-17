@@ -16,7 +16,7 @@ const Header = () => {
           <a href="#" className="hover:text-gray-300 transition-colors">Games</a>
           <a href="#" className="hover:text-gray-300 transition-colors">How to Play</a>
           <a href="#" className="hover:text-gray-300 transition-colors">Community</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">About</a>
+          <a href="#" className="hover:text-gray-300 transition-colors">Aboutzzzzzzzz</a>
         </nav>
         
         <div className="flex items-center space-x-4">
