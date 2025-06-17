@@ -1,1 +1,5 @@
+
 project_id = "bofaqytiyycmgbqbmctd"
+
+[functions.fetch-cases]
+verify_jwt = false
