@@ -30,11 +30,10 @@ serve(async (req) => {
 
     console.log('Fetching OpenAPI specification...');
     
-    // Fetch OpenAPI specification with proper headers
+    // Fetch OpenAPI specification - NO Accept header (server doesn't accept it)
     const specResponse = await fetch('https://crime-ai.0l5en.de/v3/api-docs.yaml', {
       headers: {
         'Authorization': `Bearer ${apiToken}`,
-        'Accept': 'application/yaml, text/yaml',
       },
     });
 
@@ -80,7 +79,7 @@ serve(async (req) => {
 
     console.log('Found endpoint:', currentPath);
 
-    // Call the crime cases API with proper headers including Accept
+    // Call the crime cases API with Accept header for JSON response
     const casesUrl = `https://crime-ai.0l5en.de${currentPath}`;
     const casesResponse = await fetch(casesUrl, {
       headers: {
