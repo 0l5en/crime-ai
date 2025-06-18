@@ -18,14 +18,21 @@ serve(async (req) => {
     console.log('Fetching crime cases from external API...');
     
     const apiToken = Deno.env.get('CRIME_AI_API_TOKEN');
+    const baseUrl = Deno.env.get('CRIME_AI_API_BASE_URL');
+    
     if (!apiToken) {
       console.error('CRIME_AI_API_TOKEN not found');
       throw new Error('API token not configured');
     }
+    
+    if (!baseUrl) {
+      console.error('CRIME_AI_API_BASE_URL not found');
+      throw new Error('API base URL not configured');
+    }
 
     // Create type-safe openapi-fetch client
     const client = createFetchClient<CrimeApiPaths>({
-      baseUrl: 'http://localhost:8080',
+      baseUrl,
       headers: {
         'Authorization': `Bearer ${apiToken}`,
         'Accept': 'application/json',
