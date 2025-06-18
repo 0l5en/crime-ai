@@ -1,0 +1,131 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /crimecase:
+    get:
+      summary: get the 10 latest crime cases
+      operationId: listCrimeCases
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetCrimeCase"
+        "500":
+          description: if any internal error occurs while processing the request
+    post:
+      summary: create a new crime case
+      operationId: createCrimeCase
+      requestBody:
+        description: the data required to create a new crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCrimeCaseDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}:
+    get:
+      summary: get crime case details by id
+      operationId: getCrimeCase
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CrimeCaseDto"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+    delete:
+      summary: delete a crime case by id
+      operationId: deleteCrimeCase
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: successful operation
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+components:
+  schemas:
+    CrimeCaseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: string
+      required:
+      - description
+      - id
+      - title
+    ResultSetCrimeCase:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/CrimeCaseDto"
+    CreateCrimeCaseDto:
+      type: object
+      properties:
+        amountEvidences:
+          type: integer
+          format: int32
+        amountPersons:
+          type: integer
+          format: int32
+        difficultyLevel:
+          type: integer
+          format: int32
+        era:
+          type: string
+          minLength: 1
+        language:
+          type: string
+          minLength: 1
+        location:
+          type: string
+          minLength: 1
+        maxAmountMotivesPerSuspect:
+          type: integer
+          format: int32
+      required:
+      - amountEvidences
+      - amountPersons
+      - difficultyLevel
+      - era
+      - language
+      - location
+      - maxAmountMotivesPerSuspect
