@@ -1,9 +1,13 @@
 
 import { Button } from "@/components/ui/button";
 import GameCard from "./GameCard";
+import { useCrimeCases } from "@/hooks/useCrimeCases";
 
 const GameShowcase = () => {
-  const games = [
+  const { data: crimeCases, isLoading, error } = useCrimeCases();
+
+  // Fallback games for when API is not available
+  const fallbackGames = [
     {
       title: "Whispers of the Abandoned Manor",
       description: "Explore a haunted manor with a dark past and uncover its hidden secrets.",
@@ -21,10 +25,44 @@ const GameShowcase = () => {
     }
   ];
 
+  // Generate gradient colors for crime cases
+  const getImageColor = (index: number) => {
+    const colors = [
+      "bg-gradient-to-br from-red-600 to-red-800",
+      "bg-gradient-to-br from-blue-600 to-blue-800",
+      "bg-gradient-to-br from-green-600 to-green-800",
+      "bg-gradient-to-br from-purple-600 to-purple-800",
+      "bg-gradient-to-br from-orange-600 to-orange-800",
+      "bg-gradient-to-br from-teal-600 to-teal-800",
+    ];
+    return colors[index % colors.length];
+  };
+
+  // Use API data if available, otherwise use fallback
+  const games = crimeCases?.items?.length 
+    ? crimeCases.items.map((crimeCase, index) => ({
+        title: crimeCase.title,
+        description: crimeCase.description,
+        imageColor: getImageColor(index)
+      }))
+    : fallbackGames;
+
   return (
     <section className="bg-slate-900 text-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12">New Releases</h2>
+        <div className="flex items-center justify-between mb-12">
+          <h2 className="text-4xl font-bold">
+            {crimeCases?.items?.length ? 'Latest Crime Cases' : 'New Releases'}
+          </h2>
+          {isLoading && (
+            <div className="text-gray-400">Loading cases...</div>
+          )}
+          {error && (
+            <div className="text-red-400 text-sm">
+              Using demo cases (API unavailable)
+            </div>
+          )}
+        </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {games.map((game, index) => (
