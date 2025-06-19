@@ -1,15 +1,26 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface GameCardProps {
   title: string;
   description: string;
   imageColor: string;
+  caseId: string;
 }
 
-const GameCard = ({ title, description, imageColor }: GameCardProps) => {
+const GameCard = ({ title, description, imageColor, caseId }: GameCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/case/${caseId}`);
+  };
+
   return (
-    <Card className="bg-slate-800 border-slate-700 text-white hover:bg-slate-750 transition-colors cursor-pointer">
+    <Card 
+      className="bg-slate-800 border-slate-700 text-white hover:bg-slate-750 transition-colors cursor-pointer"
+      onClick={handleClick}
+    >
       <CardHeader className="p-0">
         <div className={`h-48 ${imageColor} rounded-t-lg flex items-center justify-center`}>
           <div className="w-16 h-16 bg-white bg-opacity-20 rounded-lg"></div>
