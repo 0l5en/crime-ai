@@ -29,13 +29,28 @@ Deno.serve(async (req) => {
 
     console.log(`Fetching witnesses for case ID: ${caseId}`)
 
+    const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN')
+    
+    if (!crimeApiToken) {
+      console.error('CRIME_AI_API_TOKEN not found')
+      return new Response(
+        JSON.stringify({ error: 'API token not configured' }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      )
+    }
+
     const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/witness`
     console.log(`Making request to: ${apiUrl}`)
 
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
+        'Authorization': `Bearer ${crimeApiToken}`,
         'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
     })
 
