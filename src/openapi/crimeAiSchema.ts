@@ -58,6 +58,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/crimecase/{id}/witness": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** get the witnesses of a crime case */
+        get: operations["getWitnesses"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -94,6 +111,24 @@ export interface components {
         };
         ResultSetEvidence: {
             items?: components["schemas"]["EvidenceDto"][];
+        };
+        PersonDto: {
+            /** Format: int64 */
+            id: number;
+            name: string;
+            type: "VICTIM" | "WITNESS" | "SUSPECT";
+            /** Format: int32 */
+            age: number;
+            profession: string;
+            gender: string;
+            personality: string;
+            maritalStatus: string;
+            financialSituation: string;
+            previousConvictions: string[];
+            relationshipToCase: string;
+        };
+        ResultSetPerson: {
+            items?: components["schemas"]["PersonDto"][];
         };
     };
     responses: never;
@@ -246,6 +281,43 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ResultSetEvidence"];
+                };
+            };
+            /** @description crime case not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description if any internal error occurs while processing the request */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getWitnesses: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description crime case id */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResultSetPerson"];
                 };
             };
             /** @description crime case not found */
