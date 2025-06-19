@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: http://localhost:8080
+- url: https://crime-ai.0l5en.de
   description: Generated server url
 paths:
   /crimecase:
@@ -207,8 +207,7 @@ paths:
           description: if any internal error occurs while processing the request
   /interrogation:
     get:
-      summary: "Get a list of interrogations. If no query parameters are specified,\
-        \ an empty list is returned. A maximum of 10 items are returned."
+      summary: Get a list of interrogations.
       operationId: listInterrogations
       parameters:
       - name: user-id
@@ -224,8 +223,9 @@ paths:
           type: string
       responses:
         "200":
-          description: successful operation responds with the generated id of the
-            answer
+          description: "Successful operation responds with a list of interrogations.\
+            \ If no query parameters are specified, an empty list is returned. A maximum\
+            \ of 10 items are returned."
           content:
             application/json:
               schema:
@@ -431,7 +431,7 @@ components:
           type: string
         personality:
           type: string
-        martialStatus:
+        maritalStatus:
           type: string
         financialSituation:
           type: string
@@ -446,7 +446,7 @@ components:
       - financialSituation
       - gender
       - id
-      - martialStatus
+      - maritalStatus
       - name
       - personality
       - previousConvictions
