@@ -13,13 +13,6 @@ const Header = () => {
           <span className="text-xl font-semibold">Mystery Solvers</span>
         </Link>
         
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#" className="hover:text-gray-300 transition-colors">Games</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">How to Play</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">Community</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">Aboutzzzzzzzz</a>
-        </nav>
-        
         <div className="flex items-center space-x-4">
           <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900">
             Play Now
