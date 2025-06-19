@@ -73,6 +73,204 @@ paths:
           description: crime case not found
         "500":
           description: if any internal error occurs while processing the request
+  /crimecase/{id}/crimescene:
+    get:
+      summary: get the crime scene of a crime case
+      operationId: getCrimeScene
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CrimeSceneDto"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}/evidence:
+    get:
+      summary: get the evidences of a crime case
+      operationId: getEvidences
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetEvidence"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}/motive:
+    get:
+      summary: get the motives of a crime case
+      operationId: getMotives
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetMotive"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}/solution:
+    get:
+      summary: get the solution of a crime case
+      operationId: getSolution
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SolutionDto"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}/suspect:
+    get:
+      summary: get the suspects of a crime case
+      operationId: getSuspects
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetPerson"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}/witness:
+    get:
+      summary: get the witnesses of a crime case
+      operationId: getWitnesses
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetPerson"
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
+  /interrogation:
+    get:
+      summary: "Get a list of interrogations. If no query parameters are specified,\
+        \ an empty list is returned. A maximum of 10 items are returned."
+      operationId: listInterrogations
+      parameters:
+      - name: user-id
+        in: query
+        description: the id of a logged in user playing a crime case
+        schema:
+          type: string
+      - name: person-id
+        in: query
+        description: the id of a person from a criminal case with whom the interrogation
+          was conducted
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation responds with the generated id of the
+            answer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetInterrogation"
+        "500":
+          description: if any internal error occurs while processing the request
+    post:
+      summary: create a new interrogation answer for a given question
+      operationId: createInterrogationAnswer
+      requestBody:
+        description: the data required to create a new interrogation answer
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInterrogationAnswerDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation responds with the generated id of the
+            answer
+          content:
+            text/plain: {}
+        "500":
+          description: if any internal error occurs while processing the request
+  /interrogation/{id}/question-and-answer:
+    get:
+      summary: get questions and answers about an interrogation
+      operationId: getQuestionAndAnswers
+      parameters:
+      - name: id
+        in: path
+        description: interrogation id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation responds with a list of questions and
+            answers. The entries are sorted by creation date in descending order.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetQuestionAndAnswer"
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     CrimeCaseDto:
@@ -129,3 +327,192 @@ components:
       - language
       - location
       - maxAmountMotivesPerSuspect
+    CrimeSceneDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+      required:
+      - description
+      - id
+      - title
+    EvidenceDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        analysisResult:
+          type: string
+      required:
+      - analysisResult
+      - description
+      - id
+      - location
+      - title
+    ResultSetEvidence:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/EvidenceDto"
+    MotiveDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+      required:
+      - description
+      - id
+      - title
+    ResultSetMotive:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/MotiveDto"
+    SolutionDto:
+      type: object
+      properties:
+        evidenceTitles:
+          type: array
+          items:
+            type: string
+        motiveTitles:
+          type: array
+          items:
+            type: string
+        personNames:
+          type: array
+          items:
+            type: string
+      required:
+      - evidenceTitles
+      - motiveTitles
+      - personNames
+    PersonDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - VICTIM
+          - WITNESS
+          - SUSPECT
+        age:
+          type: integer
+          format: int32
+        profession:
+          type: string
+        gender:
+          type: string
+        personality:
+          type: string
+        martialStatus:
+          type: string
+        financialSituation:
+          type: string
+        previousConvictions:
+          type: array
+          items:
+            type: string
+        relationshipToCase:
+          type: string
+      required:
+      - age
+      - financialSituation
+      - gender
+      - id
+      - martialStatus
+      - name
+      - personality
+      - previousConvictions
+      - profession
+      - relationshipToCase
+      - type
+    ResultSetPerson:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/PersonDto"
+    InterrogationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: string
+        personId:
+          type: integer
+          format: int64
+      required:
+      - id
+      - personId
+      - userId
+    ResultSetInterrogation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/InterrogationDto"
+    CreateInterrogationAnswerDto:
+      type: object
+      properties:
+        question:
+          type: string
+        userId:
+          type: string
+        personId:
+          type: integer
+          format: int64
+      required:
+      - personId
+      - question
+      - userId
+    QuestionAndAnswerDto:
+      type: object
+      properties:
+        question:
+          type: string
+        answer:
+          type: string
+        createdAt:
+          type: string
+      required:
+      - answer
+      - createdAt
+      - question
+    ResultSetQuestionAndAnswer:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuestionAndAnswerDto"
