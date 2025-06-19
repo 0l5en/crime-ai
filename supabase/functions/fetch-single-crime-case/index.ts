@@ -15,12 +15,13 @@ Deno.serve(async (req) => {
   try {
     console.log('Starting fetch-single-crime-case function...');
     
-    // Get the case ID from the URL
+    // Get the case ID from the URL path instead of query parameters
     const url = new URL(req.url);
-    const caseId = url.searchParams.get('caseId');
+    const pathSegments = url.pathname.split('/');
+    const caseId = pathSegments[pathSegments.length - 1]; // Get the last segment which should be the caseId
     
-    if (!caseId) {
-      console.error('No caseId provided');
+    if (!caseId || caseId === 'fetch-single-crime-case') {
+      console.error('No caseId provided in URL path');
       return new Response(
         JSON.stringify({ error: 'Case ID is required' }),
         { 

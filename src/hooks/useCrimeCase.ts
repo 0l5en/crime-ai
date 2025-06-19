@@ -11,8 +11,8 @@ export const useCrimeCase = (caseId: string) => {
     queryFn: async (): Promise<CrimeCaseDto> => {
       console.log(`Calling fetch-single-crime-case edge function for case ID: ${caseId}`);
       
-      const { data, error } = await supabase.functions.invoke('fetch-single-crime-case', {
-        body: { caseId }
+      const { data, error } = await supabase.functions.invoke(`fetch-single-crime-case/${caseId}`, {
+        method: 'GET',
       });
       
       if (error) {
