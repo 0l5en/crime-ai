@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useKeycloak } from "@/contexts/KeycloakContext";
 
 const Header = () => {
+  const { authenticated, user, login, logout } = useKeycloak();
+
   return (
     <header className="bg-slate-900 text-white px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -14,12 +17,43 @@ const Header = () => {
         </Link>
         
         <div className="flex items-center space-x-4">
-          <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900">
-            Play Now
-          </Button>
-          <Button className="bg-white text-slate-900 hover:bg-gray-200">
-            Sign Up
-          </Button>
+          {authenticated ? (
+            <>
+              {user && (
+                <div className="flex items-center space-x-2">
+                  <div className="text-right">
+                    <div className="text-sm font-medium">{user.name || user.email}</div>
+                    <div className="text-xs text-gray-300">
+                      {user.roles.join(', ') || 'No roles'}
+                    </div>
+                  </div>
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
+                    {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
+                  </div>
+                </div>
+              )}
+              <Button 
+                variant="outline" 
+                className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900"
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button 
+                variant="outline" 
+                className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900"
+                onClick={() => login()}
+              >
+                Sign In
+              </Button>
+              <Button className="bg-white text-slate-900 hover:bg-gray-200">
+                Sign Up
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
