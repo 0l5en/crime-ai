@@ -1,10 +1,10 @@
-
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import { useCrimeCase } from '@/hooks/useCrimeCase';
 import { useCaseEvidences } from '@/hooks/useCaseEvidences';
 import { useCaseWitnesses } from '@/hooks/useCaseWitnesses';
 import { useCaseSuspects } from '@/hooks/useCaseSuspects';
+import { useCrimeScene } from '@/hooks/useCrimeScene';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EvidenceCard from '@/components/EvidenceCard';
 import WitnessCard from '@/components/WitnessCard';
@@ -16,6 +16,7 @@ const CaseDashboard = () => {
   const { data: evidences, isLoading: evidencesLoading, error: evidencesError } = useCaseEvidences(caseId || '');
   const { data: witnesses, isLoading: witnessesLoading, error: witnessesError } = useCaseWitnesses(caseId || '');
   const { data: suspects, isLoading: suspectsLoading, error: suspectsError } = useCaseSuspects(caseId || '');
+  const { data: crimeScene, isLoading: crimeSceneLoading, error: crimeSceneError } = useCrimeScene(caseId || '');
 
   if (!caseId) {
     return (
@@ -105,11 +106,56 @@ const CaseDashboard = () => {
             </TabsList>
             
             <TabsContent value="overview">
-              <div className="bg-slate-800 rounded-lg p-8">
-                <h2 className="text-2xl font-semibold mb-4">Case Description</h2>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {crimeCase?.description}
-                </p>
+              <div className="space-y-8">
+                <div className="bg-slate-800 rounded-lg p-8">
+                  <h2 className="text-2xl font-semibold mb-4">Case Description</h2>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    {crimeCase?.description}
+                  </p>
+                </div>
+
+                <div className="bg-slate-800 rounded-lg p-8">
+                  <h2 className="text-2xl font-semibold mb-6">Crime Scene</h2>
+                  
+                  {crimeSceneLoading && (
+                    <div className="text-center text-gray-300">
+                      <p>Loading crime scene...</p>
+                    </div>
+                  )}
+                  
+                  {crimeSceneError && (
+                    <div className="text-center text-red-400">
+                      <p>Failed to load crime scene: {crimeSceneError.message}</p>
+                    </div>
+                  )}
+                  
+                  {crimeScene ? (
+                    <div className="flex flex-col lg:flex-row gap-8">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold mb-4 text-white">{crimeScene.title}</h3>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                          {crimeScene.description}
+                        </p>
+                      </div>
+                      <div className="lg:w-80">
+                        <div className="bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg h-64 flex items-center justify-center">
+                          <div className="text-center text-gray-300">
+                            <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                            </svg>
+                            <p className="text-sm">Crime Scene Image</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    !crimeSceneLoading && !crimeSceneError && (
+                      <div className="text-center text-gray-400">
+                        <p>No crime scene information available.</p>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             </TabsContent>
             
