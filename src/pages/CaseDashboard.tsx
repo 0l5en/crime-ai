@@ -4,15 +4,18 @@ import Header from '@/components/Header';
 import { useCrimeCase } from '@/hooks/useCrimeCase';
 import { useCaseEvidences } from '@/hooks/useCaseEvidences';
 import { useCaseWitnesses } from '@/hooks/useCaseWitnesses';
+import { useCaseSuspects } from '@/hooks/useCaseSuspects';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EvidenceCard from '@/components/EvidenceCard';
 import WitnessCard from '@/components/WitnessCard';
+import SuspectCard from '@/components/SuspectCard';
 
 const CaseDashboard = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const { data: crimeCase, isLoading: caseLoading, error: caseError } = useCrimeCase(caseId || '');
   const { data: evidences, isLoading: evidencesLoading, error: evidencesError } = useCaseEvidences(caseId || '');
   const { data: witnesses, isLoading: witnessesLoading, error: witnessesError } = useCaseWitnesses(caseId || '');
+  const { data: suspects, isLoading: suspectsLoading, error: suspectsError } = useCaseSuspects(caseId || '');
 
   if (!caseId) {
     return (
@@ -76,6 +79,16 @@ const CaseDashboard = () => {
     'bg-gradient-to-br from-teal-600 to-teal-800',
   ];
 
+  // Color palette for suspect cards
+  const suspectColors = [
+    'bg-gradient-to-br from-red-700 to-red-900',
+    'bg-gradient-to-br from-orange-700 to-orange-900',
+    'bg-gradient-to-br from-yellow-700 to-yellow-900',
+    'bg-gradient-to-br from-pink-700 to-pink-900',
+    'bg-gradient-to-br from-purple-700 to-purple-900',
+    'bg-gradient-to-br from-indigo-700 to-indigo-900',
+  ];
+
   return (
     <div className="min-h-screen bg-slate-900">
       <Header />
@@ -84,10 +97,11 @@ const CaseDashboard = () => {
           <h1 className="text-4xl font-bold mb-8">{crimeCase?.title}</h1>
           
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="evidences">Evidences</TabsTrigger>
               <TabsTrigger value="witnesses">Witnesses</TabsTrigger>
+              <TabsTrigger value="suspects">Suspects</TabsTrigger>
             </TabsList>
             
             <TabsContent value="overview">
@@ -172,6 +186,46 @@ const CaseDashboard = () => {
                   !witnessesLoading && !witnessesError && (
                     <div className="text-center text-gray-400">
                       <p>No witnesses found for this case.</p>
+                    </div>
+                  )
+                )}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="suspects">
+              <div className="bg-slate-800 rounded-lg p-8">
+                <h2 className="text-2xl font-semibold mb-6">Case Suspects</h2>
+                
+                {suspectsLoading && (
+                  <div className="text-center text-gray-300">
+                    <p>Loading suspects...</p>
+                  </div>
+                )}
+                
+                {suspectsError && (
+                  <div className="text-center text-red-400">
+                    <p>Failed to load suspects: {suspectsError.message}</p>
+                  </div>
+                )}
+                
+                {suspects?.items && suspects.items.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {suspects.items.map((suspect, index) => (
+                      <SuspectCard
+                        key={suspect.id}
+                        name={suspect.name}
+                        age={suspect.age}
+                        profession={suspect.profession}
+                        maritalStatus={suspect.maritalStatus}
+                        relationshipToCase={suspect.relationshipToCase}
+                        imageColor={suspectColors[index % suspectColors.length]}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  !suspectsLoading && !suspectsError && (
+                    <div className="text-center text-gray-400">
+                      <p>No suspects found for this case.</p>
                     </div>
                   )
                 )}
