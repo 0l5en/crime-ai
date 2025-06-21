@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
@@ -7,7 +6,7 @@ const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
 
   return (
-    <header className="bg-slate-900 text-white px-6 py-4">
+    <header className="sticky top-0 z-50 bg-slate-900 text-white px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
           <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
