@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
 
 const Header = () => {
-  const { authenticated, user, login, logout } = useKeycloak();
+  const { authenticated, user, login, logout, hasRole } = useKeycloak();
 
   return (
     <header className="bg-slate-900 text-white px-6 py-4">
@@ -19,6 +19,18 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {authenticated ? (
             <>
+              {/* Admin button - only visible to admin users */}
+              {hasRole('admin') && (
+                <Link to="/admin">
+                  <Button 
+                    variant="outline" 
+                    className="bg-transparent border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
+                  >
+                    Admin
+                  </Button>
+                </Link>
+              )}
+              
               {user && (
                 <div className="flex items-center space-x-2">
                   <div className="text-right">
