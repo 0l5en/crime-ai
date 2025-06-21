@@ -12,13 +12,31 @@ import { useCreateCrimeCase } from "@/hooks/useCreateCrimeCase";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  amountEvidences: z.number().min(1, "At least 1 evidence required"),
-  amountPersons: z.number().min(1, "At least 1 person required"),
-  difficultyLevel: z.number().min(1).max(10, "Difficulty level must be between 1 and 10"),
-  era: z.string().min(1, "Era is required"),
-  language: z.string().min(1, "Language is required"),
-  location: z.string().min(1, "Location is required"),
-  maxAmountMotivesPerSuspect: z.number().min(1, "At least 1 motive per suspect required"),
+  amountEvidences: z.number({ 
+    required_error: "Amount of evidences is required",
+    invalid_type_error: "Amount of evidences must be a number"
+  }).min(1, "At least 1 evidence required"),
+  amountPersons: z.number({ 
+    required_error: "Amount of persons is required",
+    invalid_type_error: "Amount of persons must be a number"
+  }).min(1, "At least 1 person required"),
+  difficultyLevel: z.number({ 
+    required_error: "Difficulty level is required",
+    invalid_type_error: "Difficulty level must be a number"
+  }).min(1, "Difficulty level must be at least 1").max(10, "Difficulty level must be between 1 and 10"),
+  era: z.string({ 
+    required_error: "Era is required" 
+  }).min(1, "Era is required"),
+  language: z.string({ 
+    required_error: "Language is required" 
+  }).min(1, "Language is required"),
+  location: z.string({ 
+    required_error: "Location is required" 
+  }).min(1, "Location is required"),
+  maxAmountMotivesPerSuspect: z.number({ 
+    required_error: "Max motives per suspect is required",
+    invalid_type_error: "Max motives per suspect must be a number"
+  }).min(1, "At least 1 motive per suspect required"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -43,6 +61,7 @@ const AdminCaseGenerator = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
+      console.log('Form data before submission:', data);
       await createCaseMutation.mutateAsync(data);
       toast({
         title: "Success",
@@ -50,6 +69,7 @@ const AdminCaseGenerator = () => {
       });
       navigate('/admin/cases');
     } catch (error) {
+      console.error('Error creating crime case:', error);
       toast({
         title: "Error",
         description: "Error generating crime case. Please try again.",
@@ -86,7 +106,10 @@ const AdminCaseGenerator = () => {
                         <Input
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            field.onChange(isNaN(value) ? "" : value);
+                          }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
@@ -108,7 +131,10 @@ const AdminCaseGenerator = () => {
                         <Input
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            field.onChange(isNaN(value) ? "" : value);
+                          }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
@@ -132,7 +158,10 @@ const AdminCaseGenerator = () => {
                           min="1"
                           max="10"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            field.onChange(isNaN(value) ? "" : value);
+                          }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
@@ -154,7 +183,10 @@ const AdminCaseGenerator = () => {
                         <Input
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            field.onChange(isNaN(value) ? "" : value);
+                          }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
