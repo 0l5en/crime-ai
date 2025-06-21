@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useKeycloak } from '@/contexts/KeycloakContext';
 import { UserRole } from '@/config/keycloak';
@@ -40,7 +39,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     );
   }
 
-  if (authenticated && !hasAnyRequiredRole()) {
+  if (authenticated && !hasAnyRequiredRole(requiredRoles)) {
     return fallback || (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-center text-white max-w-md mx-auto p-8">

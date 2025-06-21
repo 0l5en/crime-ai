@@ -13,7 +13,7 @@ interface KeycloakContextType {
     roles: UserRole[];
   } | null;
   hasRole: (role: UserRole) => boolean;
-  hasAnyRequiredRole: () => boolean;
+  hasAnyRequiredRole: (requiredRoles: UserRole[]) => boolean;
   login: (redirectUri?: string) => void;
   logout: () => void;
 }
@@ -93,8 +93,9 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) 
     return user?.roles.includes(role) || false;
   };
 
-  const hasAnyRequiredRole = (): boolean => {
-    return user?.roles.some(role => ['admin', 'standard'].includes(role)) || false;
+  const hasAnyRequiredRole = (requiredRoles: UserRole[]): boolean => {
+    if (!user?.roles || requiredRoles.length === 0) return false;
+    return user.roles.some(userRole => requiredRoles.includes(userRole));
   };
 
   const login = (redirectUri?: string) => {
