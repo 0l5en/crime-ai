@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -25,10 +24,10 @@ const AdminCaseManagement = () => {
           </div>
           <Button 
             variant="outline" 
-            className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900"
-            onClick={() => navigate('/admin')}
+            className="bg-transparent border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+            onClick={() => navigate('/admin/case-generator')}
           >
-            Zurück zum Dashboard
+            Neuen Fall generieren
           </Button>
         </div>
 

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import CaseDashboard from "./pages/CaseDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
+import AdminCaseGenerator from "./pages/AdminCaseGenerator";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -44,6 +45,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin']}>
                   <AdminCaseManagement />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/case-generator" 
+              element={
+                <ProtectedRoute requiredRoles={['admin']}>
+                  <AdminCaseGenerator />
                 </ProtectedRoute>
               } 
             />
