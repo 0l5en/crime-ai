@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import Header from '@/components/Header';
 import { useCrimeCase } from '@/hooks/useCrimeCase';
 import { useCaseEvidences } from '@/hooks/useCaseEvidences';
@@ -9,14 +10,29 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EvidenceCard from '@/components/EvidenceCard';
 import WitnessCard from '@/components/WitnessCard';
 import SuspectCard from '@/components/SuspectCard';
+import InterrogationView from '@/components/InterrogationView';
+import type { components } from '@/openapi/crimeAiSchema';
+
+type PersonDto = components['schemas']['PersonDto'];
 
 const CaseDashboard = () => {
   const { caseId } = useParams<{ caseId: string }>();
+  const [interrogatingPerson, setInterrogatingPerson] = useState<PersonDto | null>(null);
+  const [activeTab, setActiveTab] = useState('overview');
+
   const { data: crimeCase, isLoading: caseLoading, error: caseError } = useCrimeCase(caseId || '');
   const { data: evidences, isLoading: evidencesLoading, error: evidencesError } = useCaseEvidences(caseId || '');
   const { data: witnesses, isLoading: witnessesLoading, error: witnessesError } = useCaseWitnesses(caseId || '');
   const { data: suspects, isLoading: suspectsLoading, error: suspectsError } = useCaseSuspects(caseId || '');
   const { data: crimeScene, isLoading: crimeSceneLoading, error: crimeSceneError } = useCrimeScene(caseId || '');
+
+  const handleInterrogate = (person: PersonDto) => {
+    setInterrogatingPerson(person);
+  };
+
+  const handleBackFromInterrogation = () => {
+    setInterrogatingPerson(null);
+  };
 
   if (!caseId) {
     return (
@@ -97,7 +113,7 @@ const CaseDashboard = () => {
         <div className="text-white">
           <h1 className="text-4xl font-bold mb-8">{crimeCase?.title}</h1>
           
-          <Tabs defaultValue="overview" className="w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="evidences">Evidences</TabsTrigger>
@@ -202,38 +218,48 @@ const CaseDashboard = () => {
               <div className="bg-slate-800 rounded-lg p-8">
                 <h2 className="text-2xl font-semibold mb-6">Case Witnesses</h2>
                 
-                {witnessesLoading && (
-                  <div className="text-center text-gray-300">
-                    <p>Loading witnesses...</p>
-                  </div>
-                )}
-                
-                {witnessesError && (
-                  <div className="text-center text-red-400">
-                    <p>Failed to load witnesses: {witnessesError.message}</p>
-                  </div>
-                )}
-                
-                {witnesses?.items && witnesses.items.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {witnesses.items.map((witness, index) => (
-                      <WitnessCard
-                        key={witness.id}
-                        name={witness.name}
-                        age={witness.age}
-                        profession={witness.profession}
-                        maritalStatus={witness.maritalStatus}
-                        relationshipToCase={witness.relationshipToCase}
-                        imageColor={witnessColors[index % witnessColors.length]}
-                      />
-                    ))}
-                  </div>
+                {interrogatingPerson && witnesses?.items?.find(w => w.id === interrogatingPerson.id) ? (
+                  <InterrogationView
+                    person={interrogatingPerson}
+                    onBack={handleBackFromInterrogation}
+                  />
                 ) : (
-                  !witnessesLoading && !witnessesError && (
-                    <div className="text-center text-gray-400">
-                      <p>No witnesses found for this case.</p>
-                    </div>
-                  )
+                  <>
+                    {witnessesLoading && (
+                      <div className="text-center text-gray-300">
+                        <p>Loading witnesses...</p>
+                      </div>
+                    )}
+                    
+                    {witnessesError && (
+                      <div className="text-center text-red-400">
+                        <p>Failed to load witnesses: {witnessesError.message}</p>
+                      </div>
+                    )}
+                    
+                    {witnesses?.items && witnesses.items.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {witnesses.items.map((witness, index) => (
+                          <WitnessCard
+                            key={witness.id}
+                            name={witness.name}
+                            age={witness.age}
+                            profession={witness.profession}
+                            maritalStatus={witness.maritalStatus}
+                            relationshipToCase={witness.relationshipToCase}
+                            imageColor={witnessColors[index % witnessColors.length]}
+                            onInterrogate={() => handleInterrogate(witness)}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      !witnessesLoading && !witnessesError && (
+                        <div className="text-center text-gray-400">
+                          <p>No witnesses found for this case.</p>
+                        </div>
+                      )
+                    )}
+                  </>
                 )}
               </div>
             </TabsContent>
@@ -242,38 +268,48 @@ const CaseDashboard = () => {
               <div className="bg-slate-800 rounded-lg p-8">
                 <h2 className="text-2xl font-semibold mb-6">Case Suspects</h2>
                 
-                {suspectsLoading && (
-                  <div className="text-center text-gray-300">
-                    <p>Loading suspects...</p>
-                  </div>
-                )}
-                
-                {suspectsError && (
-                  <div className="text-center text-red-400">
-                    <p>Failed to load suspects: {suspectsError.message}</p>
-                  </div>
-                )}
-                
-                {suspects?.items && suspects.items.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {suspects.items.map((suspect, index) => (
-                      <SuspectCard
-                        key={suspect.id}
-                        name={suspect.name}
-                        age={suspect.age}
-                        profession={suspect.profession}
-                        maritalStatus={suspect.maritalStatus}
-                        relationshipToCase={suspect.relationshipToCase}
-                        imageColor={suspectColors[index % suspectColors.length]}
-                      />
-                    ))}
-                  </div>
+                {interrogatingPerson && suspects?.items?.find(s => s.id === interrogatingPerson.id) ? (
+                  <InterrogationView
+                    person={interrogatingPerson}
+                    onBack={handleBackFromInterrogation}
+                  />
                 ) : (
-                  !suspectsLoading && !suspectsError && (
-                    <div className="text-center text-gray-400">
-                      <p>No suspects found for this case.</p>
-                    </div>
-                  )
+                  <>
+                    {suspectsLoading && (
+                      <div className="text-center text-gray-300">
+                        <p>Loading suspects...</p>
+                      </div>
+                    )}
+                    
+                    {suspectsError && (
+                      <div className="text-center text-red-400">
+                        <p>Failed to load suspects: {suspectsError.message}</p>
+                      </div>
+                    )}
+                    
+                    {suspects?.items && suspects.items.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {suspects.items.map((suspect, index) => (
+                          <SuspectCard
+                            key={suspect.id}
+                            name={suspect.name}
+                            age={suspect.age}
+                            profession={suspect.profession}
+                            maritalStatus={suspect.maritalStatus}
+                            relationshipToCase={suspect.relationshipToCase}
+                            imageColor={suspectColors[index % suspectColors.length]}
+                            onInterrogate={() => handleInterrogate(suspect)}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      !suspectsLoading && !suspectsError && (
+                        <div className="text-center text-gray-400">
+                          <p>No suspects found for this case.</p>
+                        </div>
+                      )
+                    )}
+                  </>
                 )}
               </div>
             </TabsContent>

@@ -2,6 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 interface WitnessCardProps {
   name: string;
@@ -10,6 +11,7 @@ interface WitnessCardProps {
   maritalStatus: string;
   relationshipToCase: string;
   imageColor?: string;
+  onInterrogate?: () => void;
 }
 
 const WitnessCard = ({ 
@@ -18,7 +20,8 @@ const WitnessCard = ({
   profession, 
   maritalStatus, 
   relationshipToCase,
-  imageColor = 'bg-gradient-to-br from-slate-600 to-slate-800'
+  imageColor = 'bg-gradient-to-br from-slate-600 to-slate-800',
+  onInterrogate
 }: WitnessCardProps) => {
   // Get initials from name for avatar fallback
   const getInitials = (fullName: string) => {
@@ -64,6 +67,18 @@ const WitnessCard = ({
           <h4 className="text-sm font-medium text-gray-400 mb-1">Bezug zum Fall</h4>
           <p className="text-gray-200 text-sm leading-relaxed">{relationshipToCase}</p>
         </div>
+
+        {onInterrogate && (
+          <div className="pt-2">
+            <Button
+              onClick={onInterrogate}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              size="sm"
+            >
+              Interrogate
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
