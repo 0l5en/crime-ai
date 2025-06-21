@@ -18,7 +18,7 @@ const GameCard = ({ title, description, imageColor, caseId }: GameCardProps) => 
 
   return (
     <Card 
-      className="bg-zinc-200 border-zinc-300 text-zinc-900 hover:border-red-600 transition-all cursor-pointer"
+      className="bg-zinc-900 border-zinc-600 text-zinc-200 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/20 transition-all cursor-pointer"
       onClick={handleClick}
     >
       <CardHeader className="p-0">
@@ -27,8 +27,8 @@ const GameCard = ({ title, description, imageColor, caseId }: GameCardProps) => 
         </div>
       </CardHeader>
       <CardContent className="p-6">
-        <CardTitle className="text-xl mb-3 text-zinc-900">{title}</CardTitle>
-        <CardDescription className="text-zinc-600">
+        <CardTitle className="text-xl mb-3 text-zinc-200">{title}</CardTitle>
+        <CardDescription className="text-zinc-400">
           {description}
         </CardDescription>
       </CardContent>
