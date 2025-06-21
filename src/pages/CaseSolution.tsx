@@ -13,7 +13,7 @@ const CaseSolution = () => {
 
   if (!caseId) {
     return (
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen bg-zinc-900">
         <Header />
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="text-center text-red-400">
@@ -26,16 +26,16 @@ const CaseSolution = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-zinc-900">
       <Header />
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-white">
+        <div className="text-zinc-200">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
             <h1 className="text-4xl font-bold">Submit your solution</h1>
             <Button
               onClick={handleBackToCase}
               variant="outline"
-              className="bg-transparent border-gray-500 text-gray-300 hover:bg-gray-700 px-6 py-3 text-lg font-semibold"
+              className="bg-transparent border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:border-red-600 px-6 py-3 text-lg font-semibold transition-colors"
             >
               Back to case
             </Button>
