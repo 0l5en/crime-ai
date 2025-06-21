@@ -5,7 +5,7 @@ import GameShowcase from "@/components/GameShowcase";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-zinc-900">
       <Header />
       <Hero />
       <GameShowcase />
