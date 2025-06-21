@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-zinc-900 bg-opacity-60"></div>
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-zinc-200 mb-6 drop-shadow-lg">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-200 mb-6 drop-shadow-lg whitespace-nowrap">
           Unravel the Truth, One Clue at a Time
         </h1>
         <p className="text-xl text-zinc-300 mb-8 max-w-3xl mx-auto drop-shadow-md">
