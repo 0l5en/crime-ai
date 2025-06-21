@@ -170,6 +170,33 @@ export interface components {
             title: string;
             description: string;
         };
+        InterrogationDto: {
+            /** Format: int64 */
+            id: number;
+            userId: string;
+            /** Format: int64 */
+            personId: number;
+            /** Format: date-time */
+            createdAt: string;
+        };
+        ResultSetInterrogation: {
+            items?: components["schemas"]["InterrogationDto"][];
+        };
+        CreateInterrogationAnswerDto: {
+            question: string;
+            userId: string;
+            /** Format: int64 */
+            personId: number;
+        };
+        QuestionAndAnswerDto: {
+            question: string;
+            answer: string;
+            /** Format: date-time */
+            createdAt: string;
+        };
+        ResultSetQuestionAndAnswer: {
+            items?: components["schemas"]["QuestionAndAnswerDto"][];
+        };
     };
     responses: never;
     parameters: never;

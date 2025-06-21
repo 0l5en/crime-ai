@@ -24,7 +24,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
   const [interrogationId, setInterrogationId] = useState<string | null>(null);
 
   const { data: interrogations, isLoading: interrogationsLoading } = useInterrogations(
-    user?.sub || '',
+    user?.email || '',
     person.id
   );
 
@@ -43,12 +43,12 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
 
   const handleSubmitQuestion = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!question.trim() || !user?.sub) return;
+    if (!question.trim() || !user?.email) return;
 
     try {
       await createAnswerMutation.mutateAsync({
         question: question.trim(),
-        userId: user.sub,
+        userId: user.email,
         personId: person.id,
       });
       setQuestion('');
