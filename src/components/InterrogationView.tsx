@@ -90,7 +90,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
           variant="outline"
           size="sm"
           onClick={onBack}
-          className="bg-white text-slate-900 border-slate-300 hover:bg-slate-100"
+          className="bg-transparent border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:border-red-600"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
@@ -108,7 +108,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
             <h2 className="text-2xl font-semibold text-white">
               Interrogation with {person.name}
             </h2>
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-zinc-300">
               {person.type.toLowerCase()} • {person.age} years old • {person.profession}
             </p>
           </div>
@@ -116,7 +116,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
       </div>
 
       {/* Question input form */}
-      <Card className="bg-slate-800 border-slate-700">
+      <Card className="bg-zinc-800 border-zinc-700">
         <CardHeader>
           <CardTitle className="text-white">Ask a Question</CardTitle>
         </CardHeader>
@@ -126,13 +126,13 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Type your question here..."
-              className="flex-1 bg-slate-700 border-slate-600 text-white placeholder-gray-400"
+              className="flex-1 bg-zinc-700 border-zinc-600 text-white placeholder-zinc-400"
               disabled={createAnswerMutation.isPending}
             />
             <Button
               type="submit"
               disabled={!question.trim() || createAnswerMutation.isPending}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-red-600 hover:bg-red-700"
             >
               <Send className="w-4 h-4" />
             </Button>
@@ -145,28 +145,28 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
         <h3 className="text-xl font-semibold text-white">Conversation History</h3>
         
         {interrogationsLoading || qaLoading ? (
-          <div className="text-center text-gray-300">
+          <div className="text-center text-zinc-300">
             <p>Loading conversation...</p>
           </div>
         ) : questionAndAnswers?.items && questionAndAnswers.items.length > 0 ? (
           <div className="space-y-4">
             {questionAndAnswers.items.map((qa, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700">
+              <Card key={index} className="bg-zinc-800 border-zinc-700">
                 <CardContent className="p-4">
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
                       <Badge variant="outline" className="text-blue-400 border-blue-400 mt-1">
                         Q
                       </Badge>
-                      <p className="text-gray-200 flex-1">{qa.question}</p>
+                      <p className="text-zinc-200 flex-1">{qa.question}</p>
                     </div>
                     <div className="flex items-start space-x-2">
                       <Badge variant="outline" className="text-green-400 border-green-400 mt-1">
                         A
                       </Badge>
-                      <p className="text-gray-300 flex-1">{qa.answer}</p>
+                      <p className="text-zinc-300 flex-1">{qa.answer}</p>
                     </div>
-                    <p className="text-xs text-gray-500 text-right">
+                    <p className="text-xs text-zinc-500 text-right">
                       {new Date(qa.createdAt).toLocaleString()}
                     </p>
                   </div>
@@ -175,14 +175,14 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
             ))}
           </div>
         ) : (
-          <div className="text-center text-gray-400">
+          <div className="text-center text-zinc-400">
             <p>No questions asked yet. Start the interrogation by asking a question above.</p>
           </div>
         )}
       </div>
 
       {createAnswerMutation.isPending && (
-        <div className="text-center text-blue-400">
+        <div className="text-center text-red-400">
           <p>Processing your question...</p>
         </div>
       )}
