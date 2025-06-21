@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,6 +8,7 @@ import { KeycloakProvider } from "@/contexts/KeycloakContext";
 import Index from "./pages/Index";
 import CaseDashboard from "./pages/CaseDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminCaseManagement from "./pages/AdminCaseManagement";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -34,6 +36,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin']}>
                   <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/cases" 
+              element={
+                <ProtectedRoute requiredRoles={['admin']}>
+                  <AdminCaseManagement />
                 </ProtectedRoute>
               } 
             />

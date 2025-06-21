@@ -1,7 +1,10 @@
 
 import Header from "@/components/Header";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-slate-900">
       <Header />
@@ -16,7 +19,7 @@ const AdminDashboard = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
             <h3 className="text-lg font-semibold text-white mb-2">
               Benutzerverwaltung
@@ -41,6 +44,18 @@ const AdminDashboard = () => {
             </h3>
             <p className="text-gray-300">
               Einsicht in Systemberichte und Analytics
+            </p>
+          </div>
+
+          <div 
+            className="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors cursor-pointer"
+            onClick={() => navigate('/admin/cases')}
+          >
+            <h3 className="text-lg font-semibold text-white mb-2">
+              Kriminalfall-Verwaltung
+            </h3>
+            <p className="text-gray-300">
+              Verwalten Sie alle Kriminalfälle
             </p>
           </div>
         </div>
