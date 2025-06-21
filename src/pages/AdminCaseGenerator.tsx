@@ -2,52 +2,22 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useCreateCrimeCase } from "@/hooks/useCreateCrimeCase";
 import { useToast } from "@/hooks/use-toast";
+import type { components } from '@/openapi/crimeAiSchema';
 
-const formSchema = z.object({
-  amountEvidences: z.number({ 
-    required_error: "Amount of evidences is required",
-    invalid_type_error: "Amount of evidences must be a number"
-  }).min(1, "At least 1 evidence required"),
-  amountPersons: z.number({ 
-    required_error: "Amount of persons is required",
-    invalid_type_error: "Amount of persons must be a number"
-  }).min(1, "At least 1 person required"),
-  difficultyLevel: z.number({ 
-    required_error: "Difficulty level is required",
-    invalid_type_error: "Difficulty level must be a number"
-  }).min(1, "Difficulty level must be at least 1").max(10, "Difficulty level must be between 1 and 10"),
-  era: z.string({ 
-    required_error: "Era is required" 
-  }).min(1, "Era is required"),
-  language: z.string({ 
-    required_error: "Language is required" 
-  }).min(1, "Language is required"),
-  location: z.string({ 
-    required_error: "Location is required" 
-  }).min(1, "Location is required"),
-  maxAmountMotivesPerSuspect: z.number({ 
-    required_error: "Max motives per suspect is required",
-    invalid_type_error: "Max motives per suspect must be a number"
-  }).min(1, "At least 1 motive per suspect required"),
-});
-
-type FormData = z.infer<typeof formSchema>;
+type CreateCrimeCaseDto = components['schemas']['CreateCrimeCaseDto'];
 
 const AdminCaseGenerator = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const createCaseMutation = useCreateCrimeCase();
 
-  const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<CreateCrimeCaseDto>({
     defaultValues: {
       amountEvidences: 3,
       amountPersons: 4,
@@ -59,10 +29,22 @@ const AdminCaseGenerator = () => {
     },
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: CreateCrimeCaseDto) => {
     try {
       console.log('Form data before submission:', data);
-      await createCaseMutation.mutateAsync(data);
+      
+      // Ensure all required fields are present
+      const submitData: CreateCrimeCaseDto = {
+        amountEvidences: data.amountEvidences,
+        amountPersons: data.amountPersons,
+        difficultyLevel: data.difficultyLevel,
+        era: data.era,
+        language: data.language,
+        location: data.location,
+        maxAmountMotivesPerSuspect: data.maxAmountMotivesPerSuspect,
+      };
+      
+      await createCaseMutation.mutateAsync(submitData);
       toast({
         title: "Success",
         description: "New crime case has been generated successfully!",
@@ -105,10 +87,12 @@ const AdminCaseGenerator = () => {
                       <FormControl>
                         <Input
                           type="number"
+                          required
+                          min="1"
                           {...field}
                           onChange={(e) => {
                             const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? "" : value);
+                            field.onChange(isNaN(value) ? 1 : value);
                           }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
@@ -130,10 +114,12 @@ const AdminCaseGenerator = () => {
                       <FormControl>
                         <Input
                           type="number"
+                          required
+                          min="1"
                           {...field}
                           onChange={(e) => {
                             const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? "" : value);
+                            field.onChange(isNaN(value) ? 1 : value);
                           }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
@@ -155,12 +141,13 @@ const AdminCaseGenerator = () => {
                       <FormControl>
                         <Input
                           type="number"
+                          required
                           min="1"
                           max="10"
                           {...field}
                           onChange={(e) => {
                             const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? "" : value);
+                            field.onChange(isNaN(value) ? 1 : Math.min(Math.max(value, 1), 10));
                           }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
@@ -182,10 +169,12 @@ const AdminCaseGenerator = () => {
                       <FormControl>
                         <Input
                           type="number"
+                          required
+                          min="1"
                           {...field}
                           onChange={(e) => {
                             const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? "" : value);
+                            field.onChange(isNaN(value) ? 1 : value);
                           }}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
@@ -206,6 +195,7 @@ const AdminCaseGenerator = () => {
                       <FormLabel className="text-white">Era</FormLabel>
                       <FormControl>
                         <Input
+                          required
                           {...field}
                           className="bg-slate-700 border-slate-600 text-white"
                           placeholder="e.g. 1990s, Medieval, Modern"
@@ -227,6 +217,7 @@ const AdminCaseGenerator = () => {
                       <FormLabel className="text-white">Language</FormLabel>
                       <FormControl>
                         <Input
+                          required
                           {...field}
                           className="bg-slate-700 border-slate-600 text-white"
                           placeholder="e.g. English, German"
@@ -249,6 +240,7 @@ const AdminCaseGenerator = () => {
                     <FormLabel className="text-white">Location</FormLabel>
                     <FormControl>
                       <Input
+                        required
                         {...field}
                         className="bg-slate-700 border-slate-600 text-white"
                         placeholder="e.g. Berlin, New York, London"
