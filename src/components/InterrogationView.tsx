@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Send, ArrowLeft } from 'lucide-react';
 import { useKeycloak } from '@/contexts/KeycloakContext';
 import { useInterrogations } from '@/hooks/useInterrogations';
@@ -57,22 +58,61 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
     }
   };
 
+  // Generate initials from person name
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word.charAt(0))
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  // Get person type color
+  const getPersonTypeColor = (type: string) => {
+    switch (type) {
+      case 'SUSPECT':
+        return 'bg-red-600';
+      case 'WITNESS':
+        return 'bg-blue-600';
+      case 'VICTIM':
+        return 'bg-gray-600';
+      default:
+        return 'bg-gray-600';
+    }
+  };
+
   return (
     <div className="space-y-6">
-      {/* Header with back button */}
+      {/* Header with back button and person info */}
       <div className="flex items-center space-x-4">
         <Button
           variant="outline"
           size="sm"
           onClick={onBack}
-          className="text-white border-gray-600 hover:bg-gray-700"
+          className="bg-white text-slate-900 border-slate-300 hover:bg-slate-100"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
-        <h2 className="text-2xl font-semibold text-white">
-          Interrogation with {person.name}
-        </h2>
+        
+        <div className="flex items-center space-x-3">
+          <Avatar className="h-12 w-12">
+            <AvatarImage src="" />
+            <AvatarFallback className={`${getPersonTypeColor(person.type)} text-white font-semibold`}>
+              {getInitials(person.name)}
+            </AvatarFallback>
+          </Avatar>
+          
+          <div>
+            <h2 className="text-2xl font-semibold text-white">
+              Interrogation with {person.name}
+            </h2>
+            <p className="text-sm text-gray-300">
+              {person.type.toLowerCase()} • {person.age} years old • {person.profession}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Question input form */}
