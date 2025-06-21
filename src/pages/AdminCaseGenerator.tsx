@@ -12,13 +12,13 @@ import { useCreateCrimeCase } from "@/hooks/useCreateCrimeCase";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  amountEvidences: z.number().min(1, "Mindestens 1 Beweis erforderlich"),
-  amountPersons: z.number().min(1, "Mindestens 1 Person erforderlich"),
-  difficultyLevel: z.number().min(1).max(10, "Schwierigkeitsgrad muss zwischen 1 und 10 liegen"),
-  era: z.string().min(1, "Zeitalter ist erforderlich"),
-  language: z.string().min(1, "Sprache ist erforderlich"),
-  location: z.string().min(1, "Ort ist erforderlich"),
-  maxAmountMotivesPerSuspect: z.number().min(1, "Mindestens 1 Motiv pro Verdächtigem erforderlich"),
+  amountEvidences: z.number().min(1, "At least 1 evidence required"),
+  amountPersons: z.number().min(1, "At least 1 person required"),
+  difficultyLevel: z.number().min(1).max(10, "Difficulty level must be between 1 and 10"),
+  era: z.string().min(1, "Era is required"),
+  language: z.string().min(1, "Language is required"),
+  location: z.string().min(1, "Location is required"),
+  maxAmountMotivesPerSuspect: z.number().min(1, "At least 1 motive per suspect required"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -34,8 +34,8 @@ const AdminCaseGenerator = () => {
       amountEvidences: 3,
       amountPersons: 4,
       difficultyLevel: 5,
-      era: "1990er",
-      language: "Deutsch",
+      era: "1990s",
+      language: "English",
       location: "Berlin",
       maxAmountMotivesPerSuspect: 2,
     },
@@ -45,14 +45,14 @@ const AdminCaseGenerator = () => {
     try {
       await createCaseMutation.mutateAsync(data);
       toast({
-        title: "Erfolg",
-        description: "Neuer Kriminalfall wurde erfolgreich generiert!",
+        title: "Success",
+        description: "New crime case has been generated successfully!",
       });
       navigate('/admin/cases');
     } catch (error) {
       toast({
-        title: "Fehler",
-        description: "Fehler beim Generieren des Kriminalfalls. Bitte versuchen Sie es erneut.",
+        title: "Error",
+        description: "Error generating crime case. Please try again.",
         variant: "destructive",
       });
     }
@@ -65,10 +65,10 @@ const AdminCaseGenerator = () => {
       <div className="max-w-4xl mx-auto py-12 px-6">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-4">
-            Neuen Kriminalfall generieren
+            Generate New Crime Case
           </h1>
           <p className="text-xl text-gray-300">
-            Konfigurieren Sie die Parameter für einen neuen Kriminalfall
+            Configure parameters for a new crime case
           </p>
         </div>
 
@@ -81,17 +81,17 @@ const AdminCaseGenerator = () => {
                   name="amountEvidences"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Anzahl Beweise</FormLabel>
+                      <FormLabel className="text-white">Number of Evidences</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value))}
+                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
                       <FormDescription className="text-gray-400">
-                        Wie viele Beweise soll der Fall enthalten?
+                        How many evidences should the case contain?
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -103,17 +103,17 @@ const AdminCaseGenerator = () => {
                   name="amountPersons"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Anzahl Personen</FormLabel>
+                      <FormLabel className="text-white">Number of Persons</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value))}
+                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
                       <FormDescription className="text-gray-400">
-                        Wie viele Personen soll der Fall enthalten?
+                        How many persons should the case contain?
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -125,19 +125,19 @@ const AdminCaseGenerator = () => {
                   name="difficultyLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Schwierigkeitsgrad</FormLabel>
+                      <FormLabel className="text-white">Difficulty Level</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           min="1"
                           max="10"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value))}
+                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
                       <FormDescription className="text-gray-400">
-                        Schwierigkeitsgrad von 1 (leicht) bis 10 (schwer)
+                        Difficulty level from 1 (easy) to 10 (hard)
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -149,17 +149,17 @@ const AdminCaseGenerator = () => {
                   name="maxAmountMotivesPerSuspect"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Max. Motive pro Verdächtigem</FormLabel>
+                      <FormLabel className="text-white">Max. Motives per Suspect</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(parseInt(e.target.value))}
+                          onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                           className="bg-slate-700 border-slate-600 text-white"
                         />
                       </FormControl>
                       <FormDescription className="text-gray-400">
-                        Maximale Anzahl Motive pro Verdächtigem
+                        Maximum number of motives per suspect
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -171,16 +171,16 @@ const AdminCaseGenerator = () => {
                   name="era"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Zeitalter</FormLabel>
+                      <FormLabel className="text-white">Era</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           className="bg-slate-700 border-slate-600 text-white"
-                          placeholder="z.B. 1990er, Mittelalter, Moderne"
+                          placeholder="e.g. 1990s, Medieval, Modern"
                         />
                       </FormControl>
                       <FormDescription className="text-gray-400">
-                        In welchem Zeitalter soll der Fall spielen?
+                        In which era should the case take place?
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -192,16 +192,16 @@ const AdminCaseGenerator = () => {
                   name="language"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Sprache</FormLabel>
+                      <FormLabel className="text-white">Language</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           className="bg-slate-700 border-slate-600 text-white"
-                          placeholder="z.B. Deutsch, Englisch"
+                          placeholder="e.g. English, German"
                         />
                       </FormControl>
                       <FormDescription className="text-gray-400">
-                        In welcher Sprache soll der Fall generiert werden?
+                        In which language should the case be generated?
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -214,16 +214,16 @@ const AdminCaseGenerator = () => {
                 name="location"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Ort</FormLabel>
+                    <FormLabel className="text-white">Location</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         className="bg-slate-700 border-slate-600 text-white"
-                        placeholder="z.B. Berlin, New York, London"
+                        placeholder="e.g. Berlin, New York, London"
                       />
                     </FormControl>
                     <FormDescription className="text-gray-400">
-                      Wo soll der Kriminalfall stattfinden?
+                      Where should the crime case take place?
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -236,7 +236,7 @@ const AdminCaseGenerator = () => {
                   disabled={createCaseMutation.isPending}
                   className="bg-green-600 hover:bg-green-700 text-white"
                 >
-                  {createCaseMutation.isPending ? "Generiere..." : "Jetzt generieren"}
+                  {createCaseMutation.isPending ? "Generating..." : "Generate Now"}
                 </Button>
                 
                 <Button
@@ -245,7 +245,7 @@ const AdminCaseGenerator = () => {
                   onClick={() => navigate('/admin/cases')}
                   className="bg-transparent border-gray-500 text-gray-300 hover:bg-gray-700"
                 >
-                  Zurück zur Kriminalfall-Verwaltung
+                  Back to Case Management
                 </Button>
               </div>
             </form>

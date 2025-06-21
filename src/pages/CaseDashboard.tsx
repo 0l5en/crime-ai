@@ -1,6 +1,8 @@
-import { useParams } from 'react-router-dom';
+
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Header from '@/components/Header';
+import { Button } from '@/components/ui/button';
 import { useCrimeCase } from '@/hooks/useCrimeCase';
 import { useCaseEvidences } from '@/hooks/useCaseEvidences';
 import { useCaseWitnesses } from '@/hooks/useCaseWitnesses';
@@ -17,6 +19,7 @@ type PersonDto = components['schemas']['PersonDto'];
 
 const CaseDashboard = () => {
   const { caseId } = useParams<{ caseId: string }>();
+  const navigate = useNavigate();
   const [interrogatingPerson, setInterrogatingPerson] = useState<PersonDto | null>(null);
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -32,6 +35,10 @@ const CaseDashboard = () => {
 
   const handleBackFromInterrogation = () => {
     setInterrogatingPerson(null);
+  };
+
+  const handleSolveCase = () => {
+    navigate(`/case/${caseId}/solution`);
   };
 
   if (!caseId) {
@@ -111,7 +118,15 @@ const CaseDashboard = () => {
       <Header />
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-white">
-          <h1 className="text-4xl font-bold mb-8">{crimeCase?.title}</h1>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
+            <h1 className="text-4xl font-bold">{crimeCase?.title}</h1>
+            <Button
+              onClick={handleSolveCase}
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-lg font-semibold"
+            >
+              Solve this case
+            </Button>
+          </div>
           
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8">

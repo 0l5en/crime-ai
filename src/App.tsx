@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { KeycloakProvider } from "@/contexts/KeycloakContext";
 import Index from "./pages/Index";
 import CaseDashboard from "./pages/CaseDashboard";
+import CaseSolution from "./pages/CaseSolution";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminCaseGenerator from "./pages/AdminCaseGenerator";
@@ -29,6 +30,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin', 'standard']}>
                   <CaseDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/case/:caseId/solution" 
+              element={
+                <ProtectedRoute requiredRoles={['admin', 'standard']}>
+                  <CaseSolution />
                 </ProtectedRoute>
               } 
             />
