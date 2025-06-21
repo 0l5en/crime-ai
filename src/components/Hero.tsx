@@ -2,6 +2,16 @@
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const scrollToCases = () => {
+    const casesSection = document.querySelector('[data-section="cases"]');
+    if (casesSection) {
+      casesSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section 
       className="relative min-h-screen flex items-center justify-center text-white px-6"
@@ -22,8 +32,11 @@ const Hero = () => {
         <p className="text-xl text-zinc-300 mb-8 max-w-3xl mx-auto drop-shadow-md">
           Dive into a world of mystery and intrigue with our interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.
         </p>
-        <Button className="bg-red-600 text-white px-8 py-3 text-lg rounded-full hover:bg-red-700 transition-colors shadow-lg">
-          Explore Games
+        <Button 
+          onClick={scrollToCases}
+          className="bg-red-600 text-white px-8 py-3 text-lg rounded-full hover:bg-red-700 transition-colors shadow-lg"
+        >
+          Explore Cases
         </Button>
       </div>
     </section>

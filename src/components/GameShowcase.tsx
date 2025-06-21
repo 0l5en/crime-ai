@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import GameCard from "./GameCard";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
@@ -20,7 +19,10 @@ const GameShowcase = () => {
   };
 
   return (
-    <section className="bg-zinc-900 text-zinc-200 py-16 px-6">
+    <section 
+      data-section="cases" 
+      className="bg-zinc-900 text-zinc-200 py-16 px-6"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl font-bold">Latest Crime Cases</h2>
