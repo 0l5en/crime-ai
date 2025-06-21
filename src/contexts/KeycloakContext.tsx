@@ -120,11 +120,11 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) 
 
   if (!initialized) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-center text-white">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+      <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
+        <div className="text-center text-zinc-200">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
           <h2 className="text-xl font-semibold mb-2">Authentication Loading...</h2>
-          <p className="text-gray-300">Initializing secure connection...</p>
+          <p className="text-zinc-400">Initializing secure connection...</p>
         </div>
       </div>
     );
