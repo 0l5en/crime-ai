@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -11,11 +10,13 @@ import { useCaseEvidences } from '@/hooks/useCaseEvidences';
 import { useCaseMotives } from '@/hooks/useCaseMotives';
 import { useCreateSolutionAttempt } from '@/hooks/useCreateSolutionAttempt';
 import { useToast } from '@/hooks/use-toast';
+import { useKeycloak } from '@/contexts/KeycloakContext';
 
 const CaseSolution = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user } = useKeycloak();
   
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
@@ -78,6 +79,15 @@ const CaseSolution = () => {
       return;
     }
 
+    if (!user?.email) {
+      toast({
+        title: "Fehler",
+        description: "Benutzer nicht authentifiziert. Bitte melden Sie sich an.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       await createSolutionMutation.mutateAsync({
         solution: {
@@ -85,7 +95,7 @@ const CaseSolution = () => {
           motiveIds: selectedMotives,
           evidenceIds: selectedEvidences,
         },
-        userId: 'user-id', // TODO: Get from auth context
+        userId: user.email,
       });
       
       toast({
