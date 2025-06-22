@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import SuspectSelectionCard from '@/components/SuspectSelectionCard';
+import EvidenceSelectionCard from '@/components/EvidenceSelectionCard';
 import { Button } from '@/components/ui/button';
 import { useCaseSuspects } from '@/hooks/useCaseSuspects';
+import { useCaseEvidences } from '@/hooks/useCaseEvidences';
 import { useCreateSolutionAttempt } from '@/hooks/useCreateSolutionAttempt';
 import { useToast } from '@/hooks/use-toast';
 
@@ -14,8 +16,10 @@ const CaseSolution = () => {
   const { toast } = useToast();
   
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
+  const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
   
-  const { data: suspects, isLoading, error } = useCaseSuspects(caseId || '');
+  const { data: suspects, isLoading: suspectsLoading, error: suspectsError } = useCaseSuspects(caseId || '');
+  const { data: evidences, isLoading: evidencesLoading, error: evidencesError } = useCaseEvidences(caseId || '');
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
 
   const handleSuspectToggle = (personId: number) => {
@@ -23,6 +27,14 @@ const CaseSolution = () => {
       prev.includes(personId) 
         ? prev.filter(id => id !== personId)
         : [...prev, personId]
+    );
+  };
+
+  const handleEvidenceToggle = (evidenceId: number) => {
+    setSelectedEvidences(prev => 
+      prev.includes(evidenceId) 
+        ? prev.filter(id => id !== evidenceId)
+        : [...prev, evidenceId]
     );
   };
 
@@ -36,12 +48,21 @@ const CaseSolution = () => {
       return;
     }
 
+    if (selectedEvidences.length === 0) {
+      toast({
+        title: "Fehler",
+        description: "Bitte wählen Sie mindestens einen Beweis aus.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       await createSolutionMutation.mutateAsync({
         solution: {
           personIds: selectedSuspects,
           motiveIds: [], // TODO: Implement motive selection
-          evidenceIds: [], // TODO: Implement evidence selection
+          evidenceIds: selectedEvidences,
         },
         userId: 'user-id', // TODO: Get from auth context
       });
@@ -99,15 +120,15 @@ const CaseSolution = () => {
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">Wählen Sie den/die Täter aus</h2>
             
-            {isLoading && (
+            {suspectsLoading && (
               <div className="text-zinc-400 text-center py-8">
                 Lade Verdächtige...
               </div>
             )}
             
-            {error && (
+            {suspectsError && (
               <div className="text-red-400 text-center py-8">
-                Fehler beim Laden der Verdächtigen: {error.message}
+                Fehler beim Laden der Verdächtigen: {suspectsError.message}
               </div>
             )}
             
@@ -127,7 +148,7 @@ const CaseSolution = () => {
                 {selectedSuspects.length > 0 && (
                   <div className="mb-6 p-4 bg-zinc-800 rounded-lg">
                     <p className="text-zinc-300">
-                      <span className="font-semibold">Ausgewählte Verdächtige:</span> {selectedSuspects.length}
+                      <span className="font-semibold text-zinc-200">Ausgewählte Verdächtige:</span> {selectedSuspects.length}
                     </p>
                   </div>
                 )}
@@ -141,11 +162,57 @@ const CaseSolution = () => {
             )}
           </div>
 
+          {/* Evidence Selection Section */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Wählen Sie die relevanten Beweise aus</h2>
+            
+            {evidencesLoading && (
+              <div className="text-zinc-400 text-center py-8">
+                Lade Beweise...
+              </div>
+            )}
+            
+            {evidencesError && (
+              <div className="text-red-400 text-center py-8">
+                Fehler beim Laden der Beweise: {evidencesError.message}
+              </div>
+            )}
+            
+            {evidences?.items && evidences.items.length > 0 && (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                  {evidences.items.map((evidence) => (
+                    <EvidenceSelectionCard
+                      key={evidence.id}
+                      title={evidence.title}
+                      isSelected={selectedEvidences.includes(evidence.id)}
+                      onToggle={() => handleEvidenceToggle(evidence.id)}
+                    />
+                  ))}
+                </div>
+                
+                {selectedEvidences.length > 0 && (
+                  <div className="mb-6 p-4 bg-zinc-800 rounded-lg">
+                    <p className="text-zinc-300">
+                      <span className="font-semibold text-zinc-200">Ausgewählte Beweise:</span> {selectedEvidences.length}
+                    </p>
+                  </div>
+                )}
+              </>
+            )}
+            
+            {evidences?.items && evidences.items.length === 0 && (
+              <div className="text-zinc-400 text-center py-8">
+                Keine Beweise für diesen Fall verfügbar.
+              </div>
+            )}
+          </div>
+
           {/* Submit Button */}
           <div className="flex justify-center">
             <Button
               onClick={handleSubmitSolution}
-              disabled={selectedSuspects.length === 0 || createSolutionMutation.isPending}
+              disabled={selectedSuspects.length === 0 || selectedEvidences.length === 0 || createSolutionMutation.isPending}
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {createSolutionMutation.isPending ? 'Wird eingereicht...' : 'Lösung einreichen'}
