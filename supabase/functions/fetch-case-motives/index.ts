@@ -1,6 +1,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { corsHeaders } from "../_shared/cors.ts";
+import type { ResultSetMotive } from "../_shared/crime-api-types.ts";
 
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
 const CRIME_AI_API_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
@@ -45,7 +46,7 @@ serve(async (req) => {
       throw new Error(`API request failed: ${response.status}`);
     }
 
-    const data = await response.json();
+    const data: ResultSetMotive = await response.json();
     console.log('Successfully fetched case motives:', data);
 
     return new Response(JSON.stringify(data), {

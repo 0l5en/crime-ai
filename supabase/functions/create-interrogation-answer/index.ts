@@ -1,6 +1,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { corsHeaders } from "../_shared/cors.ts";
+import type { CreateInterrogationAnswerDto } from "../_shared/crime-api-types.ts";
 
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
 const CRIME_AI_API_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
@@ -16,7 +17,7 @@ serve(async (req) => {
   try {
     console.log('Creating interrogation answer via external API...');
     
-    const requestBody = await req.json();
+    const requestBody: CreateInterrogationAnswerDto = await req.json();
     console.log('Request body:', requestBody);
     
     const { question, userId, personId } = requestBody;

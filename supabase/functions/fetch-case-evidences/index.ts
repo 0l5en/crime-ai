@@ -1,10 +1,9 @@
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { corsHeaders } from '../_shared/cors.ts';
+import type { ResultSetEvidence } from '../_shared/crime-api-types.ts';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
+const CRIME_AI_API_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
 
 Deno.serve(async (req) => {
   // Handle CORS preflight requests
@@ -33,10 +32,7 @@ Deno.serve(async (req) => {
 
     console.log(`Fetching evidences for case ID: ${caseId}`);
 
-    const crimeApiBaseUrl = Deno.env.get('CRIME_AI_API_BASE_URL');
-    const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
-
-    if (!crimeApiBaseUrl || !crimeApiToken) {
+    if (!CRIME_AI_API_BASE_URL || !CRIME_AI_API_TOKEN) {
       console.error('Missing required environment variables');
       return new Response(
         JSON.stringify({ error: 'API configuration missing' }),
@@ -47,13 +43,13 @@ Deno.serve(async (req) => {
       );
     }
 
-    const apiUrl = `${crimeApiBaseUrl}/crimecase/${caseId}/evidence`;
+    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/evidence`;
     console.log(`Making request to: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${crimeApiToken}`,
+        'Authorization': `Bearer ${CRIME_AI_API_TOKEN}`,
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
@@ -78,7 +74,7 @@ Deno.serve(async (req) => {
       throw new Error(`API request failed: ${response.status}`);
     }
 
-    const evidences = await response.json();
+    const evidences: ResultSetEvidence = await response.json();
     console.log('Successfully fetched case evidences:', evidences);
 
     return new Response(

@@ -1,5 +1,6 @@
 
 import { corsHeaders } from '../_shared/cors.ts';
+import type { CreateCrimeCaseDto } from '../_shared/crime-api-types.ts';
 
 const CRIME_AI_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
 const CRIME_AI_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
@@ -17,7 +18,7 @@ Deno.serve(async (req) => {
       throw new Error('Missing required environment variables');
     }
 
-    const caseData = await req.json();
+    const caseData: CreateCrimeCaseDto = await req.json();
     console.log('Creating crime case with data:', caseData);
 
     const url = `${CRIME_AI_BASE_URL}/crimecase`;
