@@ -1,9 +1,12 @@
+
 import { Button } from "@/components/ui/button";
 import GameCard from "./GameCard";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useKeycloak } from "@/contexts/KeycloakContext";
 
 const GameShowcase = () => {
   const { data: crimeCases, isLoading, error } = useCrimeCases();
+  const { user } = useKeycloak();
 
   // Generate gradient colors for crime cases
   const getImageColor = (index: number) => {
@@ -60,6 +63,7 @@ const GameShowcase = () => {
                   description={crimeCase.description}
                   imageColor={getImageColor(index)}
                   caseId={crimeCase.id}
+                  userId={user?.email}
                 />
               ))}
             </div>

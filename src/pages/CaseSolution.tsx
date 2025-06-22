@@ -26,7 +26,7 @@ const CaseSolution = () => {
   const [showSolutionForm, setShowSolutionForm] = useState(true);
   const [checkingResult, setCheckingResult] = useState(false);
   
-  // Query for checking successful solution attempts - only enabled after submission
+  // Query for checking successful solution attempts
   const { 
     data: successfulAttempts, 
     refetch: refetchSuccessfulAttempts,
@@ -41,6 +41,14 @@ const CaseSolution = () => {
   const { data: evidences, isLoading: evidencesLoading, error: evidencesError } = useCaseEvidences(caseId || '');
   const { data: motives, isLoading: motivesLoading, error: motivesError } = useCaseMotives(caseId || '');
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
+
+  // Check if case is already solved on page load
+  useEffect(() => {
+    if (successfulAttempts?.items && successfulAttempts.items.length > 0 && user?.email) {
+      setSolutionResult('success');
+      setShowSolutionForm(false);
+    }
+  }, [successfulAttempts, user?.email]);
 
   const handleSuspectToggle = (personId: number) => {
     setSelectedSuspects(prev => 
