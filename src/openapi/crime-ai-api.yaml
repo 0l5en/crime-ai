@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: https://crime-ai.0l5en.de
+- url: http://localhost:8080
   description: Generated server url
 paths:
   /crimecase:
@@ -139,10 +139,10 @@ paths:
           description: crime case not found
         "500":
           description: if any internal error occurs while processing the request
-  /crimecase/{id}/solution:
+  /crimecase/{id}/solution-attempt:
     get:
-      summary: get the solution of a crime case
-      operationId: getSolution
+      summary: Get a list of solution attempts.
+      operationId: listCrimeCaseSolutionAttempts
       parameters:
       - name: id
         in: path
@@ -150,15 +150,51 @@ paths:
         required: true
         schema:
           type: string
+      - name: user-id
+        in: query
+        description: the id of a logged in user playing a crime case
+        schema:
+          type: string
+      - name: success
+        in: query
+        description: "If the value ‘0’ is specified, only unsuccessful solution attempts\
+          \ are selected; if a value other than ‘0’ is specified, only successful\
+          \ solution attempts are selected."
+        schema:
+          type: string
       responses:
         "200":
-          description: successful operation
+          description: "Successful operation responds with a list of solution attempts.\
+            \ If no query parameters are specified, an empty list is returned. A maximum\
+            \ of 10 items are returned. The items are sorted by creation date in descending\
+            \ order."
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SolutionDto"
-        "404":
-          description: crime case not found
+                $ref: "#/components/schemas/ResultSetSolutionAttempt"
+        "500":
+          description: if any internal error occurs while processing the request
+    post:
+      summary: create a new attempt at a solution
+      operationId: createSolutionAttempt
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: the data required to create a new attempt at a solution
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSolutionAttemptDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation responds with the generated id of the
+            entity
         "500":
           description: if any internal error occurs while processing the request
   /crimecase/{id}/suspect:
@@ -246,8 +282,6 @@ paths:
         "201":
           description: successful operation responds with the generated id of the
             answer
-          content:
-            text/plain: {}
         "500":
           description: if any internal error occurs while processing the request
   /interrogation/{id}/question-and-answer:
@@ -389,25 +423,63 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MotiveDto"
+    ResultSetSolutionAttempt:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/SolutionAttemptDto"
+    SolutionAttemptDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: string
+          minLength: 1
+        success:
+          type: boolean
+        createdAt:
+          type: string
+      required:
+      - createdAt
+      - id
+      - userId
+    CreateSolutionAttemptDto:
+      type: object
+      properties:
+        solution:
+          $ref: "#/components/schemas/SolutionDto"
+        userId:
+          type: string
+          minLength: 1
+      required:
+      - solution
+      - userId
     SolutionDto:
       type: object
       properties:
-        evidenceTitles:
+        evidenceIds:
           type: array
           items:
-            type: string
-        motiveTitles:
+            type: integer
+            format: int64
+        motiveIds:
           type: array
           items:
-            type: string
-        personNames:
+            type: integer
+            format: int64
+        personIds:
           type: array
           items:
-            type: string
+            type: integer
+            format: int64
       required:
-      - evidenceTitles
-      - motiveTitles
-      - personNames
+      - evidenceIds
+      - motiveIds
+      - personIds
     PersonDto:
       type: object
       properties:
