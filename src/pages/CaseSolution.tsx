@@ -4,9 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import SuspectSelectionCard from '@/components/SuspectSelectionCard';
 import EvidenceSelectionCard from '@/components/EvidenceSelectionCard';
+import MotiveSelectionCard from '@/components/MotiveSelectionCard';
 import { Button } from '@/components/ui/button';
 import { useCaseSuspects } from '@/hooks/useCaseSuspects';
 import { useCaseEvidences } from '@/hooks/useCaseEvidences';
+import { useCaseMotives } from '@/hooks/useCaseMotives';
 import { useCreateSolutionAttempt } from '@/hooks/useCreateSolutionAttempt';
 import { useToast } from '@/hooks/use-toast';
 
@@ -17,9 +19,11 @@ const CaseSolution = () => {
   
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
+  const [selectedMotives, setSelectedMotives] = useState<number[]>([]);
   
   const { data: suspects, isLoading: suspectsLoading, error: suspectsError } = useCaseSuspects(caseId || '');
   const { data: evidences, isLoading: evidencesLoading, error: evidencesError } = useCaseEvidences(caseId || '');
+  const { data: motives, isLoading: motivesLoading, error: motivesError } = useCaseMotives(caseId || '');
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
 
   const handleSuspectToggle = (personId: number) => {
@@ -35,6 +39,14 @@ const CaseSolution = () => {
       prev.includes(evidenceId) 
         ? prev.filter(id => id !== evidenceId)
         : [...prev, evidenceId]
+    );
+  };
+
+  const handleMotiveToggle = (motiveId: number) => {
+    setSelectedMotives(prev => 
+      prev.includes(motiveId) 
+        ? prev.filter(id => id !== motiveId)
+        : [...prev, motiveId]
     );
   };
 
@@ -57,11 +69,20 @@ const CaseSolution = () => {
       return;
     }
 
+    if (selectedMotives.length === 0) {
+      toast({
+        title: "Fehler",
+        description: "Bitte wählen Sie mindestens ein Motiv aus.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       await createSolutionMutation.mutateAsync({
         solution: {
           personIds: selectedSuspects,
-          motiveIds: [], // TODO: Implement motive selection
+          motiveIds: selectedMotives,
           evidenceIds: selectedEvidences,
         },
         userId: 'user-id', // TODO: Get from auth context
@@ -208,11 +229,57 @@ const CaseSolution = () => {
             )}
           </div>
 
+          {/* Motive Selection Section */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Wählen Sie die relevanten Motive aus</h2>
+            
+            {motivesLoading && (
+              <div className="text-zinc-400 text-center py-8">
+                Lade Motive...
+              </div>
+            )}
+            
+            {motivesError && (
+              <div className="text-red-400 text-center py-8">
+                Fehler beim Laden der Motive: {motivesError.message}
+              </div>
+            )}
+            
+            {motives?.items && motives.items.length > 0 && (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                  {motives.items.map((motive) => (
+                    <MotiveSelectionCard
+                      key={motive.id}
+                      title={motive.title}
+                      isSelected={selectedMotives.includes(motive.id)}
+                      onToggle={() => handleMotiveToggle(motive.id)}
+                    />
+                  ))}
+                </div>
+                
+                {selectedMotives.length > 0 && (
+                  <div className="mb-6 p-4 bg-zinc-800 rounded-lg">
+                    <p className="text-zinc-300">
+                      <span className="font-semibold text-zinc-200">Ausgewählte Motive:</span> {selectedMotives.length}
+                    </p>
+                  </div>
+                )}
+              </>
+            )}
+            
+            {motives?.items && motives.items.length === 0 && (
+              <div className="text-zinc-400 text-center py-8">
+                Keine Motive für diesen Fall verfügbar.
+              </div>
+            )}
+          </div>
+
           {/* Submit Button */}
           <div className="flex justify-center">
             <Button
               onClick={handleSubmitSolution}
-              disabled={selectedSuspects.length === 0 || selectedEvidences.length === 0 || createSolutionMutation.isPending}
+              disabled={selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0 || createSolutionMutation.isPending}
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {createSolutionMutation.isPending ? 'Wird eingereicht...' : 'Lösung einreichen'}
