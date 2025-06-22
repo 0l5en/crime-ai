@@ -13,12 +13,12 @@ const CaseSolution = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  const [selectedSuspects, setSelectedSuspects] = useState<string[]>([]);
+  const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   
   const { data: suspects, isLoading, error } = useCaseSuspects(caseId || '');
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
 
-  const handleSuspectToggle = (personId: string) => {
+  const handleSuspectToggle = (personId: number) => {
     setSelectedSuspects(prev => 
       prev.includes(personId) 
         ? prev.filter(id => id !== personId)
@@ -38,10 +38,12 @@ const CaseSolution = () => {
 
     try {
       await createSolutionMutation.mutateAsync({
+        solution: {
+          personIds: selectedSuspects,
+          motiveIds: [], // TODO: Implement motive selection
+          evidenceIds: [], // TODO: Implement evidence selection
+        },
         userId: 'user-id', // TODO: Get from auth context
-        suspectedPersonIds: selectedSuspects,
-        motiveIds: [], // TODO: Implement motive selection
-        evidenceIds: [], // TODO: Implement evidence selection
       });
       
       toast({
@@ -109,15 +111,15 @@ const CaseSolution = () => {
               </div>
             )}
             
-            {suspects?.people && suspects.people.length > 0 && (
+            {suspects?.items && suspects.items.length > 0 && (
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-                  {suspects.people.map((suspect) => (
+                  {suspects.items.map((suspect) => (
                     <SuspectSelectionCard
-                      key={suspect.personId}
-                      name={`${suspect.firstName} ${suspect.lastName}`}
-                      isSelected={selectedSuspects.includes(suspect.personId)}
-                      onToggle={() => handleSuspectToggle(suspect.personId)}
+                      key={suspect.id}
+                      name={suspect.name}
+                      isSelected={selectedSuspects.includes(suspect.id)}
+                      onToggle={() => handleSuspectToggle(suspect.id)}
                     />
                   ))}
                 </div>
@@ -132,7 +134,7 @@ const CaseSolution = () => {
               </>
             )}
             
-            {suspects?.people && suspects.people.length === 0 && (
+            {suspects?.items && suspects.items.length === 0 && (
               <div className="text-zinc-400 text-center py-8">
                 Keine Verdächtigen für diesen Fall verfügbar.
               </div>
