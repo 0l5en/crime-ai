@@ -5,476 +5,780 @@
  */
 
 export interface paths {
-    "/crimecase": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get the 10 latest crime cases */
-        get: operations["listCrimeCases"];
-        put?: never;
-        /** create a new crime case */
-        post: operations["createCrimeCase"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+  "/crimecase": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/crimecase/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get crime case details by id */
-        get: operations["getCrimeCase"];
-        put?: never;
-        post?: never;
-        /** delete a crime case by id */
-        delete: operations["deleteCrimeCase"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** get the 10 latest crime cases */
+    get: operations["listCrimeCases"];
+    put?: never;
+    /** create a new crime case */
+    post: operations["createCrimeCase"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/crimecase/{id}/evidence": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get the evidences of a crime case */
-        get: operations["getEvidences"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** get crime case details by id */
+    get: operations["getCrimeCase"];
+    put?: never;
+    post?: never;
+    /** delete a crime case by id */
+    delete: operations["deleteCrimeCase"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}/crimescene": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/crimecase/{id}/witness": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get the witnesses of a crime case */
-        get: operations["getWitnesses"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** get the crime scene of a crime case */
+    get: operations["getCrimeScene"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}/evidence": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/crimecase/{id}/suspect": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get the suspects of a crime case */
-        get: operations["getSuspects"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** get the evidences of a crime case */
+    get: operations["getEvidences"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}/motive": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/crimecase/{id}/crimescene": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get the crime scene of a crime case */
-        get: operations["getCrimeScene"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** get the motives of a crime case */
+    get: operations["getMotives"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}/solution-attempt": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    /** Get a list of solution attempts */
+    get: operations["listCrimeCaseSolutionAttempts"];
+    put?: never;
+    /** create a new attempt at a solution */
+    post: operations["createSolutionAttempt"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}/suspect": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** get the suspects of a crime case */
+    get: operations["getSuspects"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase/{id}/witness": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** get the witnesses of a crime case */
+    get: operations["getWitnesses"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/interrogation": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of interrogations */
+    get: operations["listInterrogations"];
+    put?: never;
+    /** create a new interrogation answer for a given question */
+    post: operations["createInterrogationAnswer"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/interrogation/{id}/question-and-answer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** get questions and answers about an interrogation */
+    get: operations["getQuestionAndAnswers"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
+
 export type webhooks = Record<string, never>;
+
 export interface components {
-    schemas: {
-        CrimeCaseDto: {
-            id: string;
-            title: string;
-            description: string;
-            imageUrl?: string;
-        };
-        ResultSetCrimeCase: {
-            items?: components["schemas"]["CrimeCaseDto"][];
-        };
-        CreateCrimeCaseDto: {
-            /** Format: int32 */
-            amountEvidences: number;
-            /** Format: int32 */
-            amountPersons: number;
-            /** Format: int32 */
-            difficultyLevel: number;
-            era: string;
-            language: string;
-            location: string;
-            /** Format: int32 */
-            maxAmountMotivesPerSuspect: number;
-        };
-        EvidenceDto: {
-            /** Format: int64 */
-            id: number;
-            title: string;
-            description: string;
-            location: string;
-            analysisResult: string;
-        };
-        ResultSetEvidence: {
-            items?: components["schemas"]["EvidenceDto"][];
-        };
-        PersonDto: {
-            /** Format: int64 */
-            id: number;
-            name: string;
-            type: "VICTIM" | "WITNESS" | "SUSPECT";
-            /** Format: int32 */
-            age: number;
-            profession: string;
-            gender: string;
-            personality: string;
-            maritalStatus: string;
-            financialSituation: string;
-            previousConvictions: string[];
-            relationshipToCase: string;
-        };
-        ResultSetPerson: {
-            items?: components["schemas"]["PersonDto"][];
-        };
-        CrimeSceneDto: {
-            /** Format: int64 */
-            id: number;
-            title: string;
-            description: string;
-        };
-        InterrogationDto: {
-            /** Format: int64 */
-            id: number;
-            userId: string;
-            /** Format: int64 */
-            personId: number;
-            /** Format: date-time */
-            createdAt: string;
-        };
-        ResultSetInterrogation: {
-            items?: components["schemas"]["InterrogationDto"][];
-        };
-        CreateInterrogationAnswerDto: {
-            question: string;
-            userId: string;
-            /** Format: int64 */
-            personId: number;
-        };
-        QuestionAndAnswerDto: {
-            question: string;
-            answer: string;
-            /** Format: date-time */
-            createdAt: string;
-        };
-        ResultSetQuestionAndAnswer: {
-            items?: components["schemas"]["QuestionAndAnswerDto"][];
-        };
+  schemas: {
+    CrimeCaseDto: {
+      id: string;
+      title: string;
+      description: string;
+      imageUrl?: string;
     };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+    ResultSetCrimeCase: {
+      items?: components["schemas"]["CrimeCaseDto"][];
+    };
+    CreateCrimeCaseDto: {
+      /** Format: int32 */
+      amountEvidences: number;
+      /** Format: int32 */
+      amountPersons: number;
+      /** Format: int32 */
+      difficultyLevel: number;
+      era: string;
+      language: string;
+      location: string;
+      /** Format: int32 */
+      maxAmountMotivesPerSuspect: number;
+    };
+    CrimeSceneDto: {
+      /** Format: int64 */
+      id: number;
+      title: string;
+      description: string;
+    };
+    EvidenceDto: {
+      /** Format: int64 */
+      id: number;
+      title: string;
+      description: string;
+      location: string;
+      analysisResult: string;
+    };
+    ResultSetEvidence: {
+      items?: components["schemas"]["EvidenceDto"][];
+    };
+    MotiveDto: {
+      /** Format: int64 */
+      id: number;
+      title: string;
+      description: string;
+    };
+    ResultSetMotive: {
+      items?: components["schemas"]["MotiveDto"][];
+    };
+    SolutionAttemptDto: {
+      /** Format: int64 */
+      id: number;
+      userId: string;
+      success: boolean;
+      /** Format: date-time */
+      createdAt: string;
+    };
+    ResultSetSolutionAttempt: {
+      items?: components["schemas"]["SolutionAttemptDto"][];
+    };
+    CreateSolutionAttemptDto: {
+      solution: components["schemas"]["SolutionDto"];
+      userId: string;
+    };
+    SolutionDto: {
+      evidenceIds: number[];
+      motiveIds: number[];
+      personIds: number[];
+    };
+    PersonDto: {
+      /** Format: int64 */
+      id: number;
+      name: string;
+      type: "VICTIM" | "WITNESS" | "SUSPECT";
+      /** Format: int32 */
+      age: number;
+      profession: string;
+      gender: string;
+      personality: string;
+      maritalStatus: string;
+      financialSituation: string;
+      previousConvictions: string[];
+      relationshipToCase: string;
+    };
+    ResultSetPerson: {
+      items?: components["schemas"]["PersonDto"][];
+    };
+    InterrogationDto: {
+      /** Format: int64 */
+      id: number;
+      userId: string;
+      /** Format: int64 */
+      personId: number;
+    };
+    ResultSetInterrogation: {
+      items?: components["schemas"]["InterrogationDto"][];
+    };
+    CreateInterrogationAnswerDto: {
+      question: string;
+      userId: string;
+      /** Format: int64 */
+      personId: number;
+    };
+    QuestionAndAnswerDto: {
+      question: string;
+      answer: string;
+      /** Format: date-time */
+      createdAt: string;
+    };
+    ResultSetQuestionAndAnswer: {
+      items?: components["schemas"]["QuestionAndAnswerDto"][];
+    };
+  };
+  responses: never;
+  parameters: never;
+  requestBodies: never;
+  headers: never;
+  pathItems: never;
 }
+
 export type $defs = Record<string, never>;
+
 export interface operations {
-    listCrimeCases: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ResultSetCrimeCase"];
-                };
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  listCrimeCases: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    createCrimeCase: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        /** @description the data required to create a new crime case */
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreateCrimeCaseDto"];
-            };
+        content: {
+          "application/json": components["schemas"]["ResultSetCrimeCase"];
         };
-        responses: {
-            /** @description successful operation */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
         };
+        content?: never;
+      };
     };
-    getCrimeCase: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CrimeCaseDto"];
-                };
-            };
-            /** @description crime case not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  createCrimeCase: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    deleteCrimeCase: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description crime case not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+    /** @description the data required to create a new crime case */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateCrimeCaseDto"];
+      };
     };
-    getEvidences: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description crime case id */
-                id: string;
-            };
-            cookie?: never;
+    responses: {
+      /** @description successful operation */
+      201: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ResultSetEvidence"];
-                };
-            };
-            /** @description crime case not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
         };
+        content?: never;
+      };
     };
-    getWitnesses: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description crime case id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ResultSetPerson"];
-                };
-            };
-            /** @description crime case not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  getCrimeCase: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
     };
-    getSuspects: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description crime case id */
-                id: string;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ResultSetPerson"];
-                };
-            };
-            /** @description crime case not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content: {
+          "application/json": components["schemas"]["CrimeCaseDto"];
         };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
-    getCrimeScene: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description crime case id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CrimeSceneDto"];
-                };
-            };
-            /** @description crime case not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  deleteCrimeCase: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
     };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getCrimeScene: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CrimeSceneDto"];
+        };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getEvidences: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetEvidence"];
+        };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getMotives: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetMotive"];
+        };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listCrimeCaseSolutionAttempts: {
+    parameters: {
+      query?: {
+        /** @description the id of a logged in user playing a crime case */
+        "user-id"?: string;
+        /** @description If the value '0' is specified, only unsuccessful solution attempts are selected; if a value other than '0' is specified, only successful solution attempts are selected. */
+        success?: string;
+      };
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation responds with a list of solution attempts. If no query parameters are specified, an empty list is returned. A maximum of 10 items are returned. The items are sorted by creation date in descending order. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetSolutionAttempt"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createSolutionAttempt: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    /** @description the data required to create a new attempt at a solution */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateSolutionAttemptDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation responds with the generated id of the entity */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getSuspects: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetPerson"];
+        };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getWitnesses: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetPerson"];
+        };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listInterrogations: {
+    parameters: {
+      query?: {
+        /** @description the id of a logged in user playing a crime case */
+        "user-id"?: string;
+        /** @description the id of a person from a criminal case with whom the interrogation was conducted */
+        "person-id"?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation responds with a list of interrogations. If no query parameters are specified, an empty list is returned. A maximum of 10 items are returned. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetInterrogation"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createInterrogationAnswer: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new interrogation answer */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateInterrogationAnswerDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation responds with the generated id of the answer */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getQuestionAndAnswers: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description interrogation id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation responds with a list of questions and answers. The entries are sorted by creation date in descending order. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetQuestionAndAnswer"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
 }
