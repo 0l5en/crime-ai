@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: http://localhost:8080
+- url: https://crime-ai.0l5en.de
   description: Generated server url
 paths:
   /crimecase:
