@@ -305,6 +305,101 @@ paths:
                 $ref: "#/components/schemas/ResultSetQuestionAndAnswer"
         "500":
           description: if any internal error occurs while processing the request
+  /prompt-template:
+    post:
+      summary: Create a new prompt template.
+      operationId: createPromptTemplate
+      requestBody:
+        description: the data required to create a new prompt template
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePromptTemplateDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation without response body
+        "500":
+          description: if any internal error occurs while processing the request
+  /prompt-template-history:
+    get:
+      summary: Get the history of a prompt template.
+      operationId: listPromptTemplateVersions
+      parameters:
+      - name: name
+        in: query
+        description: the name of a template
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetPromptTemplateVersion"
+        "400":
+          description: if no name parameter is available
+        "500":
+          description: if any internal error occurs while processing the request
+  /prompt-template-identifier:
+    get:
+      summary: Get a list of prompt template identifiers.
+      operationId: listPromptTemplateIdentifiers
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetPromptTemplateIdentifier"
+        "500":
+          description: if any internal error occurs while processing the request
+  /prompt-template/{id}:
+    get:
+      summary: Get a prompt template by id.
+      operationId: getPromptTemplate
+      parameters:
+      - name: id
+        in: path
+        description: the id of a prompt template
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PromptTemplateDto"
+        "404":
+          description: if the prompt template could not be found
+        "500":
+          description: if any internal error occurs while processing the request
+  /prompt-template/{id}/template-context:
+    get:
+      summary: Get the template context of a prompt template.
+      operationId: getTemplateContext
+      parameters:
+      - name: id
+        in: path
+        description: the id of a prompt template
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateContextDto"
+        "404":
+          description: if the prompt template could not be found
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     CrimeCaseDto:
@@ -588,3 +683,86 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/QuestionAndAnswerDto"
+    CreatePromptTemplateDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        template:
+          type: string
+          minLength: 1
+      required:
+      - name
+      - template
+    PromptTemplateVersionDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        createdAt:
+          type: string
+      required:
+      - createdAt
+      - id
+    ResultSetPromptTemplateVersion:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/PromptTemplateVersionDto"
+    PromptTemplateIdentifierDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          minLength: 1
+      required:
+      - id
+      - name
+    ResultSetPromptTemplateIdentifier:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/PromptTemplateIdentifierDto"
+    PromptTemplateDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          minLength: 1
+        template:
+          type: string
+          minLength: 1
+        createdAt:
+          type: string
+      required:
+      - createdAt
+      - id
+      - name
+      - template
+    TemplateContextDto:
+      type: object
+      properties:
+        variables:
+          type: array
+          items:
+            $ref: "#/components/schemas/TemplateVariableDto"
+          uniqueItems: true
+    TemplateVariableDto:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
