@@ -160,12 +160,12 @@ const AdminPromptManagement = () => {
                     ) : selectedVersionId ? (
                       <div className="space-y-4">
                         <div className="text-sm text-gray-400">
-                          {template?.name} - Version #{template?.id}
+                          {(template as any)?.name} - Version #{(template as any)?.id}
                           <br />
-                          Erstellt: {template?.createdAt ? new Date(template.createdAt).toLocaleString('de-DE') : 'N/A'}
+                          Erstellt: {(template as any)?.createdAt ? new Date((template as any).createdAt).toLocaleString('de-DE') : 'N/A'}
                         </div>
                         <Textarea
-                          value={template?.template || ""}
+                          value={(template as any)?.template || ""}
                           readOnly
                           className="min-h-96 bg-slate-900 border-slate-700 text-white resize-none font-mono text-sm"
                           placeholder="Template-Inhalt wird hier angezeigt..."
