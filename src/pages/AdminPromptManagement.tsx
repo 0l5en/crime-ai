@@ -2,7 +2,9 @@
 import Header from "@/components/Header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { usePromptTemplate, usePromptTemplateIdentifiers, usePromptTemplateVersions } from "@/hooks/usePromptTemplates";
+import { usePromptTemplate } from "@/hooks/usePromptTemplate";
+import { usePromptTemplateIdentifiers } from "@/hooks/usePromptTemplateIdentifiers";
+import { usePromptTemplateVersions } from "@/hooks/usePromptTemplateVersions";
 import { Clock, FileText, Loader2 } from "lucide-react";
 import { useState } from "react";
 
@@ -90,12 +92,12 @@ const AdminPromptManagement = () => {
           }}
           className="w-full"
         >
-          <TabsList className="grid w-full grid-cols-auto bg-slate-800 border border-slate-700">
+          <TabsList className={"grid w-full mb-8 bg-slate-800 border border-slate-700 grid-cols-" + templates.length}>
             {templates.map((template) => (
               <TabsTrigger
                 key={template.id}
                 value={template.id?.toString() || ""}
-                className="data-[state=active]:bg-slate-700 data-[state=active]:text-white text-gray-300"
+                className="data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200 text-slate-200"
               >
                 {template.name}
               </TabsTrigger>
