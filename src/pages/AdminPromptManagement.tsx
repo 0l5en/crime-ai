@@ -92,7 +92,7 @@ const AdminPromptManagement = () => {
           }}
           className="w-full"
         >
-          <TabsList className={"grid w-full mb-8 bg-slate-800 border border-slate-700 grid-cols-" + templates.length}>
+          <TabsList className="flex w-full mb-8 bg-slate-800 border border-slate-700">
             {templates.map((template) => (
               <TabsTrigger
                 key={template.id}
