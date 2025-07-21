@@ -1,28 +1,12 @@
 
 import { supabase } from "@/integrations/supabase/client";
+import type { components } from '@/openapi/crimeAiSchema';
 import { useQuery } from "@tanstack/react-query";
 
 // Import types from the shared crime-api-types
-type ResultSetPromptTemplateIdentifier = {
-  items?: Array<{
-    id: number;
-    name: string;
-  }>;
-};
-
-type ResultSetPromptTemplateVersion = {
-  items?: Array<{
-    id: number;
-    createdAt: string;
-  }>;
-};
-
-type PromptTemplateDto = {
-  id: number;
-  name: string;
-  template: string;
-  createdAt: string;
-};
+type ResultSetPromptTemplateIdentifier = components['schemas']['ResultSetPromptTemplateIdentifier'];
+type ResultSetPromptTemplateVersion = components['schemas']['ResultSetPromptTemplateVersion'];
+type PromptTemplateDto = components['schemas']['PromptTemplateDto'];
 
 export const usePromptTemplateIdentifiers = () => {
   return useQuery({
