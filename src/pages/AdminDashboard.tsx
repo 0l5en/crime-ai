@@ -58,6 +58,18 @@ const AdminDashboard = () => {
               Verwalten Sie alle Kriminalfälle
             </p>
           </div>
+
+          <div 
+            className="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors cursor-pointer"
+            onClick={() => navigate('/admin/prompts')}
+          >
+            <h3 className="text-lg font-semibold text-white mb-2">
+              Prompt-Templates
+            </h3>
+            <p className="text-gray-300">
+              Configure your Prompts
+            </p>
+          </div>
         </div>
       </div>
     </div>

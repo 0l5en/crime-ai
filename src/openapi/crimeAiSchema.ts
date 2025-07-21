@@ -179,6 +179,91 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/prompt-template": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Create a new prompt template. */
+    post: operations["createPromptTemplate"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/prompt-template-history": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get the history of a prompt template. */
+    get: operations["listPromptTemplateVersions"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/prompt-template-identifier": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of prompt template identifiers. */
+    get: operations["listPromptTemplateIdentifiers"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/prompt-template/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a prompt template by id. */
+    get: operations["getPromptTemplate"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/prompt-template/{id}/template-context": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get the template context of a prompt template. */
+    get: operations["getTemplateContext"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -295,6 +380,42 @@ export interface components {
     };
     ResultSetQuestionAndAnswer: {
       items?: components["schemas"]["QuestionAndAnswerDto"][];
+    };
+    CreatePromptTemplateDto: {
+      name: string;
+      template: string;
+    };
+    PromptTemplateVersionDto: {
+      /** Format: int64 */
+      id: number;
+      /** Format: date-time */
+      createdAt: string;
+    };
+    ResultSetPromptTemplateVersion: {
+      items?: components["schemas"]["PromptTemplateVersionDto"][];
+    };
+    PromptTemplateIdentifierDto: {
+      /** Format: int64 */
+      id: number;
+      name: string;
+    };
+    ResultSetPromptTemplateIdentifier: {
+      items?: components["schemas"]["PromptTemplateIdentifierDto"][];
+    };
+    PromptTemplateDto: {
+      /** Format: int64 */
+      id: number;
+      name: string;
+      template: string;
+      /** Format: date-time */
+      createdAt: string;
+    };
+    TemplateContextDto: {
+      variables?: components["schemas"]["TemplateVariableDto"][];
+    };
+    TemplateVariableDto: {
+      key?: string;
+      value?: string;
     };
   };
   responses: never;
@@ -771,6 +892,174 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["ResultSetQuestionAndAnswer"];
         };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createPromptTemplate: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new prompt template */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreatePromptTemplateDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation without response body */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listPromptTemplateVersions: {
+    parameters: {
+      query: {
+        /** @description the name of a template */
+        name: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetPromptTemplateVersion"];
+        };
+      };
+      /** @description if no name parameter is available */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listPromptTemplateIdentifiers: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetPromptTemplateIdentifier"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getPromptTemplate: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description the id of a prompt template */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PromptTemplateDto"];
+        };
+      };
+      /** @description if the prompt template could not be found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getTemplateContext: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description the id of a prompt template */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TemplateContextDto"];
+        };
+      };
+      /** @description if the prompt template could not be found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description if any internal error occurs while processing the request */
       500: {

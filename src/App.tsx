@@ -11,6 +11,7 @@ import CaseSolution from "./pages/CaseSolution";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminCaseGenerator from "./pages/AdminCaseGenerator";
+import AdminPromptManagement from "./pages/AdminPromptManagement";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -62,6 +63,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin']}>
                   <AdminCaseGenerator />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/prompts" 
+              element={
+                <ProtectedRoute requiredRoles={['admin']}>
+                  <AdminPromptManagement />
                 </ProtectedRoute>
               } 
             />
