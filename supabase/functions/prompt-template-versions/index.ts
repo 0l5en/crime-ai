@@ -1,5 +1,4 @@
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.50.0";
 import createClient from "https://esm.sh/openapi-fetch@0.14.0";
 import { corsHeaders } from "../_shared/cors.ts";
 import type { CrimeApiPaths } from "../_shared/crime-api-types.ts";
