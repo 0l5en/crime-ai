@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { usePromptTemplateIdentifiers, usePromptTemplateVersions, usePromptTemplate } from "@/hooks/usePromptTemplates";
-import { components } from "@/openapi/crimeAiSchema";
 import { Loader2, Clock, FileText } from "lucide-react";
 
 const AdminPromptManagement = () => {
@@ -15,10 +14,7 @@ const AdminPromptManagement = () => {
   const { data: versions, isLoading: versionsLoading } = usePromptTemplateVersions(
     identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name || ""
   );
-  const { data: template, isLoading: templateLoading } = usePromptTemplate(selectedVersionId) as { 
-    data: components['schemas']['PromptTemplateDto'] | undefined, 
-    isLoading: boolean 
-  };
+  const { data: template, isLoading: templateLoading } = usePromptTemplate(selectedVersionId);
 
   if (identifiersLoading) {
     return (
@@ -164,12 +160,12 @@ const AdminPromptManagement = () => {
                     ) : selectedVersionId ? (
                       <div className="space-y-4">
                         <div className="text-sm text-gray-400">
-                          {(template as components['schemas']['PromptTemplateDto'])?.name} - Version #{(template as components['schemas']['PromptTemplateDto'])?.id}
+                          {template?.name} - Version #{template?.id}
                           <br />
-                          Erstellt: {(template as components['schemas']['PromptTemplateDto'])?.createdAt ? new Date((template as components['schemas']['PromptTemplateDto']).createdAt).toLocaleString('de-DE') : 'N/A'}
+                          Erstellt: {template?.createdAt ? new Date(template.createdAt).toLocaleString('de-DE') : 'N/A'}
                         </div>
                         <Textarea
-                          value={(template as components['schemas']['PromptTemplateDto'])?.template || ""}
+                          value={template?.template || ""}
                           readOnly
                           className="min-h-96 bg-slate-900 border-slate-700 text-white resize-none font-mono text-sm"
                           placeholder="Template-Inhalt wird hier angezeigt..."

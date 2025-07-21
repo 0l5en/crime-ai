@@ -115,6 +115,32 @@ export interface ResultSetQuestionAndAnswer {
   items?: QuestionAndAnswerDto[];
 }
 
+// Prompt Template Types
+export interface PromptTemplateIdentifierDto {
+  id: number;
+  name: string;
+}
+
+export interface ResultSetPromptTemplateIdentifier {
+  items?: PromptTemplateIdentifierDto[];
+}
+
+export interface PromptTemplateVersionDto {
+  id: number;
+  createdAt: string;
+}
+
+export interface ResultSetPromptTemplateVersion {
+  items?: PromptTemplateVersionDto[];
+}
+
+export interface PromptTemplateDto {
+  id: number;
+  name: string;
+  template: string;
+  createdAt: string;
+}
+
 // OpenAPI paths for type-safe requests
 export interface CrimeApiPaths {
   "/crimecase": {
@@ -325,6 +351,49 @@ export interface CrimeApiPaths {
         200: {
           content: {
             "application/json": ResultSetQuestionAndAnswer;
+          };
+        };
+      };
+    };
+  };
+  "/prompt-template-identifier": {
+    get: {
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetPromptTemplateIdentifier;
+          };
+        };
+      };
+    };
+  };
+  "/prompt-template-history": {
+    get: {
+      parameters: {
+        query: {
+          name: string;
+        };
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetPromptTemplateVersion;
+          };
+        };
+      };
+    };
+  };
+  "/prompt-template/{id}": {
+    get: {
+      parameters: {
+        path: {
+          id: string;
+        };
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": PromptTemplateDto;
           };
         };
       };
