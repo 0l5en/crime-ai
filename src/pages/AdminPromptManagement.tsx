@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { usePromptTemplateIdentifiers, usePromptTemplateVersions, usePromptTemplate } from "@/hooks/usePromptTemplates";
+import { components } from "@/openapi/crimeAiSchema";
 import { Loader2, Clock, FileText } from "lucide-react";
 
 const AdminPromptManagement = () => {
@@ -12,9 +13,12 @@ const AdminPromptManagement = () => {
 
   const { data: identifiers, isLoading: identifiersLoading, error: identifiersError } = usePromptTemplateIdentifiers();
   const { data: versions, isLoading: versionsLoading } = usePromptTemplateVersions(
-    identifiers?.data?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name || ""
+    identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name || ""
   );
-  const { data: template, isLoading: templateLoading } = usePromptTemplate(selectedVersionId);
+  const { data: template, isLoading: templateLoading } = usePromptTemplate(selectedVersionId) as { 
+    data: components['schemas']['PromptTemplateDto'] | undefined, 
+    isLoading: boolean 
+  };
 
   if (identifiersLoading) {
     return (
@@ -37,14 +41,14 @@ const AdminPromptManagement = () => {
         <div className="flex items-center justify-center h-96">
           <div className="text-red-400 text-center">
             <p>Error loading prompt templates</p>
-            <p className="text-sm text-gray-400 mt-2">{identifiersError.message}</p>
+            <p className="text-sm text-gray-400 mt-2">{String(identifiersError)}</p>
           </div>
         </div>
       </div>
     );
   }
 
-  const templates = identifiers?.data?.items || [];
+  const templates = identifiers?.items || [];
 
   if (templates.length === 0) {
     return (
@@ -119,7 +123,7 @@ const AdminPromptManagement = () => {
                       </div>
                     ) : (
                       <div className="space-y-2 max-h-96 overflow-y-auto">
-                        {versions?.data?.items?.map((version) => (
+                        {versions?.items?.map((version) => (
                           <div
                             key={version.id}
                             onClick={() => setSelectedVersionId(version.id?.toString() || "")}
@@ -160,12 +164,12 @@ const AdminPromptManagement = () => {
                     ) : selectedVersionId ? (
                       <div className="space-y-4">
                         <div className="text-sm text-gray-400">
-                          {template?.data?.name} - Version #{template?.data?.id}
+                          {(template as components['schemas']['PromptTemplateDto'])?.name} - Version #{(template as components['schemas']['PromptTemplateDto'])?.id}
                           <br />
-                          Erstellt: {template?.data?.createdAt ? new Date(template.data.createdAt).toLocaleString('de-DE') : 'N/A'}
+                          Erstellt: {(template as components['schemas']['PromptTemplateDto'])?.createdAt ? new Date((template as components['schemas']['PromptTemplateDto']).createdAt).toLocaleString('de-DE') : 'N/A'}
                         </div>
                         <Textarea
-                          value={template?.data?.template || ""}
+                          value={(template as components['schemas']['PromptTemplateDto'])?.template || ""}
                           readOnly
                           className="min-h-96 bg-slate-900 border-slate-700 text-white resize-none font-mono text-sm"
                           placeholder="Template-Inhalt wird hier angezeigt..."
