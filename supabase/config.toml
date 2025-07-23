@@ -1,1 +1,4 @@
 project_id = "bofaqytiyycmgbqbmctd"
+
+[functions.create-prompt-template]
+verify_jwt = false
