@@ -16,15 +16,15 @@ serve(async (req) => {
 
   try {
     console.log('Fetching interrogations from external API...');
-    
+
     const { userId, personId } = await req.json();
     console.log(`User ID: ${userId}, Person ID: ${personId}`);
-    
+
     if (!userId || !personId) {
       throw new Error('userId and personId are required');
     }
 
-    const url = `${CRIME_AI_API_BASE_URL}/interrogation?user-id=${encodeURIComponent(userId)}&person-id=${encodeURIComponent(personId)}`;
+    const url = `${CRIME_AI_API_BASE_URL}/interrogation?userId=${encodeURIComponent(userId)}&personId=${encodeURIComponent(personId)}`;
     console.log(`Making request to: ${url}`);
 
     const response = await fetch(url, {
@@ -54,8 +54,8 @@ serve(async (req) => {
     console.error('Error in list-interrogations function:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
-      { 
-        status: 500, 
+      {
+        status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );

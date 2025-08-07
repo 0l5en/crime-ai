@@ -672,7 +672,7 @@ export interface operations {
     parameters: {
       query?: {
         /** @description the id of a logged in user playing a crime case */
-        "user-id"?: string;
+        "userId"?: string;
         /** @description If the value '0' is specified, only unsuccessful solution attempts are selected; if a value other than '0' is specified, only successful solution attempts are selected. */
         success?: string;
       };
@@ -814,9 +814,9 @@ export interface operations {
     parameters: {
       query?: {
         /** @description the id of a logged in user playing a crime case */
-        "user-id"?: string;
+        "userId"?: string;
         /** @description the id of a person from a criminal case with whom the interrogation was conducted */
-        "person-id"?: string;
+        "personId"?: string;
       };
       header?: never;
       path?: never;
