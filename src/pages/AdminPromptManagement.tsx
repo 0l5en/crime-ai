@@ -1,22 +1,71 @@
 
 import Header from "@/components/Header";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { useCreatePromptTemplate } from "@/hooks/useCreatePromptTemplate";
 import { usePromptTemplate } from "@/hooks/usePromptTemplate";
 import { usePromptTemplateIdentifiers } from "@/hooks/usePromptTemplateIdentifiers";
 import { usePromptTemplateVersions } from "@/hooks/usePromptTemplateVersions";
-import { Clock, FileText, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Clock, FileText, Loader2, Save } from "lucide-react";
+import React, { useState } from "react";
 
 const AdminPromptManagement = () => {
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>("");
   const [selectedVersionId, setSelectedVersionId] = useState<string>("");
+  const [editedContent, setEditedContent] = useState<string>("");
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+
+  const { toast } = useToast();
 
   const { data: identifiers, isLoading: identifiersLoading, error: identifiersError } = usePromptTemplateIdentifiers();
   const { data: versions, isLoading: versionsLoading } = usePromptTemplateVersions(
     identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name || ""
   );
   const { data: templateDetails, isLoading: templateLoading } = usePromptTemplate(selectedVersionId);
+  const createTemplateMutation = useCreatePromptTemplate();
+
+  // Update edited content when template details change
+  React.useEffect(() => {
+    if (templateDetails?.template && !isEditing) {
+      setEditedContent(templateDetails.template);
+    }
+  }, [templateDetails?.template, isEditing]);
+
+  const handleSave = async () => {
+    const currentTemplate = identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId);
+    if (!currentTemplate?.name || !editedContent.trim()) {
+      toast({
+        title: "Fehler",
+        description: "Template-Name und Inhalt sind erforderlich",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      await createTemplateMutation.mutateAsync({
+        name: currentTemplate.name,
+        template: editedContent,
+      });
+      
+      toast({
+        title: "Erfolgreich gespeichert",
+        description: "Das Template wurde erfolgreich erstellt",
+      });
+      
+      setIsEditing(false);
+      // Reset selected version to show the new version will appear in the list
+      setSelectedVersionId("");
+    } catch (error) {
+      toast({
+        title: "Fehler beim Speichern",
+        description: "Das Template konnte nicht gespeichert werden",
+        variant: "destructive",
+      });
+    }
+  };
 
   if (identifiersLoading) {
     return (
@@ -165,12 +214,62 @@ const AdminPromptManagement = () => {
                           <br />
                           Erstellt: {templateDetails.createdAt ? new Date(templateDetails.createdAt).toLocaleString('de-DE') : 'N/A'}
                         </div>
-                        <Textarea
-                          value={templateDetails.template || ""}
-                          readOnly
-                          className="min-h-96 bg-slate-900 border-slate-700 text-white resize-none font-mono text-sm"
-                          placeholder="Template-Inhalt wird hier angezeigt..."
-                        />
+                        <div className="space-y-4">
+                          <div className="flex justify-between items-center">
+                            <div className="text-sm text-gray-400">
+                              Bearbeiten Sie den Template-Inhalt und speichern Sie als neue Version
+                            </div>
+                            <Button
+                              onClick={() => setIsEditing(!isEditing)}
+                              variant="outline"
+                              size="sm"
+                            >
+                              {isEditing ? "Ansicht" : "Bearbeiten"}
+                            </Button>
+                          </div>
+                          <Textarea
+                            value={isEditing ? editedContent : (templateDetails.template || "")}
+                            onChange={(e) => {
+                              if (isEditing) {
+                                setEditedContent(e.target.value);
+                              }
+                            }}
+                            readOnly={!isEditing}
+                            className="min-h-96 bg-slate-900 border-slate-700 text-white resize-none font-mono text-sm"
+                            placeholder="Template-Inhalt wird hier angezeigt..."
+                          />
+                          {isEditing && (
+                            <div className="flex justify-end space-x-2">
+                              <Button
+                                onClick={() => {
+                                  setIsEditing(false);
+                                  setEditedContent(templateDetails?.template || "");
+                                }}
+                                variant="outline"
+                                size="sm"
+                              >
+                                Abbrechen
+                              </Button>
+                              <Button
+                                onClick={handleSave}
+                                disabled={createTemplateMutation.isPending || !editedContent.trim()}
+                                size="sm"
+                              >
+                                {createTemplateMutation.isPending ? (
+                                  <>
+                                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                                    Speichern...
+                                  </>
+                                ) : (
+                                  <>
+                                    <Save className="h-4 w-4 mr-2" />
+                                    Speichern
+                                  </>
+                                )}
+                              </Button>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     ) : (
                       <div className="text-center py-8 text-gray-400">
