@@ -16,17 +16,17 @@ serve(async (req) => {
 
   try {
     console.log('Fetching solution attempts from external API...');
-    
+
     const { caseId, userId, success } = await req.json();
     console.log(`Case ID: ${caseId}, User ID: ${userId}, Success: ${success}`);
-    
+
     if (!caseId) {
       throw new Error('caseId is required');
     }
 
     // Build query parameters
     const queryParams = new URLSearchParams();
-    if (userId) queryParams.append('user-id', userId);
+    if (userId) queryParams.append('userId', userId);
     if (success !== undefined) queryParams.append('success', success);
 
     const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/solution-attempt${queryParams.toString() ? '?' + queryParams.toString() : ''}`;
@@ -59,8 +59,8 @@ serve(async (req) => {
     console.error('Error in fetch-solution-attempts function:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
-      { 
-        status: 500, 
+      {
+        status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );
