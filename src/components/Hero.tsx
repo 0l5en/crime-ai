@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -32,12 +31,12 @@ const Hero = () => {
         <p className="lead text-light mb-5 mx-auto" style={{ maxWidth: '48rem', textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
           Dive into a world of mystery and intrigue with our interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.
         </p>
-        <Button 
+        <button 
           onClick={scrollToCases}
-          className="btn-danger btn-lg px-5 py-3 rounded-pill shadow"
+          className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow"
         >
           Explore Cases
-        </Button>
+        </button>
       </div>
     </section>
   );

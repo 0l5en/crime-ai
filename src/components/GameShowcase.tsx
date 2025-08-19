@@ -1,5 +1,3 @@
-
-import { Button } from "@/components/ui/button";
 import GameCard from "./GameCard";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useKeycloak } from "@/contexts/KeycloakContext";
@@ -69,12 +67,9 @@ const GameShowcase = () => {
             </div>
             
             <div className="text-center">
-              <Button 
-                variant="outline-secondary" 
-                className="bg-transparent border-light text-light btn-lg px-5 py-3"
-              >
+              <button className="btn btn-outline-secondary bg-transparent border-light text-light btn-lg px-5 py-3">
                 View All Cases
-              </Button>
+              </button>
             </div>
           </>
         )}

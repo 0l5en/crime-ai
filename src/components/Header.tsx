@@ -1,5 +1,3 @@
-
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
 
@@ -21,12 +19,9 @@ const Header = () => {
             <>
               {hasRole('admin') && (
                 <Link to="/admin">
-                  <Button 
-                    variant="outline-primary" 
-                    className="bg-transparent border-danger text-danger"
-                  >
+                  <button className="btn btn-outline-primary bg-transparent border-danger text-danger">
                     Admin
-                  </Button>
+                  </button>
                 </Link>
               )}
               
@@ -43,26 +38,24 @@ const Header = () => {
                   </div>
                 </div>
               )}
-              <Button 
-                variant="outline-secondary" 
-                className="bg-transparent border-light text-light"
+              <button 
+                className="btn btn-outline-secondary bg-transparent border-light text-light"
                 onClick={logout}
               >
                 Logout
-              </Button>
+              </button>
             </>
           ) : (
             <>
-              <Button 
-                variant="outline-secondary" 
-                className="bg-transparent border-light text-light"
+              <button 
+                className="btn btn-outline-secondary bg-transparent border-light text-light"
                 onClick={() => login()}
               >
                 Sign In
-              </Button>
-              <Button className="btn-danger">
+              </button>
+              <button className="btn btn-danger">
                 Sign Up
-              </Button>
+              </button>
             </>
           )}
         </div>
