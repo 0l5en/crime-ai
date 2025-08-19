@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -97,7 +98,7 @@ const CaseDashboard = () => {
           <div className="col-12">
             <div className="d-flex gap-3 justify-content-end">
               <Button
-                onClick={() => navigate(`/case/${caseId}/solve`)}
+                onClick={() => navigate(`/case/${caseId}/solution`)}
                 variant="danger"
                 size="lg"
               >
@@ -131,22 +132,22 @@ const CaseDashboard = () => {
                   <div className="text-white">
                     <div className="mb-4">
                       <h3 className="h5 text-danger mb-2">Location</h3>
-                      <p className="text-muted">{crimeScene.location}</p>
+                      <p className="text-muted">{(crimeScene as any).location || crimeScene.title}</p>
                     </div>
                     
                     <div className="mb-4">
                       <h3 className="h5 text-danger mb-2">Time of Discovery</h3>
-                      <p className="text-muted">{crimeScene.timeOfDiscovery}</p>
+                      <p className="text-muted">{(crimeScene as any).timeOfDiscovery || 'Not specified'}</p>
                     </div>
                     
                     <div className="mb-4">
                       <h3 className="h5 text-danger mb-2">Initial Assessment</h3>
-                      <p className="text-muted">{crimeScene.initialAssessment}</p>
+                      <p className="text-muted">{(crimeScene as any).initialAssessment || crimeScene.description}</p>
                     </div>
                     
                     <div>
                       <h3 className="h5 text-danger mb-2">Secured Evidence</h3>
-                      <p className="text-muted">{crimeScene.securedEvidence}</p>
+                      <p className="text-muted">{(crimeScene as any).securedEvidence || 'See evidence tab for details'}</p>
                     </div>
                   </div>
                 ) : (
@@ -168,10 +169,10 @@ const CaseDashboard = () => {
                 {evidences.items.map((evidence, index) => (
                   <div key={evidence.id} className="col-md-6 col-lg-4">
                     <EvidenceCard
-                      title={evidence.name}
+                      title={(evidence as any).name || evidence.title}
                       description={evidence.description}
-                      location={evidence.location}
-                      analysisResult={evidence.analysisResult}
+                      location={(evidence as any).location || 'Unknown location'}
+                      analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
                       imageColor={getImageColor(index)}
                     />
                   </div>
