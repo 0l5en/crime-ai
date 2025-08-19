@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -87,7 +86,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
       {/* Header with back button and person info */}
       <div className="flex items-center space-x-4">
         <Button
-          variant="outline"
+          variant="outline-primary"
           size="sm"
           onClick={onBack}
           className="bg-transparent border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:border-red-600"

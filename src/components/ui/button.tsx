@@ -8,39 +8,45 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   asChild?: boolean
 }
 
+const buttonVariants = (props: { variant?: ButtonProps["variant"]; size?: ButtonProps["size"] }) => {
+  const baseClasses = "btn"
+  
+  const variantClasses = {
+    primary: "btn-primary",
+    secondary: "btn-secondary", 
+    success: "btn-success",
+    danger: "btn-danger",
+    warning: "btn-warning",
+    info: "btn-info",
+    light: "btn-light",
+    dark: "btn-dark",
+    "outline-primary": "btn-outline-primary-custom",
+    "outline-secondary": "btn-outline-secondary",
+    link: "btn-link"
+  }
+  
+  const sizeClasses = {
+    sm: "btn-sm",
+    lg: "btn-lg",
+    default: ""
+  }
+
+  return cn(
+    baseClasses,
+    variantClasses[props.variant || "primary"],
+    sizeClasses[props.size || "default"]
+  )
+}
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "default", asChild = false, ...props }, ref) => {
-    const baseClasses = "btn"
-    
-    const variantClasses = {
-      primary: "btn-primary",
-      secondary: "btn-secondary", 
-      success: "btn-success",
-      danger: "btn-danger",
-      warning: "btn-warning",
-      info: "btn-info",
-      light: "btn-light",
-      dark: "btn-dark",
-      "outline-primary": "btn-outline-primary-custom",
-      "outline-secondary": "btn-outline-secondary",
-      link: "btn-link"
-    }
-    
-    const sizeClasses = {
-      sm: "btn-sm",
-      lg: "btn-lg",
-      default: ""
-    }
-
     const classes = cn(
-      baseClasses,
-      variantClasses[variant],
-      sizeClasses[size],
+      buttonVariants({ variant, size }),
       className
     )
 
     if (asChild) {
-      return <div className={classes} {...props} />
+      return <span className={classes} {...(props as any)} />
     }
 
     return (
@@ -54,4 +60,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-export { Button }
+export { Button, buttonVariants }

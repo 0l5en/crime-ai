@@ -70,7 +70,7 @@ const GameShowcase = () => {
             
             <div className="text-center">
               <Button 
-                variant="outline" 
+                variant="outline-primary" 
                 className="bg-transparent border-zinc-200 text-zinc-200 hover:bg-zinc-200 hover:text-zinc-900 px-8 py-3 text-lg"
               >
                 View All Cases
