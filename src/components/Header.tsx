@@ -1,5 +1,7 @@
+
 import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
@@ -15,6 +17,8 @@ const Header = () => {
         </Link>
         
         <div className="d-flex align-items-center gap-3">
+          <ThemeToggle />
+          
           {authenticated ? (
             <>
               {hasRole('admin') && (
