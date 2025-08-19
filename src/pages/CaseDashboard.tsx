@@ -252,14 +252,14 @@ const CaseDashboard = () => {
                   <div key={motive.id} className="col-md-6">
                     <Card className="bg-dark border-secondary text-light">
                       <CardContent className="p-4">
-                        <h3 className="h5 text-danger mb-3">{motive.name}</h3>
+                        <h3 className="h5 text-danger mb-3">{(motive as any).name || motive.title}</h3>
                         <p className="text-muted mb-3">{motive.description}</p>
                         <div className="small">
                           <Badge variant="warning" className="me-2">
-                            Strength: {motive.strength}
+                            Strength: {(motive as any).strength || 'Unknown'}
                           </Badge>
                           <span className="text-muted">
-                            Plausibility: {motive.plausibility}
+                            Plausibility: {(motive as any).plausibility || 'Unknown'}
                           </span>
                         </div>
                       </CardContent>

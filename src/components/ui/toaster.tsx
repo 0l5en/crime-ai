@@ -9,7 +9,7 @@ export function Toaster() {
     <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: 1055 }}>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast key={id} {...props}>
+          <Toast key={id} id={id} {...props}>
             <div className="d-flex">
               <div className="toast-body">
                 {title && <ToastTitle>{title}</ToastTitle>}

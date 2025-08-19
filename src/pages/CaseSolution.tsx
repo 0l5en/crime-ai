@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,9 +21,9 @@ const CaseSolution = () => {
   const navigate = useNavigate();
   const { user } = useKeycloak();
   
-  const [selectedSuspect, setSelectedSuspect] = useState<string>('');
-  const [selectedEvidences, setSelectedEvidences] = useState<string[]>([]);
-  const [selectedMotive, setSelectedMotive] = useState<string>('');
+  const [selectedSuspect, setSelectedSuspect] = useState<number | null>(null);
+  const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
+  const [selectedMotive, setSelectedMotive] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [solutionResult, setSolutionResult] = useState<any>(null);
 
@@ -33,11 +34,11 @@ const CaseSolution = () => {
   
   const createSolutionMutation = useCreateSolutionAttempt();
 
-  const toggleSuspect = (suspectId: string) => {
-    setSelectedSuspect(prevSuspect => (prevSuspect === suspectId ? '' : suspectId));
+  const toggleSuspect = (suspectId: number) => {
+    setSelectedSuspect(prevSuspect => (prevSuspect === suspectId ? null : suspectId));
   };
 
-  const toggleEvidence = (evidenceId: string) => {
+  const toggleEvidence = (evidenceId: number) => {
     setSelectedEvidences(prevEvidences => {
       if (prevEvidences.includes(evidenceId)) {
         return prevEvidences.filter(id => id !== evidenceId);
@@ -47,8 +48,8 @@ const CaseSolution = () => {
     });
   };
 
-  const toggleMotive = (motiveId: string) => {
-    setSelectedMotive(prevMotive => (prevMotive === motiveId ? '' : motiveId));
+  const toggleMotive = (motiveId: number) => {
+    setSelectedMotive(prevMotive => (prevMotive === motiveId ? null : motiveId));
   };
 
   const getImageColor = (index: number) => {
@@ -70,11 +71,12 @@ const CaseSolution = () => {
 
     try {
       const result = await createSolutionMutation.mutateAsync({
-        caseId: caseId || '',
+        solution: {
+          evidenceIds: selectedEvidences,
+          motiveIds: [selectedMotive],
+          personIds: [selectedSuspect],
+        },
         userId: user.email,
-        suspectId: selectedSuspect,
-        evidenceIds: selectedEvidences,
-        motiveId: selectedMotive,
       });
 
       setSolutionResult(result);
@@ -224,7 +226,7 @@ const CaseSolution = () => {
                 {evidences.items.map((evidence, index) => (
                   <div key={evidence.id} className="col-md-4 col-lg-3">
                     <EvidenceSelectionCard
-                      title={evidence.name}
+                      title={(evidence as any).name || evidence.title}
                       isSelected={selectedEvidences.includes(evidence.id)}
                       onToggle={() => toggleEvidence(evidence.id)}
                       imageColor={getImageColor(index)}
@@ -254,7 +256,7 @@ const CaseSolution = () => {
                 {motives.items.map((motive, index) => (
                   <div key={motive.id} className="col-md-4 col-lg-3">
                     <MotiveSelectionCard
-                      title={motive.name}
+                      title={(motive as any).name || motive.title}
                       isSelected={selectedMotive === motive.id}
                       onToggle={() => toggleMotive(motive.id)}
                       imageColor={getImageColor(index)}

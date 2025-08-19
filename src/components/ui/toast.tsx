@@ -3,7 +3,7 @@ import * as React from "react"
 
 // Basic toast implementation for Bootstrap
 export interface ToastProps {
-  id: string
+  id?: string
   title?: React.ReactNode
   description?: React.ReactNode
   action?: React.ReactElement
@@ -14,7 +14,7 @@ export interface ToastProps {
 const Toast = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & ToastProps
->(({ className, ...props }, ref) => (
+>(({ className, id, ...props }, ref) => (
   <div
     ref={ref}
     className={`toast ${className}`}
