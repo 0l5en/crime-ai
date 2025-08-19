@@ -14,11 +14,11 @@ const CaseTabs = ({ activeTab, onTabChange }: CaseTabsProps) => {
 
   return (
     <div className="mb-4">
-      <ul className="nav nav-tabs border-0" style={{ backgroundColor: 'transparent' }}>
+      <ul className="nav nav-tabs border-0 d-flex w-100" style={{ backgroundColor: 'transparent' }}>
         {tabs.map((tab) => (
-          <li key={tab.id} className="nav-item">
+          <li key={tab.id} className="nav-item flex-fill">
             <button 
-              className={`nav-link border-0 px-4 py-3 fw-medium ${
+              className={`nav-link border-0 px-4 py-3 fw-medium w-100 text-center ${
                 activeTab === tab.id 
                   ? 'active text-white' 
                   : 'text-muted'
@@ -27,7 +27,7 @@ const CaseTabs = ({ activeTab, onTabChange }: CaseTabsProps) => {
               style={{ 
                 backgroundColor: activeTab === tab.id ? '#2a2a2a' : 'transparent',
                 borderRadius: '8px 8px 0 0',
-                marginRight: '2px'
+                marginRight: tab.id !== 'suspects' ? '2px' : '0'
               }}
             >
               {tab.label}
