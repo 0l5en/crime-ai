@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -68,11 +69,11 @@ const AdminPromptManagement = () => {
 
   if (identifiersLoading) {
     return (
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-vh-100 bg-dark">
         <Header />
-        <div className="flex items-center justify-center h-96">
-          <div className="flex items-center space-x-2 text-white">
-            <Loader2 className="h-6 w-6 animate-spin" />
+        <div className="d-flex align-items-center justify-content-center" style={{ height: '24rem' }}>
+          <div className="d-flex align-items-center text-white">
+            <Loader2 className="me-2 spinner-border spinner-border-sm" />
             <span>Loading prompt templates...</span>
           </div>
         </div>
@@ -82,12 +83,12 @@ const AdminPromptManagement = () => {
 
   if (identifiersError) {
     return (
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-vh-100 bg-dark">
         <Header />
-        <div className="flex items-center justify-center h-96">
-          <div className="text-red-400 text-center">
+        <div className="d-flex align-items-center justify-content-center" style={{ height: '24rem' }}>
+          <div className="text-danger text-center">
             <p>Error loading prompt templates</p>
-            <p className="text-sm text-gray-400 mt-2">{String(identifiersError)}</p>
+            <p className="small text-muted mt-2">{String(identifiersError)}</p>
           </div>
         </div>
       </div>
@@ -98,19 +99,19 @@ const AdminPromptManagement = () => {
 
   if (templates.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-vh-100 bg-dark">
         <Header />
-        <div className="max-w-7xl mx-auto py-12 px-6">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-white mb-4">
+        <div className="container py-5">
+          <div className="text-center mb-5">
+            <h1 className="display-4 fw-bold text-white mb-4">
               Prompt-Template-Verwaltung
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="h5 text-muted">
               Verwalten Sie Ihre Prompt-Templates
             </p>
           </div>
-          <div className="text-center text-gray-400">
-            <FileText className="h-16 w-16 mx-auto mb-4 opacity-50" />
+          <div className="text-center text-muted">
+            <FileText className="mx-auto mb-4" style={{ width: '4rem', height: '4rem', opacity: '0.5' }} />
             <p>Keine Prompt-Templates gefunden</p>
           </div>
         </div>
@@ -119,15 +120,15 @@ const AdminPromptManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-vh-100 bg-dark">
       <Header />
 
-      <div className="max-w-7xl mx-auto py-12 px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">
+      <div className="container py-5">
+        <div className="text-center mb-5">
+          <h1 className="display-4 fw-bold text-white mb-4">
             Prompt-Template-Verwaltung
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="h5 text-muted">
             Verwalten Sie Ihre Prompt-Templates
           </p>
         </div>
@@ -138,14 +139,14 @@ const AdminPromptManagement = () => {
             setSelectedTemplateId(value);
             setSelectedVersionId("");
           }}
-          className="w-full"
+          className="w-100"
         >
-          <TabsList className="flex w-full mb-8 bg-slate-800 border border-slate-700">
+          <TabsList className="d-flex w-100 mb-4 bg-dark border border-secondary">
             {templates.map((template) => (
               <TabsTrigger
                 key={template.id}
                 value={template.id?.toString() || ""}
-                className="data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200 text-slate-200"
+                className="nav-link text-muted bg-transparent border-0 px-3 py-2 data-[state=active]:text-light data-[state=active]:bg-secondary"
               >
                 {template.name}
               </TabsTrigger>
@@ -153,40 +154,41 @@ const AdminPromptManagement = () => {
           </TabsList>
 
           {templates.map((template) => (
-            <TabsContent key={template.id} value={template.id?.toString() || ""} className="mt-6">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <TabsContent key={template.id} value={template.id?.toString() || ""} className="mt-3">
+              <div className="row">
                 {/* Left side - Versions */}
-                <div className="lg:col-span-1">
-                  <div className="bg-slate-800 rounded-lg border border-slate-700 p-6">
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                      <Clock className="h-5 w-5 mr-2" />
+                <div className="col-lg-4">
+                  <div className="card bg-dark border-secondary p-4">
+                    <h3 className="h5 fw-semibold text-white mb-4 d-flex align-items-center">
+                      <Clock className="me-2" style={{ width: '20px', height: '20px' }} />
                       Versionen
                     </h3>
 
                     {versionsLoading ? (
-                      <div className="flex items-center justify-center py-8">
-                        <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
+                      <div className="d-flex align-items-center justify-content-center py-4">
+                        <Loader2 className="spinner-border spinner-border-sm text-muted" />
                       </div>
                     ) : (
-                      <div className="space-y-2 max-h-96 overflow-y-auto">
+                      <div className="d-flex flex-column gap-2" style={{ maxHeight: '24rem', overflowY: 'auto' }}>
                         {versions?.items?.map((version) => (
                           <div
                             key={version.id}
                             onClick={() => setSelectedVersionId(version.id?.toString() || "")}
-                            className={`p-3 rounded-lg cursor-pointer transition-colors ${selectedVersionId === version.id?.toString()
-                              ? "bg-slate-700 border border-slate-600"
-                              : "bg-slate-900 hover:bg-slate-700 border border-transparent"
+                            className={`p-3 rounded cursor-pointer transition ${selectedVersionId === version.id?.toString()
+                              ? "bg-secondary border border-secondary"
+                              : "bg-dark-subtle border border-transparent card-hover"
                               }`}
+                            style={{ cursor: 'pointer' }}
                           >
-                            <p className="text-white text-sm font-medium">
+                            <p className="text-white small fw-medium mb-1">
                               Version #{version.id}
                             </p>
-                            <p className="text-gray-400 text-xs">
+                            <p className="text-muted small mb-0">
                               {new Date(version.createdAt).toLocaleString('de-DE')}
                             </p>
                           </div>
                         )) || (
-                            <p className="text-gray-400 text-center py-4">
+                            <p className="text-muted text-center py-4">
                               Keine Versionen gefunden
                             </p>
                           )}
@@ -196,26 +198,26 @@ const AdminPromptManagement = () => {
                 </div>
 
                 {/* Right side - Template Details */}
-                <div className="lg:col-span-2">
-                  <div className="bg-slate-800 rounded-lg border border-slate-700 p-6">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                <div className="col-lg-8">
+                  <div className="card bg-dark border-secondary p-4">
+                    <h3 className="h5 fw-semibold text-white mb-4">
                       Template-Inhalt
                     </h3>
 
                     {templateLoading ? (
-                      <div className="flex items-center justify-center py-8">
-                        <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
+                      <div className="d-flex align-items-center justify-content-center py-4">
+                        <Loader2 className="spinner-border spinner-border-sm text-muted" />
                       </div>
                     ) : templateDetails ? (
-                      <div className="space-y-4">
-                        <div className="text-sm text-gray-400">
+                      <div className="d-flex flex-column gap-4">
+                        <div className="small text-muted">
                           {templateDetails.name} - Version #{templateDetails.id}
                           <br />
                           Erstellt: {templateDetails.createdAt ? new Date(templateDetails.createdAt).toLocaleString('de-DE') : 'N/A'}
                         </div>
-                        <div className="space-y-4">
-                          <div className="flex justify-between items-center">
-                            <div className="text-sm text-gray-400">
+                        <div className="d-flex flex-column gap-4">
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div className="small text-muted">
                               Bearbeiten Sie den Template-Inhalt und speichern Sie als neue Version
                             </div>
                             <Button
@@ -234,11 +236,12 @@ const AdminPromptManagement = () => {
                               }
                             }}
                             readOnly={!isEditing}
-                            className="min-h-96 bg-slate-900 border-slate-700 text-white resize-none font-mono text-sm"
+                            className="bg-dark border-secondary text-white font-monospace small"
+                            style={{ minHeight: '24rem', resize: 'none' }}
                             placeholder="Template-Inhalt wird hier angezeigt..."
                           />
                           {isEditing && (
-                            <div className="flex justify-end space-x-2">
+                            <div className="d-flex justify-content-end gap-2">
                               <Button
                                 onClick={() => {
                                   setIsEditing(false);
@@ -256,12 +259,12 @@ const AdminPromptManagement = () => {
                               >
                                 {createTemplateMutation.isPending ? (
                                   <>
-                                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                                    <Loader2 className="me-2 spinner-border spinner-border-sm" />
                                     Speichern...
                                   </>
                                 ) : (
                                   <>
-                                    <Save className="h-4 w-4 mr-2" />
+                                    <Save className="me-2" style={{ width: '16px', height: '16px' }} />
                                     Speichern
                                   </>
                                 )}
@@ -271,8 +274,8 @@ const AdminPromptManagement = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="text-center py-8 text-gray-400">
-                        <FileText className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                      <div className="text-center py-4 text-muted">
+                        <FileText className="mx-auto mb-2" style={{ width: '3rem', height: '3rem', opacity: '0.5' }} />
                         <p>Wählen Sie eine Version aus, um den Inhalt anzuzeigen</p>
                       </div>
                     )}

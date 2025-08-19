@@ -1,10 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Send, ArrowLeft } from 'lucide-react';
 import { useKeycloak } from '@/contexts/KeycloakContext';
 import { useInterrogations } from '@/hooks/useInterrogations';
@@ -123,7 +120,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
           <form onSubmit={handleSubmitQuestion} className="d-flex gap-2">
             <input
               type="text"
-              className="form-control bg-dark border-secondary text-white flex-fill"
+              className="form-control bg-dark border-secondary text-white flex-grow-1"
               style={{ backgroundColor: '#495057 !important' }}
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
@@ -159,13 +156,13 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
                       <Badge variant="primary" className="mt-1">
                         Q
                       </Badge>
-                      <p className="text-white flex-fill mb-0">{qa.question}</p>
+                      <p className="text-white flex-grow-1 mb-0">{qa.question}</p>
                     </div>
                     <div className="d-flex align-items-start gap-2">
                       <Badge variant="success" className="mt-1">
                         A
                       </Badge>
-                      <p className="text-muted flex-fill mb-0">{qa.answer}</p>
+                      <p className="text-muted flex-grow-1 mb-0">{qa.answer}</p>
                     </div>
                     <p className="small text-muted text-end mb-0">
                       {new Date(qa.createdAt).toLocaleString()}
