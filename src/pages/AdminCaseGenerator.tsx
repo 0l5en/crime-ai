@@ -33,7 +33,6 @@ const AdminCaseGenerator = () => {
     try {
       console.log('Form data before submission:', data);
       
-      // Ensure all required fields are present
       const submitData: CreateCrimeCaseDto = {
         amountEvidences: data.amountEvidences,
         amountPersons: data.amountPersons,
@@ -61,219 +60,234 @@ const AdminCaseGenerator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-vh-100 bg-dark">
       <Header />
       
-      <div className="max-w-4xl mx-auto py-12 px-6">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">
+      <div className="container py-5" style={{ maxWidth: '800px' }}>
+        <div className="mb-5">
+          <h1 className="display-4 fw-bold text-light mb-4">
             Generate New Crime Case
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="h5 text-muted">
             Configure parameters for a new crime case
           </p>
         </div>
 
-        <div className="bg-slate-800 rounded-lg border border-slate-700 p-8">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="amountEvidences"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Number of Evidences</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          required
-                          min="1"
-                          {...field}
-                          onChange={(e) => {
-                            const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? 1 : value);
-                          }}
-                          className="bg-slate-700 border-slate-600 text-white"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-gray-400">
-                        How many evidences should the case contain?
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+        <div className="card bg-secondary border-secondary">
+          <div className="card-body p-4">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="row g-4">
+                <div className="col-md-6">
+                  <FormField
+                    control={form.control}
+                    name="amountEvidences"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Number of Evidences</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            required
+                            min="1"
+                            {...field}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value);
+                              field.onChange(isNaN(value) ? 1 : value);
+                            }}
+                            className="form-control bg-dark border-secondary text-light"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          How many evidences should the case contain?
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-                <FormField
-                  control={form.control}
-                  name="amountPersons"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Number of Persons</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          required
-                          min="1"
-                          {...field}
-                          onChange={(e) => {
-                            const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? 1 : value);
-                          }}
-                          className="bg-slate-700 border-slate-600 text-white"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-gray-400">
-                        How many persons should the case contain?
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="col-md-6">
+                  <FormField
+                    control={form.control}
+                    name="amountPersons"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Number of Persons</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            required
+                            min="1"
+                            {...field}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value);
+                              field.onChange(isNaN(value) ? 1 : value);
+                            }}
+                            className="form-control bg-dark border-secondary text-light"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          How many persons should the case contain?
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-                <FormField
-                  control={form.control}
-                  name="difficultyLevel"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Difficulty Level</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          required
-                          min="1"
-                          max="10"
-                          {...field}
-                          onChange={(e) => {
-                            const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? 1 : Math.min(Math.max(value, 1), 10));
-                          }}
-                          className="bg-slate-700 border-slate-600 text-white"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-gray-400">
-                        Difficulty level from 1 (easy) to 10 (hard)
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="col-md-6">
+                  <FormField
+                    control={form.control}
+                    name="difficultyLevel"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Difficulty Level</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            required
+                            min="1"
+                            max="10"
+                            {...field}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value);
+                              field.onChange(isNaN(value) ? 1 : Math.min(Math.max(value, 1), 10));
+                            }}
+                            className="form-control bg-dark border-secondary text-light"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          Difficulty level from 1 (easy) to 10 (hard)
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-                <FormField
-                  control={form.control}
-                  name="maxAmountMotivesPerSuspect"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Max. Motives per Suspect</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          required
-                          min="1"
-                          {...field}
-                          onChange={(e) => {
-                            const value = parseInt(e.target.value);
-                            field.onChange(isNaN(value) ? 1 : value);
-                          }}
-                          className="bg-slate-700 border-slate-600 text-white"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-gray-400">
-                        Maximum number of motives per suspect
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="col-md-6">
+                  <FormField
+                    control={form.control}
+                    name="maxAmountMotivesPerSuspect"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Max. Motives per Suspect</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            required
+                            min="1"
+                            {...field}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value);
+                              field.onChange(isNaN(value) ? 1 : value);
+                            }}
+                            className="form-control bg-dark border-secondary text-light"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          Maximum number of motives per suspect
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-                <FormField
-                  control={form.control}
-                  name="era"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Era</FormLabel>
-                      <FormControl>
-                        <Input
-                          required
-                          {...field}
-                          className="bg-slate-700 border-slate-600 text-white"
-                          placeholder="e.g. 1990s, Medieval, Modern"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-gray-400">
-                        In which era should the case take place?
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="col-md-6">
+                  <FormField
+                    control={form.control}
+                    name="era"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Era</FormLabel>
+                        <FormControl>
+                          <Input
+                            required
+                            {...field}
+                            className="form-control bg-dark border-secondary text-light"
+                            placeholder="e.g. 1990s, Medieval, Modern"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          In which era should the case take place?
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-                <FormField
-                  control={form.control}
-                  name="language"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Language</FormLabel>
-                      <FormControl>
-                        <Input
-                          required
-                          {...field}
-                          className="bg-slate-700 border-slate-600 text-white"
-                          placeholder="e.g. English, German"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-gray-400">
-                        In which language should the case be generated?
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+                <div className="col-md-6">
+                  <FormField
+                    control={form.control}
+                    name="language"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Language</FormLabel>
+                        <FormControl>
+                          <Input
+                            required
+                            {...field}
+                            className="form-control bg-dark border-secondary text-light"
+                            placeholder="e.g. English, German"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          In which language should the case be generated?
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-              <FormField
-                control={form.control}
-                name="location"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Location</FormLabel>
-                    <FormControl>
-                      <Input
-                        required
-                        {...field}
-                        className="bg-slate-700 border-slate-600 text-white"
-                        placeholder="e.g. Berlin, New York, London"
-                      />
-                    </FormControl>
-                    <FormDescription className="text-gray-400">
-                      Where should the crime case take place?
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <div className="col-12">
+                  <FormField
+                    control={form.control}
+                    name="location"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-light">Location</FormLabel>
+                        <FormControl>
+                          <Input
+                            required
+                            {...field}
+                            className="form-control bg-dark border-secondary text-light"
+                            placeholder="e.g. Berlin, New York, London"
+                          />
+                        </FormControl>
+                        <FormDescription className="text-muted small">
+                          Where should the crime case take place?
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-              <div className="flex gap-4 pt-6">
-                <Button
-                  type="submit"
-                  disabled={createCaseMutation.isPending}
-                  className="bg-green-600 hover:bg-green-700 text-white"
-                >
-                  {createCaseMutation.isPending ? "Generating..." : "Generate Now"}
-                </Button>
-                
-                <Button
-                  type="button"
-                  variant="outline-primary"
-                  onClick={() => navigate('/admin/cases')}
-                  className="bg-transparent border-gray-500 text-gray-300 hover:bg-gray-700"
-                >
-                  Back to Case Management
-                </Button>
-              </div>
-            </form>
-          </Form>
+                <div className="col-12 pt-3">
+                  <div className="d-flex gap-3">
+                    <Button
+                      type="submit"
+                      disabled={createCaseMutation.isPending}
+                      variant="success"
+                    >
+                      {createCaseMutation.isPending ? "Generating..." : "Generate Now"}
+                    </Button>
+                    
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => navigate('/admin/cases')}
+                    >
+                      Back to Case Management
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
     </div>

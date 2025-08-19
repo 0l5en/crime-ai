@@ -6,69 +6,89 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-vh-100 bg-dark">
       <Header />
       
-      <div className="max-w-7xl mx-auto py-12 px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">
+      <div className="container py-5">
+        <div className="text-center mb-5">
+          <h1 className="display-4 fw-bold text-light mb-4">
             Admin-Dashboard
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="h5 text-muted">
             Verwaltungsbereich für Administratoren
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Benutzerverwaltung
-            </h3>
-            <p className="text-gray-300">
-              Verwalten Sie Benutzer und deren Rollen
-            </p>
+        <div className="row g-4">
+          <div className="col-md-6 col-lg-3">
+            <div className="card bg-secondary border-secondary">
+              <div className="card-body p-4">
+                <h3 className="h5 fw-semibold text-light mb-2">
+                  Benutzerverwaltung
+                </h3>
+                <p className="text-muted">
+                  Verwalten Sie Benutzer und deren Rollen
+                </p>
+              </div>
+            </div>
           </div>
           
-          <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Systemeinstellungen
-            </h3>
-            <p className="text-gray-300">
-              Konfigurieren Sie Systemparameter
-            </p>
+          <div className="col-md-6 col-lg-3">
+            <div className="card bg-secondary border-secondary">
+              <div className="card-body p-4">
+                <h3 className="h5 fw-semibold text-light mb-2">
+                  Systemeinstellungen
+                </h3>
+                <p className="text-muted">
+                  Konfigurieren Sie Systemparameter
+                </p>
+              </div>
+            </div>
           </div>
           
-          <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Berichte
-            </h3>
-            <p className="text-gray-300">
-              Einsicht in Systemberichte und Analytics
-            </p>
+          <div className="col-md-6 col-lg-3">
+            <div className="card bg-secondary border-secondary">
+              <div className="card-body p-4">
+                <h3 className="h5 fw-semibold text-light mb-2">
+                  Berichte
+                </h3>
+                <p className="text-muted">
+                  Einsicht in Systemberichte und Analytics
+                </p>
+              </div>
+            </div>
           </div>
 
           <div 
-            className="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors cursor-pointer"
+            className="col-md-6 col-lg-3"
             onClick={() => navigate('/admin/cases')}
           >
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Kriminalfall-Verwaltung
-            </h3>
-            <p className="text-gray-300">
-              Verwalten Sie alle Kriminalfälle
-            </p>
+            <div className="card bg-secondary border-secondary card-hover" style={{ cursor: 'pointer' }}>
+              <div className="card-body p-4">
+                <h3 className="h5 fw-semibold text-light mb-2">
+                  Kriminalfall-Verwaltung
+                </h3>
+                <p className="text-muted">
+                  Verwalten Sie alle Kriminalfälle
+                </p>
+              </div>
+            </div>
           </div>
 
           <div 
-            className="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors cursor-pointer"
+            className="col-md-6 col-lg-3"
             onClick={() => navigate('/admin/prompts')}
           >
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Prompt-Templates
-            </h3>
-            <p className="text-gray-300">
-              Configure your Prompts
-            </p>
+            <div className="card bg-secondary border-secondary card-hover" style={{ cursor: 'pointer' }}>
+              <div className="card-body p-4">
+                <h3 className="h5 fw-semibold text-light mb-2">
+                  Prompt-Templates
+                </h3>
+                <p className="text-muted">
+                  Configure your Prompts
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

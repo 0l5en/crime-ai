@@ -10,22 +10,21 @@ const AdminCaseManagement = () => {
   const { data: crimeCases, isLoading, error } = useCrimeCases();
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-vh-100 bg-dark">
       <Header />
       
-      <div className="max-w-7xl mx-auto py-12 px-6">
-        <div className="flex items-center justify-between mb-8">
+      <div className="container py-5">
+        <div className="d-flex align-items-center justify-content-between mb-5">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-4">
+            <h1 className="display-4 fw-bold text-light mb-4">
               Kriminalfall-Verwaltung
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="h5 text-muted">
               Übersicht aller verfügbaren Kriminalfälle
             </p>
           </div>
           <Button 
-            variant="outline-primary" 
-            className="bg-transparent border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+            variant="success"
             onClick={() => navigate('/admin/case-generator')}
           >
             Neuen Fall generieren
@@ -33,74 +32,74 @@ const AdminCaseManagement = () => {
         </div>
 
         {isLoading && (
-          <div className="text-center py-16">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-            <div className="text-white text-xl">Lade Kriminalfälle...</div>
+          <div className="text-center py-5">
+            <div className="spinner-border text-light mb-4" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <div className="text-light h5">Lade Kriminalfälle...</div>
           </div>
         )}
 
         {error && (
-          <div className="text-center py-16">
-            <div className="text-red-400 text-xl mb-4">
+          <div className="text-center py-5">
+            <div className="text-danger h5 mb-4">
               Fehler beim Laden der Kriminalfälle
             </div>
-            <div className="text-gray-400">
+            <div className="text-muted">
               {error.message}
             </div>
           </div>
         )}
 
         {!isLoading && !error && (!crimeCases?.items || crimeCases.items.length === 0) && (
-          <div className="text-center py-16">
-            <div className="text-gray-400 text-xl">
+          <div className="text-center py-5">
+            <div className="text-muted h5">
               Keine Kriminalfälle verfügbar
             </div>
           </div>
         )}
 
         {!isLoading && !error && crimeCases?.items && crimeCases.items.length > 0 && (
-          <div className="bg-slate-800 rounded-lg border border-slate-700">
+          <div className="card bg-secondary border-secondary">
             <Table>
               <TableHeader>
-                <TableRow className="border-slate-700">
-                  <TableHead className="text-gray-300">ID</TableHead>
-                  <TableHead className="text-gray-300">Titel</TableHead>
-                  <TableHead className="text-gray-300">Beschreibung</TableHead>
-                  <TableHead className="text-gray-300">Status</TableHead>
-                  <TableHead className="text-gray-300">Aktionen</TableHead>
+                <TableRow className="border-secondary">
+                  <TableHead className="text-muted">ID</TableHead>
+                  <TableHead className="text-muted">Titel</TableHead>
+                  <TableHead className="text-muted">Beschreibung</TableHead>
+                  <TableHead className="text-muted">Status</TableHead>
+                  <TableHead className="text-muted">Aktionen</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {crimeCases.items.map((crimeCase) => (
-                  <TableRow key={crimeCase.id} className="border-slate-700 hover:bg-slate-750">
-                    <TableCell className="text-white font-mono text-sm">
+                  <TableRow key={crimeCase.id} className="border-secondary">
+                    <TableCell className="text-light font-monospace small">
                       {crimeCase.id.substring(0, 8)}...
                     </TableCell>
-                    <TableCell className="text-white font-semibold">
+                    <TableCell className="text-light fw-semibold">
                       {crimeCase.title}
                     </TableCell>
-                    <TableCell className="text-gray-300 max-w-md truncate">
-                      {crimeCase.description}
+                    <TableCell className="text-muted" style={{ maxWidth: '300px' }}>
+                      <div className="text-truncate">{crimeCase.description}</div>
                     </TableCell>
                     <TableCell>
-                      <span className="px-2 py-1 bg-green-600 text-white text-xs rounded-full">
+                      <span className="badge bg-success">
                         Aktiv
                       </span>
                     </TableCell>
                     <TableCell>
-                      <div className="flex space-x-2">
+                      <div className="d-flex gap-2">
                         <Button 
-                          variant="outline-primary" 
+                          variant="info"
                           size="sm"
-                          className="bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
                           onClick={() => navigate(`/case/${crimeCase.id}`)}
                         >
                           Ansehen
                         </Button>
                         <Button 
-                          variant="outline-primary" 
+                          variant="warning"
                           size="sm"
-                          className="bg-transparent border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
                         >
                           Bearbeiten
                         </Button>
@@ -114,8 +113,8 @@ const AdminCaseManagement = () => {
         )}
 
         {!isLoading && !error && crimeCases?.items && crimeCases.items.length > 0 && (
-          <div className="mt-6 text-center">
-            <p className="text-gray-400">
+          <div className="mt-4 text-center">
+            <p className="text-muted">
               Insgesamt {crimeCases.items.length} Kriminalfälle gefunden
             </p>
           </div>
