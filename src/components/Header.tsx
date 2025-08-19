@@ -7,33 +7,19 @@ const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
 
   return (
-    <nav className="navbar navbar-dark navbar-expand-lg sticky-top border-bottom border-secondary" style={{ backgroundColor: '#1a1a1a' }}>
-      <div className="container-fluid px-4">
-        {/* Brand */}
-        <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
-          <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
-            <div className="bg-dark rounded" style={{ width: '16px', height: '16px' }}></div>
-          </div>
-          <span className="fs-4 fw-semibold">Mystery Solvers</span>
-        </Link>
+    <>
+      <nav className="navbar navbar-dark navbar-expand-lg sticky-top border-bottom border-secondary" style={{ backgroundColor: '#1a1a1a' }}>
+        <div className="container-fluid px-4">
+          {/* Brand */}
+          <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
+            <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
+              <div className="bg-dark rounded" style={{ width: '16px', height: '16px' }}></div>
+            </div>
+            <span className="fs-4 fw-semibold">Mystery Solvers</span>
+          </Link>
 
-        {/* Mobile Hamburger Toggle */}
-        <button 
-          className="navbar-toggler border-0" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav" 
-          aria-controls="navbarNav" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        {/* Collapsible Content */}
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <div className="navbar-nav ms-auto d-flex align-items-lg-center gap-lg-3">
-            
+          {/* Desktop Navigation - visible on lg+ screens */}
+          <div className="d-none d-lg-flex navbar-nav ms-auto align-items-center gap-3">
             {/* Theme Toggle */}
             <div className="nav-item">
               <ThemeToggle />
@@ -45,7 +31,7 @@ const Header = () => {
                 {hasRole('admin') && (
                   <div className="nav-item">
                     <Link to="/admin" className="nav-link p-0">
-                      <button className="btn btn-outline-primary bg-transparent border-danger text-danger w-100">
+                      <button className="btn btn-outline-primary bg-transparent border-danger text-danger">
                         Admin
                       </button>
                     </Link>
@@ -54,7 +40,7 @@ const Header = () => {
                 
                 {/* User Profile */}
                 {user && (
-                  <div className="nav-item d-flex align-items-center gap-2 py-2 py-lg-0">
+                  <div className="nav-item d-flex align-items-center gap-2">
                     <div className="text-end">
                       <div className="small fw-medium text-white">{user.name || user.email}</div>
                       <div className="text-muted" style={{ fontSize: '0.75rem' }}>
@@ -70,7 +56,7 @@ const Header = () => {
                 {/* Logout Button */}
                 <div className="nav-item">
                   <button 
-                    className="btn btn-outline-secondary bg-transparent border-light text-light w-100"
+                    className="btn btn-outline-secondary bg-transparent border-light text-light"
                     onClick={logout}
                   >
                     Logout
@@ -82,7 +68,7 @@ const Header = () => {
                 {/* Sign In Button */}
                 <div className="nav-item">
                   <button 
-                    className="btn btn-outline-secondary bg-transparent border-light text-light w-100"
+                    className="btn btn-outline-secondary bg-transparent border-light text-light"
                     onClick={() => login()}
                   >
                     Sign In
@@ -91,16 +77,133 @@ const Header = () => {
 
                 {/* Sign Up Button */}
                 <div className="nav-item">
-                  <button className="btn btn-danger w-100">
+                  <button className="btn btn-danger">
                     Sign Up
                   </button>
                 </div>
               </>
             )}
           </div>
+
+          {/* Mobile Hamburger Button - visible only on smaller screens */}
+          <button 
+            className="navbar-toggler border-0 d-lg-none" 
+            type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#mobileOffcanvas" 
+            aria-controls="mobileOffcanvas"
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Offcanvas Menu */}
+      <div 
+        className="offcanvas offcanvas-start text-bg-dark" 
+        tabIndex={-1} 
+        id="mobileOffcanvas" 
+        aria-labelledby="mobileOffcanvasLabel"
+        style={{ backgroundColor: '#1a1a1a' }}
+      >
+        {/* Offcanvas Header */}
+        <div className="offcanvas-header border-bottom border-secondary">
+          <h5 className="offcanvas-title d-flex align-items-center" id="mobileOffcanvasLabel">
+            <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '24px', height: '24px' }}>
+              <div className="bg-dark rounded" style={{ width: '12px', height: '12px' }}></div>
+            </div>
+            Mystery Solvers
+          </h5>
+          <button 
+            type="button" 
+            className="btn-close btn-close-white" 
+            data-bs-dismiss="offcanvas" 
+            aria-label="Close"
+          ></button>
+        </div>
+
+        {/* Offcanvas Body */}
+        <div className="offcanvas-body d-flex flex-column justify-content-between">
+          <div>
+            {/* Theme Toggle */}
+            <div className="mb-4 d-flex align-items-center justify-content-between">
+              <span className="text-white">Theme</span>
+              <ThemeToggle />
+            </div>
+
+            {/* User Section for authenticated users */}
+            {authenticated && user && (
+              <div className="mb-4 p-3 border border-secondary rounded">
+                <div className="d-flex align-items-center gap-3 mb-3">
+                  <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
+                    {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
+                  </div>
+                  <div>
+                    <div className="fw-medium text-white">{user.name || user.email}</div>
+                    <div className="text-muted small">
+                      {user.roles.join(', ') || 'No roles'}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Admin Link for mobile */}
+                {hasRole('admin') && (
+                  <Link 
+                    to="/admin" 
+                    className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2"
+                    data-bs-dismiss="offcanvas"
+                  >
+                    Admin Dashboard
+                  </Link>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Action Buttons */}
+          <div className="mt-auto">
+            {authenticated ? (
+              <button 
+                className="btn btn-outline-secondary bg-transparent border-light text-light w-100"
+                onClick={() => {
+                  logout();
+                  // Close offcanvas after logout
+                  const offcanvas = document.getElementById('mobileOffcanvas');
+                  if (offcanvas) {
+                    const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
+                    bsOffcanvas.hide();
+                  }
+                }}
+              >
+                Logout
+              </button>
+            ) : (
+              <div className="d-grid gap-2">
+                <button 
+                  className="btn btn-outline-secondary bg-transparent border-light text-light"
+                  onClick={() => {
+                    login();
+                    // Close offcanvas after login attempt
+                    const offcanvas = document.getElementById('mobileOffcanvas');
+                    if (offcanvas) {
+                      const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
+                      bsOffcanvas.hide();
+                    }
+                  }}
+                >
+                  Sign In
+                </button>
+                <button className="btn btn-danger">
+                  Sign Up
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 
