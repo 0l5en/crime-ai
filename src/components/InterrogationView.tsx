@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -71,43 +72,42 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
   const getPersonTypeColor = (type: string) => {
     switch (type) {
       case 'SUSPECT':
-        return 'bg-red-600';
+        return 'bg-danger';
       case 'WITNESS':
-        return 'bg-blue-600';
+        return 'bg-primary';
       case 'VICTIM':
-        return 'bg-gray-600';
+        return 'bg-secondary';
       default:
-        return 'bg-gray-600';
+        return 'bg-secondary';
     }
   };
 
   return (
-    <div className="space-y-6">
+    <div className="container-fluid py-4">
       {/* Header with back button and person info */}
-      <div className="flex items-center space-x-4">
+      <div className="d-flex align-items-center mb-4">
         <Button
-          variant="outline-primary"
+          variant="secondary"
           size="sm"
           onClick={onBack}
-          className="bg-transparent border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:border-red-600"
+          className="me-3"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
           Back
         </Button>
         
-        <div className="flex items-center space-x-3">
-          <Avatar className="h-12 w-12">
-            <AvatarImage src="" />
-            <AvatarFallback className={`${getPersonTypeColor(person.type)} text-white font-semibold`}>
+        <div className="d-flex align-items-center">
+          <div className="me-3">
+            <div className={`${getPersonTypeColor(person.type)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold`} style={{ width: '48px', height: '48px' }}>
               {getInitials(person.name)}
-            </AvatarFallback>
-          </Avatar>
+            </div>
+          </div>
           
           <div>
-            <h2 className="text-2xl font-semibold text-white">
+            <h2 className="h3 text-white mb-1">
               Interrogation with {person.name}
             </h2>
-            <p className="text-sm text-zinc-300">
+            <p className="text-muted mb-0">
               {person.type.toLowerCase()} • {person.age} years old • {person.profession}
             </p>
           </div>
@@ -115,57 +115,59 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
       </div>
 
       {/* Question input form */}
-      <Card className="bg-zinc-800 border-zinc-700">
+      <Card className="bg-dark border-secondary mb-4">
         <CardHeader>
-          <CardTitle className="text-white">Ask a Question</CardTitle>
+          <CardTitle className="text-white h5">Ask a Question</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmitQuestion} className="flex space-x-2">
-            <Input
+          <form onSubmit={handleSubmitQuestion} className="d-flex gap-2">
+            <input
+              type="text"
+              className="form-control bg-dark border-secondary text-white flex-fill"
+              style={{ backgroundColor: '#495057 !important' }}
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Type your question here..."
-              className="flex-1 bg-zinc-700 border-zinc-600 text-white placeholder-zinc-400"
               disabled={createAnswerMutation.isPending}
             />
             <Button
               type="submit"
               disabled={!question.trim() || createAnswerMutation.isPending}
-              className="bg-red-600 hover:bg-red-700"
+              variant="danger"
             >
-              <Send className="w-4 h-4" />
+              <Send style={{ width: '16px', height: '16px' }} />
             </Button>
           </form>
         </CardContent>
       </Card>
 
       {/* Question and Answers */}
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-white">Conversation History</h3>
+      <div>
+        <h3 className="h4 text-white mb-3">Conversation History</h3>
         
         {interrogationsLoading || qaLoading ? (
-          <div className="text-center text-zinc-300">
+          <div className="text-center text-muted">
             <p>Loading conversation...</p>
           </div>
         ) : questionAndAnswers?.items && questionAndAnswers.items.length > 0 ? (
-          <div className="space-y-4">
+          <div className="d-flex flex-column gap-3">
             {questionAndAnswers.items.map((qa, index) => (
-              <Card key={index} className="bg-zinc-800 border-zinc-700">
-                <CardContent className="p-4">
-                  <div className="space-y-3">
-                    <div className="flex items-start space-x-2">
-                      <Badge variant="outline" className="text-blue-400 border-blue-400 mt-1">
+              <Card key={index} className="bg-dark border-secondary">
+                <CardContent className="p-3">
+                  <div className="d-flex flex-column gap-3">
+                    <div className="d-flex align-items-start gap-2">
+                      <Badge variant="primary" className="mt-1">
                         Q
                       </Badge>
-                      <p className="text-zinc-200 flex-1">{qa.question}</p>
+                      <p className="text-white flex-fill mb-0">{qa.question}</p>
                     </div>
-                    <div className="flex items-start space-x-2">
-                      <Badge variant="outline" className="text-green-400 border-green-400 mt-1">
+                    <div className="d-flex align-items-start gap-2">
+                      <Badge variant="success" className="mt-1">
                         A
                       </Badge>
-                      <p className="text-zinc-300 flex-1">{qa.answer}</p>
+                      <p className="text-muted flex-fill mb-0">{qa.answer}</p>
                     </div>
-                    <p className="text-xs text-zinc-500 text-right">
+                    <p className="small text-muted text-end mb-0">
                       {new Date(qa.createdAt).toLocaleString()}
                     </p>
                   </div>
@@ -174,14 +176,14 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
             ))}
           </div>
         ) : (
-          <div className="text-center text-zinc-400">
+          <div className="text-center text-muted">
             <p>No questions asked yet. Start the interrogation by asking a question above.</p>
           </div>
         )}
       </div>
 
       {createAnswerMutation.isPending && (
-        <div className="text-center text-red-400">
+        <div className="text-center text-danger mt-3">
           <p>Processing your question...</p>
         </div>
       )}
