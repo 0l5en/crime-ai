@@ -13,26 +13,29 @@ const CaseTabs = ({ activeTab, onTabChange }: CaseTabsProps) => {
   ];
 
   return (
-    <ul className="nav nav-tabs bg-dark border-0 mb-4">
-      {tabs.map((tab) => (
-        <li key={tab.id} className="nav-item">
-          <button 
-            className={`nav-link text-light border-0 ${
-              activeTab === tab.id 
-                ? 'active bg-secondary' 
-                : 'bg-dark hover-bg-secondary'
-            }`}
-            onClick={() => onTabChange(tab.id)}
-            style={{ 
-              borderRadius: '0.375rem 0.375rem 0 0',
-              marginRight: '0.25rem'
-            }}
-          >
-            {tab.label}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <div className="mb-4">
+      <ul className="nav nav-tabs border-0" style={{ backgroundColor: 'transparent' }}>
+        {tabs.map((tab) => (
+          <li key={tab.id} className="nav-item">
+            <button 
+              className={`nav-link border-0 px-4 py-3 fw-medium ${
+                activeTab === tab.id 
+                  ? 'active text-white' 
+                  : 'text-muted'
+              }`}
+              onClick={() => onTabChange(tab.id)}
+              style={{ 
+                backgroundColor: activeTab === tab.id ? '#2a2a2a' : 'transparent',
+                borderRadius: '8px 8px 0 0',
+                marginRight: '2px'
+              }}
+            >
+              {tab.label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

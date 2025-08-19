@@ -30,7 +30,7 @@ const CaseDashboard = () => {
   const getImageColor = (index: number) => {
     const colors = [
       "bg-gradient-red",
-      "bg-gradient-blue",
+      "bg-gradient-blue", 
       "bg-gradient-green",
       "bg-gradient-purple",
       "bg-gradient-orange",
@@ -60,7 +60,7 @@ const CaseDashboard = () => {
     <div className="min-vh-100" style={{ backgroundColor: '#1a1a1a' }}>
       <Header />
       
-      <div className="container-fluid py-4" style={{ maxWidth: '1400px' }}>
+      <div className="container-fluid py-4" style={{ maxWidth: '1200px' }}>
         <CaseHeader 
           caseId={caseId || ''} 
           title={crimeCase?.title} 

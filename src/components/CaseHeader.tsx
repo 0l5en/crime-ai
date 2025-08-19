@@ -1,5 +1,5 @@
 
-import { ArrowLeft, Scale } from "lucide-react";
+import { Scale } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface CaseHeaderProps {
@@ -12,29 +12,20 @@ const CaseHeader = ({ caseId, title, description }: CaseHeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="d-flex align-items-center justify-content-between mb-4">
-      <div className="d-flex align-items-center">
-        <button
-          className="btn btn-secondary btn-sm me-3"
-          onClick={() => navigate('/')}
-        >
-          <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-          Back to Cases
-        </button>
-        
-        <div>
-          <h1 className="h2 text-white mb-1">
-            {title || 'Loading...'}
-          </h1>
-          <p className="text-muted mb-0">
-            {description || 'Loading case details...'}
-          </p>
-        </div>
+    <div className="d-flex align-items-center justify-content-between mb-4 px-3">
+      <div>
+        <h1 className="h2 text-white mb-1 fw-bold">
+          {title || 'Loading...'}
+        </h1>
+        <p className="text-muted mb-0">
+          {description || 'Loading case details...'}
+        </p>
       </div>
 
       <button
         onClick={() => navigate(`/case/${caseId}/solution`)}
-        className="btn btn-primary-custom btn-lg"
+        className="btn btn-danger btn-lg px-4"
+        style={{ backgroundColor: '#CB191C', borderColor: '#CB191C' }}
       >
         <Scale className="me-2" style={{ width: '18px', height: '18px' }} />
         Solve this case
