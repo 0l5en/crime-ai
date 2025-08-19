@@ -24,7 +24,16 @@ const Hero = () => {
       <div className="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
       
       <div className="position-relative container text-center" style={{ zIndex: '10' }}>
-        <h1 className="display-2 fw-bold text-light mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+        <h1 
+          className="fw-bold text-light mb-4" 
+          style={{ 
+            textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+            fontSize: 'clamp(2rem, 8vw, 6rem)',
+            lineHeight: '1.1',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden'
+          }}
+        >
           Unravel the Truth, One Clue at a Time
         </h1>
         <p className="lead text-light mb-5 mx-auto" style={{ maxWidth: '600px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
