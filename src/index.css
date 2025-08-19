@@ -19,6 +19,14 @@
   --bs-body-color: #090909;
   --bs-border-color: #5F5F5F;
   
+  /* Custom game card colors */
+  --card-red: #dc3545;
+  --card-blue: #007bff;
+  --card-green: #28a745;
+  --card-purple: #6f42c1;
+  --card-orange: #fd7e14;
+  --card-teal: #20c997;
+  
   /* Theme transition */
   --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -51,18 +59,45 @@
   border-color: var(--bs-primary) !important;
 }
 
+/* Custom game card gradient backgrounds */
+.bg-gradient-red {
+  background: linear-gradient(135deg, var(--card-red), #c82333) !important;
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(135deg, var(--card-blue), #0056b3) !important;
+}
+
+.bg-gradient-green {
+  background: linear-gradient(135deg, var(--card-green), #1e7e34) !important;
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, var(--card-purple), #5a32a3) !important;
+}
+
+.bg-gradient-orange {
+  background: linear-gradient(135deg, var(--card-orange), #e55a00) !important;
+}
+
+.bg-gradient-teal {
+  background: linear-gradient(135deg, var(--card-teal), #17a085) !important;
+}
+
 /* Card hover effects */
 .card-hover {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  border-radius: 1rem !important;
+  overflow: hidden;
 }
 
 .card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 [data-bs-theme="dark"] .card-hover:hover {
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
 }
 
 /* Custom button variants */
@@ -104,4 +139,32 @@
 [data-bs-theme="light"] .bg-dark {
   background-color: var(--bs-dark) !important;
   color: var(--bs-light) !important;
+}
+
+/* Game card specific styles */
+.game-card {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: transparent;
+}
+
+.game-card .card-header {
+  border: none;
+  padding: 0;
+}
+
+.game-card .card-body {
+  background: rgba(var(--bs-dark), 0.8);
+  backdrop-filter: blur(10px);
+}
+
+[data-bs-theme="dark"] .game-card .card-body {
+  background: rgba(var(--bs-light-rgb), 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Hero section improvements */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(9, 9, 9, 0.8), rgba(203, 25, 28, 0.3));
 }

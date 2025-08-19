@@ -21,7 +21,7 @@ const GameCard = ({ title, description, imageColor, caseId, userId }: GameCardPr
 
   return (
     <div 
-      className="card bg-dark border-secondary text-light card-hover position-relative"
+      className="card game-card card-hover position-relative h-100"
       onClick={handleClick}
       style={{ cursor: 'pointer' }}
     >
@@ -33,14 +33,27 @@ const GameCard = ({ title, description, imageColor, caseId, userId }: GameCardPr
           </span>
         </div>
       )}
+      
       <div className="card-header p-0">
-        <div className={`${imageColor} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
-          <div className="bg-light bg-opacity-25 rounded" style={{ width: '4rem', height: '4rem' }}></div>
+        <div 
+          className={`${imageColor} d-flex align-items-center justify-content-center`} 
+          style={{ height: '200px' }}
+        >
+          <div 
+            className="bg-light bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" 
+            style={{ width: '80px', height: '80px' }}
+          >
+            <div 
+              className="bg-white bg-opacity-75 rounded-2" 
+              style={{ width: '40px', height: '40px' }}
+            ></div>
+          </div>
         </div>
       </div>
-      <div className="card-body p-4">
-        <h5 className="card-title mb-3 text-light">{title}</h5>
-        <p className="card-text text-muted">
+      
+      <div className="card-body p-4 text-light">
+        <h5 className="card-title mb-3 fw-bold">{title}</h5>
+        <p className="card-text text-light opacity-75 mb-0">
           {description}
         </p>
       </div>

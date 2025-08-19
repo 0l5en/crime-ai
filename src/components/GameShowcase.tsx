@@ -1,3 +1,4 @@
+
 import GameCard from "./GameCard";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useKeycloak } from "@/contexts/KeycloakContext";
@@ -8,12 +9,12 @@ const GameShowcase = () => {
 
   const getImageColor = (index: number) => {
     const colors = [
-      "bg-gradient-danger",
-      "bg-gradient-primary", 
-      "bg-gradient-success",
-      "bg-gradient-warning",
-      "bg-gradient-info",
-      "bg-gradient-secondary",
+      "bg-gradient-red",
+      "bg-gradient-blue", 
+      "bg-gradient-green",
+      "bg-gradient-purple",
+      "bg-gradient-orange",
+      "bg-gradient-teal",
     ];
     return colors[index % colors.length];
   };
@@ -22,10 +23,11 @@ const GameShowcase = () => {
     <section 
       data-section="cases" 
       className="bg-dark text-light py-5 px-4"
+      style={{ minHeight: '100vh' }}
     >
       <div className="container">
-        <div className="d-flex align-items-center justify-content-between mb-5">
-          <h2 className="display-4 fw-bold">Latest Crime Cases</h2>
+        <div className="text-center mb-5">
+          <h2 className="display-4 fw-bold mb-4">Latest Crime Cases</h2>
           {isLoading && (
             <div className="text-muted">Loading cases...</div>
           )}
@@ -52,9 +54,9 @@ const GameShowcase = () => {
 
         {!error && crimeCases?.items && crimeCases.items.length > 0 && (
           <>
-            <div className="row g-4 mb-5">
-              {crimeCases.items.map((crimeCase, index) => (
-                <div key={crimeCase.id} className="col-md-4">
+            <div className="row g-4 mb-5 justify-content-center">
+              {crimeCases.items.slice(0, 4).map((crimeCase, index) => (
+                <div key={crimeCase.id} className="col-lg-3 col-md-6">
                   <GameCard
                     title={crimeCase.title}
                     description={crimeCase.description}
@@ -67,7 +69,7 @@ const GameShowcase = () => {
             </div>
             
             <div className="text-center">
-              <button className="btn btn-outline-secondary bg-transparent border-light text-light btn-lg px-5 py-3">
+              <button className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
                 View All Cases
               </button>
             </div>
