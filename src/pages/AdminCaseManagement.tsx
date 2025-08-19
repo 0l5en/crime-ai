@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -23,7 +24,7 @@ const AdminCaseManagement = () => {
             </p>
           </div>
           <Button 
-            variant="outline" 
+            variant="outline-primary" 
             className="bg-transparent border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
             onClick={() => navigate('/admin/case-generator')}
           >
@@ -89,7 +90,7 @@ const AdminCaseManagement = () => {
                     <TableCell>
                       <div className="flex space-x-2">
                         <Button 
-                          variant="outline" 
+                          variant="outline-primary" 
                           size="sm"
                           className="bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
                           onClick={() => navigate(`/case/${crimeCase.id}`)}
@@ -97,7 +98,7 @@ const AdminCaseManagement = () => {
                           Ansehen
                         </Button>
                         <Button 
-                          variant="outline" 
+                          variant="outline-primary" 
                           size="sm"
                           className="bg-transparent border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
                         >

@@ -265,7 +265,7 @@ const AdminCaseGenerator = () => {
                 
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="outline-primary"
                   onClick={() => navigate('/admin/cases')}
                   className="bg-transparent border-gray-500 text-gray-300 hover:bg-gray-700"
                 >
