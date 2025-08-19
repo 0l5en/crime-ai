@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -198,7 +199,7 @@ const CaseSolution = () => {
             <h1 className="text-4xl font-bold">Submit your solution</h1>
             <Button
               onClick={handleBackToCase}
-              variant="outline"
+              variant="outline-primary"
               className="bg-transparent border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:border-red-600 px-6 py-3 text-lg font-semibold transition-colors"
             >
               Back to case
@@ -245,7 +246,7 @@ const CaseSolution = () => {
                 </Button>
                 <Button
                   onClick={handleBackToCase}
-                  variant="outline"
+                  variant="outline-primary"
                   className="bg-transparent border-zinc-600 text-zinc-300 hover:bg-zinc-800 px-8 py-3 text-lg font-semibold"
                 >
                   Back to case

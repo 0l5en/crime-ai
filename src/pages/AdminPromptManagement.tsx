@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -221,14 +220,14 @@ const AdminPromptManagement = () => {
                             </div>
                             <Button
                               onClick={() => setIsEditing(!isEditing)}
-                              variant="outline"
+                              variant="outline-primary"
                               size="sm"
                             >
                               {isEditing ? "Ansicht" : "Bearbeiten"}
                             </Button>
                           </div>
                           <Textarea
-                            value={isEditing ? editedContent : (templateDetails.template || "")}
+                            value={isEditing ? editedContent : (templateDetails?.template || "")}
                             onChange={(e) => {
                               if (isEditing) {
                                 setEditedContent(e.target.value);
@@ -245,7 +244,7 @@ const AdminPromptManagement = () => {
                                   setIsEditing(false);
                                   setEditedContent(templateDetails?.template || "");
                                 }}
-                                variant="outline"
+                                variant="outline-primary"
                                 size="sm"
                               >
                                 Abbrechen
