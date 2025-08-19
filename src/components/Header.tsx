@@ -100,13 +100,18 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Offcanvas Menu */}
+      {/* Mobile Offcanvas Menu - Fullscreen */}
       <div 
         className="offcanvas offcanvas-start text-bg-dark" 
         tabIndex={-1} 
         id="mobileOffcanvas" 
         aria-labelledby="mobileOffcanvasLabel"
-        style={{ backgroundColor: '#1a1a1a' }}
+        style={{ 
+          backgroundColor: '#1a1a1a',
+          width: '100vw',
+          height: '100vh',
+          maxWidth: '100vw'
+        }}
       >
         {/* Offcanvas Header */}
         <div className="offcanvas-header border-bottom border-secondary">
