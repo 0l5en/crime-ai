@@ -23,25 +23,26 @@ const GameCard = ({ title, description, imageColor, caseId, userId }: GameCardPr
 
   return (
     <Card 
-      className="bg-zinc-900 border-zinc-600 text-zinc-200 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/20 transition-all cursor-pointer relative"
+      className="bg-dark border-secondary text-light card-hover position-relative"
       onClick={handleClick}
+      style={{ cursor: 'pointer' }}
     >
       {!isLoading && isSolved && userId && (
-        <div className="absolute top-3 right-3 z-10">
-          <Badge className="bg-green-600 hover:bg-green-600 text-white border-green-500">
-            <BadgeCheck className="w-4 h-4 mr-1" />
+        <div className="position-absolute top-0 end-0 p-3" style={{ zIndex: '10' }}>
+          <Badge className="bg-success text-white border-success d-flex align-items-center">
+            <BadgeCheck className="me-1" style={{ width: '16px', height: '16px' }} />
             Solved
           </Badge>
         </div>
       )}
       <CardHeader className="p-0">
-        <div className={`h-48 ${imageColor} rounded-t-lg flex items-center justify-center`}>
-          <div className="w-16 h-16 bg-white bg-opacity-20 rounded-lg"></div>
+        <div className={`${imageColor} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
+          <div className="bg-light bg-opacity-25 rounded" style={{ width: '4rem', height: '4rem' }}></div>
         </div>
       </CardHeader>
-      <CardContent className="p-6">
-        <CardTitle className="text-xl mb-3 text-zinc-200">{title}</CardTitle>
-        <CardDescription className="text-zinc-400">
+      <CardContent className="p-4">
+        <CardTitle className="h5 mb-3 text-light">{title}</CardTitle>
+        <CardDescription className="text-muted">
           {description}
         </CardDescription>
       </CardContent>

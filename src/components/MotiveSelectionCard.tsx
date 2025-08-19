@@ -17,13 +17,14 @@ const MotiveSelectionCard = ({
   return (
     <Card 
       className={`
-        card-hover cursor-pointer bg-dark text-light
+        card-hover bg-dark text-light
         ${isSelected 
           ? 'border-danger border-2' 
           : 'border-secondary'
         }
       `}
       onClick={onToggle}
+      style={{ cursor: 'pointer' }}
     >
       <CardContent className="p-3 d-flex flex-column align-items-center">
         <div className={`mb-3 rounded ${imageColor} d-flex align-items-center justify-content-center`} 

@@ -20,10 +20,9 @@ const SuspectCard = ({
   profession, 
   maritalStatus, 
   relationshipToCase,
-  imageColor = 'bg-gradient-to-br from-slate-600 to-slate-800',
+  imageColor = 'bg-gradient-secondary',
   onInterrogate
 }: SuspectCardProps) => {
-  // Get initials from name for avatar fallback
   const getInitials = (fullName: string) => {
     return fullName
       .split(' ')
@@ -33,46 +32,46 @@ const SuspectCard = ({
   };
 
   return (
-    <Card className="bg-zinc-900 border border-zinc-600 text-zinc-200 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/20 transition-all">
-      <CardHeader className="pb-4">
-        <div className="flex items-center space-x-4">
-          <Avatar className="h-16 w-16">
-            <div className={`${imageColor} h-full w-full flex items-center justify-center`}>
-              <AvatarFallback className="bg-transparent text-white text-lg font-semibold">
+    <Card className="bg-dark border-secondary text-light card-hover">
+      <CardHeader className="pb-3">
+        <div className="d-flex align-items-center">
+          <Avatar className="me-3" style={{ width: '4rem', height: '4rem' }}>
+            <div className={`${imageColor} h-100 w-100 d-flex align-items-center justify-content-center`}>
+              <AvatarFallback className="bg-transparent text-white fw-semibold">
                 {getInitials(name)}
               </AvatarFallback>
             </div>
           </Avatar>
-          <div className="flex-1">
-            <CardTitle className="text-xl text-zinc-200 mb-1">{name}</CardTitle>
-            <Badge variant="outline" className="text-red-400 border-red-400">
+          <div className="flex-grow-1">
+            <CardTitle className="h5 text-light mb-1">{name}</CardTitle>
+            <Badge className="border-danger text-danger bg-transparent">
               {age} Jahre
             </Badge>
           </div>
         </div>
       </CardHeader>
       
-      <CardContent className="space-y-3">
+      <CardContent className="d-flex flex-column gap-3">
         <div>
-          <h4 className="text-sm font-medium text-zinc-400 mb-1">Beruf</h4>
-          <p className="text-zinc-200">{profession}</p>
+          <h4 className="small fw-medium text-muted mb-1">Beruf</h4>
+          <p className="text-light mb-0">{profession}</p>
         </div>
         
         <div>
-          <h4 className="text-sm font-medium text-zinc-400 mb-1">Familienstand</h4>
-          <p className="text-zinc-200">{maritalStatus}</p>
+          <h4 className="small fw-medium text-muted mb-1">Familienstand</h4>
+          <p className="text-light mb-0">{maritalStatus}</p>
         </div>
         
         <div>
-          <h4 className="text-sm font-medium text-zinc-400 mb-1">Bezug zum Fall</h4>
-          <p className="text-zinc-200 text-sm leading-relaxed">{relationshipToCase}</p>
+          <h4 className="small fw-medium text-muted mb-1">Bezug zum Fall</h4>
+          <p className="text-light small mb-0">{relationshipToCase}</p>
         </div>
 
         {onInterrogate && (
           <div className="pt-2">
             <Button
               onClick={onInterrogate}
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
+              className="w-100 btn-danger"
               size="sm"
             >
               Interrogate

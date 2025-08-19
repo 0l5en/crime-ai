@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
@@ -6,24 +7,23 @@ const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
 
   return (
-    <header className="sticky top-0 z-50 bg-zinc-900 text-zinc-200 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <div className="w-8 h-8 bg-zinc-200 rounded-sm flex items-center justify-center">
-            <div className="w-4 h-4 bg-zinc-900 rounded-sm"></div>
+    <header className="sticky-top bg-dark text-light px-4 py-3 border-bottom border-secondary">
+      <div className="container-fluid d-flex align-items-center justify-content-between">
+        <Link to="/" className="d-flex align-items-center text-decoration-none text-light opacity-hover">
+          <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
+            <div className="bg-dark rounded" style={{ width: '16px', height: '16px' }}></div>
           </div>
-          <span className="text-xl font-semibold">Mystery Solvers</span>
+          <span className="fs-4 fw-semibold">Mystery Solvers</span>
         </Link>
         
-        <div className="flex items-center space-x-4">
+        <div className="d-flex align-items-center gap-3">
           {authenticated ? (
             <>
-              {/* Admin button - only visible to admin users */}
               {hasRole('admin') && (
                 <Link to="/admin">
                   <Button 
                     variant="outline-primary" 
-                    className="bg-transparent border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+                    className="bg-transparent border-danger text-danger"
                   >
                     Admin
                   </Button>
@@ -31,21 +31,21 @@ const Header = () => {
               )}
               
               {user && (
-                <div className="flex items-center space-x-2">
-                  <div className="text-right">
-                    <div className="text-sm font-medium">{user.name || user.email}</div>
-                    <div className="text-xs text-zinc-400">
+                <div className="d-flex align-items-center gap-2">
+                  <div className="text-end">
+                    <div className="small fw-medium">{user.name || user.email}</div>
+                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>
                       {user.roles.join(', ') || 'No roles'}
                     </div>
                   </div>
-                  <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-sm font-semibold">
+                  <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '32px', height: '32px', fontSize: '0.875rem' }}>
                     {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                   </div>
                 </div>
               )}
               <Button 
-                variant="outline-primary" 
-                className="bg-transparent border-zinc-200 text-zinc-200 hover:bg-zinc-200 hover:text-zinc-900"
+                variant="outline-secondary" 
+                className="bg-transparent border-light text-light"
                 onClick={logout}
               >
                 Logout
@@ -54,13 +54,13 @@ const Header = () => {
           ) : (
             <>
               <Button 
-                variant="outline-primary" 
-                className="bg-transparent border-zinc-200 text-zinc-200 hover:bg-zinc-200 hover:text-zinc-900"
+                variant="outline-secondary" 
+                className="bg-transparent border-light text-light"
                 onClick={() => login()}
               >
                 Sign In
               </Button>
-              <Button className="bg-red-600 text-white hover:bg-red-700">
+              <Button className="btn-danger">
                 Sign Up
               </Button>
             </>

@@ -14,27 +14,27 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center text-white px-6"
+      className="position-relative d-flex align-items-center justify-content-center text-white px-4"
       style={{
+        minHeight: '100vh',
         backgroundImage: `url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-zinc-900 bg-opacity-60"></div>
+      <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark" style={{ opacity: '0.6' }}></div>
       
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-200 mb-6 drop-shadow-lg whitespace-nowrap">
+      <div className="position-relative container text-center" style={{ zIndex: '10' }}>
+        <h1 className="display-3 fw-bold text-light mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
           Unravel the Truth, One Clue at a Time
         </h1>
-        <p className="text-xl text-zinc-300 mb-8 max-w-3xl mx-auto drop-shadow-md">
+        <p className="lead text-light mb-5 mx-auto" style={{ maxWidth: '48rem', textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
           Dive into a world of mystery and intrigue with our interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.
         </p>
         <Button 
           onClick={scrollToCases}
-          className="bg-red-600 text-white px-8 py-3 text-lg rounded-full hover:bg-red-700 transition-colors shadow-lg"
+          className="btn-danger btn-lg px-5 py-3 rounded-pill shadow"
         >
           Explore Cases
         </Button>
