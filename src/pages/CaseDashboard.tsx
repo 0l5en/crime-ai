@@ -1,9 +1,4 @@
-
 import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Users, Eye, Scale } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCrimeCase } from "@/hooks/useCrimeCase";
@@ -23,6 +18,7 @@ const CaseDashboard = () => {
   const navigate = useNavigate();
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
   const [showInterrogation, setShowInterrogation] = useState(false);
+  const [activeTab, setActiveTab] = useState('crime-scene');
 
   const { data: crimeCase, isLoading: caseLoading } = useCrimeCase(caseId || '');
   const { data: crimeScene, isLoading: sceneLoading } = useCrimeScene(caseId || '');
@@ -74,15 +70,13 @@ const CaseDashboard = () => {
       
       <div className="container-fluid py-4">
         <div className="d-flex align-items-center mb-4">
-          <Button
-            variant="secondary"
-            size="sm"
+          <button
+            className="btn btn-secondary btn-sm me-3"
             onClick={() => navigate('/')}
-            className="me-3"
           >
             <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
             Back to Cases
-          </Button>
+          </button>
           
           <div>
             <h1 className="h2 text-white mb-1">
@@ -97,33 +91,67 @@ const CaseDashboard = () => {
         <div className="row mb-4">
           <div className="col-12">
             <div className="d-flex gap-3 justify-content-end">
-              <Button
+              <button
                 onClick={() => navigate(`/case/${caseId}/solution`)}
-                variant="danger"
-                size="lg"
+                className="btn btn-danger btn-lg"
               >
                 <Scale className="me-2" style={{ width: '18px', height: '18px' }} />
                 Solve Case
-              </Button>
+              </button>
             </div>
           </div>
         </div>
 
-        <Tabs defaultValue="crime-scene" className="w-100">
-          <TabsList className="nav nav-tabs bg-dark border-secondary mb-4">
-            <TabsTrigger value="crime-scene">Crime Scene</TabsTrigger>
-            <TabsTrigger value="evidence">Evidence</TabsTrigger>
-            <TabsTrigger value="suspects">Suspects</TabsTrigger>
-            <TabsTrigger value="witnesses">Witnesses</TabsTrigger>
-            <TabsTrigger value="motives">Motives</TabsTrigger>
-          </TabsList>
+        <div className="w-100">
+          <ul className="nav nav-tabs bg-dark border-secondary mb-4">
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'crime-scene' ? 'active' : ''}`}
+                onClick={() => setActiveTab('crime-scene')}
+              >
+                Crime Scene
+              </button>
+            </li>
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'evidence' ? 'active' : ''}`}
+                onClick={() => setActiveTab('evidence')}
+              >
+                Evidence
+              </button>
+            </li>
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'suspects' ? 'active' : ''}`}
+                onClick={() => setActiveTab('suspects')}
+              >
+                Suspects
+              </button>
+            </li>
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'witnesses' ? 'active' : ''}`}
+                onClick={() => setActiveTab('witnesses')}
+              >
+                Witnesses
+              </button>
+            </li>
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'motives' ? 'active' : ''}`}
+                onClick={() => setActiveTab('motives')}
+              >
+                Motives
+              </button>
+            </li>
+          </ul>
 
-          <TabsContent value="crime-scene">
-            <Card className="bg-dark border-secondary">
-              <CardHeader>
-                <CardTitle className="text-white">Crime Scene Details</CardTitle>
-              </CardHeader>
-              <CardContent>
+          {activeTab === 'crime-scene' && (
+            <div className="card bg-dark border-secondary">
+              <div className="card-header">
+                <h3 className="card-title text-white">Crime Scene Details</h3>
+              </div>
+              <div className="card-body">
                 {sceneLoading ? (
                   <div className="text-center text-muted py-5">
                     <p>Loading crime scene details...</p>
@@ -155,125 +183,133 @@ const CaseDashboard = () => {
                     <p>No crime scene details available</p>
                   </div>
                 )}
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </div>
+            </div>
+          )}
 
-          <TabsContent value="evidence">
-            {evidencesLoading ? (
-              <div className="text-center text-muted py-5">
-                <p>Loading evidence...</p>
-              </div>
-            ) : evidences?.items && evidences.items.length > 0 ? (
-              <div className="row g-4">
-                {evidences.items.map((evidence, index) => (
-                  <div key={evidence.id} className="col-md-6 col-lg-4">
-                    <EvidenceCard
-                      title={(evidence as any).name || evidence.title}
-                      description={evidence.description}
-                      location={(evidence as any).location || 'Unknown location'}
-                      analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
-                      imageColor={getImageColor(index)}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center text-muted py-5">
-                <p>No evidence available for this case</p>
-              </div>
-            )}
-          </TabsContent>
+          {activeTab === 'evidence' && (
+            <>
+              {evidencesLoading ? (
+                <div className="text-center text-muted py-5">
+                  <p>Loading evidence...</p>
+                </div>
+              ) : evidences?.items && evidences.items.length > 0 ? (
+                <div className="row g-4">
+                  {evidences.items.map((evidence, index) => (
+                    <div key={evidence.id} className="col-md-6 col-lg-4">
+                      <EvidenceCard
+                        title={(evidence as any).name || evidence.title}
+                        description={evidence.description}
+                        location={(evidence as any).location || 'Unknown location'}
+                        analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
+                        imageColor={getImageColor(index)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-muted py-5">
+                  <p>No evidence available for this case</p>
+                </div>
+              )}
+            </>
+          )}
 
-          <TabsContent value="suspects">
-            {suspectsLoading ? (
-              <div className="text-center text-muted py-5">
-                <p>Loading suspects...</p>
-              </div>
-            ) : suspects?.items && suspects.items.length > 0 ? (
-              <div className="row g-4">
-                {suspects.items.map((suspect, index) => (
-                  <div key={suspect.id} className="col-md-6 col-lg-4">
-                    <SuspectCard
-                      name={suspect.name}
-                      age={suspect.age}
-                      profession={suspect.profession}
-                      maritalStatus={suspect.maritalStatus}
-                      relationshipToCase={suspect.relationshipToCase}
-                      imageColor={getImageColor(index)}
-                      onInterrogate={() => handleInterrogate(suspect)}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center text-muted py-5">
-                <p>No suspects identified for this case</p>
-              </div>
-            )}
-          </TabsContent>
+          {activeTab === 'suspects' && (
+            <>
+              {suspectsLoading ? (
+                <div className="text-center text-muted py-5">
+                  <p>Loading suspects...</p>
+                </div>
+              ) : suspects?.items && suspects.items.length > 0 ? (
+                <div className="row g-4">
+                  {suspects.items.map((suspect, index) => (
+                    <div key={suspect.id} className="col-md-6 col-lg-4">
+                      <SuspectCard
+                        name={suspect.name}
+                        age={suspect.age}
+                        profession={suspect.profession}
+                        maritalStatus={suspect.maritalStatus}
+                        relationshipToCase={suspect.relationshipToCase}
+                        imageColor={getImageColor(index)}
+                        onInterrogate={() => handleInterrogate(suspect)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-muted py-5">
+                  <p>No suspects identified for this case</p>
+                </div>
+              )}
+            </>
+          )}
 
-          <TabsContent value="witnesses">
-            {witnessesLoading ? (
-              <div className="text-center text-muted py-5">
-                <p>Loading witnesses...</p>
-              </div>
-            ) : witnesses?.items && witnesses.items.length > 0 ? (
-              <div className="row g-4">
-                {witnesses.items.map((witness, index) => (
-                  <div key={witness.id} className="col-md-6 col-lg-4">
-                    <WitnessCard
-                      name={witness.name}
-                      age={witness.age}
-                      profession={witness.profession}
-                      maritalStatus={witness.maritalStatus}
-                      relationshipToCase={witness.relationshipToCase}
-                      imageColor={getImageColor(index)}
-                      onInterrogate={() => handleInterrogate(witness)}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center text-muted py-5">
-                <p>No witnesses identified for this case</p>
-              </div>
-            )}
-          </TabsContent>
+          {activeTab === 'witnesses' && (
+            <>
+              {witnessesLoading ? (
+                <div className="text-center text-muted py-5">
+                  <p>Loading witnesses...</p>
+                </div>
+              ) : witnesses?.items && witnesses.items.length > 0 ? (
+                <div className="row g-4">
+                  {witnesses.items.map((witness, index) => (
+                    <div key={witness.id} className="col-md-6 col-lg-4">
+                      <WitnessCard
+                        name={witness.name}
+                        age={witness.age}
+                        profession={witness.profession}
+                        maritalStatus={witness.maritalStatus}
+                        relationshipToCase={witness.relationshipToCase}
+                        imageColor={getImageColor(index)}
+                        onInterrogate={() => handleInterrogate(witness)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-muted py-5">
+                  <p>No witnesses identified for this case</p>
+                </div>
+              )}
+            </>
+          )}
 
-          <TabsContent value="motives">
-            {motivesLoading ? (
-              <div className="text-center text-muted py-5">
-                <p>Loading motives...</p>
-              </div>
-            ) : motives?.items && motives.items.length > 0 ? (
-              <div className="row g-4">
-                {motives.items.map((motive) => (
-                  <div key={motive.id} className="col-md-6">
-                    <Card className="bg-dark border-secondary text-light">
-                      <CardContent className="p-4">
-                        <h3 className="h5 text-danger mb-3">{(motive as any).name || motive.title}</h3>
-                        <p className="text-muted mb-3">{motive.description}</p>
-                        <div className="small">
-                          <Badge variant="warning" className="me-2">
-                            Strength: {(motive as any).strength || 'Unknown'}
-                          </Badge>
-                          <span className="text-muted">
-                            Plausibility: {(motive as any).plausibility || 'Unknown'}
-                          </span>
+          {activeTab === 'motives' && (
+            <>
+              {motivesLoading ? (
+                <div className="text-center text-muted py-5">
+                  <p>Loading motives...</p>
+                </div>
+              ) : motives?.items && motives.items.length > 0 ? (
+                <div className="row g-4">
+                  {motives.items.map((motive) => (
+                    <div key={motive.id} className="col-md-6">
+                      <div className="card bg-dark border-secondary text-light">
+                        <div className="card-body p-4">
+                          <h3 className="h5 text-danger mb-3">{(motive as any).name || motive.title}</h3>
+                          <p className="text-muted mb-3">{motive.description}</p>
+                          <div className="small">
+                            <span className="badge bg-warning me-2">
+                              Strength: {(motive as any).strength || 'Unknown'}
+                            </span>
+                            <span className="text-muted">
+                              Plausibility: {(motive as any).plausibility || 'Unknown'}
+                            </span>
+                          </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center text-muted py-5">
-                <p>No motives identified for this case</p>
-              </div>
-            )}
-          </TabsContent>
-        </Tabs>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-muted py-5">
+                  <p>No motives identified for this case</p>
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,5 @@
 
 import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
@@ -32,7 +29,7 @@ const CaseSolution = () => {
   const { data: suspects } = useCaseSuspects(caseId || '');
   const { data: motives } = useCaseMotives(caseId || '');
   
-  const createSolutionMutation = useCreateSolutionAttempt();
+  const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
 
   const toggleSuspect = (suspectId: number) => {
     setSelectedSuspect(prevSuspect => (prevSuspect === suspectId ? null : suspectId));
@@ -93,26 +90,24 @@ const CaseSolution = () => {
         
         <div className="container py-5">
           <div className="d-flex align-items-center mb-5">
-            <Button
-              variant="secondary" 
-              size="sm"
+            <button
+              className="btn btn-secondary btn-sm me-3"
               onClick={() => {
                 setShowResult(false);
                 setSolutionResult(null);
               }}
-              className="me-3"
             >
               <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
               Try Again
-            </Button>
+            </button>
             
             <h1 className="h2 text-white mb-0">Case Solution Result</h1>
           </div>
 
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <Card className={`text-center border-3 ${solutionResult.isCorrect ? 'border-success bg-success bg-opacity-10' : 'border-danger bg-danger bg-opacity-10'}`}>
-                <CardContent className="p-5">
+              <div className={`card text-center border-3 ${solutionResult.isCorrect ? 'border-success bg-success bg-opacity-10' : 'border-danger bg-danger bg-opacity-10'}`}>
+                <div className="card-body p-5">
                   <div className="mb-4">
                     {solutionResult.isCorrect ? (
                       <CheckCircle className="text-success mx-auto mb-3" style={{ width: '4rem', height: '4rem' }} />
@@ -130,21 +125,21 @@ const CaseSolution = () => {
                   </div>
 
                   <div className="d-flex justify-content-center gap-3">
-                    <Button 
+                    <button 
                       onClick={() => navigate(`/case/${caseId}`)}
-                      variant="secondary"
+                      className="btn btn-secondary"
                     >
                       Back to Case
-                    </Button>
-                    <Button 
+                    </button>
+                    <button 
                       onClick={() => navigate('/')}
-                      variant="danger"
+                      className="btn btn-danger"
                     >
                       Back to Cases
-                    </Button>
+                    </button>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -158,15 +153,13 @@ const CaseSolution = () => {
       
       <div className="container py-4">
         <div className="d-flex align-items-center mb-5">
-          <Button
-            variant="secondary"
-            size="sm"
+          <button
+            className="btn btn-secondary btn-sm me-3"
             onClick={() => navigate(`/case/${caseId}`)}
-            className="me-3"
           >
             <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
             Back to Case
-          </Button>
+          </button>
           
           <div>
             <h1 className="h2 text-white mb-1">
@@ -179,16 +172,16 @@ const CaseSolution = () => {
         </div>
 
         {/* Suspect Selection */}
-        <Card className="bg-dark border-secondary mb-5">
-          <CardHeader>
-            <CardTitle className="text-white">
+        <div className="card bg-dark border-secondary mb-5">
+          <div className="card-header">
+            <h3 className="card-title text-white">
               Select the Suspect
               {selectedSuspect && (
-                <Badge variant="success" className="ms-2">Selected</Badge>
+                <span className="badge bg-success ms-2">Selected</span>
               )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+            </h3>
+          </div>
+          <div className="card-body">
             {suspects?.items && suspects.items.length > 0 ? (
               <div className="row g-3">
                 {suspects.items.map((suspect, index) => (
@@ -205,22 +198,22 @@ const CaseSolution = () => {
             ) : (
               <p className="text-muted text-center py-4">No suspects available</p>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Evidence Selection */}
-        <Card className="bg-dark border-secondary mb-5">
-          <CardHeader>
-            <CardTitle className="text-white">
+        <div className="card bg-dark border-secondary mb-5">
+          <div className="card-header">
+            <h3 className="card-title text-white">
               Select Key Evidence
               {selectedEvidences.length > 0 && (
-                <Badge variant="primary" className="ms-2">
+                <span className="badge bg-primary ms-2">
                   {selectedEvidences.length} selected
-                </Badge>
+                </span>
               )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+            </h3>
+          </div>
+          <div className="card-body">
             {evidences?.items && evidences.items.length > 0 ? (
               <div className="row g-3">
                 {evidences.items.map((evidence, index) => (
@@ -237,20 +230,20 @@ const CaseSolution = () => {
             ) : (
               <p className="text-muted text-center py-4">No evidence available</p>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Motive Selection */}
-        <Card className="bg-dark border-secondary mb-5">
-          <CardHeader>
-            <CardTitle className="text-white">
+        <div className="card bg-dark border-secondary mb-5">
+          <div className="card-header">
+            <h3 className="card-title text-white">
               Select the Motive
               {selectedMotive && (
-                <Badge variant="warning" className="ms-2">Selected</Badge>
+                <span className="badge bg-warning ms-2">Selected</span>
               )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+            </h3>
+          </div>
+          <div className="card-body">
             {motives?.items && motives.items.length > 0 ? (
               <div className="row g-3">
                 {motives.items.map((motive, index) => (
@@ -267,20 +260,18 @@ const CaseSolution = () => {
             ) : (
               <p className="text-muted text-center py-4">No motives available</p>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Submit Solution */}
         <div className="text-center">
-          <Button
+          <button
             onClick={handleSolutionSubmit}
-            variant="danger"
-            size="lg"
+            className="btn btn-danger btn-lg px-5 py-3"
             disabled={!selectedSuspect || selectedEvidences.length === 0 || !selectedMotive || createSolutionMutation.isPending}
-            className="px-5 py-3"
           >
             {createSolutionMutation.isPending ? 'Submitting...' : 'Submit Solution'}
-          </Button>
+          </button>
           
           {(!selectedSuspect || selectedEvidences.length === 0 || !selectedMotive) && (
             <p className="text-muted mt-3 small">
