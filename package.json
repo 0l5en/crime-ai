@@ -41,6 +41,8 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@supabase/supabase-js": "^2.50.0",
     "@tanstack/react-query": "^5.56.2",
+    "bootstrap": "^5.3.7",
+    "bootstrap-icons": "^1.13.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
@@ -53,6 +55,7 @@
     "openapi-fetch": "^0.14.0",
     "openapi-react-query": "^0.5.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
@@ -61,13 +64,11 @@
     "recharts": "^2.12.7",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
-    "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -80,7 +81,6 @@
     "lovable-tagger": "^1.1.7",
     "openapi-typescript": "^7.8.0",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"

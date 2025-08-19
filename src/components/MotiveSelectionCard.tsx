@@ -12,26 +12,27 @@ const MotiveSelectionCard = ({
   title, 
   isSelected,
   onToggle,
-  imageColor = 'bg-gradient-to-br from-slate-600 to-slate-800'
+  imageColor = 'bg-secondary'
 }: MotiveSelectionCardProps) => {
   return (
     <Card 
       className={`
-        bg-zinc-900 text-zinc-200 cursor-pointer transition-all duration-200 hover:shadow-lg
+        card-hover cursor-pointer bg-dark text-light
         ${isSelected 
-          ? 'border-red-600 border-2 hover:shadow-red-600/30' 
-          : 'border-zinc-600 hover:border-zinc-500'
+          ? 'border-danger border-2' 
+          : 'border-secondary'
         }
       `}
       onClick={onToggle}
     >
-      <CardContent className="p-4 flex flex-col items-center space-y-3">
-        <div className={`h-16 w-16 ${imageColor} rounded-lg flex items-center justify-center`}>
-          <div className="w-8 h-8 bg-white bg-opacity-20 rounded"></div>
+      <CardContent className="p-3 d-flex flex-column align-items-center">
+        <div className={`mb-3 rounded ${imageColor} d-flex align-items-center justify-content-center`} 
+             style={{ width: '64px', height: '64px' }}>
+          <div className="bg-light bg-opacity-25 rounded" style={{ width: '32px', height: '32px' }}></div>
         </div>
         
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-zinc-200">{title}</h3>
+          <h5 className="card-title text-light mb-0">{title}</h5>
         </div>
       </CardContent>
     </Card>

@@ -1,98 +1,63 @@
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Bootstrap import */
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-/* New color scheme based on uploaded palette: 090909 (dark), 5F5F5F (medium), CCCCCC (light), CB191C (red accent) */
-
-@layer base {
-  :root {
-    --background: 0 0% 80%; /* Light background based on CCCCCC */
-    --foreground: 0 0% 4%; /* Dark text based on 090909 */
-
-    --card: 0 0% 80%;
-    --card-foreground: 0 0% 4%;
-
-    --popover: 0 0% 80%;
-    --popover-foreground: 0 0% 4%;
-
-    --primary: 356 85% 44%; /* Red accent CB191C */
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 0 0% 37%; /* Medium gray 5F5F5F */
-    --secondary-foreground: 0 0% 80%;
-
-    --muted: 0 0% 37%;
-    --muted-foreground: 0 0% 80%;
-
-    --accent: 356 85% 44%; /* Red accent CB191C */
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 356 85% 44%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 37%;
-    --input: 0 0% 37%;
-    --ring: 356 85% 44%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 80%;
-    --sidebar-foreground: 0 0% 4%;
-    --sidebar-primary: 356 85% 44%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 37%;
-    --sidebar-accent-foreground: 0 0% 80%;
-    --sidebar-border: 0 0% 37%;
-    --sidebar-ring: 356 85% 44%;
-  }
-
-  .dark {
-    --background: 0 0% 4%; /* Dark background based on 090909 */
-    --foreground: 0 0% 80%; /* Light text based on CCCCCC */
-
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 80%;
-
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 80%;
-
-    --primary: 356 85% 44%; /* Red accent CB191C */
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 0 0% 37%; /* Medium gray 5F5F5F */
-    --secondary-foreground: 0 0% 80%;
-
-    --muted: 0 0% 37%;
-    --muted-foreground: 0 0% 80%;
-
-    --accent: 356 85% 44%; /* Red accent CB191C */
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 356 85% 44%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 37%;
-    --input: 0 0% 37%;
-    --ring: 356 85% 44%;
-    
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 356 85% 44%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 37%;
-    --sidebar-accent-foreground: 0 0% 80%;
-    --sidebar-border: 0 0% 37%;
-    --sidebar-ring: 356 85% 44%;
-  }
+/* Custom CSS Variables for our theme */
+:root {
+  /* Color palette: 090909 (dark), 5F5F5F (medium), CCCCCC (light), CB191C (red accent) */
+  --bs-primary: #CB191C;
+  --bs-primary-rgb: 203, 25, 28;
+  --bs-secondary: #5F5F5F;
+  --bs-secondary-rgb: 95, 95, 95;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #CB191C;
+  --bs-light: #CCCCCC;
+  --bs-dark: #090909;
+  --bs-body-bg: #CCCCCC;
+  --bs-body-color: #090909;
+  --bs-border-color: #5F5F5F;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* Dark theme */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #090909;
+  --bs-body-color: #CCCCCC;
+  --bs-border-color: #5F5F5F;
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Custom theme classes */
+.bg-primary-custom {
+  background-color: var(--bs-primary) !important;
+}
+
+.text-primary-custom {
+  color: var(--bs-primary) !important;
+}
+
+.border-primary-custom {
+  border-color: var(--bs-primary) !important;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom button variants */
+.btn-outline-primary-custom {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-outline-primary-custom:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
 }
