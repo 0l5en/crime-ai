@@ -28,10 +28,9 @@ const Hero = () => {
           className="fw-bold text-light mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-            fontSize: 'clamp(2rem, 8vw, 6rem)',
+            fontSize: 'clamp(1.5rem, 6vw, 4rem)',
             lineHeight: '1.1',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden'
+            whiteSpace: 'nowrap'
           }}
         >
           Unravel the Truth, One Clue at a Time
