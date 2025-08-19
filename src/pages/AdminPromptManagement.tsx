@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -39,7 +38,6 @@ const AdminPromptManagement = () => {
       toast({
         title: "Fehler",
         description: "Template-Name und Inhalt sind erforderlich",
-        variant: "destructive",
       });
       return;
     }
@@ -62,7 +60,6 @@ const AdminPromptManagement = () => {
       toast({
         title: "Fehler beim Speichern",
         description: "Das Template konnte nicht gespeichert werden",
-        variant: "destructive",
       });
     }
   };

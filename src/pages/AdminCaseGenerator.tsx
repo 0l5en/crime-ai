@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +53,6 @@ const AdminCaseGenerator = () => {
       toast({
         title: "Error",
         description: "Error generating crime case. Please try again.",
-        variant: "destructive",
       });
     }
   };
