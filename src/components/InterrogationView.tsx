@@ -1,7 +1,5 @@
+
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Send, ArrowLeft } from 'lucide-react';
 import { useKeycloak } from '@/contexts/KeycloakContext';
 import { useInterrogations } from '@/hooks/useInterrogations';
@@ -83,15 +81,13 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
     <div className="container-fluid py-4">
       {/* Header with back button and person info */}
       <div className="d-flex align-items-center mb-4">
-        <Button
-          variant="secondary"
-          size="sm"
+        <button
+          className="btn btn-secondary btn-sm me-3"
           onClick={onBack}
-          className="me-3"
         >
           <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
           Back
-        </Button>
+        </button>
         
         <div className="d-flex align-items-center">
           <div className="me-3">
@@ -112,11 +108,11 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
       </div>
 
       {/* Question input form */}
-      <Card className="bg-dark border-secondary mb-4">
-        <CardHeader>
-          <CardTitle className="text-white h5">Ask a Question</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <div className="card bg-dark border-secondary mb-4">
+        <div className="card-header">
+          <h5 className="card-title text-white">Ask a Question</h5>
+        </div>
+        <div className="card-body">
           <form onSubmit={handleSubmitQuestion} className="d-flex gap-2">
             <input
               type="text"
@@ -127,16 +123,16 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
               placeholder="Type your question here..."
               disabled={createAnswerMutation.isPending}
             />
-            <Button
+            <button
               type="submit"
               disabled={!question.trim() || createAnswerMutation.isPending}
-              variant="danger"
+              className="btn btn-danger"
             >
               <Send style={{ width: '16px', height: '16px' }} />
-            </Button>
+            </button>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Question and Answers */}
       <div>
@@ -149,27 +145,27 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
         ) : questionAndAnswers?.items && questionAndAnswers.items.length > 0 ? (
           <div className="d-flex flex-column gap-3">
             {questionAndAnswers.items.map((qa, index) => (
-              <Card key={index} className="bg-dark border-secondary">
-                <CardContent className="p-3">
+              <div key={index} className="card bg-dark border-secondary">
+                <div className="card-body p-3">
                   <div className="d-flex flex-column gap-3">
                     <div className="d-flex align-items-start gap-2">
-                      <Badge variant="primary" className="mt-1">
+                      <span className="badge bg-primary mt-1">
                         Q
-                      </Badge>
+                      </span>
                       <p className="text-white flex-grow-1 mb-0">{qa.question}</p>
                     </div>
                     <div className="d-flex align-items-start gap-2">
-                      <Badge variant="success" className="mt-1">
+                      <span className="badge bg-success mt-1">
                         A
-                      </Badge>
+                      </span>
                       <p className="text-muted flex-grow-1 mb-0">{qa.answer}</p>
                     </div>
                     <p className="small text-muted text-end mb-0">
                       {new Date(qa.createdAt).toLocaleString()}
                     </p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         ) : (

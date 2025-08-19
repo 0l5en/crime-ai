@@ -1,7 +1,5 @@
 
 import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useNavigate } from "react-router-dom";
 
@@ -23,12 +21,12 @@ const AdminCaseManagement = () => {
               Übersicht aller verfügbaren Kriminalfälle
             </p>
           </div>
-          <Button 
-            variant="success"
+          <button 
+            className="btn btn-success"
             onClick={() => navigate('/admin/case-generator')}
           >
             Neuen Fall generieren
-          </Button>
+          </button>
         </div>
 
         {isLoading && (
@@ -61,54 +59,50 @@ const AdminCaseManagement = () => {
 
         {!isLoading && !error && crimeCases?.items && crimeCases.items.length > 0 && (
           <div className="card bg-secondary border-secondary">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-secondary">
-                  <TableHead className="text-muted">ID</TableHead>
-                  <TableHead className="text-muted">Titel</TableHead>
-                  <TableHead className="text-muted">Beschreibung</TableHead>
-                  <TableHead className="text-muted">Status</TableHead>
-                  <TableHead className="text-muted">Aktionen</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
+            <table className="table table-dark table-striped">
+              <thead>
+                <tr className="border-secondary">
+                  <th className="text-muted">ID</th>
+                  <th className="text-muted">Titel</th>
+                  <th className="text-muted">Beschreibung</th>
+                  <th className="text-muted">Status</th>
+                  <th className="text-muted">Aktionen</th>
+                </tr>
+              </thead>
+              <tbody>
                 {crimeCases.items.map((crimeCase) => (
-                  <TableRow key={crimeCase.id} className="border-secondary">
-                    <TableCell className="text-light font-monospace small">
+                  <tr key={crimeCase.id} className="border-secondary">
+                    <td className="text-light font-monospace small">
                       {crimeCase.id.substring(0, 8)}...
-                    </TableCell>
-                    <TableCell className="text-light fw-semibold">
+                    </td>
+                    <td className="text-light fw-semibold">
                       {crimeCase.title}
-                    </TableCell>
-                    <TableCell className="text-muted" style={{ maxWidth: '300px' }}>
+                    </td>
+                    <td className="text-muted" style={{ maxWidth: '300px' }}>
                       <div className="text-truncate">{crimeCase.description}</div>
-                    </TableCell>
-                    <TableCell>
+                    </td>
+                    <td>
                       <span className="badge bg-success">
                         Aktiv
                       </span>
-                    </TableCell>
-                    <TableCell>
+                    </td>
+                    <td>
                       <div className="d-flex gap-2">
-                        <Button 
-                          variant="info"
-                          size="sm"
+                        <button 
+                          className="btn btn-info btn-sm"
                           onClick={() => navigate(`/case/${crimeCase.id}`)}
                         >
                           Ansehen
-                        </Button>
-                        <Button 
-                          variant="warning"
-                          size="sm"
-                        >
+                        </button>
+                        <button className="btn btn-warning btn-sm">
                           Bearbeiten
-                        </Button>
+                        </button>
                       </div>
-                    </TableCell>
-                  </TableRow>
+                    </td>
+                  </tr>
                 ))}
-              </TableBody>
-            </Table>
+              </tbody>
+            </table>
           </div>
         )}
 

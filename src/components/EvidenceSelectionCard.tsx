@@ -1,6 +1,4 @@
 
-import { Card, CardContent } from '@/components/ui/card';
-
 interface EvidenceSelectionCardProps {
   title: string;
   isSelected: boolean;
@@ -15,9 +13,9 @@ const EvidenceSelectionCard = ({
   imageColor = 'bg-gradient-secondary'
 }: EvidenceSelectionCardProps) => {
   return (
-    <Card 
+    <div 
       className={`
-        bg-dark text-light card-hover
+        bg-dark text-light card-hover card
         ${isSelected 
           ? 'border-danger border-2' 
           : 'border-secondary'
@@ -26,7 +24,7 @@ const EvidenceSelectionCard = ({
       onClick={onToggle}
       style={{ cursor: 'pointer' }}
     >
-      <CardContent className="p-4 d-flex flex-column align-items-center">
+      <div className="card-body p-4 d-flex flex-column align-items-center">
         <div className={`${imageColor} rounded d-flex align-items-center justify-content-center mb-3`} style={{ width: '4rem', height: '4rem' }}>
           <div className="bg-light bg-opacity-25 rounded" style={{ width: '2rem', height: '2rem' }}></div>
         </div>
@@ -34,8 +32,8 @@ const EvidenceSelectionCard = ({
         <div className="text-center">
           <h3 className="h6 fw-semibold text-light mb-0">{title}</h3>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 
