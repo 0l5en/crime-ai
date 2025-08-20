@@ -2,13 +2,24 @@
 interface GameCardProps {
   title: string;
   description: string;
-  difficulty: 'Leicht' | 'Mittel' | 'Schwer';
-  estimatedTime: string;
+  imageColor?: string;
   caseId: string;
-  onClick: () => void;
+  userId?: string;
+  difficulty?: 'Leicht' | 'Mittel' | 'Schwer';
+  estimatedTime?: string;
+  onClick?: () => void;
 }
 
-const GameCard = ({ title, description, difficulty, estimatedTime, caseId, onClick }: GameCardProps) => {
+const GameCard = ({ 
+  title, 
+  description, 
+  imageColor, 
+  caseId, 
+  userId,
+  difficulty = 'Mittel',
+  estimatedTime = '30-45 min',
+  onClick = () => console.log(`Starting case ${caseId}`)
+}: GameCardProps) => {
   const getDifficultyColor = (level: string) => {
     switch (level) {
       case 'Leicht': return 'text-success';
@@ -20,7 +31,7 @@ const GameCard = ({ title, description, difficulty, estimatedTime, caseId, onCli
 
   return (
     <div 
-      className="card bg-dark border-secondary text-light card-hover h-100" 
+      className={`card bg-dark border-secondary text-light card-hover h-100 ${imageColor || ''}`}
       onClick={onClick}
       data-testid="case-card"
       data-case-id={caseId}
