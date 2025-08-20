@@ -53,6 +53,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Setup environment for build
+        run: |
+          cp .env.test .env.local
+
       - name: Build application
         run: npm run build
 
@@ -91,19 +95,11 @@ jobs:
       - name: Setup test environment
         run: |
           cp .env.test .env.local
-          echo "BASE_URL=http://localhost:5173" >> .env.local
-
-      - name: Start Supabase (for API mocking)
-        run: |
-          # Mock Supabase locally for testing
-          echo "Starting mock Supabase services..."
-          # This would typically start a local Supabase instance
-          # For now, we'll use environment variables to mock responses
 
       - name: Run Playwright tests
-        run: npx playwright test --project=${{ matrix.project }}
+        run: npm run test:e2e -- --project=${{ matrix.project }}
         env:
-          BASE_URL: http://localhost:5173
+          CI: true
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -138,12 +134,11 @@ jobs:
       - name: Setup test environment
         run: |
           cp .env.test .env.local
-          echo "BASE_URL=http://localhost:5173" >> .env.local
 
       - name: Run Mobile Playwright tests
-        run: npx playwright test --project="Mobile Chrome" --project="Mobile Safari"
+        run: npm run test:e2e -- --project="Mobile Chrome" --project="Mobile Safari"
         env:
-          BASE_URL: http://localhost:5173
+          CI: true
 
       - name: Upload mobile test results
         uses: actions/upload-artifact@v4
@@ -165,10 +160,8 @@ jobs:
         if: needs.e2e-tests.result == 'success' && needs.mobile-tests.result == 'success'
         run: |
           echo "✅ All E2E tests passed successfully!"
-          # Add Slack/Discord notification here if needed
 
       - name: Notify on failure
         if: needs.e2e-tests.result == 'failure' || needs.mobile-tests.result == 'failure'
         run: |
           echo "❌ E2E tests failed. Please check the test results."
-          # Add Slack/Discord notification here if needed

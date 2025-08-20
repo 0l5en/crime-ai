@@ -27,7 +27,11 @@ const SuspectCard = ({
   };
 
   return (
-    <div className="card bg-dark border-secondary text-light card-hover">
+    <div 
+      className="card bg-dark border-secondary text-light card-hover"
+      data-testid="suspect-card"
+      data-suspect-name={name}
+    >
       <div className="card-header pb-3">
         <div className="d-flex align-items-center">
           <div className="me-3" style={{ width: '4rem', height: '4rem' }}>
@@ -38,8 +42,8 @@ const SuspectCard = ({
             </div>
           </div>
           <div className="flex-grow-1">
-            <h5 className="card-title text-light mb-1">{name}</h5>
-            <span className="badge border-danger text-danger bg-transparent">
+            <h5 className="card-title text-light mb-1" data-testid="suspect-name">{name}</h5>
+            <span className="badge border-danger text-danger bg-transparent" data-testid="suspect-age">
               {age} Jahre
             </span>
           </div>
@@ -49,17 +53,17 @@ const SuspectCard = ({
       <div className="card-body d-flex flex-column gap-3">
         <div>
           <h4 className="small fw-medium text-muted mb-1">Beruf</h4>
-          <p className="text-light mb-0">{profession}</p>
+          <p className="text-light mb-0" data-testid="suspect-profession">{profession}</p>
         </div>
         
         <div>
           <h4 className="small fw-medium text-muted mb-1">Familienstand</h4>
-          <p className="text-light mb-0">{maritalStatus}</p>
+          <p className="text-light mb-0" data-testid="suspect-marital-status">{maritalStatus}</p>
         </div>
         
         <div>
           <h4 className="small fw-medium text-muted mb-1">Bezug zum Fall</h4>
-          <p className="text-light small mb-0">{relationshipToCase}</p>
+          <p className="text-light small mb-0" data-testid="suspect-relationship">{relationshipToCase}</p>
         </div>
 
         {onInterrogate && (
@@ -67,6 +71,7 @@ const SuspectCard = ({
             <button
               onClick={onInterrogate}
               className="btn btn-danger w-100 btn-sm"
+              data-testid="suspect-interrogate-button"
             >
               Interrogate
             </button>

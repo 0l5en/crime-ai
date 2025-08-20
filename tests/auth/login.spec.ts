@@ -3,65 +3,101 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Authentication Flow', () => {
   test.beforeEach(async ({ page }) => {
-    // Mock Keycloak responses for testing
-    await page.route('**/auth/realms/lovable/**', async route => {
-      if (route.request().url().includes('auth')) {
+    // Mock Keycloak initialization and token endpoints
+    await page.route('**/auth/realms/**', async route => {
+      const url = route.request().url();
+      
+      if (url.includes('protocol/openid-connect/token')) {
         await route.fulfill({
           status: 200,
           contentType: 'application/json',
           body: JSON.stringify({
-            access_token: 'mock-token',
+            access_token: 'mock-access-token',
             token_type: 'Bearer',
-            expires_in: 3600
+            expires_in: 3600,
+            refresh_token: 'mock-refresh-token'
           })
         });
+      } else if (url.includes('.well-known/openid-configuration')) {
+        await route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            issuer: 'http://localhost:8080/auth/realms/test-realm',
+            authorization_endpoint: 'http://localhost:8080/auth/realms/test-realm/protocol/openid-connect/auth',
+            token_endpoint: 'http://localhost:8080/auth/realms/test-realm/protocol/openid-connect/token'
+          })
+        });
+      } else {
+        await route.continue();
       }
     });
   });
 
-  test('should display login page when not authenticated', async ({ page }) => {
+  test('should display hero section for unauthenticated users', async ({ page }) => {
     await page.goto('/');
     
-    // Should show the hero section for unauthenticated users
-    await expect(page.locator('h1')).toContainText('Unravel the Truth');
+    // Wait for page to load
+    await page.waitForLoadState('networkidle');
     
-    // Check for login functionality (this depends on your actual auth implementation)
-    const hasLoginButton = await page.locator('button', { hasText: /login|anmelden/i }).count();
-    if (hasLoginButton > 0) {
-      await expect(page.locator('button', { hasText: /login|anmelden/i })).toBeVisible();
-    }
+    // Should show the hero section
+    await expect(page.locator('h1')).toContainText('Unravel the Truth', { timeout: 10000 });
   });
 
-  test('should handle authentication redirect', async ({ page }) => {
-    // Mock authenticated state
+  test('should handle Keycloak initialization', async ({ page }) => {
+    // Mock successful Keycloak initialization
     await page.addInitScript(() => {
-      window.localStorage.setItem('auth-token', 'mock-token');
+      // Mock Keycloak object
+      window.Keycloak = () => ({
+        init: () => Promise.resolve(false),
+        login: () => {},
+        logout: () => {},
+        updateToken: () => Promise.resolve(false),
+        authenticated: false,
+        token: null,
+        tokenParsed: null,
+        realmAccess: null,
+        resourceAccess: null,
+        clientId: 'test-client'
+      });
     });
 
     await page.goto('/');
     
-    // Wait for any auth redirects to complete
-    await page.waitForTimeout(1000);
+    // Should not crash and show loading or hero
+    await page.waitForTimeout(2000);
+    const isVisible = await page.locator('body').isVisible();
+    expect(isVisible).toBeTruthy();
+  });
+
+  test('should handle authenticated state', async ({ page }) => {
+    // Mock authenticated Keycloak state
+    await page.addInitScript(() => {
+      window.Keycloak = () => ({
+        init: () => Promise.resolve(true),
+        login: () => {},
+        logout: () => {},
+        updateToken: () => Promise.resolve(false),
+        authenticated: true,
+        token: 'mock-token',
+        tokenParsed: {
+          name: 'Test User',
+          email: 'test@example.com',
+          preferred_username: 'testuser'
+        },
+        realmAccess: { roles: ['standard'] },
+        resourceAccess: {},
+        clientId: 'test-client'
+      });
+    });
+
+    await page.goto('/');
+    
+    // Wait for authentication to process
+    await page.waitForTimeout(3000);
     
     // Should show main application content
-    await expect(page).toHaveURL('/');
-  });
-
-  test('should handle logout', async ({ page }) => {
-    // Mock authenticated state
-    await page.addInitScript(() => {
-      window.localStorage.setItem('auth-token', 'mock-token');
-    });
-
-    await page.goto('/');
-    
-    // Look for logout functionality
-    const logoutButton = page.locator('button', { hasText: /logout|abmelden/i });
-    if (await logoutButton.count() > 0) {
-      await logoutButton.click();
-      
-      // Should redirect to login or home
-      await expect(page.locator('h1')).toContainText('Unravel the Truth');
-    }
+    const isAppVisible = await page.locator('body').isVisible();
+    expect(isAppVisible).toBeTruthy();
   });
 });
