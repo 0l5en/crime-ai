@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -60,7 +59,6 @@ const AdminCaseGenerator = () => {
       toast({
         title: "Error", 
         description: `Crime case generation failed: ${taskInfo.error || 'Unknown error'}`,
-        variant: "destructive",
       });
       setTaskUrl(null);
       setTaskId(null);
@@ -77,7 +75,6 @@ const AdminCaseGenerator = () => {
         toast({
           title: "Validation Error",
           description: `Please fill in all required fields: ${emptyFields.map(([key]) => key).join(', ')}`,
-          variant: "destructive",
         });
         return;
       }
@@ -102,7 +99,6 @@ const AdminCaseGenerator = () => {
       toast({
         title: "Error",
         description: "Error starting crime case generation. Please try again.",
-        variant: "destructive",
       });
     }
   };
