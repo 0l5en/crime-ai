@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ import { useTemplateContext } from "@/hooks/useTemplateContext";
 import { useCreateCrimeCase } from "@/hooks/useCreateCrimeCase";
 import { useTaskInfo } from "@/hooks/useTaskInfo";
 import { useToast } from "@/hooks/use-toast";
+import type { TemplateContextDto } from "../../supabase/functions/_shared/crime-api-types";
 
 const AdminCaseGenerator = () => {
   const navigate = useNavigate();
@@ -28,7 +30,7 @@ const AdminCaseGenerator = () => {
   // Create crime case mutation
   const createCaseMutation = useCreateCrimeCase();
 
-  // Task polling
+  // Task polling - check for both 'status' and 'taskStatus' properties
   const { data: taskInfo, isLoading: taskLoading } = useTaskInfo(taskId, !!taskId);
 
   // Initialize form with dynamic default values
@@ -47,23 +49,91 @@ const AdminCaseGenerator = () => {
     }
   }, [taskUrl]);
 
-  // Handle task completion
+  // Handle task completion - check both possible status property names
   useEffect(() => {
-    if (taskInfo?.status === 'COMPLETED') {
-      toast({
-        title: "Success",
-        description: "New crime case has been generated successfully!",
-      });
-      navigate('/admin/cases');
-    } else if (taskInfo?.status === 'FAILED') {
-      toast({
-        title: "Error", 
-        description: `Crime case generation failed: ${taskInfo.error || 'Unknown error'}`,
-      });
-      setTaskUrl(null);
-      setTaskId(null);
+    if (taskInfo) {
+      const currentStatus = taskInfo.status || taskInfo.taskStatus;
+      
+      if (currentStatus === 'COMPLETED') {
+        toast({
+          title: "Erfolg",
+          description: "Der neue Kriminalfall wurde erfolgreich erstellt!",
+        });
+        
+        // Auto-navigate to case list after short delay
+        setTimeout(() => {
+          navigate('/admin/cases');
+        }, 2000);
+      } else if (currentStatus === 'FAILED') {
+        toast({
+          title: "Fehler", 
+          description: `Fallgenerierung fehlgeschlagen: ${taskInfo.error || 'Unbekannter Fehler'}`,
+        });
+        setTaskUrl(null);
+        setTaskId(null);
+      }
     }
-  }, [taskInfo?.status, navigate, toast]);
+  }, [taskInfo, navigate, toast]);
+
+  // Get progress percentage based on status
+  const getProgressPercentage = () => {
+    if (!taskInfo) return 0;
+    
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    
+    switch (currentStatus) {
+      case 'PENDING':
+        return 25;
+      case 'RUNNING':
+        return 75;
+      case 'COMPLETED':
+        return 100;
+      case 'FAILED':
+        return 100;
+      default:
+        return 0;
+    }
+  };
+
+  // Get status display text
+  const getStatusText = () => {
+    if (!taskInfo) return 'Startet...';
+    
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    
+    switch (currentStatus) {
+      case 'PENDING':
+        return 'Warteschlange...';
+      case 'RUNNING':
+        return 'Generiert Fall...';
+      case 'COMPLETED':
+        return 'Abgeschlossen!';
+      case 'FAILED':
+        return 'Fehlgeschlagen';
+      default:
+        return 'Unbekannter Status';
+    }
+  };
+
+  // Get progress bar color class
+  const getProgressBarClass = () => {
+    if (!taskInfo) return 'bg-primary';
+    
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    
+    switch (currentStatus) {
+      case 'PENDING':
+        return 'bg-warning';
+      case 'RUNNING':
+        return 'bg-info progress-bar-striped progress-bar-animated';
+      case 'COMPLETED':
+        return 'bg-success';
+      case 'FAILED':
+        return 'bg-danger';
+      default:
+        return 'bg-primary';
+    }
+  };
 
   const onSubmit = async (formData: Record<string, string>) => {
     try {
@@ -73,13 +143,13 @@ const AdminCaseGenerator = () => {
       const emptyFields = Object.entries(formData).filter(([_, value]) => !value?.trim());
       if (emptyFields.length > 0) {
         toast({
-          title: "Validation Error",
-          description: `Please fill in all required fields: ${emptyFields.map(([key]) => key).join(', ')}`,
+          title: "Validierungsfehler",
+          description: `Bitte füllen Sie alle erforderlichen Felder aus: ${emptyFields.map(([key]) => key).join(', ')}`,
         });
         return;
       }
 
-      // Convert form data to TemplateContextDto format - this is the fix!
+      // Convert form data to TemplateContextDto format
       const templateContextDto: TemplateContextDto = {
         variables: Object.entries(formData).map(([key, value]) => ({
           key,
@@ -93,14 +163,14 @@ const AdminCaseGenerator = () => {
       setTaskUrl(result.locationUrl);
 
       toast({
-        title: "Task Started",
-        description: "Crime case generation has been started. Please wait...",
+        title: "Task gestartet",
+        description: "Die Fallgenerierung wurde gestartet. Bitte warten...",
       });
     } catch (error) {
       console.error('Error creating crime case:', error);
       toast({
-        title: "Error",
-        description: "Error starting crime case generation. Please try again.",
+        title: "Fehler",
+        description: "Fehler beim Starten der Fallgenerierung. Bitte versuchen Sie es erneut.",
       });
     }
   };
@@ -112,9 +182,9 @@ const AdminCaseGenerator = () => {
         <Header />
         <div className="container py-5 text-center">
           <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading templates...</span>
+            <span className="visually-hidden">Lade Vorlagen...</span>
           </div>
-          <p className="text-light mt-3">Loading prompt templates...</p>
+          <p className="text-light mt-3">Lade Prompt-Vorlagen...</p>
         </div>
       </div>
     );
@@ -127,13 +197,13 @@ const AdminCaseGenerator = () => {
         <Header />
         <div className="container py-5">
           <div className="alert alert-danger">
-            <h4>Error Loading Templates</h4>
-            <p>Failed to load prompt templates: {templateError.message}</p>
+            <h4>Fehler beim Laden der Vorlagen</h4>
+            <p>Fehler beim Laden der Prompt-Vorlagen: {templateError.message}</p>
             <button 
               className="btn btn-secondary"
               onClick={() => navigate('/admin/cases')}
             >
-              Back to Case Management
+              Zurück zur Fallverwaltung
             </button>
           </div>
         </div>
@@ -147,13 +217,13 @@ const AdminCaseGenerator = () => {
         <Header />
         <div className="container py-5">
           <div className="alert alert-warning">
-            <h4>Template Not Found</h4>
-            <p>The required "CrimeCaseUserPrompt" template was not found.</p>
+            <h4>Vorlage nicht gefunden</h4>
+            <p>Die erforderliche "CrimeCaseUserPrompt" Vorlage wurde nicht gefunden.</p>
             <button 
               className="btn btn-secondary"
               onClick={() => navigate('/admin/cases')}
             >
-              Back to Case Management
+              Zurück zur Fallverwaltung
             </button>
           </div>
         </div>
@@ -167,9 +237,9 @@ const AdminCaseGenerator = () => {
         <Header />
         <div className="container py-5 text-center">
           <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading form fields...</span>
+            <span className="visually-hidden">Lade Formularfelder...</span>
           </div>
-          <p className="text-light mt-3">Loading form configuration...</p>
+          <p className="text-light mt-3">Lade Formular-Konfiguration...</p>
         </div>
       </div>
     );
@@ -181,13 +251,13 @@ const AdminCaseGenerator = () => {
         <Header />
         <div className="container py-5">
           <div className="alert alert-danger">
-            <h4>Error Loading Form Configuration</h4>
-            <p>Failed to load template context: {contextError.message}</p>
+            <h4>Fehler beim Laden der Formular-Konfiguration</h4>
+            <p>Fehler beim Laden des Template-Kontexts: {contextError.message}</p>
             <button 
               className="btn btn-secondary"
               onClick={() => navigate('/admin/cases')}
             >
-              Back to Case Management
+              Zurück zur Fallverwaltung
             </button>
           </div>
         </div>
@@ -195,29 +265,87 @@ const AdminCaseGenerator = () => {
     );
   }
 
-  // Task polling in progress
-  if (taskId && (taskLoading || ['PENDING', 'RUNNING'].includes(taskInfo?.status || ''))) {
+  // Enhanced task progress display
+  if (taskId && (taskLoading || ['PENDING', 'RUNNING'].includes((taskInfo?.status || taskInfo?.taskStatus) || ''))) {
+    const progressPercentage = getProgressPercentage();
+    const statusText = getStatusText();
+    const progressBarClass = getProgressBarClass();
+    const currentStatus = taskInfo?.status || taskInfo?.taskStatus;
+
     return (
       <div className="min-vh-100 bg-dark">
         <Header />
         <div className="container py-5 text-center">
-          <div className="card bg-secondary border-secondary" style={{ maxWidth: '600px', margin: '0 auto' }}>
+          <div className="card bg-secondary border-secondary" style={{ maxWidth: '700px', margin: '0 auto' }}>
             <div className="card-body p-5">
-              <div className="spinner-border text-primary mb-4" role="status">
-                <span className="visually-hidden">Generating case...</span>
+              {/* Status Icon */}
+              <div className="mb-4">
+                {currentStatus === 'PENDING' && (
+                  <div className="spinner-grow text-warning" role="status" style={{ width: '3rem', height: '3rem' }}>
+                    <span className="visually-hidden">Wartend...</span>
+                  </div>
+                )}
+                {currentStatus === 'RUNNING' && (
+                  <div className="spinner-border text-info" role="status" style={{ width: '3rem', height: '3rem' }}>
+                    <span className="visually-hidden">Läuft...</span>
+                  </div>
+                )}
               </div>
-              <h3 className="text-light mb-3">Generating Crime Case</h3>
-              <p className="text-muted mb-3">
-                Status: {taskInfo?.status || 'PENDING'}
+
+              <h3 className="text-light mb-3">Kriminalfall wird generiert</h3>
+              
+              {/* Status Text */}
+              <p className="text-muted mb-3 h5">
+                Status: {statusText}
               </p>
-              <p className="text-light">
-                Please wait while we generate your crime case. This may take a few moments...
-              </p>
-              <div className="progress mt-4">
+
+              {/* Enhanced Progress Bar */}
+              <div className="progress mb-4" style={{ height: '20px' }}>
                 <div 
-                  className="progress-bar progress-bar-striped progress-bar-animated bg-primary" 
-                  style={{ width: '100%' }}
-                ></div>
+                  className={`progress-bar ${progressBarClass}`}
+                  role="progressbar"
+                  style={{ width: `${progressPercentage}%` }}
+                  aria-valuenow={progressPercentage}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
+                  {progressPercentage}%
+                </div>
+              </div>
+
+              {/* Task Info */}
+              {taskInfo?.createdAt && (
+                <p className="text-muted small mb-3">
+                  Gestartet: {new Date(taskInfo.createdAt).toLocaleString('de-DE')}
+                </p>
+              )}
+
+              {/* Status Description */}
+              <p className="text-light mb-4">
+                {currentStatus === 'PENDING' && 'Ihr Auftrag wurde in die Warteschlange eingereiht und wartet auf Bearbeitung...'}
+                {currentStatus === 'RUNNING' && 'Der Kriminalfall wird gerade von der KI generiert. Dies kann einige Momente dauern...'}
+              </p>
+
+              {/* Navigation Options */}
+              <div className="d-flex gap-3 justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-outline-light"
+                  onClick={() => navigate('/admin/cases')}
+                >
+                  Zur Fallübersicht wechseln
+                </button>
+                
+                <button
+                  type="button"
+                  className="btn btn-outline-danger"
+                  onClick={() => {
+                    setTaskUrl(null);
+                    setTaskId(null);
+                  }}
+                >
+                  Überwachung stoppen
+                </button>
               </div>
             </div>
           </div>
@@ -235,10 +363,10 @@ const AdminCaseGenerator = () => {
       <div className="container py-5" style={{ maxWidth: '800px' }}>
         <div className="mb-5">
           <h1 className="display-4 fw-bold text-light mb-4">
-            Generate New Crime Case
+            Neuen Kriminalfall generieren
           </h1>
           <p className="h5 text-muted">
-            Configure parameters for a new crime case using template: {crimeCaseTemplate.name}
+            Konfigurieren Sie Parameter für einen neuen Kriminalfall mit Vorlage: {crimeCaseTemplate.name}
           </p>
         </div>
 
@@ -255,11 +383,11 @@ const AdminCaseGenerator = () => {
                     type="text"
                     required
                     {...form.register(variable.key || '', { required: true })}
-                    placeholder={variable.value || `Enter ${variable.key}`}
+                    placeholder={variable.value || `${variable.key} eingeben`}
                     className="form-control bg-dark border-secondary text-light"
                   />
                   <div className="form-text text-muted small">
-                    This field is required
+                    Dieses Feld ist erforderlich
                   </div>
                 </div>
               ))}
@@ -267,7 +395,7 @@ const AdminCaseGenerator = () => {
               {variables.length === 0 && (
                 <div className="col-12">
                   <div className="alert alert-info">
-                    <p className="mb-0">No template variables found. Unable to generate form fields.</p>
+                    <p className="mb-0">Keine Template-Variablen gefunden. Formularfelder können nicht generiert werden.</p>
                   </div>
                 </div>
               )}
@@ -279,7 +407,7 @@ const AdminCaseGenerator = () => {
                     disabled={createCaseMutation.isPending || variables.length === 0}
                     className="btn btn-success"
                   >
-                    {createCaseMutation.isPending ? "Starting Generation..." : "Generate Crime Case"}
+                    {createCaseMutation.isPending ? "Startet Generierung..." : "Kriminalfall generieren"}
                   </button>
                   
                   <button
@@ -287,7 +415,7 @@ const AdminCaseGenerator = () => {
                     className="btn btn-secondary"
                     onClick={() => navigate('/admin/cases')}
                   >
-                    Back to Case Management
+                    Zurück zur Fallverwaltung
                   </button>
                 </div>
               </div>
