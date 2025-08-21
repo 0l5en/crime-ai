@@ -6,19 +6,43 @@ const CRIME_AI_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
 const CRIME_AI_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
 
 Deno.serve(async (req) => {
+  console.log(`Request method: ${req.method}`);
+  console.log(`Request URL: ${req.url}`);
+
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    console.log('Handling CORS preflight request');
+    return new Response(null, { 
+      status: 200,
+      headers: corsHeaders 
+    });
   }
 
   try {
     console.log('Starting create-crime-case function...');
     
     if (!CRIME_AI_BASE_URL || !CRIME_AI_TOKEN) {
+      console.error('Missing environment variables');
       throw new Error('Missing required environment variables');
     }
 
-    const templateContext: TemplateContextDto = await req.json();
+    console.log('Environment variables configured');
+
+    let templateContext: TemplateContextDto;
+    try {
+      templateContext = await req.json();
+      console.log('Template context received:', JSON.stringify(templateContext, null, 2));
+    } catch (parseError) {
+      console.error('Failed to parse request body:', parseError);
+      throw new Error('Invalid JSON in request body');
+    }
+
+    // Validate template context structure
+    if (!templateContext || !Array.isArray(templateContext.variables)) {
+      console.error('Invalid template context structure:', templateContext);
+      throw new Error('Invalid template context: variables array is required');
+    }
+
     console.log('Creating crime case with template context:', templateContext);
 
     const url = `${CRIME_AI_BASE_URL}/crimecase`;
@@ -34,6 +58,7 @@ Deno.serve(async (req) => {
     });
 
     console.log('API response status:', response.status);
+    console.log('API response headers:', Object.fromEntries(response.headers.entries()));
 
     if (!response.ok) {
       const errorText = await response.text();

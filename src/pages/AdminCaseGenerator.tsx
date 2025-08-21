@@ -79,13 +79,15 @@ const AdminCaseGenerator = () => {
         return;
       }
 
-      // Convert form data to TemplateContextDto format
-      const templateContextDto = {
+      // Convert form data to TemplateContextDto format - this is the fix!
+      const templateContextDto: TemplateContextDto = {
         variables: Object.entries(formData).map(([key, value]) => ({
           key,
           value: value.trim(),
         })),
       };
+
+      console.log('Converted to TemplateContextDto:', templateContextDto);
 
       const result = await createCaseMutation.mutateAsync(templateContextDto);
       setTaskUrl(result.locationUrl);
