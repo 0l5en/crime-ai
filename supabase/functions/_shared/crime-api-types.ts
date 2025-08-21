@@ -1,10 +1,11 @@
 
-// Shared types extracted from the OpenAPI schema for Edge Functions
+// Updated shared types for the new OpenAPI schema
 export interface CrimeCaseDto {
   id: string;
   title: string;
   description: string;
   imageUrl?: string;
+  language?: string;
 }
 
 export interface ResultSetCrimeCase {
@@ -52,7 +53,7 @@ export interface ResultSetMotive {
 export interface PersonDto {
   id: number;
   name: string;
-  type: "VICTIM" | "WITNESS" | "SUSPECT";
+  type: "VICTIM" | "WITNESS" | "SUSPECT" | "INVESTIGATOR" | "EXPERT" | "FAMILY_MEMBER" | "NEIGHBOR" | "COLLEAGUE" | "FRIEND" | "ACQUAINTANCE" | "STRANGER" | "OTHER";
   age: number;
   profession: string;
   gender: string;
@@ -61,6 +62,7 @@ export interface PersonDto {
   financialSituation: string;
   previousConvictions: string[];
   relationshipToCase: string;
+  lifeStatus?: "ALIVE" | "DEAD" | "MISSING" | "UNKNOWN";
 }
 
 export interface ResultSetPerson {
@@ -99,10 +101,16 @@ export interface ResultSetInterrogation {
   items?: InterrogationDto[];
 }
 
+export interface CreateReferenceDto {
+  type: string;
+  id: number;
+}
+
 export interface CreateInterrogationAnswerDto {
   question: string;
   userId: string;
   personId: number;
+  reference?: CreateReferenceDto;
 }
 
 export interface QuestionAndAnswerDto {
@@ -113,6 +121,72 @@ export interface QuestionAndAnswerDto {
 
 export interface ResultSetQuestionAndAnswer {
   items?: QuestionAndAnswerDto[];
+}
+
+// New DTOs for task management
+export interface TaskInfoDto {
+  id: string;
+  status: "PENDING" | "RUNNING" | "COMPLETED" | "FAILED";
+  createdAt: string;
+  updatedAt?: string;
+  result?: any;
+  error?: string;
+}
+
+// New DTOs for criminal police teams
+export interface CriminalPoliceTeamDto {
+  id: number;
+  name: string;
+  description: string;
+  members: PersonDto[];
+}
+
+export interface ResultSetCriminalPoliceTeam {
+  items?: CriminalPoliceTeamDto[];
+}
+
+// New DTOs for evidence reports
+export interface EvidenceReportDto {
+  id: number;
+  evidenceId: number;
+  reportType: string;
+  content: string;
+  createdAt: string;
+  createdBy: string;
+}
+
+export interface ResultSetEvidenceReport {
+  items?: EvidenceReportDto[];
+}
+
+export interface CreateEvidenceReportDto {
+  evidenceId: number;
+  reportType: string;
+  content: string;
+  createdBy: string;
+}
+
+// New DTOs for autopsy reports
+export interface AutopsyReportDto {
+  id: number;
+  victimId: number;
+  causeOfDeath: string;
+  timeOfDeath?: string;
+  additionalFindings: string;
+  performedBy: string;
+  createdAt: string;
+}
+
+export interface ResultSetAutopsyReport {
+  items?: AutopsyReportDto[];
+}
+
+export interface CreateAutopsyReportDto {
+  victimId: number;
+  causeOfDeath: string;
+  timeOfDeath?: string;
+  additionalFindings: string;
+  performedBy: string;
 }
 
 // Prompt Template Types
@@ -141,7 +215,16 @@ export interface PromptTemplateDto {
   createdAt: string;
 }
 
-// OpenAPI paths for type-safe requests
+export interface TemplateVariableDto {
+  key?: string;
+  value?: string;
+}
+
+export interface TemplateContextDto {
+  variables?: TemplateVariableDto[];
+}
+
+// Updated OpenAPI paths for type-safe requests
 export interface CrimeApiPaths {
   "/crimecase": {
     get: {
@@ -156,11 +239,14 @@ export interface CrimeApiPaths {
     post: {
       requestBody: {
         content: {
-          "application/json": CreateCrimeCaseDto;
+          "application/json": TemplateContextDto;
         };
       };
       responses: {
-        201: {
+        202: {
+          headers: {
+            Location: string;
+          };
           content?: never;
         };
       };
@@ -190,6 +276,38 @@ export interface CrimeApiPaths {
       responses: {
         204: {
           content?: never;
+        };
+      };
+    };
+  };
+  "/crimecase/{id}/victim": {
+    get: {
+      parameters: {
+        path: {
+          id: string;
+        };
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetPerson;
+          };
+        };
+      };
+    };
+  };
+  "/crimecase/{id}/criminal-police-teams": {
+    get: {
+      parameters: {
+        path: {
+          id: string;
+        };
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetCriminalPoliceTeam;
+          };
         };
       };
     };
@@ -311,6 +429,68 @@ export interface CrimeApiPaths {
       };
     };
   };
+  "/task/{id}": {
+    get: {
+      parameters: {
+        path: {
+          id: string;
+        };
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": TaskInfoDto;
+          };
+        };
+      };
+    };
+  };
+  "/evidence-report": {
+    get: {
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetEvidenceReport;
+          };
+        };
+      };
+    };
+    post: {
+      requestBody: {
+        content: {
+          "application/json": CreateEvidenceReportDto;
+        };
+      };
+      responses: {
+        201: {
+          content?: never;
+        };
+      };
+    };
+  };
+  "/autopsy-report": {
+    get: {
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetAutopsyReport;
+          };
+        };
+      };
+    };
+    post: {
+      requestBody: {
+        content: {
+          "application/json": CreateAutopsyReportDto;
+        };
+      };
+      responses: {
+        201: {
+          content?: never;
+        };
+      };
+    };
+  };
   "/interrogation": {
     get: {
       parameters?: {
@@ -394,6 +574,22 @@ export interface CrimeApiPaths {
         200: {
           content: {
             "application/json": PromptTemplateDto;
+          };
+        };
+      };
+    };
+  };
+  "/prompt-template/{id}/template-context": {
+    get: {
+      parameters: {
+        path: {
+          id: string;
+        };
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": TemplateContextDto;
           };
         };
       };

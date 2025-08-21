@@ -12,25 +12,28 @@ Deno.serve(async (req) => {
   }
 
   try {
-    console.log('Starting create-crime-case function...');
+    console.log('Starting get-template-context function...');
     
     if (!CRIME_AI_BASE_URL || !CRIME_AI_TOKEN) {
       throw new Error('Missing required environment variables');
     }
 
-    const templateContext: TemplateContextDto = await req.json();
-    console.log('Creating crime case with template context:', templateContext);
+    const { templateId } = await req.json();
+    console.log('Getting template context for ID:', templateId);
 
-    const url = `${CRIME_AI_BASE_URL}/crimecase`;
+    if (!templateId) {
+      throw new Error('Missing templateId parameter');
+    }
+
+    const url = `${CRIME_AI_BASE_URL}/prompt-template/${templateId}/template-context`;
     console.log('Making request to:', url);
 
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Authorization': `Bearer ${CRIME_AI_TOKEN}`,
-        'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
-      body: JSON.stringify(templateContext),
     });
 
     console.log('API response status:', response.status);
@@ -41,19 +44,10 @@ Deno.serve(async (req) => {
       throw new Error(`API request failed: ${response.status} ${errorText}`);
     }
 
-    // Extract Location header for task polling
-    const locationHeader = response.headers.get('Location');
-    console.log('Location header:', locationHeader);
+    const templateContext: TemplateContextDto = await response.json();
+    console.log('Template context received:', templateContext);
 
-    if (!locationHeader) {
-      console.error('No Location header in response');
-      throw new Error('Missing Location header in API response');
-    }
-
-    console.log('Successfully created crime case task');
-
-    return new Response(JSON.stringify({ locationUrl: locationHeader }), {
-      status: 202,
+    return new Response(JSON.stringify(templateContext), {
       headers: { 
         ...corsHeaders, 
         'Content-Type': 'application/json' 
@@ -61,7 +55,7 @@ Deno.serve(async (req) => {
     });
 
   } catch (error) {
-    console.error('Error in create-crime-case function:', error);
+    console.error('Error in get-template-context function:', error);
     return new Response(JSON.stringify({ 
       error: error.message 
     }), {

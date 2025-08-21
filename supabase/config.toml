@@ -1,4 +1,17 @@
+
 project_id = "bofaqytiyycmgbqbmctd"
 
 [functions.create-prompt-template]
+verify_jwt = false
+
+[functions.create-crime-case]
+verify_jwt = false
+
+[functions.get-task-info]
+verify_jwt = false
+
+[functions.get-template-context]
+verify_jwt = false
+
+[functions.get-victims]
 verify_jwt = false
