@@ -26,9 +26,10 @@ export const useTaskInfo = (taskId: string | null, enabled: boolean = true) => {
       return data as TaskInfoDto;
     },
     enabled: enabled && !!taskId,
-    refetchInterval: (data) => {
+    refetchInterval: (query) => {
       // Poll every second until task is completed or failed
-      return data?.status === 'COMPLETED' || data?.status === 'FAILED' ? false : 1000;
+      const taskData = query.state.data;
+      return taskData?.status === 'COMPLETED' || taskData?.status === 'FAILED' ? false : 1000;
     },
     staleTime: 0, // Always refetch for real-time updates
   });
