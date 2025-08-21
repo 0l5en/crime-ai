@@ -1,4 +1,6 @@
 
+import { useNavigate } from 'react-router-dom';
+
 interface GameCardProps {
   title: string;
   description: string;
@@ -18,8 +20,17 @@ const GameCard = ({
   userId,
   difficulty = 'Mittel',
   estimatedTime = '30-45 min',
-  onClick = () => console.log(`Starting case ${caseId}`)
+  onClick
 }: GameCardProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick();
+    }
+    navigate(`/case/${caseId}`);
+  };
+
   const getDifficultyColor = (level: string) => {
     switch (level) {
       case 'Leicht': return 'text-success';
@@ -31,15 +42,22 @@ const GameCard = ({
 
   return (
     <div 
-      className={`card bg-dark border-secondary text-light card-hover h-100 ${imageColor || ''}`}
-      onClick={onClick}
+      className="card bg-dark border-secondary text-light card-hover h-100"
+      onClick={handleCardClick}
       data-testid="case-card"
       data-case-id={caseId}
       style={{ cursor: 'pointer' }}
     >
-      <div className="card-body d-flex flex-column">
-        <h3 className="card-title h5 text-light mb-3" data-testid="case-title">{title}</h3>
-        <p className="card-text text-secondary flex-grow-1 mb-3" data-testid="case-description">
+      <div className="card-header p-0">
+        <div className={`${imageColor || 'bg-gradient-red'} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
+          <div className="bg-light bg-opacity-25 rounded d-flex align-items-center justify-content-center" style={{ width: '4rem', height: '4rem' }}>
+            <div className="bg-light bg-opacity-50 rounded" style={{ width: '2rem', height: '2rem' }}></div>
+          </div>
+        </div>
+      </div>
+      <div className="card-body p-4 d-flex flex-column">
+        <h5 className="card-title mb-3 text-light" data-testid="case-title">{title}</h5>
+        <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description">
           {description}
         </p>
         
@@ -59,7 +77,7 @@ const GameCard = ({
             data-testid="case-start-button"
             onClick={(e) => {
               e.stopPropagation();
-              onClick();
+              handleCardClick();
             }}
           >
             <i className="bi bi-play-fill me-1"></i>
