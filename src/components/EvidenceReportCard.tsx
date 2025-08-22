@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
-import { useKeyCloak } from '@/contexts/KeycloakContext';
+import { useKeycloak } from '@/contexts/KeycloakContext';
 import { format } from 'date-fns';
 
 interface EvidenceReportCardProps {
@@ -14,7 +13,7 @@ interface EvidenceReportCardProps {
 
 const EvidenceReportCard = ({ id, report, personId }: EvidenceReportCardProps) => {
   const [question, setQuestion] = useState('');
-  const { keycloak } = useKeyCloak();
+  const { keycloak } = useKeycloak();
   
   const createAnswer = useCreateInterrogationAnswer();
   const { data: questionAndAnswers, isLoading: qaLoading } = useQuestionAndAnswers(
