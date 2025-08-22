@@ -20,41 +20,24 @@ serve(async (req) => {
     const userId = url.searchParams.get('userId');
     const personId = url.searchParams.get('personId');
     const referenceId = url.searchParams.get('referenceId');
-    const referenceType = url.searchParams.get('referenceType');
-    
-    // If we have a request body (for reference-based queries), parse it
-    let bodyParams: any = {};
-    if (req.method === 'POST' || req.body) {
-      try {
-        bodyParams = await req.json();
-      } catch (e) {
-        // Body might be empty, that's ok
-      }
-    }
-    
-    // Use body params if available, otherwise use URL params
-    const finalUserId = bodyParams.userId || userId;
-    const finalPersonId = bodyParams.personId || personId;
-    const finalReferenceId = bodyParams.referenceId || referenceId;
-    const finalReferenceType = bodyParams.referenceType || referenceType;
     
     console.log('Query parameters:', { 
-      userId: finalUserId, 
-      personId: finalPersonId,
-      referenceId: finalReferenceId,
-      referenceType: finalReferenceType
+      userId, 
+      personId,
+      referenceId
     });
 
     const apiUrl = new URL(`${CRIME_AI_API_BASE_URL}/interrogation`);
     
-    if (finalUserId) {
-      apiUrl.searchParams.append('userId', finalUserId);
+    // Add query parameters to the API request
+    if (userId) {
+      apiUrl.searchParams.append('userId', userId);
     }
-    if (finalPersonId) {
-      apiUrl.searchParams.append('personId', finalPersonId);
+    if (personId) {
+      apiUrl.searchParams.append('personId', personId);
     }
-    if (finalReferenceId) {
-      apiUrl.searchParams.append('referenceId', finalReferenceId);
+    if (referenceId) {
+      apiUrl.searchParams.append('referenceId', referenceId);
     }
 
     console.log(`Making request to: ${apiUrl.toString()}`);
@@ -72,7 +55,7 @@ serve(async (req) => {
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`API error: ${response.status} - ${errorText}`);
-      throw new Error(`API request failed: ${response.status}`);
+      throw new Error(`API request failed: ${response.status} - ${errorText}`);
     }
 
     const data = await response.json();

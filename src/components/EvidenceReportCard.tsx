@@ -19,7 +19,7 @@ const EvidenceReportCard = ({ id, report, personId }: EvidenceReportCardProps) =
   const { data: questionAndAnswers, isLoading: qaLoading } = useQuestionAndAnswers(
     undefined, // no interrogationId for reference-based queries
     id, // use evidence report id as referenceId
-    'EVIDENCE_REPORT'
+    keycloak?.tokenParsed?.sub // pass userId from Keycloak
   );
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -8,20 +8,28 @@ type ResultSetQuestionAndAnswer = components['schemas']['ResultSetQuestionAndAns
 export const useQuestionAndAnswers = (
   interrogationId?: string,
   referenceId?: number,
-  referenceType?: 'EVIDENCE_REPORT'
+  userId?: string
 ) => {
   return useQuery({
     queryKey: referenceId 
-      ? ['questionAndAnswers', 'reference', referenceId, referenceType]
+      ? ['questionAndAnswers', 'reference', referenceId, userId]
       : ['questionAndAnswers', interrogationId],
     queryFn: async (): Promise<ResultSetQuestionAndAnswer> => {
-      if (referenceId && referenceType) {
-        console.log(`Calling list-interrogations for reference ${referenceId} with type ${referenceType}`);
+      if (referenceId && userId) {
+        console.log(`Calling list-interrogations for reference ${referenceId} with userId ${userId}`);
+        
+        // Build query parameters for the edge function
+        const queryParams = new URLSearchParams({
+          referenceId: referenceId.toString(),
+          userId: userId
+        });
         
         // First get interrogations with reference filter
         const { data: interrogationsData, error: interrogationsError } = await supabase.functions.invoke('list-interrogations', {
           method: 'GET',
-          body: { referenceId: referenceId.toString(), referenceType }
+          headers: {
+            'Content-Type': 'application/json'
+          }
         });
         
         if (interrogationsError) {
@@ -36,8 +44,9 @@ export const useQuestionAndAnswers = (
           const firstInterrogation = interrogationsData.items[0];
           console.log(`Getting Q&A for interrogation ${firstInterrogation.id}`);
           
-          const { data: qaData, error: qaError } = await supabase.functions.invoke(`get-question-answers/${firstInterrogation.id}`, {
-            method: 'GET',
+          const { data: qaData, error: qaError } = await supabase.functions.invoke('get-question-answers', {
+            method: 'POST',
+            body: { interrogationId: firstInterrogation.id }
           });
           
           if (qaError) {
@@ -54,8 +63,9 @@ export const useQuestionAndAnswers = (
       } else if (interrogationId) {
         console.log(`Calling get-question-answers edge function for interrogation ${interrogationId}`);
         
-        const { data, error } = await supabase.functions.invoke(`get-question-answers/${interrogationId}`, {
-          method: 'GET',
+        const { data, error } = await supabase.functions.invoke('get-question-answers', {
+          method: 'POST',
+          body: { interrogationId: interrogationId }
         });
         
         if (error) {
@@ -67,9 +77,9 @@ export const useQuestionAndAnswers = (
         return data as ResultSetQuestionAndAnswer;
       }
       
-      throw new Error('Either interrogationId or reference parameters must be provided');
+      throw new Error('Either interrogationId or reference parameters (referenceId + userId) must be provided');
     },
     staleTime: 30 * 1000, // 30 seconds (more frequent updates for chat-like interface)
-    enabled: !!(interrogationId || (referenceId && referenceType)), // Only run query if we have the required parameters
+    enabled: !!(interrogationId || (referenceId && userId)), // Only run query if we have the required parameters
   });
 };
