@@ -33,6 +33,12 @@ export const useCreateInterrogationAnswer = () => {
       queryClient.invalidateQueries({
         queryKey: ['questionAndAnswers']
       });
+      // Invalidate evidence report specific queries if reference is used
+      if (variables.reference) {
+        queryClient.invalidateQueries({
+          queryKey: ['questionAndAnswers', 'reference', variables.reference.referenceId]
+        });
+      }
     },
   });
 };

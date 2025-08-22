@@ -108,9 +108,9 @@ const EvidenceDetails = () => {
 
         <hr className="border-secondary mb-4" />
 
-        {/* Evidence Reports Section */}
+        {/* Evidence Reports Section - Now single column with integrated interrogation */}
         <div>
-          <h3 className="text-light mb-4">Evidence Reports</h3>
+          <h3 className="text-light mb-4">Evidence Reports & Discussions</h3>
           
           {reportsLoading ? (
             <div className="text-center text-muted py-5">
@@ -119,7 +119,7 @@ const EvidenceDetails = () => {
           ) : evidenceReports?.items && evidenceReports.items.length > 0 ? (
             <div className="row">
               {evidenceReports.items.map((report) => (
-                <div key={report.id} className="col-lg-6 mb-4">
+                <div key={report.id} className="col-12 mb-4">
                   <EvidenceReportCard
                     id={report.id}
                     report={report.report}

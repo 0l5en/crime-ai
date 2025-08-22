@@ -1,7 +1,6 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { corsHeaders } from "../_shared/cors.ts";
-import type { ResultSetInterrogation } from "../_shared/crime-api-types.ts";
 
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
 const CRIME_AI_API_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
@@ -15,19 +14,52 @@ serve(async (req) => {
   }
 
   try {
-    console.log('Fetching interrogations from external API...');
+    console.log('Fetching interrogations via external API...');
+    
+    const url = new URL(req.url);
+    const userId = url.searchParams.get('userId');
+    const personId = url.searchParams.get('personId');
+    const referenceId = url.searchParams.get('referenceId');
+    const referenceType = url.searchParams.get('referenceType');
+    
+    // If we have a request body (for reference-based queries), parse it
+    let bodyParams: any = {};
+    if (req.method === 'POST' || req.body) {
+      try {
+        bodyParams = await req.json();
+      } catch (e) {
+        // Body might be empty, that's ok
+      }
+    }
+    
+    // Use body params if available, otherwise use URL params
+    const finalUserId = bodyParams.userId || userId;
+    const finalPersonId = bodyParams.personId || personId;
+    const finalReferenceId = bodyParams.referenceId || referenceId;
+    const finalReferenceType = bodyParams.referenceType || referenceType;
+    
+    console.log('Query parameters:', { 
+      userId: finalUserId, 
+      personId: finalPersonId,
+      referenceId: finalReferenceId,
+      referenceType: finalReferenceType
+    });
 
-    const { userId, personId } = await req.json();
-    console.log(`User ID: ${userId}, Person ID: ${personId}`);
-
-    if (!userId || !personId) {
-      throw new Error('userId and personId are required');
+    const apiUrl = new URL(`${CRIME_AI_API_BASE_URL}/interrogation`);
+    
+    if (finalUserId) {
+      apiUrl.searchParams.append('userId', finalUserId);
+    }
+    if (finalPersonId) {
+      apiUrl.searchParams.append('personId', finalPersonId);
+    }
+    if (finalReferenceId) {
+      apiUrl.searchParams.append('referenceId', finalReferenceId);
     }
 
-    const url = `${CRIME_AI_API_BASE_URL}/interrogation?userId=${encodeURIComponent(userId)}&personId=${encodeURIComponent(personId)}`;
-    console.log(`Making request to: ${url}`);
+    console.log(`Making request to: ${apiUrl.toString()}`);
 
-    const response = await fetch(url, {
+    const response = await fetch(apiUrl.toString(), {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${CRIME_AI_API_TOKEN}`,
@@ -43,7 +75,7 @@ serve(async (req) => {
       throw new Error(`API request failed: ${response.status}`);
     }
 
-    const data: ResultSetInterrogation = await response.json();
+    const data = await response.json();
     console.log('Successfully fetched interrogations:', data);
 
     return new Response(JSON.stringify(data), {
@@ -54,8 +86,8 @@ serve(async (req) => {
     console.error('Error in list-interrogations function:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
-      {
-        status: 500,
+      { 
+        status: 500, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );

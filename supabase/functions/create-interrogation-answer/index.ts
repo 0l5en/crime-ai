@@ -20,7 +20,7 @@ serve(async (req) => {
     const requestBody: CreateInterrogationAnswerDto = await req.json();
     console.log('Request body:', requestBody);
     
-    const { question, userId, personId } = requestBody;
+    const { question, userId, personId, reference } = requestBody;
     
     if (!question || !userId || !personId) {
       throw new Error('question, userId and personId are required');
@@ -29,6 +29,21 @@ serve(async (req) => {
     const url = `${CRIME_AI_API_BASE_URL}/interrogation`;
     console.log(`Making request to: ${url}`);
 
+    const payload: any = {
+      question,
+      userId,
+      personId: parseInt(personId.toString()),
+    };
+
+    // Add reference if provided
+    if (reference) {
+      payload.reference = {
+        referenceId: parseInt(reference.referenceId.toString()),
+        referenceType: reference.referenceType,
+      };
+      console.log('Including reference:', payload.reference);
+    }
+
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -36,11 +51,7 @@ serve(async (req) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        question,
-        userId,
-        personId: parseInt(personId.toString()),
-      }),
+      body: JSON.stringify(payload),
     });
 
     console.log(`API response status: ${response.status}`);

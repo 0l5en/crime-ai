@@ -1,11 +1,10 @@
-
 // Updated shared types for the new OpenAPI schema
+
 export interface CrimeCaseDto {
   id: string;
   title: string;
   description: string;
   imageUrl?: string;
-  language?: string;
 }
 
 export interface ResultSetCrimeCase {
@@ -68,25 +67,6 @@ export interface ResultSetMotive {
   items?: MotiveDto[];
 }
 
-export interface PersonDto {
-  id: number;
-  name: string;
-  type: "VICTIM" | "WITNESS" | "SUSPECT" | "INVESTIGATOR" | "EXPERT" | "FAMILY_MEMBER" | "NEIGHBOR" | "COLLEAGUE" | "FRIEND" | "ACQUAINTANCE" | "STRANGER" | "OTHER";
-  age: number;
-  profession: string;
-  gender: string;
-  personality: string;
-  maritalStatus: string;
-  financialSituation: string;
-  previousConvictions: string[];
-  relationshipToCase: string;
-  lifeStatus?: "ALIVE" | "DEAD" | "MISSING" | "UNKNOWN";
-}
-
-export interface ResultSetPerson {
-  items?: PersonDto[];
-}
-
 export interface SolutionAttemptDto {
   id: number;
   userId: string;
@@ -98,15 +78,33 @@ export interface ResultSetSolutionAttempt {
   items?: SolutionAttemptDto[];
 }
 
+export interface CreateSolutionAttemptDto {
+  solution: SolutionDto;
+  userId: string;
+}
+
 export interface SolutionDto {
   evidenceIds: number[];
   motiveIds: number[];
   personIds: number[];
 }
 
-export interface CreateSolutionAttemptDto {
-  solution: SolutionDto;
-  userId: string;
+export interface PersonDto {
+  id: number;
+  name: string;
+  type: "VICTIM" | "WITNESS" | "SUSPECT";
+  age: number;
+  profession: string;
+  gender: string;
+  personality: string;
+  maritalStatus: string;
+  financialSituation: string;
+  previousConvictions: string[];
+  relationshipToCase: string;
+}
+
+export interface ResultSetPerson {
+  items?: PersonDto[];
 }
 
 export interface InterrogationDto {
@@ -120,8 +118,8 @@ export interface ResultSetInterrogation {
 }
 
 export interface CreateReferenceDto {
-  type: string;
-  id: number;
+  referenceId: number;
+  referenceType: "EVIDENCE_REPORT";
 }
 
 export interface CreateInterrogationAnswerDto {
@@ -141,59 +139,9 @@ export interface ResultSetQuestionAndAnswer {
   items?: QuestionAndAnswerDto[];
 }
 
-// New DTOs for task management
-export interface TaskInfoDto {
-  id: string;
-  status: "PENDING" | "RUNNING" | "COMPLETED" | "FAILED";
-  createdAt: string;
-  updatedAt?: string;
-  result?: any;
-  error?: string;
-}
-
-// New DTOs for criminal police teams
-export interface CriminalPoliceTeamDto {
-  id: number;
+export interface CreatePromptTemplateDto {
   name: string;
-  description: string;
-  members: PersonDto[];
-}
-
-export interface ResultSetCriminalPoliceTeam {
-  items?: CriminalPoliceTeamDto[];
-}
-
-// New DTOs for autopsy reports
-export interface AutopsyReportDto {
-  id: number;
-  victimId: number;
-  causeOfDeath: string;
-  timeOfDeath?: string;
-  additionalFindings: string;
-  performedBy: string;
-  createdAt: string;
-}
-
-export interface ResultSetAutopsyReport {
-  items?: AutopsyReportDto[];
-}
-
-export interface CreateAutopsyReportDto {
-  victimId: number;
-  causeOfDeath: string;
-  timeOfDeath?: string;
-  additionalFindings: string;
-  performedBy: string;
-}
-
-// Prompt Template Types
-export interface PromptTemplateIdentifierDto {
-  id: number;
-  name: string;
-}
-
-export interface ResultSetPromptTemplateIdentifier {
-  items?: PromptTemplateIdentifierDto[];
+  template: string;
 }
 
 export interface PromptTemplateVersionDto {
@@ -205,6 +153,15 @@ export interface ResultSetPromptTemplateVersion {
   items?: PromptTemplateVersionDto[];
 }
 
+export interface PromptTemplateIdentifierDto {
+  id: number;
+  name: string;
+}
+
+export interface ResultSetPromptTemplateIdentifier {
+  items?: PromptTemplateIdentifierDto[];
+}
+
 export interface PromptTemplateDto {
   id: number;
   name: string;
@@ -212,390 +169,11 @@ export interface PromptTemplateDto {
   createdAt: string;
 }
 
-export interface TemplateVariableDto {
-  key?: string;
-  value?: string;
-}
-
 export interface TemplateContextDto {
   variables?: TemplateVariableDto[];
 }
 
-// Updated OpenAPI paths for type-safe requests
-export interface CrimeApiPaths {
-  "/crimecase": {
-    get: {
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetCrimeCase;
-          };
-        };
-      };
-    };
-    post: {
-      requestBody: {
-        content: {
-          "application/json": TemplateContextDto;
-        };
-      };
-      responses: {
-        202: {
-          headers: {
-            Location: string;
-          };
-          content?: never;
-        };
-      };
-    };
-  };
-  "/crimecase/{id}": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": CrimeCaseDto;
-          };
-        };
-      };
-    };
-    delete: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        204: {
-          content?: never;
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/victim": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetPerson;
-          };
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/criminal-police-teams": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetCriminalPoliceTeam;
-          };
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/crimescene": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": CrimeSceneDto;
-          };
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/evidence": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetEvidence;
-          };
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/motive": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetMotive;
-          };
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/solution-attempt": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-        query?: {
-          "user-id"?: string;
-          success?: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetSolutionAttempt;
-          };
-        };
-      };
-    };
-    post: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      requestBody: {
-        content: {
-          "application/json": CreateSolutionAttemptDto;
-        };
-      };
-      responses: {
-        201: {
-          content?: never;
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/suspect": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetPerson;
-          };
-        };
-      };
-    };
-  };
-  "/crimecase/{id}/witness": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetPerson;
-          };
-        };
-      };
-    };
-  };
-  "/task/{id}": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": TaskInfoDto;
-          };
-        };
-      };
-    };
-  };
-  "/evidence-report": {
-    get: {
-      parameters?: {
-        query?: {
-          "evidenceId"?: string;
-          "personId"?: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetEvidenceReport;
-          };
-        };
-      };
-    };
-    post: {
-      requestBody: {
-        content: {
-          "application/json": CreateEvidenceReportDto;
-        };
-      };
-      responses: {
-        201: {
-          content?: never;
-        };
-      };
-    };
-  };
-  "/autopsy-report": {
-    get: {
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetAutopsyReport;
-          };
-        };
-      };
-    };
-    post: {
-      requestBody: {
-        content: {
-          "application/json": CreateAutopsyReportDto;
-        };
-      };
-      responses: {
-        201: {
-          content?: never;
-        };
-      };
-    };
-  };
-  "/interrogation": {
-    get: {
-      parameters?: {
-        query?: {
-          "user-id"?: string;
-          "person-id"?: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetInterrogation;
-          };
-        };
-      };
-    };
-    post: {
-      requestBody: {
-        content: {
-          "application/json": CreateInterrogationAnswerDto;
-        };
-      };
-      responses: {
-        201: {
-          content?: never;
-        };
-      };
-    };
-  };
-  "/interrogation/{id}/question-and-answer": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetQuestionAndAnswer;
-          };
-        };
-      };
-    };
-  };
-  "/prompt-template-identifier": {
-    get: {
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetPromptTemplateIdentifier;
-          };
-        };
-      };
-    };
-  };
-  "/prompt-template-history": {
-    get: {
-      parameters: {
-        query: {
-          name: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": ResultSetPromptTemplateVersion;
-          };
-        };
-      };
-    };
-  };
-  "/prompt-template/{id}": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": PromptTemplateDto;
-          };
-        };
-      };
-    };
-  };
-  "/prompt-template/{id}/template-context": {
-    get: {
-      parameters: {
-        path: {
-          id: string;
-        };
-      };
-      responses: {
-        200: {
-          content: {
-            "application/json": TemplateContextDto;
-          };
-        };
-      };
-    };
-  };
+export interface TemplateVariableDto {
+  key?: string;
+  value?: string;
 }
