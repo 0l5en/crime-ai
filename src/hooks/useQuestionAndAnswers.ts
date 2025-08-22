@@ -28,15 +28,14 @@ export const useQuestionAndAnswers = (
         
         console.log('Query parameters:', queryParams.toString());
         
-        // First get interrogations with reference filter - pass query params in URL
-        const { data: interrogationsData, error: interrogationsError } = await supabase.functions.invoke('list-interrogations', {
+        // First get interrogations with reference filter - pass query params in function name
+        const functionNameWithParams = `list-interrogations?${queryParams.toString()}`;
+        
+        const { data: interrogationsData, error: interrogationsError } = await supabase.functions.invoke(functionNameWithParams, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           }
-        }, {
-          // Pass query parameters via the function invoke options
-          query: queryParams
         });
         
         if (interrogationsError) {
