@@ -1,4 +1,3 @@
-
 import EvidenceCard from "./EvidenceCard";
 import SuspectCard from "./SuspectCard";
 import WitnessCard from "./WitnessCard";
@@ -64,6 +63,7 @@ const CaseContent = ({
                   location={(evidence as any).location || 'Unknown location'}
                   analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
                   imageColor={getImageColor(index)}
+                  evidenceType={evidence.evidenceType}
                 />
               </div>
             ))}

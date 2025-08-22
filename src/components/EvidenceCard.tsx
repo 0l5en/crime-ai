@@ -5,11 +5,37 @@ interface EvidenceCardProps {
   location: string;
   analysisResult: string;
   imageColor: string;
+  evidenceType?: "FORENSIC" | "BALLISTIC" | "DIGITAL" | "DOCUMENT" | "TRACE" | "OTHER";
 }
 
-const EvidenceCard = ({ title, description, location, analysisResult, imageColor }: EvidenceCardProps) => {
+const getEvidenceTypeColor = (type: string) => {
+  switch (type) {
+    case 'FORENSIC':
+      return 'bg-primary'; // Blue
+    case 'BALLISTIC':
+      return 'bg-danger'; // Red
+    case 'DIGITAL':
+      return 'bg-success'; // Green
+    case 'DOCUMENT':
+      return 'bg-warning'; // Yellow
+    case 'TRACE':
+      return 'bg-info'; // Light Blue
+    case 'OTHER':
+    default:
+      return 'bg-secondary'; // Gray
+  }
+};
+
+const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType }: EvidenceCardProps) => {
   return (
-    <div className="card bg-dark border-secondary text-light card-hover">
+    <div className="card bg-dark border-secondary text-light card-hover position-relative">
+      {evidenceType && (
+        <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 10 }}>
+          <span className={`badge ${getEvidenceTypeColor(evidenceType)} badge-pill fs-6`}>
+            {evidenceType}
+          </span>
+        </div>
+      )}
       <div className="card-header p-0">
         <div className={`${imageColor} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
           <div className="bg-light bg-opacity-25 rounded d-flex align-items-center justify-content-center" style={{ width: '4rem', height: '4rem' }}>

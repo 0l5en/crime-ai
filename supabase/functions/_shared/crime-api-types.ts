@@ -34,6 +34,7 @@ export interface EvidenceDto {
   description: string;
   location: string;
   analysisResult: string;
+  evidenceType: "FORENSIC" | "BALLISTIC" | "DIGITAL" | "DOCUMENT" | "TRACE" | "OTHER";
 }
 
 export interface ResultSetEvidence {
