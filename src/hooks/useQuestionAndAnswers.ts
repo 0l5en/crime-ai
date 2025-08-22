@@ -8,28 +8,35 @@ type ResultSetQuestionAndAnswer = components['schemas']['ResultSetQuestionAndAns
 export const useQuestionAndAnswers = (
   interrogationId?: string,
   referenceId?: number,
-  userId?: string
+  userId?: string,
+  personId?: number
 ) => {
   return useQuery({
     queryKey: referenceId 
-      ? ['questionAndAnswers', 'reference', referenceId, userId]
+      ? ['questionAndAnswers', 'reference', referenceId, userId, personId]
       : ['questionAndAnswers', interrogationId],
     queryFn: async (): Promise<ResultSetQuestionAndAnswer> => {
-      if (referenceId && userId) {
-        console.log(`Calling list-interrogations for reference ${referenceId} with userId ${userId}`);
+      if (referenceId && userId && personId) {
+        console.log(`Calling list-interrogations for reference ${referenceId} with userId ${userId} and personId ${personId}`);
         
         // Build query parameters for the edge function
         const queryParams = new URLSearchParams({
           referenceId: referenceId.toString(),
-          userId: userId
+          userId: userId,
+          personId: personId.toString()
         });
         
-        // First get interrogations with reference filter
+        console.log('Query parameters:', queryParams.toString());
+        
+        // First get interrogations with reference filter - pass query params in URL
         const { data: interrogationsData, error: interrogationsError } = await supabase.functions.invoke('list-interrogations', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           }
+        }, {
+          // Pass query parameters via the function invoke options
+          query: queryParams
         });
         
         if (interrogationsError) {
@@ -77,9 +84,9 @@ export const useQuestionAndAnswers = (
         return data as ResultSetQuestionAndAnswer;
       }
       
-      throw new Error('Either interrogationId or reference parameters (referenceId + userId) must be provided');
+      throw new Error('Either interrogationId or reference parameters (referenceId + userId + personId) must be provided');
     },
     staleTime: 30 * 1000, // 30 seconds (more frequent updates for chat-like interface)
-    enabled: !!(interrogationId || (referenceId && userId)), // Only run query if we have the required parameters
+    enabled: !!(interrogationId || (referenceId && userId && personId)), // Only run query if we have the required parameters
   });
 };

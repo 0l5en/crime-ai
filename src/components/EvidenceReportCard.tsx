@@ -16,10 +16,13 @@ const EvidenceReportCard = ({ id, report, personId }: EvidenceReportCardProps) =
   const { keycloak } = useKeycloak();
   
   const createAnswer = useCreateInterrogationAnswer();
+  
+  // Pass all required parameters to the hook
   const { data: questionAndAnswers, isLoading: qaLoading } = useQuestionAndAnswers(
     undefined, // no interrogationId for reference-based queries
     id, // use evidence report id as referenceId
-    keycloak?.tokenParsed?.sub // pass userId from Keycloak
+    keycloak?.tokenParsed?.sub, // pass userId from Keycloak
+    personId // pass personId from props
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
