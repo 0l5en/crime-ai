@@ -50,9 +50,12 @@ export const useQuestionAndAnswers = (
           const firstInterrogation = interrogationsData.items[0];
           console.log(`Getting Q&A for interrogation ${firstInterrogation.id}`);
           
-          const { data: qaData, error: qaError } = await supabase.functions.invoke('get-question-answers', {
-            method: 'POST',
-            body: { interrogationId: firstInterrogation.id }
+          // Use GET request with interrogationId as path parameter
+          const { data: qaData, error: qaError } = await supabase.functions.invoke(`get-question-answers/${firstInterrogation.id}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
           });
           
           if (qaError) {
@@ -69,9 +72,12 @@ export const useQuestionAndAnswers = (
       } else if (interrogationId) {
         console.log(`Calling get-question-answers edge function for interrogation ${interrogationId}`);
         
-        const { data, error } = await supabase.functions.invoke('get-question-answers', {
-          method: 'POST',
-          body: { interrogationId: interrogationId }
+        // Use GET request with interrogationId as path parameter
+        const { data, error } = await supabase.functions.invoke(`get-question-answers/${interrogationId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
         });
         
         if (error) {

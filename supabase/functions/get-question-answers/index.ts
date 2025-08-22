@@ -14,17 +14,29 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Only accept GET requests
+  if (req.method !== 'GET') {
+    return new Response(
+      JSON.stringify({ error: 'Method not allowed. Use GET.' }),
+      { 
+        status: 405, 
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
   try {
     console.log('Fetching question and answers from external API...');
     
     const url = new URL(req.url);
     const pathSegments = url.pathname.split('/');
+    // Extract interrogationId from path: /get-question-answers/{interrogationId}
     const interrogationId = pathSegments[pathSegments.length - 1];
     
-    console.log(`Interrogation ID: ${interrogationId}`);
+    console.log(`Interrogation ID extracted from path: ${interrogationId}`);
     
-    if (!interrogationId) {
-      throw new Error('interrogationId is required');
+    if (!interrogationId || interrogationId === 'get-question-answers') {
+      throw new Error('interrogationId is required as path parameter');
     }
 
     const apiUrl = `${CRIME_AI_API_BASE_URL}/interrogation/${interrogationId}/question-and-answer`;
