@@ -1,6 +1,12 @@
 
-import { corsHeaders } from '../_shared/cors.ts';
 import type { TemplateContextDto } from '../_shared/crime-api-types.ts';
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+  'Access-Control-Max-Age': '86400',
+};
 
 const CRIME_AI_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
 const CRIME_AI_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
