@@ -1,3 +1,4 @@
+
 // Updated shared types for the new OpenAPI schema
 export interface CrimeCaseDto {
   id: string;
@@ -42,11 +43,8 @@ export interface ResultSetEvidence {
 
 export interface EvidenceReportDto {
   id: number;
-  evidenceId: number;
-  reportType: string;
-  content: string;
-  createdAt: string;
-  createdBy: string;
+  report: string;
+  personId: number;
 }
 
 export interface ResultSetEvidenceReport {

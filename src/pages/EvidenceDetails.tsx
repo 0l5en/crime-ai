@@ -122,10 +122,8 @@ const EvidenceDetails = () => {
                 <div key={report.id} className="col-lg-6 mb-4">
                   <EvidenceReportCard
                     id={report.id}
-                    reportType={report.reportType}
-                    content={report.content}
-                    createdAt={report.createdAt}
-                    createdBy={report.createdBy}
+                    report={report.report}
+                    personId={report.personId}
                   />
                 </div>
               ))}
