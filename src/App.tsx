@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
 import CaseDashboard from "./pages/CaseDashboard";
 import CaseSolution from "./pages/CaseSolution";
+import EvidenceDetails from "./pages/EvidenceDetails";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin', 'standard']}>
                   <CaseDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/case/:caseId/evidence/:evidenceId"
+              element={
+                <ProtectedRoute requiredRoles={['admin', 'standard']}>
+                  <EvidenceDetails />
                 </ProtectedRoute>
               }
             />

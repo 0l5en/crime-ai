@@ -6,6 +6,7 @@ interface EvidenceCardProps {
   analysisResult: string;
   imageColor: string;
   evidenceType?: "FORENSIC" | "BALLISTIC" | "DIGITAL" | "DOCUMENT" | "TRACE" | "OTHER";
+  onClick?: () => void;
 }
 
 const getEvidenceTypeColor = (type: string) => {
@@ -26,9 +27,13 @@ const getEvidenceTypeColor = (type: string) => {
   }
 };
 
-const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType }: EvidenceCardProps) => {
+const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType, onClick }: EvidenceCardProps) => {
   return (
-    <div className="card bg-dark border-secondary text-light card-hover position-relative">
+    <div 
+      className={`card bg-dark border-secondary text-light card-hover position-relative ${onClick ? 'cursor-pointer' : ''}`}
+      onClick={onClick}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
+    >
       {evidenceType && (
         <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 10 }}>
           <span className={`badge ${getEvidenceTypeColor(evidenceType)} badge-pill fs-6`}>

@@ -1,3 +1,5 @@
+
+import { useNavigate } from "react-router-dom";
 import EvidenceCard from "./EvidenceCard";
 import SuspectCard from "./SuspectCard";
 import WitnessCard from "./WitnessCard";
@@ -36,6 +38,14 @@ const CaseContent = ({
   onInterrogate,
   getImageColor
 }: CaseContentProps) => {
+  const navigate = useNavigate();
+
+  const handleEvidenceClick = (evidenceId: number) => {
+    if (crimeCase?.id) {
+      navigate(`/case/${crimeCase.id}/evidence/${evidenceId}`);
+    }
+  };
+
   if (activeTab === 'overview') {
     return (
       <CaseOverview 
@@ -64,6 +74,7 @@ const CaseContent = ({
                   analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
                   imageColor={getImageColor(index)}
                   evidenceType={evidence.evidenceType}
+                  onClick={() => handleEvidenceClick(evidence.id)}
                 />
               </div>
             ))}

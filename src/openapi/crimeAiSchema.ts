@@ -143,6 +143,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/evidence-report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get evidence reports */
+    get: operations["listEvidenceReports"];
+    put?: never;
+    /** Create a new evidence report */
+    post: operations["createEvidenceReport"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/interrogation": {
     parameters: {
       query?: never;
@@ -308,6 +326,27 @@ export interface components {
     };
     ResultSetEvidence: {
       items?: components["schemas"]["EvidenceDto"][];
+    };
+    EvidenceReportDto: {
+      /** Format: int64 */
+      id: number;
+      /** Format: int64 */
+      evidenceId: number;
+      reportType: string;
+      content: string;
+      /** Format: date-time */
+      createdAt: string;
+      createdBy: string;
+    };
+    ResultSetEvidenceReport: {
+      items?: components["schemas"]["EvidenceReportDto"][];
+    };
+    CreateEvidenceReportDto: {
+      /** Format: int64 */
+      evidenceId: number;
+      reportType: string;
+      content: string;
+      createdBy: string;
     };
     MotiveDto: {
       /** Format: int64 */
@@ -796,6 +835,68 @@ export interface operations {
       };
       /** @description crime case not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listEvidenceReports: {
+    parameters: {
+      query?: {
+        /** @description evidence id */
+        "evidenceId"?: string;
+        /** @description person id */
+        "personId"?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetEvidenceReport"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createEvidenceReport: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new evidence report */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateEvidenceReportDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation */
+      201: {
         headers: {
           [name: string]: unknown;
         };

@@ -1,4 +1,3 @@
-
 // Updated shared types for the new OpenAPI schema
 export interface CrimeCaseDto {
   id: string;
@@ -39,6 +38,26 @@ export interface EvidenceDto {
 
 export interface ResultSetEvidence {
   items?: EvidenceDto[];
+}
+
+export interface EvidenceReportDto {
+  id: number;
+  evidenceId: number;
+  reportType: string;
+  content: string;
+  createdAt: string;
+  createdBy: string;
+}
+
+export interface ResultSetEvidenceReport {
+  items?: EvidenceReportDto[];
+}
+
+export interface CreateEvidenceReportDto {
+  evidenceId: number;
+  reportType: string;
+  content: string;
+  createdBy: string;
 }
 
 export interface MotiveDto {
@@ -144,27 +163,6 @@ export interface CriminalPoliceTeamDto {
 
 export interface ResultSetCriminalPoliceTeam {
   items?: CriminalPoliceTeamDto[];
-}
-
-// New DTOs for evidence reports
-export interface EvidenceReportDto {
-  id: number;
-  evidenceId: number;
-  reportType: string;
-  content: string;
-  createdAt: string;
-  createdBy: string;
-}
-
-export interface ResultSetEvidenceReport {
-  items?: EvidenceReportDto[];
-}
-
-export interface CreateEvidenceReportDto {
-  evidenceId: number;
-  reportType: string;
-  content: string;
-  createdBy: string;
 }
 
 // New DTOs for autopsy reports
@@ -448,6 +446,12 @@ export interface CrimeApiPaths {
   };
   "/evidence-report": {
     get: {
+      parameters?: {
+        query?: {
+          "evidenceId"?: string;
+          "personId"?: string;
+        };
+      };
       responses: {
         200: {
           content: {
