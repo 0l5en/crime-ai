@@ -11,9 +11,19 @@ export const useInterrogations = (userId: string, personId: number) => {
     queryFn: async (): Promise<ResultSetInterrogation> => {
       console.log(`Calling list-interrogations edge function for user ${userId} and person ${personId}`);
       
-      const { data, error } = await supabase.functions.invoke('list-interrogations', {
-        method: 'POST',
-        body: { userId, personId },
+        // Build query parameters for the edge function
+      const queryParams = new URLSearchParams({
+        userId: userId,
+        personId: personId.toString()
+      });
+
+      const functionNameWithParams = `list-interrogations?${queryParams.toString()}`;
+        
+      const { data, error } = await supabase.functions.invoke(functionNameWithParams, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       
       if (error) {

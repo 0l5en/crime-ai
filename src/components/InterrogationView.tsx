@@ -6,6 +6,7 @@ import { useInterrogations } from '@/hooks/useInterrogations';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import type { components } from '@/openapi/crimeAiSchema';
+import ConversationHistory from './ConversationHistory';
 
 type PersonDto = components['schemas']['PersonDto'];
 
@@ -134,7 +135,9 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
         </div>
       </div>
 
-      {/* Question and Answers */}
+      <ConversationHistory questionAndAnswers={questionAndAnswers?.items ?? []} 
+        pending={interrogationsLoading || qaLoading}/>
+      {/* Question and Answers 
       <div>
         <h3 className="h4 text-white mb-3">Conversation History</h3>
         
@@ -173,7 +176,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
             <p>No questions asked yet. Start the interrogation by asking a question above.</p>
           </div>
         )}
-      </div>
+      </div>*/}
 
       {createAnswerMutation.isPending && (
         <div className="text-center text-danger mt-3">

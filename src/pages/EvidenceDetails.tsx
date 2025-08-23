@@ -87,18 +87,6 @@ const EvidenceDetails = () => {
               )}
             </div>
             <p className="text-muted mb-2">{evidence.description}</p>
-            <div className="row">
-              <div className="col-md-6">
-                <small className="text-muted">
-                  <span className="fw-semibold text-light">Location:</span> {evidence.location}
-                </small>
-              </div>
-              <div className="col-md-6">
-                <small className="text-muted">
-                  <span className="fw-semibold text-light">Analysis:</span> {evidence.analysisResult}
-                </small>
-              </div>
-            </div>
           </div>
         ) : (
           <div className="text-center text-muted py-3">
