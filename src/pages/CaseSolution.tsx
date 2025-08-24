@@ -8,6 +8,7 @@ import { useCaseEvidences } from "@/hooks/useCaseEvidences";
 import { useCaseSuspects } from "@/hooks/useCaseSuspects";
 import { useCaseMotives } from "@/hooks/useCaseMotives";
 import { useCreateSolutionAttempt } from "@/hooks/useCreateSolutionAttempt";
+import { useSolutionAttempts } from "@/hooks/useSolutionAttempts";
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import SuspectSelectionCard from "@/components/SuspectSelectionCard";
 import EvidenceSelectionCard from "@/components/EvidenceSelectionCard";
@@ -18,11 +19,12 @@ const CaseSolution = () => {
   const navigate = useNavigate();
   const { user } = useKeycloak();
   
-  const [selectedSuspect, setSelectedSuspect] = useState<number | null>(null);
+  const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
-  const [selectedMotive, setSelectedMotive] = useState<number | null>(null);
+  const [selectedMotives, setSelectedMotives] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
-  const [solutionResult, setSolutionResult] = useState<any>(null);
+  const [isValidating, setIsValidating] = useState(false);
+  const [isSolved, setIsSolved] = useState(false);
 
   const { data: crimeCase } = useCrimeCase(caseId || '');
   const { data: evidences } = useCaseEvidences(caseId || '');
@@ -31,22 +33,49 @@ const CaseSolution = () => {
   
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
 
+  // Query for checking successful attempts (will be triggered after solution submission)
+  const { data: successfulAttempts, refetch: checkSolutionSuccess } = useSolutionAttempts(
+    caseId || '', 
+    user?.email, 
+    "1" // success = true
+  );
+
   const toggleSuspect = (suspectId: number) => {
-    setSelectedSuspect(prevSuspect => (prevSuspect === suspectId ? null : suspectId));
+    setSelectedSuspects(prev => {
+      if (prev.includes(suspectId)) {
+        return prev.filter(id => id !== suspectId);
+      } else {
+        return [...prev, suspectId];
+      }
+    });
   };
 
   const toggleEvidence = (evidenceId: number) => {
-    setSelectedEvidences(prevEvidences => {
-      if (prevEvidences.includes(evidenceId)) {
-        return prevEvidences.filter(id => id !== evidenceId);
+    setSelectedEvidences(prev => {
+      if (prev.includes(evidenceId)) {
+        return prev.filter(id => id !== evidenceId);
       } else {
-        return [...prevEvidences, evidenceId];
+        return [...prev, evidenceId];
       }
     });
   };
 
   const toggleMotive = (motiveId: number) => {
-    setSelectedMotive(prevMotive => (prevMotive === motiveId ? null : motiveId));
+    setSelectedMotives(prev => {
+      if (prev.includes(motiveId)) {
+        return prev.filter(id => id !== motiveId);
+      } else {
+        return [...prev, motiveId];
+      }
+    });
+  };
+
+  const resetSelections = () => {
+    setSelectedSuspects([]);
+    setSelectedEvidences([]);
+    setSelectedMotives([]);
+    setShowResult(false);
+    setIsSolved(false);
   };
 
   const getImageColor = (index: number) => {
@@ -62,28 +91,42 @@ const CaseSolution = () => {
   };
 
   const handleSolutionSubmit = async () => {
-    if (!selectedSuspect || selectedEvidences.length === 0 || !selectedMotive || !user?.email) {
+    if (selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0 || !user?.email) {
       return;
     }
 
     try {
-      const result = await createSolutionMutation.mutateAsync({
+      setIsValidating(true);
+      
+      // Submit the solution attempt
+      await createSolutionMutation.mutateAsync({
         solution: {
           evidenceIds: selectedEvidences,
-          motiveIds: [selectedMotive],
-          personIds: [selectedSuspect],
+          motiveIds: selectedMotives,
+          personIds: selectedSuspects,
         },
         userId: user.email,
       });
 
-      setSolutionResult(result);
+      // Check if the solution was successful by refetching successful attempts
+      const { data: updatedSuccessfulAttempts } = await checkSolutionSuccess();
+      
+      // Check if we have any successful attempts
+      const hasSuccessfulAttempt = updatedSuccessfulAttempts?.items && updatedSuccessfulAttempts.items.length > 0;
+      
+      setIsSolved(!!hasSuccessfulAttempt);
       setShowResult(true);
+      
     } catch (error) {
       console.error("Failed to submit solution:", error);
+      setIsSolved(false);
+      setShowResult(true);
+    } finally {
+      setIsValidating(false);
     }
   };
 
-  if (showResult && solutionResult) {
+  if (showResult) {
     return (
       <div className="min-vh-100 bg-dark">
         <Header />
@@ -92,10 +135,7 @@ const CaseSolution = () => {
           <div className="d-flex align-items-center mb-5">
             <button
               className="btn btn-secondary btn-sm me-3"
-              onClick={() => {
-                setShowResult(false);
-                setSolutionResult(null);
-              }}
+              onClick={resetSelections}
             >
               <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
               Try Again
@@ -106,28 +146,37 @@ const CaseSolution = () => {
 
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <div className={`card text-center border-3 ${solutionResult.isCorrect ? 'border-success bg-success bg-opacity-10' : 'border-danger bg-danger bg-opacity-10'}`}>
+              <div className={`card text-center border-3 ${isSolved ? 'border-success bg-success bg-opacity-10' : 'border-danger bg-danger bg-opacity-10'}`}>
                 <div className="card-body p-5">
                   <div className="mb-4">
-                    {solutionResult.isCorrect ? (
+                    {isSolved ? (
                       <CheckCircle className="text-success mx-auto mb-3" style={{ width: '4rem', height: '4rem' }} />
                     ) : (
                       <XCircle className="text-danger mx-auto mb-3" style={{ width: '4rem', height: '4rem' }} />
                     )}
                     
-                    <h2 className={`h3 mb-3 ${solutionResult.isCorrect ? 'text-success' : 'text-danger'}`}>
-                      {solutionResult.isCorrect ? 'Case Solved!' : 'Incorrect Solution'}
+                    <h2 className={`h3 mb-3 ${isSolved ? 'text-success' : 'text-danger'}`}>
+                      {isSolved ? 'Congratulations! You solved the case!' : 'Unfortunately, this solution is incorrect.'}
                     </h2>
                     
                     <p className="text-white lead">
-                      {solutionResult.feedback}
+                      {isSolved 
+                        ? 'Great detective work! You correctly identified the culprit, evidence, and motive.'
+                        : 'Please try again with a different combination of suspects, evidence, and motives.'
+                      }
                     </p>
                   </div>
 
                   <div className="d-flex justify-content-center gap-3">
                     <button 
-                      onClick={() => navigate(`/case/${caseId}`)}
+                      onClick={resetSelections}
                       className="btn btn-secondary"
+                    >
+                      Try Again
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/case/${caseId}`)}
+                      className="btn btn-primary"
                     >
                       Back to Case
                     </button>
@@ -166,7 +215,7 @@ const CaseSolution = () => {
               Solve the Case: {crimeCase?.title}
             </h1>
             <p className="text-muted mb-0">
-              Select the suspect, evidence, and motive to solve this case
+              Select suspects, evidence, and motives to solve this case (at least one of each)
             </p>
           </div>
         </div>
@@ -175,9 +224,9 @@ const CaseSolution = () => {
         <div className="card bg-dark border-secondary mb-5">
           <div className="card-header">
             <h3 className="card-title text-white">
-              Select the Suspect
-              {selectedSuspect && (
-                <span className="badge bg-success ms-2">Selected</span>
+              Select Suspects
+              {selectedSuspects.length > 0 && (
+                <span className="badge bg-success ms-2">{selectedSuspects.length} selected</span>
               )}
             </h3>
           </div>
@@ -188,7 +237,7 @@ const CaseSolution = () => {
                   <div key={suspect.id} className="col-md-4 col-lg-3">
                     <SuspectSelectionCard
                       name={suspect.name}
-                      isSelected={selectedSuspect === suspect.id}
+                      isSelected={selectedSuspects.includes(suspect.id)}
                       onToggle={() => toggleSuspect(suspect.id)}
                       imageColor={getImageColor(index)}
                     />
@@ -237,9 +286,9 @@ const CaseSolution = () => {
         <div className="card bg-dark border-secondary mb-5">
           <div className="card-header">
             <h3 className="card-title text-white">
-              Select the Motive
-              {selectedMotive && (
-                <span className="badge bg-warning ms-2">Selected</span>
+              Select Motives
+              {selectedMotives.length > 0 && (
+                <span className="badge bg-warning ms-2">{selectedMotives.length} selected</span>
               )}
             </h3>
           </div>
@@ -250,7 +299,7 @@ const CaseSolution = () => {
                   <div key={motive.id} className="col-md-4 col-lg-3">
                     <MotiveSelectionCard
                       title={(motive as any).name || motive.title}
-                      isSelected={selectedMotive === motive.id}
+                      isSelected={selectedMotives.includes(motive.id)}
                       onToggle={() => toggleMotive(motive.id)}
                       imageColor={getImageColor(index)}
                     />
@@ -268,14 +317,14 @@ const CaseSolution = () => {
           <button
             onClick={handleSolutionSubmit}
             className="btn btn-danger btn-lg px-5 py-3"
-            disabled={!selectedSuspect || selectedEvidences.length === 0 || !selectedMotive || createSolutionMutation.isPending}
+            disabled={selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0 || createSolutionMutation.isPending || isValidating}
           >
-            {createSolutionMutation.isPending ? 'Submitting...' : 'Submit Solution'}
+            {isValidating ? 'Validating Solution...' : createSolutionMutation.isPending ? 'Submitting...' : 'Submit Solution'}
           </button>
           
-          {(!selectedSuspect || selectedEvidences.length === 0 || !selectedMotive) && (
+          {(selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0) && (
             <p className="text-muted mt-3 small">
-              Please select a suspect, at least one piece of evidence, and a motive
+              Please select at least one suspect, one piece of evidence, and one motive
             </p>
           )}
         </div>
