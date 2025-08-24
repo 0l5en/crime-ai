@@ -6,6 +6,7 @@ interface SuspectCardProps {
   maritalStatus: string;
   relationshipToCase: string;
   imageColor?: string;
+  alibiContent?: string;
   onInterrogate?: () => void;
 }
 
@@ -16,6 +17,7 @@ const SuspectCard = ({
   maritalStatus, 
   relationshipToCase,
   imageColor = 'bg-gradient-secondary',
+  alibiContent,
   onInterrogate
 }: SuspectCardProps) => {
   const getInitials = (fullName: string) => {
@@ -52,19 +54,25 @@ const SuspectCard = ({
       
       <div className="card-body d-flex flex-column gap-3">
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Beruf</h4>
+          <h4 className="small fw-medium text-muted mb-1">Profession</h4>
           <p className="text-light mb-0" data-testid="suspect-profession">{profession}</p>
         </div>
         
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Familienstand</h4>
+          <h4 className="small fw-medium text-muted mb-1">Marital Status</h4>
           <p className="text-light mb-0" data-testid="suspect-marital-status">{maritalStatus}</p>
         </div>
         
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Bezug zum Fall</h4>
+          <h4 className="small fw-medium text-muted mb-1">Relation to case</h4>
           <p className="text-light small mb-0" data-testid="suspect-relationship">{relationshipToCase}</p>
         </div>
+        {alibiContent &&
+          <div>
+            <h4 className="small fw-medium text-muted mb-1">Alibi</h4>
+            <p className="text-light small mb-0" data-testid="suspect-alibi">{alibiContent}</p>
+          </div>
+        }
 
         {onInterrogate && (
           <div className="pt-2">

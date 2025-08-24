@@ -110,6 +110,7 @@ const CaseContent = ({
                   relationshipToCase={suspect.relationshipToCase}
                   imageColor={getImageColor(index)}
                   onInterrogate={() => onInterrogate(suspect)}
+                  alibiContent={suspect.alibi?.content}
                 />
               </div>
             ))}
