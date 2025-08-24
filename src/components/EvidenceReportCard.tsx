@@ -1,5 +1,8 @@
+
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import { useKeycloak } from '@/contexts/KeycloakContext';
@@ -65,8 +68,12 @@ const EvidenceReportCard = ({ id, report, personId }: EvidenceReportCardProps) =
         <h6 className="mb-0 text-light fw-semibold">Evidence Report</h6>
       </div>
       <div className="card-body">
-        {/* Evidence Report Content */}
-        <p className="card-text text-light mb-3">{report}</p>
+        {/* Evidence Report Content with Markdown Support */}
+        <div className="card-text text-light mb-3 markdown-content">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {report}
+          </ReactMarkdown>
+        </div>
 
         <hr className="border-secondary my-3" />
 
