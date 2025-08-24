@@ -64,7 +64,7 @@ const CaseDashboard = () => {
         <CaseHeader 
           caseId={caseId || ''} 
           title={crimeCase?.title} 
-          description={crimeCase?.description} 
+          summary={crimeCase?.summary}
         />
 
         <CaseTabs 

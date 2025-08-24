@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 interface CaseHeaderProps {
   caseId: string;
   title?: string;
-  description?: string;
+  summary?: string;
 }
 
-const CaseHeader = ({ caseId, title, description }: CaseHeaderProps) => {
+const CaseHeader = ({ caseId, title, summary }: CaseHeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,7 @@ const CaseHeader = ({ caseId, title, description }: CaseHeaderProps) => {
           {title || 'Loading...'}
         </h1>
         <p className="text-muted mb-0">
-          {description || 'Loading case details...'}
+          {summary || 'Loading case details...'}
         </p>
       </div>
 
