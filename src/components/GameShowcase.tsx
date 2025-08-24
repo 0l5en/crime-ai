@@ -55,8 +55,8 @@ const GameShowcase = () => {
         {!error && crimeCases?.items && crimeCases.items.length > 0 && (
           <>
             <div className="row g-4 mb-5 justify-content-center">
-              {crimeCases.items.slice(0, 4).map((crimeCase, index) => (
-                <div key={crimeCase.id} className="col-lg-3 col-md-6">
+              {crimeCases.items.slice(0, 3).map((crimeCase, index) => (
+                <div key={crimeCase.id} className="col-lg-4 col-md-6">
                   <GameCard
                     title={crimeCase.title}
                     description={crimeCase.description}
