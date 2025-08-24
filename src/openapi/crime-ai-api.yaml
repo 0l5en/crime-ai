@@ -161,6 +161,35 @@ paths:
           description: crime case not found
         "500":
           description: if any internal error occurs while processing the request
+  /crimecase/{id}/person:
+    get:
+      summary: get the persons of a crime case
+      operationId: getPersons
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      - name: personType
+        in: query
+        description: person type
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetPerson"
+        "404":
+          description: crime case not found
+        "400":
+          description: if the request contains invalid parameters
+        "500":
+          description: if any internal error occurs while processing the request
   /crimecase/{id}/solution-attempt:
     get:
       summary: Get a list of solution attempts.
@@ -506,6 +535,8 @@ components:
           type: string
         description:
           type: string
+        summary:
+          type: string
         language:
           type: string
         imageUrl:
@@ -514,6 +545,7 @@ components:
       - description
       - id
       - language
+      - summary
       - title
     ResultSetCrimeCase:
       type: object
@@ -611,6 +643,8 @@ components:
           - DOCUMENT
           - TRACE
           - OTHER
+        documentContent:
+          type: string
       required:
       - analysisResult
       - description
@@ -646,63 +680,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MotiveDto"
-    ResultSetSolutionAttempt:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SolutionAttemptDto"
-    SolutionAttemptDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        userId:
-          type: string
-          minLength: 1
-        success:
-          type: boolean
-        createdAt:
-          type: string
-      required:
-      - createdAt
-      - id
-      - userId
-    CreateSolutionAttemptDto:
-      type: object
-      properties:
-        solution:
-          $ref: "#/components/schemas/SolutionDto"
-        userId:
-          type: string
-          minLength: 1
-      required:
-      - solution
-      - userId
-    SolutionDto:
-      type: object
-      properties:
-        evidenceIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        motiveIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        personIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-      required:
-      - evidenceIds
-      - motiveIds
-      - personIds
     PersonDto:
       type: object
       properties:
@@ -762,6 +739,63 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/PersonDto"
+    ResultSetSolutionAttempt:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/SolutionAttemptDto"
+    SolutionAttemptDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: string
+          minLength: 1
+        success:
+          type: boolean
+        createdAt:
+          type: string
+      required:
+      - createdAt
+      - id
+      - userId
+    CreateSolutionAttemptDto:
+      type: object
+      properties:
+        solution:
+          $ref: "#/components/schemas/SolutionDto"
+        userId:
+          type: string
+          minLength: 1
+      required:
+      - solution
+      - userId
+    SolutionDto:
+      type: object
+      properties:
+        evidenceIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        motiveIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        personIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+      required:
+      - evidenceIds
+      - motiveIds
+      - personIds
     InterrogationDto:
       type: object
       properties:
