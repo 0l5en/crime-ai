@@ -30,7 +30,7 @@ const SuspectCard = ({
 
   return (
     <div 
-      className="card bg-dark border-secondary text-light card-hover"
+      className="card bg-dark border-secondary text-light card-hover h-100 d-flex flex-column"
       data-testid="suspect-card"
       data-suspect-name={name}
     >
@@ -52,7 +52,7 @@ const SuspectCard = ({
         </div>
       </div>
       
-      <div className="card-body d-flex flex-column gap-3">
+      <div className="card-body d-flex flex-column gap-3 flex-grow-1">
         <div>
           <h4 className="small fw-medium text-muted mb-1">Profession:</h4>
           <p className="text-light mb-0" data-testid="suspect-profession">{profession}</p>
@@ -75,7 +75,7 @@ const SuspectCard = ({
         }
 
         {onInterrogate && (
-          <div className="pt-2">
+          <div className="pt-2 mt-auto">
             <button
               onClick={onInterrogate}
               className="btn btn-danger w-100 btn-sm"

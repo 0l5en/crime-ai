@@ -28,7 +28,7 @@ const WitnessCard = ({
 
   return (
     <div 
-      className="card bg-dark border-secondary text-light card-hover"
+      className="card bg-dark border-secondary text-light card-hover h-100 d-flex flex-column"
       data-testid="witness-card"
       data-witness-name={name}
     >
@@ -50,7 +50,7 @@ const WitnessCard = ({
         </div>
       </div>
       
-      <div className="card-body d-flex flex-column gap-3">
+      <div className="card-body d-flex flex-column gap-3 flex-grow-1">
         <div>
           <h4 className="small fw-medium text-muted mb-1">Beruf</h4>
           <p className="text-light mb-0" data-testid="witness-profession">{profession}</p>
@@ -67,7 +67,7 @@ const WitnessCard = ({
         </div>
 
         {onInterrogate && (
-          <div className="pt-2">
+          <div className="pt-2 mt-auto">
             <button
               onClick={onInterrogate}
               className="btn btn-primary w-100 btn-sm"
