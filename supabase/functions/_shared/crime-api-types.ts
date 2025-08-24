@@ -91,6 +91,11 @@ export interface SolutionDto {
   personIds: number[];
 }
 
+export interface AlibiDto {
+  id: number;
+  content: string;
+}
+
 export interface PersonDto {
   id: number;
   name: string;
@@ -103,6 +108,7 @@ export interface PersonDto {
   financialSituation: string;
   previousConvictions: string[];
   relationshipToCase: string;
+  alibi?: AlibiDto;
 }
 
 export interface ResultSetPerson {
