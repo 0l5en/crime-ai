@@ -1,34 +1,31 @@
 
 import { corsHeaders } from '../_shared/cors.ts';
-import type { ResultSetPerson } from '../_shared/crime-api-types.ts';
+import type { CreateEvidenceReportDto } from '../_shared/crime-api-types.ts';
 
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL') || 'https://crime-ai.0l5en.de';
 
 Deno.serve(async (req) => {
-  console.log('Starting fetch-case-suspects function... (using new unified person API)');
+  console.log('Starting create-evidence-report function...');
 
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
-  try {
-    const url = new URL(req.url);
-    const pathParts = url.pathname.split('/');
-    const caseId = pathParts[pathParts.length - 1];
-    
-    if (!caseId) {
-      console.error('No case ID provided in URL');
-      return new Response(
-        JSON.stringify({ error: 'Case ID is required' }),
-        { 
-          status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-        }
-      );
-    }
+  if (req.method !== 'POST') {
+    return new Response(
+      JSON.stringify({ error: 'Method not allowed' }),
+      { 
+        status: 405, 
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+      }
+    );
+  }
 
-    console.log(`Fetching suspects for case ID: ${caseId} using unified person API`);
+  try {
+    const createEvidenceReportDto: CreateEvidenceReportDto = await req.json();
+    
+    console.log('Creating evidence report:', createEvidenceReportDto);
 
     const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
     
@@ -43,28 +40,28 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Use the new unified person endpoint with personType query parameter
-    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/person?personType=SUSPECT`;
+    const apiUrl = `${CRIME_AI_API_BASE_URL}/evidence-report`;
     console.log(`Making request to: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Authorization': `Bearer ${crimeApiToken}`,
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(createEvidenceReportDto),
     });
 
     console.log(`API response status: ${response.status}`);
 
     if (!response.ok) {
-      if (response.status === 404) {
-        console.log('Case not found');
+      if (response.status === 400) {
+        console.log('Invalid request body');
         return new Response(
-          JSON.stringify({ error: 'Case not found' }),
+          JSON.stringify({ error: 'Invalid request body' }),
           { 
-            status: 404, 
+            status: 400, 
             headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
           }
         );
@@ -75,19 +72,15 @@ Deno.serve(async (req) => {
       throw new Error(`API request failed with status ${response.status}: ${errorText}`);
     }
 
-    const suspects: ResultSetPerson = await response.json();
-    console.log(`Successfully fetched suspects:`, suspects);
+    console.log('Evidence report created successfully');
 
-    return new Response(
-      JSON.stringify(suspects),
-      { 
-        status: 200, 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-      }
-    );
+    return new Response(null, {
+      status: 201,
+      headers: corsHeaders
+    });
 
   } catch (error) {
-    console.error('Error in fetch-case-suspects function:', error);
+    console.error('Error in create-evidence-report function:', error);
     return new Response(
       JSON.stringify({ 
         error: 'Internal server error', 

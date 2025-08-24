@@ -64,7 +64,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
       .slice(0, 2);
   };
 
-  // Get person type color
+  // Get person type color - now supports all expanded types
   const getPersonTypeColor = (type: string) => {
     switch (type) {
       case 'SUSPECT':
@@ -73,8 +73,39 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
         return 'bg-primary';
       case 'VICTIM':
         return 'bg-secondary';
+      case 'CRIMINAL_ASSISTANT':
+        return 'bg-success';
+      case 'DIGITAL_EXPERT':
+      case 'FORENSIC_EXPERT':
+      case 'BALLISTIC_EXPERT':
+      case 'DOCUMENT_EXPERT':
+      case 'TRACE_EXPERT':
+      case 'FORENSIC_PATHOLOGIST':
+        return 'bg-info';
       default:
         return 'bg-secondary';
+    }
+  };
+
+  // Get person type display name
+  const getPersonTypeDisplay = (type: string) => {
+    switch (type) {
+      case 'CRIMINAL_ASSISTANT':
+        return 'Criminal Assistant';
+      case 'DIGITAL_EXPERT':
+        return 'Digital Expert';
+      case 'FORENSIC_EXPERT':
+        return 'Forensic Expert';
+      case 'BALLISTIC_EXPERT':
+        return 'Ballistic Expert';
+      case 'DOCUMENT_EXPERT':
+        return 'Document Expert';
+      case 'TRACE_EXPERT':
+        return 'Trace Expert';
+      case 'FORENSIC_PATHOLOGIST':
+        return 'Forensic Pathologist';
+      default:
+        return type.toLowerCase();
     }
   };
 
@@ -102,7 +133,7 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
               Interrogation with {person.name}
             </h2>
             <p className="text-muted mb-0">
-              {person.type.toLowerCase()} • {person.age} years old • {person.profession}
+              {getPersonTypeDisplay(person.type)} • {person.age} years old • {person.profession}
             </p>
           </div>
         </div>
@@ -137,46 +168,6 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
 
       <ConversationHistory questionAndAnswers={questionAndAnswers?.items ?? []} 
         pending={interrogationsLoading || qaLoading}/>
-      {/* Question and Answers 
-      <div>
-        <h3 className="h4 text-white mb-3">Conversation History</h3>
-        
-        {interrogationsLoading || qaLoading ? (
-          <div className="text-center text-muted">
-            <p>Loading conversation...</p>
-          </div>
-        ) : questionAndAnswers?.items && questionAndAnswers.items.length > 0 ? (
-          <div className="d-flex flex-column gap-3">
-            {questionAndAnswers.items.map((qa, index) => (
-              <div key={index} className="card bg-dark border-secondary">
-                <div className="card-body p-3">
-                  <div className="d-flex flex-column gap-3">
-                    <div className="d-flex align-items-start gap-2">
-                      <span className="badge bg-primary mt-1">
-                        Q
-                      </span>
-                      <p className="text-white flex-grow-1 mb-0">{qa.question}</p>
-                    </div>
-                    <div className="d-flex align-items-start gap-2">
-                      <span className="badge bg-success mt-1">
-                        A
-                      </span>
-                      <p className="text-muted flex-grow-1 mb-0">{qa.answer}</p>
-                    </div>
-                    <p className="small text-muted text-end mb-0">
-                      {new Date(qa.createdAt).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center text-muted">
-            <p>No questions asked yet. Start the interrogation by asking a question above.</p>
-          </div>
-        )}
-      </div>*/}
 
       {createAnswerMutation.isPending && (
         <div className="text-center text-danger mt-3">

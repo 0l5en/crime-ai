@@ -1,9 +1,12 @@
+
 // Updated shared types for the new OpenAPI schema
 
 export interface CrimeCaseDto {
   id: string;
   title: string;
   description: string;
+  summary: string;
+  language: string;
   imageUrl?: string;
 }
 
@@ -34,6 +37,7 @@ export interface EvidenceDto {
   location: string;
   analysisResult: string;
   evidenceType: "FORENSIC" | "BALLISTIC" | "DIGITAL" | "DOCUMENT" | "TRACE" | "OTHER";
+  documentContent?: string;
 }
 
 export interface ResultSetEvidence {
@@ -52,9 +56,7 @@ export interface ResultSetEvidenceReport {
 
 export interface CreateEvidenceReportDto {
   evidenceId: number;
-  reportType: string;
-  content: string;
-  createdBy: string;
+  personId: number;
 }
 
 export interface MotiveDto {
@@ -92,7 +94,7 @@ export interface SolutionDto {
 export interface PersonDto {
   id: number;
   name: string;
-  type: "VICTIM" | "WITNESS" | "SUSPECT";
+  type: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT";
   age: number;
   profession: string;
   gender: string;
@@ -174,6 +176,22 @@ export interface TemplateContextDto {
 }
 
 export interface TemplateVariableDto {
-  key?: string;
-  value?: string;
+  key: string;
+  value: string;
+}
+
+export interface CriminalPoliceTeamDto {
+  personType: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT";
+  contactPersonId: number;
+}
+
+export interface ResultSetCriminalPoliceTeamDto {
+  items?: CriminalPoliceTeamDto[];
+}
+
+export interface TaskInfoDto {
+  id: string;
+  taskStatus: "PENDING" | "COMPLETED";
+  createdAt: string;
+  completedAt?: string;
 }

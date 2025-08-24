@@ -1,11 +1,11 @@
 
 import { corsHeaders } from '../_shared/cors.ts';
-import type { ResultSetPerson } from '../_shared/crime-api-types.ts';
+import type { ResultSetCriminalPoliceTeamDto } from '../_shared/crime-api-types.ts';
 
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL') || 'https://crime-ai.0l5en.de';
 
 Deno.serve(async (req) => {
-  console.log('Starting fetch-case-suspects function... (using new unified person API)');
+  console.log('Starting list-criminal-police-teams function...');
 
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -28,7 +28,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log(`Fetching suspects for case ID: ${caseId} using unified person API`);
+    console.log(`Fetching criminal police teams for case ID: ${caseId}`);
 
     const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
     
@@ -43,8 +43,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Use the new unified person endpoint with personType query parameter
-    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/person?personType=SUSPECT`;
+    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/criminal-police-teams`;
     console.log(`Making request to: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {
@@ -59,27 +58,16 @@ Deno.serve(async (req) => {
     console.log(`API response status: ${response.status}`);
 
     if (!response.ok) {
-      if (response.status === 404) {
-        console.log('Case not found');
-        return new Response(
-          JSON.stringify({ error: 'Case not found' }),
-          { 
-            status: 404, 
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-          }
-        );
-      }
-      
       const errorText = await response.text();
       console.error('API error response:', errorText);
       throw new Error(`API request failed with status ${response.status}: ${errorText}`);
     }
 
-    const suspects: ResultSetPerson = await response.json();
-    console.log(`Successfully fetched suspects:`, suspects);
+    const teams: ResultSetCriminalPoliceTeamDto = await response.json();
+    console.log(`Successfully fetched criminal police teams:`, teams);
 
     return new Response(
-      JSON.stringify(suspects),
+      JSON.stringify(teams),
       { 
         status: 200, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
@@ -87,7 +75,7 @@ Deno.serve(async (req) => {
     );
 
   } catch (error) {
-    console.error('Error in fetch-case-suspects function:', error);
+    console.error('Error in list-criminal-police-teams function:', error);
     return new Response(
       JSON.stringify({ 
         error: 'Internal server error', 

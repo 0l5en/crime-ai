@@ -1,0 +1,34 @@
+
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+import type { components } from '@/openapi/crimeAiSchema';
+
+type ResultSetPerson = components['schemas']['ResultSetPerson'];
+
+export const usePersons = (caseId: string, personType?: string) => {
+  return useQuery({
+    queryKey: ['persons', caseId, personType],
+    queryFn: async (): Promise<ResultSetPerson> => {
+      console.log(`Calling get-persons edge function for case ID: ${caseId}, personType: ${personType || 'all'}`);
+      
+      let functionUrl = `get-persons/${caseId}`;
+      if (personType) {
+        functionUrl += `?personType=${encodeURIComponent(personType)}`;
+      }
+      
+      const { data, error } = await supabase.functions.invoke(functionUrl, {
+        method: 'GET',
+      });
+      
+      if (error) {
+        console.error('Edge function error:', error);
+        throw new Error(`Failed to fetch persons: ${error.message}`);
+      }
+      
+      console.log('Edge function response:', data);
+      return data as ResultSetPerson;
+    },
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    enabled: !!caseId, // Only run query if caseId is provided
+  });
+};

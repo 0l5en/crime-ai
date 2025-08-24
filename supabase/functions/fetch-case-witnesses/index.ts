@@ -5,7 +5,7 @@ import type { ResultSetPerson } from '../_shared/crime-api-types.ts';
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL') || 'https://crime-ai.0l5en.de';
 
 Deno.serve(async (req) => {
-  console.log('Starting fetch-case-witnesses function...');
+  console.log('Starting fetch-case-witnesses function... (using new unified person API)');
 
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -28,7 +28,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log(`Fetching witnesses for case ID: ${caseId}`);
+    console.log(`Fetching witnesses for case ID: ${caseId} using unified person API`);
 
     const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
     
@@ -43,7 +43,8 @@ Deno.serve(async (req) => {
       );
     }
 
-    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/witness`;
+    // Use the new unified person endpoint with personType query parameter
+    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/person?personType=WITNESS`;
     console.log(`Making request to: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {

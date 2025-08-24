@@ -1,11 +1,10 @@
 
 import { corsHeaders } from '../_shared/cors.ts';
-import type { ResultSetPerson } from '../_shared/crime-api-types.ts';
 
 const CRIME_AI_API_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL') || 'https://crime-ai.0l5en.de';
 
 Deno.serve(async (req) => {
-  console.log('Starting fetch-case-suspects function... (using new unified person API)');
+  console.log('Starting delete-crime-case function...');
 
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -28,7 +27,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log(`Fetching suspects for case ID: ${caseId} using unified person API`);
+    console.log(`Deleting crime case with ID: ${caseId}`);
 
     const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
     
@@ -43,16 +42,14 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Use the new unified person endpoint with personType query parameter
-    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/person?personType=SUSPECT`;
-    console.log(`Making request to: ${apiUrl}`);
+    const apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}`;
+    console.log(`Making DELETE request to: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {
-      method: 'GET',
+      method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${crimeApiToken}`,
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
       },
     });
 
@@ -75,19 +72,15 @@ Deno.serve(async (req) => {
       throw new Error(`API request failed with status ${response.status}: ${errorText}`);
     }
 
-    const suspects: ResultSetPerson = await response.json();
-    console.log(`Successfully fetched suspects:`, suspects);
+    console.log(`Successfully deleted crime case: ${caseId}`);
 
-    return new Response(
-      JSON.stringify(suspects),
-      { 
-        status: 200, 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-      }
-    );
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders
+    });
 
   } catch (error) {
-    console.error('Error in fetch-case-suspects function:', error);
+    console.error('Error in delete-crime-case function:', error);
     return new Response(
       JSON.stringify({ 
         error: 'Internal server error', 
