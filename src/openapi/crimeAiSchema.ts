@@ -323,6 +323,7 @@ export interface components {
       location: string;
       analysisResult: string;
       evidenceType: "FORENSIC" | "BALLISTIC" | "DIGITAL" | "DOCUMENT" | "TRACE" | "OTHER";
+      documentContent?: string;
     };
     ResultSetEvidence: {
       items?: components["schemas"]["EvidenceDto"][];
