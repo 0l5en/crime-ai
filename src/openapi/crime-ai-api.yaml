@@ -680,6 +680,17 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MotiveDto"
+    AlibiDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        content:
+          type: string
+      required:
+      - content
+      - id
     PersonDto:
       type: object
       properties:
@@ -720,6 +731,8 @@ components:
             type: string
         relationshipToCase:
           type: string
+        alibi:
+          $ref: "#/components/schemas/AlibiDto"
       required:
       - age
       - financialSituation
