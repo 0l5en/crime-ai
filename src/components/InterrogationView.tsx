@@ -12,10 +12,11 @@ type PersonDto = components['schemas']['PersonDto'];
 
 interface InterrogationViewProps {
   person: PersonDto;
-  onBack: () => void;
+  onBack?: () => void;
+  embedded?: boolean;
 }
 
-const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
+const InterrogationView = ({ person, onBack, embedded = false }: InterrogationViewProps) => {
   const { user } = useKeycloak();
   const [question, setQuestion] = useState('');
   const [interrogationId, setInterrogationId] = useState<string | null>(null);
@@ -109,35 +110,41 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
     }
   };
 
+  const containerClass = embedded 
+    ? "" 
+    : "container-fluid py-4";
+
   return (
-    <div className="container-fluid py-4">
-      {/* Header with back button and person info */}
-      <div className="d-flex align-items-center mb-4">
-        <button
-          className="btn btn-secondary btn-sm me-3"
-          onClick={onBack}
-        >
-          <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-          Back
-        </button>
-        
-        <div className="d-flex align-items-center">
-          <div className="me-3">
-            <div className={`${getPersonTypeColor(person.type)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold`} style={{ width: '48px', height: '48px' }}>
-              {getInitials(person.name)}
+    <div className={containerClass}>
+      {/* Header with back button and person info - only show if not embedded */}
+      {!embedded && onBack && (
+        <div className="d-flex align-items-center mb-4">
+          <button
+            className="btn btn-secondary btn-sm me-3"
+            onClick={onBack}
+          >
+            <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
+            Back
+          </button>
+          
+          <div className="d-flex align-items-center">
+            <div className="me-3">
+              <div className={`${getPersonTypeColor(person.type)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold`} style={{ width: '48px', height: '48px' }}>
+                {getInitials(person.name)}
+              </div>
+            </div>
+            
+            <div>
+              <h2 className="h3 text-white mb-1">
+                Interrogation with {person.name}
+              </h2>
+              <p className="text-muted mb-0">
+                {getPersonTypeDisplay(person.type)} • {person.age} years old • {person.profession}
+              </p>
             </div>
           </div>
-          
-          <div>
-            <h2 className="h3 text-white mb-1">
-              Interrogation with {person.name}
-            </h2>
-            <p className="text-muted mb-0">
-              {getPersonTypeDisplay(person.type)} • {person.age} years old • {person.profession}
-            </p>
-          </div>
         </div>
-      </div>
+      )}
 
       {/* Question input form */}
       <div className="card bg-dark border-secondary mb-4">
@@ -166,8 +173,10 @@ const InterrogationView = ({ person, onBack }: InterrogationViewProps) => {
         </div>
       </div>
 
-      <ConversationHistory questionAndAnswers={questionAndAnswers?.items ?? []} 
-        pending={interrogationsLoading || qaLoading}/>
+      <ConversationHistory 
+        questionAndAnswers={questionAndAnswers?.items ?? []} 
+        pending={interrogationsLoading || qaLoading}
+      />
 
       {createAnswerMutation.isPending && (
         <div className="text-center text-danger mt-3">

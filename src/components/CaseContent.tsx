@@ -7,6 +7,7 @@ import CaseOverview from "./CaseOverview";
 
 interface CaseContentProps {
   activeTab: string;
+  caseId: string;
   crimeCase?: any;
   crimeScene?: any;
   evidences?: any;
@@ -24,6 +25,7 @@ interface CaseContentProps {
 
 const CaseContent = ({
   activeTab,
+  caseId,
   crimeCase,
   crimeScene,
   evidences,
@@ -49,6 +51,7 @@ const CaseContent = ({
   if (activeTab === 'overview') {
     return (
       <CaseOverview 
+        caseId={caseId}
         crimeCase={crimeCase}
         crimeScene={crimeScene}
         sceneLoading={sceneLoading}
