@@ -94,9 +94,34 @@ const EvidenceDetails = () => {
           </div>
         )}
 
-        <hr className="border-secondary mb-4" />
+        {/* Document Content Section - Only show for DOCUMENT type evidences */}
+        {evidence && evidence.evidenceType === 'DOCUMENT' && evidence.documentContent && (
+          <>
+            <div className="mb-4">
+              <div className="card bg-dark border-secondary text-light">
+                <div className="card-header">
+                  <h5 className="mb-0 text-light fw-semibold">Document Content</h5>
+                </div>
+                <div className="card-body">
+                  <div className="text-light" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>
+                    {evidence.documentContent}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr className="border-secondary mb-4" />
+          </>
+        )}
 
-        {/* Evidence Reports Section - Now single column with integrated interrogation */}
+        {!evidence?.documentContent && evidence?.evidenceType === 'DOCUMENT' && (
+          <hr className="border-secondary mb-4" />
+        )}
+
+        {evidence?.evidenceType !== 'DOCUMENT' && (
+          <hr className="border-secondary mb-4" />
+        )}
+
+        {/* Evidence Reports Section */}
         <div>
           <h3 className="text-light mb-4">Evidence Reports & Discussions</h3>
           
