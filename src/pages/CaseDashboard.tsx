@@ -1,6 +1,5 @@
-
 import Header from "@/components/Header";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useCrimeCase } from "@/hooks/useCrimeCase";
 import { useCrimeScene } from "@/hooks/useCrimeScene";
 import { useCaseEvidences } from "@/hooks/useCaseEvidences";
@@ -13,14 +12,23 @@ import InterrogationView from "@/components/InterrogationView";
 import CaseHeader from "@/components/CaseHeader";
 import CaseTabs from "@/components/CaseTabs";
 import CaseContent from "@/components/CaseContent";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CaseDashboard = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
   const [showInterrogation, setShowInterrogation] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+
+  // Set active tab from URL parameter
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
 
   const { data: crimeCase, isLoading: caseLoading } = useCrimeCase(caseId || '');
   const { data: crimeScene, isLoading: sceneLoading } = useCrimeScene(caseId || '');
