@@ -17,7 +17,7 @@ const EvidenceDetails = () => {
   const evidence = evidences?.items?.find(e => e.id.toString() === evidenceId);
 
   const handleBackClick = () => {
-    navigate(`/case/${caseId}`);
+    navigate(`/case/${caseId}?tab=evidence`);
   };
 
   const getEvidenceTypeColor = (type: string) => {
