@@ -502,6 +502,51 @@ paths:
           description: if an invalid request body was send
         "500":
           description: if any internal error occurs while processing the request
+  /autopsy-report:
+    get:
+      summary: Get a list of autopsy reports.
+      operationId: listAutopsyReports
+      parameters:
+      - name: reportAuthorId
+        in: query
+        description: The ID of the report author
+        schema:
+          type: string
+      - name: victimId
+        in: query
+        description: The ID of the victim
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetAutopsyReport"
+        "400":
+          description: if there are missing or invalid parameters
+        "500":
+          description: if any internal error occurs while processing the request
+    post:
+      summary: "Create a new autopsy report for a victim. If a report already exist\
+        \ for the given identifier (reportAuthor, victimId), this operation will do\
+        \ nothing."
+      operationId: createAutopsyReport
+      requestBody:
+        description: the data required to create a new report
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAutopsyReportDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation without response body
+        "400":
+          description: if an invalid request body was send
+        "500":
+          description: if any internal error occurs while processing the request
   /task/{id}:
     get:
       summary: Get a task info object by id.
@@ -733,11 +778,17 @@ components:
           type: string
         alibi:
           $ref: "#/components/schemas/AlibiDto"
+        lifeStatus:
+          type: string
+          enum:
+          - DEAD
+          - ALIVE
       required:
       - age
       - financialSituation
       - gender
       - id
+      - lifeStatus
       - maritalStatus
       - name
       - personality
@@ -982,6 +1033,55 @@ components:
       required:
       - evidenceId
       - personId
+    AutopsyReportDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        reportAuthorId:
+          type: integer
+          format: int64
+        externalExamination:
+          type: string
+        internalExamination:
+          type: string
+        causeOfDeath:
+          type: string
+        conclusionsAndAssessment:
+          type: string
+        timeOfDeathFrom:
+          type: string
+        timeOfDeathTo:
+          type: string
+      required:
+      - causeOfDeath
+      - conclusionsAndAssessment
+      - externalExamination
+      - id
+      - internalExamination
+      - reportAuthorId
+      - timeOfDeathFrom
+      - timeOfDeathTo
+    ResultSetAutopsyReport:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/AutopsyReportDto"
+    CreateAutopsyReportDto:
+      type: object
+      properties:
+        reportAuthorId:
+          type: integer
+          format: int64
+        victimId:
+          type: integer
+          format: int64
+      required:
+      - reportAuthorId
+      - victimId
     TaskInfoDto:
       type: object
       properties:
