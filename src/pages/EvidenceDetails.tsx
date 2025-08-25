@@ -1,3 +1,4 @@
+
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
@@ -16,7 +17,7 @@ const EvidenceDetails = () => {
   const evidence = evidences?.items?.find(e => e.id.toString() === evidenceId);
 
   const handleBackClick = () => {
-    navigate(`/case/${caseId}?tab=evidences`);
+    navigate(`/case/${caseId}`);
   };
 
   const getEvidenceTypeColor = (type: string) => {
