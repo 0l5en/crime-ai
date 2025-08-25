@@ -56,7 +56,9 @@ export interface ResultSetEvidenceReport {
 
 export interface CreateEvidenceReportDto {
   evidenceId: number;
-  personId: number;
+  reportType: string;
+  content: string;
+  createdBy: string;
 }
 
 export interface MotiveDto {
@@ -108,11 +110,32 @@ export interface PersonDto {
   financialSituation: string;
   previousConvictions: string[];
   relationshipToCase: string;
+  lifeStatus: "DEAD" | "ALIVE";
   alibi?: AlibiDto;
 }
 
 export interface ResultSetPerson {
   items?: PersonDto[];
+}
+
+export interface AutopsyReportDto {
+  id: number;
+  reportAuthorId: number;
+  externalExamination: string;
+  internalExamination: string;
+  causeOfDeath: string;
+  conclusionsAndAssessment: string;
+  timeOfDeathFrom: string;
+  timeOfDeathTo: string;
+}
+
+export interface ResultSetAutopsyReport {
+  items?: AutopsyReportDto[];
+}
+
+export interface CreateAutopsyReportDto {
+  reportAuthorId: number;
+  victimId: number;
 }
 
 export interface InterrogationDto {

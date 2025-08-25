@@ -8,6 +8,7 @@ import { useCaseSuspects } from "@/hooks/useCaseSuspects";
 import { useCaseWitnesses } from "@/hooks/useCaseWitnesses";
 import { useCaseMotives } from "@/hooks/useCaseMotives";
 import { useCaseVictims } from "@/hooks/useCaseVictims";
+import { useForensicPathologist } from "@/hooks/useForensicPathologist";
 import InterrogationView from "@/components/InterrogationView";
 import CaseHeader from "@/components/CaseHeader";
 import CaseTabs from "@/components/CaseTabs";
@@ -28,6 +29,7 @@ const CaseDashboard = () => {
   const { data: witnesses, isLoading: witnessesLoading } = useCaseWitnesses(caseId || '');
   const { data: motives, isLoading: motivesLoading } = useCaseMotives(caseId || '');
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId || '');
+  const { data: forensicPathologist, isLoading: pathologistLoading } = useForensicPathologist(caseId || '');
 
   const getImageColor = (index: number) => {
     const colors = [
@@ -84,12 +86,14 @@ const CaseDashboard = () => {
           witnesses={witnesses}
           motives={motives}
           victims={victims}
+          forensicPathologist={forensicPathologist}
           sceneLoading={sceneLoading}
           evidencesLoading={evidencesLoading}
           suspectsLoading={suspectsLoading}
           witnessesLoading={witnessesLoading}
           motivesLoading={motivesLoading}
           victimsLoading={victimsLoading}
+          pathologistLoading={pathologistLoading}
           onInterrogate={handleInterrogate}
           getImageColor={getImageColor}
         />

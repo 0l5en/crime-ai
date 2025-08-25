@@ -1,11 +1,14 @@
 
-import { Mountain, User } from "lucide-react";
+import { Mountain, User, FileText } from "lucide-react";
 import { usePersons } from "@/hooks/usePersons";
 import { useCaseVictims } from "@/hooks/useCaseVictims";
+import { useForensicPathologist } from "@/hooks/useForensicPathologist";
+import { useAutopsyReports } from "@/hooks/useAutopsyReports";
 import InterrogationView from "./InterrogationView";
 import type { components } from '@/openapi/crimeAiSchema';
 
 type PersonDto = components['schemas']['PersonDto'];
+type AutopsyReportDto = components['schemas']['AutopsyReportDto'];
 
 interface CaseOverviewProps {
   caseId: string;
@@ -17,6 +20,7 @@ interface CaseOverviewProps {
 const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverviewProps) => {
   const { data: criminalAssistants, isLoading: assistantLoading } = usePersons(caseId, 'CRIMINAL_ASSISTANT');
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId);
+  const { data: forensicPathologist, isLoading: pathologistLoading } = useForensicPathologist(caseId);
   
   // Get the first criminal assistant (assuming there's only one)
   const criminalAssistant: PersonDto | null = criminalAssistants?.items && criminalAssistants.items.length > 0 
@@ -26,6 +30,18 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
   // Get the first victim (assuming there's only one main victim)
   const victim: PersonDto | null = victims?.items && victims.items.length > 0 
     ? victims.items[0] 
+    : null;
+
+  // Check if victim is dead and if we should fetch autopsy report
+  const shouldFetchAutopsyReport = victim?.lifeStatus === 'DEAD' && forensicPathologist?.id && victim?.id;
+  
+  const { data: autopsyReports, isLoading: autopsyLoading } = useAutopsyReports(
+    shouldFetchAutopsyReport ? forensicPathologist.id : undefined,
+    shouldFetchAutopsyReport ? victim.id : undefined
+  );
+
+  const autopsyReport: AutopsyReportDto | null = autopsyReports?.items && autopsyReports.items.length > 0
+    ? autopsyReports.items[0]
     : null;
 
   // Generate initials from person name
@@ -64,6 +80,37 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
     
     if (victim.alibi?.content) {
       description += ` Alibi: ${victim.alibi.content}.`;
+    }
+
+    if (victim.lifeStatus) {
+      description += ` Status: ${victim.lifeStatus === 'DEAD' ? 'verstorben' : 'lebendig'}.`;
+    }
+    
+    return description;
+  };
+
+  // Format autopsy report details
+  const formatAutopsyDetails = (report: AutopsyReportDto) => {
+    let description = '';
+    
+    if (report.externalExamination) {
+      description += `Äußere Untersuchung: ${report.externalExamination}. `;
+    }
+    
+    if (report.internalExamination) {
+      description += `Innere Untersuchung: ${report.internalExamination}. `;
+    }
+    
+    if (report.causeOfDeath) {
+      description += `Todesursache: ${report.causeOfDeath}. `;
+    }
+    
+    if (report.timeOfDeathFrom && report.timeOfDeathTo) {
+      description += `Todeszeitpunkt: zwischen ${report.timeOfDeathFrom} und ${report.timeOfDeathTo}. `;
+    }
+    
+    if (report.conclusionsAndAssessment) {
+      description += `Schlussfolgerungen und Bewertung: ${report.conclusionsAndAssessment}`;
     }
     
     return description;
@@ -237,6 +284,64 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
           </div>
         </div>
       </div>
+
+      {/* Autopsy Report Section - Only show if victim is dead and report is available */}
+      {victim?.lifeStatus === 'DEAD' && (
+        <div className="col-12">
+          <div 
+            className="card border-0 text-light"
+            style={{ backgroundColor: '#2a2a2a' }}
+          >
+            <div className="card-body p-4">
+              <h3 className="h4 text-white mb-3">Autopsy Report</h3>
+              
+              {pathologistLoading || autopsyLoading ? (
+                <div className="text-center text-muted py-3">
+                  <p>Loading autopsy report...</p>
+                </div>
+              ) : forensicPathologist && autopsyReport ? (
+                <div className="row">
+                  <div className="col-md-8">
+                    <h4 className="h5 text-white mb-3">
+                      Conducted by {forensicPathologist.name}
+                    </h4>
+                    <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
+                      {formatAutopsyDetails(autopsyReport)}
+                    </p>
+                  </div>
+                  
+                  <div className="col-md-4">
+                    <div 
+                      className="d-flex align-items-center justify-content-center rounded position-relative"
+                      style={{ 
+                        height: '200px',
+                        backgroundColor: '#6f42c1',
+                        background: 'linear-gradient(135deg, #6f42c1 0%, #563d7c 100%)'
+                      }}
+                    >
+                      <div className="text-center text-white">
+                        <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3" 
+                             style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+                          <FileText size={40} strokeWidth={1.5} />
+                        </div>
+                        <div className="fw-medium">Autopsy Report</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : !forensicPathologist ? (
+                <div className="text-center text-muted py-3">
+                  <p>No forensic pathologist assigned to this case</p>
+                </div>
+              ) : (
+                <div className="text-center text-muted py-3">
+                  <p>No autopsy report available for this victim</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

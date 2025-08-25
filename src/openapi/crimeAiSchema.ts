@@ -92,6 +92,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/crimecase/{id}/person": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** get persons of a crime case */
+    get: operations["getPersons"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/crimecase/{id}/solution-attempt": {
     parameters: {
       query?: never;
@@ -156,6 +173,24 @@ export interface paths {
     put?: never;
     /** Create a new evidence report */
     post: operations["createEvidenceReport"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/autopsy-report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of autopsy reports */
+    get: operations["listAutopsyReports"];
+    put?: never;
+    /** Create a new autopsy report */
+    post: operations["createAutopsyReport"];
     delete?: never;
     options?: never;
     head?: never;
@@ -385,7 +420,7 @@ export interface components {
       /** Format: int64 */
       id: number;
       name: string;
-      type: "VICTIM" | "WITNESS" | "SUSPECT";
+      type: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT";
       /** Format: int32 */
       age: number;
       profession: string;
@@ -395,10 +430,32 @@ export interface components {
       financialSituation: string;
       previousConvictions: string[];
       relationshipToCase: string;
+      lifeStatus: "DEAD" | "ALIVE";
       alibi?: components["schemas"]["AlibiDto"];
     };
     ResultSetPerson: {
       items?: components["schemas"]["PersonDto"][];
+    };
+    AutopsyReportDto: {
+      /** Format: int64 */
+      id: number;
+      /** Format: int64 */
+      reportAuthorId: number;
+      externalExamination: string;
+      internalExamination: string;
+      causeOfDeath: string;
+      conclusionsAndAssessment: string;
+      timeOfDeathFrom: string;
+      timeOfDeathTo: string;
+    };
+    ResultSetAutopsyReport: {
+      items?: components["schemas"]["AutopsyReportDto"][];
+    };
+    CreateAutopsyReportDto: {
+      /** Format: int64 */
+      reportAuthorId: number;
+      /** Format: int64 */
+      victimId: number;
     };
     InterrogationDto: {
       /** Format: int64 */
@@ -718,6 +775,46 @@ export interface operations {
       };
     };
   };
+  getPersons: {
+    parameters: {
+      query?: {
+        /** @description person type filter */
+        personType?: string;
+      };
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetPerson"];
+        };
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
   listCrimeCaseSolutionAttempts: {
     parameters: {
       query?: {
@@ -908,6 +1005,82 @@ export interface operations {
     responses: {
       /** @description successful operation */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listAutopsyReports: {
+    parameters: {
+      query?: {
+        /** @description The ID of the report author */
+        "reportAuthorId"?: string;
+        /** @description The ID of the victim */
+        "victimId"?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetAutopsyReport"];
+        };
+      };
+      /** @description if there are missing or invalid parameters */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createAutopsyReport: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new report */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateAutopsyReportDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if an invalid request body was send */
+      400: {
         headers: {
           [name: string]: unknown;
         };

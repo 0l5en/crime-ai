@@ -15,12 +15,14 @@ interface CaseContentProps {
   witnesses?: any;
   motives?: any;
   victims?: any;
+  forensicPathologist?: any;
   sceneLoading: boolean;
   evidencesLoading: boolean;
   suspectsLoading: boolean;
   witnessesLoading: boolean;
   motivesLoading: boolean;
   victimsLoading: boolean;
+  pathologistLoading: boolean;
   onInterrogate: (person: any) => void;
   getImageColor: (index: number) => string;
 }
@@ -35,12 +37,14 @@ const CaseContent = ({
   witnesses,
   motives,
   victims,
+  forensicPathologist,
   sceneLoading,
   evidencesLoading,
   suspectsLoading,
   witnessesLoading,
   motivesLoading,
   victimsLoading,
+  pathologistLoading,
   onInterrogate,
   getImageColor
 }: CaseContentProps) => {
