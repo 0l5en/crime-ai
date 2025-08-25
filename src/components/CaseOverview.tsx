@@ -1,6 +1,7 @@
 
-import { Mountain } from "lucide-react";
+import { Mountain, User } from "lucide-react";
 import { usePersons } from "@/hooks/usePersons";
+import { useCaseVictims } from "@/hooks/useCaseVictims";
 import InterrogationView from "./InterrogationView";
 import type { components } from '@/openapi/crimeAiSchema';
 
@@ -15,10 +16,16 @@ interface CaseOverviewProps {
 
 const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverviewProps) => {
   const { data: criminalAssistants, isLoading: assistantLoading } = usePersons(caseId, 'CRIMINAL_ASSISTANT');
+  const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId);
   
   // Get the first criminal assistant (assuming there's only one)
   const criminalAssistant: PersonDto | null = criminalAssistants?.items && criminalAssistants.items.length > 0 
     ? criminalAssistants.items[0] 
+    : null;
+
+  // Get the first victim (assuming there's only one main victim)
+  const victim: PersonDto | null = victims?.items && victims.items.length > 0 
+    ? victims.items[0] 
     : null;
 
   // Generate initials from person name
@@ -29,6 +36,37 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
       .join('')
       .toUpperCase()
       .slice(0, 2);
+  };
+
+  // Format victim details into a flowing text
+  const formatVictimDetails = (victim: PersonDto) => {
+    const details = [];
+    
+    if (victim.age) details.push(`${victim.age} Jahre alt`);
+    if (victim.gender) details.push(victim.gender === 'MALE' ? 'männlich' : victim.gender === 'FEMALE' ? 'weiblich' : victim.gender);
+    if (victim.profession) details.push(`arbeitet als ${victim.profession}`);
+    if (victim.maritalStatus) details.push(`Familienstand: ${victim.maritalStatus}`);
+    if (victim.relationshipToCase) details.push(`Beziehung zum Fall: ${victim.relationshipToCase}`);
+    
+    let description = details.join(', ') + '.';
+    
+    if (victim.personality) {
+      description += ` Persönlichkeit: ${victim.personality}.`;
+    }
+    
+    if (victim.financialSituation) {
+      description += ` Finanzielle Situation: ${victim.financialSituation}.`;
+    }
+    
+    if (victim.previousConvictions && victim.previousConvictions.length > 0) {
+      description += ` Vorstrafen: ${victim.previousConvictions.join(', ')}.`;
+    }
+    
+    if (victim.alibi?.content) {
+      description += ` Alibi: ${victim.alibi.content}.`;
+    }
+    
+    return description;
   };
 
   return (
@@ -144,6 +182,58 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Victim Information Section */}
+      <div className="col-12">
+        <div 
+          className="card border-0 text-light"
+          style={{ backgroundColor: '#2a2a2a' }}
+        >
+          <div className="card-body p-4">
+            <h3 className="h4 text-white mb-3">Victim Information</h3>
+            
+            {victimsLoading ? (
+              <div className="text-center text-muted py-3">
+                <p>Loading victim information...</p>
+              </div>
+            ) : victim ? (
+              <div className="row">
+                <div className="col-md-8">
+                  <h4 className="h5 text-white mb-3">
+                    {victim.name}
+                  </h4>
+                  <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
+                    {formatVictimDetails(victim)}
+                  </p>
+                </div>
+                
+                <div className="col-md-4">
+                  <div 
+                    className="d-flex align-items-center justify-content-center rounded position-relative"
+                    style={{ 
+                      height: '200px',
+                      backgroundColor: '#dc3545',
+                      background: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)'
+                    }}
+                  >
+                    <div className="text-center text-white">
+                      <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3" 
+                           style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+                        <User size={40} strokeWidth={1.5} />
+                      </div>
+                      <div className="fw-medium">Victim</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center text-muted py-3">
+                <p>No victim information available for this case</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

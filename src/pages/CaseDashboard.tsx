@@ -7,6 +7,7 @@ import { useCaseEvidences } from "@/hooks/useCaseEvidences";
 import { useCaseSuspects } from "@/hooks/useCaseSuspects";
 import { useCaseWitnesses } from "@/hooks/useCaseWitnesses";
 import { useCaseMotives } from "@/hooks/useCaseMotives";
+import { useCaseVictims } from "@/hooks/useCaseVictims";
 import InterrogationView from "@/components/InterrogationView";
 import CaseHeader from "@/components/CaseHeader";
 import CaseTabs from "@/components/CaseTabs";
@@ -26,6 +27,7 @@ const CaseDashboard = () => {
   const { data: suspects, isLoading: suspectsLoading } = useCaseSuspects(caseId || '');
   const { data: witnesses, isLoading: witnessesLoading } = useCaseWitnesses(caseId || '');
   const { data: motives, isLoading: motivesLoading } = useCaseMotives(caseId || '');
+  const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId || '');
 
   const getImageColor = (index: number) => {
     const colors = [
@@ -81,11 +83,13 @@ const CaseDashboard = () => {
           suspects={suspects}
           witnesses={witnesses}
           motives={motives}
+          victims={victims}
           sceneLoading={sceneLoading}
           evidencesLoading={evidencesLoading}
           suspectsLoading={suspectsLoading}
           witnessesLoading={witnessesLoading}
           motivesLoading={motivesLoading}
+          victimsLoading={victimsLoading}
           onInterrogate={handleInterrogate}
           getImageColor={getImageColor}
         />
