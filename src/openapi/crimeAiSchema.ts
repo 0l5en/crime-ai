@@ -127,6 +127,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/crimecase/{id}/solution-spoiler": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a solution spoiler */
+    get: operations["getSolutionSpoiler"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/crimecase/{id}/suspect": {
     parameters: {
       query?: never;
@@ -368,7 +385,9 @@ export interface components {
     EvidenceReportDto: {
       /** Format: int64 */
       id: number;
-      report: string;
+      analysis: string;
+      methods: string;
+      conclusion: string;
       /** Format: int64 */
       personId: number;
     };
@@ -411,6 +430,11 @@ export interface components {
       motiveIds: number[];
       personIds: number[];
     };
+    SolutionSpoilerDto: {
+      evidenceTitles: string[];
+      motiveTitles: string[];
+      personNames: string[];
+    };
     AlibiDto: {
       /** Format: int64 */
       id: number;
@@ -420,7 +444,7 @@ export interface components {
       /** Format: int64 */
       id: number;
       name: string;
-      type: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT";
+      roles: ("VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT" | "PERPETRATOR")[];
       /** Format: int32 */
       age: number;
       profession: string;
@@ -869,6 +893,43 @@ export interface operations {
     responses: {
       /** @description successful operation responds with the generated id of the entity */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getSolutionSpoiler: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation responds with a solution spoiler */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SolutionSpoilerDto"];
+        };
+      };
+      /** @description if no solution spoiler exist for the given crime case */
+      404: {
         headers: {
           [name: string]: unknown;
         };

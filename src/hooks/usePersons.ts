@@ -5,15 +5,15 @@ import type { components } from '@/openapi/crimeAiSchema';
 
 type ResultSetPerson = components['schemas']['ResultSetPerson'];
 
-export const usePersons = (caseId: string, personType?: string) => {
+export const usePersons = (caseId: string, personRole?: string) => {
   return useQuery({
-    queryKey: ['persons', caseId, personType],
+    queryKey: ['persons', caseId, personRole],
     queryFn: async (): Promise<ResultSetPerson> => {
-      console.log(`Calling get-persons edge function for case ID: ${caseId}, personType: ${personType || 'all'}`);
+      console.log(`Calling get-persons edge function for case ID: ${caseId}, personRole: ${personRole || 'all'}`);
       
       let functionUrl = `get-persons/${caseId}`;
-      if (personType) {
-        functionUrl += `?personType=${encodeURIComponent(personType)}`;
+      if (personRole) {
+        functionUrl += `?personType=${encodeURIComponent(personRole)}`;
       }
       
       const { data, error } = await supabase.functions.invoke(functionUrl, {

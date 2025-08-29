@@ -46,7 +46,9 @@ export interface ResultSetEvidence {
 
 export interface EvidenceReportDto {
   id: number;
-  report: string;
+  analysis: string;
+  methods: string;
+  conclusion: string;
   personId: number;
 }
 
@@ -93,6 +95,12 @@ export interface SolutionDto {
   personIds: number[];
 }
 
+export interface SolutionSpoilerDto {
+  evidenceTitles: string[];
+  motiveTitles: string[];
+  personNames: string[];
+}
+
 export interface AlibiDto {
   id: number;
   content: string;
@@ -101,7 +109,7 @@ export interface AlibiDto {
 export interface PersonDto {
   id: number;
   name: string;
-  type: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT";
+  roles: ("VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT" | "PERPETRATOR")[];
   age: number;
   profession: string;
   gender: string;
@@ -210,7 +218,7 @@ export interface TemplateVariableDto {
 }
 
 export interface CriminalPoliceTeamDto {
-  personType: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT";
+  personType: "VICTIM" | "WITNESS" | "SUSPECT" | "DIGITAL_EXPERT" | "FORENSIC_EXPERT" | "BALLISTIC_EXPERT" | "DOCUMENT_EXPERT" | "TRACE_EXPERT" | "FORENSIC_PATHOLOGIST" | "CRIMINAL_ASSISTANT" | "PERPETRATOR";
   contactPersonId: number;
 }
 

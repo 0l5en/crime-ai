@@ -5,12 +5,12 @@ import type { components } from '@/openapi/crimeAiSchema';
 type PersonDto = components['schemas']['PersonDto'];
 
 export const useForensicPathologist = (caseId: string) => {
-  const { data: forensicPathologists, isLoading, error } = usePersons(caseId, 'FORENSIC_PATHOLOGIST');
+  const { data: allPersons, isLoading, error } = usePersons(caseId);
   
-  // Get the first forensic pathologist (assuming there's only one)
-  const forensicPathologist: PersonDto | null = forensicPathologists?.items && forensicPathologists.items.length > 0 
-    ? forensicPathologists.items[0] 
-    : null;
+  // Filter for forensic pathologist using roles array
+  const forensicPathologist: PersonDto | null = allPersons?.items?.find(person => 
+    person.roles.includes('FORENSIC_PATHOLOGIST')
+  ) || null;
 
   return {
     data: forensicPathologist,

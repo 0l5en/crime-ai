@@ -18,19 +18,19 @@ interface CaseOverviewProps {
 }
 
 const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverviewProps) => {
-  const { data: criminalAssistants, isLoading: assistantLoading } = usePersons(caseId, 'CRIMINAL_ASSISTANT');
+  const { data: allPersons, isLoading: assistantLoading } = usePersons(caseId);
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId);
   const { data: forensicPathologist, isLoading: pathologistLoading } = useForensicPathologist(caseId);
   
-  // Get the first criminal assistant (assuming there's only one)
-  const criminalAssistant: PersonDto | null = criminalAssistants?.items && criminalAssistants.items.length > 0 
-    ? criminalAssistants.items[0] 
-    : null;
+  // Get the first criminal assistant using roles array
+  const criminalAssistant: PersonDto | null = allPersons?.items?.find(person =>
+    person.roles.includes('CRIMINAL_ASSISTANT')
+  ) || null;
 
-  // Get the first victim (assuming there's only one main victim)
-  const victim: PersonDto | null = victims?.items && victims.items.length > 0 
-    ? victims.items[0] 
-    : null;
+  // Get the first victim using roles array
+  const victim: PersonDto | null = victims?.items?.find(person =>
+    person.roles.includes('VICTIM')
+  ) || null;
 
   // Check if victim is dead and if we should fetch autopsy report
   const shouldFetchAutopsyReport = victim?.lifeStatus === 'DEAD' && forensicPathologist?.id && victim?.id;
