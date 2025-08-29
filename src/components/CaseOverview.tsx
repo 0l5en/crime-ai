@@ -1,4 +1,3 @@
-
 import { Mountain, User, FileText } from "lucide-react";
 import { usePersons } from "@/hooks/usePersons";
 import { useCaseVictims } from "@/hooks/useCaseVictims";
@@ -18,14 +17,12 @@ interface CaseOverviewProps {
 }
 
 const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverviewProps) => {
-  const { data: allPersons, isLoading: assistantLoading } = usePersons(caseId);
+  const { data: criminalAssistantData, isLoading: assistantLoading } = usePersons(caseId, 'CRIMINAL_ASSISTANT');
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId);
   const { data: forensicPathologist, isLoading: pathologistLoading } = useForensicPathologist(caseId);
   
-  // Get the first criminal assistant using roles array
-  const criminalAssistant: PersonDto | null = allPersons?.items?.find(person =>
-    person.roles.includes('CRIMINAL_ASSISTANT')
-  ) || null;
+  // Get the first criminal assistant directly from the filtered response
+  const criminalAssistant: PersonDto | null = criminalAssistantData?.items?.[0] || null;
 
   // Get the first victim using roles array
   const victim: PersonDto | null = victims?.items?.find(person =>
