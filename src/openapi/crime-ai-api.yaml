@@ -248,6 +248,28 @@ paths:
             entity
         "500":
           description: if any internal error occurs while processing the request
+  /crimecase/{id}/solution-spoiler:
+    get:
+      summary: Get a solution spoiler.
+      operationId: getSolutionSpoiler
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation responds with a solution spoiler.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SolutionSpoilerDto"
+        "404":
+          description: if no solution spoiler exist for the given crime case
+        "500":
+          description: if any internal error occurs while processing the request
   /crimecase/{id}/suspect:
     get:
       summary: get the suspects of a crime case
@@ -651,6 +673,7 @@ components:
           - TRACE_EXPERT
           - FORENSIC_PATHOLOGIST
           - CRIMINAL_ASSISTANT
+          - PERPETRATOR
           minLength: 1
         contactPersonId:
           type: integer
@@ -744,19 +767,22 @@ components:
           format: int64
         name:
           type: string
-        type:
-          type: string
-          enum:
-          - VICTIM
-          - WITNESS
-          - SUSPECT
-          - DIGITAL_EXPERT
-          - FORENSIC_EXPERT
-          - BALLISTIC_EXPERT
-          - DOCUMENT_EXPERT
-          - TRACE_EXPERT
-          - FORENSIC_PATHOLOGIST
-          - CRIMINAL_ASSISTANT
+        roles:
+          type: array
+          items:
+            type: string
+            enum:
+            - VICTIM
+            - WITNESS
+            - SUSPECT
+            - DIGITAL_EXPERT
+            - FORENSIC_EXPERT
+            - BALLISTIC_EXPERT
+            - DOCUMENT_EXPERT
+            - TRACE_EXPERT
+            - FORENSIC_PATHOLOGIST
+            - CRIMINAL_ASSISTANT
+            - PERPETRATOR
         age:
           type: integer
           format: int32
@@ -795,7 +821,7 @@ components:
       - previousConvictions
       - profession
       - relationshipToCase
-      - type
+      - roles
     ResultSetPerson:
       type: object
       properties:
@@ -860,6 +886,25 @@ components:
       - evidenceIds
       - motiveIds
       - personIds
+    SolutionSpoilerDto:
+      type: object
+      properties:
+        evidenceTitles:
+          type: array
+          items:
+            type: string
+        motiveTitles:
+          type: array
+          items:
+            type: string
+        personNames:
+          type: array
+          items:
+            type: string
+      required:
+      - evidenceTitles
+      - motiveTitles
+      - personNames
     InterrogationDto:
       type: object
       properties:
@@ -1005,15 +1050,21 @@ components:
         id:
           type: integer
           format: int64
-        report:
-          type: string
         personId:
           type: integer
           format: int64
+        analysis:
+          type: string
+        methods:
+          type: string
+        conclusion:
+          type: string
       required:
+      - analysis
+      - conclusion
       - id
+      - methods
       - personId
-      - report
     ResultSetEvidenceReport:
       type: object
       properties:
