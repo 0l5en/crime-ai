@@ -11,11 +11,13 @@ import ConversationHistory from './ConversationHistory';
 
 interface EvidenceReportCardProps {
   id: number;
-  report: string;
+  analysis: string;
+  methods: string;
+  conclusion: string;
   personId?: number;
 }
 
-const EvidenceReportCard = ({ id, report, personId }: EvidenceReportCardProps) => {
+const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: EvidenceReportCardProps) => {
   const [question, setQuestion] = useState('');
   const { user} = useKeycloak();
   
@@ -70,9 +72,26 @@ const EvidenceReportCard = ({ id, report, personId }: EvidenceReportCardProps) =
       <div className="card-body">
         {/* Evidence Report Content with Markdown Support */}
         <div className="card-text text-light mb-3 markdown-content">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {report}
-          </ReactMarkdown>
+          <div className="mb-3">
+            <h6 className="text-light fw-semibold mb-2">Analysis</h6>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {analysis}
+            </ReactMarkdown>
+          </div>
+          
+          <div className="mb-3">
+            <h6 className="text-light fw-semibold mb-2">Methods</h6>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {methods}
+            </ReactMarkdown>
+          </div>
+          
+          <div className="mb-3">
+            <h6 className="text-light fw-semibold mb-2">Conclusion</h6>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {conclusion}
+            </ReactMarkdown>
+          </div>
         </div>
 
         <hr className="border-secondary my-3" />

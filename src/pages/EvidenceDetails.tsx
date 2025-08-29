@@ -135,7 +135,9 @@ const EvidenceDetails = () => {
                 <div key={report.id} className="col-12 mb-4">
                   <EvidenceReportCard
                     id={report.id}
-                    report={report.report}
+                    analysis={report.analysis}
+                    methods={report.methods}
+                    conclusion={report.conclusion}
                     personId={report.personId}
                   />
                 </div>

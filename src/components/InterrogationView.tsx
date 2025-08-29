@@ -65,32 +65,28 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
       .slice(0, 2);
   };
 
-  // Get person type color - now supports all expanded types
-  const getPersonTypeColor = (type: string) => {
-    switch (type) {
-      case 'SUSPECT':
-        return 'bg-danger';
-      case 'WITNESS':
-        return 'bg-primary';
-      case 'VICTIM':
-        return 'bg-secondary';
-      case 'CRIMINAL_ASSISTANT':
-        return 'bg-success';
-      case 'DIGITAL_EXPERT':
-      case 'FORENSIC_EXPERT':
-      case 'BALLISTIC_EXPERT':
-      case 'DOCUMENT_EXPERT':
-      case 'TRACE_EXPERT':
-      case 'FORENSIC_PATHOLOGIST':
-        return 'bg-info';
-      default:
-        return 'bg-secondary';
+  // Get person type color - now supports all expanded roles
+  const getPersonTypeColor = (roles: string[]) => {
+    if (roles.includes('SUSPECT')) return 'bg-danger';
+    if (roles.includes('WITNESS')) return 'bg-primary';
+    if (roles.includes('VICTIM')) return 'bg-secondary';
+    if (roles.includes('CRIMINAL_ASSISTANT')) return 'bg-success';
+    if (roles.includes('DIGITAL_EXPERT') || 
+        roles.includes('FORENSIC_EXPERT') || 
+        roles.includes('BALLISTIC_EXPERT') || 
+        roles.includes('DOCUMENT_EXPERT') || 
+        roles.includes('TRACE_EXPERT') || 
+        roles.includes('FORENSIC_PATHOLOGIST')) {
+      return 'bg-info';
     }
+    if (roles.includes('PERPETRATOR')) return 'bg-warning';
+    return 'bg-secondary';
   };
 
-  // Get person type display name
-  const getPersonTypeDisplay = (type: string) => {
-    switch (type) {
+  // Get person type display name - use the primary role
+  const getPersonTypeDisplay = (roles: string[]) => {
+    const primaryRole = roles[0];
+    switch (primaryRole) {
       case 'CRIMINAL_ASSISTANT':
         return 'Criminal Assistant';
       case 'DIGITAL_EXPERT':
@@ -105,8 +101,10 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
         return 'Trace Expert';
       case 'FORENSIC_PATHOLOGIST':
         return 'Forensic Pathologist';
+      case 'PERPETRATOR':
+        return 'Perpetrator';
       default:
-        return type.toLowerCase();
+        return primaryRole.toLowerCase();
     }
   };
 
@@ -129,7 +127,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
           
           <div className="d-flex align-items-center">
             <div className="me-3">
-              <div className={`${getPersonTypeColor(person.type)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold`} style={{ width: '48px', height: '48px' }}>
+              <div className={`${getPersonTypeColor(person.roles)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold`} style={{ width: '48px', height: '48px' }}>
                 {getInitials(person.name)}
               </div>
             </div>
@@ -139,7 +137,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
                 Interrogation with {person.name}
               </h2>
               <p className="text-muted mb-0">
-                {getPersonTypeDisplay(person.type)} • {person.age} years old • {person.profession}
+                {getPersonTypeDisplay(person.roles)} • {person.age} years old • {person.profession}
               </p>
             </div>
           </div>
