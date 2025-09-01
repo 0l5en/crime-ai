@@ -96,10 +96,10 @@ paths:
           description: crime case not found
         "500":
           description: if any internal error occurs while processing the request
-  /crimecase/{id}/criminal-police-teams:
+  /crimecase/{id}/evidence:
     get:
-      summary: Get a list of criminal police teams.
-      operationId: listCriminalPoliceTeams
+      summary: get the evidences of a crime case
+      operationId: listEvidences
       parameters:
       - name: id
         in: path
@@ -107,25 +107,11 @@ paths:
         required: true
         schema:
           type: string
-      responses:
-        "200":
-          description: Successful operation responds with a list of criminal police
-            teams.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultSetCriminalPoliceTeamDto"
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase/{id}/evidence:
-    get:
-      summary: get the evidences of a crime case
-      operationId: getEvidences
-      parameters:
-      - name: id
-        in: path
-        description: crime case id
-        required: true
+      - name: solutionEvidence
+        in: query
+        description: "If the value '0' is specified, only evidences not relevant to\
+          \ solve the case are returned (red herrings); if a value other than '0'\
+          \ is specified, only evidences relevant to solve the case are returned."
         schema:
           type: string
       responses:
@@ -142,12 +128,17 @@ paths:
   /crimecase/{id}/motive:
     get:
       summary: get the motives of a crime case
-      operationId: getMotives
+      operationId: listMotives
       parameters:
       - name: id
         in: path
         description: crime case id
         required: true
+        schema:
+          type: string
+      - name: personId
+        in: query
+        description: person id
         schema:
           type: string
       responses:
@@ -164,17 +155,19 @@ paths:
   /crimecase/{id}/person:
     get:
       summary: get the persons of a crime case
-      operationId: getPersons
+      operationId: listPersons
       parameters:
       - name: id
         in: path
-        description: crime case id
+        description: crime case id - the operation returns all persons of the given
+          crime case
         required: true
         schema:
           type: string
-      - name: personType
+      - name: personRole
         in: query
-        description: person type
+        description: one or more person roles - the operation returns all persons
+          containing at least one of the given roles
         schema:
           type: string
       responses:
@@ -193,7 +186,7 @@ paths:
   /crimecase/{id}/solution-attempt:
     get:
       summary: Get a list of solution attempts.
-      operationId: listCrimeCaseSolutionAttempts
+      operationId: listSolutionAttempts
       parameters:
       - name: id
         in: path
@@ -208,8 +201,8 @@ paths:
           type: string
       - name: success
         in: query
-        description: "If the value ‘0’ is specified, only unsuccessful solution attempts\
-          \ are selected; if a value other than ‘0’ is specified, only successful\
+        description: "If the value '0' is specified, only unsuccessful solution attempts\
+          \ are selected; if a value other than '0' is specified, only successful\
           \ solution attempts are selected."
         schema:
           type: string
@@ -246,72 +239,6 @@ paths:
         "201":
           description: successful operation responds with the generated id of the
             entity
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase/{id}/solution-spoiler:
-    get:
-      summary: Get a solution spoiler.
-      operationId: getSolutionSpoiler
-      parameters:
-      - name: id
-        in: path
-        description: crime case id
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Successful operation responds with a solution spoiler.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SolutionSpoilerDto"
-        "404":
-          description: if no solution spoiler exist for the given crime case
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase/{id}/suspect:
-    get:
-      summary: get the suspects of a crime case
-      operationId: getSuspects
-      parameters:
-      - name: id
-        in: path
-        description: crime case id
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultSetPerson"
-        "404":
-          description: crime case not found
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase/{id}/witness:
-    get:
-      summary: get the witnesses of a crime case
-      operationId: getWitnesses
-      parameters:
-      - name: id
-        in: path
-        description: crime case id
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultSetPerson"
-        "404":
-          description: crime case not found
         "500":
           description: if any internal error occurs while processing the request
   /interrogation:
@@ -657,37 +584,6 @@ components:
       - description
       - id
       - title
-    CriminalPoliceTeamDto:
-      type: object
-      properties:
-        personType:
-          type: string
-          enum:
-          - VICTIM
-          - WITNESS
-          - SUSPECT
-          - DIGITAL_EXPERT
-          - FORENSIC_EXPERT
-          - BALLISTIC_EXPERT
-          - DOCUMENT_EXPERT
-          - TRACE_EXPERT
-          - FORENSIC_PATHOLOGIST
-          - CRIMINAL_ASSISTANT
-          - PERPETRATOR
-          minLength: 1
-        contactPersonId:
-          type: integer
-          format: int64
-      required:
-      - contactPersonId
-      - personType
-    ResultSetCriminalPoliceTeamDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CriminalPoliceTeamDto"
     EvidenceDto:
       type: object
       properties:
@@ -886,25 +782,6 @@ components:
       - evidenceIds
       - motiveIds
       - personIds
-    SolutionSpoilerDto:
-      type: object
-      properties:
-        evidenceTitles:
-          type: array
-          items:
-            type: string
-        motiveTitles:
-          type: array
-          items:
-            type: string
-        personNames:
-          type: array
-          items:
-            type: string
-      required:
-      - evidenceTitles
-      - motiveTitles
-      - personNames
     InterrogationDto:
       type: object
       properties:
