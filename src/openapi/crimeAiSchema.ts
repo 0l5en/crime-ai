@@ -144,40 +144,6 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/crimecase/{id}/suspect": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** get the suspects of a crime case */
-    get: operations["getSuspects"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/crimecase/{id}/witness": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** get the witnesses of a crime case */
-    get: operations["getWitnesses"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   "/evidence-report": {
     parameters: {
       query?: never;
@@ -397,9 +363,8 @@ export interface components {
     CreateEvidenceReportDto: {
       /** Format: int64 */
       evidenceId: number;
-      reportType: string;
-      content: string;
-      createdBy: string;
+      /** Format: int64 */
+      personId: number;
     };
     MotiveDto: {
       /** Format: int64 */
@@ -802,8 +767,8 @@ export interface operations {
   getPersons: {
     parameters: {
       query?: {
-        /** @description person type filter */
-        personType?: string;
+        /** @description person role filter */
+        personRole?: string;
       };
       header?: never;
       path: {
@@ -929,80 +894,6 @@ export interface operations {
         };
       };
       /** @description if no solution spoiler exist for the given crime case */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description if any internal error occurs while processing the request */
-      500: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  getSuspects: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        /** @description crime case id */
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description successful operation */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["ResultSetPerson"];
-        };
-      };
-      /** @description crime case not found */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description if any internal error occurs while processing the request */
-      500: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  getWitnesses: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        /** @description crime case id */
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description successful operation */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["ResultSetPerson"];
-        };
-      };
-      /** @description crime case not found */
       404: {
         headers: {
           [name: string]: unknown;

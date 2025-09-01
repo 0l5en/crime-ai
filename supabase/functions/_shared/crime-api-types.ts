@@ -56,11 +56,10 @@ export interface ResultSetEvidenceReport {
   items?: EvidenceReportDto[];
 }
 
+// Updated CreateEvidenceReportDto to match OpenAPI spec - only evidenceId and personId
 export interface CreateEvidenceReportDto {
   evidenceId: number;
-  reportType: string;
-  content: string;
-  createdBy: string;
+  personId: number;
 }
 
 export interface MotiveDto {

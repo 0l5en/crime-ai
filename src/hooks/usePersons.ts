@@ -13,7 +13,8 @@ export const usePersons = (caseId: string, personRole?: string) => {
       
       let functionUrl = `get-persons/${caseId}`;
       if (personRole) {
-        functionUrl += `?personType=${encodeURIComponent(personRole)}`;
+        // Updated parameter name from personType to personRole to match OpenAPI spec
+        functionUrl += `?personRole=${encodeURIComponent(personRole)}`;
       }
       
       const { data, error } = await supabase.functions.invoke(functionUrl, {

@@ -16,7 +16,8 @@ Deno.serve(async (req) => {
     const url = new URL(req.url);
     const pathParts = url.pathname.split('/');
     const caseId = pathParts[pathParts.length - 1];
-    const personType = url.searchParams.get('personType');
+    // Updated parameter name from personType to personRole to match OpenAPI spec
+    const personRole = url.searchParams.get('personRole');
     
     if (!caseId) {
       console.error('No case ID provided in URL');
@@ -29,7 +30,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log(`Fetching persons for case ID: ${caseId}, personType: ${personType || 'all'}`);
+    console.log(`Fetching persons for case ID: ${caseId}, personRole: ${personRole || 'all'}`);
 
     const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
     
@@ -45,8 +46,9 @@ Deno.serve(async (req) => {
     }
 
     let apiUrl = `${CRIME_AI_API_BASE_URL}/crimecase/${caseId}/person`;
-    if (personType) {
-      apiUrl += `?personType=${encodeURIComponent(personType)}`;
+    if (personRole) {
+      // Updated parameter name from personType to personRole
+      apiUrl += `?personRole=${encodeURIComponent(personRole)}`;
     }
     
     console.log(`Making request to: ${apiUrl}`);

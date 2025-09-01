@@ -10,8 +10,14 @@ export const useCreateEvidenceReport = () => {
     mutationFn: async (createEvidenceReportDto: CreateEvidenceReportDto): Promise<void> => {
       console.log('Creating evidence report:', createEvidenceReportDto);
       
+      // Validate that only evidenceId and personId are provided (matching OpenAPI spec)
+      const { evidenceId, personId } = createEvidenceReportDto;
+      if (!evidenceId || !personId) {
+        throw new Error('Both evidenceId and personId are required');
+      }
+      
       const { error } = await supabase.functions.invoke('create-evidence-report', {
-        body: createEvidenceReportDto
+        body: { evidenceId, personId }
       });
       
       if (error) {

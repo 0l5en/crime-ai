@@ -25,8 +25,8 @@ Deno.serve(async (req) => {
       throw new Error('Missing caseId parameter');
     }
 
-    // Use the correct API endpoint with personType parameter
-    const url = `${CRIME_AI_BASE_URL}/crimecase/${caseId}/person?personType=VICTIM`;
+    // Updated parameter name from personType to personRole to match OpenAPI spec
+    const url = `${CRIME_AI_BASE_URL}/crimecase/${caseId}/person?personRole=VICTIM`;
     console.log('Making request to:', url);
 
     const response = await fetch(url, {
