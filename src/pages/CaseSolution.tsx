@@ -273,6 +273,7 @@ const CaseSolution = () => {
                       isSelected={selectedEvidences.includes(evidence.id)}
                       onToggle={() => toggleEvidence(evidence.id)}
                       imageColor={getImageColor(index)}
+                      imageUrl={evidence.imageUrl}
                     />
                   </div>
                 ))}

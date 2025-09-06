@@ -6,6 +6,7 @@ interface EvidenceCardProps {
   analysisResult: string;
   imageColor: string;
   evidenceType?: "FORENSIC" | "BALLISTIC" | "DIGITAL" | "DOCUMENT" | "TRACE" | "OTHER";
+  imageUrl?: string;
   onClick?: () => void;
 }
 
@@ -27,7 +28,7 @@ const getEvidenceTypeColor = (type: string) => {
   }
 };
 
-const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType, onClick }: EvidenceCardProps) => {
+const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType, imageUrl, onClick }: EvidenceCardProps) => {
   return (
     <div 
       className={`card bg-dark border-secondary text-light card-hover position-relative h-100 d-flex flex-column ${onClick ? 'cursor-pointer' : ''}`}
@@ -42,10 +43,19 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
         </div>
       )}
       <div className="card-header p-0">
-        <div className={`${imageColor} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
-          <div className="bg-light bg-opacity-25 rounded d-flex align-items-center justify-content-center" style={{ width: '4rem', height: '4rem' }}>
-            <div className="bg-light bg-opacity-50 rounded" style={{ width: '2rem', height: '2rem' }}></div>
-          </div>
+        <div className={`${imageUrl ? '' : imageColor} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
+          {imageUrl ? (
+            <img 
+              src={imageUrl} 
+              alt={title}
+              className="w-100 h-100 object-fit-cover"
+              style={{ objectFit: 'cover' }}
+            />
+          ) : (
+            <div className="bg-light bg-opacity-25 rounded d-flex align-items-center justify-content-center" style={{ width: '4rem', height: '4rem' }}>
+              <div className="bg-light bg-opacity-50 rounded" style={{ width: '2rem', height: '2rem' }}></div>
+            </div>
+          )}
         </div>
       </div>
       <div className="card-body p-4 flex-grow-1 d-flex flex-column">

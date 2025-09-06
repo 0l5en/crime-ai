@@ -4,13 +4,15 @@ interface EvidenceSelectionCardProps {
   isSelected: boolean;
   onToggle: () => void;
   imageColor?: string;
+  imageUrl?: string;
 }
 
 const EvidenceSelectionCard = ({ 
   title, 
   isSelected,
   onToggle,
-  imageColor = 'bg-gradient-secondary'
+  imageColor = 'bg-gradient-secondary',
+  imageUrl
 }: EvidenceSelectionCardProps) => {
   return (
     <div 
@@ -25,8 +27,17 @@ const EvidenceSelectionCard = ({
       style={{ cursor: 'pointer' }}
     >
       <div className="card-body p-4 d-flex flex-column align-items-center">
-        <div className={`${imageColor} rounded d-flex align-items-center justify-content-center mb-3`} style={{ width: '4rem', height: '4rem' }}>
-          <div className="bg-light bg-opacity-25 rounded" style={{ width: '2rem', height: '2rem' }}></div>
+        <div className={`${imageUrl ? '' : imageColor} rounded d-flex align-items-center justify-content-center mb-3`} style={{ width: '4rem', height: '4rem' }}>
+          {imageUrl ? (
+            <img 
+              src={imageUrl} 
+              alt={title}
+              className="w-100 h-100 rounded"
+              style={{ objectFit: 'cover' }}
+            />
+          ) : (
+            <div className="bg-light bg-opacity-25 rounded" style={{ width: '2rem', height: '2rem' }}></div>
+          )}
         </div>
         
         <div className="text-center">

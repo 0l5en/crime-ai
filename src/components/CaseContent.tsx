@@ -85,6 +85,7 @@ const CaseContent = ({
                   analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
                   imageColor={getImageColor(index)}
                   evidenceType={evidence.evidenceType}
+                  imageUrl={evidence.imageUrl}
                   onClick={() => handleEvidenceClick(evidence.id)}
                 />
               </div>
