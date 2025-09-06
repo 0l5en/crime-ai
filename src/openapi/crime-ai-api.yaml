@@ -705,6 +705,8 @@ components:
           enum:
           - DEAD
           - ALIVE
+        textToImage:
+          type: string
       required:
       - age
       - financialSituation
@@ -718,6 +720,7 @@ components:
       - profession
       - relationshipToCase
       - roles
+      - textToImage
     ResultSetPerson:
       type: object
       properties:

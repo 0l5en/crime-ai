@@ -1,7 +1,7 @@
 
-import GameCard from "./GameCard";
-import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useCrimeCases } from "@/hooks/useCrimeCases";
+import GameCard from "./GameCard";
 
 const GameShowcase = () => {
   const { data: crimeCases, isLoading, error } = useCrimeCases();
@@ -10,7 +10,7 @@ const GameShowcase = () => {
   const getImageColor = (index: number) => {
     const colors = [
       "bg-gradient-red",
-      "bg-gradient-blue", 
+      "bg-gradient-blue",
       "bg-gradient-green",
       "bg-gradient-purple",
       "bg-gradient-orange",
@@ -20,8 +20,8 @@ const GameShowcase = () => {
   };
 
   return (
-    <section 
-      data-section="cases" 
+    <section
+      data-section="cases"
       className="bg-dark text-light py-5 px-4"
       style={{ minHeight: '100vh' }}
     >
@@ -32,7 +32,7 @@ const GameShowcase = () => {
             <div className="text-muted">Loading cases...</div>
           )}
         </div>
-        
+
         {error && (
           <div className="text-center py-5">
             <div className="text-danger h4 mb-3">
@@ -60,14 +60,14 @@ const GameShowcase = () => {
                   <GameCard
                     title={crimeCase.title}
                     description={crimeCase.description}
-                    imageColor={getImageColor(index)}
+                    imageUrl={crimeCase.imageUrl}
                     caseId={crimeCase.id}
                     userId={user?.email}
                   />
                 </div>
               ))}
             </div>
-            
+
             <div className="text-center">
               <button className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
                 View All Cases
