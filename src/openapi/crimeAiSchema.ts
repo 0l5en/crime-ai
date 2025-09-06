@@ -421,6 +421,8 @@ export interface components {
       relationshipToCase: string;
       lifeStatus: "DEAD" | "ALIVE";
       alibi?: components["schemas"]["AlibiDto"];
+      textToImage: string;
+      imageUrl?: string;
     };
     ResultSetPerson: {
       items?: components["schemas"]["PersonDto"][];

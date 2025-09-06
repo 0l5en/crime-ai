@@ -6,6 +6,7 @@ interface SuspectCardProps {
   maritalStatus: string;
   relationshipToCase: string;
   imageColor?: string;
+  imageUrl?: string;
   alibiContent?: string;
   onInterrogate?: () => void;
 }
@@ -17,6 +18,7 @@ const SuspectCard = ({
   maritalStatus, 
   relationshipToCase,
   imageColor = 'bg-gradient-secondary',
+  imageUrl,
   alibiContent,
   onInterrogate
 }: SuspectCardProps) => {
@@ -37,7 +39,19 @@ const SuspectCard = ({
       <div className="card-header pb-3">
         <div className="d-flex align-items-center">
           <div className="me-3" style={{ width: '4rem', height: '4rem' }}>
-            <div className={`${imageColor} h-100 w-100 d-flex align-items-center justify-content-center rounded-circle`}>
+            {imageUrl ? (
+              <img 
+                src={imageUrl} 
+                alt={name}
+                className="rounded-circle object-fit-cover"
+                style={{ width: '4rem', height: '4rem' }}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('d-none');
+                }}
+              />
+            ) : null}
+            <div className={`${imageColor} h-100 w-100 d-flex align-items-center justify-content-center rounded-circle ${imageUrl ? 'd-none' : ''}`}>
               <span className="text-white fw-semibold">
                 {getInitials(name)}
               </span>

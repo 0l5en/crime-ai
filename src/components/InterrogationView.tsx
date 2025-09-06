@@ -127,7 +127,19 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
           
           <div className="d-flex align-items-center">
             <div className="me-3">
-              <div className={`${getPersonTypeColor(person.roles)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold`} style={{ width: '48px', height: '48px' }}>
+              {person.imageUrl ? (
+                <img 
+                  src={person.imageUrl} 
+                  alt={person.name}
+                  className="rounded-circle object-fit-cover"
+                  style={{ width: '48px', height: '48px' }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('d-none');
+                  }}
+                />
+              ) : null}
+              <div className={`${getPersonTypeColor(person.roles)} rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold ${person.imageUrl ? 'd-none' : ''}`} style={{ width: '48px', height: '48px' }}>
                 {getInitials(person.name)}
               </div>
             </div>

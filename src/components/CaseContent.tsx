@@ -117,6 +117,7 @@ const CaseContent = ({
                   maritalStatus={suspect.maritalStatus}
                   relationshipToCase={suspect.relationshipToCase}
                   imageColor={getImageColor(index)}
+                  imageUrl={suspect.imageUrl}
                   onInterrogate={() => onInterrogate(suspect)}
                   alibiContent={suspect.alibi?.content}
                 />
@@ -150,6 +151,7 @@ const CaseContent = ({
                   maritalStatus={witness.maritalStatus}
                   relationshipToCase={witness.relationshipToCase}
                   imageColor={getImageColor(index)}
+                  imageUrl={witness.imageUrl}
                   onInterrogate={() => onInterrogate(witness)}
                 />
               </div>
