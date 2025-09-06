@@ -240,6 +240,7 @@ const CaseSolution = () => {
                       isSelected={selectedSuspects.includes(suspect.id)}
                       onToggle={() => toggleSuspect(suspect.id)}
                       imageColor={getImageColor(index)}
+                      imageUrl={suspect.imageUrl}
                     />
                   </div>
                 ))}
