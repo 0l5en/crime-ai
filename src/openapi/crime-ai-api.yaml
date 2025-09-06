@@ -533,6 +533,8 @@ components:
           type: string
         language:
           type: string
+        textToImage:
+          type: string
         imageUrl:
           type: string
       required:
@@ -540,6 +542,7 @@ components:
       - id
       - language
       - summary
+      - textToImage
       - title
     ResultSetCrimeCase:
       type: object
@@ -706,6 +709,8 @@ components:
           - DEAD
           - ALIVE
         textToImage:
+          type: string
+        imageUrl:
           type: string
       required:
       - age

@@ -1,9 +1,9 @@
 
 import { useNavigate } from "react-router-dom";
+import CaseOverview from "./CaseOverview";
 import EvidenceCard from "./EvidenceCard";
 import SuspectCard from "./SuspectCard";
 import WitnessCard from "./WitnessCard";
-import CaseOverview from "./CaseOverview";
 
 interface CaseContentProps {
   activeTab: string;
@@ -58,7 +58,7 @@ const CaseContent = ({
 
   if (activeTab === 'overview') {
     return (
-      <CaseOverview 
+      <CaseOverview
         caseId={caseId}
         crimeCase={crimeCase}
         crimeScene={crimeScene}
