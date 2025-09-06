@@ -610,7 +610,11 @@ components:
           - DOCUMENT
           - TRACE
           - OTHER
+        textToImage:
+          type: string
         documentContent:
+          type: string
+        imageUrl:
           type: string
       required:
       - analysisResult
@@ -618,6 +622,7 @@ components:
       - evidenceType
       - id
       - location
+      - textToImage
       - title
     ResultSetEvidence:
       type: object
