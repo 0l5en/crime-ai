@@ -15,7 +15,7 @@ const Header = () => {
             <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
               <div className="bg-dark rounded" style={{ width: '16px', height: '16px' }}></div>
             </div>
-            <span className="fs-4 fw-semibold">Mystery Solvers</span>
+            <span className="fs-4 fw-semibold">DetectivesGame</span>
           </Link>
 
           {/* Desktop Navigation - visible on lg+ screens */}
