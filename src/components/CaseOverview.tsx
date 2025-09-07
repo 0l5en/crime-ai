@@ -163,22 +163,31 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
                 <div className="col-md-4">
                   <div
-                    className="d-flex align-items-center justify-content-center rounded position-relative"
+                    className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                     style={{
                       height: '200px',
                       backgroundColor: '#28a745',
                       background: 'linear-gradient(135deg, #28a745 0%, #20c997 100%)'
                     }}
                   >
-                    <div className="text-center text-white">
-                      <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
-                        style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-                        <span style={{ fontSize: '24px' }}>
-                          {getInitials(criminalAssistant.name)}
-                        </span>
+                    {criminalAssistant.imageUrl ? (
+                      <img
+                        src={criminalAssistant.imageUrl}
+                        alt={criminalAssistant.name}
+                        className="w-100 h-100"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    ) : (
+                      <div className="text-center text-white">
+                        <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
+                          style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+                          <span style={{ fontSize: '24px' }}>
+                            {getInitials(criminalAssistant.name)}
+                          </span>
+                        </div>
+                        <div className="fw-medium">Criminal Assistant</div>
                       </div>
-                      <div className="fw-medium">Criminal Assistant</div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -258,20 +267,29 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
                 <div className="col-md-4">
                   <div
-                    className="d-flex align-items-center justify-content-center rounded position-relative"
+                    className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                     style={{
                       height: '200px',
                       backgroundColor: '#dc3545',
                       background: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)'
                     }}
                   >
-                    <div className="text-center text-white">
-                      <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
-                        style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-                        <User size={40} strokeWidth={1.5} />
+                    {victim.imageUrl ? (
+                      <img
+                        src={victim.imageUrl}
+                        alt={victim.name}
+                        className="w-100 h-100"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    ) : (
+                      <div className="text-center text-white">
+                        <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
+                          style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+                          <User size={40} strokeWidth={1.5} />
+                        </div>
+                        <div className="fw-medium">Victim</div>
                       </div>
-                      <div className="fw-medium">Victim</div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
