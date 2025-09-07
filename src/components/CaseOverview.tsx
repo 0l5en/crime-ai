@@ -355,20 +355,29 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
                   <div className="col-md-4">
                     <div
-                      className="d-flex align-items-center justify-content-center rounded position-relative"
+                      className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                       style={{
                         height: '200px',
                         backgroundColor: '#6f42c1',
                         background: 'linear-gradient(135deg, #6f42c1 0%, #563d7c 100%)'
                       }}
                     >
-                      <div className="text-center text-white">
-                        <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
-                          style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-                          <FileText size={40} strokeWidth={1.5} />
+                      {forensicPathologist.imageUrl ? (
+                        <img
+                          src={forensicPathologist.imageUrl}
+                          alt={forensicPathologist.name}
+                          className="w-100 h-100"
+                          style={{ objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <div className="text-center text-white">
+                          <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
+                            style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+                            <FileText size={40} strokeWidth={1.5} />
+                          </div>
+                          <div className="fw-medium">Autopsy Report</div>
                         </div>
-                        <div className="fw-medium">Autopsy Report</div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>
