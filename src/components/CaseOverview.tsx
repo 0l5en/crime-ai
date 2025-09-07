@@ -223,17 +223,26 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
               <div className="col-md-4">
                 <div
-                  className="d-flex align-items-center justify-content-center rounded position-relative"
+                  className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                   style={{
                     height: '200px',
                     backgroundColor: '#4a5568',
                     background: 'linear-gradient(135deg, #4a5568 0%, #2d3748 100%)'
                   }}
                 >
-                  <div className="text-center" style={{ color: '#a0aec0' }}>
-                    <Mountain size={64} strokeWidth={1.5} />
-                    <div className="mt-3 fw-medium">Crime Scene Image</div>
-                  </div>
+                  {crimeScene?.imageUrl ? (
+                    <img
+                      src={crimeScene.imageUrl}
+                      alt={crimeScene.title || 'Crime Scene'}
+                      className="w-100 h-100"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div className="text-center" style={{ color: '#a0aec0' }}>
+                      <Mountain size={64} strokeWidth={1.5} />
+                      <div className="mt-3 fw-medium">Crime Scene Image</div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
