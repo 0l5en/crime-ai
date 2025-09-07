@@ -59,7 +59,7 @@ const GameShowcase = () => {
                 <div key={crimeCase.id} className="col-lg-4 col-md-6">
                   <GameCard
                     title={crimeCase.title}
-                    description={crimeCase.description}
+                    description={crimeCase.summary}
                     imageUrl={crimeCase.imageUrl}
                     caseId={crimeCase.id}
                     userId={user?.email}
