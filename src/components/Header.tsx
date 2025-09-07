@@ -119,7 +119,7 @@ const Header = () => {
             <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '24px', height: '24px' }}>
               <div className="bg-dark rounded" style={{ width: '12px', height: '12px' }}></div>
             </div>
-            Mystery Solvers
+            DetectivesGame
           </h5>
           <button 
             type="button" 
