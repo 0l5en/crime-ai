@@ -496,6 +496,26 @@ paths:
           description: if an invalid request body was send
         "500":
           description: if any internal error occurs while processing the request
+  /autopsy-report-request:
+    post:
+      summary: "Create a new request for autopsy report of a victim. If a request\
+        \ already exist for the given identifier (userId, victimId), this operation\
+        \ will do nothing."
+      operationId: createAutopsyReportRequest
+      requestBody:
+        description: the data required to create a new request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAutopsyReportRequestDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation without response body
+        "400":
+          description: if an invalid request body was send
+        "500":
+          description: if any internal error occurs while processing the request
   /task/{id}:
     get:
       summary: Get a task info object by id.
@@ -516,6 +536,41 @@ paths:
                 $ref: "#/components/schemas/TaskInfoDto"
         "404":
           description: if the task could not be found
+        "500":
+          description: if any internal error occurs while processing the request
+  /notification:
+    get:
+      summary: Get a list of notifications.
+      operationId: listNotifications
+      parameters:
+      - name: userId
+        in: query
+        description: the id of a logged in user playing a crime case
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetNotification"
+        "500":
+          description: if any internal error occurs while processing the request
+    patch:
+      summary: Update a notification.
+      operationId: updateNotification
+      requestBody:
+        description: the data required to update a notification
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NotificationDto"
+        required: true
+      responses:
+        "204":
+          description: Successful operation.
         "500":
           description: if any internal error occurs while processing the request
 components:
@@ -583,9 +638,14 @@ components:
           type: string
         description:
           type: string
+        textToImage:
+          type: string
+        imageUrl:
+          type: string
       required:
       - description
       - id
+      - textToImage
       - title
     EvidenceDto:
       type: object
@@ -1023,6 +1083,17 @@ components:
       required:
       - reportAuthorId
       - victimId
+    CreateAutopsyReportRequestDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        victimId:
+          type: integer
+          format: int64
+      required:
+      - userId
+      - victimId
     TaskInfoDto:
       type: object
       properties:
@@ -1042,3 +1113,37 @@ components:
       - createdAt
       - id
       - taskStatus
+    NotificationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        notificationContextType:
+          type: string
+          enum:
+          - AUTOPSY_REPORT
+        recipientId:
+          type: string
+        nameOfSender:
+          type: string
+        subject:
+          type: string
+        read:
+          type: boolean
+        createdAt:
+          type: string
+      required:
+      - createdAt
+      - id
+      - nameOfSender
+      - notificationContextType
+      - recipientId
+      - subject
+    ResultSetNotification:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/NotificationDto"
