@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import ThemeToggle from "./ThemeToggle";
+import NotificationBadge from "./NotificationBadge";
 
 const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
@@ -35,6 +36,13 @@ const Header = () => {
                         Admin
                       </button>
                     </Link>
+                  </div>
+                )}
+                
+                {/* Notification Badge */}
+                {authenticated && (
+                  <div className="nav-item">
+                    <NotificationBadge />
                   </div>
                 )}
                 
@@ -145,12 +153,14 @@ const Header = () => {
                   <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
                     {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                   </div>
-                  <div>
+                  <div className="flex-grow-1">
                     <div className="fw-medium text-white">{user.name || user.email}</div>
                     <div className="text-muted small">
                       {user.roles.join(', ') || 'No roles'}
                     </div>
                   </div>
+                  {/* Notification Badge for Mobile */}
+                  <NotificationBadge />
                 </div>
 
                 {/* Admin Link for mobile */}

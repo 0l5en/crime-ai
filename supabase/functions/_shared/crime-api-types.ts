@@ -28,6 +28,8 @@ export interface CrimeSceneDto {
   id: number;
   title: string;
   description: string;
+  textToImage: string;
+  imageUrl: string;
 }
 
 export interface EvidenceDto {
@@ -121,6 +123,8 @@ export interface PersonDto {
   relationshipToCase: string;
   lifeStatus: "DEAD" | "ALIVE";
   alibi?: AlibiDto;
+  textToImage: string;
+  imageUrl?: string;
 }
 
 export interface ResultSetPerson {
@@ -232,4 +236,23 @@ export interface TaskInfoDto {
   taskStatus: "PENDING" | "COMPLETED";
   createdAt: string;
   completedAt?: string;
+}
+
+export interface NotificationDto {
+  id: number;
+  notificationContextType: "AUTOPSY_REPORT";
+  recipientId: string;
+  nameOfSender: string;
+  subject: string;
+  read: boolean;
+  createdAt: string;
+}
+
+export interface ResultSetNotification {
+  items?: NotificationDto[];
+}
+
+export interface CreateAutopsyReportRequestDto {
+  userId: string;
+  victimId: number;
 }

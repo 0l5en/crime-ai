@@ -300,6 +300,58 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/autopsy-report-request": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Create a new request for autopsy report of a victim. If a request already exist for the given identifier (userId, victimId), this operation will do nothing. */
+    post: operations["createAutopsyReportRequest"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/task/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a task info object by id. */
+    get: operations["getTaskInfo"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/notification": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of notifications. */
+    get: operations["listNotifications"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** Update a notification. */
+    patch: operations["updateNotification"];
+    trace?: never;
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -334,6 +386,8 @@ export interface components {
       id: number;
       title: string;
       description: string;
+      textToImage: string;
+      imageUrl: string;
     };
     EvidenceDto: {
       /** Format: int64 */
@@ -516,6 +570,33 @@ export interface components {
     TemplateVariableDto: {
       key?: string;
       value?: string;
+    };
+    CreateAutopsyReportRequestDto: {
+      userId: string;
+      /** Format: int64 */
+      victimId: number;
+    };
+    TaskInfoDto: {
+      id: string;
+      taskStatus: "PENDING" | "COMPLETED";
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      completedAt?: string;
+    };
+    NotificationDto: {
+      /** Format: int64 */
+      id: number;
+      notificationContextType: "AUTOPSY_REPORT";
+      recipientId: string;
+      nameOfSender: string;
+      subject: string;
+      read: boolean;
+      /** Format: date-time */
+      createdAt: string;
+    };
+    ResultSetNotification: {
+      items?: components["schemas"]["NotificationDto"][];
     };
   };
   responses: never;
@@ -1297,6 +1378,140 @@ export interface operations {
       };
       /** @description if the prompt template could not be found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createAutopsyReportRequest: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new request */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateAutopsyReportRequestDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation without response body */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if an invalid request body was send */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getTaskInfo: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description task id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TaskInfoDto"];
+        };
+      };
+      /** @description if the task could not be found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listNotifications: {
+    parameters: {
+      query: {
+        /** @description the id of a logged in user playing a crime case */
+        userId: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetNotification"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  updateNotification: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to update a notification */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["NotificationDto"];
+      };
+    };
+    responses: {
+      /** @description Successful operation. */
+      204: {
         headers: {
           [name: string]: unknown;
         };
