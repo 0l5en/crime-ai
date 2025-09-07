@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { useKeycloak } from "@/contexts/KeycloakContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
 export interface NotificationDto {
   id: number;
@@ -28,8 +28,18 @@ export const useNotifications = () => {
         throw new Error("User not authenticated");
       }
 
-      const { data, error } = await supabase.functions.invoke("list-notifications", {
-        body: { userId },
+      // Build query parameters for the edge function
+      const queryParams = new URLSearchParams({
+        userId: userId
+      });
+
+      const functionNameWithParams = `list-notifications?${queryParams.toString()}`;
+
+      const { data, error } = await supabase.functions.invoke(functionNameWithParams, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
 
       if (error) {
