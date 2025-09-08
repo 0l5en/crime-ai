@@ -13,9 +13,6 @@ const Header = () => {
         <div className="container-fluid px-4">
           {/* Brand */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
-            {/* <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
-              <div className="bg-dark rounded" style={{ width: '16px', height: '16px' }}></div>
-            </div> */}
             <img src="/logo.svg" alt="logo" style={{ maxHeight: '35px' }} className="me-2" />
             <span className="fs-4 fw-semibold">DetectivesGame</span>
           </Link>

@@ -16,35 +16,38 @@ Deno.serve(async (req) => {
     const url = new URL(req.url);
     const reportAuthorId = url.searchParams.get('reportAuthorId');
     const victimId = url.searchParams.get('victimId');
-    
-    if (!reportAuthorId || !victimId) {
-      console.error('Missing required parameters: reportAuthorId or victimId');
-      return new Response(
-        JSON.stringify({ error: 'reportAuthorId and victimId are required' }),
-        { 
-          status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-        }
-      );
-    }
+    const notificationId = url.searchParams.get('notificationId');
 
-    console.log(`Fetching autopsy reports for reportAuthorId: ${reportAuthorId}, victimId: ${victimId}`);
+    console.log(`Fetching autopsy reports for reportAuthorId: ${reportAuthorId}, victimId: ${victimId}, notificationId: ${notificationId}`);
 
     const crimeApiToken = Deno.env.get('CRIME_AI_API_TOKEN');
-    
+
     if (!crimeApiToken) {
       console.error('CRIME_AI_API_TOKEN not found');
       return new Response(
         JSON.stringify({ error: 'API token not configured' }),
-        { 
-          status: 500, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         }
       );
     }
 
-    const apiUrl = `${CRIME_AI_API_BASE_URL}/autopsy-report?reportAuthorId=${encodeURIComponent(reportAuthorId)}&victimId=${encodeURIComponent(victimId)}`;
-    
+    let queryParams = '';
+    if (reportAuthorId) {
+      queryParams += `reportAuthorId=${encodeURIComponent(reportAuthorId)}`;
+    }
+    if (victimId) {
+      queryParams += (queryParams.length > 0 ? '&' : '');
+      queryParams += `victimId=${encodeURIComponent(victimId)}`;
+    }
+    if (notificationId) {
+      queryParams += (queryParams.length > 0 ? '&' : '');
+      queryParams += `notificationId=${encodeURIComponent(notificationId)}`;
+    }
+
+    const apiUrl = `${CRIME_AI_API_BASE_URL}/autopsy-report` + (queryParams.length > 0 ? '?' + queryParams : '');
+
     console.log(`Making request to: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {
@@ -63,13 +66,13 @@ Deno.serve(async (req) => {
         console.log('Invalid parameters');
         return new Response(
           JSON.stringify({ error: 'Invalid parameters' }),
-          { 
-            status: 400, 
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
           }
         );
       }
-      
+
       const errorText = await response.text();
       console.error('API error response:', errorText);
       throw new Error(`API request failed with status ${response.status}: ${errorText}`);
@@ -80,22 +83,22 @@ Deno.serve(async (req) => {
 
     return new Response(
       JSON.stringify(autopsyReports),
-      { 
-        status: 200, 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+      {
+        status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       }
     );
 
   } catch (error) {
     console.error('Error in get-autopsy-reports function:', error);
     return new Response(
-      JSON.stringify({ 
-        error: 'Internal server error', 
-        details: error.message 
+      JSON.stringify({
+        error: 'Internal server error',
+        details: error.message
       }),
-      { 
-        status: 500, 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+      {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       }
     );
   }

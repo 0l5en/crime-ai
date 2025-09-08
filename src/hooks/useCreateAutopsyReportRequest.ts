@@ -1,11 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { components } from "@/openapi/crimeAiSchema";
+import { useMutation } from "@tanstack/react-query";
 
-export interface CreateAutopsyReportRequestDto {
-  userId: string;
-  victimId: number;
-}
+type CreateAutopsyReportRequestDto = components["schemas"]["CreateAutopsyReportRequestDto"];
 
 export const useCreateAutopsyReportRequest = () => {
   const { toast } = useToast();
