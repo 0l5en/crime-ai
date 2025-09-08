@@ -1,8 +1,8 @@
 
-import { Link } from "react-router-dom";
 import { useKeycloak } from "@/contexts/KeycloakContext";
-import ThemeToggle from "./ThemeToggle";
+import { Link } from "react-router-dom";
 import NotificationBadge from "./NotificationBadge";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
@@ -13,9 +13,10 @@ const Header = () => {
         <div className="container-fluid px-4">
           {/* Brand */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
-            <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
+            {/* <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '32px', height: '32px' }}>
               <div className="bg-dark rounded" style={{ width: '16px', height: '16px' }}></div>
-            </div>
+            </div> */}
+            <img src="/logo.svg" alt="logo" style={{ maxHeight: '35px' }} className="me-2" />
             <span className="fs-4 fw-semibold">DetectivesGame</span>
           </Link>
 
@@ -38,14 +39,14 @@ const Header = () => {
                     </Link>
                   </div>
                 )}
-                
+
                 {/* Notification Badge */}
                 {authenticated && (
                   <div className="nav-item">
                     <NotificationBadge />
                   </div>
                 )}
-                
+
                 {/* User Profile */}
                 {user && (
                   <div className="nav-item d-flex align-items-center gap-2">
@@ -63,7 +64,7 @@ const Header = () => {
 
                 {/* Logout Button */}
                 <div className="nav-item">
-                  <button 
+                  <button
                     className="btn btn-outline-secondary bg-transparent border-light text-light"
                     onClick={logout}
                   >
@@ -75,7 +76,7 @@ const Header = () => {
               <>
                 {/* Sign In Button */}
                 <div className="nav-item">
-                  <button 
+                  <button
                     className="btn btn-outline-secondary bg-transparent border-light text-light"
                     onClick={() => login()}
                   >
@@ -94,13 +95,13 @@ const Header = () => {
           </div>
 
           {/* Mobile Hamburger Button - visible only on smaller screens */}
-          <button 
-            className="navbar-toggler border-0 d-lg-none" 
-            type="button" 
-            data-bs-toggle="offcanvas" 
-            data-bs-target="#mobileOffcanvas" 
+          <button
+            className="navbar-toggler border-0 d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileOffcanvas"
             aria-controls="mobileOffcanvas"
-            aria-expanded="false" 
+            aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
@@ -109,12 +110,12 @@ const Header = () => {
       </nav>
 
       {/* Mobile Offcanvas Menu - Fullscreen */}
-      <div 
-        className="offcanvas offcanvas-start text-bg-dark" 
-        tabIndex={-1} 
-        id="mobileOffcanvas" 
+      <div
+        className="offcanvas offcanvas-start text-bg-dark"
+        tabIndex={-1}
+        id="mobileOffcanvas"
         aria-labelledby="mobileOffcanvasLabel"
-        style={{ 
+        style={{
           backgroundColor: '#1a1a1a',
           width: '100vw',
           height: '100vh',
@@ -129,10 +130,10 @@ const Header = () => {
             </div>
             DetectivesGame
           </h5>
-          <button 
-            type="button" 
-            className="btn-close btn-close-white" 
-            data-bs-dismiss="offcanvas" 
+          <button
+            type="button"
+            className="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
@@ -165,8 +166,8 @@ const Header = () => {
 
                 {/* Admin Link for mobile */}
                 {hasRole('admin') && (
-                  <Link 
-                    to="/admin" 
+                  <Link
+                    to="/admin"
                     className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2"
                     data-bs-dismiss="offcanvas"
                   >
@@ -180,7 +181,7 @@ const Header = () => {
           {/* Bottom Action Buttons */}
           <div className="mt-auto">
             {authenticated ? (
-              <button 
+              <button
                 className="btn btn-outline-secondary bg-transparent border-light text-light w-100"
                 onClick={() => {
                   logout();
@@ -196,7 +197,7 @@ const Header = () => {
               </button>
             ) : (
               <div className="d-grid gap-2">
-                <button 
+                <button
                   className="btn btn-outline-secondary bg-transparent border-light text-light"
                   onClick={() => {
                     login();
