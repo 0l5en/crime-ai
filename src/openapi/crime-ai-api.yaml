@@ -466,6 +466,11 @@ paths:
         description: The ID of the victim
         schema:
           type: string
+      - name: notificationId
+        in: query
+        description: The ID of the notification
+        schema:
+          type: string
       responses:
         "200":
           description: Successful operation.
@@ -1037,6 +1042,8 @@ components:
     AutopsyReportDto:
       type: object
       properties:
+        title:
+          type: string
         id:
           type: integer
           format: int64
@@ -1064,6 +1071,7 @@ components:
       - reportAuthorId
       - timeOfDeathFrom
       - timeOfDeathTo
+      - title
     ResultSetAutopsyReport:
       type: object
       properties:
