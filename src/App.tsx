@@ -11,6 +11,7 @@ import AdminPromptManagement from "./pages/AdminPromptManagement";
 import CaseDashboard from "./pages/CaseDashboard";
 import CaseSolution from "./pages/CaseSolution";
 import EvidenceDetails from "./pages/EvidenceDetails";
+import EmailInbox from "./pages/EmailInbox";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -44,6 +45,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin', 'standard']}>
                   <CaseSolution />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/emails"
+              element={
+                <ProtectedRoute requiredRoles={['admin', 'standard']}>
+                  <EmailInbox />
                 </ProtectedRoute>
               }
             />
