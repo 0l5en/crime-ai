@@ -66,16 +66,17 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                             <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
                                 {formatVictimDetails(victim)}
                             </p>
-                            <p className="mt-4">
-                                <button
-                                    disabled={requestAutopsyReportMutation.isPending}
-                                    onClick={handleRequestAutopsyReport}
-                                    className="btn btn-danger btn-sm"
-                                    data-testid="request-autopsy-report-button"
-                                >
-                                    request autopsy report
-                                </button>
-                            </p>
+                            {victim.lifeStatus === 'DEAD' &&
+                                <p className="mt-4">
+                                    <button
+                                        disabled={requestAutopsyReportMutation.isPending}
+                                        onClick={handleRequestAutopsyReport}
+                                        className="btn btn-danger btn-sm"
+                                        data-testid="request-autopsy-report-button"
+                                    >
+                                        request autopsy report
+                                    </button>
+                                </p>}
                         </div>
 
                         <div className="col-md-4">
