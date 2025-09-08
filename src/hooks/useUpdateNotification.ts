@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { useKeycloak } from "@/contexts/KeycloakContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { NotificationDto } from "./useNotifications";
 
 export const useUpdateNotification = () => {
@@ -12,6 +12,7 @@ export const useUpdateNotification = () => {
   return useMutation({
     mutationFn: async (notification: NotificationDto) => {
       const { data, error } = await supabase.functions.invoke("update-notification", {
+        method: 'PATCH',
         body: notification,
       });
 
