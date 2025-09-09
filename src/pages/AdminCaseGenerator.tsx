@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import Header from "@/components/Header";
+import { useToast } from "@/hooks/use-toast";
 import { useCreateCrimeCaseBasic } from "@/hooks/useCreateCrimeCaseBasic";
 import { useTaskInfo } from "@/hooks/useTaskInfo";
-import { useToast } from "@/hooks/use-toast";
+import { useEffect, useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import type { CreateCaseGeneratorFormBasicDto, CreateSightseeingAttractionDto, Violations } from "../../supabase/functions/_shared/crime-api-types";
 
 interface FormData {
@@ -70,7 +70,7 @@ const AdminCaseGenerator = () => {
   useEffect(() => {
     if (taskInfo) {
       const currentStatus = taskInfo.status || taskInfo.taskStatus;
-      
+
       if (currentStatus === 'COMPLETED') {
         toast({
           title: "Erfolg",
@@ -99,7 +99,7 @@ const AdminCaseGenerator = () => {
         subfield: arrayMatch[3]
       };
     }
-    
+
     // Handle simple array: arrayFieldName[index]
     const simpleArrayMatch = propertyPath.match(/^(\w+)\[(\d+)\]$/);
     if (simpleArrayMatch) {
@@ -108,7 +108,7 @@ const AdminCaseGenerator = () => {
         index: parseInt(simpleArrayMatch[2], 10)
       };
     }
-    
+
     // Handle simple field
     return { field: propertyPath };
   };
@@ -116,11 +116,11 @@ const AdminCaseGenerator = () => {
   // Map server errors to form fields
   const mapServerErrorsToForm = (violations: Violations) => {
     const errorMap: Record<string, string> = {};
-    
+
     violations.violations?.forEach((violation) => {
       if (violation.propertyPath && violation.message) {
         const { field, index, subfield } = parsePropertyPath(violation.propertyPath);
-        
+
         if (index !== undefined && subfield) {
           // Array element with subfield: nearbySightseeingAttractions[0].attractionName
           const fieldKey = `nearbySightseeingAttractions.${index}.${subfield}`;
@@ -143,7 +143,7 @@ const AdminCaseGenerator = () => {
         }
       }
     });
-    
+
     setServerErrors(errorMap);
   };
 
@@ -174,7 +174,7 @@ const AdminCaseGenerator = () => {
 
       const result = await createCaseMutation.mutateAsync(formData);
       setTaskUrl(result.locationUrl);
-      
+
       toast({
         title: "Fall wird erstellt",
         description: "Die Fallerstellung wurde gestartet. Bitte warten Sie...",
@@ -182,9 +182,10 @@ const AdminCaseGenerator = () => {
 
     } catch (error: any) {
       console.error('Form submission error:', error);
-      
+
       // Handle validation errors from server
       if (error?.violations) {
+        console.log('map server error violations: ', error.violations);
         mapServerErrorsToForm(error.violations);
         toast({
           title: "Validierungsfehler",
@@ -203,7 +204,7 @@ const AdminCaseGenerator = () => {
   const getProgressPercentage = () => {
     if (!taskInfo) return 0;
     const currentStatus = taskInfo.status || taskInfo.taskStatus;
-    
+
     switch (currentStatus) {
       case 'PENDING': return 10;
       case 'RUNNING': return 50;
@@ -216,7 +217,7 @@ const AdminCaseGenerator = () => {
   const getStatusText = () => {
     if (!taskInfo) return 'Wird geladen...';
     const currentStatus = taskInfo.status || taskInfo.taskStatus;
-    
+
     switch (currentStatus) {
       case 'PENDING': return 'Warteschlange...';
       case 'RUNNING': return 'Fall wird erstellt...';
@@ -229,7 +230,7 @@ const AdminCaseGenerator = () => {
   const getProgressBarClass = () => {
     if (!taskInfo) return 'bg-secondary';
     const currentStatus = taskInfo.status || taskInfo.taskStatus;
-    
+
     switch (currentStatus) {
       case 'COMPLETED': return 'bg-success';
       case 'FAILED': return 'bg-danger';
@@ -259,7 +260,7 @@ const AdminCaseGenerator = () => {
                 <div className="card-body">
                   <h2 className="card-title">Fall wird erstellt...</h2>
                   <div className="progress mb-3" style={{ height: '20px' }}>
-                    <div 
+                    <div
                       className={`progress-bar ${getProgressBarClass()}`}
                       role="progressbar"
                       style={{ width: `${getProgressPercentage()}%` }}
@@ -269,15 +270,15 @@ const AdminCaseGenerator = () => {
                   </div>
                   <p className="text-muted">{getStatusText()}</p>
                   <div className="d-flex gap-2">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="btn btn-outline-secondary"
                       onClick={() => navigate('/admin/case-management')}
                     >
                       Zurück zur Fallverwaltung
                     </button>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="btn btn-outline-danger"
                       onClick={() => {
                         setTaskId(null);
@@ -299,7 +300,7 @@ const AdminCaseGenerator = () => {
   if (taskId && taskInfo) {
     const currentStatus = taskInfo.status || taskInfo.taskStatus;
     const isPending = currentStatus === 'PENDING' || currentStatus === 'RUNNING';
-    
+
     if (isPending || currentStatus === 'FAILED') {
       return (
         <div className="min-vh-100 bg-body">
@@ -312,11 +313,11 @@ const AdminCaseGenerator = () => {
                     <h2 className="card-title">
                       {currentStatus === 'FAILED' ? 'Fallerstellung fehlgeschlagen' : 'Fall wird erstellt'}
                     </h2>
-                    
+
                     {currentStatus !== 'FAILED' && (
                       <>
                         <div className="progress mb-3" style={{ height: '20px' }}>
-                          <div 
+                          <div
                             className={`progress-bar ${getProgressBarClass()}`}
                             role="progressbar"
                             style={{ width: `${getProgressPercentage()}%` }}
@@ -335,15 +336,15 @@ const AdminCaseGenerator = () => {
                     )}
 
                     <div className="d-flex gap-2">
-                      <button 
-                        type="button" 
+                      <button
+                        type="button"
                         className="btn btn-outline-secondary"
                         onClick={() => navigate('/admin/case-management')}
                       >
                         Zurück zur Fallverwaltung
                       </button>
-                      <button 
-                        type="button" 
+                      <button
+                        type="button"
                         className="btn btn-outline-danger"
                         onClick={() => {
                           setTaskId(null);
@@ -385,7 +386,7 @@ const AdminCaseGenerator = () => {
             <div className="card">
               <div className="card-body">
                 <h2 className="card-title mb-4">Neuen Fall erstellen</h2>
-                
+
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="row">
                     {/* Language */}
@@ -535,7 +536,7 @@ const AdminCaseGenerator = () => {
                       <label className="form-label">
                         Sehenswürdigkeiten in der Nähe <span className="text-danger">*</span>
                       </label>
-                      
+
                       {fields.map((field, index) => (
                         <div key={field.id} className="card mb-2">
                           <div className="card-body">
@@ -551,7 +552,7 @@ const AdminCaseGenerator = () => {
                                 </button>
                               )}
                             </div>
-                            
+
                             <div className="row">
                               <div className="col-md-8 mb-2">
                                 <label htmlFor={`attractions-${index}-name`} className="form-label">Name</label>
@@ -574,7 +575,7 @@ const AdminCaseGenerator = () => {
                                   type="number"
                                   className={`form-control ${serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`] ? 'is-invalid' : ''}`}
                                   id={`attractions-${index}-distance`}
-                                  {...register(`nearbySightseeingAttractions.${index}.distanceToVenue`, { 
+                                  {...register(`nearbySightseeingAttractions.${index}.distanceToVenue`, {
                                     valueAsNumber: true,
                                     setValueAs: (value) => value === '' ? 0 : Number(value)
                                   })}
@@ -591,7 +592,7 @@ const AdminCaseGenerator = () => {
                           </div>
                         </div>
                       ))}
-                      
+
                       <button
                         type="button"
                         className="btn btn-outline-primary btn-sm"
@@ -637,15 +638,15 @@ const AdminCaseGenerator = () => {
                   </div>
 
                   <div className="d-flex gap-2 justify-content-end">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="btn btn-outline-secondary"
                       onClick={() => navigate('/admin/case-management')}
                     >
                       Zurück zur Fallverwaltung
                     </button>
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="btn btn-primary"
                       disabled={isSubmitting || createCaseMutation.isPending}
                     >
