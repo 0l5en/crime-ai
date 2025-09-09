@@ -19,13 +19,11 @@ export const useCreateCrimeCaseBasic = () => {
 
       // Check for validation errors (400 response with violations in data)
       if (error && error.context) {
-        console.log("error has context ...");
-        const violations = await error.context.json();
-        console.log("error context: ", violations);
-        if (Array.isArray(violations)) {
-          console.log('Validation errors from API:', data.violations);
+        const errorContext = await error.context.json();
+        if (errorContext.violations) {
+          console.log('Validation errors from API:', errorContext.violations);
           const validationError = new Error('Validation failed') as ValidationError;
-          validationError.violations = data;
+          validationError.violations = errorContext.violations;
           throw validationError;
         }
       }
