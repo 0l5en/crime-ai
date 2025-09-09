@@ -23,7 +23,7 @@ export const useCreateCrimeCaseBasic = () => {
         if (errorContext.violations) {
           console.log('Validation errors from API:', errorContext.violations);
           const validationError = new Error('Validation failed') as ValidationError;
-          validationError.violations = errorContext.violations;
+          validationError.violations = errorContext;
           throw validationError;
         }
       }
