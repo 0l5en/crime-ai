@@ -17,10 +17,10 @@ export const useCreateCrimeCaseBasic = () => {
         body: formData
       });
 
-      // if (error) {
-      //   console.error('Edge function error:', error);
-      //   throw new Error(`Failed to create crime case: ${error.message}`);
-      // }
+      if (error) {
+        console.error('Edge function error:', error);
+        throw new Error(`Failed to create crime case: ${error.message}`);
+      }
 
       console.log('Basic crime case creation response:', data);
 
