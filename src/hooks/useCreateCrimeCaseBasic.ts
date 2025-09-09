@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { CreateCaseGeneratorFormBasicDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
 
 interface ValidationError extends Error {
-  violations?: Violations;
+  context?: Violations;
 }
 
 export const useCreateCrimeCaseBasic = () => {
@@ -17,13 +17,13 @@ export const useCreateCrimeCaseBasic = () => {
         body: formData
       });
 
-      // Check for validation errors (400 response with violations in data)
+      // Check for validation errors (400 response with violations in error.context)
       if (error && error.context) {
         const errorContext = await error.context.json();
         if (errorContext.violations) {
           console.log('Validation errors from API:', errorContext.violations);
           const validationError = new Error('Validation failed') as ValidationError;
-          validationError.violations = errorContext;
+          validationError.context = errorContext;
           throw validationError;
         }
       }

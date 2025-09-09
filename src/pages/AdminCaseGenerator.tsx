@@ -114,10 +114,10 @@ const AdminCaseGenerator = () => {
   };
 
   // Map server errors to form fields
-  const mapServerErrorsToForm = (violations: Violations) => {
+  const mapServerErrorsToForm = (context: Violations) => {
     const errorMap: Record<string, string> = {};
 
-    violations.violations?.forEach((violation) => {
+    context.violations?.forEach((violation) => {
       if (violation.propertyPath && violation.message) {
         const { field, index, subfield } = parsePropertyPath(violation.propertyPath);
 
@@ -273,7 +273,7 @@ const AdminCaseGenerator = () => {
                     <button
                       type="button"
                       className="btn btn-outline-secondary"
-                      onClick={() => navigate('/admin/case-management')}
+                      onClick={() => navigate('/admin/cases')}
                     >
                       Zurück zur Fallverwaltung
                     </button>
