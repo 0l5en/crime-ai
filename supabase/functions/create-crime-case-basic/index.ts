@@ -2,8 +2,8 @@ import { corsHeaders } from '../_shared/cors.ts';
 import type { CreateCaseGeneratorFormBasicDto } from '../_shared/crime-api-types.ts';
 
 // Environment variables for the Crime AI API
-const CRIME_AI_BASE_URL = Deno.env.get('CRIME_AI_BASE_URL');
-const CRIME_AI_TOKEN = Deno.env.get('CRIME_AI_TOKEN');
+const CRIME_AI_BASE_URL = Deno.env.get('CRIME_AI_API_BASE_URL');
+const CRIME_AI_TOKEN = Deno.env.get('CRIME_AI_API_TOKEN');
 
 Deno.serve(async (req) => {
   // Handle CORS preflight requests
