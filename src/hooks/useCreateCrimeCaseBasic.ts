@@ -13,12 +13,13 @@ export const useCreateCrimeCaseBasic = () => {
     mutationFn: async (formData: CreateCaseGeneratorFormBasicDto): Promise<{ locationUrl: string }> => {
       console.log('Creating new basic crime case with form data:', formData);
 
-      const { data, error } = await supabase.functions.invoke('create-crime-case-basic', {
+      const response = await supabase.functions.invoke('create-crime-case-basic', {
         body: formData
       });
 
-      console.log("received data from supabase: ", error.violations);
+      console.log("received data from supabase: ", response);
 
+      const { error, data } = response;
       // Check for validation errors (400 response with violations in data)
       if (error && data?.violations) {
         console.log('Validation errors from API:', data.violations);
