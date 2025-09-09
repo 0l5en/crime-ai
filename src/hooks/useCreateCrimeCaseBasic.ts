@@ -17,7 +17,7 @@ export const useCreateCrimeCaseBasic = () => {
         body: formData
       });
 
-      console.log("received data from supabase: ", response);
+      console.log("received data from supabase: ", response.error.context.json());
 
       const { error, data } = response;
       // Check for validation errors (400 response with violations in data)
