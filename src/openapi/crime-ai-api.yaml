@@ -35,6 +35,52 @@ paths:
             a Location Header to get the status of the task.
         "500":
           description: if any internal error occurs while processing the request
+  /crimecase-basic:
+    post:
+      summary: start a task to create a new basic crime case
+      operationId: createCrimeCaseBasic
+      requestBody:
+        description: the data required to create a new basic crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
+        required: true
+      responses:
+        "202":
+          description: If the task was started successfully. The response will contain
+            a Location Header to get the status of the task.
+        "400":
+          description: If the request contains faulty input data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Violations"
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-vacation-rental:
+    post:
+      summary: start a task to create a new vacation rental crime case
+      operationId: createCrimeCaseVacationRental
+      requestBody:
+        description: the data required to create a new vacation rental crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCaseGeneratorFormVacationRentalDto"
+        required: true
+      responses:
+        "202":
+          description: If the task was started successfully. The response will contain
+            a Location Header to get the status of the task.
+        "400":
+          description: If the request contains faulty input data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Violations"
+        "500":
+          description: if any internal error occurs while processing the request
   /crimecase/{id}:
     get:
       summary: get crime case details by id
@@ -633,6 +679,118 @@ components:
       required:
       - key
       - value
+    CreateCaseGeneratorFormBasicDto:
+      type: object
+      properties:
+        caseGeneratorForm:
+          type: string
+          enum:
+          - BASIC
+          - VACATION_RENTAL
+        language:
+          type: string
+          minLength: 1
+        epoch:
+          type: string
+          enum:
+          - TWENTIES
+          - PRESENT
+          - FUTURE
+        theme:
+          type: string
+          enum:
+          - MURDER
+          - ROBBERY
+          - KIDNAPPING
+        additionalThemeDetails:
+          type: string
+        fullAddress:
+          type: string
+          minLength: 1
+        venueName:
+          type: string
+          minLength: 1
+        venueDescription:
+          type: string
+          minLength: 1
+        nearbySightseeingAttractions:
+          type: array
+          items:
+            $ref: "#/components/schemas/CreateSightseeingAttractionDto"
+        approximateYearOfConstruction:
+          type: integer
+          format: int32
+        historicalFeaturesAndLegends:
+          type: string
+        historicalCulturalContext:
+          type: string
+      required:
+      - caseGeneratorForm
+      - epoch
+      - fullAddress
+      - language
+      - nearbySightseeingAttractions
+      - theme
+      - venueDescription
+      - venueName
+    CreateSightseeingAttractionDto:
+      type: object
+      properties:
+        attractionName:
+          type: string
+          minLength: 1
+        distanceToVenue:
+          type: integer
+          format: int32
+      required:
+      - attractionName
+      - distanceToVenue
+    Violation:
+      type: object
+      properties:
+        message:
+          type: string
+        propertyPath:
+          type: string
+    Violations:
+      type: object
+      properties:
+        violations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Violation"
+    CreateCaseGeneratorFormVacationRentalDto:
+      type: object
+      properties:
+        language:
+          type: string
+        caseGeneratorForm:
+          type: string
+          enum:
+          - BASIC
+          - VACATION_RENTAL
+        formBase:
+          $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
+        venueFloors:
+          type: integer
+          format: int32
+        venueBedrooms:
+          type: integer
+          format: int32
+        venueBathrooms:
+          type: integer
+          format: int32
+        maxGuests:
+          type: integer
+          format: int32
+        roomLayoutDescription:
+          type: string
+      required:
+      - formBase
+      - maxGuests
+      - venueBathrooms
+      - venueBedrooms
+      - venueFloors
     CrimeSceneDto:
       type: object
       properties:
@@ -1062,6 +1220,8 @@ components:
           type: string
         timeOfDeathTo:
           type: string
+        reportAuthorImageUrl:
+          type: string
       required:
       - causeOfDeath
       - conclusionsAndAssessment
@@ -1069,6 +1229,7 @@ components:
       - id
       - internalExamination
       - reportAuthorId
+      - reportAuthorImageUrl
       - timeOfDeathFrom
       - timeOfDeathTo
       - title
