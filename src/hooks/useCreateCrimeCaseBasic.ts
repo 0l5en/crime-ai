@@ -13,19 +13,19 @@ export const useCreateCrimeCaseBasic = () => {
     mutationFn: async (formData: CreateCaseGeneratorFormBasicDto): Promise<{ locationUrl: string }> => {
       console.log('Creating new basic crime case with form data:', formData);
 
-      const response = await supabase.functions.invoke('create-crime-case-basic', {
+      const { error, data } = await supabase.functions.invoke('create-crime-case-basic', {
         body: formData
       });
 
-      console.log("received data from supabase: ", response.error.context.json());
-
-      const { error, data } = response;
       // Check for validation errors (400 response with violations in data)
-      if (error && data?.violations) {
-        console.log('Validation errors from API:', data.violations);
-        const validationError = new Error('Validation failed') as ValidationError;
-        validationError.violations = data;
-        throw validationError;
+      if (error && error.context) {
+        const violations = await error.context.json();
+        if (Array.isArray(violations)) {
+          console.log('Validation errors from API:', data.violations);
+          const validationError = new Error('Validation failed') as ValidationError;
+          validationError.violations = data;
+          throw validationError;
+        }
       }
 
       // Handle other errors (500, network issues, etc.)
