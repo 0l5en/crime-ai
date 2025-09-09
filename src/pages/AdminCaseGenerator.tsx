@@ -76,7 +76,7 @@ const AdminCaseGenerator = () => {
           title: "Erfolg",
           description: "Der Fall wurde erfolgreich erstellt!",
         });
-        navigate('/admin/case-management');
+        navigate('/admin/cases');
       } else if (currentStatus === 'FAILED') {
         toast({
           title: "Fehler",
@@ -339,7 +339,7 @@ const AdminCaseGenerator = () => {
                       <button
                         type="button"
                         className="btn btn-outline-secondary"
-                        onClick={() => navigate('/admin/case-management')}
+                        onClick={() => navigate('/admin/cases')}
                       >
                         Zurück zur Fallverwaltung
                       </button>
@@ -641,7 +641,7 @@ const AdminCaseGenerator = () => {
                     <button
                       type="button"
                       className="btn btn-outline-secondary"
-                      onClick={() => navigate('/admin/case-management')}
+                      onClick={() => navigate('/admin/cases')}
                     >
                       Zurück zur Fallverwaltung
                     </button>
