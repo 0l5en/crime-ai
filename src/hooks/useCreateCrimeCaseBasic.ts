@@ -17,6 +17,15 @@ export const useCreateCrimeCaseBasic = () => {
         body: formData
       });
 
+      // Check for validation errors (400 response with violations in data)
+      if (error && data?.violations) {
+        console.log('Validation errors from API:', data.violations);
+        const validationError = new Error('Validation failed') as ValidationError;
+        validationError.violations = data;
+        throw validationError;
+      }
+
+      // Handle other errors (500, network issues, etc.)
       if (error) {
         console.error('Edge function error:', error);
         throw new Error(`Failed to create crime case: ${error.message}`);
@@ -33,16 +42,6 @@ export const useCreateCrimeCaseBasic = () => {
     onSuccess: () => {
       // Invalidate and refetch crime cases list
       queryClient.invalidateQueries({ queryKey: ['crimeCases'] });
-    },
-    onError: (error: any) => {
-      // Handle validation errors from server
-      if (error?.violations) {
-        console.log('Server validation errors:', error.violations);
-        // The error will be handled by the component
-        const validationError = new Error('Validation failed') as ValidationError;
-        validationError.violations = error.violations;
-        throw validationError;
-      }
     },
   });
 };
