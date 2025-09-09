@@ -1,47 +1,64 @@
-
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Header from "@/components/Header";
-import { usePromptTemplateIdentifiers } from "@/hooks/usePromptTemplateIdentifiers";
-import { useTemplateContext } from "@/hooks/useTemplateContext";
-import { useCreateCrimeCase } from "@/hooks/useCreateCrimeCase";
+import { useCreateCrimeCaseBasic } from "@/hooks/useCreateCrimeCaseBasic";
 import { useTaskInfo } from "@/hooks/useTaskInfo";
 import { useToast } from "@/hooks/use-toast";
-import type { TemplateContextDto } from "../../supabase/functions/_shared/crime-api-types";
+import type { CreateCaseGeneratorFormBasicDto, CreateSightseeingAttractionDto, Violations } from "../../supabase/functions/_shared/crime-api-types";
+
+interface FormData {
+  language: string;
+  epoch: "TWENTIES" | "PRESENT" | "FUTURE";
+  theme: "MURDER" | "ROBBERY" | "KIDNAPPING";
+  additionalThemeDetails: string;
+  fullAddress: string;
+  venueName: string;
+  venueDescription: string;
+  nearbySightseeingAttractions: CreateSightseeingAttractionDto[];
+  approximateYearOfConstruction: number | "";
+  historicalFeaturesAndLegends: string;
+  historicalCulturalContext: string;
+}
 
 const AdminCaseGenerator = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [taskUrl, setTaskUrl] = useState<string | null>(null);
   const [taskId, setTaskId] = useState<string | null>(null);
+  const [serverErrors, setServerErrors] = useState<Record<string, string>>({});
 
-  // Load all prompt template identifiers
-  const { data: templateIdentifiers, isLoading: loadingTemplates, error: templateError } = usePromptTemplateIdentifiers();
+  // Form management
+  const { control, register, handleSubmit, formState: { isSubmitting }, setError, clearErrors } = useForm<FormData>({
+    defaultValues: {
+      language: '',
+      epoch: 'PRESENT',
+      theme: 'MURDER',
+      additionalThemeDetails: '',
+      fullAddress: '',
+      venueName: '',
+      venueDescription: '',
+      nearbySightseeingAttractions: [{ attractionName: '', distanceToVenue: 0 }],
+      approximateYearOfConstruction: '',
+      historicalFeaturesAndLegends: '',
+      historicalCulturalContext: ''
+    }
+  });
 
-  // Find the CrimeCaseUserPrompt template
-  const crimeCaseTemplate = templateIdentifiers?.items?.find(
-    template => template.name === "CrimeCaseUserPrompt"
-  );
-
-  // Load template context for the found template
-  const { data: templateContext, isLoading: loadingContext, error: contextError } = useTemplateContext(crimeCaseTemplate?.id || null);
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "nearbySightseeingAttractions"
+  });
 
   // Create crime case mutation
-  const createCaseMutation = useCreateCrimeCase();
+  const createCaseMutation = useCreateCrimeCaseBasic();
 
-  // Task polling - check for both 'status' and 'taskStatus' properties
-  const { data: taskInfo, isLoading: taskLoading } = useTaskInfo(taskId, !!taskId);
-
-  // Initialize form with dynamic default values
-  const form = useForm<Record<string, string>>({
-    defaultValues: {},
-  });
+  // Task polling
+  const { data: taskInfo } = useTaskInfo(taskId, !!taskId);
 
   // Extract task ID from location URL
   useEffect(() => {
     if (taskUrl) {
-      // Extract task ID from the URL (assuming format like /task/{id})
       const match = taskUrl.match(/\/task\/([^\/]+)$/);
       if (match) {
         setTaskId(match[1]);
@@ -49,7 +66,7 @@ const AdminCaseGenerator = () => {
     }
   }, [taskUrl]);
 
-  // Handle task completion - check both possible status property names
+  // Handle task completion
   useEffect(() => {
     if (taskInfo) {
       const currentStatus = taskInfo.status || taskInfo.taskStatus;
@@ -57,295 +74,220 @@ const AdminCaseGenerator = () => {
       if (currentStatus === 'COMPLETED') {
         toast({
           title: "Erfolg",
-          description: "Der neue Kriminalfall wurde erfolgreich erstellt!",
+          description: "Der Fall wurde erfolgreich erstellt!",
         });
-        
-        // Auto-navigate to case list after short delay
-        setTimeout(() => {
-          navigate('/admin/cases');
-        }, 2000);
+        navigate('/admin/case-management');
       } else if (currentStatus === 'FAILED') {
         toast({
-          title: "Fehler", 
-          description: `Fallgenerierung fehlgeschlagen: ${taskInfo.error || 'Unbekannter Fehler'}`,
+          title: "Fehler",
+          description: "Bei der Fallerstellung ist ein Fehler aufgetreten.",
         });
-        setTaskUrl(null);
         setTaskId(null);
+        setTaskUrl(null);
       }
     }
   }, [taskInfo, navigate, toast]);
 
-  // Get progress percentage based on status
-  const getProgressPercentage = () => {
-    if (!taskInfo) return 0;
-    
-    const currentStatus = taskInfo.status || taskInfo.taskStatus;
-    
-    switch (currentStatus) {
-      case 'PENDING':
-        return 25;
-      case 'RUNNING':
-        return 75;
-      case 'COMPLETED':
-        return 100;
-      case 'FAILED':
-        return 100;
-      default:
-        return 0;
+  // Parse property path for error mapping
+  const parsePropertyPath = (propertyPath: string): { field: string; index?: number; subfield?: string } => {
+    // Handle array notation: arrayFieldName[index].propName
+    const arrayMatch = propertyPath.match(/^(\w+)\[(\d+)\]\.(\w+)$/);
+    if (arrayMatch) {
+      return {
+        field: arrayMatch[1],
+        index: parseInt(arrayMatch[2], 10),
+        subfield: arrayMatch[3]
+      };
     }
+    
+    // Handle simple array: arrayFieldName[index]
+    const simpleArrayMatch = propertyPath.match(/^(\w+)\[(\d+)\]$/);
+    if (simpleArrayMatch) {
+      return {
+        field: simpleArrayMatch[1],
+        index: parseInt(simpleArrayMatch[2], 10)
+      };
+    }
+    
+    // Handle simple field
+    return { field: propertyPath };
   };
 
-  // Get status display text
-  const getStatusText = () => {
-    if (!taskInfo) return 'Startet...';
+  // Map server errors to form fields
+  const mapServerErrorsToForm = (violations: Violations) => {
+    const errorMap: Record<string, string> = {};
     
-    const currentStatus = taskInfo.status || taskInfo.taskStatus;
-    
-    switch (currentStatus) {
-      case 'PENDING':
-        return 'Warteschlange...';
-      case 'RUNNING':
-        return 'Generiert Fall...';
-      case 'COMPLETED':
-        return 'Abgeschlossen!';
-      case 'FAILED':
-        return 'Fehlgeschlagen';
-      default:
-        return 'Unbekannter Status';
-    }
-  };
-
-  // Get progress bar color class
-  const getProgressBarClass = () => {
-    if (!taskInfo) return 'bg-primary';
-    
-    const currentStatus = taskInfo.status || taskInfo.taskStatus;
-    
-    switch (currentStatus) {
-      case 'PENDING':
-        return 'bg-warning';
-      case 'RUNNING':
-        return 'bg-info progress-bar-striped progress-bar-animated';
-      case 'COMPLETED':
-        return 'bg-success';
-      case 'FAILED':
-        return 'bg-danger';
-      default:
-        return 'bg-primary';
-    }
-  };
-
-  const onSubmit = async (formData: Record<string, string>) => {
-    try {
-      console.log('Form data before submission:', formData);
-
-      // Validate that all fields are filled
-      const emptyFields = Object.entries(formData).filter(([_, value]) => !value?.trim());
-      if (emptyFields.length > 0) {
-        toast({
-          title: "Validierungsfehler",
-          description: `Bitte füllen Sie alle erforderlichen Felder aus: ${emptyFields.map(([key]) => key).join(', ')}`,
-        });
-        return;
+    violations.violations?.forEach((violation) => {
+      if (violation.propertyPath && violation.message) {
+        const { field, index, subfield } = parsePropertyPath(violation.propertyPath);
+        
+        if (index !== undefined && subfield) {
+          // Array element with subfield: nearbySightseeingAttractions[0].attractionName
+          const fieldKey = `nearbySightseeingAttractions.${index}.${subfield}`;
+          errorMap[fieldKey] = violation.message;
+          setError(`nearbySightseeingAttractions.${index}.${subfield}` as any, {
+            type: 'server',
+            message: violation.message
+          });
+        } else if (index !== undefined) {
+          // Array element: nearbySightseeingAttractions[0]  
+          const fieldKey = `nearbySightseeingAttractions.${index}`;
+          errorMap[fieldKey] = violation.message;
+        } else {
+          // Simple field
+          errorMap[field] = violation.message;
+          setError(field as any, {
+            type: 'server',
+            message: violation.message
+          });
+        }
       }
+    });
+    
+    setServerErrors(errorMap);
+  };
 
-      // Convert form data to TemplateContextDto format
-      const templateContextDto: TemplateContextDto = {
-        variables: Object.entries(formData).map(([key, value]) => ({
-          key,
-          value: value.trim(),
-        })),
+  // Form submission
+  const onSubmit = async (data: FormData) => {
+    try {
+      // Clear previous errors
+      clearErrors();
+      setServerErrors({});
+
+      // Prepare form data with hidden caseGeneratorForm field
+      const formData: CreateCaseGeneratorFormBasicDto = {
+        caseGeneratorForm: "BASIC", // Hidden field, always BASIC
+        language: data.language,
+        epoch: data.epoch,
+        theme: data.theme,
+        additionalThemeDetails: data.additionalThemeDetails || undefined,
+        fullAddress: data.fullAddress,
+        venueName: data.venueName,
+        venueDescription: data.venueDescription,
+        nearbySightseeingAttractions: data.nearbySightseeingAttractions,
+        approximateYearOfConstruction: data.approximateYearOfConstruction === "" ? undefined : Number(data.approximateYearOfConstruction),
+        historicalFeaturesAndLegends: data.historicalFeaturesAndLegends || undefined,
+        historicalCulturalContext: data.historicalCulturalContext || undefined
       };
 
-      console.log('Converted to TemplateContextDto:', templateContextDto);
+      console.log('Submitting form data:', formData);
 
-      const result = await createCaseMutation.mutateAsync(templateContextDto);
+      const result = await createCaseMutation.mutateAsync(formData);
       setTaskUrl(result.locationUrl);
+      
+      toast({
+        title: "Fall wird erstellt",
+        description: "Die Fallerstellung wurde gestartet. Bitte warten Sie...",
+      });
 
-      toast({
-        title: "Task gestartet",
-        description: "Die Fallgenerierung wurde gestartet. Bitte warten...",
-      });
-    } catch (error) {
-      console.error('Error creating crime case:', error);
-      toast({
-        title: "Fehler",
-        description: "Fehler beim Starten der Fallgenerierung. Bitte versuchen Sie es erneut.",
-      });
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      
+      // Handle validation errors from server
+      if (error?.violations) {
+        mapServerErrorsToForm(error.violations);
+        toast({
+          title: "Validierungsfehler",
+          description: "Bitte korrigieren Sie die markierten Felder.",
+        });
+      } else {
+        toast({
+          title: "Fehler",
+          description: error.message || "Ein unbekannter Fehler ist aufgetreten.",
+        });
+      }
     }
   };
 
-  // Loading states
-  if (loadingTemplates) {
-    return (
-      <div className="min-vh-100 bg-dark">
-        <Header />
-        <div className="container py-5 text-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Lade Vorlagen...</span>
-          </div>
-          <p className="text-light mt-3">Lade Prompt-Vorlagen...</p>
-        </div>
-      </div>
-    );
-  }
+  // Helper functions for task progress
+  const getProgressPercentage = () => {
+    if (!taskInfo) return 0;
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    
+    switch (currentStatus) {
+      case 'PENDING': return 10;
+      case 'RUNNING': return 50;
+      case 'COMPLETED': return 100;
+      case 'FAILED': return 0;
+      default: return 0;
+    }
+  };
 
-  // Error states
-  if (templateError) {
-    return (
-      <div className="min-vh-100 bg-dark">
-        <Header />
-        <div className="container py-5">
-          <div className="alert alert-danger">
-            <h4>Fehler beim Laden der Vorlagen</h4>
-            <p>Fehler beim Laden der Prompt-Vorlagen: {templateError.message}</p>
-            <button 
-              className="btn btn-secondary"
-              onClick={() => navigate('/admin/cases')}
-            >
-              Zurück zur Fallverwaltung
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const getStatusText = () => {
+    if (!taskInfo) return 'Wird geladen...';
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    
+    switch (currentStatus) {
+      case 'PENDING': return 'Warteschlange...';
+      case 'RUNNING': return 'Fall wird erstellt...';
+      case 'COMPLETED': return 'Abgeschlossen!';
+      case 'FAILED': return 'Fehlgeschlagen';
+      default: return 'Unbekannt';
+    }
+  };
 
-  if (!crimeCaseTemplate) {
-    return (
-      <div className="min-vh-100 bg-dark">
-        <Header />
-        <div className="container py-5">
-          <div className="alert alert-warning">
-            <h4>Vorlage nicht gefunden</h4>
-            <p>Die erforderliche "CrimeCaseUserPrompt" Vorlage wurde nicht gefunden.</p>
-            <button 
-              className="btn btn-secondary"
-              onClick={() => navigate('/admin/cases')}
-            >
-              Zurück zur Fallverwaltung
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const getProgressBarClass = () => {
+    if (!taskInfo) return 'bg-secondary';
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    
+    switch (currentStatus) {
+      case 'COMPLETED': return 'bg-success';
+      case 'FAILED': return 'bg-danger';
+      default: return 'bg-primary';
+    }
+  };
 
-  if (loadingContext) {
-    return (
-      <div className="min-vh-100 bg-dark">
-        <Header />
-        <div className="container py-5 text-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Lade Formularfelder...</span>
-          </div>
-          <p className="text-light mt-3">Lade Formular-Konfiguration...</p>
-        </div>
-      </div>
-    );
-  }
+  const addAttraction = () => {
+    append({ attractionName: '', distanceToVenue: 0 });
+  };
 
-  if (contextError) {
-    return (
-      <div className="min-vh-100 bg-dark">
-        <Header />
-        <div className="container py-5">
-          <div className="alert alert-danger">
-            <h4>Fehler beim Laden der Formular-Konfiguration</h4>
-            <p>Fehler beim Laden des Template-Kontexts: {contextError.message}</p>
-            <button 
-              className="btn btn-secondary"
-              onClick={() => navigate('/admin/cases')}
-            >
-              Zurück zur Fallverwaltung
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const removeAttraction = (index: number) => {
+    if (fields.length > 1) {
+      remove(index);
+    }
+  };
 
-  // Enhanced task progress display
-  if (taskId && (taskLoading || ['PENDING', 'RUNNING'].includes((taskInfo?.status || taskInfo?.taskStatus) || ''))) {
-    const progressPercentage = getProgressPercentage();
-    const statusText = getStatusText();
-    const progressBarClass = getProgressBarClass();
-    const currentStatus = taskInfo?.status || taskInfo?.taskStatus;
-
+  // If task is running, show progress
+  if (taskId && taskLoading) {
     return (
-      <div className="min-vh-100 bg-dark">
+      <div className="min-vh-100 bg-body">
         <Header />
-        <div className="container py-5 text-center">
-          <div className="card bg-secondary border-secondary" style={{ maxWidth: '700px', margin: '0 auto' }}>
-            <div className="card-body p-5">
-              {/* Status Icon */}
-              <div className="mb-4">
-                {currentStatus === 'PENDING' && (
-                  <div className="spinner-grow text-warning" role="status" style={{ width: '3rem', height: '3rem' }}>
-                    <span className="visually-hidden">Wartend...</span>
+        <div className="container py-4">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <div className="card">
+                <div className="card-body">
+                  <h2 className="card-title">Fall wird erstellt...</h2>
+                  <div className="progress mb-3" style={{ height: '20px' }}>
+                    <div 
+                      className={`progress-bar ${getProgressBarClass()}`}
+                      role="progressbar"
+                      style={{ width: `${getProgressPercentage()}%` }}
+                    >
+                      {getProgressPercentage()}%
+                    </div>
                   </div>
-                )}
-                {currentStatus === 'RUNNING' && (
-                  <div className="spinner-border text-info" role="status" style={{ width: '3rem', height: '3rem' }}>
-                    <span className="visually-hidden">Läuft...</span>
+                  <p className="text-muted">{getStatusText()}</p>
+                  <div className="d-flex gap-2">
+                    <button 
+                      type="button" 
+                      className="btn btn-outline-secondary"
+                      onClick={() => navigate('/admin/case-management')}
+                    >
+                      Zurück zur Fallverwaltung
+                    </button>
+                    <button 
+                      type="button" 
+                      className="btn btn-outline-danger"
+                      onClick={() => {
+                        setTaskId(null);
+                        setTaskUrl(null);
+                      }}
+                    >
+                      Überwachung beenden
+                    </button>
                   </div>
-                )}
-              </div>
-
-              <h3 className="text-light mb-3">Kriminalfall wird generiert</h3>
-              
-              {/* Status Text */}
-              <p className="text-muted mb-3 h5">
-                Status: {statusText}
-              </p>
-
-              {/* Enhanced Progress Bar */}
-              <div className="progress mb-4" style={{ height: '20px' }}>
-                <div 
-                  className={`progress-bar ${progressBarClass}`}
-                  role="progressbar"
-                  style={{ width: `${progressPercentage}%` }}
-                  aria-valuenow={progressPercentage}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                >
-                  {progressPercentage}%
                 </div>
-              </div>
-
-              {/* Task Info */}
-              {taskInfo?.createdAt && (
-                <p className="text-muted small mb-3">
-                  Gestartet: {new Date(taskInfo.createdAt).toLocaleString('de-DE')}
-                </p>
-              )}
-
-              {/* Status Description */}
-              <p className="text-light mb-4">
-                {currentStatus === 'PENDING' && 'Ihr Auftrag wurde in die Warteschlange eingereiht und wartet auf Bearbeitung...'}
-                {currentStatus === 'RUNNING' && 'Der Kriminalfall wird gerade von der KI generiert. Dies kann einige Momente dauern...'}
-              </p>
-
-              {/* Navigation Options */}
-              <div className="d-flex gap-3 justify-content-center">
-                <button
-                  type="button"
-                  className="btn btn-outline-light"
-                  onClick={() => navigate('/admin/cases')}
-                >
-                  Zur Fallübersicht wechseln
-                </button>
-                
-                <button
-                  type="button"
-                  className="btn btn-outline-danger"
-                  onClick={() => {
-                    setTaskUrl(null);
-                    setTaskId(null);
-                  }}
-                >
-                  Überwachung stoppen
-                </button>
               </div>
             </div>
           </div>
@@ -354,72 +296,372 @@ const AdminCaseGenerator = () => {
     );
   }
 
-  const variables = templateContext?.variables || [];
+  if (taskId && taskInfo) {
+    const currentStatus = taskInfo.status || taskInfo.taskStatus;
+    const isPending = currentStatus === 'PENDING' || currentStatus === 'RUNNING';
+    
+    if (isPending || currentStatus === 'FAILED') {
+      return (
+        <div className="min-vh-100 bg-body">
+          <Header />
+          <div className="container py-4">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-8">
+                <div className="card">
+                  <div className="card-body">
+                    <h2 className="card-title">
+                      {currentStatus === 'FAILED' ? 'Fallerstellung fehlgeschlagen' : 'Fall wird erstellt'}
+                    </h2>
+                    
+                    {currentStatus !== 'FAILED' && (
+                      <>
+                        <div className="progress mb-3" style={{ height: '20px' }}>
+                          <div 
+                            className={`progress-bar ${getProgressBarClass()}`}
+                            role="progressbar"
+                            style={{ width: `${getProgressPercentage()}%` }}
+                          >
+                            {getProgressPercentage()}%
+                          </div>
+                        </div>
+                        <p className="text-muted">{getStatusText()}</p>
+                      </>
+                    )}
 
-  return (
-    <div className="min-vh-100 bg-dark">
-      <Header />
-      
-      <div className="container py-5" style={{ maxWidth: '800px' }}>
-        <div className="mb-5">
-          <h1 className="display-4 fw-bold text-light mb-4">
-            Neuen Kriminalfall generieren
-          </h1>
-          <p className="h5 text-muted">
-            Konfigurieren Sie Parameter für einen neuen Kriminalfall mit Vorlage: {crimeCaseTemplate.name}
-          </p>
-        </div>
+                    {currentStatus === 'FAILED' && (
+                      <div className="alert alert-danger">
+                        Bei der Fallerstellung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
+                      </div>
+                    )}
 
-        <div className="card bg-secondary border-secondary">
-          <div className="card-body p-4">
-            <form onSubmit={form.handleSubmit(onSubmit)} className="row g-4">
-              {variables.map((variable, index) => (
-                <div key={variable.key || index} className="col-12">
-                  <label className="form-label text-light">
-                    {variable.key}
-                    <span className="text-danger ms-1">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    {...form.register(variable.key || '', { required: true })}
-                    placeholder={variable.value || `${variable.key} eingeben`}
-                    className="form-control bg-dark border-secondary text-light"
-                  />
-                  <div className="form-text text-muted small">
-                    Dieses Feld ist erforderlich
+                    <div className="d-flex gap-2">
+                      <button 
+                        type="button" 
+                        className="btn btn-outline-secondary"
+                        onClick={() => navigate('/admin/case-management')}
+                      >
+                        Zurück zur Fallverwaltung
+                      </button>
+                      <button 
+                        type="button" 
+                        className="btn btn-outline-danger"
+                        onClick={() => {
+                          setTaskId(null);
+                          setTaskUrl(null);
+                        }}
+                      >
+                        {currentStatus === 'FAILED' ? 'Zurück zum Formular' : 'Überwachung beenden'}
+                      </button>
+                    </div>
+
+                    {taskInfo && (
+                      <div className="mt-4">
+                        <h5>Task-Details:</h5>
+                        <ul className="list-unstyled">
+                          <li><strong>Status:</strong> {currentStatus}</li>
+                          <li><strong>Erstellt:</strong> {new Date(taskInfo.createdAt).toLocaleString('de-DE')}</li>
+                          {taskInfo.updatedAt && (
+                            <li><strong>Aktualisiert:</strong> {new Date(taskInfo.updatedAt).toLocaleString('de-DE')}</li>
+                          )}
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))}
-
-              {variables.length === 0 && (
-                <div className="col-12">
-                  <div className="alert alert-info">
-                    <p className="mb-0">Keine Template-Variablen gefunden. Formularfelder können nicht generiert werden.</p>
-                  </div>
-                </div>
-              )}
-
-              <div className="col-12 pt-3">
-                <div className="d-flex gap-3">
-                  <button
-                    type="submit"
-                    disabled={createCaseMutation.isPending || variables.length === 0}
-                    className="btn btn-success"
-                  >
-                    {createCaseMutation.isPending ? "Startet Generierung..." : "Kriminalfall generieren"}
-                  </button>
-                  
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => navigate('/admin/cases')}
-                  >
-                    Zurück zur Fallverwaltung
-                  </button>
                 </div>
               </div>
-            </form>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  return (
+    <div className="min-vh-100 bg-body">
+      <Header />
+      <div className="container py-4">
+        <div className="row justify-content-center">
+          <div className="col-12 col-lg-10">
+            <div className="card">
+              <div className="card-body">
+                <h2 className="card-title mb-4">Neuen Fall erstellen</h2>
+                
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="row">
+                    {/* Language */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="language" className="form-label">
+                        Sprache <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        className={`form-control ${serverErrors.language ? 'is-invalid' : ''}`}
+                        id="language"
+                        {...register('language')}
+                        placeholder="z.B. Deutsch, English"
+                      />
+                      {serverErrors.language && (
+                        <div className="invalid-feedback">{serverErrors.language}</div>
+                      )}
+                    </div>
+
+                    {/* Epoch */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="epoch" className="form-label">
+                        Epoche <span className="text-danger">*</span>
+                      </label>
+                      <select
+                        className={`form-select ${serverErrors.epoch ? 'is-invalid' : ''}`}
+                        id="epoch"
+                        {...register('epoch')}
+                      >
+                        <option value="TWENTIES">Die Zwanziger Jahre</option>
+                        <option value="PRESENT">Gegenwart</option>
+                        <option value="FUTURE">Zukunft</option>
+                      </select>
+                      {serverErrors.epoch && (
+                        <div className="invalid-feedback">{serverErrors.epoch}</div>
+                      )}
+                    </div>
+
+                    {/* Theme */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="theme" className="form-label">
+                        Thema <span className="text-danger">*</span>
+                      </label>
+                      <select
+                        className={`form-select ${serverErrors.theme ? 'is-invalid' : ''}`}
+                        id="theme"
+                        {...register('theme')}
+                      >
+                        <option value="MURDER">Mord</option>
+                        <option value="ROBBERY">Raub</option>
+                        <option value="KIDNAPPING">Entführung</option>
+                      </select>
+                      {serverErrors.theme && (
+                        <div className="invalid-feedback">{serverErrors.theme}</div>
+                      )}
+                    </div>
+
+                    {/* Additional Theme Details */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="additionalThemeDetails" className="form-label">
+                        Zusätzliche Themendetails
+                      </label>
+                      <textarea
+                        className={`form-control ${serverErrors.additionalThemeDetails ? 'is-invalid' : ''}`}
+                        id="additionalThemeDetails"
+                        rows={3}
+                        {...register('additionalThemeDetails')}
+                        placeholder="Weitere Details zum Thema..."
+                      />
+                      {serverErrors.additionalThemeDetails && (
+                        <div className="invalid-feedback">{serverErrors.additionalThemeDetails}</div>
+                      )}
+                    </div>
+
+                    {/* Full Address */}
+                    <div className="col-12 mb-3">
+                      <label htmlFor="fullAddress" className="form-label">
+                        Vollständige Adresse <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        className={`form-control ${serverErrors.fullAddress ? 'is-invalid' : ''}`}
+                        id="fullAddress"
+                        {...register('fullAddress')}
+                        placeholder="Straße, Hausnummer, PLZ, Ort, Land"
+                      />
+                      {serverErrors.fullAddress && (
+                        <div className="invalid-feedback">{serverErrors.fullAddress}</div>
+                      )}
+                    </div>
+
+                    {/* Venue Name */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="venueName" className="form-label">
+                        Name der Örtlichkeit <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        className={`form-control ${serverErrors.venueName ? 'is-invalid' : ''}`}
+                        id="venueName"
+                        {...register('venueName')}
+                        placeholder="z.B. Hotel Continental, Villa Rosenberg"
+                      />
+                      {serverErrors.venueName && (
+                        <div className="invalid-feedback">{serverErrors.venueName}</div>
+                      )}
+                    </div>
+
+                    {/* Approximate Year of Construction */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="approximateYearOfConstruction" className="form-label">
+                        Ungefähres Baujahr
+                      </label>
+                      <input
+                        type="number"
+                        className={`form-control ${serverErrors.approximateYearOfConstruction ? 'is-invalid' : ''}`}
+                        id="approximateYearOfConstruction"
+                        {...register('approximateYearOfConstruction')}
+                        placeholder="z.B. 1925"
+                        min="1800"
+                        max="2100"
+                      />
+                      {serverErrors.approximateYearOfConstruction && (
+                        <div className="invalid-feedback">{serverErrors.approximateYearOfConstruction}</div>
+                      )}
+                    </div>
+
+                    {/* Venue Description */}
+                    <div className="col-12 mb-3">
+                      <label htmlFor="venueDescription" className="form-label">
+                        Beschreibung der Örtlichkeit <span className="text-danger">*</span>
+                      </label>
+                      <textarea
+                        className={`form-control ${serverErrors.venueDescription ? 'is-invalid' : ''}`}
+                        id="venueDescription"
+                        rows={4}
+                        {...register('venueDescription')}
+                        placeholder="Detaillierte Beschreibung der Örtlichkeit, Architektur, Besonderheiten..."
+                      />
+                      {serverErrors.venueDescription && (
+                        <div className="invalid-feedback">{serverErrors.venueDescription}</div>
+                      )}
+                    </div>
+
+                    {/* Nearby Sightseeing Attractions */}
+                    <div className="col-12 mb-4">
+                      <label className="form-label">
+                        Sehenswürdigkeiten in der Nähe <span className="text-danger">*</span>
+                      </label>
+                      
+                      {fields.map((field, index) => (
+                        <div key={field.id} className="card mb-2">
+                          <div className="card-body">
+                            <div className="d-flex justify-content-between align-items-center mb-2">
+                              <h6 className="mb-0">Sehenswürdigkeit {index + 1}</h6>
+                              {fields.length > 1 && (
+                                <button
+                                  type="button"
+                                  className="btn btn-outline-danger btn-sm"
+                                  onClick={() => removeAttraction(index)}
+                                >
+                                  Entfernen
+                                </button>
+                              )}
+                            </div>
+                            
+                            <div className="row">
+                              <div className="col-md-8 mb-2">
+                                <label htmlFor={`attractions-${index}-name`} className="form-label">Name</label>
+                                <input
+                                  type="text"
+                                  className={`form-control ${serverErrors[`nearbySightseeingAttractions.${index}.attractionName`] ? 'is-invalid' : ''}`}
+                                  id={`attractions-${index}-name`}
+                                  {...register(`nearbySightseeingAttractions.${index}.attractionName`)}
+                                  placeholder="Name der Sehenswürdigkeit"
+                                />
+                                {serverErrors[`nearbySightseeingAttractions.${index}.attractionName`] && (
+                                  <div className="invalid-feedback">
+                                    {serverErrors[`nearbySightseeingAttractions.${index}.attractionName`]}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="col-md-4 mb-2">
+                                <label htmlFor={`attractions-${index}-distance`} className="form-label">Entfernung (m)</label>
+                                <input
+                                  type="number"
+                                  className={`form-control ${serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`] ? 'is-invalid' : ''}`}
+                                  id={`attractions-${index}-distance`}
+                                  {...register(`nearbySightseeingAttractions.${index}.distanceToVenue`, { 
+                                    valueAsNumber: true,
+                                    setValueAs: (value) => value === '' ? 0 : Number(value)
+                                  })}
+                                  placeholder="Entfernung in Metern"
+                                  min="0"
+                                />
+                                {serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`] && (
+                                  <div className="invalid-feedback">
+                                    {serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`]}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary btn-sm"
+                        onClick={addAttraction}
+                      >
+                        Weitere Sehenswürdigkeit hinzufügen
+                      </button>
+                    </div>
+
+                    {/* Historical Features and Legends */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="historicalFeaturesAndLegends" className="form-label">
+                        Historische Merkmale und Legenden
+                      </label>
+                      <textarea
+                        className={`form-control ${serverErrors.historicalFeaturesAndLegends ? 'is-invalid' : ''}`}
+                        id="historicalFeaturesAndLegends"
+                        rows={4}
+                        {...register('historicalFeaturesAndLegends')}
+                        placeholder="Historische Besonderheiten, Legenden, bekannte Ereignisse..."
+                      />
+                      {serverErrors.historicalFeaturesAndLegends && (
+                        <div className="invalid-feedback">{serverErrors.historicalFeaturesAndLegends}</div>
+                      )}
+                    </div>
+
+                    {/* Historical Cultural Context */}
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="historicalCulturalContext" className="form-label">
+                        Historischer und kultureller Kontext
+                      </label>
+                      <textarea
+                        className={`form-control ${serverErrors.historicalCulturalContext ? 'is-invalid' : ''}`}
+                        id="historicalCulturalContext"
+                        rows={4}
+                        {...register('historicalCulturalContext')}
+                        placeholder="Zeitgeist, kulturelle Einflüsse, gesellschaftlicher Hintergrund..."
+                      />
+                      {serverErrors.historicalCulturalContext && (
+                        <div className="invalid-feedback">{serverErrors.historicalCulturalContext}</div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="d-flex gap-2 justify-content-end">
+                    <button 
+                      type="button" 
+                      className="btn btn-outline-secondary"
+                      onClick={() => navigate('/admin/case-management')}
+                    >
+                      Zurück zur Fallverwaltung
+                    </button>
+                    <button 
+                      type="submit" 
+                      className="btn btn-primary"
+                      disabled={isSubmitting || createCaseMutation.isPending}
+                    >
+                      {isSubmitting || createCaseMutation.isPending ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" />
+                          Fall erstellen...
+                        </>
+                      ) : (
+                        'Fall erstellen'
+                      )}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>

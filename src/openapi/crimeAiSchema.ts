@@ -23,6 +23,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/crimecase-basic": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** start a task to create a new basic crime case */
+    post: operations["createCrimeCaseBasic"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/crimecase/{id}": {
     parameters: {
       query?: never;
@@ -598,6 +615,33 @@ export interface components {
     ResultSetNotification: {
       items?: components["schemas"]["NotificationDto"][];
     };
+    CreateCaseGeneratorFormBasicDto: {
+      caseGeneratorForm: "BASIC" | "VACATION_RENTAL";
+      language: string;
+      epoch: "TWENTIES" | "PRESENT" | "FUTURE";
+      theme: "MURDER" | "ROBBERY" | "KIDNAPPING";
+      additionalThemeDetails?: string;
+      fullAddress: string;
+      venueName: string;
+      venueDescription: string;
+      nearbySightseeingAttractions: components["schemas"]["CreateSightseeingAttractionDto"][];
+      /** Format: int32 */
+      approximateYearOfConstruction?: number;
+      historicalFeaturesAndLegends?: string;
+      historicalCulturalContext?: string;
+    };
+    CreateSightseeingAttractionDto: {
+      attractionName: string;
+      /** Format: int32 */
+      distanceToVenue: number;
+    };
+    Violations: {
+      violations?: components["schemas"]["Violation"][];
+    };
+    Violation: {
+      message?: string;
+      propertyPath?: string;
+    };
   };
   responses: never;
   parameters: never;
@@ -656,6 +700,45 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createCrimeCaseBasic: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new basic crime case */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateCaseGeneratorFormBasicDto"];
+      };
+    };
+    responses: {
+      /** @description If the task was started successfully. The response will contain a Location Header to get the status of the task. */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description If the request contains faulty input data. */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Violations"];
+        };
       };
       /** @description if any internal error occurs while processing the request */
       500: {

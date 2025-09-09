@@ -24,6 +24,35 @@ export interface CreateCrimeCaseDto {
   maxAmountMotivesPerSuspect: number;
 }
 
+export interface CreateCaseGeneratorFormBasicDto {
+  caseGeneratorForm: "BASIC" | "VACATION_RENTAL";
+  language: string;
+  epoch: "TWENTIES" | "PRESENT" | "FUTURE";
+  theme: "MURDER" | "ROBBERY" | "KIDNAPPING";
+  additionalThemeDetails?: string;
+  fullAddress: string;
+  venueName: string;
+  venueDescription: string;
+  nearbySightseeingAttractions: CreateSightseeingAttractionDto[];
+  approximateYearOfConstruction?: number;
+  historicalFeaturesAndLegends?: string;
+  historicalCulturalContext?: string;
+}
+
+export interface CreateSightseeingAttractionDto {
+  attractionName: string;
+  distanceToVenue: number;
+}
+
+export interface Violations {
+  violations?: Violation[];
+}
+
+export interface Violation {
+  message?: string;
+  propertyPath?: string;
+}
+
 export interface CrimeSceneDto {
   id: number;
   title: string;
