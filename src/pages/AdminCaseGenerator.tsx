@@ -184,9 +184,9 @@ const AdminCaseGenerator = () => {
       console.error('Form submission error:', error);
 
       // Handle validation errors from server
-      if (error?.violations) {
-        console.log('map server error violations: ', error.violations);
-        mapServerErrorsToForm(error.violations);
+      if (error?.context) {
+        console.log('map server error violations: ', error.context);
+        mapServerErrorsToForm(error.context);
         toast({
           title: "Validierungsfehler",
           description: "Bitte korrigieren Sie die markierten Felder.",
