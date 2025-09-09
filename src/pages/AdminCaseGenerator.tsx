@@ -54,7 +54,7 @@ const AdminCaseGenerator = () => {
   const createCaseMutation = useCreateCrimeCaseBasic();
 
   // Task polling
-  const { data: taskInfo } = useTaskInfo(taskId, !!taskId);
+  const { data: taskInfo, isLoading: taskLoading } = useTaskInfo(taskId, !!taskId);
 
   // Extract task ID from location URL
   useEffect(() => {
