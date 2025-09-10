@@ -27,6 +27,13 @@ paths:
         description: The id of a logged in user playing a crime case.
         schema:
           type: string
+      - name: status
+        in: query
+        description: "The status of a crime case. Multiple status values are combined\
+          \ using an OR operator. For example, status=a&status=b selects all elements\
+          \ that have either status A or status B."
+        schema:
+          type: string
       responses:
         "200":
           description: successful operation
