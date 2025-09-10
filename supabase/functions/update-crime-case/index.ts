@@ -1,11 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import createFetchClient from 'openapi-fetch';
 import { CrimeApiPaths } from '../_shared/crime-api-types.ts';
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+import { corsHeaders } from '../_shared/cors.ts';
 
 const supabase = createClient(
   Deno.env.get('SUPABASE_URL') ?? '',
