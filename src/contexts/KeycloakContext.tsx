@@ -51,6 +51,9 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) 
         if (auth && keycloak.tokenParsed) {
           const roles = keycloak.realmAccess?.roles || [];
           const clientRoles = keycloak.resourceAccess?.[keycloak.clientId]?.roles || [];
+
+          console.log('keycloak client roles: ', clientRoles);
+
           const allRoles = [...roles, ...clientRoles];
 
           const userRoles = allRoles.filter((role): role is UserRole =>
