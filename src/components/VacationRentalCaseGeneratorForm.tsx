@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useForm, useFieldArray, SubmitHandler } from 'react-hook-form';
 import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVacationRental';
 import { useToast } from '@/hooks/use-toast';
-import type { CreateSightseeingAttractionDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
+import { useKeycloak } from '@/contexts/KeycloakContext';
+import type { CreateSightseeingAttractionDto, CreateCaseGeneratorFormVacationRentalDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
 
 // Extend the basic form data with vacation rental specific fields
 interface VacationRentalFormData {
@@ -32,6 +33,7 @@ interface VacationRentalCaseGeneratorFormProps {
 
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
   const { toast } = useToast();
+  const { user } = useKeycloak();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
   const [serverErrors, setServerErrors] = useState<{ [key: string]: string }>({});
 
@@ -94,10 +96,19 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     setServerErrors({});
     clearErrors();
 
-    // Prepare the data in the format expected by the API
-    const formData = {
-      caseGeneratorForm: "VACATION_RENTAL" as const,
-      language: data.language,
+    // Get user email for userId
+    const userId = user?.email;
+    if (!userId) {
+      toast({
+        title: "Fehler",
+        description: "Benutzer-E-Mail nicht verfügbar. Bitte melden Sie sich erneut an.",
+      });
+      return;
+    }
+
+    // Prepare the data in the format expected by the API (new structure)
+    const formData: CreateCaseGeneratorFormVacationRentalDto = {
+      userId: userId,
       formBase: {
         caseGeneratorForm: "BASIC" as const,
         language: data.language,
@@ -221,21 +232,11 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                   )}
                 </div>
 
-                {/* Additional Theme Details */}
-                <div className="mb-3">
-                  <label htmlFor="additionalThemeDetails" className="form-label">Zusätzliche Theme Details</label>
-                  <textarea
-                    id="additionalThemeDetails"
-                    className={`form-control ${errors.additionalThemeDetails || serverErrors.additionalThemeDetails ? 'is-invalid' : ''}`}
-                    rows={3}
-                    {...register('additionalThemeDetails')}
-                  />
-                  {(errors.additionalThemeDetails || serverErrors.additionalThemeDetails) && (
-                    <div className="invalid-feedback d-block">
-                      {errors.additionalThemeDetails?.message || serverErrors.additionalThemeDetails}
-                    </div>
-                  )}
-                </div>
+                {/* Additional Theme Details - Hidden field */}
+                <input
+                  type="hidden"
+                  {...register("additionalThemeDetails")}
+                />
 
                 {/* Full Address */}
                 <div className="mb-3">

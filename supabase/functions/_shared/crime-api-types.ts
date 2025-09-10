@@ -40,14 +40,13 @@ export interface CreateCaseGeneratorFormBasicDto {
 }
 
 export interface CreateCaseGeneratorFormVacationRentalDto {
-  caseGeneratorForm: "VACATION_RENTAL";
-  language: string;
   formBase: CreateCaseGeneratorFormBasicDto;
   venueFloors: number;
   venueBedrooms: number;
   venueBathrooms: number;
   maxGuests: number;
   roomLayoutDescription?: string;
+  userId: string;
 }
 
 export interface CreateSightseeingAttractionDto {
