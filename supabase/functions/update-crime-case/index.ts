@@ -1,12 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
-import createFetchClient from 'openapi-fetch';
-import { CrimeApiPaths } from '../_shared/crime-api-types.ts';
+import createFetchClient from "https://esm.sh/openapi-fetch@0.14.0";
 import { corsHeaders } from '../_shared/cors.ts';
-
-const supabase = createClient(
-  Deno.env.get('SUPABASE_URL') ?? '',
-  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-);
+import { CrimeApiPaths } from '../_shared/crime-api-types.ts';
 
 Deno.serve(async (req) => {
   console.log('Update crime case request:', req.method, req.url);
@@ -77,8 +71,8 @@ Deno.serve(async (req) => {
   } catch (error) {
     console.error('Update crime case error:', error);
     return new Response(
-      JSON.stringify({ 
-        error: error instanceof Error ? error.message : 'Unknown error occurred' 
+      JSON.stringify({
+        error: error instanceof Error ? error.message : 'Unknown error occurred'
       }),
       {
         status: 500,

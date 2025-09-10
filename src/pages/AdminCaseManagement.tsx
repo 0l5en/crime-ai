@@ -1,10 +1,11 @@
 
 import Header from "@/components/Header";
+import { useToast } from "@/hooks/use-toast";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
-import { useNavigate } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CrimeCaseDto } from "supabase/functions/_shared/crime-api-types";
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
@@ -13,12 +14,12 @@ const AdminCaseManagement = () => {
   const { toast } = useToast();
   const [updatingCaseId, setUpdatingCaseId] = useState<string | null>(null);
 
-  const handleStatusUpdate = async (caseId: string, newStatus: "UNPUBLISHED" | "PUBLISHED" | "PREMIUM") => {
+  const handleStatusUpdate = async (crimeCase: CrimeCaseDto) => {
     try {
-      setUpdatingCaseId(caseId);
+      setUpdatingCaseId(crimeCase.id);
       await updateCrimeCase.mutateAsync({
-        caseId,
-        updateData: { status: newStatus }
+        caseId: crimeCase.id,
+        updateData: crimeCase
       });
       toast({
         title: "Status aktualisiert",
@@ -37,7 +38,7 @@ const AdminCaseManagement = () => {
   return (
     <div className="min-vh-100 bg-dark">
       <Header />
-      
+
       <div className="container py-5">
         <div className="d-flex align-items-center justify-content-between mb-5">
           <div>
@@ -48,7 +49,7 @@ const AdminCaseManagement = () => {
               Übersicht aller verfügbaren Kriminalfälle
             </p>
           </div>
-          <button 
+          <button
             className="btn btn-success"
             onClick={() => navigate('/admin/case-generator')}
           >
@@ -109,19 +110,18 @@ const AdminCaseManagement = () => {
                       <div className="text-truncate">{crimeCase.description}</div>
                     </td>
                     <td>
-                      <span className={`badge ${
-                        crimeCase.status === 'PUBLISHED' ? 'bg-success' :
+                      <span className={`badge ${crimeCase.status === 'PUBLISHED' ? 'bg-success' :
                         crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
-                        'bg-secondary'
-                      }`}>
+                          'bg-secondary'
+                        }`}>
                         {crimeCase.status === 'PUBLISHED' ? 'Veröffentlicht' :
-                         crimeCase.status === 'PREMIUM' ? 'Premium' :
-                         'Unveröffentlicht'}
+                          crimeCase.status === 'PREMIUM' ? 'Premium' :
+                            'Unveröffentlicht'}
                       </span>
                     </td>
                     <td>
                       <div className="d-flex gap-2">
-                        <button 
+                        <button
                           className="btn btn-info btn-sm"
                           onClick={() => navigate(`/case/${crimeCase.id}`)}
                         >
@@ -131,8 +131,8 @@ const AdminCaseManagement = () => {
                           Bearbeiten
                         </button>
                         <div className="dropdown">
-                          <button 
-                            className="btn btn-secondary btn-sm dropdown-toggle" 
+                          <button
+                            className="btn btn-secondary btn-sm dropdown-toggle"
                             data-bs-toggle="dropdown"
                             disabled={updatingCaseId === crimeCase.id}
                             style={{ zIndex: 1000 }}
@@ -142,32 +142,32 @@ const AdminCaseManagement = () => {
                             ) : null}
                             Status ändern
                           </button>
-                          <ul 
+                          <ul
                             className="dropdown-menu dropdown-menu-dark bg-secondary border border-secondary"
                             style={{ zIndex: 1050 }}
                           >
                             <li>
-                              <button 
-                                className="dropdown-item" 
-                                onClick={() => handleStatusUpdate(crimeCase.id, 'UNPUBLISHED')}
+                              <button
+                                className="dropdown-item"
+                                onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
                                 disabled={crimeCase.status === 'UNPUBLISHED'}
                               >
                                 Unveröffentlicht
                               </button>
                             </li>
                             <li>
-                              <button 
-                                className="dropdown-item" 
-                                onClick={() => handleStatusUpdate(crimeCase.id, 'PUBLISHED')}
+                              <button
+                                className="dropdown-item"
+                                onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
                                 disabled={crimeCase.status === 'PUBLISHED'}
                               >
                                 Veröffentlicht
                               </button>
                             </li>
                             <li>
-                              <button 
-                                className="dropdown-item" 
-                                onClick={() => handleStatusUpdate(crimeCase.id, 'PREMIUM')}
+                              <button
+                                className="dropdown-item"
+                                onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PREMIUM' })}
                                 disabled={crimeCase.status === 'PREMIUM'}
                               >
                                 Premium
