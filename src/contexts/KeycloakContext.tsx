@@ -1,7 +1,7 @@
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { keycloak, initOptions, UserRole } from '@/config/keycloak';
+import { initOptions, keycloak, UserRole } from '@/config/keycloak';
 import type Keycloak from 'keycloak-js';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 interface KeycloakContextType {
   keycloak: Keycloak;
@@ -40,11 +40,11 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) 
   useEffect(() => {
     const initKeycloak = async () => {
       console.log('Initializing Keycloak...');
-      
+
       try {
         const auth = await keycloak.init(initOptions);
         console.log('Keycloak initialized, authenticated:', auth);
-        
+
         setAuthenticated(auth);
         setInitialized(true);
 
@@ -52,9 +52,9 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) 
           const roles = keycloak.realmAccess?.roles || [];
           const clientRoles = keycloak.resourceAccess?.[keycloak.clientId]?.roles || [];
           const allRoles = [...roles, ...clientRoles];
-          
-          const userRoles = allRoles.filter((role): role is UserRole => 
-            role === 'admin' || role === 'standard'
+
+          const userRoles = allRoles.filter((role): role is UserRole =>
+            role === 'admin' || role === 'standard' || role === 'vacation-rental'
           );
 
           setUser({
