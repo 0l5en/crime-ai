@@ -10,10 +10,11 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
 import CaseDashboard from "./pages/CaseDashboard";
 import CaseSolution from "./pages/CaseSolution";
-import EvidenceDetails from "./pages/EvidenceDetails";
 import EmailInbox from "./pages/EmailInbox";
+import EvidenceDetails from "./pages/EvidenceDetails";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin']}>
                   <AdminCaseGenerator />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/vacation-rental-case-generator"
+              element={
+                <ProtectedRoute requiredRoles={['admin']}>
+                  <VacationRentalCaseGenerator />
                 </ProtectedRoute>
               }
             />
