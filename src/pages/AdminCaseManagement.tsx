@@ -1,11 +1,38 @@
 
 import Header from "@/components/Header";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
   const { data: crimeCases, isLoading, error } = useCrimeCases();
+  const updateCrimeCase = useUpdateCrimeCase();
+  const { toast } = useToast();
+  const [updatingCaseId, setUpdatingCaseId] = useState<string | null>(null);
+
+  const handleStatusUpdate = async (caseId: string, newStatus: "UNPUBLISHED" | "PUBLISHED" | "PREMIUM") => {
+    try {
+      setUpdatingCaseId(caseId);
+      await updateCrimeCase.mutateAsync({
+        caseId,
+        updateData: { status: newStatus }
+      });
+      toast({
+        title: "Status aktualisiert",
+        description: `Der Status wurde erfolgreich geändert.`,
+      });
+    } catch (error) {
+      toast({
+        title: "Fehler",
+        description: "Der Status konnte nicht aktualisiert werden.",
+      });
+    } finally {
+      setUpdatingCaseId(null);
+    }
+  };
 
   return (
     <div className="min-vh-100 bg-dark">
@@ -82,8 +109,14 @@ const AdminCaseManagement = () => {
                       <div className="text-truncate">{crimeCase.description}</div>
                     </td>
                     <td>
-                      <span className="badge bg-success">
-                        Aktiv
+                      <span className={`badge ${
+                        crimeCase.status === 'PUBLISHED' ? 'bg-success' :
+                        crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
+                        'bg-secondary'
+                      }`}>
+                        {crimeCase.status === 'PUBLISHED' ? 'Veröffentlicht' :
+                         crimeCase.status === 'PREMIUM' ? 'Premium' :
+                         'Unveröffentlicht'}
                       </span>
                     </td>
                     <td>
@@ -97,6 +130,51 @@ const AdminCaseManagement = () => {
                         <button className="btn btn-warning btn-sm">
                           Bearbeiten
                         </button>
+                        <div className="dropdown">
+                          <button 
+                            className="btn btn-secondary btn-sm dropdown-toggle" 
+                            data-bs-toggle="dropdown"
+                            disabled={updatingCaseId === crimeCase.id}
+                            style={{ zIndex: 1000 }}
+                          >
+                            {updatingCaseId === crimeCase.id ? (
+                              <span className="spinner-border spinner-border-sm me-2" />
+                            ) : null}
+                            Status ändern
+                          </button>
+                          <ul 
+                            className="dropdown-menu dropdown-menu-dark bg-secondary border border-secondary"
+                            style={{ zIndex: 1050 }}
+                          >
+                            <li>
+                              <button 
+                                className="dropdown-item" 
+                                onClick={() => handleStatusUpdate(crimeCase.id, 'UNPUBLISHED')}
+                                disabled={crimeCase.status === 'UNPUBLISHED'}
+                              >
+                                Unveröffentlicht
+                              </button>
+                            </li>
+                            <li>
+                              <button 
+                                className="dropdown-item" 
+                                onClick={() => handleStatusUpdate(crimeCase.id, 'PUBLISHED')}
+                                disabled={crimeCase.status === 'PUBLISHED'}
+                              >
+                                Veröffentlicht
+                              </button>
+                            </li>
+                            <li>
+                              <button 
+                                className="dropdown-item" 
+                                onClick={() => handleStatusUpdate(crimeCase.id, 'PREMIUM')}
+                                disabled={crimeCase.status === 'PREMIUM'}
+                              >
+                                Premium
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </td>
                   </tr>

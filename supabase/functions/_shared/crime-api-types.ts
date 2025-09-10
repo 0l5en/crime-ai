@@ -8,6 +8,8 @@ export interface CrimeCaseDto {
   summary: string;
   language: string;
   imageUrl?: string;
+  textToImage: string;
+  status: "UNPUBLISHED" | "PUBLISHED" | "PREMIUM";
 }
 
 export interface ResultSetCrimeCase {
@@ -33,6 +35,25 @@ export interface CrimeApiPaths {
           content: {
             "application/json": ResultSetCrimeCase;
           };
+        };
+      };
+    };
+  };
+  "/crimecase/{id}": {
+    patch: {
+      parameters: {
+        path: {
+          id: string;
+        };
+      };
+      requestBody: {
+        content: {
+          "application/json": CrimeCaseDto;
+        };
+      };
+      responses: {
+        204: {
+          content?: never;
         };
       };
     };

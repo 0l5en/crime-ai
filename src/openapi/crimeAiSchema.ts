@@ -55,7 +55,8 @@ export interface paths {
     delete: operations["deleteCrimeCase"];
     options?: never;
     head?: never;
-    patch?: never;
+    /** update crime case */
+    patch: operations["updateCrimeCase"];
     trace?: never;
   };
   "/crimecase/{id}/crimescene": {
@@ -380,7 +381,10 @@ export interface components {
       title: string;
       description: string;
       summary: string;
+      language: string;
+      textToImage: string;
       imageUrl?: string;
+      status: "UNPUBLISHED" | "PUBLISHED" | "PREMIUM";
     };
     ResultSetCrimeCase: {
       items?: components["schemas"]["CrimeCaseDto"][];
@@ -797,6 +801,46 @@ export interface operations {
       cookie?: never;
     };
     requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description crime case not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  updateCrimeCase: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description crime case id */
+        id: string;
+      };
+      cookie?: never;
+    };
+    /** @description the data required to update crime case */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CrimeCaseDto"];
+      };
+    };
     responses: {
       /** @description successful operation */
       204: {
