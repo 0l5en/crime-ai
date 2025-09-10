@@ -137,6 +137,30 @@ paths:
           description: crime case not found
         "500":
           description: if any internal error occurs while processing the request
+    patch:
+      summary: update crime case
+      operationId: updateCrimeCase
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: the data required to update crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CrimeCaseDto"
+        required: true
+      responses:
+        "204":
+          description: successful operation
+        "404":
+          description: crime case not found
+        "500":
+          description: if any internal error occurs while processing the request
   /crimecase/{id}/crimescene:
     get:
       summary: get the crime scene of a crime case
@@ -660,10 +684,17 @@ components:
           type: string
         imageUrl:
           type: string
+        status:
+          type: string
+          enum:
+          - UNPUBLISHED
+          - PUBLISHED
+          - PREMIUM
       required:
       - description
       - id
       - language
+      - status
       - summary
       - textToImage
       - title
