@@ -8,8 +8,25 @@ servers:
 paths:
   /crimecase:
     get:
-      summary: get the 10 latest crime cases
+      summary: get the latest crime cases
       operationId: listCrimeCases
+      parameters:
+      - name: maxResults
+        in: query
+        description: "The maximum number of elements that should be returned. If this\
+          \ parameter is not specified, the default value of 10 will be used."
+        schema:
+          type: string
+      - name: caseGeneratorFormType
+        in: query
+        description: The type of crime case used during the generation process.
+        schema:
+          type: string
+      - name: userId
+        in: query
+        description: The id of a logged in user playing a crime case.
+        schema:
+          type: string
       responses:
         "200":
           description: successful operation
@@ -762,13 +779,6 @@ components:
     CreateCaseGeneratorFormVacationRentalDto:
       type: object
       properties:
-        language:
-          type: string
-        caseGeneratorForm:
-          type: string
-          enum:
-          - BASIC
-          - VACATION_RENTAL
         formBase:
           $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
         venueFloors:
@@ -785,9 +795,12 @@ components:
           format: int32
         roomLayoutDescription:
           type: string
+        userId:
+          type: string
       required:
       - formBase
       - maxGuests
+      - userId
       - venueBathrooms
       - venueBedrooms
       - venueFloors
@@ -1220,8 +1233,6 @@ components:
           type: string
         timeOfDeathTo:
           type: string
-        reportAuthorImageUrl:
-          type: string
       required:
       - causeOfDeath
       - conclusionsAndAssessment
@@ -1229,7 +1240,6 @@ components:
       - id
       - internalExamination
       - reportAuthorId
-      - reportAuthorImageUrl
       - timeOfDeathFrom
       - timeOfDeathTo
       - title
