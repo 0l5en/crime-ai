@@ -39,6 +39,17 @@ export interface CreateCaseGeneratorFormBasicDto {
   historicalCulturalContext?: string;
 }
 
+export interface CreateCaseGeneratorFormVacationRentalDto {
+  caseGeneratorForm: "VACATION_RENTAL";
+  language: string;
+  formBase: CreateCaseGeneratorFormBasicDto;
+  venueFloors: number;
+  venueBedrooms: number;
+  venueBathrooms: number;
+  maxGuests: number;
+  roomLayoutDescription?: string;
+}
+
 export interface CreateSightseeingAttractionDto {
   attractionName: string;
   distanceToVenue: number;

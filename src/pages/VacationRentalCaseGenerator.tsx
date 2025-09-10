@@ -1,4 +1,4 @@
-import BasicCaseGeneratorForm from "@/components/BasicCaseGeneratorForm";
+import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import CaseGenerator from "@/components/CaseGenerator";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ const VacationRentalCaseGenerator = () => {
         navigate('/admin/cases');
     };
 
-    return <CaseGenerator taskUrl={taskUrl} setTaskUrl={setTaskUrl} generatorForm={<BasicCaseGeneratorForm
+    return <CaseGenerator taskUrl={taskUrl} setTaskUrl={setTaskUrl} generatorForm={<VacationRentalCaseGeneratorForm
         onSuccess={handleFormSuccess}
         onCancel={handleFormCancel}
     />} />
