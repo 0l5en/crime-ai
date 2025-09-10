@@ -15,6 +15,7 @@ import EvidenceDetails from "./pages/EvidenceDetails";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
+import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRoles={['admin', 'standard']}>
                   <EmailInbox />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/vacation-rental-dashboard"
+              element={
+                <ProtectedRoute requiredRoles={['vacation-rental']}>
+                  <VacationRentalDashboard />
                 </ProtectedRoute>
               }
             />

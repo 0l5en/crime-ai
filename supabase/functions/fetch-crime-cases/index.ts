@@ -30,6 +30,14 @@ serve(async (req) => {
       throw new Error('API base URL not configured');
     }
 
+    // Extract query parameters from the incoming request
+    const url = new URL(req.url);
+    const maxResults = url.searchParams.get('maxResults');
+    const caseGeneratorFormType = url.searchParams.get('caseGeneratorFormType');
+    const userId = url.searchParams.get('userId');
+
+    console.log('Query parameters:', { maxResults, caseGeneratorFormType, userId });
+
     // Create type-safe openapi-fetch client
     const client = createFetchClient<CrimeApiPaths>({
       baseUrl,
@@ -41,7 +49,17 @@ serve(async (req) => {
 
     console.log('Making API request to /crimecase...');
     
-    const { data, error } = await client.GET('/crimecase');
+    // Build query parameters object, only including non-null values
+    const queryParams: Record<string, string> = {};
+    if (maxResults) queryParams.maxResults = maxResults;
+    if (caseGeneratorFormType) queryParams.caseGeneratorFormType = caseGeneratorFormType;
+    if (userId) queryParams.userId = userId;
+
+    const { data, error } = await client.GET('/crimecase', {
+      params: {
+        query: queryParams,
+      },
+    });
 
     if (error) {
       console.error('API Error:', error);

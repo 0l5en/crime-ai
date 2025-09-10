@@ -14,6 +14,31 @@ export interface ResultSetCrimeCase {
   items?: CrimeCaseDto[];
 }
 
+// Define query parameters for listCrimeCases operation
+export interface ListCrimeCasesParams {
+  maxResults?: string;
+  caseGeneratorFormType?: string;
+  userId?: string;
+}
+
+// Define Crime API Paths for type-safe API calls
+export interface CrimeApiPaths {
+  "/crimecase": {
+    get: {
+      parameters: {
+        query?: ListCrimeCasesParams;
+      };
+      responses: {
+        200: {
+          content: {
+            "application/json": ResultSetCrimeCase;
+          };
+        };
+      };
+    };
+  };
+}
+
 export interface CreateCrimeCaseDto {
   amountEvidences: number;
   amountPersons: number;

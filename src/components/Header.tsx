@@ -37,6 +37,18 @@ const Header = () => {
                   </div>
                 )}
 
+                {/* Vacation Rental Dashboard Link */}
+                {hasRole('vacation-rental') && (
+                  <div className="nav-item">
+                    <Link to="/vacation-rental-dashboard" className="nav-link p-0">
+                      <button className="btn btn-outline-primary bg-transparent border-warning text-warning">
+                        <i className="bi bi-house-door me-1"></i>
+                        Meine Cases
+                      </button>
+                    </Link>
+                  </div>
+                )}
+
                 {/* Notification Badge */}
                 {authenticated && (
                   <div className="nav-item">
@@ -160,6 +172,18 @@ const Header = () => {
                   {/* Notification Badge for Mobile */}
                   <NotificationBadge />
                 </div>
+
+                {/* Vacation Rental Dashboard Link - Mobile */}
+                {hasRole('vacation-rental') && (
+                  <Link
+                    to="/vacation-rental-dashboard"
+                    className="btn btn-outline-primary bg-transparent border-warning text-warning w-100 mb-2"
+                    data-bs-dismiss="offcanvas"
+                  >
+                    <i className="bi bi-house-door me-2"></i>
+                    Meine Cases
+                  </Link>
+                )}
 
                 {/* Admin Link for mobile */}
                 {hasRole('admin') && (

@@ -2,8 +2,9 @@
 import { UserRole } from '@/config/keycloak';
 
 export const roleHierarchy: Record<UserRole, number> = {
-  admin: 2,
-  standard: 1,
+  admin: 3,
+  standard: 2,
+  'vacation-rental': 1,
 };
 
 export const hasPermission = (userRoles: UserRole[], requiredRole: UserRole): boolean => {
@@ -23,6 +24,6 @@ export const getHighestRole = (userRoles: UserRole[]): UserRole | null => {
   });
 };
 
-export const canAccessCriminalCases = (userRoles: UserRole[]): boolean => {
-  return hasAnyRole(userRoles, ['admin', 'standard']);
+export const canAccessVacationRental = (userRoles: UserRole[]): boolean => {
+  return hasAnyRole(userRoles, ['admin', 'vacation-rental']);
 };

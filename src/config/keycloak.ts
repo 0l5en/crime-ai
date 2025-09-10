@@ -16,6 +16,6 @@ export const initOptions = {
   checkLoginIframe: false,
 };
 
-export type UserRole = 'admin' | 'standard';
+export type UserRole = 'admin' | 'standard' | 'vacation-rental';
 
-export const REQUIRED_ROLES: UserRole[] = ['admin', 'standard'];
+export const REQUIRED_ROLES: UserRole[] = ['admin', 'standard', 'vacation-rental'];
