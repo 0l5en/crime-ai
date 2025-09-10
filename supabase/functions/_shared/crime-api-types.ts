@@ -21,6 +21,7 @@ export interface ListCrimeCasesParams {
   maxResults?: string;
   caseGeneratorFormType?: string;
   userId?: string;
+  status?: string;
 }
 
 // Define Crime API Paths for type-safe API calls

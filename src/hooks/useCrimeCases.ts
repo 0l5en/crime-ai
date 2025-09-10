@@ -10,6 +10,7 @@ interface CrimeCasesParams {
   maxResults?: string;
   caseGeneratorFormType?: string;
   userId?: string;
+  status?: string;
 }
 
 export const useCrimeCases = (params?: CrimeCasesParams) => {
@@ -23,6 +24,12 @@ export const useCrimeCases = (params?: CrimeCasesParams) => {
       if (params?.maxResults) searchParams.append('maxResults', params.maxResults);
       if (params?.caseGeneratorFormType) searchParams.append('caseGeneratorFormType', params.caseGeneratorFormType);
       if (params?.userId) searchParams.append('userId', params.userId);
+      if (params?.status) {
+        // Support comma-separated status values
+        params.status.split(',').forEach(status => 
+          searchParams.append('status', status.trim())
+        );
+      }
       
       const queryString = searchParams.toString();
       const functionName = queryString ? `fetch-crime-cases?${queryString}` : 'fetch-crime-cases';

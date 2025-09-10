@@ -4,7 +4,10 @@ import { useCrimeCases } from "@/hooks/useCrimeCases";
 import GameCard from "./GameCard";
 
 const GameShowcase = () => {
-  const { data: crimeCases, isLoading, error } = useCrimeCases({ caseGeneratorFormType: 'BASIC' });
+  const { data: crimeCases, isLoading, error } = useCrimeCases({ 
+    caseGeneratorFormType: 'BASIC',
+    status: 'PUBLISHED,PREMIUM'
+  });
   const { user } = useKeycloak();
 
   const getImageColor = (index: number) => {

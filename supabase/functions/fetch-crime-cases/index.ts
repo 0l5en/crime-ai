@@ -35,8 +35,9 @@ serve(async (req) => {
     const maxResults = url.searchParams.get('maxResults');
     const caseGeneratorFormType = url.searchParams.get('caseGeneratorFormType');
     const userId = url.searchParams.get('userId');
+    const statusParams = url.searchParams.getAll('status'); // Support multiple status values
 
-    console.log('Query parameters:', { maxResults, caseGeneratorFormType, userId });
+    console.log('Query parameters:', { maxResults, caseGeneratorFormType, userId, status: statusParams });
 
     // Create type-safe openapi-fetch client
     const client = createFetchClient<CrimeApiPaths>({
@@ -50,10 +51,11 @@ serve(async (req) => {
     console.log('Making API request to /crimecase...');
     
     // Build query parameters object, only including non-null values
-    const queryParams: Record<string, string> = {};
+    const queryParams: Record<string, string | string[]> = {};
     if (maxResults) queryParams.maxResults = maxResults;
     if (caseGeneratorFormType) queryParams.caseGeneratorFormType = caseGeneratorFormType;
     if (userId) queryParams.userId = userId;
+    if (statusParams.length > 0) queryParams.status = statusParams;
 
     const { data, error } = await client.GET('/crimecase', {
       params: {
