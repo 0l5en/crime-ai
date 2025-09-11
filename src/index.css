@@ -176,7 +176,7 @@
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-  color: #CCCCCC;
+  color: var(--bs-body-color);
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -190,14 +190,14 @@
 .markdown-content h6 { font-size: 0.9rem; }
 
 .markdown-content p {
-  color: #CCCCCC;
+  color: var(--bs-body-color);
   line-height: 1.6;
   margin-bottom: 0.75rem;
 }
 
 .markdown-content ul,
 .markdown-content ol {
-  color: #CCCCCC;
+  color: var(--bs-body-color);
   padding-left: 1.5rem;
   margin-bottom: 0.75rem;
 }
@@ -207,31 +207,41 @@
 }
 
 .markdown-content strong {
-  color: #CCCCCC;
+  color: var(--bs-body-color);
   font-weight: 700;
 }
 
 .markdown-content em {
-  color: #CCCCCC;
+  color: var(--bs-body-color);
   font-style: italic;
 }
 
 .markdown-content code {
-  background-color: #2d2d2d;
-  color: #f8f8f2;
+  background-color: var(--bs-secondary);
+  color: var(--bs-body-color);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.9rem;
 }
 
-.markdown-content pre {
+[data-bs-theme="dark"] .markdown-content code {
   background-color: #2d2d2d;
   color: #f8f8f2;
+}
+
+.markdown-content pre {
+  background-color: var(--bs-secondary);
+  color: var(--bs-body-color);
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
   margin-bottom: 1rem;
+}
+
+[data-bs-theme="dark"] .markdown-content pre {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
 }
 
 .markdown-content pre code {
@@ -240,21 +250,22 @@
 }
 
 .markdown-content a {
-  color: #CB191C;
+  color: var(--bs-primary);
   text-decoration: none;
 }
 
 .markdown-content a:hover {
-  color: #ff4444;
+  color: var(--bs-primary);
   text-decoration: underline;
+  opacity: 0.8;
 }
 
 .markdown-content blockquote {
-  border-left: 4px solid #5F5F5F;
+  border-left: 4px solid var(--bs-border-color);
   padding-left: 1rem;
   margin-left: 0;
   margin-bottom: 1rem;
-  color: #999999;
+  color: var(--bs-secondary);
   font-style: italic;
 }
 
@@ -266,23 +277,27 @@
 
 .markdown-content th,
 .markdown-content td {
-  border: 1px solid #5F5F5F;
+  border: 1px solid var(--bs-border-color);
   padding: 0.5rem;
   text-align: left;
 }
 
 .markdown-content th {
-  background-color: #2d2d2d;
-  color: #CCCCCC;
+  background-color: var(--bs-secondary);
+  color: var(--bs-body-color);
   font-weight: 600;
 }
 
+[data-bs-theme="dark"] .markdown-content th {
+  background-color: #2d2d2d;
+}
+
 .markdown-content td {
-  color: #CCCCCC;
+  color: var(--bs-body-color);
 }
 
 .markdown-content hr {
   border: none;
-  border-top: 1px solid #5F5F5F;
+  border-top: 1px solid var(--bs-border-color);
   margin: 1.5rem 0;
 }
