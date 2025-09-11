@@ -1,6 +1,7 @@
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import GameCard from "@/components/GameCard";
+import AddCaseCard from "@/components/AddCaseCard";
 import Header from "@/components/Header";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import { useState } from "react";
@@ -106,9 +107,13 @@ const VacationRentalDashboard = () => {
                         title={crimeCase.title}
                         description={crimeCase.description}
                         imageUrl={crimeCase.imageUrl}
+                        hideDescription={true}
                       />
                     </div>
                   ))}
+                  <div className="col-12 col-md-6 col-lg-4">
+                    <AddCaseCard onClick={handleCreateNewCase} />
+                  </div>
                 </div>
               )}
 

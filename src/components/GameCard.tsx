@@ -10,6 +10,7 @@ interface GameCardProps {
   difficulty?: 'Leicht' | 'Mittel' | 'Schwer';
   estimatedTime?: string;
   onClick?: () => void;
+  hideDescription?: boolean;
 }
 
 const GameCard = ({
@@ -20,7 +21,8 @@ const GameCard = ({
   userId,
   difficulty = 'Mittel',
   estimatedTime = '30-45 min',
-  onClick
+  onClick,
+  hideDescription = false
 }: GameCardProps) => {
   const navigate = useNavigate();
 
@@ -51,9 +53,11 @@ const GameCard = ({
       <img className="card-img-top" src={imageUrl} alt="Crime case image"></img>
       <div className="card-body p-4 d-flex flex-column">
         <h5 className="card-title mb-3 text-light" data-testid="case-title">{title}</h5>
-        <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
-          {description}
-        </p>
+        {!hideDescription && (
+          <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
+            {description}
+          </p>
+        )}
 
         <div className="d-flex justify-content-between align-items-center mt-auto">
           <div className="d-flex flex-column gap-1">
