@@ -3,9 +3,12 @@ const Hero = () => {
   const scrollToCases = () => {
     const casesSection = document.querySelector('[data-section="cases"]');
     if (casesSection) {
-      casesSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      const yOffset = -68; // Header height offset
+      const y = casesSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
       });
     }
   };
