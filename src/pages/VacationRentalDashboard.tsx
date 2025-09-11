@@ -36,7 +36,7 @@ const VacationRentalDashboard = () => {
             <div className="spinner-border text-danger" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-            <p className="mt-3 text-muted">Lade deine Vacation Rental Cases...</p>
+            <p className="mt-3 text-muted">Loading your Vacation Rental Cases...</p>
           </div>
         </div>
       </>
@@ -51,7 +51,7 @@ const VacationRentalDashboard = () => {
           <div className="text-center">
             <div className="alert alert-danger" role="alert">
               <i className="bi bi-exclamation-triangle-fill me-2"></i>
-              Fehler beim Laden der Cases: {error.message}
+              Error loading cases: {error.message}
             </div>
           </div>
         </div>
@@ -71,10 +71,10 @@ const VacationRentalDashboard = () => {
               {/* Header Section */}
               <div className="text-center mb-5">
                 <h1 className="display-4 fw-bold text-white mb-3">
-                  Meine Vacation Rental Cases
+                  My Vacation Rental Cases
                 </h1>
                 <p className="lead text-muted">
-                  Hier findest du alle deine generierten Vacation Rental Kriminalfälle
+                  Here you can find all your generated vacation rental crime cases
                 </p>
               </div>
 
@@ -83,17 +83,17 @@ const VacationRentalDashboard = () => {
                 <div className="text-center py-5">
                   <div className="bg-dark rounded-3 p-5 border border-secondary">
                     <i className="bi bi-house-door display-1 text-muted mb-3"></i>
-                    <h3 className="text-white mb-3">Noch keine Cases vorhanden</h3>
+                    <h3 className="text-white mb-3">No Cases Available Yet</h3>
                     <p className="text-muted mb-4">
-                      Du hast noch keine Vacation Rental Cases erstellt. 
-                      Erstelle deinen ersten Case über den Admin-Bereich.
+                      You haven't created any Vacation Rental Cases yet. 
+                      Create your first case through the admin area.
                     </p>
                     <button 
                       onClick={handleCreateNewCase}
                       className="btn btn-danger btn-lg"
                     >
                       <i className="bi bi-plus-circle me-2"></i>
-                      Ersten Case erstellen
+                      Create First Case
                     </button>
                   </div>
                 </div>
@@ -127,7 +127,7 @@ const VacationRentalDashboard = () => {
                         <div className="display-6 text-warning fw-bold">
                           {cases.filter(c => c.title.length > 0).length}
                         </div>
-                        <div className="text-muted small">Aktive Cases</div>
+                        <div className="text-muted small">Active Cases</div>
                       </div>
                     </div>
                   </div>
@@ -143,14 +143,14 @@ const VacationRentalDashboard = () => {
               {/* Header Section for Form */}
               <div className="text-center mb-5">
                 <h1 className="display-4 fw-bold text-white mb-3">
-                  Neuen Vacation Rental Case erstellen
+                  Create New Vacation Rental Case
                 </h1>
                 <button 
                   onClick={handleFormCancel}
                   className="btn btn-outline-secondary mb-4"
                 >
                   <i className="bi bi-arrow-left me-2"></i>
-                  Zurück zur Übersicht
+                  Back to Overview
                 </button>
               </div>
 
