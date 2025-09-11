@@ -2,18 +2,28 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Contact Us",
-      description: "Reach out to our team with details about your venue and vision for the perfect mystery experience."
+      title: "Sign Up & Start Trial",
+      description: "Create your account and begin your 7-day free trial. No credit card required to start."
     },
     {
       number: "02", 
-      title: "Custom Case Creation",
-      description: "Our expert writers create a unique detective case tailored specifically to your venue's layout and character."
+      title: "Tell Us About Your Venue",
+      description: "Share details about your property, including layout, unique features, and target guest experience."
     },
     {
       number: "03",
-      title: "QR Code Access",
-      description: "Receive a unique QR code that guests can scan for instant access to their exclusive mystery adventure."
+      title: "Custom Case Creation",
+      description: "Our expert writers craft a unique mystery tailored specifically to your venue's character and layout."
+    },
+    {
+      number: "04",
+      title: "Review & Launch",
+      description: "Preview your custom case, request any adjustments, then get your unique QR code for guests."
+    },
+    {
+      number: "05",
+      title: "Track & Optimize",
+      description: "Monitor guest engagement and satisfaction through our analytics dashboard to maximize impact."
     }
   ];
 

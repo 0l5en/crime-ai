@@ -11,46 +11,44 @@ const VenuesHero = () => {
 
   return (
     <section 
-      className="position-relative d-flex align-items-center justify-content-center text-white px-4"
+      className="position-relative d-flex align-items-center justify-content-center text-light px-4 bg-dark"
       style={{
         minHeight: '100vh',
-        backgroundImage: `url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
-      
-      <div className="position-relative container text-center" style={{ zIndex: '10' }}>
+      <div className="container text-center">
         <h1 
-          className="fw-bold text-light mb-4" 
+          className="display-2 fw-bold text-light mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-            fontSize: 'clamp(1.2rem, 4.5vw, 4rem)',
             lineHeight: '1.1'
           }}
         >
-          Transform Your Venue Into a Crime Scene
+          Transform Your Venue Into an Interactive Mystery Experience
         </h1>
-        <p className="lead text-light mb-5 mx-auto" style={{ maxWidth: '700px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
-          Exclusive detective cases tailored to your location. Turn your Airbnb, hotel, or restaurant into an unforgettable mystery adventure that guests will rave about.
+        <p className="lead text-light mb-5 mx-auto fs-4" style={{ maxWidth: '800px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+          Create custom detective cases tailored to your exact location. Turn your Airbnb, hotel, or restaurant into an unforgettable mystery adventure that keeps guests coming back.
         </p>
-        <div className="d-flex gap-3 justify-content-center flex-wrap">
+        <div className="d-flex gap-3 justify-content-center flex-wrap mb-4">
           <button 
             onClick={scrollToContact}
-            className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold"
-            style={{ fontSize: '1.1rem' }}
+            className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
           >
-            Get Started
+            Start 7-Day Free Trial
           </button>
           <button 
-            className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold"
-            style={{ fontSize: '1.1rem' }}
+            className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
           >
-            Learn More
+            See How It Works
           </button>
         </div>
+        <p className="text-light opacity-75">
+          <small>7-day free trial • Then $9.99/month • Cancel anytime</small>
+        </p>
       </div>
     </section>
   );

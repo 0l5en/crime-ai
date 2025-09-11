@@ -1,9 +1,10 @@
 import Header from "@/components/Header";
 import VenuesHero from "@/components/VenuesHero";
-import WhatAreVenueCases from "@/components/WhatAreVenueCases";
+import WhyVenueOwners from "@/components/WhyVenueOwners";
 import HowItWorks from "@/components/HowItWorks";
-import VenueBenefits from "@/components/VenueBenefits";
-import GuestBenefits from "@/components/GuestBenefits";
+import VenuesPricing from "@/components/VenuesPricing";
+import VenuesFAQ from "@/components/VenuesFAQ";
+import VenuesTestimonials from "@/components/VenuesTestimonials";
 import VenuesCTA from "@/components/VenuesCTA";
 
 const VenuesPage = () => {
@@ -11,10 +12,11 @@ const VenuesPage = () => {
     <div className="min-vh-100 bg-dark">
       <Header />
       <VenuesHero />
-      <WhatAreVenueCases />
+      <WhyVenueOwners />
       <HowItWorks />
-      <VenueBenefits />
-      <GuestBenefits />
+      <VenuesPricing />
+      <VenuesFAQ />
+      <VenuesTestimonials />
       <VenuesCTA />
     </div>
   );
