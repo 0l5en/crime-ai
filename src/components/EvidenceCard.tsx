@@ -30,8 +30,8 @@ const getEvidenceTypeColor = (type: string) => {
 
 const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType, imageUrl, onClick }: EvidenceCardProps) => {
   return (
-    <div 
-      className={`card bg-dark border-secondary text-light card-hover position-relative h-100 d-flex flex-column ${onClick ? 'cursor-pointer' : ''}`}
+    <div
+      className={`card border-secondary card-hover position-relative h-100 d-flex flex-column ${onClick ? 'cursor-pointer' : ''}`}
       onClick={onClick}
       style={{ cursor: onClick ? 'pointer' : 'default' }}
     >
@@ -45,8 +45,8 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
       <div className="card-header p-0">
         <div className={`${imageUrl ? '' : imageColor} d-flex align-items-center justify-content-center`} style={{ height: '12rem' }}>
           {imageUrl ? (
-            <img 
-              src={imageUrl} 
+            <img
+              src={imageUrl}
               alt={title}
               className="w-100 h-100 object-fit-cover"
               style={{ objectFit: 'cover' }}
@@ -59,13 +59,13 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
         </div>
       </div>
       <div className="card-body p-4 flex-grow-1 d-flex flex-column">
-        <h5 className="card-title mb-3 text-light">{title}</h5>
+        <h5 className="card-title mb-3">{title}</h5>
         <p className="card-text text-muted mb-4 flex-grow-1">
           {description}
         </p>
         <div className="small mt-auto">
           <div className="text-muted mb-2">
-            <span className="fw-semibold text-light">Location:</span> {location}
+            <span className="fw-semibold">Location:</span> {location}
           </div>
         </div>
       </div>

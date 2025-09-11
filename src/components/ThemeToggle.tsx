@@ -9,20 +9,20 @@ const ThemeToggle = () => {
   };
 
   const getIcon = () => {
-    return theme === 'dark' 
-      ? <i className="bi bi-moon-fill"></i>
-      : <i className="bi bi-sun-fill"></i>;
+    return theme === 'dark'
+      ? <i className="bi bi-sun-fill"></i>
+      : <i className="bi bi-moon-fill"></i>;
   };
 
   const getTooltip = () => {
-    return theme === 'dark' 
-      ? 'Dark Mode' 
-      : 'Light Mode';
+    return theme === 'dark'
+      ? 'Light Mode'
+      : 'Dark Mode';
   };
 
   return (
     <button
-      className="theme-toggle d-flex align-items-center justify-content-center"
+      className="nav-button d-flex align-items-center justify-content-center"
       onClick={cycleTheme}
       title={getTooltip()}
       style={{ width: '40px', height: '40px' }}

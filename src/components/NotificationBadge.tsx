@@ -1,5 +1,5 @@
-import { Mail } from "lucide-react";
 import { useNotifications } from "@/hooks/useNotifications";
+import { Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const NotificationBadge = () => {
@@ -14,18 +14,18 @@ const NotificationBadge = () => {
   const unreadCount = notifications?.items?.filter(n => !n.read).length || 0;
 
   return (
-    <div className="position-relative" onClick={() => navigate('/emails')}>
-      <Mail 
-        size={20} 
-        className="text-light" 
+    <button className="nav-button position-relative" onClick={() => navigate('/emails')}>
+      <Mail
+        size={20}
+        className=""
         style={{ cursor: 'pointer' }}
       />
       {unreadCount > 0 && (
-        <span 
+        <span
           className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-          style={{ 
-            fontSize: '0.65rem', 
-            minWidth: '18px', 
+          style={{
+            fontSize: '0.65rem',
+            minWidth: '18px',
             height: '18px',
             display: 'flex',
             alignItems: 'center',
@@ -36,7 +36,7 @@ const NotificationBadge = () => {
           <span className="visually-hidden">unread notifications</span>
         </span>
       )}
-    </div>
+    </button>
   );
 };
 

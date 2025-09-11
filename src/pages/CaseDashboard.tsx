@@ -1,19 +1,19 @@
 
-import Header from "@/components/Header";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useCrimeCase } from "@/hooks/useCrimeCase";
-import { useCrimeScene } from "@/hooks/useCrimeScene";
-import { useCaseEvidences } from "@/hooks/useCaseEvidences";
-import { useCaseSuspects } from "@/hooks/useCaseSuspects";
-import { useCaseWitnesses } from "@/hooks/useCaseWitnesses";
-import { useCaseMotives } from "@/hooks/useCaseMotives";
-import { useCaseVictims } from "@/hooks/useCaseVictims";
-import { useForensicPathologist } from "@/hooks/useForensicPathologist";
-import InterrogationView from "@/components/InterrogationView";
+import CaseContent from "@/components/CaseContent";
 import CaseHeader from "@/components/CaseHeader";
 import CaseTabs from "@/components/CaseTabs";
-import CaseContent from "@/components/CaseContent";
-import { useState, useEffect } from "react";
+import Header from "@/components/Header";
+import InterrogationView from "@/components/InterrogationView";
+import { useCaseEvidences } from "@/hooks/useCaseEvidences";
+import { useCaseMotives } from "@/hooks/useCaseMotives";
+import { useCaseSuspects } from "@/hooks/useCaseSuspects";
+import { useCaseVictims } from "@/hooks/useCaseVictims";
+import { useCaseWitnesses } from "@/hooks/useCaseWitnesses";
+import { useCrimeCase } from "@/hooks/useCrimeCase";
+import { useCrimeScene } from "@/hooks/useCrimeScene";
+import { useForensicPathologist } from "@/hooks/useForensicPathologist";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const CaseDashboard = () => {
   const { caseId } = useParams<{ caseId: string }>();
@@ -43,7 +43,7 @@ const CaseDashboard = () => {
   const getImageColor = (index: number) => {
     const colors = [
       "bg-gradient-red",
-      "bg-gradient-blue", 
+      "bg-gradient-blue",
       "bg-gradient-green",
       "bg-gradient-purple",
       "bg-gradient-orange",
@@ -72,17 +72,17 @@ const CaseDashboard = () => {
   return (
     <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
-      
+
       <div className="container-fluid py-4" style={{ maxWidth: '1200px' }}>
-        <CaseHeader 
-          caseId={caseId || ''} 
-          title={crimeCase?.title} 
+        <CaseHeader
+          caseId={caseId || ''}
+          title={crimeCase?.title}
           summary={crimeCase?.summary}
         />
 
-        <CaseTabs 
-          activeTab={activeTab} 
-          onTabChange={setActiveTab} 
+        <CaseTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
         />
 
         <CaseContent

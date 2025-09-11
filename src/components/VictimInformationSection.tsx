@@ -53,17 +53,16 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
     return (
         <div className="col-12">
             <div
-                className="card border-0 text-light"
-                style={{ backgroundColor: '#2a2a2a' }}
+                className="card border-secondary"
             >
                 <div className="card-body p-4">
-                    <h3 className="h4 text-white mb-3">Victim Information</h3>
+                    <h3 className="h4 mb-3">Victim Information</h3>
                     <div className="row">
                         <div className="col-md-8">
-                            <h4 className="h5 text-white mb-3">
+                            <h4 className="h5 mb-3">
                                 {victim.name}
                             </h4>
-                            <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
+                            <p className="mb-0" style={{ textAlign: 'justify' }}>
                                 {formatVictimDetails(victim)}
                             </p>
                             {victim.lifeStatus === 'DEAD' &&
@@ -71,10 +70,10 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                                     <button
                                         disabled={requestAutopsyReportMutation.isPending}
                                         onClick={handleRequestAutopsyReport}
-                                        className="btn btn-danger btn-sm"
+                                        className="btn btn-primary"
                                         data-testid="request-autopsy-report-button"
                                     >
-                                        request autopsy report
+                                        Request autopsy report
                                     </button>
                                 </p>}
                         </div>

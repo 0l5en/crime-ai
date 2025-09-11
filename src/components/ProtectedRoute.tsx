@@ -1,7 +1,7 @@
 
-import React from 'react';
-import { useKeycloak } from '@/contexts/KeycloakContext';
 import { UserRole } from '@/config/keycloak';
+import { useKeycloak } from '@/contexts/KeycloakContext';
+import React from 'react';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -9,22 +9,22 @@ interface ProtectedRouteProps {
   fallback?: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ 
-  children, 
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
+  children,
   requiredRoles = ['admin', 'standard'],
-  fallback 
+  fallback
 }) => {
   const { authenticated, user, hasAnyRequiredRole, login } = useKeycloak();
 
   if (!authenticated) {
     return (
-      <div className="vh-100 bg-dark d-flex align-items-center justify-content-center">
-        <div className="text-center text-light" style={{ maxWidth: '28rem' }}>
-          <div 
-            className="d-flex align-items-center justify-content-center mx-auto mb-4 bg-primary-custom rounded-circle" 
+      <div className="vh-100 d-flex align-items-center justify-content-center">
+        <div className="text-center" style={{ maxWidth: '28rem' }}>
+          <div
+            className="d-flex align-items-center justify-content-center mx-auto mb-4 bg-primary-custom rounded-circle"
             style={{ width: '4rem', height: '4rem' }}
           >
-            <i className="bi bi-lock-fill text-white" style={{ fontSize: '2rem' }}></i>
+            <i className="bi bi-lock-fill" style={{ fontSize: '2rem' }}></i>
           </div>
           <h2 className="h2 fw-bold mb-3">Authentication Required</h2>
           <p className="text-secondary mb-4">
@@ -32,7 +32,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
           </p>
           <button
             onClick={() => login(window.location.href)}
-            className="btn btn-primary-custom btn-lg px-4 py-2 fw-semibold"
+            className="btn btn-primary btn-lg px-4 py-2 fw-semibold"
           >
             Sign In
           </button>
@@ -45,8 +45,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return fallback || (
       <div className="vh-100 bg-dark d-flex align-items-center justify-content-center">
         <div className="text-center text-light" style={{ maxWidth: '28rem' }}>
-          <div 
-            className="d-flex align-items-center justify-content-center mx-auto mb-4 bg-warning rounded-circle" 
+          <div
+            className="d-flex align-items-center justify-content-center mx-auto mb-4 bg-warning rounded-circle"
             style={{ width: '4rem', height: '4rem' }}
           >
             <i className="bi bi-exclamation-triangle-fill text-dark" style={{ fontSize: '2rem' }}></i>

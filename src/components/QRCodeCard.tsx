@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
+import { useEffect, useState } from 'react';
 
 interface QRCodeCardProps {
   caseId: string;
@@ -40,15 +40,15 @@ const QRCodeCard = ({ caseId, title }: QRCodeCardProps) => {
   };
 
   return (
-    <div className="card bg-dark border-secondary h-100">
+    <div className="card border-secondary h-100">
       <div className="card-body d-flex flex-column text-center">
-        <h5 className="card-title text-white mb-3">{title}</h5>
-        
+        <h5 className="card-title mb-3">{title}</h5>
+
         {qrCodeDataUrl && (
           <div className="flex-grow-1 d-flex align-items-center justify-content-center mb-3">
-            <div className="p-3 bg-white rounded">
-              <img 
-                src={qrCodeDataUrl} 
+            <div className="p-3 rounded">
+              <img
+                src={qrCodeDataUrl}
                 alt={`QR Code for ${title}`}
                 className="img-fluid"
                 style={{ maxWidth: '200px' }}
@@ -56,12 +56,12 @@ const QRCodeCard = ({ caseId, title }: QRCodeCardProps) => {
             </div>
           </div>
         )}
-        
+
         <div className="mt-auto">
           <p className="text-muted small mb-3">
             Scan to access case directly
           </p>
-          <button 
+          <button
             onClick={handleDownload}
             className="btn btn-danger btn-sm w-100"
             disabled={!qrCodeDataUrl}

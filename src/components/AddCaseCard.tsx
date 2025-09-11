@@ -5,7 +5,7 @@ interface AddCaseCardProps {
 const AddCaseCard = ({ onClick }: AddCaseCardProps) => {
   return (
     <div
-      className="card bg-dark border-secondary text-light card-hover h-100 d-flex align-items-center justify-content-center"
+      className="card border-secondary card-hover h-100 d-flex align-items-center justify-content-center"
       onClick={onClick}
       style={{ cursor: 'pointer', minHeight: '400px' }}
     >
@@ -13,7 +13,7 @@ const AddCaseCard = ({ onClick }: AddCaseCardProps) => {
         <div className="mb-3">
           <i className="bi bi-plus-circle display-1 text-danger"></i>
         </div>
-        <h5 className="card-title text-light mb-2">Add New Case</h5>
+        <h5 className="card-title mb-2">Add New Case</h5>
         <p className="card-text text-muted">
           Create a new vacation rental case
         </p>

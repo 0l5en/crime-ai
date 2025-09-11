@@ -1,7 +1,7 @@
-import { Star } from "lucide-react";
-import marcusAvatar from "@/assets/marcus-avatar.jpg";
 import lauraAvatar from "@/assets/laura-avatar.jpg";
+import marcusAvatar from "@/assets/marcus-avatar.jpg";
 import thomasAvatar from "@/assets/thomas-avatar.jpg";
+import { Star } from "lucide-react";
 
 const GameReviews = () => {
   const reviews = [
@@ -14,7 +14,7 @@ const GameReviews = () => {
     },
     {
       name: "Laura K.",
-      role: "Premium Member", 
+      role: "Premium Member",
       avatar: lauraAvatar,
       rating: 5,
       text: "I've tried many detective games, but none are as immersive as DetectivesGame. The premium cases are worth every penny!"
@@ -33,19 +33,19 @@ const GameReviews = () => {
       <Star
         key={i}
         size={16}
-        className={i < rating ? "text-warning" : "text-muted"}
+        className={i < rating ? "text-primary" : "text-muted"}
         fill={i < rating ? "currentColor" : "none"}
       />
     ));
   };
 
   return (
-    <section className="py-5 bg-secondary text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-5 d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
             <h2 className="display-4 fw-bold text-primary-custom mb-4">What Our Detectives Say</h2>
-            <p className="lead text-light">
+            <p className="lead">
               Experiences from investigators who have already solved cases
             </p>
           </div>
@@ -54,7 +54,7 @@ const GameReviews = () => {
         <div className="row g-4 justify-content-center">
           {reviews.map((review, index) => (
             <div key={index} className="col-lg-4 col-md-6">
-              <div className="card bg-dark border-0 h-100 card-hover">
+              <div className="card bg-body border-0 h-100 card-hover">
                 <div className="card-body p-4">
                   <div className="d-flex align-items-center mb-3">
                     <img
@@ -64,15 +64,15 @@ const GameReviews = () => {
                       style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                     />
                     <div>
-                      <h6 className="mb-0 text-light fw-bold">{review.name}</h6>
+                      <h6 className="mb-0 fw-bold">{review.name}</h6>
                       <small className="text-muted">{review.role}</small>
                     </div>
                   </div>
-                  
-                  <p className="text-light mb-3" style={{ fontStyle: 'italic' }}>
+
+                  <p className="mb-3" style={{ fontStyle: 'italic' }}>
                     "{review.text}"
                   </p>
-                  
+
                   <div className="d-flex">
                     {renderStars(review.rating)}
                   </div>

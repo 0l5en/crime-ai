@@ -1,4 +1,4 @@
-import { Fingerprint, Users, FileText, MapPin, Shield, DollarSign } from "lucide-react";
+import { DollarSign, FileText, Fingerprint, MapPin, Shield, Users } from "lucide-react";
 
 const GameFeatures = () => {
   const features = [
@@ -35,12 +35,12 @@ const GameFeatures = () => {
   ];
 
   return (
-    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-5 d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
             <h2 className="display-4 fw-bold text-primary-custom mb-4">DetectivesGame Features</h2>
-            <p className="lead text-light">
+            <p className="lead">
               Use cutting-edge investigation methods and tools to solve the most complicated cases
             </p>
           </div>
@@ -51,13 +51,13 @@ const GameFeatures = () => {
             const IconComponent = feature.icon;
             return (
               <div key={index} className="col-lg-4 col-md-6">
-                <div className="card bg-secondary border-0 h-100 card-hover">
+                <div className="card bg-body border-0 h-100 card-hover">
                   <div className="card-body text-center p-4">
                     <div className="mb-3">
                       <IconComponent size={48} className="text-primary-custom" />
                     </div>
                     <h4 className="text-primary-custom mb-3">{feature.title}</h4>
-                    <p className="text-light mb-0">{feature.description}</p>
+                    <p className="mb-0">{feature.description}</p>
                   </div>
                 </div>
               </div>

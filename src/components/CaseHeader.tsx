@@ -11,9 +11,9 @@ const CaseHeader = ({ caseId, title, summary }: CaseHeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="d-flex align-items-center justify-content-between mb-4 px-3">
+    <div className="d-flex align-items-center justify-content-between mb-4">
       <div>
-        <h1 className="h2 text-white mb-1 fw-bold">
+        <h1 className="h2 mb-1 fw-bold">
           {title || 'Loading...'}
         </h1>
         <p className="text-muted mb-0">
@@ -22,10 +22,9 @@ const CaseHeader = ({ caseId, title, summary }: CaseHeaderProps) => {
       </div>
 
       <button
+        disabled={false}
         onClick={() => navigate(`/case/${caseId}/solution`)}
-        className="btn btn-danger btn-lg px-4 ms-4"
-        style={{ backgroundColor: '#CB191C', borderColor: '#CB191C', whiteSpace: 'nowrap' }}
-      >
+        className="btn btn-primary btn-lg ms-4 text-nowrap" style={{ fontSize: '1.3rem' }}>
         Solve this case
       </button>
     </div>

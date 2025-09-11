@@ -1,11 +1,11 @@
 
-import React, { useState, useEffect } from 'react';
-import { Send, ArrowLeft } from 'lucide-react';
 import { useKeycloak } from '@/contexts/KeycloakContext';
-import { useInterrogations } from '@/hooks/useInterrogations';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
+import { useInterrogations } from '@/hooks/useInterrogations';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import type { components } from '@/openapi/crimeAiSchema';
+import { ArrowLeft, Send } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import ConversationHistory from './ConversationHistory';
 
 type PersonDto = components['schemas']['PersonDto'];
@@ -71,12 +71,12 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
     if (roles.includes('WITNESS')) return 'bg-primary';
     if (roles.includes('VICTIM')) return 'bg-secondary';
     if (roles.includes('CRIMINAL_ASSISTANT')) return 'bg-success';
-    if (roles.includes('DIGITAL_EXPERT') || 
-        roles.includes('FORENSIC_EXPERT') || 
-        roles.includes('BALLISTIC_EXPERT') || 
-        roles.includes('DOCUMENT_EXPERT') || 
-        roles.includes('TRACE_EXPERT') || 
-        roles.includes('FORENSIC_PATHOLOGIST')) {
+    if (roles.includes('DIGITAL_EXPERT') ||
+      roles.includes('FORENSIC_EXPERT') ||
+      roles.includes('BALLISTIC_EXPERT') ||
+      roles.includes('DOCUMENT_EXPERT') ||
+      roles.includes('TRACE_EXPERT') ||
+      roles.includes('FORENSIC_PATHOLOGIST')) {
       return 'bg-info';
     }
     if (roles.includes('PERPETRATOR')) return 'bg-warning';
@@ -108,8 +108,8 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
     }
   };
 
-  const containerClass = embedded 
-    ? "" 
+  const containerClass = embedded
+    ? ""
     : "container-fluid py-4";
 
   return (
@@ -118,21 +118,21 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
       {!embedded && onBack && (
         <div className="d-flex align-items-center mb-4">
           <button
-            className="btn btn-secondary btn-sm me-3"
+            className="btn btn-primary me-3"
             onClick={onBack}
           >
-            <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
+            <ArrowLeft className="me-2" />
             Back
           </button>
-          
+
           <div className="d-flex align-items-center">
             <div className="me-3">
               {person.imageUrl ? (
-                <img 
-                  src={person.imageUrl} 
+                <img
+                  src={person.imageUrl}
                   alt={person.name}
                   className="rounded-circle object-fit-cover"
-                  style={{ width: '48px', height: '48px' }}
+                  style={{ width: '60px', height: '60px' }}
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                     e.currentTarget.nextElementSibling?.classList.remove('d-none');
@@ -143,9 +143,9 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
                 {getInitials(person.name)}
               </div>
             </div>
-            
+
             <div>
-              <h2 className="h3 text-white mb-1">
+              <h2 className="h3 mb-1">
                 Interrogation with {person.name}
               </h2>
               <p className="text-muted mb-0">
@@ -157,16 +157,15 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
       )}
 
       {/* Question input form */}
-      <div className="card bg-dark border-secondary mb-4">
+      <div className="card border-secondary mb-4">
         <div className="card-header">
-          <h5 className="card-title text-white">Ask a Question</h5>
+          <h5 className="card-title">Ask a Question</h5>
         </div>
         <div className="card-body">
           <form onSubmit={handleSubmitQuestion} className="d-flex gap-2">
             <input
               type="text"
-              className="form-control bg-dark border-secondary text-white flex-grow-1"
-              style={{ backgroundColor: '#495057 !important' }}
+              className="form-control border-secondary flex-grow-1"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Type your question here..."
@@ -175,7 +174,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
             <button
               type="submit"
               disabled={!question.trim() || createAnswerMutation.isPending}
-              className="btn btn-danger"
+              className="btn btn-primary"
             >
               <Send style={{ width: '16px', height: '16px' }} />
             </button>
@@ -183,8 +182,8 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
         </div>
       </div>
 
-      <ConversationHistory 
-        questionAndAnswers={questionAndAnswers?.items ?? []} 
+      <ConversationHistory
+        questionAndAnswers={questionAndAnswers?.items ?? []}
         pending={interrogationsLoading || qaLoading}
       />
 

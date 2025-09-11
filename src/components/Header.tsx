@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg sticky-top border-bottom bg-body" style={{ backdropFilter: 'blur(10px)' }}>
+      <nav className="navbar navbar-expand-lg sticky-top border-bottom bg-body">
         <div className="container-fluid px-4">
           {/* Brand */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
@@ -26,6 +26,27 @@ const Header = () => {
 
             {authenticated ? (
               <>
+
+                {/* Notification Badge */}
+                <div className="nav-item">
+                  <NotificationBadge />
+                </div>
+
+                {/* User Profile */}
+                {user && (
+                  <div className="nav-item d-flex align-items-center gap-2">
+                    <div className="text-end">
+                      <div className="small fw-medium">{user.name || user.email}</div>
+                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>
+                        {user.roles.join(', ') || 'No roles'}
+                      </div>
+                    </div>
+                    <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '32px', height: '32px', fontSize: '0.875rem' }}>
+                      {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
+                    </div>
+                  </div>
+                )}
+
                 {/* Admin Link */}
                 {hasRole('admin') && (
                   <div className="nav-item">
@@ -41,33 +62,11 @@ const Header = () => {
                 {hasRole('vacation-rental') && (
                   <div className="nav-item">
                     <Link to="/vacation-rental-dashboard" className="nav-link p-0">
-                      <button className="btn btn-outline-primary bg-transparent border-warning text-warning">
+                      <button className="btn btn-primary">
                         <i className="bi bi-house-door me-1"></i>
                         My Cases
                       </button>
                     </Link>
-                  </div>
-                )}
-
-                {/* Notification Badge */}
-                {authenticated && (
-                  <div className="nav-item">
-                    <NotificationBadge />
-                  </div>
-                )}
-
-                {/* User Profile */}
-                {user && (
-                  <div className="nav-item d-flex align-items-center gap-2">
-                    <div className="text-end">
-                      <div className="small fw-medium">{user.name || user.email}</div>
-                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>
-                        {user.roles.join(', ') || 'No roles'}
-                      </div>
-                    </div>
-                    <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '32px', height: '32px', fontSize: '0.875rem' }}>
-                      {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
-                    </div>
                   </div>
                 )}
 

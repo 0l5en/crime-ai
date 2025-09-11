@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import GameCard from "./GameCard";
 
 const GameShowcase = () => {
-  const { data: crimeCases, isLoading, error } = useCrimeCases({ 
+  const { data: crimeCases, isLoading, error } = useCrimeCases({
     caseGeneratorFormType: 'BASIC',
     status: 'PUBLISHED,PREMIUM'
   });
@@ -27,7 +27,7 @@ const GameShowcase = () => {
   return (
     <section
       data-section="cases"
-      className="bg-dark text-light py-5 px-4"
+      className="py-5 px-4"
       style={{ minHeight: '100vh' }}
     >
       <div className="container">
@@ -74,8 +74,8 @@ const GameShowcase = () => {
             </div>
 
             <div className="text-center">
-              <button 
-                className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill"
+              <button
+                className="btn btn-primary btn-lg px-5 py-3 rounded-pill"
                 onClick={() => navigate('/cases')}
               >
                 View All Cases

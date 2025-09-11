@@ -1,13 +1,13 @@
-import { useKeycloak } from "@/contexts/KeycloakContext";
-import { useCrimeCases } from "@/hooks/useCrimeCases";
-import GameCard from "@/components/GameCard";
 import AddCaseCard from "@/components/AddCaseCard";
+import GameCard from "@/components/GameCard";
 import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
+import QRCodeCard from "@/components/QRCodeCard";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
-import QRCodeCard from "@/components/QRCodeCard";
-import { useState, useEffect } from "react";
+import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useEffect, useState } from "react";
 
 interface GeneratingCase {
   tempId: string;
@@ -30,7 +30,7 @@ const VacationRentalDashboard = () => {
     if (generatingCases.length > 0) {
       const interval = setInterval(() => {
         refetch();
-        
+
         // Remove generating cases older than 5 minutes (in case something went wrong)
         const now = Date.now();
         setGeneratingCases(prev => prev.filter(gc => now - gc.startTime < 5 * 60 * 1000));
@@ -110,14 +110,14 @@ const VacationRentalDashboard = () => {
       {/* Cases Grid */}
       {cases.length === 0 && generatingCases.length === 0 ? (
         <div className="text-center py-5">
-          <div className="bg-dark rounded-3 p-5 border border-secondary">
+          <div className="rounded-3 p-5 border border-secondary">
             <i className="bi bi-house-door display-1 text-muted mb-3"></i>
-            <h3 className="text-white mb-3">No Cases Available Yet</h3>
+            <h3 className="mb-3">No Cases Available Yet</h3>
             <p className="text-muted mb-4">
-              You haven't created any Vacation Rental Cases yet. 
+              You haven't created any Vacation Rental Cases yet.
               Create your first case through the admin area.
             </p>
-            <button 
+            <button
               onClick={handleCreateNewCase}
               className="btn btn-danger btn-lg"
             >
@@ -131,17 +131,17 @@ const VacationRentalDashboard = () => {
           {/* Generating Cases */}
           {generatingCases.map((generatingCase) => (
             <div key={generatingCase.tempId} className="col-12 col-md-6 col-lg-4">
-              <GeneratingCaseCard 
+              <GeneratingCaseCard
                 venueName={generatingCase.venueName}
                 tempId={generatingCase.tempId}
               />
             </div>
           ))}
-          
+
           {/* Actual Cases */}
           {cases.map((crimeCase) => (
             <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
-              <GameCard 
+              <GameCard
                 caseId={crimeCase.id}
                 title={crimeCase.title}
                 description={crimeCase.description}
@@ -150,7 +150,7 @@ const VacationRentalDashboard = () => {
               />
             </div>
           ))}
-          
+
           {/* Add New Case Card */}
           <div className="col-12 col-md-6 col-lg-4">
             <AddCaseCard onClick={handleCreateNewCase} />
@@ -163,20 +163,20 @@ const VacationRentalDashboard = () => {
         <div className="mt-5 pt-4 border-top border-secondary">
           <div className="row text-center">
             <div className="col-md-4">
-              <div className="bg-dark rounded p-3">
+              <div className="bg-body rounded p-3">
                 <div className="display-6 text-danger fw-bold">{cases.length}</div>
                 <div className="text-muted small">Ready Cases</div>
               </div>
             </div>
             <div className="col-md-4">
-              <div className="bg-dark rounded p-3">
-                <div className="display-6 text-warning fw-bold">{generatingCases.length}</div>
+              <div className="bg-body rounded p-3">
+                <div className="display-6 text-primary fw-bold">{generatingCases.length}</div>
                 <div className="text-muted small">Generating Cases</div>
               </div>
             </div>
             <div className="col-md-4">
-              <div className="bg-dark rounded p-3">
-                <div className="display-6 text-success fw-bold">
+              <div className="bg-body rounded p-3">
+                <div className="display-6 text-primary fw-bold">
                   {cases.length + generatingCases.length}
                 </div>
                 <div className="text-muted small">Total Cases</div>
@@ -192,13 +192,13 @@ const VacationRentalDashboard = () => {
     <>
       {cases.length === 0 ? (
         <div className="text-center py-5">
-          <div className="bg-dark rounded-3 p-5 border border-secondary">
+          <div className="rounded-3 p-5 border border-secondary">
             <i className="bi bi-qr-code display-1 text-muted mb-3"></i>
-            <h3 className="text-white mb-3">No QR Codes Available</h3>
+            <h3 className="mb-3">No QR Codes Available</h3>
             <p className="text-muted mb-4">
               Create some vacation rental cases first to generate QR codes for promotion.
             </p>
-            <button 
+            <button
               onClick={() => setActiveTab('cases')}
               className="btn btn-danger"
             >
@@ -211,7 +211,7 @@ const VacationRentalDashboard = () => {
         <div className="row g-4">
           {cases.map((crimeCase) => (
             <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
-              <QRCodeCard 
+              <QRCodeCard
                 caseId={crimeCase.id}
                 title={crimeCase.title}
               />
@@ -224,9 +224,9 @@ const VacationRentalDashboard = () => {
 
   const renderSubscriptionContent = () => (
     <div className="text-center py-5">
-      <div className="bg-dark rounded-3 p-5 border border-secondary">
+      <div className="rounded-3 p-5 border border-secondary">
         <i className="bi bi-credit-card display-1 text-muted mb-3"></i>
-        <h3 className="text-white mb-3">Subscription</h3>
+        <h3 className="mb-3">Subscription</h3>
         <p className="text-muted mb-4">
           Manage your subscription and billing information here.
         </p>
@@ -243,7 +243,7 @@ const VacationRentalDashboard = () => {
             <div className="col-12 col-lg-10 col-xl-8">
               {/* Header Section */}
               <div className="text-center mb-5">
-                <h1 className="display-4 fw-bold text-white mb-3">
+                <h1 className="display-4 fw-bold mb-3">
                   Vacation Rental Dashboard
                 </h1>
                 <p className="lead text-muted">
@@ -252,7 +252,7 @@ const VacationRentalDashboard = () => {
               </div>
 
               {/* Tabs Navigation */}
-              <VacationRentalDashboardTabs 
+              <VacationRentalDashboardTabs
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
               />
@@ -269,10 +269,10 @@ const VacationRentalDashboard = () => {
             <div className="col-12 col-lg-10 col-xl-8">
               {/* Header Section for Form */}
               <div className="text-center mb-5">
-                <h1 className="display-4 fw-bold text-white mb-3">
+                <h1 className="display-4 fw-bold mb-3">
                   Create New Vacation Rental Case
                 </h1>
-                <button 
+                <button
                   onClick={handleFormCancel}
                   className="btn btn-outline-secondary mb-4"
                 >

@@ -37,12 +37,11 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
     <div className="row g-4">
       <div className="col-12">
         <div
-          className="card border-0 text-light"
-          style={{ backgroundColor: '#2a2a2a' }}
+          className="card border-secondary"
         >
           <div className="card-body p-4">
-            <h3 className="h4 text-white mb-3">Case Description</h3>
-            <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
+            <h3 className="h4 mb-3">Case Description</h3>
+            <p className="mb-0" style={{ textAlign: 'justify' }}>
               {crimeCase?.description || 'Loading case details...'}
             </p>
           </div>
@@ -52,63 +51,67 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
       {/* Criminal Assistant Section */}
       <div className="col-12">
         <div
-          className="card border-0 text-light"
-          style={{ backgroundColor: '#2a2a2a' }}
+          className="card border-secondary"
         >
           <div className="card-body p-4">
-            <h3 className="h4 text-white mb-3">Criminal Assistant</h3>
+            <h3 className="h4 mb-3">Criminal Assistant</h3>
 
             {assistantLoading ? (
               <div className="text-center text-muted py-3">
                 <p>Loading criminal assistant...</p>
               </div>
             ) : criminalAssistant ? (
-              <div className="row">
-                <div className="col-md-8">
-                  <h4 className="h5 text-white mb-3">
-                    {criminalAssistant.name}
-                  </h4>
-                  <p className="text-muted mb-3">
-                    {criminalAssistant.profession} • {criminalAssistant.age} years old
-                  </p>
+              <>
+                <div className="row">
+                  <div className="col-md-8">
+                    <h4 className="h5 mb-3">
+                      {criminalAssistant.name}
+                    </h4>
+                    <p className="text-muted mb-3">
+                      {criminalAssistant.profession} • {criminalAssistant.age} years old
+                    </p>
+                  </div>
 
-                  {/* Embedded InterrogationView */}
-                  <InterrogationView
-                    person={criminalAssistant}
-                    embedded={true}
-                  />
-                </div>
-
-                <div className="col-md-4">
-                  <div
-                    className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
-                    style={{
-                      height: '200px',
-                      backgroundColor: '#28a745',
-                      background: 'linear-gradient(135deg, #28a745 0%, #20c997 100%)'
-                    }}
-                  >
-                    {criminalAssistant.imageUrl ? (
-                      <img
-                        src={criminalAssistant.imageUrl}
-                        alt={criminalAssistant.name}
-                        className="w-100 h-100"
-                        style={{ objectFit: 'cover' }}
-                      />
-                    ) : (
-                      <div className="text-center text-white">
-                        <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mx-auto mb-3"
-                          style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-                          <span style={{ fontSize: '24px' }}>
-                            {getInitials(criminalAssistant.name)}
-                          </span>
+                  <div className="col-md-4">
+                    <div
+                      className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
+                      style={{
+                        height: '200px',
+                        backgroundColor: '#28a745',
+                        background: 'linear-gradient(135deg, #28a745 0%, #20c997 100%)'
+                      }}
+                    >
+                      {criminalAssistant.imageUrl ? (
+                        <img
+                          src={criminalAssistant.imageUrl}
+                          alt={criminalAssistant.name}
+                          className="w-100 h-100"
+                          style={{ objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <div className="text-center text-white">
+                          <div className="rounded-circle d-flex align-items-center justify-content-center fw-bold mx-auto mb-3"
+                            style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+                            <span style={{ fontSize: '24px' }}>
+                              {getInitials(criminalAssistant.name)}
+                            </span>
+                          </div>
+                          <div className="fw-medium">Criminal Assistant</div>
                         </div>
-                        <div className="fw-medium">Criminal Assistant</div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div className="row mt-4">
+                  <div className="col-md-12">
+                    {/* Embedded InterrogationView */}
+                    <InterrogationView
+                      person={criminalAssistant}
+                      embedded={true}
+                    />
+                  </div>
+                </div>
+              </>
             ) : (
               <div className="text-center text-muted py-3">
                 <p>No criminal assistant assigned to this case</p>
@@ -120,22 +123,21 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
       <div className="col-12">
         <div
-          className="card border-0 text-light"
-          style={{ backgroundColor: '#2a2a2a' }}
+          className="card border-secondary"
         >
           <div className="card-body p-4">
-            <h3 className="h4 text-white mb-3">Crime Scene</h3>
+            <h3 className="h4 mb-3">Crime Scene</h3>
 
             {sceneLoading
-              ? <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>Loading crime scene details...</p>
+              ? <p className="mb-0">Loading crime scene details...</p>
               : crimeScene
                 ? (
                   <div className="row">
                     <div className="col-md-8">
-                      <h4 className="h5 text-white mb-3">
+                      <h4 className="h5 mb-3">
                         {crimeScene.title}
                       </h4>
-                      <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
+                      <p className="mb-0" style={{ textAlign: "justify" }}>
                         {crimeScene.description}
                       </p>
                     </div>
@@ -165,7 +167,7 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
                       </div>
                     </div>
                   </div>
-                ) : (<p className="text-light mb-0" style={{ lineHeight: '1.6' }}>No crime scene assigned to this case</p>)
+                ) : (<p className="mb-0">No crime scene assigned to this case</p>)
             }
           </div>
         </div>
