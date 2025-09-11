@@ -6,6 +6,7 @@ import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
+import QRCodeCard from "@/components/QRCodeCard";
 import { useState, useEffect } from "react";
 
 interface GeneratingCase {
@@ -188,15 +189,37 @@ const VacationRentalDashboard = () => {
   );
 
   const renderPromotionContent = () => (
-    <div className="text-center py-5">
-      <div className="bg-dark rounded-3 p-5 border border-secondary">
-        <i className="bi bi-file-text display-1 text-muted mb-3"></i>
-        <h3 className="text-white mb-3">Promotion-Material</h3>
-        <p className="text-muted mb-4">
-          This section will contain promotion materials for your venue.
-        </p>
-      </div>
-    </div>
+    <>
+      {cases.length === 0 ? (
+        <div className="text-center py-5">
+          <div className="bg-dark rounded-3 p-5 border border-secondary">
+            <i className="bi bi-qr-code display-1 text-muted mb-3"></i>
+            <h3 className="text-white mb-3">No QR Codes Available</h3>
+            <p className="text-muted mb-4">
+              Create some vacation rental cases first to generate QR codes for promotion.
+            </p>
+            <button 
+              onClick={() => setActiveTab('cases')}
+              className="btn btn-danger"
+            >
+              <i className="bi bi-plus-circle me-2"></i>
+              Go to Cases
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="row g-4">
+          {cases.map((crimeCase) => (
+            <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
+              <QRCodeCard 
+                caseId={crimeCase.id}
+                title={crimeCase.title}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </>
   );
 
   const renderSubscriptionContent = () => (
