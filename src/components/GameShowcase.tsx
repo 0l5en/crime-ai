@@ -1,6 +1,7 @@
 
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useNavigate } from "react-router-dom";
 import GameCard from "./GameCard";
 
 const GameShowcase = () => {
@@ -9,6 +10,7 @@ const GameShowcase = () => {
     status: 'PUBLISHED,PREMIUM'
   });
   const { user } = useKeycloak();
+  const navigate = useNavigate();
 
   const getImageColor = (index: number) => {
     const colors = [
@@ -72,7 +74,10 @@ const GameShowcase = () => {
             </div>
 
             <div className="text-center">
-              <button className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
+              <button 
+                className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill"
+                onClick={() => navigate('/cases')}
+              >
                 View All Cases
               </button>
             </div>

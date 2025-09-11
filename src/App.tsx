@@ -8,6 +8,7 @@ import AdminCaseGenerator from "./pages/AdminCaseGenerator";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
+import Cases from "./pages/Cases";
 import CaseDashboard from "./pages/CaseDashboard";
 import CaseSolution from "./pages/CaseSolution";
 import EmailInbox from "./pages/EmailInbox";
@@ -27,6 +28,7 @@ const App = () => (
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/cases" element={<Cases />} />
               <Route path="/venues" element={<VenuesPage />} />
             <Route
               path="/case/:caseId"
