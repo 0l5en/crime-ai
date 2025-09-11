@@ -2,9 +2,16 @@ import { useKeycloak } from "@/contexts/KeycloakContext";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import GameCard from "@/components/GameCard";
 import AddCaseCard from "@/components/AddCaseCard";
+import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface GeneratingCase {
+  tempId: string;
+  venueName: string;
+  startTime: number;
+}
 
 const VacationRentalDashboard = () => {
   const { user } = useKeycloak();
@@ -13,10 +20,30 @@ const VacationRentalDashboard = () => {
     userId: user?.email || '',
   });
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [generatingCases, setGeneratingCases] = useState<GeneratingCase[]>([]);
+
+  // Polling effect to refresh cases and remove completed generating cases
+  useEffect(() => {
+    if (generatingCases.length > 0) {
+      const interval = setInterval(() => {
+        refetch();
+        
+        // Remove generating cases older than 5 minutes (in case something went wrong)
+        const now = Date.now();
+        setGeneratingCases(prev => prev.filter(gc => now - gc.startTime < 5 * 60 * 1000));
+      }, 5000); // Poll every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [generatingCases.length, refetch]);
 
   // Form handlers
   const handleCreateNewCase = () => {
     setShowCreateForm(true);
+  };
+
+  const handleGenerationStart = (tempCase: { tempId: string; venueName: string }) => {
+    setGeneratingCases(prev => [...prev, { ...tempCase, startTime: Date.now() }]);
   };
 
   const handleFormSuccess = (locationUrl: string) => {
@@ -80,7 +107,7 @@ const VacationRentalDashboard = () => {
               </div>
 
               {/* Cases Grid */}
-              {cases.length === 0 ? (
+              {cases.length === 0 && generatingCases.length === 0 ? (
                 <div className="text-center py-5">
                   <div className="bg-dark rounded-3 p-5 border border-secondary">
                     <i className="bi bi-house-door display-1 text-muted mb-3"></i>
@@ -100,6 +127,17 @@ const VacationRentalDashboard = () => {
                 </div>
               ) : (
                 <div className="row g-4">
+                  {/* Generating Cases */}
+                  {generatingCases.map((generatingCase) => (
+                    <div key={generatingCase.tempId} className="col-12 col-md-6 col-lg-4">
+                      <GeneratingCaseCard 
+                        venueName={generatingCase.venueName}
+                        tempId={generatingCase.tempId}
+                      />
+                    </div>
+                  ))}
+                  
+                  {/* Actual Cases */}
                   {cases.map((crimeCase) => (
                     <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
                       <GameCard 
@@ -111,6 +149,8 @@ const VacationRentalDashboard = () => {
                       />
                     </div>
                   ))}
+                  
+                  {/* Add New Case Card */}
                   <div className="col-12 col-md-6 col-lg-4">
                     <AddCaseCard onClick={handleCreateNewCase} />
                   </div>
@@ -118,21 +158,27 @@ const VacationRentalDashboard = () => {
               )}
 
               {/* Stats Section */}
-              {cases.length > 0 && (
+              {(cases.length > 0 || generatingCases.length > 0) && (
                 <div className="mt-5 pt-4 border-top border-secondary">
                   <div className="row text-center">
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                       <div className="bg-dark rounded p-3">
                         <div className="display-6 text-danger fw-bold">{cases.length}</div>
-                        <div className="text-muted small">Vacation Rental Cases</div>
+                        <div className="text-muted small">Ready Cases</div>
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                       <div className="bg-dark rounded p-3">
-                        <div className="display-6 text-warning fw-bold">
-                          {cases.filter(c => c.title.length > 0).length}
+                        <div className="display-6 text-warning fw-bold">{generatingCases.length}</div>
+                        <div className="text-muted small">Generating Cases</div>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="bg-dark rounded p-3">
+                        <div className="display-6 text-success fw-bold">
+                          {cases.length + generatingCases.length}
                         </div>
-                        <div className="text-muted small">Active Cases</div>
+                        <div className="text-muted small">Total Cases</div>
                       </div>
                     </div>
                   </div>
@@ -163,6 +209,7 @@ const VacationRentalDashboard = () => {
               <VacationRentalCaseGeneratorForm
                 onSuccess={handleFormSuccess}
                 onCancel={handleFormCancel}
+                onGenerationStart={handleGenerationStart}
               />
             </div>
           </div>

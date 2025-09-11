@@ -29,9 +29,10 @@ interface VacationRentalFormData {
 interface VacationRentalCaseGeneratorFormProps {
   onSuccess: (locationUrl: string) => void;
   onCancel: () => void;
+  onGenerationStart?: (tempCase: { tempId: string; venueName: string }) => void;
 }
 
-const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
+const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStart }: VacationRentalCaseGeneratorFormProps) => {
   const { toast } = useToast();
   const { user } = useKeycloak();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
@@ -129,6 +130,12 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
       maxGuests: Number(data.maxGuests),
       roomLayoutDescription: data.roomLayoutDescription || undefined,
     };
+
+    // Generate temporary ID and notify parent about generation start
+    const tempId = `temp-${Date.now()}`;
+    if (onGenerationStart) {
+      onGenerationStart({ tempId, venueName: data.venueName });
+    }
 
     createCrimeCase(formData, {
       onSuccess: (response) => {
