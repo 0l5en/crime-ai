@@ -167,8 +167,8 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="row justify-content-center">
+    <div className="container-fluid p-4">
+      <div className="d-flex justify-content-center">
         <div style={{ width: '70%' }}>
           <div className="card">
             <div className="card-header">
