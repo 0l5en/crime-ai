@@ -14,7 +14,7 @@ const EmailList = ({ selectedEmail, onSelectEmail }: EmailListProps) => {
     return (
       <div className="d-flex justify-content-center align-items-center p-4">
         <Spinner animation="border" size="sm" />
-        <span className="ms-2">E-Mails werden geladen...</span>
+        <span className="ms-2">Loading emails...</span>
       </div>
     );
   }
@@ -22,7 +22,7 @@ const EmailList = ({ selectedEmail, onSelectEmail }: EmailListProps) => {
   if (error) {
     return (
       <Alert variant="danger" className="m-3">
-        Fehler beim Laden der E-Mails. Bitte versuchen Sie es erneut.
+        Error loading emails. Please try again.
       </Alert>
     );
   }
@@ -33,8 +33,8 @@ const EmailList = ({ selectedEmail, onSelectEmail }: EmailListProps) => {
     return (
       <div className="d-flex flex-column justify-content-center align-items-center p-4 text-muted" style={{ height: '200px' }}>
         <i className="bi bi-inbox fs-1 mb-2"></i>
-        <h6>Posteingang leer</h6>
-        <small>Sie haben noch keine E-Mails erhalten.</small>
+        <h6>Inbox Empty</h6>
+        <small>You haven't received any emails yet.</small>
       </div>
     );
   }
@@ -46,9 +46,9 @@ const EmailList = ({ selectedEmail, onSelectEmail }: EmailListProps) => {
 
   return (
     <div className="email-list">
-      <div className="p-3 border-bottom bg-white">
-        <h5 className="mb-0">Posteingang</h5>
-        <small className="text-muted">{emails.length} E-Mail{emails.length !== 1 ? 's' : ''}</small>
+      <div className="p-3 border-bottom" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
+        <h5 className="mb-0">Inbox</h5>
+        <small className="text-muted">{emails.length} Email{emails.length !== 1 ? 's' : ''}</small>
       </div>
       
       <div className="list-group list-group-flush">

@@ -1,6 +1,6 @@
 import { NotificationDto } from "@/hooks/useNotifications";
 import { formatDistanceToNow } from "date-fns";
-import { de } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
 import { FileText, Stethoscope } from "lucide-react";
 
 interface EmailListItemProps {
@@ -22,9 +22,9 @@ const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
   const getTypeLabel = () => {
     switch (email.notificationContextType) {
       case "AUTOPSY_REPORT":
-        return "Autopsiebericht";
+        return "Autopsy Report";
       default:
-        return "Bericht";
+        return "Report";
     }
   };
 
@@ -32,10 +32,10 @@ const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
     try {
       return formatDistanceToNow(new Date(dateString), { 
         addSuffix: true, 
-        locale: de 
+        locale: enUS 
       });
     } catch {
-      return "Unbekannt";
+      return "Unknown";
     }
   };
 

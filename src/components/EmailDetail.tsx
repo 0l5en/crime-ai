@@ -1,7 +1,7 @@
 import { NotificationDto } from "@/hooks/useNotifications";
 import { useUpdateNotification } from "@/hooks/useUpdateNotification";
 import { format, formatDistanceToNow } from "date-fns";
-import { de } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
 import { CheckCircle, Clock, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { Badge, Button, Card } from "react-bootstrap";
@@ -19,8 +19,8 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
     return (
       <div className="d-flex flex-column justify-content-center align-items-center h-100 text-muted">
         <Mail size={64} className="mb-3 opacity-50" />
-        <h5>E-Mail auswählen</h5>
-        <p>Wählen Sie eine E-Mail aus der Liste aus, um deren Inhalt anzuzeigen.</p>
+        <h5>Select an Email</h5>
+        <p>Select an email from the list to view its content.</p>
       </div>
     );
   }
@@ -45,11 +45,11 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
     try {
       const date = new Date(dateString);
       return {
-        full: format(date, "dd.MM.yyyy 'um' HH:mm", { locale: de }),
-        relative: formatDistanceToNow(date, { addSuffix: true, locale: de })
+        full: format(date, "MM/dd/yyyy 'at' HH:mm", { locale: enUS }),
+        relative: formatDistanceToNow(date, { addSuffix: true, locale: enUS })
       };
     } catch {
-      return { full: "Unbekannt", relative: "Unbekannt" };
+      return { full: "Unknown", relative: "Unknown" };
     }
   };
 
@@ -61,7 +61,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
         return (
           <Card className="mt-3">
             <Card.Body>
-              <p>Inhalt für diesen Berichtstyp ist noch nicht implementiert.</p>
+              <p>Content for this report type is not yet implemented.</p>
             </Card.Body>
           </Card>
         );
@@ -72,7 +72,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
 
   return (
     <div className="email-detail h-100">
-      <div className="email-header p-4 bg-white border-bottom sticky-top">
+      <div className="email-header p-4 border-bottom sticky-top" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
             <h4 className="mb-1">{email.subject}</h4>
@@ -87,7 +87,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
           <div className="d-flex align-items-center">
             {!email.read && (
               <Badge bg="primary" className="me-2">
-                Ungelesen
+                Unread
               </Badge>
             )}
 
@@ -100,7 +100,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
                 className="d-flex align-items-center"
               >
                 <CheckCircle size={16} className="me-1" />
-                {isMarkingAsRead ? "Wird markiert..." : "Als gelesen markieren"}
+                {isMarkingAsRead ? "Marking..." : "Mark as read"}
               </Button>
             )}
           </div>
@@ -108,7 +108,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
 
         <div className="email-meta">
           <small className="text-muted">
-            Gesendet am {dateTime.full}
+            Sent on {dateTime.full}
           </small>
         </div>
       </div>

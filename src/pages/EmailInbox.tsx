@@ -9,7 +9,7 @@ const EmailInbox = () => {
   const [selectedEmail, setSelectedEmail] = useState<NotificationDto | null>(null);
 
   return (
-    <div className="min-vh-100 bg-light">
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
       <Container fluid className="p-0">
         <div className="email-inbox">
@@ -30,18 +30,18 @@ const EmailInbox = () => {
           display: grid;
           grid-template-columns: 30% 70%;
           height: calc(100vh - 76px);
-          border-top: 1px solid #dee2e6;
+          border-top: 1px solid var(--bs-border-color);
         }
         
         .email-list-container {
-          border-right: 1px solid #dee2e6;
+          border-right: 1px solid var(--bs-border-color);
           overflow-y: auto;
-          background: white;
+          background: var(--bs-body-bg);
         }
         
         .email-detail-container {
           overflow-y: auto;
-          background: #f8f9fa;
+          background: var(--bs-body-bg);
         }
         
         @media (max-width: 768px) {
@@ -52,7 +52,7 @@ const EmailInbox = () => {
           
           .email-list-container {
             border-right: none;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid var(--bs-border-color);
             max-height: 40vh;
           }
         }
