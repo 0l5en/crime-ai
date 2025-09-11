@@ -1,5 +1,4 @@
 
-import { Scale } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface CaseHeaderProps {
@@ -24,10 +23,9 @@ const CaseHeader = ({ caseId, title, summary }: CaseHeaderProps) => {
 
       <button
         onClick={() => navigate(`/case/${caseId}/solution`)}
-        className="btn btn-danger btn-lg px-4"
-        style={{ backgroundColor: '#CB191C', borderColor: '#CB191C' }}
+        className="btn btn-danger btn-lg px-4 ms-4"
+        style={{ backgroundColor: '#CB191C', borderColor: '#CB191C', whiteSpace: 'nowrap' }}
       >
-        <Scale className="me-2" style={{ width: '18px', height: '18px' }} />
         Solve this case
       </button>
     </div>
