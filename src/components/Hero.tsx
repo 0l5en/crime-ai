@@ -14,7 +14,7 @@ const Hero = () => {
     <section 
       className="position-relative d-flex align-items-center justify-content-center text-white px-4"
       style={{
-        minHeight: '100vh',
+        height: 'calc(100vh - 68px)',
         backgroundImage: `url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
