@@ -71,12 +71,12 @@ const VenuesFAQ = () => {
   ];
 
   return (
-    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-5 bg-light text-dark d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
             <h2 className="display-4 fw-bold text-primary-custom mb-4">Frequently Asked Questions</h2>
-            <p className="lead">
+            <p className="lead text-secondary">
               Everything you need to know about creating custom venue mystery cases.
             </p>
           </div>
@@ -86,15 +86,28 @@ const VenuesFAQ = () => {
           <div className="col-lg-10">
             {faqCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-5">
-                <h3 className="text-primary-custom mb-4 border-bottom border-danger pb-2">
+                <h3 className="text-primary-custom mb-4 pb-3 border-bottom border-primary-custom fw-semibold">
                   {category.category}
                 </h3>
                 <div className="accordion" id={`faq-${categoryIndex}`}>
                   {category.questions.map((faq, questionIndex) => (
-                    <div key={questionIndex} className="accordion-item bg-secondary border-dark">
+                    <div 
+                      key={questionIndex} 
+                      className="accordion-item border-0 mb-3 shadow-sm"
+                      style={{ 
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        backgroundColor: 'white'
+                      }}
+                    >
                       <h4 className="accordion-header">
                         <button
-                          className="accordion-button collapsed bg-secondary text-light border-0"
+                          className="accordion-button collapsed fw-semibold text-dark border-0 py-4"
+                          style={{ 
+                            backgroundColor: 'white',
+                            fontSize: '1.1rem',
+                            transition: 'all 0.3s ease'
+                          }}
                           type="button"
                           data-bs-toggle="collapse"
                           data-bs-target={`#faq-${categoryIndex}-${questionIndex}`}
@@ -108,7 +121,14 @@ const VenuesFAQ = () => {
                         className="accordion-collapse collapse"
                         data-bs-parent={`#faq-${categoryIndex}`}
                       >
-                        <div className="accordion-body text-light bg-dark">
+                        <div 
+                          className="accordion-body text-secondary py-4"
+                          style={{ 
+                            backgroundColor: '#f8f9fa',
+                            lineHeight: '1.7',
+                            borderTop: '1px solid #e9ecef'
+                          }}
+                        >
                           {faq.answer}
                         </div>
                       </div>
