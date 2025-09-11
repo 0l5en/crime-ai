@@ -4,7 +4,7 @@ const VenuesCTA = () => {
   };
 
   return (
-    <section className="py-5 bg-dark text-light" data-section="contact">
+    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }} data-section="contact">
       <div className="container">
         <div className="row justify-content-center text-center">
           <div className="col-lg-8">
@@ -37,7 +37,7 @@ const VenuesCTA = () => {
                   </div>
                 </div>
                 <p className="text-light opacity-75 small mt-3 mb-0">
-                  7-day free trial • No credit card required • Cancel anytime
+                  7-day free trial • Custom case in 24 hours • Cancel anytime
                 </p>
               </div>
             </div>
@@ -47,7 +47,7 @@ const VenuesCTA = () => {
                 <div className="text-center">
                   <i className="bi bi-clock text-danger fs-1 mb-3"></i>
                   <h5 className="text-primary-custom">Quick Setup</h5>
-                  <p className="text-light">Custom case ready in 5-7 business days</p>
+                  <p className="text-light">Custom case ready within 24 hours</p>
                 </div>
               </div>
               <div className="col-md-4">

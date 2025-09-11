@@ -13,7 +13,7 @@ const VenuesFAQ = () => {
         },
         {
           question: "How long does it take to create my custom case?",
-          answer: "Most custom cases are completed within 5-7 business days after we receive your venue details. We'll keep you updated throughout the creation process and provide previews for your approval."
+          answer: "Your exclusive custom case is generated and delivered within 24 hours after you complete your venue registration. We use advanced AI to create a unique mystery tailored to your specific property."
         }
       ]
     },
@@ -26,7 +26,7 @@ const VenuesFAQ = () => {
         },
         {
           question: "What happens during the 7-day free trial?",
-          answer: "During your free trial, you'll get full access to our platform, custom case creation, and all features. No credit card is required to start, and you can cancel before the trial ends without any charges."
+          answer: "During your free trial, you'll get full access to our platform, custom case creation, and all features. You can cancel before the trial ends to avoid charges."
         },
         {
           question: "Do you offer refunds?",
@@ -71,7 +71,7 @@ const VenuesFAQ = () => {
   ];
 
   return (
-    <section className="py-5 bg-dark text-light">
+    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">

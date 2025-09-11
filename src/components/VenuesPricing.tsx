@@ -10,7 +10,7 @@ const VenuesPricing = () => {
   };
 
   return (
-    <section className="py-5 bg-secondary text-light">
+    <section className="py-5 bg-secondary text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center">
@@ -51,7 +51,7 @@ const VenuesPricing = () => {
                   Start Free Trial
                 </button>
                 <p className="text-light opacity-50 small mt-3 mb-0">
-                  No credit card required for trial
+                  Custom case delivered within 24 hours
                 </p>
               </div>
             </div>

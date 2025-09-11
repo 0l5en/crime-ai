@@ -24,7 +24,7 @@ const VenuesTestimonials = () => {
   ];
 
   return (
-    <section className="py-5 bg-secondary text-light">
+    <section className="py-5 bg-secondary text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">

@@ -2,33 +2,23 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Sign Up & Start Trial",
-      description: "Create your account and begin your 7-day free trial. No credit card required to start."
+      title: "Start Free Trial",
+      description: "Create your account and begin your 7-day free trial. Enter your payment details to get started."
     },
     {
       number: "02", 
-      title: "Tell Us About Your Venue",
+      title: "Register Your Venue",
       description: "Share details about your property, including layout, unique features, and target guest experience."
     },
     {
       number: "03",
-      title: "Custom Case Creation",
-      description: "Our expert writers craft a unique mystery tailored specifically to your venue's character and layout."
-    },
-    {
-      number: "04",
-      title: "Review & Launch",
-      description: "Preview your custom case, request any adjustments, then get your unique QR code for guests."
-    },
-    {
-      number: "05",
-      title: "Track & Optimize",
-      description: "Monitor guest engagement and satisfaction through our analytics dashboard to maximize impact."
+      title: "Get Exclusive Case",
+      description: "Receive your custom mystery case within 24 hours, tailored specifically to your venue's character and layout."
     }
   ];
 
   return (
-    <section className="py-5 bg-secondary text-light">
+    <section className="py-5 bg-secondary text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
