@@ -5,6 +5,7 @@ import AddCaseCard from "@/components/AddCaseCard";
 import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
+import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
 import { useState, useEffect } from "react";
 
 interface GeneratingCase {
@@ -21,6 +22,7 @@ const VacationRentalDashboard = () => {
   });
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [generatingCases, setGeneratingCases] = useState<GeneratingCase[]>([]);
+  const [activeTab, setActiveTab] = useState('cases');
 
   // Polling effect to refresh cases and remove completed generating cases
   useEffect(() => {
@@ -89,6 +91,126 @@ const VacationRentalDashboard = () => {
 
   const cases = crimeCases?.items || [];
 
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'cases':
+        return renderCasesContent();
+      case 'promotion':
+        return renderPromotionContent();
+      case 'subscription':
+        return renderSubscriptionContent();
+      default:
+        return renderCasesContent();
+    }
+  };
+
+  const renderCasesContent = () => (
+    <>
+      {/* Cases Grid */}
+      {cases.length === 0 && generatingCases.length === 0 ? (
+        <div className="text-center py-5">
+          <div className="bg-dark rounded-3 p-5 border border-secondary">
+            <i className="bi bi-house-door display-1 text-muted mb-3"></i>
+            <h3 className="text-white mb-3">No Cases Available Yet</h3>
+            <p className="text-muted mb-4">
+              You haven't created any Vacation Rental Cases yet. 
+              Create your first case through the admin area.
+            </p>
+            <button 
+              onClick={handleCreateNewCase}
+              className="btn btn-danger btn-lg"
+            >
+              <i className="bi bi-plus-circle me-2"></i>
+              Create First Case
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="row g-4">
+          {/* Generating Cases */}
+          {generatingCases.map((generatingCase) => (
+            <div key={generatingCase.tempId} className="col-12 col-md-6 col-lg-4">
+              <GeneratingCaseCard 
+                venueName={generatingCase.venueName}
+                tempId={generatingCase.tempId}
+              />
+            </div>
+          ))}
+          
+          {/* Actual Cases */}
+          {cases.map((crimeCase) => (
+            <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
+              <GameCard 
+                caseId={crimeCase.id}
+                title={crimeCase.title}
+                description={crimeCase.description}
+                imageUrl={crimeCase.imageUrl}
+                hideDescription={true}
+              />
+            </div>
+          ))}
+          
+          {/* Add New Case Card */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <AddCaseCard onClick={handleCreateNewCase} />
+          </div>
+        </div>
+      )}
+
+      {/* Stats Section */}
+      {(cases.length > 0 || generatingCases.length > 0) && (
+        <div className="mt-5 pt-4 border-top border-secondary">
+          <div className="row text-center">
+            <div className="col-md-4">
+              <div className="bg-dark rounded p-3">
+                <div className="display-6 text-danger fw-bold">{cases.length}</div>
+                <div className="text-muted small">Ready Cases</div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="bg-dark rounded p-3">
+                <div className="display-6 text-warning fw-bold">{generatingCases.length}</div>
+                <div className="text-muted small">Generating Cases</div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="bg-dark rounded p-3">
+                <div className="display-6 text-success fw-bold">
+                  {cases.length + generatingCases.length}
+                </div>
+                <div className="text-muted small">Total Cases</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+
+  const renderPromotionContent = () => (
+    <div className="text-center py-5">
+      <div className="bg-dark rounded-3 p-5 border border-secondary">
+        <i className="bi bi-file-text display-1 text-muted mb-3"></i>
+        <h3 className="text-white mb-3">Promotion-Material</h3>
+        <p className="text-muted mb-4">
+          This section will contain promotion materials for your venue.
+        </p>
+      </div>
+    </div>
+  );
+
+  const renderSubscriptionContent = () => (
+    <div className="text-center py-5">
+      <div className="bg-dark rounded-3 p-5 border border-secondary">
+        <i className="bi bi-credit-card display-1 text-muted mb-3"></i>
+        <h3 className="text-white mb-3">Subscription</h3>
+        <p className="text-muted mb-4">
+          Manage your subscription and billing information here.
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
@@ -99,91 +221,22 @@ const VacationRentalDashboard = () => {
               {/* Header Section */}
               <div className="text-center mb-5">
                 <h1 className="display-4 fw-bold text-white mb-3">
-                  My Vacation Rental Cases
+                  Vacation Rental Dashboard
                 </h1>
                 <p className="lead text-muted">
-                  Here you can find all your generated vacation rental crime cases
+                  Manage your vacation rental cases, promotions and subscription
                 </p>
               </div>
 
-              {/* Cases Grid */}
-              {cases.length === 0 && generatingCases.length === 0 ? (
-                <div className="text-center py-5">
-                  <div className="bg-dark rounded-3 p-5 border border-secondary">
-                    <i className="bi bi-house-door display-1 text-muted mb-3"></i>
-                    <h3 className="text-white mb-3">No Cases Available Yet</h3>
-                    <p className="text-muted mb-4">
-                      You haven't created any Vacation Rental Cases yet. 
-                      Create your first case through the admin area.
-                    </p>
-                    <button 
-                      onClick={handleCreateNewCase}
-                      className="btn btn-danger btn-lg"
-                    >
-                      <i className="bi bi-plus-circle me-2"></i>
-                      Create First Case
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="row g-4">
-                  {/* Generating Cases */}
-                  {generatingCases.map((generatingCase) => (
-                    <div key={generatingCase.tempId} className="col-12 col-md-6 col-lg-4">
-                      <GeneratingCaseCard 
-                        venueName={generatingCase.venueName}
-                        tempId={generatingCase.tempId}
-                      />
-                    </div>
-                  ))}
-                  
-                  {/* Actual Cases */}
-                  {cases.map((crimeCase) => (
-                    <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
-                      <GameCard 
-                        caseId={crimeCase.id}
-                        title={crimeCase.title}
-                        description={crimeCase.description}
-                        imageUrl={crimeCase.imageUrl}
-                        hideDescription={true}
-                      />
-                    </div>
-                  ))}
-                  
-                  {/* Add New Case Card */}
-                  <div className="col-12 col-md-6 col-lg-4">
-                    <AddCaseCard onClick={handleCreateNewCase} />
-                  </div>
-                </div>
-              )}
+              {/* Tabs Navigation */}
+              <VacationRentalDashboardTabs 
+                activeTab={activeTab}
+                onTabChange={setActiveTab}
+              />
 
-              {/* Stats Section */}
-              {(cases.length > 0 || generatingCases.length > 0) && (
-                <div className="mt-5 pt-4 border-top border-secondary">
-                  <div className="row text-center">
-                    <div className="col-md-4">
-                      <div className="bg-dark rounded p-3">
-                        <div className="display-6 text-danger fw-bold">{cases.length}</div>
-                        <div className="text-muted small">Ready Cases</div>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="bg-dark rounded p-3">
-                        <div className="display-6 text-warning fw-bold">{generatingCases.length}</div>
-                        <div className="text-muted small">Generating Cases</div>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="bg-dark rounded p-3">
-                        <div className="display-6 text-success fw-bold">
-                          {cases.length + generatingCases.length}
-                        </div>
-                        <div className="text-muted small">Total Cases</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+              {/* Tab Content */}
+              {renderTabContent()}
+
             </div>
           </div>
         </div>
