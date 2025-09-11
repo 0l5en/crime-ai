@@ -3,7 +3,7 @@ const Hero = () => {
   const scrollToCases = () => {
     const casesSection = document.querySelector('[data-section="cases"]');
     if (casesSection) {
-      const yOffset = -68; // Header height offset
+      const yOffset = -63; // Header height offset
       const y = casesSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
       
       window.scrollTo({
@@ -17,7 +17,7 @@ const Hero = () => {
     <section 
       className="position-relative d-flex align-items-center justify-content-center text-white px-4"
       style={{
-        height: 'calc(100vh - 68px)',
+        height: 'calc(100vh - 63px)',
         backgroundImage: `url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
