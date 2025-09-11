@@ -2,6 +2,13 @@
 /* Bootstrap import */
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+/* Ensure proper theme application to body */
+html, body {
+  background-color: var(--bs-body-bg) !important;
+  color: var(--bs-body-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* Custom CSS Variables for our theme */
 :root {
   /* Color palette: 090909 (dark), 5F5F5F (medium), FFFFFF (light), CB191C (red accent) */

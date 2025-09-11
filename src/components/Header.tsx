@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg sticky-top border-bottom">
+      <nav className="navbar navbar-expand-lg sticky-top border-bottom bg-body" style={{ backdropFilter: 'blur(10px)' }}>
         <div className="container-fluid px-4">
           {/* Brand */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
@@ -43,7 +43,7 @@ const Header = () => {
                     <Link to="/vacation-rental-dashboard" className="nav-link p-0">
                       <button className="btn btn-outline-primary bg-transparent border-warning text-warning">
                         <i className="bi bi-house-door me-1"></i>
-                        Meine Cases
+                        My Cases
                       </button>
                     </Link>
                   </div>
@@ -180,7 +180,7 @@ const Header = () => {
                     data-bs-dismiss="offcanvas"
                   >
                     <i className="bi bi-house-door me-2"></i>
-                    Meine Cases
+                    My Cases
                   </Link>
                 )}
 
