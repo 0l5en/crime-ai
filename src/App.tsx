@@ -16,6 +16,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
+import VenuesPage from "./pages/VenuesPage";
 
 const queryClient = new QueryClient();
 
@@ -24,8 +25,9 @@ const App = () => (
     <ThemeProvider>
       <KeycloakProvider>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/venues" element={<VenuesPage />} />
             <Route
               path="/case/:caseId"
               element={
