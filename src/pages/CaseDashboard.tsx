@@ -70,7 +70,7 @@ const CaseDashboard = () => {
   }
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
       
       <div className="container-fluid py-4" style={{ maxWidth: '1200px' }}>

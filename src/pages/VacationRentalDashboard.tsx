@@ -29,7 +29,7 @@ const VacationRentalDashboard = () => {
 
   if (isLoading) {
     return (
-      <>
+      <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
         <Header />
         <div className="container-fluid py-5">
           <div className="text-center">
@@ -39,13 +39,13 @@ const VacationRentalDashboard = () => {
             <p className="mt-3 text-muted">Loading your Vacation Rental Cases...</p>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <>
+      <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
         <Header />
         <div className="container-fluid py-5">
           <div className="text-center">
@@ -55,14 +55,14 @@ const VacationRentalDashboard = () => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   const cases = crimeCases?.items || [];
 
   return (
-    <>
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
       {!showCreateForm ? (
         <div className="container-fluid py-5">
@@ -163,7 +163,7 @@ const VacationRentalDashboard = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

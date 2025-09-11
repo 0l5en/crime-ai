@@ -9,7 +9,7 @@ import VenuesCTA from "@/components/VenuesCTA";
 
 const VenuesPage = () => {
   return (
-    <div className="min-vh-100 bg-dark">
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
       <VenuesHero />
       <WhyVenueOwners />
