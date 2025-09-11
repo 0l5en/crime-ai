@@ -28,7 +28,7 @@ const Hero = () => {
       
       <div className="position-relative container text-center" style={{ zIndex: '10' }}>
         <h1 
-          className="fw-bold text-light mb-4" 
+          className="fw-bold text-white mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
             fontSize: 'clamp(1.2rem, 4.5vw, 4rem)',
@@ -38,7 +38,7 @@ const Hero = () => {
         >
           Unravel the Truth, One Clue at a Time
         </h1>
-        <p className="lead text-light mb-5 mx-auto" style={{ maxWidth: '600px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
+        <p className="lead text-white mb-5 mx-auto" style={{ maxWidth: '600px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
           Dive into a world of mystery and intrigue with our interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.
         </p>
         <button 

@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar navbar-dark navbar-expand-lg sticky-top border-bottom border-secondary" style={{ backgroundColor: '#1a1a1a' }}>
+      <nav className="navbar navbar-expand-lg sticky-top border-bottom">
         <div className="container-fluid px-4">
           {/* Brand */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
@@ -60,7 +60,7 @@ const Header = () => {
                 {user && (
                   <div className="nav-item d-flex align-items-center gap-2">
                     <div className="text-end">
-                      <div className="small fw-medium text-white">{user.name || user.email}</div>
+                      <div className="small fw-medium">{user.name || user.email}</div>
                       <div className="text-muted" style={{ fontSize: '0.75rem' }}>
                         {user.roles.join(', ') || 'No roles'}
                       </div>
@@ -74,7 +74,7 @@ const Header = () => {
                 {/* Logout Button */}
                 <div className="nav-item">
                   <button
-                    className="btn btn-outline-secondary bg-transparent border-light text-light"
+                    className="btn btn-outline-secondary"
                     onClick={logout}
                   >
                     Logout
@@ -86,7 +86,7 @@ const Header = () => {
                 {/* Sign In Button */}
                 <div className="nav-item">
                   <button
-                    className="btn btn-outline-secondary bg-transparent border-light text-light"
+                    className="btn btn-outline-secondary"
                     onClick={() => login()}
                   >
                     Sign In
@@ -120,19 +120,18 @@ const Header = () => {
 
       {/* Mobile Offcanvas Menu - Fullscreen */}
       <div
-        className="offcanvas offcanvas-start text-bg-dark"
+        className="offcanvas offcanvas-start"
         tabIndex={-1}
         id="mobileOffcanvas"
         aria-labelledby="mobileOffcanvasLabel"
         style={{
-          backgroundColor: '#1a1a1a',
           width: '100vw',
           height: '100vh',
           maxWidth: '100vw'
         }}
       >
         {/* Offcanvas Header */}
-        <div className="offcanvas-header border-bottom border-secondary">
+        <div className="offcanvas-header border-bottom">
           <h5 className="offcanvas-title d-flex align-items-center" id="mobileOffcanvasLabel">
             <div className="bg-light rounded d-flex align-items-center justify-content-center me-2" style={{ width: '24px', height: '24px' }}>
               <div className="bg-dark rounded" style={{ width: '12px', height: '12px' }}></div>
@@ -141,7 +140,7 @@ const Header = () => {
           </h5>
           <button
             type="button"
-            className="btn-close btn-close-white"
+            className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
@@ -152,19 +151,19 @@ const Header = () => {
           <div>
             {/* Theme Toggle */}
             <div className="mb-4 d-flex align-items-center justify-content-between">
-              <span className="text-white">Theme</span>
+              <span>Theme</span>
               <ThemeToggle />
             </div>
 
             {/* User Section for authenticated users */}
             {authenticated && user && (
-              <div className="mb-4 p-3 border border-secondary rounded">
+              <div className="mb-4 p-3 border rounded">
                 <div className="d-flex align-items-center gap-3 mb-3">
                   <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
                     {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                   </div>
                   <div className="flex-grow-1">
-                    <div className="fw-medium text-white">{user.name || user.email}</div>
+                    <div className="fw-medium">{user.name || user.email}</div>
                     <div className="text-muted small">
                       {user.roles.join(', ') || 'No roles'}
                     </div>
@@ -203,7 +202,7 @@ const Header = () => {
           <div className="mt-auto">
             {authenticated ? (
               <button
-                className="btn btn-outline-secondary bg-transparent border-light text-light w-100"
+                className="btn btn-outline-secondary w-100"
                 onClick={() => {
                   logout();
                   // Close offcanvas after logout
@@ -219,7 +218,7 @@ const Header = () => {
             ) : (
               <div className="d-grid gap-2">
                 <button
-                  className="btn btn-outline-secondary bg-transparent border-light text-light"
+                  className="btn btn-outline-secondary"
                   onClick={() => {
                     login();
                     // Close offcanvas after login attempt

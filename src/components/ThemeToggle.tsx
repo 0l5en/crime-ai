@@ -16,8 +16,8 @@ const ThemeToggle = () => {
 
   const getTooltip = () => {
     return theme === 'dark' 
-      ? 'Dunkel-Modus aktiv' 
-      : 'Hell-Modus aktiv';
+      ? 'Dark Mode' 
+      : 'Light Mode';
   };
 
   return (
