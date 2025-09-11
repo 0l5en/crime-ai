@@ -39,7 +39,7 @@ const GameFeatures = () => {
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold text-primary-custom mb-4">Master Detective Features</h2>
+            <h2 className="display-4 fw-bold text-primary-custom mb-4">DetectivesGame Features</h2>
             <p className="lead text-light">
               Use cutting-edge investigation methods and tools to solve the most complicated cases
             </p>
