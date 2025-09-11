@@ -51,7 +51,7 @@ const GameCard = ({
       <img className="card-img-top" src={imageUrl} alt="Crime case image"></img>
       <div className="card-body p-4 d-flex flex-column">
         <h5 className="card-title mb-3 text-light" data-testid="case-title">{title}</h5>
-        <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description">
+        <p className="card-text text-muted flex-grow-1 mb-4 text-justify" data-testid="case-description">
           {description}
         </p>
 
