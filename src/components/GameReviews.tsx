@@ -1,25 +1,28 @@
 import { Star } from "lucide-react";
+import marcusAvatar from "@/assets/marcus-avatar.jpg";
+import lauraAvatar from "@/assets/laura-avatar.jpg";
+import thomasAvatar from "@/assets/thomas-avatar.jpg";
 
 const GameReviews = () => {
   const reviews = [
     {
       name: "Marcus W.",
       role: "Amateur Detective",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      avatar: marcusAvatar,
       rating: 5,
       text: "The cases are incredibly well-researched, and the AI makes investigating a real experience. Inspector Kruger always makes me smile!"
     },
     {
       name: "Laura K.",
       role: "Premium Member", 
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      avatar: lauraAvatar,
       rating: 5,
       text: "I've tried many detective games, but none are as immersive as DetectivesGame. The premium cases are worth every penny!"
     },
     {
       name: "Thomas S.",
       role: "Crime Enthusiast",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      avatar: thomasAvatar,
       rating: 5,
       text: "The ability to question witnesses and analyze evidence feels like being in a real crime drama. Absolutely addictive!"
     }
