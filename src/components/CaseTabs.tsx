@@ -12,7 +12,7 @@ const CaseTabs = ({ activeTab, onTabChange }: CaseTabsProps) => {
   
   const tabs = [
     { id: 'overview', label: 'Overview', icon: Home },
-    { id: 'evidence', label: 'Evidences', icon: Search },
+    { id: 'evidence', label: 'Evidence', icon: Search },
     { id: 'witnesses', label: 'Witnesses', icon: Users },
     { id: 'suspects', label: 'Suspects', icon: UserX },
   ];

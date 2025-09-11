@@ -67,9 +67,6 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
           <div className="text-muted mb-2">
             <span className="fw-semibold text-light">Location:</span> {location}
           </div>
-          <div className="text-muted">
-            <span className="fw-semibold text-light">Analysis:</span> {analysisResult}
-          </div>
         </div>
       </div>
     </div>
