@@ -4,7 +4,7 @@
 
 /* Custom CSS Variables for our theme */
 :root {
-  /* Color palette: 090909 (dark), 5F5F5F (medium), CCCCCC (light), CB191C (red accent) */
+  /* Color palette: 090909 (dark), 5F5F5F (medium), FFFFFF (light), CB191C (red accent) */
   --bs-primary: #CB191C;
   --bs-primary-rgb: 203, 25, 28;
   --bs-secondary: #5F5F5F;
@@ -13,11 +13,11 @@
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #CB191C;
-  --bs-light: #CCCCCC;
+  --bs-light: #F8F9FA;
   --bs-dark: #090909;
-  --bs-body-bg: #CCCCCC;
+  --bs-body-bg: #FFFFFF;
   --bs-body-color: #090909;
-  --bs-border-color: #5F5F5F;
+  --bs-border-color: #E0E0E0;
   
   /* Custom game card colors */
   --card-red: #dc3545;
