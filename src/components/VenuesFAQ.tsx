@@ -102,7 +102,7 @@ const VenuesFAQ = () => {
                     >
                       <h4 className="accordion-header">
                         <button
-                          className="accordion-button collapsed fw-semibold text-dark border-0 py-4"
+                          className="accordion-button collapsed fw-semibold text-primary-custom border-0 py-4"
                           style={{ 
                             backgroundColor: 'white',
                             fontSize: '1.1rem',
