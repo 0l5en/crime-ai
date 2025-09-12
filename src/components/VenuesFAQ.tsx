@@ -1,4 +1,13 @@
+import { ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+
 const VenuesFAQ = () => {
+  const [openItem, setOpenItem] = useState<string | null>(null);
+  
+  const toggleItem = (itemId: string) => {
+    setOpenItem(openItem === itemId ? null : itemId);
+  };
+
   const faqCategories = [
     {
       category: "Getting Started",
@@ -71,12 +80,12 @@ const VenuesFAQ = () => {
   ];
 
   return (
-    <section className="py-5 bg-light text-dark d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold text-primary-custom mb-4">Frequently Asked Questions</h2>
-            <p className="lead text-secondary">
+            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>Frequently Asked Questions</h2>
+            <p className="lead text-light" style={{ opacity: '0.9' }}>
               Everything you need to know about creating custom venue mystery cases.
             </p>
           </div>
@@ -86,54 +95,97 @@ const VenuesFAQ = () => {
           <div className="col-lg-10">
             {faqCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-5">
-                <h3 className="text-primary-custom mb-4 pb-3 border-bottom border-primary-custom fw-semibold">
+                <h3 
+                  className="mb-4 pb-3 fw-semibold" 
+                  style={{ 
+                    color: 'var(--bs-light)', 
+                    borderBottom: '2px solid var(--bs-danger)',
+                    display: 'inline-block'
+                  }}
+                >
                   {category.category}
                 </h3>
-                <div className="accordion" id={`faq-${categoryIndex}`}>
-                  {category.questions.map((faq, questionIndex) => (
-                    <div 
-                      key={questionIndex} 
-                      className="accordion-item border-0 mb-3 shadow-sm"
-                      style={{ 
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        backgroundColor: 'white'
-                      }}
-                    >
-                      <h4 className="accordion-header">
+                
+                <div className="space-y-3">
+                  {category.questions.map((faq, questionIndex) => {
+                    const itemId = `faq-${categoryIndex}-${questionIndex}`;
+                    const isOpen = openItem === itemId;
+                    
+                    return (
+                      <div 
+                        key={questionIndex}
+                        className="mb-3"
+                        style={{
+                          border: '1px solid var(--bs-border-color)',
+                          borderRadius: '12px',
+                          backgroundColor: 'transparent',
+                          overflow: 'hidden',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!isOpen) {
+                            e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!isOpen) {
+                            e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                          }
+                        }}
+                      >
                         <button
-                          className="accordion-button collapsed fw-semibold text-primary-custom border-0 py-4"
-                          style={{ 
-                            backgroundColor: 'white',
+                          className="w-100 p-4 text-start d-flex justify-content-between align-items-center"
+                          style={{
+                            backgroundColor: 'transparent',
+                            border: 'none',
+                            color: 'var(--bs-light)',
                             fontSize: '1.1rem',
+                            fontWeight: '600',
+                            cursor: 'pointer',
                             transition: 'all 0.3s ease'
                           }}
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target={`#faq-${categoryIndex}-${questionIndex}`}
-                          aria-expanded="false"
-                        >
-                          {faq.question}
-                        </button>
-                      </h4>
-                      <div
-                        id={`faq-${categoryIndex}-${questionIndex}`}
-                        className="accordion-collapse collapse"
-                        data-bs-parent={`#faq-${categoryIndex}`}
-                      >
-                        <div 
-                          className="accordion-body text-secondary py-4"
-                          style={{ 
-                            backgroundColor: '#f8f9fa',
-                            lineHeight: '1.7',
-                            borderTop: '1px solid #e9ecef'
+                          onClick={() => toggleItem(itemId)}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = 'var(--bs-danger)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = 'var(--bs-light)';
                           }}
                         >
-                          {faq.answer}
+                          <span>{faq.question}</span>
+                          <ChevronDown 
+                            size={20} 
+                            style={{ 
+                              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                              transition: 'transform 0.3s ease',
+                              color: 'var(--bs-danger)'
+                            }}
+                          />
+                        </button>
+                        
+                        <div
+                          style={{
+                            maxHeight: isOpen ? '200px' : '0',
+                            overflow: 'hidden',
+                            transition: 'max-height 0.3s ease'
+                          }}
+                        >
+                          <div 
+                            className="p-4"
+                            style={{ 
+                              backgroundColor: 'rgba(95, 95, 95, 0.1)',
+                              borderTop: '1px solid var(--bs-border-color)',
+                              color: 'var(--bs-light)',
+                              opacity: '0.9',
+                              lineHeight: '1.7'
+                            }}
+                          >
+                            {faq.answer}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ))}
