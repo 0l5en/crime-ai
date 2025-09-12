@@ -1,49 +1,130 @@
+import { Play, MapPin, Gift } from 'lucide-react';
+
 const HowItWorks = () => {
   const steps = [
     {
       number: "01",
+      icon: Play,
       title: "Start Free Trial",
       description: "Create your account and begin your 7-day free trial. Enter your payment details to get started."
     },
     {
       number: "02", 
+      icon: MapPin,
       title: "Register Your Venue",
       description: "Share details about your property, including layout, unique features, and target guest experience."
     },
     {
       number: "03",
+      icon: Gift,
       title: "Get Exclusive Case",
       description: "Receive your custom mystery case within 24 hours, tailored specifically to your venue's character and layout."
     }
   ];
 
   return (
-    <section className="py-5 bg-secondary text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold text-primary-custom mb-4">How It Works</h2>
-            <p className="lead">
+            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>How It Works</h2>
+            <p className="lead text-light" style={{ opacity: '0.9' }}>
               Getting your custom venue case is simple. We handle all the creative work while you focus on hosting amazing experiences.
             </p>
           </div>
         </div>
 
         <div className="row g-5">
-          {steps.map((step, index) => (
-            <div key={index} className="col-md-4">
-              <div className="text-center">
+          {steps.map((step, index) => {
+            const IconComponent = step.icon;
+            return (
+              <div key={index} className="col-md-4">
                 <div 
-                  className="display-3 fw-bold text-danger mb-3 rounded-circle d-inline-flex align-items-center justify-content-center"
-                  style={{ width: '80px', height: '80px', border: '3px solid var(--bs-danger)' }}
+                  className="text-center p-4 h-100"
+                  style={{
+                    border: '1px solid var(--bs-border-color)',
+                    borderRadius: '16px',
+                    backgroundColor: 'transparent',
+                    transition: 'all 0.3s ease',
+                    position: 'relative'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(203, 25, 28, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
-                  {step.number}
+                  {/* Step Number Badge */}
+                  <div 
+                    className="position-absolute"
+                    style={{
+                      top: '-15px',
+                      left: '20px',
+                      backgroundColor: 'var(--bs-danger)',
+                      color: 'white',
+                      width: '30px',
+                      height: '30px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '0.8rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {step.number}
+                  </div>
+
+                  {/* Icon */}
+                  <div className="mb-4" style={{ marginTop: '20px' }}>
+                    <div
+                      className="mx-auto d-flex align-items-center justify-content-center"
+                      style={{
+                        width: '80px',
+                        height: '80px',
+                        backgroundColor: 'rgba(203, 25, 28, 0.1)',
+                        borderRadius: '50%',
+                        border: '2px solid var(--bs-danger)'
+                      }}
+                    >
+                      <IconComponent 
+                        size={32} 
+                        style={{ color: 'var(--bs-danger)' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h4 
+                    className="mb-3" 
+                    style={{ 
+                      color: 'var(--bs-light)', 
+                      fontWeight: '600' 
+                    }}
+                  >
+                    {step.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p 
+                    className="text-light mb-0" 
+                    style={{ 
+                      opacity: '0.9',
+                      lineHeight: '1.6',
+                      fontSize: '0.95rem'
+                    }}
+                  >
+                    {step.description}
+                  </p>
                 </div>
-                <h4 className="text-primary-custom mb-3">{step.title}</h4>
-                <p className="text-light">{step.description}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
