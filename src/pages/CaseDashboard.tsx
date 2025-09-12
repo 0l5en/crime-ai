@@ -21,7 +21,6 @@ const CaseDashboard = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
-  const [showInterrogation, setShowInterrogation] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedEvidence, setSelectedEvidence] = useState<any>(null);
 
@@ -55,9 +54,12 @@ const CaseDashboard = () => {
     return colors[index % colors.length];
   };
 
-  const handleInterrogate = (person: any) => {
+  const handlePersonSelect = (person: any) => {
     setSelectedPerson(person);
-    setShowInterrogation(true);
+  };
+
+  const handleBackToPersonList = () => {
+    setSelectedPerson(null);
   };
 
   const handleEvidenceSelect = (evidence: any) => {
@@ -67,18 +69,6 @@ const CaseDashboard = () => {
   const handleBackToEvidenceList = () => {
     setSelectedEvidence(null);
   };
-
-  if (showInterrogation && selectedPerson) {
-    return (
-      <InterrogationView
-        person={selectedPerson}
-        onBack={() => {
-          setShowInterrogation(false);
-          setSelectedPerson(null);
-        }}
-      />
-    );
-  }
 
   return (
     <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
@@ -114,13 +104,15 @@ const CaseDashboard = () => {
           motivesLoading={motivesLoading}
           victimsLoading={victimsLoading}
           pathologistLoading={pathologistLoading}
-          onInterrogate={handleInterrogate}
+          onPersonSelect={handlePersonSelect}
           getImageColor={getImageColor}
           selectedEvidence={selectedEvidence}
           evidenceReports={evidenceReports}
           reportsLoading={reportsLoading}
           onEvidenceSelect={handleEvidenceSelect}
           onBackToEvidenceList={handleBackToEvidenceList}
+          selectedPerson={selectedPerson}
+          onBackToPersonList={handleBackToPersonList}
         />
       </div>
     </div>

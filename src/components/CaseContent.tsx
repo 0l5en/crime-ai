@@ -6,6 +6,7 @@ import EvidenceCard from "./EvidenceCard";
 import EvidenceReportCard from "./EvidenceReportCard";
 import SuspectCard from "./SuspectCard";
 import WitnessCard from "./WitnessCard";
+import InterrogationView from "./InterrogationView";
 
 interface CaseContentProps {
   activeTab: string;
@@ -25,13 +26,15 @@ interface CaseContentProps {
   motivesLoading: boolean;
   victimsLoading: boolean;
   pathologistLoading: boolean;
-  onInterrogate: (person: any) => void;
+  onPersonSelect: (person: any) => void;
   getImageColor: (index: number) => string;
   selectedEvidence?: any;
   evidenceReports?: any;
   reportsLoading?: boolean;
   onEvidenceSelect?: (evidence: any) => void;
   onBackToEvidenceList?: () => void;
+  selectedPerson?: any;
+  onBackToPersonList?: () => void;
 }
 
 const CaseContent = ({
@@ -52,13 +55,15 @@ const CaseContent = ({
   motivesLoading,
   victimsLoading,
   pathologistLoading,
-  onInterrogate,
+  onPersonSelect,
   getImageColor,
   selectedEvidence,
   evidenceReports,
   reportsLoading,
   onEvidenceSelect,
-  onBackToEvidenceList
+  onBackToEvidenceList,
+  selectedPerson,
+  onBackToPersonList
 }: CaseContentProps) => {
   const navigate = useNavigate();
 
@@ -237,6 +242,18 @@ const CaseContent = ({
   }
 
   if (activeTab === 'suspects') {
+    // Show interrogation view if a suspect is selected
+    if (selectedPerson) {
+      return (
+        <InterrogationView
+          person={selectedPerson}
+          onBack={onBackToPersonList}
+          embedded={true}
+        />
+      );
+    }
+
+    // Show suspects list (default view)
     return (
       <>
         {suspectsLoading ? (
@@ -255,7 +272,7 @@ const CaseContent = ({
                   relationshipToCase={suspect.relationshipToCase}
                   imageColor={getImageColor(index)}
                   imageUrl={suspect.imageUrl}
-                  onInterrogate={() => onInterrogate(suspect)}
+                  onInterrogate={() => onPersonSelect(suspect)}
                   alibiContent={suspect.alibi?.content}
                 />
               </div>
@@ -271,6 +288,18 @@ const CaseContent = ({
   }
 
   if (activeTab === 'witnesses') {
+    // Show interrogation view if a witness is selected
+    if (selectedPerson) {
+      return (
+        <InterrogationView
+          person={selectedPerson}
+          onBack={onBackToPersonList}
+          embedded={true}
+        />
+      );
+    }
+
+    // Show witnesses list (default view)
     return (
       <>
         {witnessesLoading ? (
@@ -289,7 +318,7 @@ const CaseContent = ({
                   relationshipToCase={witness.relationshipToCase}
                   imageColor={getImageColor(index)}
                   imageUrl={witness.imageUrl}
-                  onInterrogate={() => onInterrogate(witness)}
+                  onInterrogate={() => onPersonSelect(witness)}
                 />
               </div>
             ))}
