@@ -9,6 +9,16 @@ const VenuesHero = () => {
     }
   };
 
+  const scrollToHowItWorks = () => {
+    const howItWorksSection = document.querySelector('[data-section="how-it-works"]');
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section 
       className="position-relative d-flex align-items-center justify-content-center text-light px-4 bg-dark"
@@ -41,6 +51,7 @@ const VenuesHero = () => {
             Start 7-Day Free Trial
           </button>
           <button 
+            onClick={scrollToHowItWorks}
             className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
           >
             See How It Works
