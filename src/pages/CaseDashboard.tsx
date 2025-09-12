@@ -12,6 +12,7 @@ import { useCaseWitnesses } from "@/hooks/useCaseWitnesses";
 import { useCrimeCase } from "@/hooks/useCrimeCase";
 import { useCrimeScene } from "@/hooks/useCrimeScene";
 import { useForensicPathologist } from "@/hooks/useForensicPathologist";
+import { useEvidenceReports } from "@/hooks/useEvidenceReports";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
@@ -22,6 +23,7 @@ const CaseDashboard = () => {
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
   const [showInterrogation, setShowInterrogation] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+  const [selectedEvidence, setSelectedEvidence] = useState<any>(null);
 
   // Set active tab from URL parameter
   useEffect(() => {
@@ -39,6 +41,7 @@ const CaseDashboard = () => {
   const { data: motives, isLoading: motivesLoading } = useCaseMotives(caseId || '');
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId || '');
   const { data: forensicPathologist, isLoading: pathologistLoading } = useForensicPathologist(caseId || '');
+  const { data: evidenceReports, isLoading: reportsLoading } = useEvidenceReports(selectedEvidence?.id?.toString() || '', selectedEvidence ? undefined : '');
 
   const getImageColor = (index: number) => {
     const colors = [
@@ -55,6 +58,14 @@ const CaseDashboard = () => {
   const handleInterrogate = (person: any) => {
     setSelectedPerson(person);
     setShowInterrogation(true);
+  };
+
+  const handleEvidenceSelect = (evidence: any) => {
+    setSelectedEvidence(evidence);
+  };
+
+  const handleBackToEvidenceList = () => {
+    setSelectedEvidence(null);
   };
 
   if (showInterrogation && selectedPerson) {
@@ -105,6 +116,11 @@ const CaseDashboard = () => {
           pathologistLoading={pathologistLoading}
           onInterrogate={handleInterrogate}
           getImageColor={getImageColor}
+          selectedEvidence={selectedEvidence}
+          evidenceReports={evidenceReports}
+          reportsLoading={reportsLoading}
+          onEvidenceSelect={handleEvidenceSelect}
+          onBackToEvidenceList={handleBackToEvidenceList}
         />
       </div>
     </div>
