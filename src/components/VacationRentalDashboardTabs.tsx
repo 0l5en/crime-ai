@@ -11,15 +11,15 @@ const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalD
 
   const tabs = [
     { id: 'cases', label: 'Cases', icon: Home },
-    { id: 'promotion', label: 'Promotion-Material', icon: FileText },
+    { id: 'promotion', label: 'Promotion', icon: FileText },
     { id: 'subscription', label: 'Subscription', icon: CreditCard },
   ];
 
   return (
     <div className="mb-4">
-      <ul className="nav nav-tabs border-0 d-flex w-100">
-        {tabs.map((tab, index) => (
-          <li key={tab.id} className={`nav-item flex-fill ${index !== 0 ? 'ms-4' : ''}`}>
+      <div className="row g-4">
+        {tabs.map((tab) => (
+          <div key={tab.id} className="col-12 col-md-6 col-lg-4">
             <button
               className={`btn btn-outline-primary ${isMobile ? 'px-2 py-3' : 'px-4 py-3'} fw-medium w-100 text-center d-flex align-items-center justify-content-center ${activeTab === tab.id
                 ? 'active text-primary'
@@ -38,9 +38,9 @@ const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalD
                 </>
               )}
             </button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
