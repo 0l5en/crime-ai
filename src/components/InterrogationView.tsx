@@ -114,8 +114,8 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
 
   return (
     <div className={containerClass}>
-      {/* Header with back button and person info - only show if not embedded */}
-      {!embedded && onBack && (
+      {/* Header with back button and person info */}
+      {onBack && (
         <div className="d-flex align-items-center mb-4">
           <button
             className="btn btn-primary me-3"

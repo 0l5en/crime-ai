@@ -32,6 +32,12 @@ const CaseDashboard = () => {
     }
   }, [searchParams]);
 
+  // Extended tab handler to reset selected person on tab change
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setSelectedPerson(null); // Reset person selection when switching tabs
+  };
+
   const { data: crimeCase, isLoading: caseLoading } = useCrimeCase(caseId || '');
   const { data: crimeScene, isLoading: sceneLoading } = useCrimeScene(caseId || '');
   const { data: evidences, isLoading: evidencesLoading } = useCaseEvidences(caseId || '');
@@ -83,7 +89,7 @@ const CaseDashboard = () => {
 
         <CaseTabs
           activeTab={activeTab}
-          onTabChange={setActiveTab}
+          onTabChange={handleTabChange}
         />
 
         <CaseContent
