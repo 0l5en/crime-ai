@@ -78,10 +78,6 @@ const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
               </span>
             )}
           </div>
-          
-          <small className="text-muted">
-            {getTypeLabel()}
-          </small>
         </div>
       </div>
     </div>

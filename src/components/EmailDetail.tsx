@@ -1,8 +1,8 @@
 import { NotificationDto } from "@/hooks/useNotifications";
 import { format, formatDistanceToNow } from "date-fns";
 import { enUS } from "date-fns/locale";
-import { Clock, Mail, User } from "lucide-react";
-import { Card } from "react-bootstrap";
+import { Clock, Mail, Reply, User } from "lucide-react";
+import { Button, Card } from "react-bootstrap";
 import AutopsyReportCard from "./AutopsyReportCard";
 
 interface EmailDetailProps {
@@ -65,7 +65,15 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
           </div>
 
           <div className="d-flex align-items-center">
-            {/* Removed manual mark as read functionality - emails are auto-marked when clicked */}
+            <Button
+              variant="outline-primary"
+              size="sm"
+              className="d-flex align-items-center"
+              onClick={() => console.log('Reply clicked')} // Placeholder functionality
+            >
+              <Reply size={16} className="me-1" />
+              Reply
+            </Button>
           </div>
         </div>
 
