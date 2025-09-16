@@ -1,12 +1,12 @@
 
-import { useState } from 'react';
-import { Send } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { useKeycloak } from '@/contexts/KeycloakContext';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
-import { useKeycloak } from '@/contexts/KeycloakContext';
 import { format } from 'date-fns';
+import { Send } from 'lucide-react';
+import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import ConversationHistory from './ConversationHistory';
 
 interface EvidenceReportCardProps {
@@ -19,10 +19,10 @@ interface EvidenceReportCardProps {
 
 const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: EvidenceReportCardProps) => {
   const [question, setQuestion] = useState('');
-  const { user} = useKeycloak();
-  
+  const { user } = useKeycloak();
+
   const createAnswer = useCreateInterrogationAnswer();
-  
+
   // Pass all required parameters to the hook
   const { data: questionAndAnswers, isLoading: qaLoading } = useQuestionAndAnswers(
     undefined, // no interrogationId for reference-based queries
@@ -33,7 +33,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!question.trim() || !personId || !user?.email) {
       return;
     }
@@ -48,7 +48,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
           referenceType: 'EVIDENCE_REPORT'
         }
       });
-      
+
       setQuestion(''); // Clear input after successful submission
     } catch (error) {
       console.error('Failed to create interrogation answer:', error);
@@ -65,29 +65,29 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
   };
 
   return (
-    <div className="card bg-dark border-secondary text-light mb-3">
+    <div className="card border-secondary mb-3">
       <div className="card-header d-flex justify-content-between align-items-center">
-        <h6 className="mb-0 text-light fw-semibold">Evidence Report</h6>
+        <h6 className="mb-0 fw-semibold">Evidence Report</h6>
       </div>
       <div className="card-body">
         {/* Evidence Report Content with Markdown Support */}
-        <div className="card-text text-light mb-3 markdown-content">
+        <div className="card-text mb-3 markdown-content">
           <div className="mb-3">
-            <h6 className="text-light fw-semibold mb-2">Analysis</h6>
+            <h6 className="fw-semibold mb-2">Analysis</h6>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {analysis}
             </ReactMarkdown>
           </div>
-          
+
           <div className="mb-3">
-            <h6 className="text-light fw-semibold mb-2">Methods</h6>
+            <h6 className="fw-semibold mb-2">Methods</h6>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {methods}
             </ReactMarkdown>
           </div>
-          
+
           <div className="mb-3">
-            <h6 className="text-light fw-semibold mb-2">Conclusion</h6>
+            <h6 className="fw-semibold mb-2">Conclusion</h6>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {conclusion}
             </ReactMarkdown>
@@ -98,15 +98,15 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
 
         {/* Interrogation Section */}
         <div className="mt-3">
-          <h6 className="text-light mb-3">Evidence Discussion</h6>
-          
+          <h6 className="mb-3">Evidence Discussion</h6>
+
           {/* Question Input Form */}
           {personId && user?.email && (
             <form onSubmit={handleSubmit} className="mb-3">
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control bg-dark border-secondary text-light"
+                  className="form-control border-secondary"
                   placeholder="Ask a question about this evidence report..."
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
@@ -128,8 +128,8 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
               </div>
             </form>
           )}
-          
-          <ConversationHistory questionAndAnswers={questionAndAnswers?.items ?? []} pending={qaLoading}/>
+
+          <ConversationHistory questionAndAnswers={questionAndAnswers?.items ?? []} pending={qaLoading} />
 
         </div>
       </div>

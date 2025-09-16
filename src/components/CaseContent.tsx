@@ -1,12 +1,12 @@
 
-import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import CaseOverview from "./CaseOverview";
 import EvidenceCard from "./EvidenceCard";
 import EvidenceReportCard from "./EvidenceReportCard";
+import InterrogationView from "./InterrogationView";
 import SuspectCard from "./SuspectCard";
 import WitnessCard from "./WitnessCard";
-import InterrogationView from "./InterrogationView";
 
 interface CaseContentProps {
   activeTab: string;
@@ -110,36 +110,19 @@ const CaseContent = ({
         <>
           {/* Back Button */}
           <div className="mb-4">
-            <button 
+            <button
               onClick={onBackToEvidenceList}
-              className="btn btn-outline-light d-flex align-items-center gap-2"
+              className="btn btn-primary"
             >
-              <ArrowLeft size={16} />
-              Back to Case
+              <ArrowLeft className="me-2" />
+              Back
             </button>
           </div>
-
-          {/* Breadcrumb */}
-          <nav aria-label="breadcrumb" className="mb-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <button 
-                  onClick={onBackToEvidenceList}
-                  className="btn btn-link text-light p-0 text-decoration-none"
-                >
-                  Case {caseId}
-                </button>
-              </li>
-              <li className="breadcrumb-item active text-muted" aria-current="page">
-                Evidence Details
-              </li>
-            </ol>
-          </nav>
 
           {/* Evidence Header */}
           <div className="mb-4">
             <div className="d-flex align-items-center gap-3 mb-3">
-              <h2 className="text-light mb-0">{selectedEvidence.title}</h2>
+              <h2 className="mb-0">{selectedEvidence.title}</h2>
               {selectedEvidence.evidenceType && (
                 <span className={`badge ${getEvidenceTypeColor(selectedEvidence.evidenceType)} badge-pill fs-6`}>
                   {selectedEvidence.evidenceType}
@@ -153,12 +136,12 @@ const CaseContent = ({
           {selectedEvidence.evidenceType === 'DOCUMENT' && selectedEvidence.documentContent && (
             <>
               <div className="mb-4">
-                <div className="card bg-dark border-secondary text-light">
+                <div className="card border-secondary">
                   <div className="card-header">
-                    <h5 className="mb-0 text-light fw-semibold">Document Content</h5>
+                    <h5 className="mb-0 fw-semibold">Document Content</h5>
                   </div>
                   <div className="card-body">
-                    <div className="text-light" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>
+                    <div className="" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>
                       {selectedEvidence.documentContent}
                     </div>
                   </div>
@@ -178,8 +161,8 @@ const CaseContent = ({
 
           {/* Evidence Reports Section */}
           <div>
-            <h3 className="text-light mb-4">Evidence Reports & Discussions</h3>
-            
+            <h3 className="mb-4">Evidence Reports & Discussions</h3>
+
             {reportsLoading ? (
               <div className="text-center text-muted py-5">
                 <p>Loading evidence reports...</p>

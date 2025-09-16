@@ -8,17 +8,16 @@ import AdminCaseGenerator from "./pages/AdminCaseGenerator";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
-import Cases from "./pages/Cases";
 import CaseDashboard from "./pages/CaseDashboard";
+import Cases from "./pages/Cases";
 import CaseSolution from "./pages/CaseSolution";
+import Cookies from "./pages/Cookies";
 import EmailInbox from "./pages/EmailInbox";
-import EvidenceDetails from "./pages/EvidenceDetails";
+import Imprint from "./pages/Imprint";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
-import Cookies from "./pages/Cookies";
-import Imprint from "./pages/Imprint";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenuesPage from "./pages/VenuesPage";
@@ -30,27 +29,19 @@ const App = () => (
     <ThemeProvider>
       <KeycloakProvider>
         <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/cases" element={<Cases />} />
-              <Route path="/venues" element={<VenuesPage />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/cookies" element={<Cookies />} />
-              <Route path="/imprint" element={<Imprint />} />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/cases" element={<Cases />} />
+            <Route path="/venues" element={<VenuesPage />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/imprint" element={<Imprint />} />
             <Route
               path="/case/:caseId"
               element={
                 <ProtectedRoute requiredRoles={['admin', 'standard']}>
                   <CaseDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/case/:caseId/evidence/:evidenceId"
-              element={
-                <ProtectedRoute requiredRoles={['admin', 'standard']}>
-                  <EvidenceDetails />
                 </ProtectedRoute>
               }
             />
