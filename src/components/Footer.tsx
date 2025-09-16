@@ -50,7 +50,7 @@ const Footer = () => {
                 </a>
               </div>
               <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: '0.8rem' }}>
-                © 2025 DetectiveGames. All rights reserved.
+                © 2025 DetectivesGame. All rights reserved.
               </p>
             </div>
           </div>
