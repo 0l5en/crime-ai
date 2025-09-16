@@ -42,7 +42,7 @@ const Footer = () => {
                 <a href="/cookies" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
                   Cookies
                 </a>
-                <a href="#" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
+                <a href="/imprint" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
                   Imprint
                 </a>
                 <a href="#" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
