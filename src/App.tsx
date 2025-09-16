@@ -15,6 +15,7 @@ import EmailInbox from "./pages/EmailInbox";
 import EvidenceDetails from "./pages/EvidenceDetails";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/cases" element={<Cases />} />
               <Route path="/venues" element={<VenuesPage />} />
               <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
             <Route
               path="/case/:caseId"
               element={
