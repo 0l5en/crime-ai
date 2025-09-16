@@ -23,6 +23,11 @@ const Cases = () => {
     maxResults: (page * 12).toString()
   });
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Update all cases when new data arrives
   useEffect(() => {
     if (crimeCases?.items) {
