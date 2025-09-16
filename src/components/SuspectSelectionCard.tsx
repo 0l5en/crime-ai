@@ -7,8 +7,8 @@ interface SuspectSelectionCardProps {
   imageUrl?: string;
 }
 
-const SuspectSelectionCard = ({ 
-  name, 
+const SuspectSelectionCard = ({
+  name,
   isSelected,
   onToggle,
   imageColor = 'bg-gradient-secondary',
@@ -23,11 +23,11 @@ const SuspectSelectionCard = ({
   };
 
   return (
-    <div 
+    <div
       className={`
-        bg-dark text-light card-hover card
-        ${isSelected 
-          ? 'border-danger border-2' 
+        card-hover card
+        ${isSelected
+          ? 'border-danger border-2'
           : 'border-secondary'
         }
       `}
@@ -37,8 +37,8 @@ const SuspectSelectionCard = ({
       <div className="card-body p-4 d-flex flex-column align-items-center">
         <div className="mb-3" style={{ width: '4rem', height: '4rem' }}>
           {imageUrl ? (
-            <img 
-              src={imageUrl} 
+            <img
+              src={imageUrl}
               alt={name}
               className="rounded-circle object-fit-cover"
               style={{ width: '4rem', height: '4rem' }}
@@ -49,14 +49,14 @@ const SuspectSelectionCard = ({
             />
           ) : null}
           <div className={`${imageColor} h-100 w-100 d-flex align-items-center justify-content-center rounded-circle ${imageUrl ? 'd-none' : ''}`}>
-            <span className="text-white fw-semibold">
+            <span className="fw-semibold">
               {getInitials(name)}
             </span>
           </div>
         </div>
-        
+
         <div className="text-center">
-          <h3 className="h6 fw-semibold text-light mb-0">{name}</h3>
+          <h3 className="h6 fw-semibold mb-0">{name}</h3>
         </div>
       </div>
     </div>

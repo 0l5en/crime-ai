@@ -1,24 +1,24 @@
 
-import Header from "@/components/Header";
-import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
-import { useCrimeCase } from "@/hooks/useCrimeCase";
-import { useCaseEvidences } from "@/hooks/useCaseEvidences";
-import { useCaseSuspects } from "@/hooks/useCaseSuspects";
-import { useCaseMotives } from "@/hooks/useCaseMotives";
-import { useCreateSolutionAttempt } from "@/hooks/useCreateSolutionAttempt";
-import { useSolutionAttempts } from "@/hooks/useSolutionAttempts";
-import { useKeycloak } from "@/contexts/KeycloakContext";
-import SuspectSelectionCard from "@/components/SuspectSelectionCard";
 import EvidenceSelectionCard from "@/components/EvidenceSelectionCard";
+import Header from "@/components/Header";
 import MotiveSelectionCard from "@/components/MotiveSelectionCard";
+import SuspectSelectionCard from "@/components/SuspectSelectionCard";
+import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useCaseEvidences } from "@/hooks/useCaseEvidences";
+import { useCaseMotives } from "@/hooks/useCaseMotives";
+import { useCaseSuspects } from "@/hooks/useCaseSuspects";
+import { useCreateSolutionAttempt } from "@/hooks/useCreateSolutionAttempt";
+import { useCrimeCase } from "@/hooks/useCrimeCase";
+import { useSolutionAttempts } from "@/hooks/useSolutionAttempts";
+import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CaseSolution = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
   const { user } = useKeycloak();
-  
+
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
   const [selectedMotives, setSelectedMotives] = useState<number[]>([]);
@@ -30,13 +30,13 @@ const CaseSolution = () => {
   const { data: evidences } = useCaseEvidences(caseId || '');
   const { data: suspects } = useCaseSuspects(caseId || '');
   const { data: motives } = useCaseMotives(caseId || '');
-  
+
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
 
   // Query for checking successful attempts (will be triggered after solution submission)
   const { data: successfulAttempts, refetch: checkSolutionSuccess } = useSolutionAttempts(
-    caseId || '', 
-    user?.email, 
+    caseId || '',
+    user?.email,
     "1" // success = true
   );
 
@@ -97,7 +97,7 @@ const CaseSolution = () => {
 
     try {
       setIsValidating(true);
-      
+
       // Submit the solution attempt
       await createSolutionMutation.mutateAsync({
         solution: {
@@ -110,13 +110,13 @@ const CaseSolution = () => {
 
       // Check if the solution was successful by refetching successful attempts
       const { data: updatedSuccessfulAttempts } = await checkSolutionSuccess();
-      
+
       // Check if we have any successful attempts
       const hasSuccessfulAttempt = updatedSuccessfulAttempts?.items && updatedSuccessfulAttempts.items.length > 0;
-      
+
       setIsSolved(!!hasSuccessfulAttempt);
       setShowResult(true);
-      
+
     } catch (error) {
       console.error("Failed to submit solution:", error);
       setIsSolved(false);
@@ -128,9 +128,9 @@ const CaseSolution = () => {
 
   if (showResult) {
     return (
-      <div className="min-vh-100 bg-dark">
+      <div className="min-vh-100">
         <Header />
-        
+
         <div className="container py-5">
           <div className="d-flex align-items-center mb-5">
             <button
@@ -140,8 +140,8 @@ const CaseSolution = () => {
               <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
               Try Again
             </button>
-            
-            <h1 className="h2 text-white mb-0">Case Solution Result</h1>
+
+            <h1 className="h2 mb-0">Case Solution Result</h1>
           </div>
 
           <div className="row justify-content-center">
@@ -154,13 +154,13 @@ const CaseSolution = () => {
                     ) : (
                       <XCircle className="text-danger mx-auto mb-3" style={{ width: '4rem', height: '4rem' }} />
                     )}
-                    
+
                     <h2 className={`h3 mb-3 ${isSolved ? 'text-success' : 'text-danger'}`}>
                       {isSolved ? 'Congratulations! You solved the case!' : 'Unfortunately, this solution is incorrect.'}
                     </h2>
-                    
-                    <p className="text-white lead">
-                      {isSolved 
+
+                    <p className="lead">
+                      {isSolved
                         ? 'Great detective work! You correctly identified the culprit, evidence, and motive.'
                         : 'Please try again with a different combination of suspects, evidence, and motives.'
                       }
@@ -168,19 +168,19 @@ const CaseSolution = () => {
                   </div>
 
                   <div className="d-flex justify-content-center gap-3">
-                    <button 
+                    <button
                       onClick={resetSelections}
                       className="btn btn-secondary"
                     >
                       Try Again
                     </button>
-                    <button 
+                    <button
                       onClick={() => navigate(`/case/${caseId}`)}
                       className="btn btn-primary"
                     >
                       Back to Case
                     </button>
-                    <button 
+                    <button
                       onClick={() => navigate('/')}
                       className="btn btn-danger"
                     >
@@ -197,9 +197,9 @@ const CaseSolution = () => {
   }
 
   return (
-    <div className="min-vh-100 bg-dark">
+    <div className="min-vh-100">
       <Header />
-      
+
       <div className="container py-4">
         <div className="d-flex align-items-center mb-5">
           <button
@@ -209,9 +209,9 @@ const CaseSolution = () => {
             <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
             Back to Case
           </button>
-          
+
           <div>
-            <h1 className="h2 text-white mb-1">
+            <h1 className="h2 mb-1">
               Solve the Case: {crimeCase?.title}
             </h1>
             <p className="text-muted mb-0">
@@ -221,9 +221,9 @@ const CaseSolution = () => {
         </div>
 
         {/* Suspect Selection */}
-        <div className="card bg-dark border-secondary mb-5">
+        <div className="card border-secondary mb-5">
           <div className="card-header">
-            <h3 className="card-title text-white">
+            <h3 className="card-title">
               Select Suspects
               {selectedSuspects.length > 0 && (
                 <span className="badge bg-success ms-2">{selectedSuspects.length} selected</span>
@@ -252,9 +252,9 @@ const CaseSolution = () => {
         </div>
 
         {/* Evidence Selection */}
-        <div className="card bg-dark border-secondary mb-5">
+        <div className="card border-secondary mb-5">
           <div className="card-header">
-            <h3 className="card-title text-white">
+            <h3 className="card-title">
               Select Key Evidence
               {selectedEvidences.length > 0 && (
                 <span className="badge bg-primary ms-2">
@@ -269,7 +269,7 @@ const CaseSolution = () => {
                 {evidences.items.map((evidence, index) => (
                   <div key={evidence.id} className="col-md-4 col-lg-3">
                     <EvidenceSelectionCard
-                      title={(evidence as any).name || evidence.title}
+                      title={evidence.title}
                       isSelected={selectedEvidences.includes(evidence.id)}
                       onToggle={() => toggleEvidence(evidence.id)}
                       imageColor={getImageColor(index)}
@@ -285,9 +285,9 @@ const CaseSolution = () => {
         </div>
 
         {/* Motive Selection */}
-        <div className="card bg-dark border-secondary mb-5">
+        <div className="card border-secondary mb-5">
           <div className="card-header">
-            <h3 className="card-title text-white">
+            <h3 className="card-title">
               Select Motives
               {selectedMotives.length > 0 && (
                 <span className="badge bg-warning ms-2">{selectedMotives.length} selected</span>
@@ -300,7 +300,7 @@ const CaseSolution = () => {
                 {motives.items.map((motive, index) => (
                   <div key={motive.id} className="col-md-4 col-lg-3">
                     <MotiveSelectionCard
-                      title={(motive as any).name || motive.title}
+                      title={motive.title}
                       isSelected={selectedMotives.includes(motive.id)}
                       onToggle={() => toggleMotive(motive.id)}
                       imageColor={getImageColor(index)}
@@ -323,7 +323,7 @@ const CaseSolution = () => {
           >
             {isValidating ? 'Validating Solution...' : createSolutionMutation.isPending ? 'Submitting...' : 'Submit Solution'}
           </button>
-          
+
           {(selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0) && (
             <p className="text-muted mt-3 small">
               Please select at least one suspect, one piece of evidence, and one motive
