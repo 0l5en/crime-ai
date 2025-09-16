@@ -1,10 +1,8 @@
 import { NotificationDto } from "@/hooks/useNotifications";
-import { useUpdateNotification } from "@/hooks/useUpdateNotification";
 import { format, formatDistanceToNow } from "date-fns";
 import { enUS } from "date-fns/locale";
-import { CheckCircle, Clock, Mail, User } from "lucide-react";
-import { useState } from "react";
-import { Badge, Button, Card } from "react-bootstrap";
+import { Clock, Mail, User } from "lucide-react";
+import { Card } from "react-bootstrap";
 import AutopsyReportCard from "./AutopsyReportCard";
 
 interface EmailDetailProps {
@@ -12,8 +10,6 @@ interface EmailDetailProps {
 }
 
 const EmailDetail = ({ email }: EmailDetailProps) => {
-  const [isMarkingAsRead, setIsMarkingAsRead] = useState(false);
-  const updateNotification = useUpdateNotification();
 
   if (!email) {
     return (
@@ -24,22 +20,6 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
       </div>
     );
   }
-
-  const handleMarkAsRead = async () => {
-    if (email.read || isMarkingAsRead) return;
-
-    setIsMarkingAsRead(true);
-    try {
-      await updateNotification.mutateAsync({
-        ...email,
-        read: true
-      });
-    } catch (error) {
-      console.error("Error marking email as read:", error);
-    } finally {
-      setIsMarkingAsRead(false);
-    }
-  };
 
   const formatDateTime = (dateString: string) => {
     try {
@@ -85,24 +65,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
           </div>
 
           <div className="d-flex align-items-center">
-            {!email.read && (
-              <Badge bg="primary" className="me-2">
-                Unread
-              </Badge>
-            )}
-
-            {!email.read && (
-              <Button
-                variant="outline-success"
-                size="sm"
-                onClick={handleMarkAsRead}
-                disabled={isMarkingAsRead}
-                className="d-flex align-items-center"
-              >
-                <CheckCircle size={16} className="me-1" />
-                {isMarkingAsRead ? "Marking..." : "Mark as read"}
-              </Button>
-            )}
+            {/* Removed manual mark as read functionality - emails are auto-marked when clicked */}
           </div>
         </div>
 

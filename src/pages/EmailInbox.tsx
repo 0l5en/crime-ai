@@ -4,9 +4,27 @@ import Header from "@/components/Header";
 import EmailList from "@/components/EmailList";
 import EmailDetail from "@/components/EmailDetail";
 import { NotificationDto } from "@/hooks/useNotifications";
+import { useUpdateNotification } from "@/hooks/useUpdateNotification";
 
 const EmailInbox = () => {
   const [selectedEmail, setSelectedEmail] = useState<NotificationDto | null>(null);
+  const updateNotification = useUpdateNotification();
+
+  const handleSelectEmail = async (email: NotificationDto) => {
+    setSelectedEmail(email);
+    
+    // Automatically mark as read if unread
+    if (!email.read) {
+      try {
+        await updateNotification.mutateAsync({
+          ...email,
+          read: true
+        });
+      } catch (error) {
+        console.error("Error marking email as read:", error);
+      }
+    }
+  };
 
   return (
     <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
@@ -16,7 +34,7 @@ const EmailInbox = () => {
           <div className="email-list-container">
             <EmailList 
               selectedEmail={selectedEmail}
-              onSelectEmail={setSelectedEmail}
+              onSelectEmail={handleSelectEmail}
             />
           </div>
           <div className="email-detail-container">
