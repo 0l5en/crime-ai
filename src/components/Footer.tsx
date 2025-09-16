@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="col-md-6">
             <div className="d-flex flex-column align-items-md-end">
               <div className="d-flex gap-4 mb-2 flex-wrap justify-content-center justify-content-md-end">
-                <a href="#" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
+                <a href="/terms" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
                   Terms
                 </a>
                 <a href="#" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>

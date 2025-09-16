@@ -15,6 +15,7 @@ import EmailInbox from "./pages/EmailInbox";
 import EvidenceDetails from "./pages/EvidenceDetails";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Terms from "./pages/Terms";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenuesPage from "./pages/VenuesPage";
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/cases" element={<Cases />} />
               <Route path="/venues" element={<VenuesPage />} />
+              <Route path="/terms" element={<Terms />} />
             <Route
               path="/case/:caseId"
               element={
