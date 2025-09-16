@@ -21,8 +21,6 @@ const AutopsyReportCard = ({ notification }: { notification: NotificationDto }) 
             className="card border-0 text-light"
             style={{ backgroundColor: '#2a2a2a' }}>
             <div className="card-body p-4">
-                <h3 className="h4 text-white mb-3">Autopsy Report</h3>
-
                 {autopsyLoading ? (
                     <div className="text-center text-muted py-3">
                         <p>Loading autopsy report...</p>
@@ -30,9 +28,6 @@ const AutopsyReportCard = ({ notification }: { notification: NotificationDto }) 
                 ) : autopsyReport ? (
                     <div className="row">
                         <div className="col-md-8">
-                            <h4 className="h5 text-white mb-3">
-                                Conducted by {notification.nameOfSender}
-                            </h4>
                             <p className="text-light mb-0" style={{ lineHeight: '1.6' }}>
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                     {autopsyReport.externalExamination}
