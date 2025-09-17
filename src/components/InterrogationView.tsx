@@ -149,7 +149,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
                 Interrogation with {person.name}
               </h2>
               <p className="text-muted mb-0">
-                {getPersonTypeDisplay(person.roles)} • {person.age} years old • {person.profession}
+                {person.age} years old • {person.profession}
               </p>
             </div>
           </div>
