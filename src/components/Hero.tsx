@@ -38,7 +38,7 @@ const Hero = () => {
         >
           Unravel the Truth, One Clue at a Time
         </h1>
-        <p className="lead text-white mb-5 mx-auto" style={{ maxWidth: '600px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
+        <p className="lead text-white mb-5 mx-auto" style={{ maxWidth: '1000px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
           Dive into a world of mystery and intrigue with our AI-powered interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.
         </p>
         <button 
