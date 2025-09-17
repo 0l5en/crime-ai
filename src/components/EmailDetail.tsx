@@ -58,9 +58,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
             <h4 className="mb-1">{email.subject}</h4>
             <div className="d-flex align-items-center text-muted">
               <User size={16} className="me-2" />
-              <span className="me-3">{email.nameOfSender}</span>
-              <Clock size={16} className="me-2" />
-              <span title={dateTime.full}>{dateTime.relative}</span>
+              <span>{email.nameOfSender}</span>
             </div>
           </div>
 
@@ -77,11 +75,6 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
           </div>
         </div>
 
-        <div className="email-meta">
-          <small className="text-muted">
-            Sent on {dateTime.full}
-          </small>
-        </div>
       </div>
 
       <div className="email-content p-4">

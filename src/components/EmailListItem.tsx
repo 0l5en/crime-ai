@@ -72,11 +72,6 @@ const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
                title={email.subject}>
               {truncateSubject(email.subject)}
             </p>
-            {!email.read && (
-              <span className="badge bg-primary rounded-pill ms-2">
-                <i className="bi bi-circle-fill" style={{ fontSize: '6px' }}></i>
-              </span>
-            )}
           </div>
         </div>
       </div>
