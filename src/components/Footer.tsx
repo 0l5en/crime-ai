@@ -13,7 +13,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '0.9rem' }}>
-              Test your detective skills with our immersive mystery cases.<br>Solve crimes, uncover secrets, and become the best detective.</br>
+              Test your detective skills with our immersive mystery cases. Solve crimes, uncover secrets, and become the best detective.
             </p>
             <div className="d-flex gap-3 mb-3 mb-md-0">
               <a href="#" className="text-secondary" style={{ fontSize: '1.2rem' }}>
