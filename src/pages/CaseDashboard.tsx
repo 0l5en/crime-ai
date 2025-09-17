@@ -20,7 +20,8 @@ const CaseDashboard = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [selectedPerson, setSelectedPerson] = useState<any>(null);
+  const [selectedWitness, setSelectedWitness] = useState<any>(null);
+  const [selectedSuspect, setSelectedSuspect] = useState<any>(null);
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedEvidence, setSelectedEvidence] = useState<any>(null);
 
@@ -63,12 +64,20 @@ const CaseDashboard = () => {
     return colors[index % colors.length];
   };
 
-  const handlePersonSelect = (person: any) => {
-    setSelectedPerson(person);
+  const handleWitnessSelect = (witness: any) => {
+    setSelectedWitness(witness);
   };
 
-  const handleBackToPersonList = () => {
-    setSelectedPerson(null);
+  const handleSuspectSelect = (suspect: any) => {
+    setSelectedSuspect(suspect);
+  };
+
+  const handleBackToWitnessList = () => {
+    setSelectedWitness(null);
+  };
+
+  const handleBackToSuspectList = () => {
+    setSelectedSuspect(null);
   };
 
   const handleEvidenceSelect = (evidence: any) => {
@@ -113,15 +122,18 @@ const CaseDashboard = () => {
           motivesLoading={motivesLoading}
           victimsLoading={victimsLoading}
           pathologistLoading={pathologistLoading}
-          onPersonSelect={handlePersonSelect}
+          onWitnessSelect={handleWitnessSelect}
+          onSuspectSelect={handleSuspectSelect}
           getImageColor={getImageColor}
           selectedEvidence={selectedEvidence}
           evidenceReports={evidenceReports}
           reportsLoading={reportsLoading}
           onEvidenceSelect={handleEvidenceSelect}
           onBackToEvidenceList={handleBackToEvidenceList}
-          selectedPerson={selectedPerson}
-          onBackToPersonList={handleBackToPersonList}
+          selectedWitness={selectedWitness}
+          selectedSuspect={selectedSuspect}
+          onBackToWitnessList={handleBackToWitnessList}
+          onBackToSuspectList={handleBackToSuspectList}
         />
       </div>
     </div>
