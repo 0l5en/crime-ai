@@ -25,9 +25,7 @@ const VenuesCTA = () => {
               mysteries tailored to your space, driving social media shares and repeat visits.
             </p>
             
-            <h3 className="mb-5 text-light fw-normal" style={{ opacity: '0.8' }}>
-              Try risk-free for 7 days.
-            </h3>
+            
 
             {/* Feature Benefits */}
             <div className="row justify-content-center mb-5">
