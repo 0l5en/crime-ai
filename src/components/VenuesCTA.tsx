@@ -16,9 +16,9 @@ const VenuesCTA = () => {
       <div className="container">
         <div className="row justify-content-center text-center">
           <div className="col-lg-8">
-            <h2 className="display-3 fw-bold mb-4 text-white">
+            <h3 className="display-3 fw-bold mb-4 text-white">
               Transform Your <span style={{ color: 'var(--bs-danger)' }}>Venue</span> Into a <span style={{ color: 'var(--bs-danger)' }}>Mystery Adventure</span>!
-            </h2>
+            </h3>
             
             <p className="lead mb-4 text-light" style={{ fontSize: '1.25rem', opacity: '0.9' }}>
               Elevate your venue with our <span style={{ color: 'var(--bs-danger)' }}>AI-powered</span> detective experiences. Our algorithm creates custom 
