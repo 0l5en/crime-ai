@@ -48,7 +48,7 @@ const VenuesHero = () => {
             onClick={scrollToContact}
             className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
           >
-            Start 7-Day Free Trial
+            Register For Free
           </button>
           <button 
             onClick={scrollToHowItWorks}
