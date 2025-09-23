@@ -1,6 +1,7 @@
 
 import CaseContent from "@/components/CaseContent";
 import CaseHeader from "@/components/CaseHeader";
+import CaseNotes from "@/components/CaseNotes";
 import CaseTabs from "@/components/CaseTabs";
 import Header from "@/components/Header";
 import InterrogationView from "@/components/InterrogationView";
@@ -135,6 +136,9 @@ const CaseDashboard = () => {
           onBackToWitnessList={handleBackToWitnessList}
           onBackToSuspectList={handleBackToSuspectList}
         />
+
+        {/* Case Notes Feature */}
+        <CaseNotes caseId={caseId || ''} />
       </div>
     </div>
   );
