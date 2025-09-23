@@ -87,8 +87,8 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
           transition: 'all 0.3s ease',
         }}
-        title="Fall-Notizen"
-        aria-label="Fall-Notizen öffnen"
+        title="Case Notes"
+        aria-label="Open case notes"
       >
         <PenTool size={24} color="white" />
       </button>
@@ -126,12 +126,12 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
       >
         {/* Panel Header */}
         <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
-          <h6 className="mb-0 text-dark fw-semibold">Notizen zu diesem Fall</h6>
+          <h6 className="mb-0 text-dark fw-semibold">Case Notes</h6>
           <button
             onClick={handleClose}
             className="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center"
             style={{ width: '32px', height: '32px' }}
-            aria-label="Notizen schließen"
+            aria-label="Close notes"
           >
             <X size={16} />
           </button>
@@ -143,11 +143,11 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
             ref={textareaRef}
             value={notes}
             onChange={handleNotesChange}
-            placeholder="Notizen zu diesem Fall...&#10;&#10;• Verdächtige Personen&#10;• Wichtige Beweise&#10;• Theorien und Vermutungen&#10;• Nächste Schritte"
+            placeholder="Notes for this case...&#10;&#10;• Suspicious persons&#10;• Important evidence&#10;• Theories and assumptions&#10;• Next steps"
             className="form-control border-0 h-100 case-notes-textarea"
             style={{
               fontFamily: "'Caveat', cursive",
-              fontSize: '18px',
+              fontSize: '22px',
               lineHeight: '1.4',
               outline: 'none',
               boxShadow: 'none',
@@ -161,7 +161,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
         <div className="position-absolute" style={{ bottom: '12px', right: '16px' }}>
           <small className="text-muted">
             <i className="bi bi-cloud-check me-1"></i>
-            Automatisch gespeichert
+            Auto-saved
           </small>
         </div>
       </div>
