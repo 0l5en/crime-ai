@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { PenTool, X } from 'lucide-react';
+import { Edit, X } from 'lucide-react';
 
 interface CaseNotesProps {
   caseId: string;
@@ -80,8 +80,8 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
         style={{
           bottom: '20px',
           right: '20px',
-          width: '56px',
-          height: '56px',
+          width: '48px',
+          height: '48px',
           borderRadius: '50%',
           zIndex: 1050,
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
@@ -90,7 +90,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
         title="Case Notes"
         aria-label="Open case notes"
       >
-        <PenTool size={24} color="white" />
+        <Edit size={20} color="white" />
       </button>
 
       {/* Backdrop */}
