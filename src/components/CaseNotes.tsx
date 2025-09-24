@@ -80,8 +80,8 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
         style={{
           bottom: '20px',
           right: '20px',
-          width: '48px',
-          height: '48px',
+          width: '40px',
+          height: '40px',
           borderRadius: '50%',
           zIndex: 1050,
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
@@ -90,7 +90,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
         title="Case Notes"
         aria-label="Open case notes"
       >
-        <Edit size={20} color="white" />
+        <Edit size={18} color="white" />
       </button>
 
       {/* Backdrop */}
