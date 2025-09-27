@@ -20,7 +20,7 @@ const Cases = () => {
   const { data: crimeCases, isLoading, error } = useCrimeCases({ 
     caseGeneratorFormType: 'BASIC',
     status: 'PUBLISHED,PREMIUM',
-    maxResults: (page * 12).toString()
+    maxResults: (page * 6).toString()
   });
 
   // Scroll to top when component mounts
@@ -32,7 +32,7 @@ const Cases = () => {
   useEffect(() => {
     if (crimeCases?.items) {
       setAllCases(crimeCases.items);
-      setHasMore(crimeCases.items.length === page * 12);
+      setHasMore(crimeCases.items.length === page * 6);
     }
   }, [crimeCases, page]);
 
