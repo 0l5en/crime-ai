@@ -1,5 +1,6 @@
 
 import { useNavigate } from 'react-router-dom';
+import StarRating from './StarRating';
 
 interface GameCardProps {
   title: string;
@@ -11,6 +12,8 @@ interface GameCardProps {
   estimatedTime?: string;
   onClick?: () => void;
   hideDescription?: boolean;
+  averageRating?: number;
+  ratingCount?: number;
 }
 
 const GameCard = ({
@@ -22,7 +25,9 @@ const GameCard = ({
   difficulty = 'Mittel',
   estimatedTime = '30-45 min',
   onClick,
-  hideDescription = false
+  hideDescription = false,
+  averageRating,
+  ratingCount
 }: GameCardProps) => {
   const navigate = useNavigate();
 
@@ -57,6 +62,23 @@ const GameCard = ({
           <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
             {description}
           </p>
+        )}
+        
+        {/* Rating Display */}
+        {(averageRating !== undefined && averageRating > 0) || (ratingCount !== undefined && ratingCount > 0) ? (
+          <div className="mt-auto">
+            <StarRating
+              rating={averageRating || 0}
+              readonly={true}
+              size={16}
+              showCount={true}
+              count={ratingCount || 0}
+            />
+          </div>
+        ) : (
+          <div className="mt-auto">
+            <p className="text-muted small mb-0">Noch nicht bewertet</p>
+          </div>
         )}
       </div>
     </div>

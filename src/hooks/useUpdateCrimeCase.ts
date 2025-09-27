@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import type { CrimeCaseDto } from '../../supabase/functions/_shared/crime-api-types';
+import type { components } from '@/openapi/crimeAiSchema';
+
+type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
 export const useUpdateCrimeCase = () => {
   const queryClient = useQueryClient();

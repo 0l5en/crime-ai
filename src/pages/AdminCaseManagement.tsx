@@ -5,7 +5,9 @@ import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CrimeCaseDto } from "supabase/functions/_shared/crime-api-types";
+import type { components } from '@/openapi/crimeAiSchema';
+
+type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();

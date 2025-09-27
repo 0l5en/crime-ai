@@ -10,6 +10,8 @@ import { useCaseSuspects } from "@/hooks/useCaseSuspects";
 import { useCreateSolutionAttempt } from "@/hooks/useCreateSolutionAttempt";
 import { useCrimeCase } from "@/hooks/useCrimeCase";
 import { useSolutionAttempts } from "@/hooks/useSolutionAttempts";
+import { useCaseRating } from "@/hooks/useCaseRating";
+import StarRating from "@/components/StarRating";
 import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,6 +27,7 @@ const CaseSolution = () => {
   const [showResult, setShowResult] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [isSolved, setIsSolved] = useState(false);
+  const [userRating, setUserRating] = useState(0);
 
   const { data: crimeCase } = useCrimeCase(caseId || '');
   const { data: evidences } = useCaseEvidences(caseId || '');
@@ -32,6 +35,7 @@ const CaseSolution = () => {
   const { data: motives } = useCaseMotives(caseId || '');
 
   const createSolutionMutation = useCreateSolutionAttempt(caseId || '');
+  const { setRating } = useCaseRating(caseId || '', user?.email);
 
   // Query for checking successful attempts (will be triggered after solution submission)
   const { data: successfulAttempts, refetch: checkSolutionSuccess } = useSolutionAttempts(
@@ -76,6 +80,7 @@ const CaseSolution = () => {
     setSelectedMotives([]);
     setShowResult(false);
     setIsSolved(false);
+    setUserRating(0);
   };
 
   const getImageColor = (index: number) => {
@@ -166,6 +171,38 @@ const CaseSolution = () => {
                       }
                     </p>
                   </div>
+
+                  {/* Solution Summary - nur bei erfolgreicher Lösung */}
+                  {isSolved && crimeCase?.summary && (
+                    <div className="mb-4 p-4 bg-light border rounded">
+                      <h3 className="h5 mb-3 text-success">Solution Summary</h3>
+                      <p className="text-start" style={{ whiteSpace: 'pre-line' }}>
+                        {crimeCase.summary}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Rating Section - nur bei erfolgreicher Lösung */}
+                  {isSolved && (
+                    <div className="mb-4">
+                      <h3 className="h5 mb-3">Rate this Case</h3>
+                      <div className="d-flex justify-content-center">
+                        <StarRating
+                          rating={userRating}
+                          onRatingChange={(rating) => {
+                            setUserRating(rating);
+                            setRating(rating);
+                          }}
+                          size={32}
+                        />
+                      </div>
+                      {userRating > 0 && (
+                        <p className="text-muted mt-2 small">
+                          Thank you for rating this case!
+                        </p>
+                      )}
+                    </div>
+                  )}
 
                   <div className="d-flex justify-content-center gap-3">
                     <button
