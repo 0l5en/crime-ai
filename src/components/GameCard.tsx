@@ -77,7 +77,7 @@ const GameCard = ({
           </div>
         ) : (
           <div className="mt-auto">
-            <p className="text-muted small mb-0">Noch nicht bewertet</p>
+            <p className="text-muted small mb-0">Not yet rated</p>
           </div>
         )}
       </div>
