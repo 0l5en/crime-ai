@@ -1,6 +1,8 @@
 import { Facebook, Github, Instagram, Twitter } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation('common');
   return (
     <footer className="bg-body py-4 mt-auto">
       <div className="container">
@@ -34,23 +36,23 @@ const Footer = () => {
             <div className="d-flex flex-column align-items-md-end">
               <div className="d-flex gap-4 mb-2 flex-wrap justify-content-center justify-content-md-end">
                 <a href="/terms" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
-                  Terms
+                  {t('footer.terms')}
                 </a>
                 <a href="/privacy" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
-                  Privacy
+                  {t('footer.privacy')}
                 </a>
                 <a href="/cookies" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
-                  Cookies
+                  {t('footer.cookies')}
                 </a>
                 <a href="/imprint" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
-                  Imprint
+                  {t('footer.imprint')}
                 </a>
                 <a href="#" className="text-secondary text-decoration-none" style={{ fontSize: '0.9rem' }}>
-                  Contact
+                  {t('footer.contact')}
                 </a>
               </div>
               <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: '0.8rem' }}>
-                © 2025 moo.codes | All rights reserved
+                {t('footer.copyright')}
               </p>
             </div>
           </div>

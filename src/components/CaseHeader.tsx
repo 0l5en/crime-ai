@@ -1,5 +1,5 @@
-
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface CaseHeaderProps {
   caseId: string;
@@ -9,15 +9,16 @@ interface CaseHeaderProps {
 
 const CaseHeader = ({ caseId, title, summary }: CaseHeaderProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation('caseDashboard');
 
   return (
     <div className="d-flex align-items-center justify-content-between mb-4">
       <div>
         <h1 className="h2 mb-1 fw-bold">
-          {title || 'Loading...'}
+          {title || t('header.loading')}
         </h1>
         <p className="text-muted mb-0">
-          {summary || 'Loading case details...'}
+          {summary || t('header.loadingDetails')}
         </p>
       </div>
 
@@ -25,7 +26,7 @@ const CaseHeader = ({ caseId, title, summary }: CaseHeaderProps) => {
         disabled={false}
         onClick={() => navigate(`/case/${caseId}/solution`)}
         className="btn btn-primary btn-lg ms-4 text-nowrap" style={{ fontSize: '1.3rem' }}>
-        Solve this case
+        {t('header.solveCase')}
       </button>
     </div>
   );

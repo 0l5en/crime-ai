@@ -1,0 +1,22 @@
+{
+  "title": "Available Cases",
+  "filters": {
+    "caseType": "Case Type",
+    "timePeriod": "Time Period",
+    "language": "Language",
+    "allCases": "All Cases",
+    "freeCases": "Free Cases",
+    "premiumCases": "Premium Cases",
+    "resetFilters": "Reset Filters"
+  },
+  "card": {
+    "notYetRated": "Not yet rated",
+    "rating": "rating",
+    "ratings": "ratings"
+  },
+  "status": {
+    "loading": "Loading cases...",
+    "noResults": "No cases found",
+    "error": "Error loading cases"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Transformez Votre Lieu en une Expérience Criminelle Inoubliable",
+    "subtitle": "Offrez à vos invités un jeu de détective interactif qui les captivera",
+    "cta": "Demander Maintenant"
+  },
+  "why": {
+    "title": "Pourquoi les Lieux Adorent Crime AI",
+    "subtitle": "Le complément parfait à votre offre d'événements"
+  },
+  "howItWorks": {
+    "title": "Comment Ça Marche",
+    "subtitle": "Votre propre événement criminel en quelques étapes"
+  },
+  "pricing": {
+    "title": "Tarifs",
+    "subtitle": "Forfaits flexibles pour tous les besoins"
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées",
+    "subtitle": "Réponses aux questions les plus importantes"
+  },
+  "testimonials": {
+    "title": "Ce Que Disent Nos Partenaires",
+    "subtitle": "Expériences des lieux"
+  },
+  "cta": {
+    "title": "Prêt à Ravir Vos Invités ?",
+    "subtitle": "Contactez-nous dès aujourd'hui pour un devis sans engagement",
+    "button": "Nous Contacter Maintenant"
+  }
+}

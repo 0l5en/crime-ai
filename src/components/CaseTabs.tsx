@@ -1,6 +1,6 @@
-
 import { Home, Search, Users, UserX } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
+import { useTranslation } from 'react-i18next';
 
 interface CaseTabsProps {
   activeTab: string;
@@ -9,12 +9,13 @@ interface CaseTabsProps {
 
 const CaseTabs = ({ activeTab, onTabChange }: CaseTabsProps) => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation('caseDashboard');
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: Home },
-    { id: 'evidence', label: 'Evidence', icon: Search },
-    { id: 'witnesses', label: 'Witnesses', icon: Users },
-    { id: 'suspects', label: 'Suspects', icon: UserX },
+    { id: 'overview', label: t('tabs.overview'), icon: Home },
+    { id: 'evidence', label: t('tabs.evidence'), icon: Search },
+    { id: 'witnesses', label: t('tabs.witnesses'), icon: Users },
+    { id: 'suspects', label: t('tabs.suspects'), icon: UserX },
   ];
 
   return (

@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Trasforma la Tua Location in un'Esperienza Criminale Indimenticabile",
+    "subtitle": "Offri ai tuoi ospiti un gioco di detective interattivo che li affascinerà",
+    "cta": "Richiedi Ora"
+  },
+  "why": {
+    "title": "Perché le Location Amano Crime AI",
+    "subtitle": "L'aggiunta perfetta alla tua offerta di eventi"
+  },
+  "howItWorks": {
+    "title": "Come Funziona",
+    "subtitle": "Il tuo evento criminale in pochi passaggi"
+  },
+  "pricing": {
+    "title": "Prezzi",
+    "subtitle": "Pacchetti flessibili per ogni esigenza"
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "subtitle": "Risposte alle domande più importanti"
+  },
+  "testimonials": {
+    "title": "Cosa Dicono i Nostri Partner",
+    "subtitle": "Esperienze dalle location"
+  },
+  "cta": {
+    "title": "Pronto a Deliziare i Tuoi Ospiti?",
+    "subtitle": "Contattaci oggi per un preventivo non vincolante",
+    "button": "Contattaci Ora"
+  }
+}

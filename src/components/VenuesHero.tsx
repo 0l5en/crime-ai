@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 const VenuesHero = () => {
+  const { t } = useTranslation('venues');
+  
   const scrollToContact = () => {
     const contactSection = document.querySelector('[data-section="contact"]');
     if (contactSection) {
@@ -38,23 +42,23 @@ const VenuesHero = () => {
             lineHeight: '1.1'
           }}
         >
-          Transform Your Venue Into an Interactive Mystery Experience
+          {t('hero.title')}
         </h1>
         <p className="lead text-light mb-5 mx-auto fs-4" style={{ maxWidth: '800px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
-          Create custom detective cases tailored to your exact location. Turn your Airbnb, hotel, or restaurant into an unforgettable mystery adventure that keeps guests coming back.
+          {t('hero.subtitle')}
         </p>
         <div className="d-flex gap-3 justify-content-center flex-wrap mb-4">
           <button 
             onClick={scrollToContact}
             className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
           >
-            Register For Free
+            {t('hero.cta')}
           </button>
           <button 
             onClick={scrollToHowItWorks}
             className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
           >
-            See How It Works
+            {t('howItWorks.title')}
           </button>
         </div>
         <p className="text-light opacity-75">

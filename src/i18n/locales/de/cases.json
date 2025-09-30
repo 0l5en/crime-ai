@@ -1,0 +1,22 @@
+{
+  "title": "Verfügbare Fälle",
+  "filters": {
+    "caseType": "Fall-Typ",
+    "timePeriod": "Zeitraum",
+    "language": "Sprache",
+    "allCases": "Alle Fälle",
+    "freeCases": "Kostenlose Fälle",
+    "premiumCases": "Premium-Fälle",
+    "resetFilters": "Filter zurücksetzen"
+  },
+  "card": {
+    "notYetRated": "Noch nicht bewertet",
+    "rating": "Bewertung",
+    "ratings": "Bewertungen"
+  },
+  "status": {
+    "loading": "Fälle werden geladen...",
+    "noResults": "Keine Fälle gefunden",
+    "error": "Fehler beim Laden der Fälle"
+  }
+}

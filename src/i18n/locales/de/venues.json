@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Verwandeln Sie Ihre Veranstaltung in ein unvergessliches Krimi-Erlebnis",
+    "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel, das sie begeistern wird",
+    "cta": "Jetzt anfragen"
+  },
+  "why": {
+    "title": "Warum Veranstaltungsorte Crime AI lieben",
+    "subtitle": "Die perfekte Ergänzung für Ihr Event-Angebot"
+  },
+  "howItWorks": {
+    "title": "So funktioniert's",
+    "subtitle": "In nur wenigen Schritten zu Ihrem eigenen Krimi-Event"
+  },
+  "pricing": {
+    "title": "Preise",
+    "subtitle": "Flexible Pakete für jeden Bedarf"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Antworten auf die wichtigsten Fragen"
+  },
+  "testimonials": {
+    "title": "Das sagen unsere Partner",
+    "subtitle": "Erfahrungen von Veranstaltungsorten"
+  },
+  "cta": {
+    "title": "Bereit, Ihre Gäste zu begeistern?",
+    "subtitle": "Kontaktieren Sie uns noch heute für ein unverbindliches Angebot",
+    "button": "Jetzt Kontakt aufnehmen"
+  }
+}

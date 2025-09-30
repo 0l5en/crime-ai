@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Transform Your Venue into an Unforgettable Crime Experience",
+    "subtitle": "Offer your guests an interactive detective game that will captivate them",
+    "cta": "Request Now"
+  },
+  "why": {
+    "title": "Why Venues Love Crime AI",
+    "subtitle": "The perfect addition to your event offering"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Your own crime event in just a few steps"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Flexible packages for every need"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most important questions"
+  },
+  "testimonials": {
+    "title": "What Our Partners Say",
+    "subtitle": "Experiences from venues"
+  },
+  "cta": {
+    "title": "Ready to Delight Your Guests?",
+    "subtitle": "Contact us today for a non-binding quote",
+    "button": "Contact Us Now"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "admin": "Admin",
+    "vacationRentalDashboard": "Tableau de bord Location de Vacances",
+    "myCases": "Mes Affaires",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "logout": "Se déconnecter"
+  },
+  "footer": {
+    "terms": "CGU",
+    "privacy": "Confidentialité",
+    "cookies": "Cookies",
+    "imprint": "Mentions légales",
+    "contact": "Contact",
+    "copyright": "© 2025 moo.codes | Tous droits réservés"
+  },
+  "buttons": {
+    "learnMore": "En savoir plus",
+    "getStarted": "Commencer",
+    "back": "Retour",
+    "next": "Suivant",
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "save": "Enregistrer"
+  },
+  "status": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès !",
+    "notFound": "Non trouvé"
+  }
+}

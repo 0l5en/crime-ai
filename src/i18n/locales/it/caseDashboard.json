@@ -1,0 +1,29 @@
+{
+  "tabs": {
+    "overview": "Panoramica",
+    "evidence": "Prove",
+    "witnesses": "Testimoni",
+    "suspects": "Sospetti"
+  },
+  "header": {
+    "loading": "Caricamento...",
+    "loadingDetails": "Caricamento dettagli caso...",
+    "solveCase": "Risolvi questo caso"
+  },
+  "solution": {
+    "title": "Risolvi Caso",
+    "summary": "Riepilogo",
+    "selectSuspect": "Seleziona Sospetto",
+    "selectMotive": "Seleziona Movente",
+    "selectEvidence": "Seleziona Prove",
+    "submitSolution": "Invia Soluzione",
+    "success": "Congratulazioni! Hai risolto il caso!",
+    "failure": "Purtroppo, questa non è la soluzione corretta. Riprova!",
+    "rateCase": "Valuta questo caso"
+  },
+  "rating": {
+    "rate": "Valuta questo caso",
+    "rating": "valutazione",
+    "ratings": "valutazioni"
+  }
+}

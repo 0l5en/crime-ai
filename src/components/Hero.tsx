@@ -1,5 +1,8 @@
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation('home');
+  
   const scrollToCases = () => {
     const casesSection = document.querySelector('[data-section="cases"]');
     if (casesSection) {
@@ -36,17 +39,17 @@ const Hero = () => {
             whiteSpace: 'nowrap'
           }}
         >
-          Unravel the Truth, One Clue at a Time
+          {t('hero.title')}
         </h1>
         <p className="lead text-white mb-5 mx-auto" style={{ maxWidth: '70%', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
-          Dive into a world of mystery and intrigue with our AI-powered interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.
+          {t('hero.subtitle')}
         </p>
         <button 
           onClick={scrollToCases}
           className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold"
           style={{ fontSize: '1.1rem' }}
         >
-          Explore Cases
+          {t('hero.exploreCases')}
         </button>
       </div>
     </section>

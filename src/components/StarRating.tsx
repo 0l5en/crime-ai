@@ -1,5 +1,6 @@
 import { Star } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface StarRatingProps {
   rating?: number;
@@ -19,6 +20,7 @@ const StarRating = ({
   count = 0
 }: StarRatingProps) => {
   const [hoverRating, setHoverRating] = useState(0);
+  const { t } = useTranslation('caseDashboard');
 
   const handleStarClick = (starNumber: number) => {
     if (!readonly && onRatingChange) {
@@ -67,7 +69,7 @@ const StarRating = ({
       </div>
       {showCount && count > 0 && (
         <span className="text-sm text-muted-foreground ml-1">
-          ({count} {count === 1 ? 'rating' : 'ratings'})
+          ({count} {count === 1 ? t('rating.rating') : t('rating.ratings')})
         </span>
       )}
     </div>

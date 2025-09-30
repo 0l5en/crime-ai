@@ -1,0 +1,29 @@
+{
+  "tabs": {
+    "overview": "Overview",
+    "evidence": "Evidence",
+    "witnesses": "Witnesses",
+    "suspects": "Suspects"
+  },
+  "header": {
+    "loading": "Loading...",
+    "loadingDetails": "Loading case details...",
+    "solveCase": "Solve this case"
+  },
+  "solution": {
+    "title": "Solve Case",
+    "summary": "Summary",
+    "selectSuspect": "Select Suspect",
+    "selectMotive": "Select Motive",
+    "selectEvidence": "Select Evidence",
+    "submitSolution": "Submit Solution",
+    "success": "Congratulations! You solved the case!",
+    "failure": "Unfortunately, that's not the correct solution. Try again!",
+    "rateCase": "Rate this case"
+  },
+  "rating": {
+    "rate": "Rate this case",
+    "rating": "rating",
+    "ratings": "ratings"
+  }
+}

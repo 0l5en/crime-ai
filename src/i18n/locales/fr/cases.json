@@ -1,0 +1,22 @@
+{
+  "title": "Affaires Disponibles",
+  "filters": {
+    "caseType": "Type d'Affaire",
+    "timePeriod": "Période",
+    "language": "Langue",
+    "allCases": "Toutes les Affaires",
+    "freeCases": "Affaires Gratuites",
+    "premiumCases": "Affaires Premium",
+    "resetFilters": "Réinitialiser les Filtres"
+  },
+  "card": {
+    "notYetRated": "Pas encore noté",
+    "rating": "note",
+    "ratings": "notes"
+  },
+  "status": {
+    "loading": "Chargement des affaires...",
+    "noResults": "Aucune affaire trouvée",
+    "error": "Erreur lors du chargement des affaires"
+  }
+}

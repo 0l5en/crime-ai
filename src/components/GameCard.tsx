@@ -1,6 +1,6 @@
-
 import { useNavigate } from 'react-router-dom';
 import StarRating from './StarRating';
+import { useTranslation } from 'react-i18next';
 
 interface GameCardProps {
   title: string;
@@ -30,6 +30,7 @@ const GameCard = ({
   ratingCount
 }: GameCardProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation('cases');
 
   const handleCardClick = () => {
     if (onClick) {
@@ -77,7 +78,7 @@ const GameCard = ({
           </div>
         ) : (
           <div className="mt-auto">
-            <p className="text-muted small mb-0">Not yet rated</p>
+            <p className="text-muted small mb-0">{t('card.notYetRated')}</p>
           </div>
         )}
       </div>

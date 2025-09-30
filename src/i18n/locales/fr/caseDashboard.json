@@ -1,0 +1,29 @@
+{
+  "tabs": {
+    "overview": "Vue d'ensemble",
+    "evidence": "Preuves",
+    "witnesses": "Témoins",
+    "suspects": "Suspects"
+  },
+  "header": {
+    "loading": "Chargement...",
+    "loadingDetails": "Chargement des détails de l'affaire...",
+    "solveCase": "Résoudre cette affaire"
+  },
+  "solution": {
+    "title": "Résoudre l'Affaire",
+    "summary": "Résumé",
+    "selectSuspect": "Sélectionner le Suspect",
+    "selectMotive": "Sélectionner le Motif",
+    "selectEvidence": "Sélectionner les Preuves",
+    "submitSolution": "Soumettre la Solution",
+    "success": "Félicitations ! Vous avez résolu l'affaire !",
+    "failure": "Malheureusement, ce n'est pas la bonne solution. Réessayez !",
+    "rateCase": "Évaluer cette affaire"
+  },
+  "rating": {
+    "rate": "Évaluer cette affaire",
+    "rating": "note",
+    "ratings": "notes"
+  }
+}

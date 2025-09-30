@@ -1,0 +1,22 @@
+{
+  "title": "Casi Disponibili",
+  "filters": {
+    "caseType": "Tipo di Caso",
+    "timePeriod": "Periodo di Tempo",
+    "language": "Lingua",
+    "allCases": "Tutti i Casi",
+    "freeCases": "Casi Gratuiti",
+    "premiumCases": "Casi Premium",
+    "resetFilters": "Ripristina Filtri"
+  },
+  "card": {
+    "notYetRated": "Non ancora valutato",
+    "rating": "valutazione",
+    "ratings": "valutazioni"
+  },
+  "status": {
+    "loading": "Caricamento casi...",
+    "noResults": "Nessun caso trovato",
+    "error": "Errore nel caricamento dei casi"
+  }
+}

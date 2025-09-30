@@ -1,11 +1,13 @@
-
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import { Link } from "react-router-dom";
 import NotificationBadge from "./NotificationBadge";
 import ThemeToggle from "./ThemeToggle";
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const { authenticated, user, login, logout, hasRole } = useKeycloak();
+  const { t } = useTranslation('common');
 
   return (
     <>
@@ -19,6 +21,11 @@ const Header = () => {
 
           {/* Desktop Navigation - visible on lg+ screens */}
           <div className="d-none d-lg-flex navbar-nav ms-auto align-items-center gap-3">
+            {/* Language Selector */}
+            <div className="nav-item">
+              <LanguageSelector variant="desktop" />
+            </div>
+
             {/* Theme Toggle */}
             <div className="nav-item">
               <ThemeToggle />
@@ -52,7 +59,7 @@ const Header = () => {
                   <div className="nav-item">
                     <Link to="/admin" className="nav-link p-0">
                       <button className="btn btn-outline-primary bg-transparent border-danger text-danger">
-                        Admin
+                        {t('nav.admin')}
                       </button>
                     </Link>
                   </div>
@@ -64,7 +71,7 @@ const Header = () => {
                     <Link to="/vacation-rental-dashboard" className="nav-link p-0">
                       <button className="btn btn-primary">
                         <i className="bi bi-house-door me-1"></i>
-                        My Cases
+                        {t('nav.myCases')}
                       </button>
                     </Link>
                   </div>
@@ -76,7 +83,7 @@ const Header = () => {
                     className="btn btn-outline-secondary"
                     onClick={logout}
                   >
-                    Logout
+                    {t('nav.logout')}
                   </button>
                 </div>
               </>
@@ -88,14 +95,14 @@ const Header = () => {
                     className="btn btn-outline-secondary"
                     onClick={() => login()}
                   >
-                    Sign In
+                    {t('nav.signIn')}
                   </button>
                 </div>
 
                 {/* Sign Up Button */}
                 <div className="nav-item">
                   <button className="btn btn-danger">
-                    Sign Up
+                    {t('nav.signUp')}
                   </button>
                 </div>
               </>
@@ -148,6 +155,11 @@ const Header = () => {
         {/* Offcanvas Body */}
         <div className="offcanvas-body d-flex flex-column justify-content-between">
           <div>
+            {/* Language Selector */}
+            <div className="mb-4">
+              <LanguageSelector variant="mobile" />
+            </div>
+
             {/* Theme Toggle */}
             <div className="mb-4 d-flex align-items-center justify-content-between">
               <span>Theme</span>
@@ -179,7 +191,7 @@ const Header = () => {
                     data-bs-dismiss="offcanvas"
                   >
                     <i className="bi bi-house-door me-2"></i>
-                    My Cases
+                    {t('nav.myCases')}
                   </Link>
                 )}
 
@@ -190,7 +202,7 @@ const Header = () => {
                     className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2"
                     data-bs-dismiss="offcanvas"
                   >
-                    Admin Dashboard
+                    {t('nav.admin')}
                   </Link>
                 )}
               </div>
@@ -212,7 +224,7 @@ const Header = () => {
                   }
                 }}
               >
-                Logout
+                {t('nav.logout')}
               </button>
             ) : (
               <div className="d-grid gap-2">
@@ -228,10 +240,10 @@ const Header = () => {
                     }
                   }}
                 >
-                  Sign In
+                  {t('nav.signIn')}
                 </button>
                 <button className="btn btn-danger">
-                  Sign Up
+                  {t('nav.signUp')}
                 </button>
               </div>
             )}

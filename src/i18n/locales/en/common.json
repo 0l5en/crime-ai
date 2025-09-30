@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "admin": "Admin",
+    "vacationRentalDashboard": "Vacation Rental Dashboard",
+    "myCases": "My Cases",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logout": "Logout"
+  },
+  "footer": {
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "imprint": "Imprint",
+    "contact": "Contact",
+    "copyright": "© 2025 moo.codes | All rights reserved"
+  },
+  "buttons": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save"
+  },
+  "status": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "notFound": "Not found"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "tabs": {
+    "overview": "Übersicht",
+    "evidence": "Beweise",
+    "witnesses": "Zeugen",
+    "suspects": "Verdächtige"
+  },
+  "header": {
+    "loading": "Lädt...",
+    "loadingDetails": "Falldetails werden geladen...",
+    "solveCase": "Fall lösen"
+  },
+  "solution": {
+    "title": "Fall lösen",
+    "summary": "Zusammenfassung",
+    "selectSuspect": "Verdächtigen auswählen",
+    "selectMotive": "Motiv auswählen",
+    "selectEvidence": "Beweise auswählen",
+    "submitSolution": "Lösung einreichen",
+    "success": "Herzlichen Glückwunsch! Sie haben den Fall gelöst!",
+    "failure": "Leider ist das nicht die richtige Lösung. Versuchen Sie es erneut!",
+    "rateCase": "Bewerten Sie diesen Fall"
+  },
+  "rating": {
+    "rate": "Bewerten Sie diesen Fall",
+    "rating": "Bewertung",
+    "ratings": "Bewertungen"
+  }
+}

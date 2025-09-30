@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "admin": "Admin",
+    "vacationRentalDashboard": "Dashboard Affitti Vacanze",
+    "myCases": "I Miei Casi",
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "logout": "Esci"
+  },
+  "footer": {
+    "terms": "Termini",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "imprint": "Colophon",
+    "contact": "Contatto",
+    "copyright": "© 2025 moo.codes | Tutti i diritti riservati"
+  },
+  "buttons": {
+    "learnMore": "Scopri di più",
+    "getStarted": "Inizia ora",
+    "back": "Indietro",
+    "next": "Avanti",
+    "submit": "Invia",
+    "cancel": "Annulla",
+    "close": "Chiudi",
+    "save": "Salva"
+  },
+  "status": {
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "success": "Successo!",
+    "notFound": "Non trovato"
+  }
+}
