@@ -51,7 +51,7 @@ const Footer = () => {
                   {t('footer.contact')}
                 </a>
               </div>
-              <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: '0.8rem' }}>
+              <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: '0.7rem' }}>
                 {t('footer.copyright')}
               </p>
             </div>
