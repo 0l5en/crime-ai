@@ -1,10 +1,11 @@
-
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import GameCard from "./GameCard";
 
 const GameShowcase = () => {
+  const { t } = useTranslation('home');
   const { data: crimeCases, isLoading, error } = useCrimeCases({
     caseGeneratorFormType: 'BASIC',
     status: 'PUBLISHED,PREMIUM'
@@ -32,16 +33,16 @@ const GameShowcase = () => {
     >
       <div className="container">
         <div className="text-center mb-5">
-          <h2 className="display-4 fw-bold mb-4">Latest Crime Cases</h2>
+          <h2 className="display-4 fw-bold mb-4">{t('showcase.title')}</h2>
           {isLoading && (
-            <div className="text-muted">Loading cases...</div>
+            <div className="text-muted">{t('showcase.loadingCases')}</div>
           )}
         </div>
 
         {error && (
           <div className="text-center py-5">
             <div className="text-danger h4 mb-3">
-              Failed to load crime cases
+              {t('showcase.failedToLoad')}
             </div>
             <div className="text-muted">
               {error.message}
@@ -52,7 +53,7 @@ const GameShowcase = () => {
         {!error && !isLoading && (!crimeCases?.items || crimeCases.items.length === 0) && (
           <div className="text-center py-5">
             <div className="text-muted h5">
-              No crime cases available
+              {t('showcase.noCasesAvailable')}
             </div>
           </div>
         )}
@@ -78,7 +79,7 @@ const GameShowcase = () => {
                 className="btn btn-primary btn-lg px-5 py-3 rounded-pill"
                 onClick={() => navigate('/cases')}
               >
-                View All Cases
+                {t('showcase.viewAllCases')}
               </button>
             </div>
           </>

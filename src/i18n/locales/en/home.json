@@ -4,12 +4,55 @@
     "subtitle": "Dive into a world of mystery and intrigue with our AI-powered interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.",
     "exploreCases": "Explore Cases"
   },
+  "showcase": {
+    "title": "Latest Crime Cases",
+    "loadingCases": "Loading cases...",
+    "failedToLoad": "Failed to load crime cases",
+    "noCasesAvailable": "No crime cases available",
+    "viewAllCases": "View All Cases"
+  },
   "features": {
-    "title": "Features",
-    "subtitle": "What makes our games special"
+    "title": "DetectivesGame Features",
+    "subtitle": "Use cutting-edge investigation methods and tools to solve the most complicated cases",
+    "forensicAnalysis": {
+      "title": "Forensic Analysis",
+      "description": "Analyze fingerprints, DNA traces, and other evidence using cutting-edge forensic methods in this interactive detective game experience."
+    },
+    "witnessesAndSuspects": {
+      "title": "Witnesses & Suspects",
+      "description": "Interview witnesses and interrogate suspects with our advanced AI system that creates realistic conversations in this interactive detective game."
+    },
+    "caseFiles": {
+      "title": "Case Files",
+      "description": "Access detailed digital case files containing all the vital information, evidence, and investigation reports needed to solve cases in this interactive detective game."
+    },
+    "interactiveMaps": {
+      "title": "Interactive Maps",
+      "description": "Explore crime scenes and track suspect movements with detailed interactive maps that reveal crucial spatial relationships in this immersive detective experience."
+    },
+    "premiumContent": {
+      "title": "Premium Content",
+      "description": "Unlock exclusive premium cases with more complex scenarios, additional content, and challenging mysteries in our interactive detective game collection."
+    },
+    "referralProgram": {
+      "title": "Referral Program",
+      "description": "Earn real money by referring friends to DetectiveGame. Get one month of premium membership for each new premium member you refer."
+    }
   },
   "reviews": {
-    "title": "Reviews",
-    "subtitle": "What our players say"
+    "title": "What Our Detectives Say",
+    "subtitle": "Experiences from investigators who have already solved cases",
+    "review1": {
+      "role": "Amateur Detective",
+      "text": "The cases are incredibly well-researched, and the AI makes investigating a real experience. Inspector Kruger always makes me smile!"
+    },
+    "review2": {
+      "role": "Premium Member",
+      "text": "I've tried many detective games, but none are as immersive as DetectivesGame. The premium cases are worth every penny!"
+    },
+    "review3": {
+      "role": "Crime Enthusiast",
+      "text": "The ability to question witnesses and analyze evidence feels like being in a real crime drama. Absolutely addictive!"
+    }
   }
 }

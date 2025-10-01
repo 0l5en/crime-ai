@@ -4,12 +4,55 @@
     "subtitle": "Tauche ein in eine Welt voller Mysterien und Intrigen mit unseren KI-gestützten interaktiven Detektivspielen. Löse komplexe Fälle, verhöre Verdächtige und decke verborgene Geheimnisse auf.",
     "exploreCases": "Fälle erkunden"
   },
+  "showcase": {
+    "title": "Neueste Kriminalfälle",
+    "loadingCases": "Lade Fälle...",
+    "failedToLoad": "Fehler beim Laden der Kriminalfälle",
+    "noCasesAvailable": "Keine Kriminalfälle verfügbar",
+    "viewAllCases": "Alle Fälle anzeigen"
+  },
   "features": {
-    "title": "Funktionen",
-    "subtitle": "Was unsere Spiele besonders macht"
+    "title": "DetectivesGame Features",
+    "subtitle": "Nutze modernste Ermittlungsmethoden und Werkzeuge, um die kompliziertesten Fälle zu lösen",
+    "forensicAnalysis": {
+      "title": "Forensische Analyse",
+      "description": "Analysiere Fingerabdrücke, DNA-Spuren und andere Beweise mit modernsten forensischen Methoden in diesem interaktiven Detektivspiel."
+    },
+    "witnessesAndSuspects": {
+      "title": "Zeugen & Verdächtige",
+      "description": "Befrage Zeugen und verhöre Verdächtige mit unserem fortschrittlichen KI-System, das realistische Gespräche in diesem interaktiven Detektivspiel ermöglicht."
+    },
+    "caseFiles": {
+      "title": "Fallakten",
+      "description": "Greife auf detaillierte digitale Fallakten zu, die alle wichtigen Informationen, Beweise und Ermittlungsberichte enthalten, die zur Lösung von Fällen in diesem interaktiven Detektivspiel benötigt werden."
+    },
+    "interactiveMaps": {
+      "title": "Interaktive Karten",
+      "description": "Erkunde Tatorte und verfolge Bewegungen von Verdächtigen mit detaillierten interaktiven Karten, die wichtige räumliche Zusammenhänge in diesem fesselnden Detektiverlebnis offenbaren."
+    },
+    "premiumContent": {
+      "title": "Premium-Inhalte",
+      "description": "Schalte exklusive Premium-Fälle mit komplexeren Szenarien, zusätzlichen Inhalten und herausfordernden Mysterien in unserer interaktiven Detektivspiel-Sammlung frei."
+    },
+    "referralProgram": {
+      "title": "Empfehlungsprogramm",
+      "description": "Verdiene echtes Geld, indem du Freunde zu DetectiveGame einlädst. Erhalte einen Monat Premium-Mitgliedschaft für jedes neue Premium-Mitglied, das du wirbst."
+    }
   },
   "reviews": {
-    "title": "Bewertungen",
-    "subtitle": "Was unsere Spieler sagen"
+    "title": "Was unsere Detektive sagen",
+    "subtitle": "Erfahrungen von Ermittlern, die bereits Fälle gelöst haben",
+    "review1": {
+      "role": "Amateur-Detektiv",
+      "text": "Die Fälle sind unglaublich gut recherchiert und die KI macht das Ermitteln zu einem echten Erlebnis. Inspektor Kruger bringt mich immer zum Schmunzeln!"
+    },
+    "review2": {
+      "role": "Premium-Mitglied",
+      "text": "Ich habe viele Detektivspiele ausprobiert, aber keines ist so fesselnd wie DetectivesGame. Die Premium-Fälle sind jeden Cent wert!"
+    },
+    "review3": {
+      "role": "Krimi-Enthusiast",
+      "text": "Die Möglichkeit, Zeugen zu befragen und Beweise zu analysieren, fühlt sich an wie in einer echten Krimi-Serie. Absolut süchtig machend!"
+    }
   }
 }

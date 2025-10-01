@@ -2,29 +2,32 @@ import lauraAvatar from "@/assets/laura-avatar.jpg";
 import marcusAvatar from "@/assets/marcus-avatar.jpg";
 import thomasAvatar from "@/assets/thomas-avatar.jpg";
 import { Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const GameReviews = () => {
+  const { t } = useTranslation('home');
+  
   const reviews = [
     {
       name: "Marcus W.",
-      role: "Amateur Detective",
+      roleKey: "reviews.review1.role",
       avatar: marcusAvatar,
       rating: 5,
-      text: "The cases are incredibly well-researched, and the AI makes investigating a real experience. Inspector Kruger always makes me smile!"
+      textKey: "reviews.review1.text"
     },
     {
       name: "Laura K.",
-      role: "Premium Member",
+      roleKey: "reviews.review2.role",
       avatar: lauraAvatar,
       rating: 5,
-      text: "I've tried many detective games, but none are as immersive as DetectivesGame. The premium cases are worth every penny!"
+      textKey: "reviews.review2.text"
     },
     {
       name: "Thomas S.",
-      role: "Crime Enthusiast",
+      roleKey: "reviews.review3.role",
       avatar: thomasAvatar,
       rating: 5,
-      text: "The ability to question witnesses and analyze evidence feels like being in a real crime drama. Absolutely addictive!"
+      textKey: "reviews.review3.text"
     }
   ];
 
@@ -44,9 +47,9 @@ const GameReviews = () => {
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold text-primary-custom mb-4">What Our Detectives Say</h2>
+            <h2 className="display-4 fw-bold text-primary-custom mb-4">{t('reviews.title')}</h2>
             <p className="lead">
-              Experiences from investigators who have already solved cases
+              {t('reviews.subtitle')}
             </p>
           </div>
         </div>
@@ -65,12 +68,12 @@ const GameReviews = () => {
                     />
                     <div>
                       <h6 className="mb-0 fw-bold">{review.name}</h6>
-                      <small className="text-muted">{review.role}</small>
+                      <small className="text-muted">{t(review.roleKey)}</small>
                     </div>
                   </div>
 
                   <p className="mb-3" style={{ fontStyle: 'italic' }}>
-                    "{review.text}"
+                    "{t(review.textKey)}"
                   </p>
 
                   <div className="d-flex">

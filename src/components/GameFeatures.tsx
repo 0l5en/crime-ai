@@ -1,36 +1,39 @@
 import { DollarSign, FileText, Fingerprint, MapPin, Shield, Users } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const GameFeatures = () => {
+  const { t } = useTranslation('home');
+  
   const features = [
     {
       icon: Fingerprint,
-      title: "Forensic Analysis",
-      description: "Analyze fingerprints, DNA traces, and other evidence using cutting-edge forensic methods in this interactive detective game experience."
+      titleKey: "features.forensicAnalysis.title",
+      descriptionKey: "features.forensicAnalysis.description"
     },
     {
       icon: Users,
-      title: "Witnesses & Suspects",
-      description: "Interview witnesses and interrogate suspects with our advanced AI system that creates realistic conversations in this interactive detective game."
+      titleKey: "features.witnessesAndSuspects.title",
+      descriptionKey: "features.witnessesAndSuspects.description"
     },
     {
       icon: FileText,
-      title: "Case Files",
-      description: "Access detailed digital case files containing all the vital information, evidence, and investigation reports needed to solve cases in this interactive detective game."
+      titleKey: "features.caseFiles.title",
+      descriptionKey: "features.caseFiles.description"
     },
     {
       icon: MapPin,
-      title: "Interactive Maps",
-      description: "Explore crime scenes and track suspect movements with detailed interactive maps that reveal crucial spatial relationships in this immersive detective experience."
+      titleKey: "features.interactiveMaps.title",
+      descriptionKey: "features.interactiveMaps.description"
     },
     {
       icon: Shield,
-      title: "Premium Content",
-      description: "Unlock exclusive premium cases with more complex scenarios, additional content, and challenging mysteries in our interactive detective game collection."
+      titleKey: "features.premiumContent.title",
+      descriptionKey: "features.premiumContent.description"
     },
     {
       icon: DollarSign,
-      title: "Referral Program",
-      description: "Earn real money by referring friends to DetectiveGame. Get one month of premium membership for each new premium member you refer."
+      titleKey: "features.referralProgram.title",
+      descriptionKey: "features.referralProgram.description"
     }
   ];
 
@@ -39,9 +42,9 @@ const GameFeatures = () => {
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold text-primary-custom mb-4">DetectivesGame Features</h2>
+            <h2 className="display-4 fw-bold text-primary-custom mb-4">{t('features.title')}</h2>
             <p className="lead">
-              Use cutting-edge investigation methods and tools to solve the most complicated cases
+              {t('features.subtitle')}
             </p>
           </div>
         </div>
@@ -56,8 +59,8 @@ const GameFeatures = () => {
                     <div className="mb-3">
                       <IconComponent size={48} className="text-primary-custom" />
                     </div>
-                    <h4 className="text-primary-custom mb-3">{feature.title}</h4>
-                    <p className="mb-0">{feature.description}</p>
+                    <h4 className="text-primary-custom mb-3">{t(feature.titleKey)}</h4>
+                    <p className="mb-0">{t(feature.descriptionKey)}</p>
                   </div>
                 </div>
               </div>

@@ -4,12 +4,55 @@
     "subtitle": "Plongez dans un monde de mystère et d'intrigue avec nos jeux de détective interactifs alimentés par l'IA. Résolvez des affaires complexes, interrogez des suspects et découvrez des secrets cachés.",
     "exploreCases": "Explorer les Affaires"
   },
+  "showcase": {
+    "title": "Dernières Affaires Criminelles",
+    "loadingCases": "Chargement des affaires...",
+    "failedToLoad": "Échec du chargement des affaires criminelles",
+    "noCasesAvailable": "Aucune affaire criminelle disponible",
+    "viewAllCases": "Voir Toutes les Affaires"
+  },
   "features": {
-    "title": "Fonctionnalités",
-    "subtitle": "Ce qui rend nos jeux spéciaux"
+    "title": "Fonctionnalités de DetectivesGame",
+    "subtitle": "Utilisez des méthodes d'enquête et des outils de pointe pour résoudre les cas les plus compliqués",
+    "forensicAnalysis": {
+      "title": "Analyse Médico-légale",
+      "description": "Analysez les empreintes digitales, les traces d'ADN et d'autres preuves en utilisant des méthodes médico-légales de pointe dans cette expérience de jeu de détective interactif."
+    },
+    "witnessesAndSuspects": {
+      "title": "Témoins et Suspects",
+      "description": "Interviewez des témoins et interrogez des suspects avec notre système d'IA avancé qui crée des conversations réalistes dans ce jeu de détective interactif."
+    },
+    "caseFiles": {
+      "title": "Dossiers d'Affaire",
+      "description": "Accédez à des dossiers numériques détaillés contenant toutes les informations vitales, preuves et rapports d'enquête nécessaires pour résoudre les affaires dans ce jeu de détective interactif."
+    },
+    "interactiveMaps": {
+      "title": "Cartes Interactives",
+      "description": "Explorez les scènes de crime et suivez les mouvements des suspects avec des cartes interactives détaillées qui révèlent des relations spatiales cruciales dans cette expérience de détective immersive."
+    },
+    "premiumContent": {
+      "title": "Contenu Premium",
+      "description": "Débloquez des affaires premium exclusives avec des scénarios plus complexes, du contenu supplémentaire et des mystères stimulants dans notre collection de jeux de détective interactifs."
+    },
+    "referralProgram": {
+      "title": "Programme de Parrainage",
+      "description": "Gagnez de l'argent réel en parrainant des amis sur DetectiveGame. Obtenez un mois d'abonnement premium pour chaque nouveau membre premium que vous parrainez."
+    }
   },
   "reviews": {
-    "title": "Avis",
-    "subtitle": "Ce que disent nos joueurs"
+    "title": "Ce Que Disent Nos Détectives",
+    "subtitle": "Expériences d'enquêteurs qui ont déjà résolu des affaires",
+    "review1": {
+      "role": "Détective Amateur",
+      "text": "Les affaires sont incroyablement bien documentées et l'IA rend l'enquête une véritable expérience. L'inspecteur Kruger me fait toujours sourire !"
+    },
+    "review2": {
+      "role": "Membre Premium",
+      "text": "J'ai essayé de nombreux jeux de détective, mais aucun n'est aussi immersif que DetectivesGame. Les affaires premium valent chaque centime !"
+    },
+    "review3": {
+      "role": "Passionné de Crimes",
+      "text": "La possibilité d'interroger des témoins et d'analyser des preuves donne l'impression d'être dans une vraie série policière. Absolument addictif !"
+    }
   }
 }
