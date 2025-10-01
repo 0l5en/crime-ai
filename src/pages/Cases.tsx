@@ -1,11 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { useKeycloak } from "@/contexts/KeycloakContext";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useTranslation } from "react-i18next";
 import GameCard from "@/components/GameCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const Cases = () => {
+  const { t } = useTranslation('cases');
   const [page, setPage] = useState(1);
   const [allCases, setAllCases] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -71,23 +73,23 @@ const Cases = () => {
           {/* Page Header */}
           <div className="text-center mb-5">
             <h1 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-body-color)' }}>
-              All Crime Cases
+              {t('title')}
             </h1>
             <p className="lead" style={{ color: 'var(--bs-secondary)' }}>
-              Discover and solve challenging crime cases from different eras and locations
+              {t('subtitle')}
             </p>
           </div>
 
           {/* Filters Section (Placeholders - Not Functional Yet) */}
           <div className="card mb-5" style={{ backgroundColor: 'var(--bs-body-bg)', border: '1px solid var(--bs-border-color)' }}>
             <div className="card-body">
-              <h5 className="card-title mb-4" style={{ color: 'var(--bs-body-color)' }}>Filter Cases</h5>
+              <h5 className="card-title mb-4" style={{ color: 'var(--bs-body-color)' }}>{t('filters.title')}</h5>
               
               <div className="row g-3">
                 {/* Free vs Premium Filter */}
                 <div className="col-md-4">
                   <label className="form-label fw-semibold" style={{ color: 'var(--bs-body-color)' }}>
-                    Case Type
+                    {t('filters.caseType.label')}
                   </label>
                   <select 
                     className="form-select" 
@@ -99,16 +101,16 @@ const Cases = () => {
                       color: 'var(--bs-body-color)'
                     }}
                   >
-                    <option value="all">All Cases</option>
-                    <option value="free">Free Cases</option>
-                    <option value="premium">Premium Cases</option>
+                    <option value="all">{t('filters.caseType.all')}</option>
+                    <option value="free">{t('filters.caseType.free')}</option>
+                    <option value="premium">{t('filters.caseType.premium')}</option>
                   </select>
                 </div>
 
                 {/* Epoch Filter */}
                 <div className="col-md-4">
                   <label className="form-label fw-semibold" style={{ color: 'var(--bs-body-color)' }}>
-                    Time Period
+                    {t('filters.timePeriod.label')}
                   </label>
                   <select 
                     className="form-select"
@@ -120,18 +122,18 @@ const Cases = () => {
                       color: 'var(--bs-body-color)'
                     }}
                   >
-                    <option value="all">All Periods</option>
-                    <option value="ancient">Ancient</option>
-                    <option value="medieval">Medieval</option>
-                    <option value="modern">Modern</option>
-                    <option value="contemporary">Contemporary</option>
+                    <option value="all">{t('filters.timePeriod.all')}</option>
+                    <option value="ancient">{t('filters.timePeriod.ancient')}</option>
+                    <option value="medieval">{t('filters.timePeriod.medieval')}</option>
+                    <option value="modern">{t('filters.timePeriod.modern')}</option>
+                    <option value="contemporary">{t('filters.timePeriod.contemporary')}</option>
                   </select>
                 </div>
 
                 {/* Language Filter */}
                 <div className="col-md-4">
                   <label className="form-label fw-semibold" style={{ color: 'var(--bs-body-color)' }}>
-                    Language
+                    {t('filters.language.label')}
                   </label>
                   <select 
                     className="form-select"
@@ -143,9 +145,9 @@ const Cases = () => {
                       color: 'var(--bs-body-color)'
                     }}
                   >
-                    <option value="all">All Languages</option>
-                    <option value="german">German</option>
-                    <option value="english">English</option>
+                    <option value="all">{t('filters.language.all')}</option>
+                    <option value="german">{t('filters.language.german')}</option>
+                    <option value="english">{t('filters.language.english')}</option>
                   </select>
                 </div>
               </div>
@@ -160,7 +162,7 @@ const Cases = () => {
                     color: 'var(--bs-primary)'
                   }}
                 >
-                  Reset Filters
+                  {t('filters.reset')}
                 </button>
               </div>
             </div>
@@ -170,10 +172,10 @@ const Cases = () => {
           {isLoading && page === 1 && (
             <div className="text-center py-5">
               <div className="spinner-border" style={{ color: 'var(--bs-primary)' }} role="status">
-                <span className="visually-hidden">Loading...</span>
+                <span className="visually-hidden">{t('loading')}</span>
               </div>
               <div className="mt-3" style={{ color: 'var(--bs-secondary)' }}>
-                Loading cases...
+                {t('loadingCases')}
               </div>
             </div>
           )}
@@ -182,7 +184,7 @@ const Cases = () => {
           {error && (
             <div className="text-center py-5">
               <div className="text-danger h4 mb-3">
-                Failed to load crime cases
+                {t('error')}
               </div>
               <div className="text-muted">
                 {error.message}
@@ -194,7 +196,7 @@ const Cases = () => {
           {!error && !isLoading && allCases.length === 0 && (
             <div className="text-center py-5">
               <div className="h5" style={{ color: 'var(--bs-secondary)' }}>
-                No crime cases available
+                {t('noCases')}
               </div>
             </div>
           )}
@@ -220,9 +222,9 @@ const Cases = () => {
               {isLoading && page > 1 && (
                 <div className="text-center py-4">
                   <div className="spinner-border spinner-border-sm me-2" style={{ color: 'var(--bs-primary)' }} role="status">
-                    <span className="visually-hidden">Loading...</span>
+                    <span className="visually-hidden">{t('loading')}</span>
                   </div>
-                  <span style={{ color: 'var(--bs-secondary)' }}>Loading more cases...</span>
+                  <span style={{ color: 'var(--bs-secondary)' }}>{t('loadingMore')}</span>
                 </div>
               )}
 
@@ -230,7 +232,7 @@ const Cases = () => {
               {!hasMore && !isLoading && (
                 <div className="text-center py-4">
                   <div style={{ color: 'var(--bs-secondary)' }}>
-                    You've viewed all available cases
+                    {t('allViewed')}
                   </div>
                 </div>
               )}

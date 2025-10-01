@@ -1,22 +1,39 @@
 {
-  "title": "Casi Disponibili",
+  "title": "Tutti i Casi Criminali",
+  "subtitle": "Scopri e risolvi casi criminali impegnativi da diverse epoche e luoghi",
   "filters": {
-    "caseType": "Tipo di Caso",
-    "timePeriod": "Periodo di Tempo",
-    "language": "Lingua",
-    "allCases": "Tutti i Casi",
-    "freeCases": "Casi Gratuiti",
-    "premiumCases": "Casi Premium",
-    "resetFilters": "Ripristina Filtri"
+    "title": "Filtra Casi",
+    "caseType": {
+      "label": "Tipo di Caso",
+      "all": "Tutti i Casi",
+      "free": "Casi Gratuiti",
+      "premium": "Casi Premium"
+    },
+    "timePeriod": {
+      "label": "Periodo Temporale",
+      "all": "Tutti i Periodi",
+      "ancient": "Antico",
+      "medieval": "Medievale",
+      "modern": "Moderno",
+      "contemporary": "Contemporaneo"
+    },
+    "language": {
+      "label": "Lingua",
+      "all": "Tutte le Lingue",
+      "german": "Tedesco",
+      "english": "Inglese"
+    },
+    "reset": "Ripristina Filtri"
   },
+  "loading": "Caricamento...",
+  "loadingCases": "Caricamento casi...",
+  "loadingMore": "Caricamento altri casi...",
+  "error": "Impossibile caricare i casi criminali",
+  "noCases": "Nessun caso criminale disponibile",
+  "allViewed": "Hai visualizzato tutti i casi disponibili",
   "card": {
     "notYetRated": "Non ancora valutato",
     "rating": "valutazione",
     "ratings": "valutazioni"
-  },
-  "status": {
-    "loading": "Caricamento casi...",
-    "noResults": "Nessun caso trovato",
-    "error": "Errore nel caricamento dei casi"
   }
 }

@@ -1,22 +1,39 @@
 {
-  "title": "Available Cases",
+  "title": "All Crime Cases",
+  "subtitle": "Discover and solve challenging crime cases from different eras and locations",
   "filters": {
-    "caseType": "Case Type",
-    "timePeriod": "Time Period",
-    "language": "Language",
-    "allCases": "All Cases",
-    "freeCases": "Free Cases",
-    "premiumCases": "Premium Cases",
-    "resetFilters": "Reset Filters"
+    "title": "Filter Cases",
+    "caseType": {
+      "label": "Case Type",
+      "all": "All Cases",
+      "free": "Free Cases",
+      "premium": "Premium Cases"
+    },
+    "timePeriod": {
+      "label": "Time Period",
+      "all": "All Periods",
+      "ancient": "Ancient",
+      "medieval": "Medieval",
+      "modern": "Modern",
+      "contemporary": "Contemporary"
+    },
+    "language": {
+      "label": "Language",
+      "all": "All Languages",
+      "german": "German",
+      "english": "English"
+    },
+    "reset": "Reset Filters"
   },
+  "loading": "Loading...",
+  "loadingCases": "Loading cases...",
+  "loadingMore": "Loading more cases...",
+  "error": "Failed to load crime cases",
+  "noCases": "No crime cases available",
+  "allViewed": "You've viewed all available cases",
   "card": {
     "notYetRated": "Not yet rated",
     "rating": "rating",
     "ratings": "ratings"
-  },
-  "status": {
-    "loading": "Loading cases...",
-    "noResults": "No cases found",
-    "error": "Error loading cases"
   }
 }

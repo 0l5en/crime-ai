@@ -1,22 +1,39 @@
 {
-  "title": "Affaires Disponibles",
+  "title": "Toutes les Affaires Criminelles",
+  "subtitle": "Découvrez et résolvez des affaires criminelles complexes de différentes époques et lieux",
   "filters": {
-    "caseType": "Type d'Affaire",
-    "timePeriod": "Période",
-    "language": "Langue",
-    "allCases": "Toutes les Affaires",
-    "freeCases": "Affaires Gratuites",
-    "premiumCases": "Affaires Premium",
-    "resetFilters": "Réinitialiser les Filtres"
+    "title": "Filtrer les Affaires",
+    "caseType": {
+      "label": "Type d'Affaire",
+      "all": "Toutes les Affaires",
+      "free": "Affaires Gratuites",
+      "premium": "Affaires Premium"
+    },
+    "timePeriod": {
+      "label": "Période",
+      "all": "Toutes les Périodes",
+      "ancient": "Antique",
+      "medieval": "Médiéval",
+      "modern": "Moderne",
+      "contemporary": "Contemporain"
+    },
+    "language": {
+      "label": "Langue",
+      "all": "Toutes les Langues",
+      "german": "Allemand",
+      "english": "Anglais"
+    },
+    "reset": "Réinitialiser les Filtres"
   },
+  "loading": "Chargement...",
+  "loadingCases": "Chargement des affaires...",
+  "loadingMore": "Chargement d'autres affaires...",
+  "error": "Échec du chargement des affaires criminelles",
+  "noCases": "Aucune affaire criminelle disponible",
+  "allViewed": "Vous avez consulté toutes les affaires disponibles",
   "card": {
     "notYetRated": "Pas encore noté",
     "rating": "note",
     "ratings": "notes"
-  },
-  "status": {
-    "loading": "Chargement des affaires...",
-    "noResults": "Aucune affaire trouvée",
-    "error": "Erreur lors du chargement des affaires"
   }
 }

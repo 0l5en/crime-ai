@@ -1,22 +1,39 @@
 {
-  "title": "Verfügbare Fälle",
+  "title": "Alle Kriminalfälle",
+  "subtitle": "Entdecke und löse herausfordernde Kriminalfälle aus verschiedenen Epochen und Orten",
   "filters": {
-    "caseType": "Fall-Typ",
-    "timePeriod": "Zeitraum",
-    "language": "Sprache",
-    "allCases": "Alle Fälle",
-    "freeCases": "Kostenlose Fälle",
-    "premiumCases": "Premium-Fälle",
-    "resetFilters": "Filter zurücksetzen"
+    "title": "Fälle filtern",
+    "caseType": {
+      "label": "Fallart",
+      "all": "Alle Fälle",
+      "free": "Kostenlose Fälle",
+      "premium": "Premium-Fälle"
+    },
+    "timePeriod": {
+      "label": "Zeitraum",
+      "all": "Alle Zeiträume",
+      "ancient": "Antike",
+      "medieval": "Mittelalter",
+      "modern": "Modern",
+      "contemporary": "Zeitgenössisch"
+    },
+    "language": {
+      "label": "Sprache",
+      "all": "Alle Sprachen",
+      "german": "Deutsch",
+      "english": "Englisch"
+    },
+    "reset": "Filter zurücksetzen"
   },
+  "loading": "Lädt...",
+  "loadingCases": "Lade Fälle...",
+  "loadingMore": "Lade weitere Fälle...",
+  "error": "Fehler beim Laden der Kriminalfälle",
+  "noCases": "Keine Kriminalfälle verfügbar",
+  "allViewed": "Du hast alle verfügbaren Fälle angesehen",
   "card": {
     "notYetRated": "Noch nicht bewertet",
     "rating": "Bewertung",
     "ratings": "Bewertungen"
-  },
-  "status": {
-    "loading": "Fälle werden geladen...",
-    "noResults": "Keine Fälle gefunden",
-    "error": "Fehler beim Laden der Fälle"
   }
 }
