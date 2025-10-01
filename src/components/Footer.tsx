@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="col-md-6">
             <div className="d-flex align-items-center mb-3 mb-md-0">
               <h5 className="mb-0 me-2">DetectivesGame</h5>
-              <span className="badge bg-primary rounded-pill px-2 py-1" style={{ fontSize: '0.7rem' }}>
+              <span className="badge bg-primary rounded-pill px-2 py-1" style={{ fontSize: '0.6rem' }}>
                 BETA
               </span>
             </div>
