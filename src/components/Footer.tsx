@@ -14,7 +14,7 @@ const Footer = () => {
                 BETA
               </span>
             </div>
-            <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '0.9rem' }}>
+            <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '1.0rem' }}>
               {t('footer.description')}
             </p>
             <div className="d-flex gap-3 mb-3 mb-md-0">
