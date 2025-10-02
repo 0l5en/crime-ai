@@ -2,31 +2,178 @@
   "hero": {
     "title": "Trasforma la Tua Location in un'Esperienza Criminale Indimenticabile",
     "subtitle": "Offri ai tuoi ospiti un gioco di detective interattivo che li affascinerà",
-    "cta": "Richiedi Ora"
+    "cta": "Richiedi Ora",
+    "trial": "Prova gratuita di 7 giorni · Da $9.99/mese"
   },
   "why": {
-    "title": "Perché le Location Amano Crime AI",
-    "subtitle": "L'aggiunta perfetta alla tua offerta di eventi"
+    "title": "Perché i Proprietari di Location Scelgono Noi",
+    "subtitle": "Unisciti a centinaia di proprietari di immobili che già deliziano i loro ospiti con misteri detective personalizzati.",
+    "benefits": {
+      "unique": {
+        "title": "Esperienza Locale Unica",
+        "description": "Trasforma la tua proprietà nella scena di un mistero coinvolgente che mette in mostra le sue caratteristiche uniche e il carattere locale."
+      },
+      "satisfaction": {
+        "title": "Soddisfazione degli Ospiti",
+        "description": "Fornisci un'attività memorabile che fa risaltare la tua location nelle recensioni e fa tornare gli ospiti per altre avventure."
+      },
+      "growth": {
+        "title": "Crescita del Business",
+        "description": "Attira nuova clientela, incoraggia soggiorni più lunghi e crea un flusso di entrate aggiuntivo con esperienze mystery premium."
+      }
+    }
   },
   "howItWorks": {
     "title": "Come Funziona",
-    "subtitle": "Il tuo evento criminale in pochi passaggi"
+    "subtitle": "Ottenere il tuo caso personalizzato per la location è semplice. Gestiamo tutto il lavoro creativo mentre tu ti concentri su ospitare esperienze straordinarie.",
+    "steps": {
+      "trial": {
+        "title": "Inizia la Prova Gratuita",
+        "description": "Crea il tuo account e inizia la tua prova gratuita di 7 giorni. Inserisci i dettagli di pagamento per iniziare."
+      },
+      "register": {
+        "title": "Registra la Tua Location",
+        "description": "Condividi i dettagli sulla tua proprietà, inclusi layout, caratteristiche uniche e esperienza ospite desiderata."
+      },
+      "exclusive": {
+        "title": "Ottieni un Caso Esclusivo",
+        "description": "Ricevi il tuo caso mistero personalizzato entro 24 ore, adattato specificamente al carattere e al layout della tua location."
+      }
+    }
   },
   "pricing": {
-    "title": "Prezzi",
-    "subtitle": "Pacchetti flessibili per ogni esigenza"
+    "title": "Prezzi Semplici e Trasparenti",
+    "subtitle": "Abbonamento mensile conveniente con periodo di prova senza rischi",
+    "plan": {
+      "name": "Piano Proprietario Location",
+      "price": "$9.99",
+      "period": "/mese",
+      "trial": "Dopo la prova gratuita di 7 giorni"
+    },
+    "enhance": {
+      "title": "Migliora l'Esperienza della Tua Location",
+      "description1": "Trasforma la tua proprietà in un'avventura interattiva che gli ospiti ricorderanno e condivideranno. I nostri casi detective personalizzati forniscono un'esperienza unica che distingue la tua location dalla concorrenza.",
+      "description2": "Ideale per hotel, case vacanze, ristoranti, caffè, musei e altre attrazioni turistiche. Provalo senza rischi con la nostra prova di 7 giorni per vedere l'impatto sulla soddisfazione e il coinvolgimento degli ospiti."
+    },
+    "includes": "Include:",
+    "features": {
+      "exclusive": "Caso detective personalizzato esclusivo ambientato nella tua location",
+      "unlimited": "Accesso illimitato degli ospiti al caso della tua location",
+      "profile": "Profilo location dedicato con codice QR",
+      "referral": "Sistema di referral personalizzato",
+      "public": "Possibilità di rendere pubblico il tuo caso per il marketing",
+      "analytics": "Analisi mensili delle prestazioni del caso",
+      "support": "Supporto clienti prioritario"
+    },
+    "cta": "Inizia la Tua Prova Gratuita",
+    "noCommitment": "Nessun impegno a lungo termine. Annulla in qualsiasi momento."
   },
   "faq": {
     "title": "Domande Frequenti",
-    "subtitle": "Risposte alle domande più importanti"
+    "subtitle": "Tutto ciò che devi sapere sulla creazione di casi mistero personalizzati per location.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Per Iniziare",
+        "q1": {
+          "question": "Come posso iniziare con un caso personalizzato per la location?",
+          "answer": "Semplicemente iscriviti per la nostra prova gratuita di 7 giorni. Fornirai dettagli sulla tua location e il nostro team creerà un caso mistero personalizzato adattato alla tua posizione specifica e agli obiettivi dell'esperienza ospite."
+        },
+        "q2": {
+          "question": "Quali informazioni avete bisogno sulla mia location?",
+          "answer": "Avremo bisogno di dettagli di base come il tipo di location, layout, caratteristiche uniche, demografica degli ospiti target e qualsiasi caratteristica speciale che rende la tua proprietà unica. Questo ci aiuta a creare l'esperienza mistero perfetta."
+        },
+        "q3": {
+          "question": "Quanto tempo ci vuole per creare il mio caso personalizzato?",
+          "answer": "Il tuo caso personalizzato esclusivo viene generato e consegnato entro 24 ore dopo aver completato la registrazione della location. Utilizziamo l'IA avanzata per creare un mistero unico adattato alla tua proprietà specifica."
+        }
+      },
+      "bookings": {
+        "title": "Prenotazioni e Cancellazioni",
+        "q1": {
+          "question": "Posso cancellare il mio abbonamento in qualsiasi momento?",
+          "answer": "Sì, puoi cancellare il tuo abbonamento in qualsiasi momento senza penalità o commissioni. Il tuo caso rimarrà attivo fino alla fine del periodo di fatturazione corrente."
+        },
+        "q2": {
+          "question": "Cosa succede durante la prova gratuita di 7 giorni?",
+          "answer": "Durante la tua prova gratuita, avrai accesso completo alla nostra piattaforma, creazione di casi personalizzati e tutte le funzionalità. Puoi cancellare prima della fine della prova per evitare addebiti."
+        },
+        "q3": {
+          "question": "Offrite rimborsi?",
+          "answer": "Offriamo una garanzia di rimborso di 30 giorni se non sei soddisfatto del tuo caso personalizzato. Siamo fiduciosi che amerai i risultati, ma la tua soddisfazione è la nostra priorità."
+        }
+      },
+      "analytics": {
+        "title": "Analisi e Statistiche",
+        "q1": {
+          "question": "Che tipo di analisi fornite?",
+          "answer": "Otterrai approfondimenti dettagliati inclusi tassi di coinvolgimento degli ospiti, statistiche di completamento, tempo di gioco medio, punteggi di feedback degli ospiti e tendenze di prestazione stagionali per aiutare a ottimizzare la tua esperienza ospite."
+        },
+        "q2": {
+          "question": "Come posso monitorare la partecipazione degli ospiti?",
+          "answer": "La nostra piattaforma fornisce un monitoraggio in tempo reale delle interazioni degli ospiti, incluso chi sta giocando, quanto sono progrediti e le loro valutazioni di soddisfazione. Perfetto per comprendere il tuo ROI."
+        },
+        "q3": {
+          "question": "Posso vedere recensioni e feedback degli ospiti?",
+          "answer": "Sì, avrai accesso a feedback e valutazioni anonime degli ospiti tramite la tua dashboard, aiutandoti a capire cosa gli ospiti amano di più della loro esperienza mistero."
+        }
+      },
+      "support": {
+        "title": "Supporto e Dettagli Tecnici",
+        "q1": {
+          "question": "Che tipo di supporto offrite?",
+          "answer": "Forniamo supporto clienti 24/7 via email e chat. Il nostro team aiuta con configurazione, risoluzione dei problemi, aggiornamenti del caso e qualsiasi domanda su come massimizzare la tua esperienza ospite."
+        },
+        "q2": {
+          "question": "Come accedono gli ospiti al caso mistero?",
+          "answer": "Gli ospiti semplicemente scansionano un codice QR unico che visualizzerai nella tua location. Questo dà loro accesso istantaneo alla loro avventura mistero su qualsiasi smartphone o tablet - non sono richiesti download di app."
+        },
+        "q3": {
+          "question": "Potete aggiornare o modificare il mio caso nel tempo?",
+          "answer": "Assolutamente! Possiamo creare varianti stagionali, aggiornare storie o modificare casi basati sul feedback degli ospiti. Questo mantiene l'esperienza fresca per i visitatori abituali."
+        }
+      }
+    }
   },
   "testimonials": {
-    "title": "Cosa Dicono i Nostri Partner",
-    "subtitle": "Esperienze dalle location"
+    "title": "Cosa Dicono i Proprietari di Location",
+    "subtitle": "Unisciti a centinaia di proprietari di location di successo che hanno trasformato la loro esperienza ospite.",
+    "items": {
+      "sarah": {
+        "name": "Sarah Mitchell",
+        "venue": "Seaside Escape Airbnb",
+        "location": "Monterey, CA",
+        "text": "Il nostro tasso di prenotazione è aumentato del 40% dopo aver aggiunto il caso mistero personalizzato. Gli ospiti lo menzionano specificamente nelle loro recensioni a 5 stelle e molti prenotano soggiorni di ritorno solo per provare varianti stagionali!"
+      },
+      "marcus": {
+        "name": "Marcus Thompson",
+        "venue": "The Historic Inn",
+        "location": "Savannah, GA",
+        "text": "Il caso mistero cattura perfettamente il fascino storico della nostra locanda. È diventato il nostro servizio distintivo - gli ospiti spesso prolungano i loro soggiorni per godersi appieno l'esperienza. Vale ogni centesimo!"
+      },
+      "elena": {
+        "name": "Elena Rodriguez",
+        "venue": "Mountain View Resort",
+        "location": "Aspen, CO",
+        "text": "L'implementazione è stata fluida e il team di supporto è stato incredibile. I nostri ospiti adorano gli elementi interattivi e abbiamo giustificato un aumento del 25% delle tariffe. Le analisi ci aiutano a ottimizzare costantemente."
+      }
+    }
   },
   "cta": {
-    "title": "Pronto a Deliziare i Tuoi Ospiti?",
-    "subtitle": "Contattaci oggi per un preventivo non vincolante",
-    "button": "Contattaci Ora"
+    "title": "Trasforma la Tua",
+    "titleHighlight1": "Location",
+    "titleMiddle": "in un'",
+    "titleHighlight2": "Avventura Mistero",
+    "subtitle": "Eleva la tua location con le nostre",
+    "subtitleHighlight": "esperienze detective alimentate dall'IA",
+    "subtitleEnd": ". Il nostro algoritmo crea misteri personalizzati adattati al tuo spazio, guidando condivisioni sui social media e visite ripetute.",
+    "features": {
+      "ai": "Casi alimentati dall'IA",
+      "trial": "Prova gratuita di 7 giorni",
+      "cancel": "Annulla in qualsiasi momento"
+    },
+    "buttons": {
+      "register": "Registrati come Proprietario di Location",
+      "contact": "Contattaci"
+    }
   }
 }

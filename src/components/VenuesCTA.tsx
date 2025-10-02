@@ -1,11 +1,8 @@
 import { ArrowRight, CreditCard, MessageCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const VenuesCTA = () => {
-  const features = [
-    { icon: CreditCard, text: "AI-powered cases" },
-    { icon: MessageCircle, text: "7-day free trial" },
-    { icon: ArrowRight, text: "Cancel anytime" }
-  ];
+  const { t } = useTranslation('venues');
 
   return (
     <section 
@@ -17,19 +14,22 @@ const VenuesCTA = () => {
         <div className="row justify-content-center text-center">
           <div className="col-lg-8">
             <h3 className="display-3 fw-bold mb-4 text-white">
-              Transform Your <span style={{ color: 'var(--bs-danger)' }}>Venue</span> Into a <span style={{ color: 'var(--bs-danger)' }}>Mystery Adventure</span>!
+              {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
             </h3>
             
             <p className="lead mb-4 text-light" style={{ fontSize: '1.25rem', opacity: '0.9' }}>
-              Elevate your venue with our <span style={{ color: 'var(--bs-danger)' }}>AI-powered</span> detective experiences. Our algorithm creates custom 
-              mysteries tailored to your space, driving social media shares and repeat visits.
+              {t('cta.subtitle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.subtitleHighlight')}</span> {t('cta.subtitleEnd')}
             </p>
             
             
 
             {/* Feature Benefits */}
             <div className="row justify-content-center mb-5">
-              {features.map((feature, index) => {
+              {[
+                { icon: CreditCard, key: 'ai' },
+                { icon: MessageCircle, key: 'trial' },
+                { icon: ArrowRight, key: 'cancel' }
+              ].map((feature, index) => {
                 const IconComponent = feature.icon;
                 return (
                   <div key={index} className="col-md-4 mb-3">
@@ -45,7 +45,7 @@ const VenuesCTA = () => {
                       >
                         <IconComponent size={16} style={{ color: 'var(--bs-danger)' }} />
                       </div>
-                      <span className="text-light fs-5">{feature.text}</span>
+                      <span className="text-light fs-5">{t(`cta.features.${feature.key}`)}</span>
                     </div>
                   </div>
                 );
@@ -74,7 +74,7 @@ const VenuesCTA = () => {
                 }}
               >
                 <CreditCard size={20} />
-                Register as Venue Owner
+                {t('cta.buttons.register')}
               </button>
               
               <button 
@@ -97,7 +97,7 @@ const VenuesCTA = () => {
                 }}
               >
                 <MessageCircle size={20} />
-                Contact Us
+                {t('cta.buttons.contact')}
                 <ArrowRight size={16} />
               </button>
             </div>

@@ -1,44 +1,23 @@
 import { Star, Quote } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const VenuesTestimonials = () => {
-  const testimonials = [
-    {
-      name: "Sarah Mitchell",
-      venue: "Seaside Escape Airbnb",
-      location: "Monterey, CA",
-      rating: 5,
-      text: "Our booking rate increased by 40% after adding the custom mystery case. Guests specifically mention it in their 5-star reviews and many book return stays just to try seasonal variations!"
-    },
-    {
-      name: "Marcus Thompson",
-      venue: "The Historic Inn",
-      location: "Savannah, GA", 
-      rating: 5,
-      text: "The mystery case perfectly captures our inn's historic charm. It's become our signature amenity - guests often extend their stays to fully enjoy the experience. Worth every penny!"
-    },
-    {
-      name: "Elena Rodriguez",
-      venue: "Mountain View Resort",
-      location: "Aspen, CO",
-      rating: 5,
-      text: "Implementation was seamless and the support team was incredible. Our guests love the interactive elements, and we've justified a 25% rate increase. The analytics help us optimize constantly."
-    }
-  ];
+  const { t } = useTranslation('venues');
 
   return (
     <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>What Venue Owners Say</h2>
+            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>{t('testimonials.title')}</h2>
             <p className="lead text-light" style={{ opacity: '0.9' }}>
-              Join hundreds of successful venue owners who've transformed their guest experience.
+              {t('testimonials.subtitle')}
             </p>
           </div>
         </div>
 
         <div className="row g-4">
-          {testimonials.map((testimonial, index) => (
+          {['sarah', 'marcus', 'elena'].map((testimonialKey, index) => (
             <div key={index} className="col-lg-4">
               <div 
                 className="p-4 h-100 position-relative"
@@ -76,7 +55,7 @@ const VenuesTestimonials = () => {
 
                 {/* Rating */}
                 <div className="mb-3 d-flex">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                  {[...Array(5)].map((_, i) => (
                     <Star 
                       key={i} 
                       size={18} 
@@ -96,7 +75,7 @@ const VenuesTestimonials = () => {
                       fontSize: '0.95rem'
                     }}
                   >
-                    "{testimonial.text}"
+                    "{t(`testimonials.items.${testimonialKey}.text`)}"
                   </p>
                 </blockquote>
 
@@ -109,19 +88,19 @@ const VenuesTestimonials = () => {
                     className="mb-1 fw-bold" 
                     style={{ color: 'var(--bs-light)' }}
                   >
-                    {testimonial.name}
+                    {t(`testimonials.items.${testimonialKey}.name`)}
                   </h6>
                   <p 
                     className="text-light small mb-1" 
                     style={{ opacity: '0.8' }}
                   >
-                    {testimonial.venue}
+                    {t(`testimonials.items.${testimonialKey}.venue`)}
                   </p>
                   <p 
                     className="text-light small mb-0" 
                     style={{ opacity: '0.6' }}
                   >
-                    {testimonial.location}
+                    {t(`testimonials.items.${testimonialKey}.location`)}
                   </p>
                 </div>
               </div>

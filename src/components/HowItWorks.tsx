@@ -1,41 +1,27 @@
 import { Play, MapPin, Gift } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const HowItWorks = () => {
-  const steps = [
-    {
-      number: "01",
-      icon: Play,
-      title: "Start Free Trial",
-      description: "Create your account and begin your 7-day free trial. Enter your payment details to get started."
-    },
-    {
-      number: "02", 
-      icon: MapPin,
-      title: "Register Your Venue",
-      description: "Share details about your property, including layout, unique features, and target guest experience."
-    },
-    {
-      number: "03",
-      icon: Gift,
-      title: "Get Exclusive Case",
-      description: "Receive your custom mystery case within 24 hours, tailored specifically to your venue's character and layout."
-    }
-  ];
+  const { t } = useTranslation('venues');
 
   return (
     <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }} data-section="how-it-works">
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>How It Works</h2>
+            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>{t('howItWorks.title')}</h2>
             <p className="lead text-light" style={{ opacity: '0.9' }}>
-              Getting your custom venue case is simple. We handle all the creative work while you focus on hosting amazing experiences.
+              {t('howItWorks.subtitle')}
             </p>
           </div>
         </div>
 
         <div className="row g-5">
-          {steps.map((step, index) => {
+          {[
+            { number: "01", icon: Play, key: 'trial' },
+            { number: "02", icon: MapPin, key: 'register' },
+            { number: "03", icon: Gift, key: 'exclusive' }
+          ].map((step, index) => {
             const IconComponent = step.icon;
             return (
               <div key={index} className="col-md-4">
@@ -107,7 +93,7 @@ const HowItWorks = () => {
                       fontWeight: '600' 
                     }}
                   >
-                    {step.title}
+                    {t(`howItWorks.steps.${step.key}.title`)}
                   </h4>
 
                   {/* Description */}
@@ -119,7 +105,7 @@ const HowItWorks = () => {
                       fontSize: '0.95rem'
                     }}
                   >
-                    {step.description}
+                    {t(`howItWorks.steps.${step.key}.description`)}
                   </p>
                 </div>
               </div>

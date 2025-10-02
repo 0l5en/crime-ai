@@ -2,31 +2,178 @@
   "hero": {
     "title": "Transform Your Venue into an Unforgettable Crime Experience",
     "subtitle": "Offer your guests an interactive detective game that will captivate them",
-    "cta": "Request Now"
+    "cta": "Request Now",
+    "trial": "7-day free trial · From $9.99/month"
   },
   "why": {
-    "title": "Why Venues Love Crime AI",
-    "subtitle": "The perfect addition to your event offering"
+    "title": "Why Venue Owners Choose Us",
+    "subtitle": "Join hundreds of property owners already delighting their guests with custom detective mysteries.",
+    "benefits": {
+      "unique": {
+        "title": "Unique Local Experience",
+        "description": "Transform your property into the scene of an immersive mystery that showcases its unique features and local character."
+      },
+      "satisfaction": {
+        "title": "Guest Satisfaction",
+        "description": "Provide a memorable activity that makes your venue stand out in reviews and keeps guests coming back for more adventures."
+      },
+      "growth": {
+        "title": "Business Growth",
+        "description": "Attract new clientele, encourage longer stays, and create an additional revenue stream with premium mystery experiences."
+      }
+    }
   },
   "howItWorks": {
     "title": "How It Works",
-    "subtitle": "Your own crime event in just a few steps"
+    "subtitle": "Getting your custom venue case is simple. We handle all the creative work while you focus on hosting amazing experiences.",
+    "steps": {
+      "trial": {
+        "title": "Start Free Trial",
+        "description": "Create your account and begin your 7-day free trial. Enter your payment details to get started."
+      },
+      "register": {
+        "title": "Register Your Venue",
+        "description": "Share details about your property, including layout, unique features, and target guest experience."
+      },
+      "exclusive": {
+        "title": "Get Exclusive Case",
+        "description": "Receive your custom mystery case within 24 hours, tailored specifically to your venue's character and layout."
+      }
+    }
   },
   "pricing": {
-    "title": "Pricing",
-    "subtitle": "Flexible packages for every need"
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Affordable monthly subscription with a risk-free trial period",
+    "plan": {
+      "name": "Venue Owner Plan",
+      "price": "$9.99",
+      "period": "/month",
+      "trial": "After 7-day free trial"
+    },
+    "enhance": {
+      "title": "Enhance Your Venue's Experience",
+      "description1": "Transform your property into an interactive adventure that guests will remember and share. Our custom detective cases provide a unique experience that sets your venue apart from the competition.",
+      "description2": "Ideal for hotels, vacation rentals, restaurants, cafes, museums, and other visitor attractions. Try it risk-free with our 7-day trial to see the impact on guest satisfaction and engagement."
+    },
+    "includes": "Includes:",
+    "features": {
+      "exclusive": "Exclusive custom detective case set in your venue",
+      "unlimited": "Unlimited guest access to your venue case",
+      "profile": "Dedicated venue profile with QR code",
+      "referral": "Personalized referral system",
+      "public": "Ability to make your case public for marketing",
+      "analytics": "Monthly case performance analytics",
+      "support": "Priority customer support"
+    },
+    "cta": "Start Your Free Trial",
+    "noCommitment": "No long-term commitment. Cancel anytime."
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Answers to the most important questions"
+    "subtitle": "Everything you need to know about creating custom venue mystery cases.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "q1": {
+          "question": "How do I get started with a custom venue case?",
+          "answer": "Simply sign up for our 7-day free trial. You'll provide details about your venue, and our team will create a custom mystery case tailored to your specific location and guest experience goals."
+        },
+        "q2": {
+          "question": "What information do you need about my venue?",
+          "answer": "We'll need basic details like your venue type, layout, unique features, target guest demographics, and any special characteristics that make your property unique. This helps us craft the perfect mystery experience."
+        },
+        "q3": {
+          "question": "How long does it take to create my custom case?",
+          "answer": "Your exclusive custom case is generated and delivered within 24 hours after you complete your venue registration. We use advanced AI to create a unique mystery tailored to your specific property."
+        }
+      },
+      "bookings": {
+        "title": "Bookings & Cancellations",
+        "q1": {
+          "question": "Can I cancel my subscription anytime?",
+          "answer": "Yes, you can cancel your subscription at any time with no penalties or fees. Your case will remain active until the end of your current billing period."
+        },
+        "q2": {
+          "question": "What happens during the 7-day free trial?",
+          "answer": "During your free trial, you'll get full access to our platform, custom case creation, and all features. You can cancel before the trial ends to avoid charges."
+        },
+        "q3": {
+          "question": "Do you offer refunds?",
+          "answer": "We offer a 30-day money-back guarantee if you're not satisfied with your custom case. We're confident you'll love the results, but your satisfaction is our priority."
+        }
+      },
+      "analytics": {
+        "title": "Analytics & Stats",
+        "q1": {
+          "question": "What kind of analytics do you provide?",
+          "answer": "You'll get detailed insights including guest engagement rates, completion statistics, average play time, guest feedback scores, and seasonal performance trends to help optimize your guest experience."
+        },
+        "q2": {
+          "question": "How do I track guest participation?",
+          "answer": "Our platform provides real-time tracking of guest interactions, including who's playing, how far they've progressed, and their satisfaction ratings. Perfect for understanding your ROI."
+        },
+        "q3": {
+          "question": "Can I see guest reviews and feedback?",
+          "answer": "Yes, you'll have access to anonymous guest feedback and ratings through your dashboard, helping you understand what guests love most about their mystery experience."
+        }
+      },
+      "support": {
+        "title": "Support & Technical Details",
+        "q1": {
+          "question": "What support do you offer?",
+          "answer": "We provide 24/7 customer support via email and chat. Our team helps with setup, troubleshooting, case updates, and any questions about maximizing your guest experience."
+        },
+        "q2": {
+          "question": "How do guests access the mystery case?",
+          "answer": "Guests simply scan a unique QR code you'll display in your venue. This gives them instant access to their mystery adventure on any smartphone or tablet - no app downloads required."
+        },
+        "q3": {
+          "question": "Can you update or modify my case over time?",
+          "answer": "Absolutely! We can create seasonal variants, update storylines, or modify cases based on guest feedback. This keeps the experience fresh for repeat visitors."
+        }
+      }
+    }
   },
   "testimonials": {
-    "title": "What Our Partners Say",
-    "subtitle": "Experiences from venues"
+    "title": "What Venue Owners Say",
+    "subtitle": "Join hundreds of successful venue owners who've transformed their guest experience.",
+    "items": {
+      "sarah": {
+        "name": "Sarah Mitchell",
+        "venue": "Seaside Escape Airbnb",
+        "location": "Monterey, CA",
+        "text": "Our booking rate increased by 40% after adding the custom mystery case. Guests specifically mention it in their 5-star reviews and many book return stays just to try seasonal variations!"
+      },
+      "marcus": {
+        "name": "Marcus Thompson",
+        "venue": "The Historic Inn",
+        "location": "Savannah, GA",
+        "text": "The mystery case perfectly captures our inn's historic charm. It's become our signature amenity - guests often extend their stays to fully enjoy the experience. Worth every penny!"
+      },
+      "elena": {
+        "name": "Elena Rodriguez",
+        "venue": "Mountain View Resort",
+        "location": "Aspen, CO",
+        "text": "Implementation was seamless and the support team was incredible. Our guests love the interactive elements, and we've justified a 25% rate increase. The analytics help us optimize constantly."
+      }
+    }
   },
   "cta": {
-    "title": "Ready to Delight Your Guests?",
-    "subtitle": "Contact us today for a non-binding quote",
-    "button": "Contact Us Now"
+    "title": "Transform Your",
+    "titleHighlight1": "Venue",
+    "titleMiddle": "Into a",
+    "titleHighlight2": "Mystery Adventure",
+    "subtitle": "Elevate your venue with our",
+    "subtitleHighlight": "AI-powered",
+    "subtitleEnd": "detective experiences. Our algorithm creates custom mysteries tailored to your space, driving social media shares and repeat visits.",
+    "features": {
+      "ai": "AI-powered cases",
+      "trial": "7-day free trial",
+      "cancel": "Cancel anytime"
+    },
+    "buttons": {
+      "register": "Register as Venue Owner",
+      "contact": "Contact Us"
+    }
   }
 }

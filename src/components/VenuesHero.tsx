@@ -62,7 +62,7 @@ const VenuesHero = () => {
           </button>
         </div>
         <p className="text-light opacity-75">
-          <small>7-day free trial • Custom case in 24 hours • Then $9.99/month • Cancel anytime</small>
+          <small>{t('hero.trial')}</small>
         </p>
       </div>
     </section>

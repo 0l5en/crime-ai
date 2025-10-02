@@ -1,38 +1,27 @@
 import { MapPin, Smile, TrendingUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const WhyVenueOwners = () => {
-  const benefits = [
-    {
-      icon: MapPin,
-      title: "Unique Local Experience",
-      description: "Transform your property into the scene of an immersive mystery that showcases its unique features and local character."
-    },
-    {
-      icon: Smile,
-      title: "Guest Satisfaction", 
-      description: "Provide a memorable activity that makes your venue stand out in reviews and keeps guests coming back for more adventures."
-    },
-    {
-      icon: TrendingUp,
-      title: "Business Growth",
-      description: "Attract new clientele, encourage longer stays, and create an additional revenue stream with premium mystery experiences."
-    }
-  ];
+  const { t } = useTranslation('venues');
 
   return (
     <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>Why Venue Owners Choose Us</h2>
+            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>{t('why.title')}</h2>
             <p className="lead text-light mb-0">
-              Join hundreds of property owners already delighting their guests with custom detective mysteries.
+              {t('why.subtitle')}
             </p>
           </div>
         </div>
 
         <div className="row g-5">
-          {benefits.map((benefit, index) => {
+          {[
+            { icon: MapPin, key: 'unique' },
+            { icon: Smile, key: 'satisfaction' },
+            { icon: TrendingUp, key: 'growth' }
+          ].map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
               <div key={index} className="col-md-4">
@@ -67,14 +56,14 @@ const WhyVenueOwners = () => {
                     />
                   </div>
                   <h4 className="mb-3" style={{ color: 'var(--bs-light)', fontWeight: '600' }}>
-                    {benefit.title}
+                    {t(`why.benefits.${benefit.key}.title`)}
                   </h4>
                   <p className="text-light mb-0" style={{ 
                     lineHeight: '1.6',
                     fontSize: '0.95rem',
                     opacity: '0.9'
                   }}>
-                    {benefit.description}
+                    {t(`why.benefits.${benefit.key}.description`)}
                   </p>
                 </div>
               </div>

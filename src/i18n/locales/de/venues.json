@@ -2,31 +2,178 @@
   "hero": {
     "title": "Verwandeln Sie Ihre Veranstaltung in ein unvergessliches Krimi-Erlebnis",
     "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel, das sie begeistern wird",
-    "cta": "Jetzt anfragen"
+    "cta": "Jetzt anfragen",
+    "trial": "7-tägige kostenlose Testversion · Ab $9.99/Monat"
   },
   "why": {
-    "title": "Warum Veranstaltungsorte Crime AI lieben",
-    "subtitle": "Die perfekte Ergänzung für Ihr Event-Angebot"
+    "title": "Warum Veranstaltungsorte uns wählen",
+    "subtitle": "Schließen Sie sich hunderten von Immobilienbesitzern an, die ihre Gäste bereits mit individuellen Detektiv-Mysterien begeistern.",
+    "benefits": {
+      "unique": {
+        "title": "Einzigartiges lokales Erlebnis",
+        "description": "Verwandeln Sie Ihre Immobilie in den Schauplatz eines fesselnden Mysteriums, das ihre einzigartigen Merkmale und ihren lokalen Charakter zur Geltung bringt."
+      },
+      "satisfaction": {
+        "title": "Gästezufriedenheit",
+        "description": "Bieten Sie eine unvergessliche Aktivität, die Ihre Location in Bewertungen hervorhebt und Gäste für weitere Abenteuer zurückkehren lässt."
+      },
+      "growth": {
+        "title": "Geschäftswachstum",
+        "description": "Gewinnen Sie neue Kunden, fördern Sie längere Aufenthalte und schaffen Sie mit Premium-Mystery-Erlebnissen eine zusätzliche Einnahmequelle."
+      }
+    }
   },
   "howItWorks": {
     "title": "So funktioniert's",
-    "subtitle": "In nur wenigen Schritten zu Ihrem eigenen Krimi-Event"
+    "subtitle": "Ihr individueller Venue-Case ist ganz einfach. Wir übernehmen die gesamte kreative Arbeit, während Sie sich auf das Hosten großartiger Erlebnisse konzentrieren.",
+    "steps": {
+      "trial": {
+        "title": "Kostenlose Testversion starten",
+        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Geben Sie Ihre Zahlungsdetails ein, um zu starten."
+      },
+      "register": {
+        "title": "Ihre Location registrieren",
+        "description": "Teilen Sie Details über Ihre Immobilie mit, einschließlich Layout, einzigartiger Merkmale und gewünschter Gästeerfahrung."
+      },
+      "exclusive": {
+        "title": "Exklusiven Case erhalten",
+        "description": "Erhalten Sie Ihren individuellen Mystery-Case innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Location zugeschnitten."
+      }
+    }
   },
   "pricing": {
-    "title": "Preise",
-    "subtitle": "Flexible Pakete für jeden Bedarf"
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Erschwingliches monatliches Abonnement mit risikofreier Testphase",
+    "plan": {
+      "name": "Venue Owner Plan",
+      "price": "$9.99",
+      "period": "/Monat",
+      "trial": "Nach 7-tägiger kostenloser Testversion"
+    },
+    "enhance": {
+      "title": "Verbessern Sie das Erlebnis Ihrer Location",
+      "description1": "Verwandeln Sie Ihre Immobilie in ein interaktives Abenteuer, das Gäste sich merken und teilen werden. Unsere individuellen Detektiv-Cases bieten ein einzigartiges Erlebnis, das Ihre Location von der Konkurrenz abhebt.",
+      "description2": "Ideal für Hotels, Ferienwohnungen, Restaurants, Cafés, Museen und andere Besucherattraktionen. Testen Sie es risikofrei mit unserer 7-tägigen Testversion, um die Auswirkungen auf Gästezufriedenheit und Engagement zu sehen."
+    },
+    "includes": "Beinhaltet:",
+    "features": {
+      "exclusive": "Exklusiver individueller Detektiv-Case in Ihrer Location",
+      "unlimited": "Unbegrenzter Gästezugang zu Ihrem Venue-Case",
+      "profile": "Dediziertes Venue-Profil mit QR-Code",
+      "referral": "Personalisiertes Empfehlungssystem",
+      "public": "Möglichkeit, Ihren Case für Marketing öffentlich zu machen",
+      "analytics": "Monatliche Case-Performance-Analysen",
+      "support": "Prioritäts-Kundensupport"
+    },
+    "cta": "Starten Sie Ihre kostenlose Testversion",
+    "noCommitment": "Keine langfristige Bindung. Jederzeit kündbar."
   },
   "faq": {
     "title": "Häufig gestellte Fragen",
-    "subtitle": "Antworten auf die wichtigsten Fragen"
+    "subtitle": "Alles, was Sie über die Erstellung individueller Venue-Mystery-Cases wissen müssen.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Erste Schritte",
+        "q1": {
+          "question": "Wie beginne ich mit einem individuellen Venue-Case?",
+          "answer": "Melden Sie sich einfach für unsere 7-tägige kostenlose Testversion an. Sie geben Details über Ihre Location an, und unser Team erstellt einen individuellen Mystery-Case, der auf Ihren spezifischen Standort und Ihre Gästeerlebnis-Ziele zugeschnitten ist."
+        },
+        "q2": {
+          "question": "Welche Informationen benötigen Sie über meine Location?",
+          "answer": "Wir benötigen grundlegende Details wie Ihren Location-Typ, Layout, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Immobilie einzigartig machen. Dies hilft uns, das perfekte Mystery-Erlebnis zu gestalten."
+        },
+        "q3": {
+          "question": "Wie lange dauert die Erstellung meines individuellen Cases?",
+          "answer": "Ihr exklusiver individueller Case wird innerhalb von 24 Stunden nach Abschluss Ihrer Venue-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um ein einzigartiges Mystery zu erstellen, das auf Ihre spezifische Immobilie zugeschnitten ist."
+        }
+      },
+      "bookings": {
+        "title": "Buchungen & Stornierungen",
+        "q1": {
+          "question": "Kann ich mein Abonnement jederzeit kündigen?",
+          "answer": "Ja, Sie können Ihr Abonnement jederzeit ohne Strafen oder Gebühren kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
+        },
+        "q2": {
+          "question": "Was passiert während der 7-tägigen kostenlosen Testversion?",
+          "answer": "Während Ihrer kostenlosen Testversion erhalten Sie vollen Zugang zu unserer Plattform, individueller Case-Erstellung und allen Funktionen. Sie können vor Ende der Testversion kündigen, um Gebühren zu vermeiden."
+        },
+        "q3": {
+          "question": "Bieten Sie Rückerstattungen an?",
+          "answer": "Wir bieten eine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Case nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität."
+        }
+      },
+      "analytics": {
+        "title": "Analysen & Statistiken",
+        "q1": {
+          "question": "Welche Art von Analysen bieten Sie an?",
+          "answer": "Sie erhalten detaillierte Einblicke einschließlich Gäste-Engagement-Raten, Abschlussstatistiken, durchschnittliche Spielzeit, Gästefeedback-Scores und saisonale Performance-Trends, um Ihr Gästeerlebnis zu optimieren."
+        },
+        "q2": {
+          "question": "Wie verfolge ich die Teilnahme der Gäste?",
+          "answer": "Unsere Plattform bietet Echtzeit-Tracking von Gästeinteraktionen, einschließlich wer spielt, wie weit sie fortgeschritten sind und ihre Zufriedenheitsbewertungen. Perfekt, um Ihren ROI zu verstehen."
+        },
+        "q3": {
+          "question": "Kann ich Gästebewertungen und Feedback sehen?",
+          "answer": "Ja, Sie haben über Ihr Dashboard Zugriff auf anonymes Gästefeedback und Bewertungen, die Ihnen helfen zu verstehen, was Gäste an ihrem Mystery-Erlebnis am meisten lieben."
+        }
+      },
+      "support": {
+        "title": "Support & Technische Details",
+        "q1": {
+          "question": "Welchen Support bieten Sie?",
+          "answer": "Wir bieten 24/7 Kundensupport per E-Mail und Chat. Unser Team hilft bei Setup, Fehlerbehebung, Case-Updates und allen Fragen zur Maximierung Ihres Gästeerlebnisses."
+        },
+        "q2": {
+          "question": "Wie greifen Gäste auf den Mystery-Case zu?",
+          "answer": "Gäste scannen einfach einen einzigartigen QR-Code, den Sie in Ihrer Location anzeigen. Dies gibt ihnen sofortigen Zugriff auf ihr Mystery-Abenteuer auf jedem Smartphone oder Tablet - keine App-Downloads erforderlich."
+        },
+        "q3": {
+          "question": "Können Sie meinen Case im Laufe der Zeit aktualisieren oder ändern?",
+          "answer": "Auf jeden Fall! Wir können saisonale Varianten erstellen, Handlungsstränge aktualisieren oder Cases basierend auf Gästefeedback ändern. Dies hält das Erlebnis für Wiederholungsbesucher frisch."
+        }
+      }
+    }
   },
   "testimonials": {
-    "title": "Das sagen unsere Partner",
-    "subtitle": "Erfahrungen von Veranstaltungsorten"
+    "title": "Was Venue-Besitzer sagen",
+    "subtitle": "Schließen Sie sich hunderten erfolgreichen Venue-Besitzern an, die ihr Gästeerlebnis transformiert haben.",
+    "items": {
+      "sarah": {
+        "name": "Sarah Mitchell",
+        "venue": "Seaside Escape Airbnb",
+        "location": "Monterey, CA",
+        "text": "Unsere Buchungsrate stieg um 40% nach Hinzufügen des individuellen Mystery-Cases. Gäste erwähnen es speziell in ihren 5-Sterne-Bewertungen und viele buchen Wiederholungsaufenthalte, nur um saisonale Varianten auszuprobieren!"
+      },
+      "marcus": {
+        "name": "Marcus Thompson",
+        "venue": "The Historic Inn",
+        "location": "Savannah, GA",
+        "text": "Der Mystery-Case fängt perfekt den historischen Charme unseres Gasthauses ein. Es ist zu unserem Signature-Angebot geworden - Gäste verlängern oft ihre Aufenthalte, um das Erlebnis voll zu genießen. Jeden Cent wert!"
+      },
+      "elena": {
+        "name": "Elena Rodriguez",
+        "venue": "Mountain View Resort",
+        "location": "Aspen, CO",
+        "text": "Die Implementierung war nahtlos und das Support-Team war unglaublich. Unsere Gäste lieben die interaktiven Elemente, und wir haben eine 25%ige Preiserhöhung gerechtfertigt. Die Analysen helfen uns, konstant zu optimieren."
+      }
+    }
   },
   "cta": {
-    "title": "Bereit, Ihre Gäste zu begeistern?",
-    "subtitle": "Kontaktieren Sie uns noch heute für ein unverbindliches Angebot",
-    "button": "Jetzt Kontakt aufnehmen"
+    "title": "Verwandeln Sie Ihre",
+    "titleHighlight1": "Venue",
+    "titleMiddle": "in ein",
+    "titleHighlight2": "Mystery-Abenteuer",
+    "subtitle": "Erhöhen Sie Ihre Location mit unseren",
+    "subtitleHighlight": "KI-gesteuerten",
+    "subtitleEnd": "Detektiverlebnissen. Unser Algorithmus erstellt individuelle Mysterien, die auf Ihren Raum zugeschnitten sind und Social-Media-Shares und Wiederholungsbesuche fördern.",
+    "features": {
+      "ai": "KI-gesteuerte Cases",
+      "trial": "7-tägige kostenlose Testversion",
+      "cancel": "Jederzeit kündbar"
+    },
+    "buttons": {
+      "register": "Als Venue-Besitzer registrieren",
+      "contact": "Kontaktieren Sie uns"
+    }
   }
 }

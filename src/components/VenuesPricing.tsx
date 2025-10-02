@@ -1,6 +1,9 @@
-import { Check, CreditCard } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const VenuesPricing = () => {
+  const { t } = useTranslation('venues');
+  
   const scrollToContact = () => {
     const contactSection = document.querySelector('[data-section="contact"]');
     if (contactSection) {
@@ -11,24 +14,14 @@ const VenuesPricing = () => {
     }
   };
 
-  const features = [
-    "Exclusive custom detective case set in your venue",
-    "Unlimited guest access to your venue case",
-    "Dedicated venue profile with QR code", 
-    "Personalized referral system",
-    "Ability to make your case public for marketing",
-    "Monthly case performance analytics",
-    "Priority customer support"
-  ];
-
   return (
     <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-10 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>Simple, Transparent Pricing</h2>
+            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>{t('pricing.title')}</h2>
             <p className="lead mb-5 text-light" style={{ opacity: '0.9' }}>
-              Affordable monthly subscription with a risk-free trial period
+              {t('pricing.subtitle')}
             </p>
           </div>
         </div>
@@ -45,31 +38,29 @@ const VenuesPricing = () => {
               }}
             >
               <h3 className="fw-bold mb-3" style={{ fontSize: '1.5rem' }}>
-                Venue Owner Plan
+                {t('pricing.plan.name')}
               </h3>
               
               <div className="mb-3">
-                <span className="display-4 fw-bold">$9.99</span>
-                <span className="fs-5"> /month</span>
+                <span className="display-4 fw-bold">{t('pricing.plan.price')}</span>
+                <span className="fs-5"> {t('pricing.plan.period')}</span>
               </div>
               
               <p className="mb-0" style={{ opacity: '0.9' }}>
-                After 7-day free trial
+                {t('pricing.plan.trial')}
               </p>
             </div>
 
             {/* Description Section */}
             <div className="mt-5">
               <h4 className="fw-bold mb-3" style={{ color: 'var(--bs-light)' }}>
-                Enhance Your Venue's Experience
+                {t('pricing.enhance.title')}
               </h4>
               <p className="text-light" style={{ opacity: '0.9', lineHeight: '1.7' }}>
-                Transform your property into an interactive adventure that guests will remember and share. 
-                Our custom detective cases provide a unique experience that sets your venue apart from the competition.
+                {t('pricing.enhance.description1')}
               </p>
               <p className="text-light" style={{ opacity: '0.9', lineHeight: '1.7' }}>
-                Ideal for hotels, vacation rentals, restaurants, cafes, museums, and other visitor attractions. 
-                Try it risk-free with our 7-day trial to see the impact on guest satisfaction and engagement.
+                {t('pricing.enhance.description2')}
               </p>
             </div>
           </div>
@@ -78,11 +69,11 @@ const VenuesPricing = () => {
           <div className="col-lg-5 offset-lg-1">
             <div className="mb-4">
               <h5 className="fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>
-                Includes:
+                {t('pricing.includes')}
               </h5>
               
               <ul className="list-unstyled">
-                {features.map((feature, index) => (
+                {['exclusive', 'unlimited', 'profile', 'referral', 'public', 'analytics', 'support'].map((feature, index) => (
                   <li key={index} className="mb-3 d-flex align-items-start">
                     <div 
                       className="me-3 mt-1 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
@@ -95,7 +86,7 @@ const VenuesPricing = () => {
                       <Check size={12} style={{ color: 'white' }} />
                     </div>
                     <span className="text-light" style={{ fontSize: '0.95rem', opacity: '0.9' }}>
-                      {feature}
+                      {t(`pricing.features.${feature}`)}
                     </span>
                   </li>
                 ))}
@@ -123,11 +114,11 @@ const VenuesPricing = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              Start Your Free Trial
+              {t('pricing.cta')}
             </button>
             
             <p className="text-light small text-center mb-0" style={{ opacity: '0.7' }}>
-              No long-term commitment. Cancel anytime.
+              {t('pricing.noCommitment')}
             </p>
           </div>
         </div>

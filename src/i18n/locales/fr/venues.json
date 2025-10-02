@@ -2,31 +2,178 @@
   "hero": {
     "title": "Transformez Votre Lieu en une Expérience Criminelle Inoubliable",
     "subtitle": "Offrez à vos invités un jeu de détective interactif qui les captivera",
-    "cta": "Demander Maintenant"
+    "cta": "Demander Maintenant",
+    "trial": "Essai gratuit de 7 jours · À partir de $9.99/mois"
   },
   "why": {
-    "title": "Pourquoi les Lieux Adorent Crime AI",
-    "subtitle": "Le complément parfait à votre offre d'événements"
+    "title": "Pourquoi les Propriétaires de Lieux Nous Choisissent",
+    "subtitle": "Rejoignez des centaines de propriétaires qui ravissent déjà leurs invités avec des mystères de détective personnalisés.",
+    "benefits": {
+      "unique": {
+        "title": "Expérience Locale Unique",
+        "description": "Transformez votre propriété en scène d'un mystère immersif qui met en valeur ses caractéristiques uniques et son caractère local."
+      },
+      "satisfaction": {
+        "title": "Satisfaction des Invités",
+        "description": "Offrez une activité mémorable qui fait ressortir votre lieu dans les avis et incite les invités à revenir pour d'autres aventures."
+      },
+      "growth": {
+        "title": "Croissance des Affaires",
+        "description": "Attirez une nouvelle clientèle, encouragez des séjours plus longs et créez un flux de revenus supplémentaire avec des expériences mystère premium."
+      }
+    }
   },
   "howItWorks": {
     "title": "Comment Ça Marche",
-    "subtitle": "Votre propre événement criminel en quelques étapes"
+    "subtitle": "Obtenir votre cas personnalisé pour le lieu est simple. Nous gérons tout le travail créatif pendant que vous vous concentrez sur l'organisation d'expériences incroyables.",
+    "steps": {
+      "trial": {
+        "title": "Commencer l'Essai Gratuit",
+        "description": "Créez votre compte et commencez votre essai gratuit de 7 jours. Entrez vos informations de paiement pour commencer."
+      },
+      "register": {
+        "title": "Enregistrez Votre Lieu",
+        "description": "Partagez des détails sur votre propriété, y compris l'agencement, les caractéristiques uniques et l'expérience client souhaitée."
+      },
+      "exclusive": {
+        "title": "Obtenez un Cas Exclusif",
+        "description": "Recevez votre cas mystère personnalisé dans les 24 heures, adapté spécifiquement au caractère et à l'agencement de votre lieu."
+      }
+    }
   },
   "pricing": {
-    "title": "Tarifs",
-    "subtitle": "Forfaits flexibles pour tous les besoins"
+    "title": "Tarification Simple et Transparente",
+    "subtitle": "Abonnement mensuel abordable avec période d'essai sans risque",
+    "plan": {
+      "name": "Plan Propriétaire de Lieu",
+      "price": "$9.99",
+      "period": "/mois",
+      "trial": "Après l'essai gratuit de 7 jours"
+    },
+    "enhance": {
+      "title": "Améliorez l'Expérience de Votre Lieu",
+      "description1": "Transformez votre propriété en une aventure interactive que les invités se souviendront et partageront. Nos cas de détective personnalisés offrent une expérience unique qui distingue votre lieu de la concurrence.",
+      "description2": "Idéal pour les hôtels, locations de vacances, restaurants, cafés, musées et autres attractions touristiques. Essayez-le sans risque avec notre essai de 7 jours pour voir l'impact sur la satisfaction et l'engagement des invités."
+    },
+    "includes": "Comprend:",
+    "features": {
+      "exclusive": "Cas de détective personnalisé exclusif situé dans votre lieu",
+      "unlimited": "Accès illimité des invités à votre cas de lieu",
+      "profile": "Profil de lieu dédié avec code QR",
+      "referral": "Système de parrainage personnalisé",
+      "public": "Possibilité de rendre votre cas public pour le marketing",
+      "analytics": "Analyses mensuelles des performances du cas",
+      "support": "Support client prioritaire"
+    },
+    "cta": "Commencez Votre Essai Gratuit",
+    "noCommitment": "Aucun engagement à long terme. Annulez à tout moment."
   },
   "faq": {
     "title": "Questions Fréquemment Posées",
-    "subtitle": "Réponses aux questions les plus importantes"
+    "subtitle": "Tout ce que vous devez savoir sur la création de cas mystère personnalisés pour lieux.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Pour Commencer",
+        "q1": {
+          "question": "Comment puis-je commencer avec un cas personnalisé pour le lieu?",
+          "answer": "Inscrivez-vous simplement pour notre essai gratuit de 7 jours. Vous fournirez des détails sur votre lieu et notre équipe créera un cas mystère personnalisé adapté à votre emplacement spécifique et aux objectifs d'expérience client."
+        },
+        "q2": {
+          "question": "Quelles informations avez-vous besoin sur mon lieu?",
+          "answer": "Nous aurons besoin de détails de base comme le type de lieu, l'agencement, les caractéristiques uniques, la démographie des invités cibles et toutes les caractéristiques spéciales qui rendent votre propriété unique. Cela nous aide à créer l'expérience mystère parfaite."
+        },
+        "q3": {
+          "question": "Combien de temps faut-il pour créer mon cas personnalisé?",
+          "answer": "Votre cas personnalisé exclusif est généré et livré dans les 24 heures après avoir terminé votre inscription de lieu. Nous utilisons l'IA avancée pour créer un mystère unique adapté à votre propriété spécifique."
+        }
+      },
+      "bookings": {
+        "title": "Réservations et Annulations",
+        "q1": {
+          "question": "Puis-je annuler mon abonnement à tout moment?",
+          "answer": "Oui, vous pouvez annuler votre abonnement à tout moment sans pénalités ni frais. Votre cas restera actif jusqu'à la fin de votre période de facturation actuelle."
+        },
+        "q2": {
+          "question": "Que se passe-t-il pendant l'essai gratuit de 7 jours?",
+          "answer": "Pendant votre essai gratuit, vous aurez un accès complet à notre plateforme, à la création de cas personnalisés et à toutes les fonctionnalités. Vous pouvez annuler avant la fin de l'essai pour éviter les frais."
+        },
+        "q3": {
+          "question": "Offrez-vous des remboursements?",
+          "answer": "Nous offrons une garantie de remboursement de 30 jours si vous n'êtes pas satisfait de votre cas personnalisé. Nous sommes convaincus que vous aimerez les résultats, mais votre satisfaction est notre priorité."
+        }
+      },
+      "analytics": {
+        "title": "Analyses et Statistiques",
+        "q1": {
+          "question": "Quel type d'analyses fournissez-vous?",
+          "answer": "Vous obtiendrez des informations détaillées incluant les taux d'engagement des invités, les statistiques d'achèvement, le temps de jeu moyen, les scores de feedback des invités et les tendances de performance saisonnières pour aider à optimiser votre expérience client."
+        },
+        "q2": {
+          "question": "Comment puis-je suivre la participation des invités?",
+          "answer": "Notre plateforme fournit un suivi en temps réel des interactions des invités, y compris qui joue, jusqu'où ils ont progressé et leurs notes de satisfaction. Parfait pour comprendre votre ROI."
+        },
+        "q3": {
+          "question": "Puis-je voir les avis et commentaires des invités?",
+          "answer": "Oui, vous aurez accès aux commentaires et évaluations anonymes des invités via votre tableau de bord, vous aidant à comprendre ce que les invités aiment le plus de leur expérience mystère."
+        }
+      },
+      "support": {
+        "title": "Support et Détails Techniques",
+        "q1": {
+          "question": "Quel type de support offrez-vous?",
+          "answer": "Nous fournissons un support client 24/7 par e-mail et chat. Notre équipe aide avec la configuration, le dépannage, les mises à jour de cas et toutes les questions sur la maximisation de votre expérience client."
+        },
+        "q2": {
+          "question": "Comment les invités accèdent-ils au cas mystère?",
+          "answer": "Les invités scannent simplement un code QR unique que vous afficherez dans votre lieu. Cela leur donne un accès instantané à leur aventure mystère sur n'importe quel smartphone ou tablette - aucun téléchargement d'application requis."
+        },
+        "q3": {
+          "question": "Pouvez-vous mettre à jour ou modifier mon cas au fil du temps?",
+          "answer": "Absolument! Nous pouvons créer des variantes saisonnières, mettre à jour les scénarios ou modifier les cas en fonction des commentaires des invités. Cela garde l'expérience fraîche pour les visiteurs réguliers."
+        }
+      }
+    }
   },
   "testimonials": {
-    "title": "Ce Que Disent Nos Partenaires",
-    "subtitle": "Expériences des lieux"
+    "title": "Ce Que Disent les Propriétaires de Lieux",
+    "subtitle": "Rejoignez des centaines de propriétaires de lieux à succès qui ont transformé leur expérience client.",
+    "items": {
+      "sarah": {
+        "name": "Sarah Mitchell",
+        "venue": "Seaside Escape Airbnb",
+        "location": "Monterey, CA",
+        "text": "Notre taux de réservation a augmenté de 40% après avoir ajouté le cas mystère personnalisé. Les invités le mentionnent spécifiquement dans leurs avis 5 étoiles et beaucoup réservent des séjours de retour juste pour essayer les variations saisonnières!"
+      },
+      "marcus": {
+        "name": "Marcus Thompson",
+        "venue": "The Historic Inn",
+        "location": "Savannah, GA",
+        "text": "Le cas mystère capture parfaitement le charme historique de notre auberge. C'est devenu notre équipement signature - les invités prolongent souvent leurs séjours pour profiter pleinement de l'expérience. Vaut chaque centime!"
+      },
+      "elena": {
+        "name": "Elena Rodriguez",
+        "venue": "Mountain View Resort",
+        "location": "Aspen, CO",
+        "text": "La mise en œuvre a été fluide et l'équipe de support était incroyable. Nos invités adorent les éléments interactifs et nous avons justifié une augmentation de tarif de 25%. Les analyses nous aident à optimiser constamment."
+      }
+    }
   },
   "cta": {
-    "title": "Prêt à Ravir Vos Invités ?",
-    "subtitle": "Contactez-nous dès aujourd'hui pour un devis sans engagement",
-    "button": "Nous Contacter Maintenant"
+    "title": "Transformez Votre",
+    "titleHighlight1": "Lieu",
+    "titleMiddle": "en une",
+    "titleHighlight2": "Aventure Mystère",
+    "subtitle": "Élevez votre lieu avec nos",
+    "subtitleHighlight": "expériences de détective alimentées par l'IA",
+    "subtitleEnd": ". Notre algorithme crée des mystères personnalisés adaptés à votre espace, générant des partages sur les réseaux sociaux et des visites répétées.",
+    "features": {
+      "ai": "Cas alimentés par l'IA",
+      "trial": "Essai gratuit de 7 jours",
+      "cancel": "Annulez à tout moment"
+    },
+    "buttons": {
+      "register": "S'inscrire en tant que Propriétaire de Lieu",
+      "contact": "Nous Contacter"
+    }
   }
 }
