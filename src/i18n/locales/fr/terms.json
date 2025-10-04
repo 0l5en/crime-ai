@@ -1,0 +1,120 @@
+{
+  "title": "Conditions d'Utilisation",
+  "lastUpdated": "Dernière mise à jour :",
+  "date": "Janvier 2025",
+  "sections": {
+    "acceptance": {
+      "title": "1. Acceptation des Conditions",
+      "content1": "Bienvenue sur DetectivesGame (\"nous\", \"notre\" ou \"nos\"). Ces Conditions d'Utilisation (\"Conditions\") régissent votre utilisation de notre plateforme de jeu de détective interactif, y compris notre site web, nos applications mobiles et tous les services connexes (collectivement, le \"Service\"). En accédant ou en utilisant notre Service, vous acceptez d'être lié par ces Conditions.",
+      "content2": "Si vous n'acceptez pas ces Conditions, veuillez ne pas utiliser notre Service. Nous pouvons mettre à jour ces Conditions de temps à autre, et votre utilisation continue du Service constitue l'acceptation de tout changement."
+    },
+    "description": {
+      "title": "2. Description du Service",
+      "intro": "DetectivesGame est une plateforme de jeu interactive qui offre des expériences immersives de mystère et de détective. Notre Service comprend :",
+      "items": {
+        "cases": "Affaires de Détective Interactives : Résolvez des crimes, analysez des preuves, interrogez des suspects et découvrez des mystères",
+        "generator": "Outils de Génération d'Affaires : Créez des scénarios et des affaires de détective personnalisés",
+        "forensics": "Analyse Médico-légale : Accès aux rapports d'autopsie virtuels, analyse des preuves et enquêtes sur les scènes de crime",
+        "vacation": "Expériences Mystérieuses de Location de Vacances : Affaires spécialisées conçues pour les lieux d'accueil",
+        "venue": "Gestion de Lieux : Outils pour les entreprises pour intégrer des jeux mystérieux dans leurs services",
+        "social": "Fonctionnalités Sociales : Systèmes de messagerie, notifications et gameplay collaboratif",
+        "premium": "Abonnements Premium : Fonctionnalités améliorées et contenu exclusif",
+        "qr": "Intégration de Code QR : Expériences de jeu physique-numérique interactives"
+      }
+    },
+    "accounts": {
+      "title": "3. Comptes d'Utilisateur et Inscription",
+      "intro": "Pour accéder à certaines fonctionnalités de notre Service, vous devez créer un compte. Lors de la création d'un compte, vous acceptez de :",
+      "items": {
+        "accurate": "Fournir des informations exactes, à jour et complètes",
+        "maintain": "Maintenir et mettre à jour rapidement les informations de votre compte",
+        "security": "Maintenir la sécurité de vos identifiants de compte",
+        "responsibility": "Accepter la responsabilité de toutes les activités sous votre compte",
+        "notify": "Nous informer immédiatement de toute utilisation non autorisée de votre compte"
+      },
+      "age": "Vous devez avoir au moins 13 ans pour créer un compte. Les utilisateurs de moins de 18 ans doivent avoir le consentement parental pour utiliser notre Service."
+    },
+    "payments": {
+      "title": "4. Abonnements Premium et Paiements",
+      "intro": "Notre Service propose des abonnements premium qui donnent accès à du contenu exclusif et à des fonctionnalités améliorées. En vous abonnant à nos services premium, vous acceptez de :",
+      "items": {
+        "fees": "Payer tous les frais applicables tels que décrits dans nos plans tarifaires",
+        "renewal": "Renouvellement automatique de votre abonnement sauf annulation",
+        "refund": "Notre politique de remboursement telle qu'indiquée dans nos conditions de facturation"
+      },
+      "policy": "Les frais d'abonnement ne sont pas remboursables sauf si requis par la loi applicable ou comme spécifiquement indiqué dans notre politique de remboursement. Vous pouvez annuler votre abonnement à tout moment via les paramètres de votre compte."
+    },
+    "referral": {
+      "title": "5. Programme de Parrainage",
+      "intro": "Notre programme de parrainage permet aux utilisateurs de gagner des récompenses pour avoir recommandé de nouveaux utilisateurs à notre Service. La participation au programme de parrainage est soumise à :",
+      "items": {
+        "compliance": "Conformité avec les directives de notre programme de parrainage",
+        "prohibition": "Interdiction contre le spam, les activités de parrainage frauduleuses ou trompeuses",
+        "modification": "Notre droit de modifier ou de mettre fin au programme à tout moment",
+        "verification": "Vérification de l'éligibilité au parrainage et distribution des récompenses"
+      }
+    },
+    "conduct": {
+      "title": "6. Conduite et Contenu de l'Utilisateur",
+      "intro": "En utilisant notre Service, vous acceptez de ne pas :",
+      "items": {
+        "laws": "Violer les lois ou réglementations applicables",
+        "rights": "Porter atteinte aux droits d'autrui",
+        "malicious": "Télécharger du code malveillant ou tenter de compromettre nos systèmes",
+        "multiple": "Créer plusieurs comptes pour contourner les restrictions",
+        "inappropriate": "Partager du contenu inapproprié, offensant ou nuisible",
+        "cheat": "Tenter de tricher, exploiter ou manipuler les mécaniques de jeu",
+        "reverse": "Faire de l'ingénierie inverse ou tenter d'extraire le code source de notre Service"
+      },
+      "investigation": "Nous nous réservons le droit d'enquêter sur les violations et de prendre les mesures appropriées, y compris la suspension ou la résiliation du compte."
+    },
+    "ip": {
+      "title": "7. Droits de Propriété Intellectuelle",
+      "content1": "Tout le contenu, les fonctionnalités et la fonctionnalité de notre Service, y compris mais sans s'y limiter le texte, les graphiques, les logos, les images, les mécaniques de jeu et les logiciels, sont la propriété de DetectivesGame ou de nos concédants de licence et sont protégés par les lois sur le droit d'auteur, les marques et autres lois sur la propriété intellectuelle.",
+      "content2": "Vous bénéficiez d'une licence limitée, non exclusive et non transférable pour utiliser notre Service à des fins personnelles et non commerciales. Cette licence n'inclut aucune revente ou utilisation commerciale de notre Service ou de son contenu."
+    },
+    "privacy": {
+      "title": "8. Confidentialité et Collecte de Données",
+      "content1": "Votre vie privée est importante pour nous. Notre collecte et utilisation des informations personnelles est régie par notre Politique de Confidentialité, qui est incorporée dans ces Conditions par référence. En utilisant notre Service, vous consentez à nos pratiques en matière de données telles que décrites dans notre Politique de Confidentialité.",
+      "content2": "Nous pouvons collecter des données de gameplay, des métriques de performance et des interactions des utilisateurs pour améliorer notre Service et offrir des expériences personnalisées."
+    },
+    "availability": {
+      "title": "9. Disponibilité et Modifications du Service",
+      "intro": "Nous nous efforçons de fournir une disponibilité fiable du Service, mais nous ne garantissons pas un accès ininterrompu. Nous nous réservons le droit de :",
+      "items": {
+        "modify": "Modifier, suspendre ou interrompre toute partie de notre Service",
+        "update": "Mettre à jour le contenu du jeu, les règles et les mécaniques",
+        "maintenance": "Effectuer la maintenance et les mises à jour nécessaires",
+        "features": "Implémenter de nouvelles fonctionnalités ou supprimer celles existantes"
+      },
+      "notice": "Nous fournirons un préavis raisonnable des changements importants lorsque cela est possible."
+    },
+    "liability": {
+      "title": "10. Limitation de Responsabilité",
+      "content1": "DANS LA MESURE MAXIMALE AUTORISÉE PAR LA LOI, DETECTIVESGAME NE SERA PAS RESPONSABLE DES DOMMAGES INDIRECTS, ACCESSOIRES, SPÉCIAUX, CONSÉCUTIFS OU PUNITIFS, OU DE TOUTE PERTE DE BÉNÉFICES OU DE REVENUS, QU'ILS SOIENT SUBIS DIRECTEMENT OU INDIRECTEMENT, OU DE TOUTE PERTE DE DONNÉES, D'UTILISATION, DE CLIENTÈLE OU D'AUTRES PERTES INTANGIBLES.",
+      "content2": "Notre responsabilité totale envers vous pour toutes les réclamations découlant de ou liées au Service ne dépassera pas le montant que vous nous avez payé au cours des douze mois précédant la réclamation."
+    },
+    "termination": {
+      "title": "11. Résiliation",
+      "content1": "Nous pouvons résilier ou suspendre votre compte et votre accès à notre Service immédiatement, sans préavis, pour une conduite que nous estimons violer ces Conditions ou être nuisible à d'autres utilisateurs, à nous ou à des tiers, ou pour toute autre raison.",
+      "content2": "Vous pouvez résilier votre compte à tout moment en nous contactant ou en utilisant la fonction de suppression de compte dans vos paramètres. À la résiliation, votre droit d'utiliser le Service cessera immédiatement."
+    },
+    "dispute": {
+      "title": "12. Résolution des Litiges",
+      "content1": "Tout litige découlant de ces Conditions ou de votre utilisation de notre Service sera résolu par arbitrage contraignant conformément aux règles de l'American Arbitration Association. Vous renoncez à tout droit de participer à des recours collectifs ou à des arbitrages collectifs.",
+      "content2": "Ces Conditions seront régies et interprétées conformément aux lois de [Votre Juridiction], sans égard à ses dispositions relatives aux conflits de lois."
+    },
+    "severability": {
+      "title": "13. Divisibilité",
+      "content": "Si une disposition de ces Conditions est jugée inapplicable ou invalide, cette disposition sera limitée ou éliminée dans la mesure minimale nécessaire pour que ces Conditions restent par ailleurs pleinement en vigueur et en vigueur."
+    },
+    "contact": {
+      "title": "14. Informations de Contact",
+      "intro": "Si vous avez des questions concernant ces Conditions d'Utilisation, veuillez nous contacter à :",
+      "support": "Support DetectivesGame",
+      "email": "Email : legal@detectivesgame.com",
+      "website": "Site web : detectivesgame.com/contact"
+    },
+    "closing": "Merci d'utiliser DetectivesGame. Nous espérons que vous apprécierez résoudre des mystères et tester vos compétences de détective !"
+  }
+}

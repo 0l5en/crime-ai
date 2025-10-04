@@ -1,0 +1,120 @@
+{
+  "title": "Termini di Servizio",
+  "lastUpdated": "Ultimo aggiornamento:",
+  "date": "Gennaio 2025",
+  "sections": {
+    "acceptance": {
+      "title": "1. Accettazione dei Termini",
+      "content1": "Benvenuti su DetectivesGame (\"noi\", \"nostro\" o \"ci\"). Questi Termini di Servizio (\"Termini\") regolano l'utilizzo della nostra piattaforma di gioco investigativo interattivo, inclusi il nostro sito web, le applicazioni mobili e tutti i servizi correlati (collettivamente, il \"Servizio\"). Accedendo o utilizzando il nostro Servizio, accetti di essere vincolato da questi Termini.",
+      "content2": "Se non accetti questi Termini, ti preghiamo di non utilizzare il nostro Servizio. Potremmo aggiornare questi Termini di tanto in tanto, e il tuo uso continuato del Servizio costituisce l'accettazione di eventuali modifiche."
+    },
+    "description": {
+      "title": "2. Descrizione del Servizio",
+      "intro": "DetectivesGame è una piattaforma di gioco interattiva che offre esperienze coinvolgenti di mistero e detective. Il nostro Servizio include:",
+      "items": {
+        "cases": "Casi Detective Interattivi: Risolvi crimini, analizza prove, interroga sospetti e scopri misteri",
+        "generator": "Strumenti di Generazione Casi: Crea scenari e casi detective personalizzati",
+        "forensics": "Analisi Forense: Accesso a rapporti autoptici virtuali, analisi delle prove e indagini sulla scena del crimine",
+        "vacation": "Esperienze Misteriose per Affitti Vacanze: Casi specializzati progettati per strutture ricettive",
+        "venue": "Gestione Location: Strumenti per le aziende per integrare giochi misteriosi nei loro servizi",
+        "social": "Funzionalità Social: Sistemi email, notifiche e gameplay collaborativo",
+        "premium": "Abbonamenti Premium: Funzionalità avanzate e contenuti esclusivi",
+        "qr": "Integrazione Codice QR: Esperienze di gioco fisico-digitale interattive"
+      }
+    },
+    "accounts": {
+      "title": "3. Account Utente e Registrazione",
+      "intro": "Per accedere a determinate funzionalità del nostro Servizio, devi creare un account. Creando un account, accetti di:",
+      "items": {
+        "accurate": "Fornire informazioni accurate, aggiornate e complete",
+        "maintain": "Mantenere e aggiornare tempestivamente le informazioni del tuo account",
+        "security": "Mantenere la sicurezza delle credenziali del tuo account",
+        "responsibility": "Accettare la responsabilità per tutte le attività sotto il tuo account",
+        "notify": "Notificarci immediatamente di qualsiasi uso non autorizzato del tuo account"
+      },
+      "age": "Devi avere almeno 13 anni per creare un account. Gli utenti di età inferiore ai 18 anni devono avere il consenso dei genitori per utilizzare il nostro Servizio."
+    },
+    "payments": {
+      "title": "4. Abbonamenti Premium e Pagamenti",
+      "intro": "Il nostro Servizio offre abbonamenti premium che forniscono accesso a contenuti esclusivi e funzionalità avanzate. Sottoscrivendo i nostri servizi premium, accetti di:",
+      "items": {
+        "fees": "Pagare tutte le tariffe applicabili come descritto nei nostri piani tariffari",
+        "renewal": "Rinnovo automatico del tuo abbonamento salvo cancellazione",
+        "refund": "La nostra politica di rimborso come indicato nei nostri termini di fatturazione"
+      },
+      "policy": "Le tariffe di abbonamento non sono rimborsabili tranne quando richiesto dalla legge applicabile o come specificatamente indicato nella nostra politica di rimborso. Puoi cancellare il tuo abbonamento in qualsiasi momento tramite le impostazioni del tuo account."
+    },
+    "referral": {
+      "title": "5. Programma di Referral",
+      "intro": "Il nostro programma di referral consente agli utenti di guadagnare premi per aver segnalato nuovi utenti al nostro Servizio. La partecipazione al programma di referral è soggetta a:",
+      "items": {
+        "compliance": "Conformità con le linee guida del nostro programma di referral",
+        "prohibition": "Divieto di spam, attività di referral fraudolente o ingannevoli",
+        "modification": "Il nostro diritto di modificare o terminare il programma in qualsiasi momento",
+        "verification": "Verifica dell'idoneità al referral e distribuzione dei premi"
+      }
+    },
+    "conduct": {
+      "title": "6. Condotta e Contenuti dell'Utente",
+      "intro": "Utilizzando il nostro Servizio, accetti di non:",
+      "items": {
+        "laws": "Violare leggi o regolamenti applicabili",
+        "rights": "Violare i diritti altrui",
+        "malicious": "Caricare codice dannoso o tentare di compromettere i nostri sistemi",
+        "multiple": "Creare più account per aggirare le restrizioni",
+        "inappropriate": "Condividere contenuti inappropriati, offensivi o dannosi",
+        "cheat": "Tentare di imbrogliare, sfruttare o manipolare le meccaniche di gioco",
+        "reverse": "Fare reverse engineering o tentare di estrarre codice sorgente dal nostro Servizio"
+      },
+      "investigation": "Ci riserviamo il diritto di indagare sulle violazioni e intraprendere azioni appropriate, inclusa la sospensione o la terminazione dell'account."
+    },
+    "ip": {
+      "title": "7. Diritti di Proprietà Intellettuale",
+      "content1": "Tutti i contenuti, le funzionalità e le funzionalità del nostro Servizio, inclusi ma non limitati a testo, grafica, loghi, immagini, meccaniche di gioco e software, sono di proprietà di DetectivesGame o dei nostri licenzianti e sono protetti da copyright, marchi e altre leggi sulla proprietà intellettuale.",
+      "content2": "Ti viene concessa una licenza limitata, non esclusiva, non trasferibile per utilizzare il nostro Servizio per scopi personali e non commerciali. Questa licenza non include alcuna rivendita o uso commerciale del nostro Servizio o dei suoi contenuti."
+    },
+    "privacy": {
+      "title": "8. Privacy e Raccolta Dati",
+      "content1": "La tua privacy è importante per noi. La nostra raccolta e utilizzo delle informazioni personali è regolata dalla nostra Informativa sulla Privacy, che è incorporata in questi Termini per riferimento. Utilizzando il nostro Servizio, acconsenti alle nostre pratiche sui dati come descritto nella nostra Informativa sulla Privacy.",
+      "content2": "Potremmo raccogliere dati di gameplay, metriche di prestazione e interazioni degli utenti per migliorare il nostro Servizio e fornire esperienze personalizzate."
+    },
+    "availability": {
+      "title": "9. Disponibilità e Modifiche del Servizio",
+      "intro": "Ci impegniamo a fornire una disponibilità affidabile del Servizio, ma non garantiamo un accesso ininterrotto. Ci riserviamo il diritto di:",
+      "items": {
+        "modify": "Modificare, sospendere o interrompere qualsiasi parte del nostro Servizio",
+        "update": "Aggiornare contenuti, regole e meccaniche di gioco",
+        "maintenance": "Eseguire manutenzione e aggiornamenti secondo necessità",
+        "features": "Implementare nuove funzionalità o rimuovere quelle esistenti"
+      },
+      "notice": "Forniremo un preavviso ragionevole di modifiche significative quando possibile."
+    },
+    "liability": {
+      "title": "10. Limitazione di Responsabilità",
+      "content1": "NELLA MASSIMA MISURA CONSENTITA DALLA LEGGE, DETECTIVESGAME NON SARÀ RESPONSABILE PER DANNI INDIRETTI, INCIDENTALI, SPECIALI, CONSEQUENZIALI O PUNITIVI, O PERDITA DI PROFITTI O RICAVI, SIA SOSTENUTI DIRETTAMENTE O INDIRETTAMENTE, O PERDITA DI DATI, USO, AVVIAMENTO O ALTRE PERDITE INTANGIBILI.",
+      "content2": "La nostra responsabilità totale nei tuoi confronti per tutti i reclami derivanti da o relativi al Servizio non supererà l'importo che ci hai pagato nei dodici mesi precedenti il reclamo."
+    },
+    "termination": {
+      "title": "11. Terminazione",
+      "content1": "Potremmo terminare o sospendere il tuo account e l'accesso al nostro Servizio immediatamente, senza preavviso, per condotte che riteniamo violino questi Termini o siano dannose per altri utenti, noi o terzi, o per qualsiasi altro motivo.",
+      "content2": "Puoi terminare il tuo account in qualsiasi momento contattandoci o utilizzando la funzione di eliminazione account nelle tue impostazioni. Alla terminazione, il tuo diritto di utilizzare il Servizio cesserà immediatamente."
+    },
+    "dispute": {
+      "title": "12. Risoluzione delle Controversie",
+      "content1": "Qualsiasi controversia derivante da questi Termini o dal tuo utilizzo del nostro Servizio sarà risolta tramite arbitrato vincolante in conformità con le regole dell'American Arbitration Association. Rinunci a qualsiasi diritto di partecipare a class action o arbitrati di classe.",
+      "content2": "Questi Termini saranno regolati e interpretati in conformità con le leggi di [Tua Giurisdizione], senza riguardo alle sue disposizioni sui conflitti di legge."
+    },
+    "severability": {
+      "title": "13. Separabilità",
+      "content": "Se una qualsiasi disposizione di questi Termini viene ritenuta inapplicabile o non valida, tale disposizione sarà limitata o eliminata nella misura minima necessaria in modo che questi Termini rimangano altrimenti pienamente in vigore ed efficaci."
+    },
+    "contact": {
+      "title": "14. Informazioni di Contatto",
+      "intro": "Se hai domande su questi Termini di Servizio, contattaci a:",
+      "support": "Supporto DetectivesGame",
+      "email": "Email: legal@detectivesgame.com",
+      "website": "Sito web: detectivesgame.com/contact"
+    },
+    "closing": "Grazie per aver utilizzato DetectivesGame. Speriamo che tu ti diverta a risolvere misteri e testare le tue abilità investigative!"
+  }
+}

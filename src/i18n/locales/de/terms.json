@@ -1,0 +1,120 @@
+{
+  "title": "Nutzungsbedingungen",
+  "lastUpdated": "Zuletzt aktualisiert:",
+  "date": "Januar 2025",
+  "sections": {
+    "acceptance": {
+      "title": "1. Annahme der Bedingungen",
+      "content1": "Willkommen bei DetectivesGame (\"wir\", \"unser\" oder \"uns\"). Diese Nutzungsbedingungen (\"Bedingungen\") regeln Ihre Nutzung unserer interaktiven Detektiv-Gaming-Plattform, einschließlich unserer Website, mobilen Anwendungen und aller damit verbundenen Dienste (zusammen der \"Dienst\"). Durch den Zugriff auf oder die Nutzung unseres Dienstes erklären Sie sich mit diesen Bedingungen einverstanden.",
+      "content2": "Wenn Sie mit diesen Bedingungen nicht einverstanden sind, nutzen Sie bitte unseren Dienst nicht. Wir können diese Bedingungen von Zeit zu Zeit aktualisieren, und Ihre fortgesetzte Nutzung des Dienstes bedeutet die Annahme aller Änderungen."
+    },
+    "description": {
+      "title": "2. Beschreibung des Dienstes",
+      "intro": "DetectivesGame ist eine interaktive Gaming-Plattform, die immersive Mystery- und Detektiv-Erlebnisse bietet. Unser Dienst umfasst:",
+      "items": {
+        "cases": "Interaktive Detektivfälle: Lösen Sie Verbrechen, analysieren Sie Beweise, verhören Sie Verdächtige und decken Sie Geheimnisse auf",
+        "generator": "Fall-Generierungs-Tools: Erstellen Sie individuelle Detektivszenarien und Fälle",
+        "forensics": "Forensische Analyse: Zugriff auf virtuelle Autopsieberichte, Beweisanalysen und Tatortuntersuchungen",
+        "vacation": "Ferienunterkunft-Mystery-Erlebnisse: Spezialisierte Fälle für Gastgewerbe-Einrichtungen",
+        "venue": "Venue-Management: Tools für Unternehmen zur Integration von Mystery-Spielen in ihre Dienstleistungen",
+        "social": "Soziale Funktionen: E-Mail-Systeme, Benachrichtigungen und kollaboratives Gameplay",
+        "premium": "Premium-Abonnements: Erweiterte Funktionen und exklusive Inhalte",
+        "qr": "QR-Code-Integration: Interaktive physisch-digitale Gaming-Erlebnisse"
+      }
+    },
+    "accounts": {
+      "title": "3. Benutzerkonten und Registrierung",
+      "intro": "Um auf bestimmte Funktionen unseres Dienstes zuzugreifen, müssen Sie ein Konto erstellen. Bei der Erstellung eines Kontos stimmen Sie zu:",
+      "items": {
+        "accurate": "Genaue, aktuelle und vollständige Informationen bereitzustellen",
+        "maintain": "Ihre Kontoinformationen zu pflegen und umgehend zu aktualisieren",
+        "security": "Die Sicherheit Ihrer Anmeldedaten zu gewährleisten",
+        "responsibility": "Die Verantwortung für alle Aktivitäten unter Ihrem Konto zu übernehmen",
+        "notify": "Uns unverzüglich über eine unbefugte Nutzung Ihres Kontos zu benachrichtigen"
+      },
+      "age": "Sie müssen mindestens 13 Jahre alt sein, um ein Konto zu erstellen. Nutzer unter 18 Jahren müssen die Zustimmung der Eltern zur Nutzung unseres Dienstes haben."
+    },
+    "payments": {
+      "title": "4. Premium-Abonnements und Zahlungen",
+      "intro": "Unser Dienst bietet Premium-Abonnements, die Zugriff auf exklusive Inhalte und erweiterte Funktionen bieten. Durch das Abonnieren unserer Premium-Dienste stimmen Sie zu:",
+      "items": {
+        "fees": "Alle anfallenden Gebühren gemäß unseren Preisplänen zu bezahlen",
+        "renewal": "Automatische Verlängerung Ihres Abonnements, sofern nicht gekündigt",
+        "refund": "Unserer Rückerstattungsrichtlinie gemäß unseren Abrechnungsbedingungen"
+      },
+      "policy": "Abonnementgebühren sind nicht erstattungsfähig, außer wie gesetzlich vorgeschrieben oder wie ausdrücklich in unserer Rückerstattungsrichtlinie angegeben. Sie können Ihr Abonnement jederzeit über Ihre Kontoeinstellungen kündigen."
+    },
+    "referral": {
+      "title": "5. Empfehlungsprogramm",
+      "intro": "Unser Empfehlungsprogramm ermöglicht es Nutzern, Belohnungen für die Empfehlung neuer Nutzer für unseren Dienst zu verdienen. Die Teilnahme am Empfehlungsprogramm unterliegt:",
+      "items": {
+        "compliance": "Einhaltung unserer Empfehlungsprogramm-Richtlinien",
+        "prohibition": "Verbot von Spam, betrügerischen oder irreführenden Empfehlungsaktivitäten",
+        "modification": "Unserem Recht, das Programm jederzeit zu ändern oder zu beenden",
+        "verification": "Überprüfung der Empfehlungsberechtigung und Belohnungsverteilung"
+      }
+    },
+    "conduct": {
+      "title": "6. Nutzerverhalten und Inhalte",
+      "intro": "Bei der Nutzung unseres Dienstes verpflichten Sie sich, Folgendes zu unterlassen:",
+      "items": {
+        "laws": "Verstoß gegen geltende Gesetze oder Vorschriften",
+        "rights": "Verletzung der Rechte anderer",
+        "malicious": "Hochladen von schädlichem Code oder Versuche, unsere Systeme zu kompromittieren",
+        "multiple": "Erstellen mehrerer Konten zur Umgehung von Beschränkungen",
+        "inappropriate": "Teilen unangemessener, beleidigender oder schädlicher Inhalte",
+        "cheat": "Versuche zu betrügen, auszunutzen oder Spielmechaniken zu manipulieren",
+        "reverse": "Reverse Engineering oder Versuche, Quellcode aus unserem Dienst zu extrahieren"
+      },
+      "investigation": "Wir behalten uns das Recht vor, Verstöße zu untersuchen und angemessene Maßnahmen zu ergreifen, einschließlich Kontosperrung oder -kündigung."
+    },
+    "ip": {
+      "title": "7. Rechte an geistigem Eigentum",
+      "content1": "Alle Inhalte, Funktionen und Funktionalitäten unseres Dienstes, einschließlich, aber nicht beschränkt auf Text, Grafiken, Logos, Bilder, Spielmechaniken und Software, sind Eigentum von DetectivesGame oder unseren Lizenzgebern und durch Urheber-, Marken- und andere Gesetze zum Schutz des geistigen Eigentums geschützt.",
+      "content2": "Ihnen wird eine begrenzte, nicht-exklusive, nicht übertragbare Lizenz zur Nutzung unseres Dienstes für persönliche, nicht-kommerzielle Zwecke gewährt. Diese Lizenz umfasst keinen Weiterverkauf oder kommerzielle Nutzung unseres Dienstes oder seiner Inhalte."
+    },
+    "privacy": {
+      "title": "8. Datenschutz und Datenerfassung",
+      "content1": "Ihre Privatsphäre ist uns wichtig. Unsere Erfassung und Verwendung persönlicher Informationen unterliegt unserer Datenschutzrichtlinie, die durch Verweis in diese Bedingungen aufgenommen wird. Durch die Nutzung unseres Dienstes stimmen Sie unseren Datenpraktiken zu, wie in unserer Datenschutzrichtlinie beschrieben.",
+      "content2": "Wir können Gameplay-Daten, Leistungsmetriken und Nutzerinteraktionen erfassen, um unseren Dienst zu verbessern und personalisierte Erlebnisse bereitzustellen."
+    },
+    "availability": {
+      "title": "9. Dienstverfügbarkeit und Änderungen",
+      "intro": "Wir bemühen uns, eine zuverlässige Dienstverfügbarkeit bereitzustellen, garantieren jedoch keinen unterbrechungsfreien Zugriff. Wir behalten uns das Recht vor:",
+      "items": {
+        "modify": "Jeden Teil unseres Dienstes zu ändern, auszusetzen oder einzustellen",
+        "update": "Spielinhalte, Regeln und Mechaniken zu aktualisieren",
+        "maintenance": "Wartung und Updates nach Bedarf durchzuführen",
+        "features": "Neue Funktionen zu implementieren oder bestehende zu entfernen"
+      },
+      "notice": "Wir werden angemessene Mitteilungen über wesentliche Änderungen geben, wenn möglich."
+    },
+    "liability": {
+      "title": "10. Haftungsbeschränkung",
+      "content1": "IM MAXIMAL GESETZLICH ZULÄSSIGEN UMFANG HAFTET DETECTIVESGAME NICHT FÜR INDIREKTE, ZUFÄLLIGE, BESONDERE, FOLGESCHÄDEN ODER STRAFSCHADENERSATZ ODER VERLUSTE VON GEWINNEN ODER EINNAHMEN, OB DIREKT ODER INDIREKT ENTSTANDEN, ODER VERLUSTE VON DATEN, NUTZUNG, GOODWILL ODER ANDEREN IMMATERIELLEN VERLUSTEN.",
+      "content2": "Unsere Gesamthaftung Ihnen gegenüber für alle Ansprüche, die sich aus oder im Zusammenhang mit dem Dienst ergeben, übersteigt nicht den Betrag, den Sie uns in den zwölf Monaten vor dem Anspruch gezahlt haben."
+    },
+    "termination": {
+      "title": "11. Kündigung",
+      "content1": "Wir können Ihr Konto und Ihren Zugriff auf unseren Dienst sofort ohne vorherige Ankündigung beenden oder aussetzen, wenn wir glauben, dass Ihr Verhalten gegen diese Bedingungen verstößt oder anderen Nutzern, uns oder Dritten schadet, oder aus jedem anderen Grund.",
+      "content2": "Sie können Ihr Konto jederzeit kündigen, indem Sie uns kontaktieren oder die Kontolöschfunktion in Ihren Einstellungen verwenden. Bei Kündigung endet Ihr Recht zur Nutzung des Dienstes sofort."
+    },
+    "dispute": {
+      "title": "12. Streitbeilegung",
+      "content1": "Alle Streitigkeiten, die sich aus diesen Bedingungen oder Ihrer Nutzung unseres Dienstes ergeben, werden durch verbindliches Schiedsverfahren gemäß den Regeln der American Arbitration Association beigelegt. Sie verzichten auf das Recht, an Sammelklagen oder klassenweiten Schiedsverfahren teilzunehmen.",
+      "content2": "Diese Bedingungen unterliegen den Gesetzen von [Ihre Jurisdiktion] und werden in Übereinstimmung mit diesen ausgelegt, ohne Rücksicht auf Kollisionsnormen."
+    },
+    "severability": {
+      "title": "13. Salvatorische Klausel",
+      "content": "Wenn eine Bestimmung dieser Bedingungen als nicht durchsetzbar oder ungültig befunden wird, wird diese Bestimmung auf das minimal notwendige Maß begrenzt oder eliminiert, sodass diese Bedingungen ansonsten in vollem Umfang in Kraft und wirksam bleiben."
+    },
+    "contact": {
+      "title": "14. Kontaktinformationen",
+      "intro": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
+      "support": "DetectivesGame Support",
+      "email": "E-Mail: legal@detectivesgame.com",
+      "website": "Website: detectivesgame.com/contact"
+    },
+    "closing": "Vielen Dank, dass Sie DetectivesGame nutzen. Wir hoffen, Sie genießen das Lösen von Rätseln und das Testen Ihrer Detektivfähigkeiten!"
+  }
+}
