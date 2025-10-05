@@ -3,9 +3,22 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: https://crime-ai.0l5en.de
+- url: https://crime-ai.0l5en.de/bff/crime-ai-api
   description: Generated server url
 paths:
+  /me:
+    get:
+      summary: get information about the current user
+      operationId: getMe
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserInfoDto"
+        "500":
+          description: if any internal error occurs while processing the request
   /crimecase:
     get:
       summary: get the latest crime cases
@@ -674,6 +687,22 @@ paths:
           description: if any internal error occurs while processing the request
 components:
   schemas:
+    UserInfoDto:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        exp:
+          type: integer
+          format: int64
     CrimeCaseDto:
       type: object
       properties:
