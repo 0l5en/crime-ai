@@ -5,6 +5,23 @@
  */
 
 export interface paths {
+  "/me": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** get information about the current user */
+    get: operations["getMe"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/crimecase": {
     parameters: {
       query?: never;
@@ -12,10 +29,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** get the 10 latest crime cases */
+    /** get the latest crime cases */
     get: operations["listCrimeCases"];
     put?: never;
-    /** create a new crime case */
+    /** start a task to create a new crime case */
     post: operations["createCrimeCase"];
     delete?: never;
     options?: never;
@@ -34,6 +51,23 @@ export interface paths {
     put?: never;
     /** start a task to create a new basic crime case */
     post: operations["createCrimeCaseBasic"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase-vacation-rental": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** start a task to create a new vacation rental crime case */
+    post: operations["createCrimeCaseVacationRental"];
     delete?: never;
     options?: never;
     head?: never;
@@ -84,7 +118,7 @@ export interface paths {
       cookie?: never;
     };
     /** get the evidences of a crime case */
-    get: operations["getEvidences"];
+    get: operations["listEvidences"];
     put?: never;
     post?: never;
     delete?: never;
@@ -101,7 +135,7 @@ export interface paths {
       cookie?: never;
     };
     /** get the motives of a crime case */
-    get: operations["getMotives"];
+    get: operations["listMotives"];
     put?: never;
     post?: never;
     delete?: never;
@@ -117,8 +151,8 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** get persons of a crime case */
-    get: operations["getPersons"];
+    /** get the persons of a crime case */
+    get: operations["listPersons"];
     put?: never;
     post?: never;
     delete?: never;
@@ -376,6 +410,14 @@ export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
+    UserInfoDto: {
+      id: string;
+      username: string;
+      email: string;
+      roles: string[];
+      /** Format: int64 */
+      exp: number;
+    };
     CrimeCaseDto: {
       id: string;
       title: string;
@@ -634,6 +676,19 @@ export interface components {
       historicalFeaturesAndLegends?: string;
       historicalCulturalContext?: string;
     };
+    CreateCaseGeneratorFormVacationRentalDto: {
+      formBase: components["schemas"]["CreateCaseGeneratorFormBasicDto"];
+      /** Format: int32 */
+      venueFloors: number;
+      /** Format: int32 */
+      venueBedrooms: number;
+      /** Format: int32 */
+      venueBathrooms: number;
+      /** Format: int32 */
+      maxGuests: number;
+      roomLayoutDescription?: string;
+      userId: string;
+    };
     CreateSightseeingAttractionDto: {
       attractionName: string;
       /** Format: int32 */
@@ -657,9 +712,45 @@ export interface components {
 export type $defs = Record<string, never>;
 
 export interface operations {
-  listCrimeCases: {
+  getMe: {
     parameters: {
       query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["UserInfoDto"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listCrimeCases: {
+    parameters: {
+      query?: {
+        /** @description The maximum number of elements that should be returned. If this parameter is not specified, the default value of 10 will be used. */
+        maxResults?: string;
+        /** @description The type of crime case used during the generation process. */
+        caseGeneratorFormType?: string;
+        /** @description The id of a logged in user playing a crime case. */
+        userId?: string;
+        /** @description The status of a crime case. Multiple status values are combined using an OR operator. For example, status=a&status=b selects all elements that have either status A or status B. */
+        status?: string;
+      };
       header?: never;
       path?: never;
       cookie?: never;
@@ -725,6 +816,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["CreateCaseGeneratorFormBasicDto"];
+      };
+    };
+    responses: {
+      /** @description If the task was started successfully. The response will contain a Location Header to get the status of the task. */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description If the request contains faulty input data. */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Violations"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createCrimeCaseVacationRental: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new vacation rental crime case */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateCaseGeneratorFormVacationRentalDto"];
       };
     };
     responses: {
@@ -902,9 +1032,12 @@ export interface operations {
       };
     };
   };
-  getEvidences: {
+  listEvidences: {
     parameters: {
-      query?: never;
+      query?: {
+        /** @description If the value '0' is specified, only evidences not relevant to solve the case are returned (red herrings); if a value other than '0' is specified, only evidences relevant to solve the case are returned. */
+        solutionEvidence?: string;
+      };
       header?: never;
       path: {
         /** @description crime case id */
@@ -939,9 +1072,12 @@ export interface operations {
       };
     };
   };
-  getMotives: {
+  listMotives: {
     parameters: {
-      query?: never;
+      query?: {
+        /** @description person id */
+        personId?: string;
+      };
       header?: never;
       path: {
         /** @description crime case id */
@@ -976,15 +1112,15 @@ export interface operations {
       };
     };
   };
-  getPersons: {
+  listPersons: {
     parameters: {
       query?: {
-        /** @description person role filter */
+        /** @description one or more person roles - the operation returns all persons containing at least one of the given roles */
         personRole?: string;
       };
       header?: never;
       path: {
-        /** @description crime case id */
+        /** @description crime case id - the operation returns all persons of the given crime case */
         id: string;
       };
       cookie?: never;
@@ -1002,6 +1138,13 @@ export interface operations {
       };
       /** @description crime case not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if the request contains invalid parameters */
+      400: {
         headers: {
           [name: string]: unknown;
         };
@@ -1124,10 +1267,10 @@ export interface operations {
   listEvidenceReports: {
     parameters: {
       query?: {
-        /** @description evidence id */
-        "evidenceId"?: string;
-        /** @description person id */
+        /** @description The ID of the person who should create the report */
         "personId"?: string;
+        /** @description The ID of the evidence from which the report is to be created */
+        "evidenceId"?: string;
       };
       header?: never;
       path?: never;
@@ -1135,7 +1278,7 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description successful operation */
+      /** @description Successful operation. */
       200: {
         headers: {
           [name: string]: unknown;
@@ -1143,6 +1286,13 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["ResultSetEvidenceReport"];
         };
+      };
+      /** @description if there are missing or invalid parameters */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description if any internal error occurs while processing the request */
       500: {
@@ -1160,15 +1310,22 @@ export interface operations {
       path?: never;
       cookie?: never;
     };
-    /** @description the data required to create a new evidence report */
+    /** @description the data required to create a new report */
     requestBody: {
       content: {
         "application/json": components["schemas"]["CreateEvidenceReportDto"];
       };
     };
     responses: {
-      /** @description successful operation */
+      /** @description successful operation without response body */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if an invalid request body was send */
+      400: {
         headers: {
           [name: string]: unknown;
         };
@@ -1190,6 +1347,8 @@ export interface operations {
         "reportAuthorId"?: string;
         /** @description The ID of the victim */
         "victimId"?: string;
+        /** @description The ID of the notification */
+        "notificationId"?: string;
       };
       header?: never;
       path?: never;
@@ -1236,7 +1395,7 @@ export interface operations {
       };
     };
     responses: {
-      /** @description successful operation */
+      /** @description successful operation without response body */
       201: {
         headers: {
           [name: string]: unknown;
@@ -1266,6 +1425,8 @@ export interface operations {
         "userId"?: string;
         /** @description the id of a person from a criminal case with whom the interrogation was conducted */
         "personId"?: string;
+        /** @description The id of a reference the interrogation is based on. The special value 'null' can be used to select interrogations not having a reference. */
+        "referenceId"?: string;
       };
       header?: never;
       path?: never;
@@ -1273,7 +1434,7 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description Successful operation responds with a list of interrogations. If no query parameters are specified, an empty list is returned. A maximum of 10 items are returned. */
+      /** @description Successful operation responds with a list of interrogations. If whether personId nor userId are specified, an empty list is returned. A maximum of 10 items are returned. */
       200: {
         headers: {
           [name: string]: unknown;
