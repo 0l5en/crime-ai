@@ -9,7 +9,7 @@ const SignInButton = () => {
     const user = useUserContext();
 
     const login = () => {
-        if (data && data.length > 1 && data[0].loginUri) {
+        if (data && data.length > 0 && data[0].loginUri) {
             const url = new URL(data[0].loginUri);
             url.searchParams.append(
                 "post_login_success_uri",
