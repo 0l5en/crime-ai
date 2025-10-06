@@ -1,12 +1,14 @@
-import { useKeycloak } from "@/contexts/KeycloakContext";
-import { Link } from "react-router-dom";
-import NotificationBadge from "./NotificationBadge";
-import ThemeToggle from "./ThemeToggle";
-import LanguageSelector from "./LanguageSelector";
+import { useUserContext } from "@/contexts/UserContext";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
+import LogoutButton from "./LogoutButton";
+import NotificationBadge from "./NotificationBadge";
+import SignInButton from "./SignInButton";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
-  const { authenticated, user, login, logout, hasRole } = useKeycloak();
+  const user = useUserContext();
   const { t } = useTranslation('common');
 
   return (
@@ -31,7 +33,7 @@ const Header = () => {
               <ThemeToggle />
             </div>
 
-            {authenticated ? (
+            {user.isAuthenticated ? (
               <>
 
                 {/* Notification Badge */}
@@ -55,7 +57,7 @@ const Header = () => {
                 )}
 
                 {/* Admin Link */}
-                {hasRole('admin') && (
+                {user.hasAnyRole('admin') && (
                   <div className="nav-item">
                     <Link to="/admin" className="nav-link p-0">
                       <button className="btn btn-outline-primary bg-transparent border-danger text-danger">
@@ -66,7 +68,7 @@ const Header = () => {
                 )}
 
                 {/* Vacation Rental Dashboard Link */}
-                {hasRole('vacation-rental') && (
+                {user.hasAnyRole('vacation-rental') && (
                   <div className="nav-item">
                     <Link to="/vacation-rental-dashboard" className="nav-link p-0">
                       <button className="btn btn-primary">
@@ -79,24 +81,14 @@ const Header = () => {
 
                 {/* Logout Button */}
                 <div className="nav-item">
-                  <button
-                    className="btn btn-outline-secondary"
-                    onClick={logout}
-                  >
-                    {t('nav.logout')}
-                  </button>
+                  <LogoutButton />
                 </div>
               </>
             ) : (
               <>
                 {/* Sign In Button */}
                 <div className="nav-item">
-                  <button
-                    className="btn btn-outline-secondary"
-                    onClick={() => login()}
-                  >
-                    {t('nav.signIn')}
-                  </button>
+                  <SignInButton />
                 </div>
 
                 {/* Sign Up Button */}
@@ -167,7 +159,7 @@ const Header = () => {
             </div>
 
             {/* User Section for authenticated users */}
-            {authenticated && user && (
+            {user.isAuthenticated && (
               <div className="mb-4 p-3 border rounded">
                 <div className="d-flex align-items-center gap-3 mb-3">
                   <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
@@ -184,7 +176,7 @@ const Header = () => {
                 </div>
 
                 {/* Vacation Rental Dashboard Link - Mobile */}
-                {hasRole('vacation-rental') && (
+                {user.hasAnyRole('vacation-rental') && (
                   <Link
                     to="/vacation-rental-dashboard"
                     className="btn btn-outline-primary bg-transparent border-warning text-warning w-100 mb-2"
@@ -196,7 +188,7 @@ const Header = () => {
                 )}
 
                 {/* Admin Link for mobile */}
-                {hasRole('admin') && (
+                {user.hasAnyRole('admin') && (
                   <Link
                     to="/admin"
                     className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2"
@@ -211,37 +203,18 @@ const Header = () => {
 
           {/* Bottom Action Buttons */}
           <div className="mt-auto">
-            {authenticated ? (
-              <button
-                className="btn btn-outline-secondary w-100"
-                onClick={() => {
-                  logout();
-                  // Close offcanvas after logout
-                  const offcanvas = document.getElementById('mobileOffcanvas');
-                  if (offcanvas) {
-                    const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
-                    bsOffcanvas.hide();
-                  }
-                }}
-              >
-                {t('nav.logout')}
-              </button>
+            {user.isAuthenticated ? (
+              <LogoutButton onLogout={() => {
+                // Close offcanvas after logout
+                const offcanvas = document.getElementById('mobileOffcanvas');
+                if (offcanvas) {
+                  const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
+                  bsOffcanvas.hide();
+                }
+              }} />
             ) : (
               <div className="d-grid gap-2">
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => {
-                    login();
-                    // Close offcanvas after login attempt
-                    const offcanvas = document.getElementById('mobileOffcanvas');
-                    if (offcanvas) {
-                      const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
-                      bsOffcanvas.hide();
-                    }
-                  }}
-                >
-                  {t('nav.signIn')}
-                </button>
+                <SignInButton />
                 <button className="btn btn-danger">
                   {t('nav.signUp')}
                 </button>
