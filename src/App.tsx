@@ -1,11 +1,9 @@
 
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserProvider } from "./contexts/UserContext";
-import useMe from "./hooks/useMe";
 import AdminCaseGenerator from "./pages/AdminCaseGenerator";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -23,25 +21,15 @@ import Terms from "./pages/Terms";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenuesPage from "./pages/VenuesPage";
-import { User } from "./utils/UserService";
 
 const queryClient = new QueryClient();
 
 const App = () => {
 
-  const [user, setUser] = useState<User>(User.ANONYMOUS);
-  const { data } = useMe();
-
-  useEffect(() => {
-    if (data) {
-      setUser(new User(data.username, data.email, data.roles));
-    }
-  }, [data]);
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <UserProvider user={user}>
+        <UserProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
