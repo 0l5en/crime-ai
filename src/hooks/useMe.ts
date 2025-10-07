@@ -7,7 +7,7 @@ type UserInfoDto = paths[typeof PATH_ME]['get']['responses']['200']['content']['
 
 const useMe = () => {
     return useQuery({
-        queryKey: ['getMe'],
+        queryKey: [PATH_ME],
         queryFn: async (): Promise<UserInfoDto> => {
             const response = await fetch(`${PATH_CRIME_AI_API}${PATH_ME}`);
             if (response.ok) {

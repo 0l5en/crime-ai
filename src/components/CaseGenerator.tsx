@@ -15,7 +15,7 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
     // Extract task ID from location URL
     useEffect(() => {
         if (taskUrl) {
-            const match = taskUrl.match(/\/task\/([^\/]+)$/);
+            const match = taskUrl.match(/\/task\/([^/]+)$/);
             if (match) {
                 setTaskId(match[1]);
             }
@@ -42,7 +42,7 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
                 setTaskUrl(null);
             }
         }
-    }, [taskInfo, navigate, toast]);
+    }, [taskInfo, navigate, toast, setTaskUrl]);
 
     // Helper functions for task progress
     const getProgressPercentage = () => {

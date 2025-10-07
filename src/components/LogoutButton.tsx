@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 const LogoutButton = ({ onLogout }: { onLogout?: () => void }) => {
     const { mutate: logout, isPending, isSuccess } = useLogout();
     const { t } = useTranslation('common');
-
     return (
         <button
             className="btn btn-outline-secondary w-100"
             disabled={isPending}
+            type="submit"
             onClick={() => {
                 logout();
                 if (isSuccess && onLogout) {

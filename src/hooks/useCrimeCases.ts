@@ -1,24 +1,16 @@
 
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
 
-type ResultSetCrimeCase = components['schemas']['ResultSetCrimeCase'];
-
-// Define parameters interface for useCrimeCases hook
-interface CrimeCasesParams {
-  maxResults?: string;
-  caseGeneratorFormType?: string;
-  userId?: string;
-  status?: string;
-}
+const REQUEST_PATH = '/crimecase'
+type ResultSetCrimeCase = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json']
+type CrimeCasesParams = paths[typeof REQUEST_PATH]['get']['parameters']['query'];
 
 export const useCrimeCases = (params?: CrimeCasesParams) => {
   return useQuery({
-    queryKey: ['crimeCases', params],
+    queryKey: [REQUEST_PATH, params],
     queryFn: async (): Promise<ResultSetCrimeCase> => {
-      console.log('Calling fetch-crime-cases edge function with params:', params);
-      
       // Build query string from parameters
       const searchParams = new URLSearchParams();
       if (params?.maxResults) searchParams.append('maxResults', params.maxResults);
@@ -26,23 +18,21 @@ export const useCrimeCases = (params?: CrimeCasesParams) => {
       if (params?.userId) searchParams.append('userId', params.userId);
       if (params?.status) {
         // Support comma-separated status values
-        params.status.split(',').forEach(status => 
+        params.status.split(',').forEach(status =>
           searchParams.append('status', status.trim())
         );
       }
-      
+
       const queryString = searchParams.toString();
-      const functionName = queryString ? `fetch-crime-cases?${queryString}` : 'fetch-crime-cases';
-      
-      const { data, error } = await supabase.functions.invoke(functionName);
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to fetch crime cases: ${error.message}`);
+      const response = await fetch(`${PATH_CRIME_AI_API}${REQUEST_PATH}` + (queryString ? `?${queryString}` : ''));
+
+      if (response.ok) {
+        const data = await response.json();
+        return data as ResultSetCrimeCase;
       }
-      
-      console.log('Edge function response:', data);
-      return data as ResultSetCrimeCase;
+
+      throw new Error('Server returned error response: ' + response.status);
+
     },
     staleTime: 5 * 60 * 1000, // 5 minutes
   });

@@ -1,10 +1,10 @@
 
 import Header from "@/components/Header";
+import { useToast } from "@/hooks/use-toast";
 import { useCreatePromptTemplate } from "@/hooks/useCreatePromptTemplate";
 import { usePromptTemplate } from "@/hooks/usePromptTemplate";
 import { usePromptTemplateIdentifiers } from "@/hooks/usePromptTemplateIdentifiers";
 import { usePromptTemplateVersions } from "@/hooks/usePromptTemplateVersions";
-import { useToast } from "@/hooks/use-toast";
 import { Clock, FileText, Loader2, Save } from "lucide-react";
 import React, { useState } from "react";
 
@@ -17,10 +17,9 @@ const AdminPromptManagement = () => {
   const { toast } = useToast();
 
   const { data: identifiers, isLoading: identifiersLoading, error: identifiersError } = usePromptTemplateIdentifiers();
-  const { data: versions, isLoading: versionsLoading } = usePromptTemplateVersions(
-    identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name || ""
-  );
-  const { data: templateDetails, isLoading: templateLoading } = usePromptTemplate(selectedVersionId);
+  const selectedTemplateName = identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name;
+  const { data: versions, isLoading: versionsLoading } = usePromptTemplateVersions(selectedTemplateName ? { name: selectedTemplateName } : undefined);
+  const { data: templateDetails, isLoading: templateLoading } = usePromptTemplate(selectedVersionId.length > 0 ? { id: selectedVersionId } : undefined);
   const createTemplateMutation = useCreatePromptTemplate();
 
   // Update edited content when template details change
@@ -45,12 +44,12 @@ const AdminPromptManagement = () => {
         name: currentTemplate.name,
         template: editedContent,
       });
-      
+
       toast({
         title: "Erfolgreich gespeichert",
         description: "Das Template wurde erfolgreich erstellt",
       });
-      
+
       setIsEditing(false);
       // Reset selected version to show the new version will appear in the list
       setSelectedVersionId("");
@@ -132,7 +131,7 @@ const AdminPromptManagement = () => {
           <ul className="nav nav-tabs d-flex w-100 mb-4 bg-dark border border-secondary">
             {templates.map((template) => (
               <li key={template.id} className="nav-item">
-                <button 
+                <button
                   className={`nav-link text-muted bg-transparent border-0 px-3 py-2 ${selectedTemplateId === template.id?.toString() ? 'active text-light bg-secondary' : ''}`}
                   onClick={() => {
                     setSelectedTemplateId(template.id?.toString() || "");

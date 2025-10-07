@@ -1,29 +1,27 @@
-
-import { supabase } from "@/integrations/supabase/client";
-import type { components } from '@/openapi/crimeAiSchema';
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from "@tanstack/react-query";
+import { PATH_CRIME_AI_API } from './constants';
 
 // Import types from the shared crime-api-types
-type PromptTemplateDto = components['schemas']['PromptTemplateDto'];
+const REQUEST_PATH = '/prompt-template/{id}';
+type PromptTemplateDto = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
+type PathParams = paths[typeof REQUEST_PATH]['get']['parameters']['path'];
 
-export const usePromptTemplate = (templateId: string) => {
+export const usePromptTemplate = (requestParams?: PathParams) => {
     return useQuery({
-        queryKey: ["promptTemplate", templateId],
+        queryKey: [REQUEST_PATH, requestParams?.id ?? ''],
         queryFn: async (): Promise<PromptTemplateDto> => {
-            console.log('Fetching prompt template for ID:', templateId);
-            const { data, error } = await supabase.functions.invoke(`prompt-template/${templateId}`, {
-                body: { id: templateId }
-            });
 
-            if (error) {
-                console.error('Error fetching prompt template:', error);
-                throw error;
+            const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', requestParams.id));
+
+            if (response.ok) {
+                const data = await response.json();
+                return data as PromptTemplateDto;
             }
 
-            console.log('Received prompt template:', data);
-            return data;
+            throw new Error('Server returned error response: ' + response.status);
         },
         staleTime: 5 * 60 * 1000, // 5 minutes
-        enabled: !!templateId,
+        enabled: !!requestParams,
     });
 };

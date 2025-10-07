@@ -1,25 +1,24 @@
 
-import { supabase } from "@/integrations/supabase/client";
-import type { components } from '@/openapi/crimeAiSchema';
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from "@tanstack/react-query";
+import { PATH_CRIME_AI_API } from "./constants";
 
-// Import types from the shared crime-api-types
-type ResultSetPromptTemplateIdentifier = components['schemas']['ResultSetPromptTemplateIdentifier'];
+const REQUEST_PATH = '/prompt-template-identifier'
+type ResultSetPromptTemplateIdentifier = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const usePromptTemplateIdentifiers = () => {
     return useQuery({
-        queryKey: ["promptTemplateIdentifiers"],
+        queryKey: [REQUEST_PATH],
         queryFn: async (): Promise<ResultSetPromptTemplateIdentifier> => {
-            console.log('Fetching prompt template identifiers');
-            const { data, error } = await supabase.functions.invoke('prompt-template-identifiers');
 
-            if (error) {
-                console.error('Error fetching prompt template identifiers:', error);
-                throw error;
+            const response = await fetch(`${PATH_CRIME_AI_API}${REQUEST_PATH}`);
+
+            if (response.ok) {
+                const data = await response.json();
+                return data as ResultSetPromptTemplateIdentifier;
             }
 
-            console.log('Received prompt template identifiers:', data);
-            return data;
+            throw new Error('Server returned error response: ' + response.status);
         },
         staleTime: 5 * 60 * 1000, // 5 minutes
     });
