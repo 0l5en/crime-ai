@@ -54,8 +54,8 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3" onClick={() => navigate("/admin/prompts")}>
             <div className="card card-hover" style={{ cursor: "pointer" }}>
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Prompt Templates</h3>
-                <p className="text-muted">Configure your prompts</p>
+                <h3 className="h5 fw-semibold mb-2">Prompt Management</h3>
+                <p className="text-muted">Manage your prompts</p>
               </div>
             </div>
           </div>
