@@ -19,7 +19,7 @@ const AdminDashboard = () => {
             <div className="card">
               <div className="card-body p-4">
                 <h3 className="h5 fw-semibold mb-2">User Management</h3>
-                <p className="text-muted">Manage users and their roles</p>
+                <p className="text-muted">Manage users and roles</p>
               </div>
             </div>
           </div>
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
             <div className="card">
               <div className="card-body p-4">
                 <h3 className="h5 fw-semibold mb-2">Account Management</h3>
-                <p className="text-muted">Configure your account</p>
+                <p className="text-muted">Manage your account</p>
               </div>
             </div>
           </div>
