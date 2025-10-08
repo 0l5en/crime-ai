@@ -27,7 +27,7 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3">
             <div className="card">
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Account Settings</h3>
+                <h3 className="h5 fw-semibold mb-2">Account Management</h3>
                 <p className="text-muted">Configure your account</p>
               </div>
             </div>
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3">
             <div className="card">
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Reports</h3>
+                <h3 className="h5 fw-semibold mb-2">Analytics</h3>
                 <p className="text-muted">System reports and analytics</p>
               </div>
             </div>
