@@ -1,27 +1,24 @@
 
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
 
-type ResultSetMotive = components['schemas']['ResultSetMotive'];
+const REQUEST_PATH = '/crimecase/{id}/motive';
+type ResultSetMotive = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const useCaseMotives = (caseId: string) => {
   return useQuery({
-    queryKey: ['caseMotives', caseId],
+    queryKey: [REQUEST_PATH, caseId],
     queryFn: async (): Promise<ResultSetMotive> => {
-      console.log(`Calling fetch-case-motives edge function for case ID: ${caseId}`);
-      
-      const { data, error } = await supabase.functions.invoke(`fetch-case-motives/${caseId}`, {
-        method: 'GET',
-      });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to fetch case motives: ${error.message}`);
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', caseId));
+
+      if (response.ok) {
+        const data = await response.json();
+        return data as ResultSetMotive;
       }
-      
-      console.log('Edge function response:', data);
-      return data as ResultSetMotive;
+
+      throw new Error('Server returned error response: ' + response.status);
     },
     staleTime: 5 * 60 * 1000, // 5 minutes
     enabled: !!caseId, // Only run query if caseId is provided

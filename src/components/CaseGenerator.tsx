@@ -10,7 +10,7 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
     const [taskId, setTaskId] = useState<string | null>(null);
 
     // Task polling
-    const { data: taskInfo, isLoading: taskLoading } = useTaskInfo(taskId, !!taskId);
+    const { data: taskInfo, isLoading: taskLoading } = useTaskInfo(taskId ? { id: taskId } : undefined);
 
     // Extract task ID from location URL
     useEffect(() => {
@@ -25,7 +25,7 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
     // Handle task completion
     useEffect(() => {
         if (taskInfo) {
-            const currentStatus = taskInfo.status || taskInfo.taskStatus;
+            const currentStatus = taskInfo.taskStatus;
 
             if (currentStatus === 'COMPLETED') {
                 toast({
@@ -33,13 +33,6 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
                     description: "Der Fall wurde erfolgreich erstellt!",
                 });
                 navigate('/admin/cases');
-            } else if (currentStatus === 'FAILED') {
-                toast({
-                    title: "Fehler",
-                    description: "Bei der Fallerstellung ist ein Fehler aufgetreten.",
-                });
-                setTaskId(null);
-                setTaskUrl(null);
             }
         }
     }, [taskInfo, navigate, toast, setTaskUrl]);
@@ -47,37 +40,32 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
     // Helper functions for task progress
     const getProgressPercentage = () => {
         if (!taskInfo) return 0;
-        const currentStatus = taskInfo.status || taskInfo.taskStatus;
+        const currentStatus = taskInfo.taskStatus;
 
         switch (currentStatus) {
             case 'PENDING': return 10;
-            case 'RUNNING': return 50;
             case 'COMPLETED': return 100;
-            case 'FAILED': return 0;
             default: return 0;
         }
     };
 
     const getStatusText = () => {
         if (!taskInfo) return 'Wird geladen...';
-        const currentStatus = taskInfo.status || taskInfo.taskStatus;
+        const currentStatus = taskInfo.taskStatus;
 
         switch (currentStatus) {
             case 'PENDING': return 'Warteschlange...';
-            case 'RUNNING': return 'Fall wird erstellt...';
             case 'COMPLETED': return 'Abgeschlossen!';
-            case 'FAILED': return 'Fehlgeschlagen';
             default: return 'Unbekannt';
         }
     };
 
     const getProgressBarClass = () => {
         if (!taskInfo) return 'bg-secondary';
-        const currentStatus = taskInfo.status || taskInfo.taskStatus;
+        const currentStatus = taskInfo.taskStatus;
 
         switch (currentStatus) {
             case 'COMPLETED': return 'bg-success';
-            case 'FAILED': return 'bg-danger';
             default: return 'bg-primary';
         }
     };
@@ -142,10 +130,10 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
     }
 
     if (taskId && taskInfo) {
-        const currentStatus = taskInfo.status || taskInfo.taskStatus;
-        const isPending = currentStatus === 'PENDING' || currentStatus === 'RUNNING';
+        const currentStatus = taskInfo.taskStatus;
+        const isPending = currentStatus === 'PENDING';
 
-        if (isPending || currentStatus === 'FAILED') {
+        if (isPending) {
             return (
                 <div className="min-vh-100 bg-body">
                     <Header />
@@ -155,30 +143,8 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
                                 <div className="card">
                                     <div className="card-body">
                                         <h2 className="card-title">
-                                            {currentStatus === 'FAILED' ? 'Fallerstellung fehlgeschlagen' : 'Fall wird erstellt'}
+                                            Fall wird erstellt
                                         </h2>
-
-                                        {currentStatus !== 'FAILED' && (
-                                            <>
-                                                <div className="progress mb-3" style={{ height: '20px' }}>
-                                                    <div
-                                                        className={`progress-bar ${getProgressBarClass()}`}
-                                                        role="progressbar"
-                                                        style={{ width: `${getProgressPercentage()}%` }}
-                                                    >
-                                                        {getProgressPercentage()}%
-                                                    </div>
-                                                </div>
-                                                <p className="text-muted">{getStatusText()}</p>
-                                            </>
-                                        )}
-
-                                        {currentStatus === 'FAILED' && (
-                                            <div className="alert alert-danger">
-                                                Bei der Fallerstellung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
-                                            </div>
-                                        )}
-
                                         <div className="d-flex gap-2">
                                             <button
                                                 type="button"
@@ -195,7 +161,7 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
                                                     setTaskUrl(null);
                                                 }}
                                             >
-                                                {currentStatus === 'FAILED' ? 'Zurück zum Formular' : 'Überwachung beenden'}
+                                                Überwachung beenden
                                             </button>
                                         </div>
 
@@ -205,9 +171,6 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
                                                 <ul className="list-unstyled">
                                                     <li><strong>Status:</strong> {currentStatus}</li>
                                                     <li><strong>Erstellt:</strong> {new Date(taskInfo.createdAt).toLocaleString('de-DE')}</li>
-                                                    {taskInfo.updatedAt && (
-                                                        <li><strong>Aktualisiert:</strong> {new Date(taskInfo.updatedAt).toLocaleString('de-DE')}</li>
-                                                    )}
                                                 </ul>
                                             </div>
                                         )}

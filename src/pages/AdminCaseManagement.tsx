@@ -3,9 +3,9 @@ import Header from "@/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
+import type { components } from '@/openapi/crimeAiSchema';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { components } from '@/openapi/crimeAiSchema';
 
 type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
@@ -16,12 +16,12 @@ const AdminCaseManagement = () => {
   const { toast } = useToast();
   const [updatingCaseId, setUpdatingCaseId] = useState<string | null>(null);
 
-  const handleStatusUpdate = async (crimeCase: CrimeCaseDto) => {
+  const handleStatusUpdate = async (crimeCaseDto: CrimeCaseDto) => {
     try {
-      setUpdatingCaseId(crimeCase.id);
+      setUpdatingCaseId(crimeCaseDto.id);
       await updateCrimeCase.mutateAsync({
-        caseId: crimeCase.id,
-        updateData: crimeCase
+        caseId: crimeCaseDto.id,
+        crimeCaseDto
       });
       toast({
         title: "Status aktualisiert",

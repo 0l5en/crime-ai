@@ -1,15 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
 import { PATH_LOGOUT } from "./constants";
+import { getCsrfToken } from "./util";
 
 const useLogout = () => {
     return useMutation({
         mutationFn: async () => {
-            const csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1');
             const response = await fetch(PATH_LOGOUT, {
                 method: 'POST',
                 headers: {
                     'X-POST-LOGOUT-SUCCESS-URI': `${window.location.origin}`,
-                    'X-XSRF-TOKEN': csrfToken
+                    'X-XSRF-TOKEN': getCsrfToken()
                 }
             });
 

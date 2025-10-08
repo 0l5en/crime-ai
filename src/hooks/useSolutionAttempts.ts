@@ -1,28 +1,27 @@
-
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
 
-type ResultSetSolutionAttempt = components['schemas']['ResultSetSolutionAttempt'];
+const REQUEST_PATH = '/crimecase/{id}/solution-attempt';
+type ResultSetSolutionAttempt = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const useSolutionAttempts = (caseId: string, userId?: string, success?: string) => {
   return useQuery({
-    queryKey: ['solutionAttempts', caseId, userId, success],
+    queryKey: [REQUEST_PATH, caseId, userId, success],
     queryFn: async (): Promise<ResultSetSolutionAttempt> => {
-      console.log(`Calling fetch-solution-attempts edge function for case ID: ${caseId}`);
-      
-      const { data, error } = await supabase.functions.invoke('fetch-solution-attempts', {
-        method: 'POST',
-        body: { caseId, userId, success },
-      });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to fetch solution attempts: ${error.message}`);
+
+      const searchParams = new URLSearchParams();
+      if (userId) searchParams.append('userId', userId);
+      if (success) searchParams.append('success', success);
+      const queryString = searchParams.toString();
+      const response = await fetch(`${PATH_CRIME_AI_API}${REQUEST_PATH}` + (queryString ? `?${queryString}` : ''));
+
+      if (response.ok) {
+        const data = await response.json();
+        return data as ResultSetSolutionAttempt;
       }
-      
-      console.log('Edge function response:', data);
-      return data as ResultSetSolutionAttempt;
+
+      throw new Error('Server returned error response: ' + response.status);
     },
     staleTime: 2 * 60 * 1000, // 2 minutes (shorter cache for attempts)
     enabled: !!caseId, // Only run query if caseId is provided

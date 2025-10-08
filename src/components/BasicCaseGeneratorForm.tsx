@@ -1,23 +1,8 @@
 import { useToast } from "@/hooks/use-toast";
-import { useCreateCrimeCaseBasic } from "@/hooks/useCreateCrimeCaseBasic";
+import { RequestBody as CreateCrimeCaseBasicDto, useCreateCrimeCaseBasic } from "@/hooks/useCreateCrimeCaseBasic";
 import { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import type { CreateCaseGeneratorFormBasicDto, CreateSightseeingAttractionDto, Violations } from "../../supabase/functions/_shared/crime-api-types";
-
-interface FormData {
-  language: string;
-  epoch: "TWENTIES" | "PRESENT" | "FUTURE";
-  theme: "MURDER" | "ROBBERY" | "KIDNAPPING";
-  additionalThemeDetails: string;
-  fullAddress: string;
-  venueName: string;
-  venueDescription: string;
-  nearbySightseeingAttractions: CreateSightseeingAttractionDto[];
-  approximateYearOfConstruction: number | "";
-  historicalFeaturesAndLegends: string;
-  historicalCulturalContext: string;
-}
-
+import type { Violations } from "../../supabase/functions/_shared/crime-api-types";
 interface BasicCaseGeneratorFormProps {
   onSuccess: (locationUrl: string) => void;
   onCancel: () => void;
@@ -28,7 +13,7 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
   const [serverErrors, setServerErrors] = useState<Record<string, string>>({});
 
   // Form management
-  const { control, register, handleSubmit, formState: { isSubmitting }, setError, clearErrors } = useForm<FormData>({
+  const { control, register, handleSubmit, formState: { isSubmitting }, setError, clearErrors } = useForm<CreateCrimeCaseBasicDto>({
     defaultValues: {
       language: '',
       epoch: 'PRESENT',
@@ -38,7 +23,7 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
       venueName: '',
       venueDescription: '',
       nearbySightseeingAttractions: [{ attractionName: '', distanceToVenue: 0 }],
-      approximateYearOfConstruction: '',
+      approximateYearOfConstruction: undefined,
       historicalFeaturesAndLegends: '',
       historicalCulturalContext: ''
     }
@@ -112,14 +97,14 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
   };
 
   // Form submission
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: CreateCrimeCaseBasicDto) => {
     try {
       // Clear previous errors
       clearErrors();
       setServerErrors({});
 
       // Prepare form data with hidden caseGeneratorForm field
-      const formData: CreateCaseGeneratorFormBasicDto = {
+      const formData: CreateCrimeCaseBasicDto = {
         caseGeneratorForm: "BASIC", // Hidden field, always BASIC
         language: data.language,
         epoch: data.epoch,
@@ -129,7 +114,7 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
         venueName: data.venueName,
         venueDescription: data.venueDescription,
         nearbySightseeingAttractions: data.nearbySightseeingAttractions,
-        approximateYearOfConstruction: data.approximateYearOfConstruction === "" ? undefined : Number(data.approximateYearOfConstruction),
+        approximateYearOfConstruction: data.approximateYearOfConstruction,
         historicalFeaturesAndLegends: data.historicalFeaturesAndLegends || undefined,
         historicalCulturalContext: data.historicalCulturalContext || undefined
       };

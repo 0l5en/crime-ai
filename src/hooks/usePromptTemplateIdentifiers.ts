@@ -3,7 +3,7 @@ import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from "@tanstack/react-query";
 import { PATH_CRIME_AI_API } from "./constants";
 
-const REQUEST_PATH = '/prompt-template-identifier'
+export const REQUEST_PATH = '/prompt-template-identifier'
 type ResultSetPromptTemplateIdentifier = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const usePromptTemplateIdentifiers = () => {

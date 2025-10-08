@@ -1,31 +1,35 @@
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
+import { REQUEST_PATH as crimeCasesQueryKey } from './useCrimeCases';
+import { getCsrfToken } from './util';
 
-type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
+const REQUEST_PATH = '/crimecase/{id}';
+type CrimeCaseDto = paths[typeof REQUEST_PATH]['patch']['requestBody']['content']['application/json'];
 
 export const useUpdateCrimeCase = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ caseId, updateData }: { caseId: string; updateData: Partial<CrimeCaseDto> }): Promise<void> => {
-      console.log('Updating crime case:', caseId, updateData);
-      
-      const { error } = await supabase.functions.invoke(`update-crime-case/${caseId}`, {
+    mutationFn: async ({ caseId, crimeCaseDto }: { caseId: string; crimeCaseDto: CrimeCaseDto }): Promise<void> => {
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', caseId), {
         method: 'PATCH',
-        body: updateData
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-XSRF-TOKEN': getCsrfToken()
+        },
+        body: JSON.stringify(crimeCaseDto)
       });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to update crime case: ${error.message}`);
+
+      if (!response.ok) {
+        throw new Error('Server returned error response: ' + response.status);
       }
-      
-      console.log('Crime case updated successfully');
     },
     onSuccess: () => {
       // Invalidate and refetch crime cases list
-      queryClient.invalidateQueries({ queryKey: ['crimeCases'] });
+      queryClient.invalidateQueries({ queryKey: [crimeCasesQueryKey] });
     },
   });
 };

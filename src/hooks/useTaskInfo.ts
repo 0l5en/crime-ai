@@ -1,46 +1,31 @@
-
+import { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { PATH_CRIME_AI_API } from './constants';
 
-// Extended interface to handle both possible status property names
-interface TaskInfoResponse {
-  id: string;
-  status?: "PENDING" | "RUNNING" | "COMPLETED" | "FAILED";
-  taskStatus?: "PENDING" | "RUNNING" | "COMPLETED" | "FAILED";
-  createdAt: string;
-  updatedAt?: string;
-  result?: any;
-  error?: string;
-}
+const REQUEST_PATH = '/task/{id}';
+type TaskInfo = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
+type PathParams = paths[typeof REQUEST_PATH]['get']['parameters']['path'];
 
-export const useTaskInfo = (taskId: string | null, enabled: boolean = true) => {
+export const useTaskInfo = (requestParams?: PathParams) => {
   return useQuery({
-    queryKey: ['taskInfo', taskId],
-    queryFn: async (): Promise<TaskInfoResponse> => {
-      if (!taskId) {
-        throw new Error('Task ID is required');
+    queryKey: [REQUEST_PATH, requestParams?.id ?? ''],
+    queryFn: async (): Promise<TaskInfo> => {
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', requestParams.id));
+
+      if (response.ok) {
+        const data = await response.json();
+        return data as TaskInfo;
       }
 
-      console.log('Fetching task info for ID:', taskId);
-      
-      const { data, error } = await supabase.functions.invoke('get-task-info', {
-        body: { taskId }
-      });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to fetch task info: ${error.message}`);
-      }
-      
-      console.log('Task info response:', data);
-      return data as TaskInfoResponse;
+      throw new Error('Server returned error response: ' + response.status);
     },
-    enabled: enabled && !!taskId,
+    enabled: !!requestParams,
     refetchInterval: (query) => {
       // Poll every second until task is completed or failed
       const taskData = query.state.data;
-      const currentStatus = taskData?.status || taskData?.taskStatus;
-      return currentStatus === 'COMPLETED' || currentStatus === 'FAILED' ? false : 1000;
+      const currentStatus = taskData?.taskStatus;
+      return currentStatus === 'COMPLETED' ? false : 1000;
     },
     staleTime: 0, // Always refetch for real-time updates
   });
