@@ -18,7 +18,7 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3">
             <div className="card">
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">User Management</h3>
+                <h3 className="h5 fw-semibold mb-2">Users</h3>
                 <p className="text-muted">Manage users and roles</p>
               </div>
             </div>
@@ -27,7 +27,7 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3">
             <div className="card">
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Account Management</h3>
+                <h3 className="h5 fw-semibold mb-2">Account</h3>
                 <p className="text-muted">Manage your account</p>
               </div>
             </div>
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3" onClick={() => navigate("/admin/cases")}>
             <div className="card card-hover" style={{ cursor: "pointer" }}>
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Case Management</h3>
+                <h3 className="h5 fw-semibold mb-2">Cases</h3>
                 <p className="text-muted">Manage all criminal cases</p>
               </div>
             </div>
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
           <div className="col-md-6 col-lg-3" onClick={() => navigate("/admin/prompts")}>
             <div className="card card-hover" style={{ cursor: "pointer" }}>
               <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Prompt Management</h3>
+                <h3 className="h5 fw-semibold mb-2">Prompts</h3>
                 <p className="text-muted">Manage your prompts</p>
               </div>
             </div>
