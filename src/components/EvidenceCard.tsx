@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 
 interface EvidenceCardProps {
   title: string;
@@ -29,6 +30,8 @@ const getEvidenceTypeColor = (type: string) => {
 };
 
 const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType, imageUrl, onClick }: EvidenceCardProps) => {
+  const { t } = useTranslation('caseDashboard');
+  
   return (
     <div
       className={`card border-secondary card-hover position-relative h-100 d-flex flex-column ${onClick ? 'cursor-pointer' : ''}`}
@@ -65,7 +68,7 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
         </p>
         <div className="small mt-auto">
           <div className="text-muted mb-2">
-            <span className="fw-semibold">Location:</span> {location}
+            <span className="fw-semibold">{t('evidence.location')}:</span> {location}
           </div>
         </div>
       </div>

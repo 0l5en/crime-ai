@@ -114,5 +114,25 @@
     "status": "Status",
     "deceased": "deceased",
     "alive": "alive"
+  },
+  "evidence": {
+    "back": "Back",
+    "documentContent": "Document Content",
+    "evidenceReportsTitle": "Evidence Reports & Discussions",
+    "loadingReports": "Loading evidence reports...",
+    "noReports": "No evidence reports available for this evidence",
+    "loadingEvidence": "Loading evidence...",
+    "unknownLocation": "Unknown location",
+    "pendingAnalysis": "Pending analysis",
+    "noEvidence": "No evidence available for this case",
+    "location": "Location"
+  },
+  "suspects": {
+    "loadingSuspects": "Loading suspects...",
+    "noSuspects": "No suspects identified for this case"
+  },
+  "witnesses": {
+    "loadingWitnesses": "Loading witnesses...",
+    "noWitnesses": "No witnesses identified for this case"
   }
 }

@@ -114,5 +114,25 @@
     "status": "Status",
     "deceased": "verstorben",
     "alive": "lebendig"
+  },
+  "evidence": {
+    "back": "Zurück",
+    "documentContent": "Dokumenteninhalt",
+    "evidenceReportsTitle": "Beweisgutachten & Diskussionen",
+    "loadingReports": "Beweisgutachten werden geladen...",
+    "noReports": "Keine Beweisgutachten für diesen Beweis verfügbar",
+    "loadingEvidence": "Beweise werden geladen...",
+    "unknownLocation": "Unbekannter Ort",
+    "pendingAnalysis": "Analyse ausstehend",
+    "noEvidence": "Keine Beweise für diesen Fall verfügbar",
+    "location": "Fundort"
+  },
+  "suspects": {
+    "loadingSuspects": "Verdächtige werden geladen...",
+    "noSuspects": "Keine Verdächtigen für diesen Fall identifiziert"
+  },
+  "witnesses": {
+    "loadingWitnesses": "Zeugen werden geladen...",
+    "noWitnesses": "Keine Zeugen für diesen Fall identifiziert"
   }
 }

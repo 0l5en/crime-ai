@@ -1,6 +1,7 @@
 
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import CaseOverview from "./CaseOverview";
 import EvidenceCard from "./EvidenceCard";
 import EvidenceReportCard from "./EvidenceReportCard";
@@ -71,6 +72,7 @@ const CaseContent = ({
   onBackToWitnessList,
   onBackToSuspectList
 }: CaseContentProps) => {
+  const { t } = useTranslation('caseDashboard');
   const navigate = useNavigate();
 
   const handleEvidenceClick = (evidenceId: number) => {
@@ -121,7 +123,7 @@ const CaseContent = ({
               className="btn btn-primary"
             >
               <ArrowLeft className="me-2" />
-              Back
+              {t('evidence.back')}
             </button>
           </div>
 
@@ -144,7 +146,7 @@ const CaseContent = ({
               <div className="mb-4">
                 <div className="card border-secondary">
                   <div className="card-header">
-                    <h5 className="mb-0 fw-semibold">Document Content</h5>
+                    <h5 className="mb-0 fw-semibold">{t('evidence.documentContent')}</h5>
                   </div>
                   <div className="card-body">
                     <div className="" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>
@@ -167,11 +169,11 @@ const CaseContent = ({
 
           {/* Evidence Reports Section */}
           <div>
-            <h3 className="mb-4">Evidence Reports & Discussions</h3>
+            <h3 className="mb-4">{t('evidence.evidenceReportsTitle')}</h3>
 
             {reportsLoading ? (
               <div className="text-center text-muted py-5">
-                <p>Loading evidence reports...</p>
+                <p>{t('evidence.loadingReports')}</p>
               </div>
             ) : evidenceReports?.items && evidenceReports.items.length > 0 ? (
               <div className="row">
@@ -189,7 +191,7 @@ const CaseContent = ({
               </div>
             ) : (
               <div className="text-center text-muted py-5">
-                <p>No evidence reports available for this evidence</p>
+                <p>{t('evidence.noReports')}</p>
               </div>
             )}
           </div>
@@ -202,7 +204,7 @@ const CaseContent = ({
       <>
         {evidencesLoading ? (
           <div className="text-center text-muted py-5">
-            <p>Loading evidence...</p>
+            <p>{t('evidence.loadingEvidence')}</p>
           </div>
         ) : evidences?.items && evidences.items.length > 0 ? (
           <div className="row g-4">
@@ -211,8 +213,8 @@ const CaseContent = ({
                 <EvidenceCard
                   title={(evidence as any).name || evidence.title}
                   description={evidence.description}
-                  location={(evidence as any).location || 'Unknown location'}
-                  analysisResult={(evidence as any).analysisResult || 'Pending analysis'}
+                  location={(evidence as any).location || t('evidence.unknownLocation')}
+                  analysisResult={(evidence as any).analysisResult || t('evidence.pendingAnalysis')}
                   imageColor={getImageColor(index)}
                   evidenceType={evidence.evidenceType}
                   imageUrl={evidence.imageUrl}
@@ -223,7 +225,7 @@ const CaseContent = ({
           </div>
         ) : (
           <div className="text-center text-muted py-5">
-            <p>No evidence available for this case</p>
+            <p>{t('evidence.noEvidence')}</p>
           </div>
         )}
       </>
@@ -247,7 +249,7 @@ const CaseContent = ({
       <>
         {suspectsLoading ? (
           <div className="text-center text-muted py-5">
-            <p>Loading suspects...</p>
+            <p>{t('suspects.loadingSuspects')}</p>
           </div>
         ) : suspects?.items && suspects.items.length > 0 ? (
           <div className="row g-4">
@@ -269,7 +271,7 @@ const CaseContent = ({
           </div>
         ) : (
           <div className="text-center text-muted py-5">
-            <p>No suspects identified for this case</p>
+            <p>{t('suspects.noSuspects')}</p>
           </div>
         )}
       </>
@@ -293,7 +295,7 @@ const CaseContent = ({
       <>
         {witnessesLoading ? (
           <div className="text-center text-muted py-5">
-            <p>Loading witnesses...</p>
+            <p>{t('witnesses.loadingWitnesses')}</p>
           </div>
         ) : witnesses?.items && witnesses.items.length > 0 ? (
           <div className="row g-4">
@@ -314,7 +316,7 @@ const CaseContent = ({
           </div>
         ) : (
           <div className="text-center text-muted py-5">
-            <p>No witnesses identified for this case</p>
+            <p>{t('witnesses.noWitnesses')}</p>
           </div>
         )}
       </>
