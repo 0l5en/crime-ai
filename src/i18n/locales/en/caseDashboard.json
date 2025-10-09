@@ -25,5 +25,66 @@
     "rate": "Rate this case",
     "rating": "rating",
     "ratings": "ratings"
+  },
+  "cards": {
+    "years": "years",
+    "profession": "Profession",
+    "maritalStatus": "Marital status",
+    "relationshipToCase": "Relation to case",
+    "alibi": "Alibi",
+    "interrogate": "Interrogate"
+  },
+  "interrogation": {
+    "back": "Back",
+    "interrogationWith": "Interrogation with",
+    "yearsOld": "years old",
+    "askQuestion": "Ask a Question",
+    "typePlaceholder": "Type your question here...",
+    "processing": "Processing your question...",
+    "roles": {
+      "criminalAssistant": "Criminal Assistant",
+      "digitalExpert": "Digital Expert",
+      "forensicExpert": "Forensic Expert",
+      "ballisticExpert": "Ballistic Expert",
+      "documentExpert": "Document Expert",
+      "traceExpert": "Trace Expert",
+      "forensicPathologist": "Forensic Pathologist",
+      "perpetrator": "Perpetrator"
+    }
+  },
+  "evidenceReport": {
+    "title": "Evidence Report",
+    "analysis": "Analysis",
+    "methods": "Methods",
+    "conclusion": "Conclusion",
+    "discussion": "Evidence Discussion",
+    "askPlaceholder": "Ask a question about this evidence report...",
+    "loading": "Loading..."
+  },
+  "solutionPage": {
+    "tryAgain": "Try Again",
+    "resultTitle": "Case Solution Result",
+    "successTitle": "Congratulations! You solved the case!",
+    "failureTitle": "Unfortunately, this solution is incorrect.",
+    "successMessage": "Great detective work! You correctly identified the culprit, evidence, and motive.",
+    "failureMessage": "Please try again with a different combination of suspects, evidence, and motives.",
+    "solutionSummary": "Solution Summary",
+    "rateCase": "Rate this Case",
+    "thankYou": "Thank you for rating this case!",
+    "backToCase": "Back to Case",
+    "backToCases": "Back to Cases",
+    "solveTheCase": "Solve the Case",
+    "selectInstruction": "Select suspects, evidence, and motives to solve this case (at least one of each)",
+    "selectSuspects": "Select Suspects",
+    "selected": "selected",
+    "noSuspects": "No suspects available",
+    "selectEvidence": "Select Key Evidence",
+    "noEvidence": "No evidence available",
+    "selectMotives": "Select Motives",
+    "noMotives": "No motives available",
+    "validating": "Validating Solution...",
+    "submitting": "Submitting...",
+    "submitSolution": "Submit Solution",
+    "pleaseSelect": "Please select at least one suspect, one piece of evidence, and one motive"
   }
 }
