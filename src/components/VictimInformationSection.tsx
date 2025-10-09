@@ -82,7 +82,7 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
 
                         <div className="col-md-4">
                             <div
-                                className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden mt-3"
+                                className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                                 style={{
                                     aspectRatio: '1',
                                     backgroundColor: '#dc3545',
