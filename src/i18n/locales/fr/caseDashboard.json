@@ -134,5 +134,12 @@
   "witnesses": {
     "loadingWitnesses": "Chargement des témoins...",
     "noWitnesses": "Aucun témoin identifié pour cette affaire"
+  },
+  "caseNotes": {
+    "title": "Notes de l'affaire",
+    "openNotes": "Ouvrir les notes de l'affaire",
+    "closeNotes": "Fermer les notes",
+    "placeholder": "Notes pour cette affaire...\n\n• Personnes suspectes\n• Preuves importantes\n• Théories et hypothèses\n• Prochaines étapes",
+    "autoSaved": "Enregistrement automatique"
   }
 }

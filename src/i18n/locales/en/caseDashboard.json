@@ -134,5 +134,12 @@
   "witnesses": {
     "loadingWitnesses": "Loading witnesses...",
     "noWitnesses": "No witnesses identified for this case"
+  },
+  "caseNotes": {
+    "title": "Case Notes",
+    "openNotes": "Open case notes",
+    "closeNotes": "Close notes",
+    "placeholder": "Notes for this case...\n\n• Suspicious persons\n• Important evidence\n• Theories and assumptions\n• Next steps",
+    "autoSaved": "Auto-saved"
   }
 }

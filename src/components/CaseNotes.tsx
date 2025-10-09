@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Edit, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface CaseNotesProps {
   caseId: string;
 }
 
 const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
+  const { t } = useTranslation('caseDashboard');
   const [isOpen, setIsOpen] = useState(false);
   const [notes, setNotes] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -87,8 +89,8 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
           transition: 'all 0.3s ease',
         }}
-        title="Case Notes"
-        aria-label="Open case notes"
+        title={t('caseNotes.title')}
+        aria-label={t('caseNotes.openNotes')}
       >
         <Edit size={18} color="white" />
       </button>
@@ -126,12 +128,12 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
       >
         {/* Panel Header */}
         <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
-          <h6 className="mb-0 text-dark fw-semibold">Case Notes</h6>
+          <h6 className="mb-0 text-dark fw-semibold">{t('caseNotes.title')}</h6>
           <button
             onClick={handleClose}
             className="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center"
             style={{ width: '32px', height: '32px' }}
-            aria-label="Close notes"
+            aria-label={t('caseNotes.closeNotes')}
           >
             <X size={16} />
           </button>
@@ -143,7 +145,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
             ref={textareaRef}
             value={notes}
             onChange={handleNotesChange}
-            placeholder="Notes for this case...&#10;&#10;• Suspicious persons&#10;• Important evidence&#10;• Theories and assumptions&#10;• Next steps"
+            placeholder={t('caseNotes.placeholder')}
             className="form-control border-0 h-100 case-notes-textarea"
             style={{
               fontFamily: "'Caveat', cursive",
@@ -161,7 +163,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
         <div className="position-absolute" style={{ bottom: '12px', right: '16px' }}>
           <small className="text-muted">
             <i className="bi bi-cloud-check me-1"></i>
-            Auto-saved
+            {t('caseNotes.autoSaved')}
           </small>
         </div>
       </div>

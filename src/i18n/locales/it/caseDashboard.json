@@ -134,5 +134,12 @@
   "witnesses": {
     "loadingWitnesses": "Caricamento testimoni...",
     "noWitnesses": "Nessun testimone identificato per questo caso"
+  },
+  "caseNotes": {
+    "title": "Note del caso",
+    "openNotes": "Apri note del caso",
+    "closeNotes": "Chiudi note",
+    "placeholder": "Note per questo caso...\n\n• Persone sospette\n• Prove importanti\n• Teorie e ipotesi\n• Prossimi passi",
+    "autoSaved": "Salvato automaticamente"
   }
 }
