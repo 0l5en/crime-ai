@@ -2,45 +2,47 @@ import { useUserContext } from "@/contexts/UserContext";
 import { useCreateAutopsyReportRequest } from "@/hooks/useCreateAutopsyReportRequest";
 import { components } from "@/openapi/crimeAiSchema";
 import { User } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 type PersonDto = components["schemas"]["PersonDto"];
 
 // Format victim details into a flowing text
-const formatVictimDetails = (victim: PersonDto) => {
+const formatVictimDetails = (victim: PersonDto, t: any) => {
     const details = [];
 
-    if (victim.age) details.push(`${victim.age} Jahre alt`);
-    if (victim.gender) details.push(victim.gender === 'MALE' ? 'männlich' : victim.gender === 'FEMALE' ? 'weiblich' : victim.gender);
-    if (victim.profession) details.push(`arbeitet als ${victim.profession}`);
-    if (victim.maritalStatus) details.push(`Familienstand: ${victim.maritalStatus}`);
-    if (victim.relationshipToCase) details.push(`Beziehung zum Fall: ${victim.relationshipToCase}`);
+    if (victim.age) details.push(`${victim.age} ${t('overview.yearsOldSuffix')}`);
+    if (victim.gender) details.push(victim.gender === 'MALE' ? t('overview.male') : victim.gender === 'FEMALE' ? t('overview.female') : victim.gender);
+    if (victim.profession) details.push(`${t('overview.worksAs')} ${victim.profession}`);
+    if (victim.maritalStatus) details.push(`${t('overview.maritalStatus')}: ${victim.maritalStatus}`);
+    if (victim.relationshipToCase) details.push(`${t('overview.relationshipToCase')}: ${victim.relationshipToCase}`);
 
     let description = details.join(', ') + '.';
 
     if (victim.personality) {
-        description += ` Persönlichkeit: ${victim.personality}.`;
+        description += ` ${t('overview.personality')}: ${victim.personality}.`;
     }
 
     if (victim.financialSituation) {
-        description += ` Finanzielle Situation: ${victim.financialSituation}.`;
+        description += ` ${t('overview.financialSituation')}: ${victim.financialSituation}.`;
     }
 
     if (victim.previousConvictions && victim.previousConvictions.length > 0) {
-        description += ` Vorstrafen: ${victim.previousConvictions.join(', ')}.`;
+        description += ` ${t('overview.previousConvictions')}: ${victim.previousConvictions.join(', ')}.`;
     }
 
     if (victim.alibi?.content) {
-        description += ` Alibi: ${victim.alibi.content}.`;
+        description += ` ${t('overview.alibi')}: ${victim.alibi.content}.`;
     }
 
     if (victim.lifeStatus) {
-        description += ` Status: ${victim.lifeStatus === 'DEAD' ? 'verstorben' : 'lebendig'}.`;
+        description += ` ${t('overview.status')}: ${victim.lifeStatus === 'DEAD' ? t('overview.deceased') : t('overview.alive')}.`;
     }
 
     return description;
 };
 
 const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
+    const { t } = useTranslation('caseDashboard');
     const requestAutopsyReportMutation = useCreateAutopsyReportRequest();
     const user = useUserContext();
 
@@ -56,14 +58,14 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                 className="card border-secondary"
             >
                 <div className="card-body p-4">
-                    <h3 className="h4 mb-3">Victim Information</h3>
+                    <h3 className="h4 mb-3">{t('overview.victimInformation')}</h3>
                     <div className="row">
                         <div className="col-md-8">
                             <h4 className="h5 mb-3">
                                 {victim.name}
                             </h4>
                             <p className="mb-0" style={{ textAlign: 'justify' }}>
-                                {formatVictimDetails(victim)}
+                                {formatVictimDetails(victim, t)}
                             </p>
                             {victim.lifeStatus === 'DEAD' &&
                                 <p className="mt-4">
@@ -73,7 +75,7 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                                         className="btn btn-primary"
                                         data-testid="request-autopsy-report-button"
                                     >
-                                        Request autopsy report
+                                        {t('overview.requestAutopsyReport')}
                                     </button>
                                 </p>}
                         </div>
@@ -100,7 +102,7 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                                             style={{ width: '80px', height: '80px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
                                             <User size={40} strokeWidth={1.5} />
                                         </div>
-                                        <div className="fw-medium">Victim</div>
+                                        <div className="fw-medium">{t('overview.victim')}</div>
                                     </div>
                                 )}
                             </div>

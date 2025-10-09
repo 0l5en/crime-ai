@@ -2,6 +2,7 @@ import { useCaseVictims } from "@/hooks/useCaseVictims";
 import { usePersons } from "@/hooks/usePersons";
 import type { components } from '@/openapi/crimeAiSchema';
 import { Mountain } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 import InterrogationView from "./InterrogationView";
 import VictimInfomationSection from "./VictimInformationSection";
 
@@ -17,6 +18,7 @@ interface CaseOverviewProps {
 }
 
 const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverviewProps) => {
+  const { t } = useTranslation('caseDashboard');
   const { data: criminalAssistantData, isLoading: assistantLoading } = usePersons(caseId, 'CRIMINAL_ASSISTANT');
   const { data: victims } = useCaseVictims(caseId);
 
@@ -40,9 +42,9 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
           className="card border-secondary"
         >
           <div className="card-body p-4">
-            <h3 className="h4 mb-3">Case Description</h3>
+            <h3 className="h4 mb-3">{t('overview.caseDescription')}</h3>
             <p className="mb-0" style={{ textAlign: 'justify' }}>
-              {crimeCase?.description || 'Loading case details...'}
+              {crimeCase?.description || t('overview.loadingCaseDetails')}
             </p>
           </div>
         </div>
@@ -54,11 +56,11 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
           className="card border-secondary"
         >
           <div className="card-body p-4">
-            <h3 className="h4 mb-3">Criminal Assistant</h3>
+            <h3 className="h4 mb-3">{t('overview.criminalAssistant')}</h3>
 
             {assistantLoading ? (
               <div className="text-center text-muted py-3">
-                <p>Loading criminal assistant...</p>
+                <p>{t('overview.loadingAssistant')}</p>
               </div>
             ) : criminalAssistant ? (
               <>
@@ -68,7 +70,7 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
                       {criminalAssistant.name}
                     </h4>
                     <p className="text-muted mb-3">
-                      {criminalAssistant.profession} • {criminalAssistant.age} years old
+                      {criminalAssistant.profession} • {criminalAssistant.age} {t('overview.yearsOld')}
                     </p>
                   </div>
 
@@ -96,7 +98,7 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
                               {getInitials(criminalAssistant.name)}
                             </span>
                           </div>
-                          <div className="fw-medium">Criminal Assistant</div>
+                          <div className="fw-medium">{t('overview.criminalAssistant')}</div>
                         </div>
                       )}
                     </div>
@@ -114,7 +116,7 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
               </>
             ) : (
               <div className="text-center text-muted py-3">
-                <p>No criminal assistant assigned to this case</p>
+                <p>{t('overview.noAssignedAssistant')}</p>
               </div>
             )}
           </div>
@@ -126,10 +128,10 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
           className="card border-secondary"
         >
           <div className="card-body p-4">
-            <h3 className="h4 mb-3">Crime Scene</h3>
+            <h3 className="h4 mb-3">{t('overview.crimeScene')}</h3>
 
             {sceneLoading
-              ? <p className="mb-0">Loading crime scene details...</p>
+              ? <p className="mb-0">{t('overview.loadingSceneDetails')}</p>
               : crimeScene
                 ? (
                   <div className="row">
@@ -154,20 +156,20 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
                         {crimeScene?.imageUrl ? (
                           <img
                             src={crimeScene.imageUrl}
-                            alt={crimeScene.title || 'Crime Scene'}
+                            alt={crimeScene.title || t('overview.crimeScene')}
                             className="w-100 h-100"
                             style={{ objectFit: 'cover' }}
                           />
                         ) : (
                           <div className="text-center" style={{ color: '#a0aec0' }}>
                             <Mountain size={64} strokeWidth={1.5} />
-                            <div className="mt-3 fw-medium">Crime Scene Image</div>
+                            <div className="mt-3 fw-medium">{t('overview.crimeSceneImage')}</div>
                           </div>
                         )}
                       </div>
                     </div>
                   </div>
-                ) : (<p className="mb-0">No crime scene assigned to this case</p>)
+                ) : (<p className="mb-0">{t('overview.noAssignedScene')}</p>)
             }
           </div>
         </div>

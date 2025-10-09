@@ -86,5 +86,33 @@
     "submitting": "Submitting...",
     "submitSolution": "Submit Solution",
     "pleaseSelect": "Please select at least one suspect, one piece of evidence, and one motive"
+  },
+  "overview": {
+    "caseDescription": "Case Description",
+    "loadingCaseDetails": "Loading case details...",
+    "criminalAssistant": "Criminal Assistant",
+    "loadingAssistant": "Loading criminal assistant...",
+    "yearsOld": "years old",
+    "noAssignedAssistant": "No criminal assistant assigned to this case",
+    "crimeScene": "Crime Scene",
+    "loadingSceneDetails": "Loading crime scene details...",
+    "crimeSceneImage": "Crime Scene Image",
+    "noAssignedScene": "No crime scene assigned to this case",
+    "victimInformation": "Victim Information",
+    "victim": "Victim",
+    "requestAutopsyReport": "Request autopsy report",
+    "yearsOldSuffix": "years old",
+    "male": "male",
+    "female": "female",
+    "worksAs": "works as",
+    "maritalStatus": "Marital Status",
+    "relationshipToCase": "Relationship to Case",
+    "personality": "Personality",
+    "financialSituation": "Financial Situation",
+    "previousConvictions": "Previous Convictions",
+    "alibi": "Alibi",
+    "status": "Status",
+    "deceased": "deceased",
+    "alive": "alive"
   }
 }

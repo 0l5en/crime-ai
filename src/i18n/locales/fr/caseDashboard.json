@@ -86,5 +86,33 @@
     "submitting": "Envoi en cours...",
     "submitSolution": "Soumettre la Solution",
     "pleaseSelect": "Veuillez sélectionner au moins un suspect, une preuve et un mobile"
+  },
+  "overview": {
+    "caseDescription": "Description de l'affaire",
+    "loadingCaseDetails": "Chargement des détails de l'affaire...",
+    "criminalAssistant": "Assistant criminel",
+    "loadingAssistant": "Chargement de l'assistant criminel...",
+    "yearsOld": "ans",
+    "noAssignedAssistant": "Aucun assistant criminel assigné à cette affaire",
+    "crimeScene": "Scène de crime",
+    "loadingSceneDetails": "Chargement des détails de la scène de crime...",
+    "crimeSceneImage": "Image de la scène de crime",
+    "noAssignedScene": "Aucune scène de crime assignée à cette affaire",
+    "victimInformation": "Informations sur la victime",
+    "victim": "Victime",
+    "requestAutopsyReport": "Demander un rapport d'autopsie",
+    "yearsOldSuffix": "ans",
+    "male": "masculin",
+    "female": "féminin",
+    "worksAs": "travaille comme",
+    "maritalStatus": "État civil",
+    "relationshipToCase": "Relation avec l'affaire",
+    "personality": "Personnalité",
+    "financialSituation": "Situation financière",
+    "previousConvictions": "Condamnations antérieures",
+    "alibi": "Alibi",
+    "status": "Statut",
+    "deceased": "décédé",
+    "alive": "vivant"
   }
 }

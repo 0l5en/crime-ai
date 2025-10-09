@@ -86,5 +86,33 @@
     "submitting": "Invio in corso...",
     "submitSolution": "Invia Soluzione",
     "pleaseSelect": "Seleziona almeno un sospetto, una prova e un movente"
+  },
+  "overview": {
+    "caseDescription": "Descrizione del caso",
+    "loadingCaseDetails": "Caricamento dei dettagli del caso...",
+    "criminalAssistant": "Assistente criminale",
+    "loadingAssistant": "Caricamento dell'assistente criminale...",
+    "yearsOld": "anni",
+    "noAssignedAssistant": "Nessun assistente criminale assegnato a questo caso",
+    "crimeScene": "Scena del crimine",
+    "loadingSceneDetails": "Caricamento dei dettagli della scena del crimine...",
+    "crimeSceneImage": "Immagine della scena del crimine",
+    "noAssignedScene": "Nessuna scena del crimine assegnata a questo caso",
+    "victimInformation": "Informazioni sulla vittima",
+    "victim": "Vittima",
+    "requestAutopsyReport": "Richiedi rapporto autoptico",
+    "yearsOldSuffix": "anni",
+    "male": "maschio",
+    "female": "femmina",
+    "worksAs": "lavora come",
+    "maritalStatus": "Stato civile",
+    "relationshipToCase": "Relazione con il caso",
+    "personality": "Personalità",
+    "financialSituation": "Situazione finanziaria",
+    "previousConvictions": "Condanne precedenti",
+    "alibi": "Alibi",
+    "status": "Stato",
+    "deceased": "deceduto",
+    "alive": "vivo"
   }
 }

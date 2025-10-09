@@ -86,5 +86,33 @@
     "submitting": "Wird gesendet...",
     "submitSolution": "Lösung einreichen",
     "pleaseSelect": "Bitte wählen Sie mindestens einen Verdächtigen, ein Beweisstück und ein Motiv aus"
+  },
+  "overview": {
+    "caseDescription": "Fallbeschreibung",
+    "loadingCaseDetails": "Falldetails werden geladen...",
+    "criminalAssistant": "Kriminalassistent",
+    "loadingAssistant": "Kriminalassistent wird geladen...",
+    "yearsOld": "Jahre alt",
+    "noAssignedAssistant": "Kein Kriminalassistent für diesen Fall zugewiesen",
+    "crimeScene": "Tatort",
+    "loadingSceneDetails": "Tatortdetails werden geladen...",
+    "crimeSceneImage": "Tatortbild",
+    "noAssignedScene": "Kein Tatort für diesen Fall zugewiesen",
+    "victimInformation": "Opferinformation",
+    "victim": "Opfer",
+    "requestAutopsyReport": "Obduktionsbericht anfordern",
+    "yearsOldSuffix": "Jahre alt",
+    "male": "männlich",
+    "female": "weiblich",
+    "worksAs": "arbeitet als",
+    "maritalStatus": "Familienstand",
+    "relationshipToCase": "Beziehung zum Fall",
+    "personality": "Persönlichkeit",
+    "financialSituation": "Finanzielle Situation",
+    "previousConvictions": "Vorstrafen",
+    "alibi": "Alibi",
+    "status": "Status",
+    "deceased": "verstorben",
+    "alive": "lebendig"
   }
 }
