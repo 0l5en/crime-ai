@@ -76,9 +76,9 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
                   <div className="col-md-4">
                     <div
-                      className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
+                      className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden mt-3"
                       style={{
-                        height: '200px',
+                        aspectRatio: '1',
                         backgroundColor: '#28a745',
                         background: 'linear-gradient(135deg, #28a745 0%, #20c997 100%)'
                       }}
@@ -146,9 +146,9 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
 
                     <div className="col-md-4">
                       <div
-                        className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
+                        className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden mt-3"
                         style={{
-                          height: '200px',
+                          aspectRatio: '1',
                           backgroundColor: '#4a5568',
                           background: 'linear-gradient(135deg, #4a5568 0%, #2d3748 100%)'
                         }}

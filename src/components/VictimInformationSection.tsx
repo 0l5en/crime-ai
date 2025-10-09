@@ -82,9 +82,9 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
 
                         <div className="col-md-4">
                             <div
-                                className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
+                                className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden mt-3"
                                 style={{
-                                    height: '200px',
+                                    aspectRatio: '1',
                                     backgroundColor: '#dc3545',
                                     background: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)'
                                 }}
