@@ -1,4 +1,4 @@
-import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useUserContext } from "@/contexts/UserContext";
 import { useCreateAutopsyReportRequest } from "@/hooks/useCreateAutopsyReportRequest";
 import { components } from "@/openapi/crimeAiSchema";
 import { User } from "lucide-react";
@@ -42,7 +42,7 @@ const formatVictimDetails = (victim: PersonDto) => {
 
 const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
     const requestAutopsyReportMutation = useCreateAutopsyReportRequest();
-    const { user } = useKeycloak();
+    const user = useUserContext();
 
     const handleRequestAutopsyReport = async (e: React.FormEvent) => {
         e.preventDefault();

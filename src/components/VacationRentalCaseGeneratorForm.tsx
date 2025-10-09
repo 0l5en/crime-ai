@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useForm, useFieldArray, SubmitHandler } from 'react-hook-form';
-import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVacationRental';
+import { useUserContext } from '@/contexts/UserContext';
 import { useToast } from '@/hooks/use-toast';
-import { useKeycloak } from '@/contexts/KeycloakContext';
-import type { CreateSightseeingAttractionDto, CreateCaseGeneratorFormVacationRentalDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
+import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVacationRental';
+import { useState } from 'react';
+import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
+import type { CreateCaseGeneratorFormVacationRentalDto, CreateSightseeingAttractionDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
 
 // Extend the basic form data with vacation rental specific fields
 interface VacationRentalFormData {
@@ -34,7 +34,7 @@ interface VacationRentalCaseGeneratorFormProps {
 
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStart }: VacationRentalCaseGeneratorFormProps) => {
   const { toast } = useToast();
-  const { user } = useKeycloak();
+  const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
   const [serverErrors, setServerErrors] = useState<{ [key: string]: string }>({});
 
@@ -75,7 +75,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
   // Map server errors to form fields
   const mapServerErrorsToForm = (violations: Violations) => {
     const newServerErrors: { [key: string]: string } = {};
-    
+
     if (violations.violations) {
       violations.violations.forEach(violation => {
         if (violation.propertyPath && violation.message) {
@@ -88,7 +88,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
         }
       });
     }
-    
+
     setServerErrors(newServerErrors);
   };
 
@@ -147,7 +147,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
       },
       onError: (error: any) => {
         console.error('Error creating Vacation Rental Crime Case:', error);
-        
+
         // Handle validation errors
         if (error.context?.violations) {
           mapServerErrorsToForm(error.context);
@@ -305,7 +305,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
                     id="venueFloors"
                     min="1"
                     className={`form-control ${errors.venueFloors || serverErrors.venueFloors ? 'is-invalid' : ''}`}
-                    {...register('venueFloors', { 
+                    {...register('venueFloors', {
                       required: 'Number of floors is required',
                       min: { value: 1, message: 'At least 1 floor required' }
                     })}
@@ -325,7 +325,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
                     id="venueBedrooms"
                     min="1"
                     className={`form-control ${errors.venueBedrooms || serverErrors.venueBedrooms ? 'is-invalid' : ''}`}
-                    {...register('venueBedrooms', { 
+                    {...register('venueBedrooms', {
                       required: 'Number of bedrooms is required',
                       min: { value: 1, message: 'At least 1 bedroom required' }
                     })}
@@ -345,7 +345,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
                     id="venueBathrooms"
                     min="1"
                     className={`form-control ${errors.venueBathrooms || serverErrors.venueBathrooms ? 'is-invalid' : ''}`}
-                    {...register('venueBathrooms', { 
+                    {...register('venueBathrooms', {
                       required: 'Number of bathrooms is required',
                       min: { value: 1, message: 'At least 1 bathroom required' }
                     })}
@@ -365,7 +365,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
                     id="maxGuests"
                     min="1"
                     className={`form-control ${errors.maxGuests || serverErrors.maxGuests ? 'is-invalid' : ''}`}
-                    {...register('maxGuests', { 
+                    {...register('maxGuests', {
                       required: 'Maximum number of guests is required',
                       min: { value: 1, message: 'At least 1 guest required' }
                     })}

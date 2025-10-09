@@ -1,38 +1,30 @@
-
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
 
-type ResultSetInterrogation = components['schemas']['ResultSetInterrogation'];
+export const REQUEST_PATH = '/interrogation';
+type ResultSetInterrogation = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const useInterrogations = (userId: string, personId: number) => {
   return useQuery({
-    queryKey: ['interrogations', userId, personId],
+    queryKey: [REQUEST_PATH, userId, personId],
     queryFn: async (): Promise<ResultSetInterrogation> => {
-      console.log(`Calling list-interrogations edge function for user ${userId} and person ${personId}`);
-      
-        // Build query parameters for the edge function
+
+      // Build query parameters for the edge function
       const queryParams = new URLSearchParams({
         userId: userId,
         personId: personId.toString()
       });
 
-      const functionNameWithParams = `list-interrogations?${queryParams.toString()}`;
-        
-      const { data, error } = await supabase.functions.invoke(functionNameWithParams, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to fetch interrogations: ${error.message}`);
+      const queryString = queryParams.toString();
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH + (queryString ? `?${queryString}` : ''));
+
+      if (response.ok) {
+        const data = await response.json();
+        return data as ResultSetInterrogation;
       }
-      
-      console.log('Edge function response:', data);
-      return data as ResultSetInterrogation;
+
+      throw new Error('Server returned error response: ' + response.status);
     },
     staleTime: 5 * 60 * 1000, // 5 minutes
     enabled: !!userId && !!personId, // Only run query if both parameters are provided

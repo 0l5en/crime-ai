@@ -1,5 +1,4 @@
-
-import { useKeycloak } from '@/contexts/KeycloakContext';
+import { useUserContext } from '@/contexts/UserContext';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useInterrogations } from '@/hooks/useInterrogations';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
@@ -17,7 +16,7 @@ interface InterrogationViewProps {
 }
 
 const InterrogationView = ({ person, onBack, embedded = false }: InterrogationViewProps) => {
-  const { user } = useKeycloak();
+  const user = useUserContext();
   const [question, setQuestion] = useState('');
   const [interrogationId, setInterrogationId] = useState<string | null>(null);
 

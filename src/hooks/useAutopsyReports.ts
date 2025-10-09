@@ -1,43 +1,31 @@
 
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
+import { PATH_CRIME_AI_API } from './constants';
 
-type ResultSetAutopsyReport = components['schemas']['ResultSetAutopsyReport'];
+const REQUEST_PATH = '/autopsy-report';
+type ResultSetAutopsyReport = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const useAutopsyReports = ({ reportAuthorId, victimId, notificationId }: { reportAuthorId?: number, victimId?: number, notificationId?: number }) => {
   return useQuery({
-    queryKey: ['autopsy-reports', reportAuthorId, victimId, notificationId],
+    queryKey: [REQUEST_PATH, reportAuthorId, victimId, notificationId],
     queryFn: async (): Promise<ResultSetAutopsyReport> => {
 
-      console.log(`Calling get-autopsy-reports edge function for reportAuthorId: ${reportAuthorId}, victimId: ${victimId}, notificationId: ${notificationId}`);
-      let queryParams = '';
-      if (reportAuthorId) {
-        queryParams += `reportAuthorId=${encodeURIComponent(reportAuthorId)}`;
-      }
-      if (victimId) {
-        queryParams += (queryParams.length > 0 ? '&' : '');
-        queryParams += `victimId=${encodeURIComponent(victimId)}`;
-      }
-      if (notificationId) {
-        queryParams += (queryParams.length > 0 ? '&' : '');
-        queryParams += `notificationId=${encodeURIComponent(notificationId)}`;
-      }
+      // Build query string from parameters
+      const searchParams = new URLSearchParams();
+      if (reportAuthorId) searchParams.append('reportAuthorId', reportAuthorId + '');
+      if (victimId) searchParams.append('victimId', victimId + '');
+      if (notificationId) searchParams.append('notificationId', notificationId + '');
 
+      const queryString = searchParams.toString();
+      const response = await fetch(`${PATH_CRIME_AI_API}${REQUEST_PATH}` + (queryString ? `?${queryString}` : ''));
 
-      const functionUrl = 'get-autopsy-reports' + (queryParams.length > 0 ? '?' + queryParams : '');
-
-      const { data, error } = await supabase.functions.invoke(functionUrl, {
-        method: 'GET',
-      });
-
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to fetch autopsy reports: ${error.message}`);
+      if (response.ok) {
+        const data = await response.json();
+        return data as ResultSetAutopsyReport;
       }
 
-      console.log('Edge function response:', data);
-      return data as ResultSetAutopsyReport;
+      throw new Error('Server returned error response: ' + response.status);
     },
     staleTime: 5 * 60 * 1000, // 5 minutes
     enabled: !!reportAuthorId || !!victimId || !!notificationId, // Only run query if at least one parameter is defined

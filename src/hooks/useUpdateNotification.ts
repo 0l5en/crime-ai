@@ -1,31 +1,39 @@
-import { useKeycloak } from "@/contexts/KeycloakContext";
-import { supabase } from "@/integrations/supabase/client";
+import { useUserContext } from "@/contexts/UserContext";
+import { paths } from "@/openapi/crimeAiSchema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { NotificationDto } from "./useNotifications";
+import { PATH_CRIME_AI_API } from "./constants";
+import { REQUEST_PATH as NotificationQueryKey } from './useNotifications';
+import { getCsrfToken } from "./util";
+
+const REQUEST_PATH = '/notification';
+type NotificationDto = paths[typeof REQUEST_PATH]['patch']['requestBody']['content']['application/json'];
 
 export const useUpdateNotification = () => {
   const queryClient = useQueryClient();
-  const { user } = useKeycloak();
+  const user = useUserContext();
 
   const userId = user?.email || user?.name || '';
 
   return useMutation({
     mutationFn: async (notification: NotificationDto) => {
-      const { data, error } = await supabase.functions.invoke("update-notification", {
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH, {
         method: 'PATCH',
-        body: notification,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-XSRF-TOKEN': getCsrfToken()
+        },
+        body: JSON.stringify(notification)
       });
 
-      if (error) {
-        console.error("Error updating notification:", error);
-        throw error;
+      if (!response.ok) {
+        throw new Error('Server returned error response: ' + response.status);
       }
-
-      return data;
     },
     onSuccess: () => {
       // Invalidate and refetch notifications
-      queryClient.invalidateQueries({ queryKey: ["notifications", userId] });
+      queryClient.invalidateQueries({ queryKey: [NotificationQueryKey, userId] });
     },
   });
 };

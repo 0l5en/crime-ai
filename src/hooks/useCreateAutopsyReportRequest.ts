@@ -1,25 +1,33 @@
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { components } from "@/openapi/crimeAiSchema";
+import { paths } from "@/openapi/crimeAiSchema";
 import { useMutation } from "@tanstack/react-query";
+import { PATH_CRIME_AI_API } from "./constants";
+import { getCsrfToken } from "./util";
 
-type CreateAutopsyReportRequestDto = components["schemas"]["CreateAutopsyReportRequestDto"];
+const REQUEST_PATH = '/autopsy-report-request';
+type CreateAutopsyReportRequestDto = paths[typeof REQUEST_PATH]['post']['requestBody']['content']['application/json'];
 
 export const useCreateAutopsyReportRequest = () => {
   const { toast } = useToast();
 
   return useMutation({
     mutationFn: async (requestData: CreateAutopsyReportRequestDto) => {
-      const { data, error } = await supabase.functions.invoke("create-autopsy-report-request", {
-        body: requestData,
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-XSRF-TOKEN': getCsrfToken()
+        },
+        body: JSON.stringify(requestData)
       });
 
-      if (error) {
-        console.error("Error creating autopsy report request:", error);
-        throw error;
+      if (response.ok) {
+        return;
       }
 
-      return data;
+      throw new Error('Server returned error response: ' + response.status);
     },
     onSuccess: () => {
       toast({
@@ -28,7 +36,6 @@ export const useCreateAutopsyReportRequest = () => {
       });
     },
     onError: (error) => {
-      console.error("Failed to create autopsy report request:", error);
       toast({
         title: "Request failed",
         description: "Failed to submit autopsy report request. Please try again.",

@@ -1,42 +1,47 @@
-
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
+import { REQUEST_PATH as InterrogationsQueryKey } from './useInterrogations';
+import { REQUEST_PATH_QA as QuestionAndAnswerQueryKey } from './useQuestionAndAnswers';
+import { getCsrfToken } from './util';
 
-type CreateInterrogationAnswerDto = components['schemas']['CreateInterrogationAnswerDto'];
+const REQUEST_PATH = '/interrogation';
+type CreateInterrogationAnswerDto = paths[typeof REQUEST_PATH]['post']['requestBody']['content']['application/json'];
 
 export const useCreateInterrogationAnswer = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (data: CreateInterrogationAnswerDto): Promise<string> => {
-      console.log(`Creating interrogation answer:`, data);
-      
-      const { data: response, error } = await supabase.functions.invoke('create-interrogation-answer', {
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH, {
         method: 'POST',
-        body: data,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-XSRF-TOKEN': getCsrfToken()
+        },
+        body: JSON.stringify(data)
       });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to create interrogation answer: ${error.message}`);
+
+      if (response.ok) {
+        return;
       }
-      
-      console.log('Answer created with ID:', response);
-      return response as string;
+
+      throw new Error('Server returned error response: ' + response.status);
     },
     onSuccess: (_, variables) => {
       // Invalidate related queries to refresh data
       queryClient.invalidateQueries({
-        queryKey: ['interrogations', variables.userId, variables.personId]
+        queryKey: [InterrogationsQueryKey, variables.userId, variables.personId]
       });
       queryClient.invalidateQueries({
-        queryKey: ['questionAndAnswers']
+        queryKey: [QuestionAndAnswerQueryKey]
       });
       // Invalidate evidence report specific queries if reference is used
       if (variables.reference) {
         queryClient.invalidateQueries({
-          queryKey: ['questionAndAnswers', 'reference', variables.reference.referenceId]
+          queryKey: [QuestionAndAnswerQueryKey, 'reference', variables.reference.referenceId]
         });
       }
     },

@@ -9,7 +9,7 @@ const ConversationHistory = ({ questionAndAnswers, pending }: { questionAndAnswe
         <div className="text-center text-muted">
           <p>Loading conversation...</p>
         </div>
-      ) : questionAndAnswers.length > 0 ? (
+      ) : (
         <div className="d-flex flex-column gap-3">
           {questionAndAnswers.map((qa, index) => (
             <div key={index} className="card border-secondary">
@@ -34,10 +34,6 @@ const ConversationHistory = ({ questionAndAnswers, pending }: { questionAndAnswe
               </div>
             </div>
           ))}
-        </div>
-      ) : (
-        <div className="text-center text-muted">
-          <p>No questions asked yet. Start the interrogation by asking a question above.</p>
         </div>
       )}
     </div>

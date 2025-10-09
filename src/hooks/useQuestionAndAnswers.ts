@@ -1,9 +1,11 @@
 
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
 
-type ResultSetQuestionAndAnswer = components['schemas']['ResultSetQuestionAndAnswer'];
+const REQUEST_PATH_INTERROGATION = '/interrogation';
+export const REQUEST_PATH_QA = '/interrogation/{id}/question-and-answer';
+type ResultSetQuestionAndAnswer = paths[typeof REQUEST_PATH_QA]['get']['responses']['200']['content']['application/json'];
 
 export const useQuestionAndAnswers = (
   interrogationId?: string,
@@ -12,83 +14,58 @@ export const useQuestionAndAnswers = (
   personId?: number
 ) => {
   return useQuery({
-    queryKey: referenceId 
-      ? ['questionAndAnswers', 'reference', referenceId, userId, personId]
-      : ['questionAndAnswers', interrogationId],
+    queryKey: referenceId
+      ? [REQUEST_PATH_QA, 'reference', referenceId, userId, personId]
+      : [REQUEST_PATH_QA, interrogationId],
     queryFn: async (): Promise<ResultSetQuestionAndAnswer> => {
       if (referenceId && userId && personId) {
-        console.log(`Calling list-interrogations for reference ${referenceId} with userId ${userId} and personId ${personId}`);
-        
+
         // Build query parameters for the edge function
         const queryParams = new URLSearchParams({
           referenceId: referenceId.toString(),
           userId: userId,
           personId: personId.toString()
         });
-        
-        console.log('Query parameters:', queryParams.toString());
-        
-        // First get interrogations with reference filter - pass query params in function name
-        const functionNameWithParams = `list-interrogations?${queryParams.toString()}`;
-        
-        const { data: interrogationsData, error: interrogationsError } = await supabase.functions.invoke(functionNameWithParams, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        
-        if (interrogationsError) {
-          console.error('Edge function error:', interrogationsError);
-          throw new Error(`Failed to fetch interrogations: ${interrogationsError.message}`);
-        }
-        
-        console.log('Interrogations response:', interrogationsData);
-        
-        // If we have interrogations, get Q&A for the first one
-        if (interrogationsData?.items && interrogationsData.items.length > 0) {
-          const firstInterrogation = interrogationsData.items[0];
-          console.log(`Getting Q&A for interrogation ${firstInterrogation.id}`);
-          
-          // Use GET request with interrogationId as path parameter
-          const { data: qaData, error: qaError } = await supabase.functions.invoke(`get-question-answers/${firstInterrogation.id}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
+
+        const queryString = queryParams.toString();
+        const responseInterrogations = await fetch(PATH_CRIME_AI_API + REQUEST_PATH_INTERROGATION + (queryString ? `?${queryString}` : ''));
+
+        if (responseInterrogations.ok) {
+          const interrogationsData = await responseInterrogations.json();
+
+          // If we have interrogations, get Q&A for the first one
+          if (interrogationsData?.items && interrogationsData.items.length > 0) {
+            const firstInterrogation = interrogationsData.items[0];
+
+            // Use GET request with interrogationId as path parameter
+            const responseQa = await fetch(PATH_CRIME_AI_API + REQUEST_PATH_QA.replace('{id}', firstInterrogation.id));
+
+            if (responseQa.ok) {
+              const qas = await responseQa.json();
+              return qas as ResultSetQuestionAndAnswer;
             }
-          });
-          
-          if (qaError) {
-            console.error('Edge function error:', qaError);
-            throw new Error(`Failed to fetch question and answers: ${qaError.message}`);
+
+            throw new Error('Server returned error response: ' + responseQa.status);
           }
-          
-          console.log('Q&A response:', qaData);
-          return qaData as ResultSetQuestionAndAnswer;
+
+          // No interrogations found, return empty result
+          return { items: [] };
         }
-        
-        // No interrogations found, return empty result
-        return { items: [] };
+
+        throw new Error('Server returned error response: ' + responseInterrogations.status);
+
       } else if (interrogationId) {
-        console.log(`Calling get-question-answers edge function for interrogation ${interrogationId}`);
-        
-        // Use GET request with interrogationId as path parameter
-        const { data, error } = await supabase.functions.invoke(`get-question-answers/${interrogationId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        
-        if (error) {
-          console.error('Edge function error:', error);
-          throw new Error(`Failed to fetch question and answers: ${error.message}`);
+
+        const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH_QA.replace('{id}', interrogationId));
+
+        if (response.ok) {
+          const data = await response.json();
+          return data as ResultSetQuestionAndAnswer;
         }
-        
-        console.log('Edge function response:', data);
-        return data as ResultSetQuestionAndAnswer;
+
+        throw new Error('Server returned error response: ' + response.status);
       }
-      
+
       throw new Error('Either interrogationId or reference parameters (referenceId + userId + personId) must be provided');
     },
     staleTime: 30 * 1000, // 30 seconds (more frequent updates for chat-like interface)

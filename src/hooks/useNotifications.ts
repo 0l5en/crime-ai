@@ -1,28 +1,19 @@
-import { useKeycloak } from "@/contexts/KeycloakContext";
-import { supabase } from "@/integrations/supabase/client";
+import { useUserContext } from "@/contexts/UserContext";
+import { components, paths } from "@/openapi/crimeAiSchema";
 import { useQuery } from "@tanstack/react-query";
+import { PATH_CRIME_AI_API } from "./constants";
 
-export interface NotificationDto {
-  id: number;
-  notificationContextType: "AUTOPSY_REPORT";
-  recipientId: string;
-  nameOfSender: string;
-  subject: string;
-  read: boolean;
-  createdAt: string;
-}
-
-export interface ResultSetNotification {
-  items?: NotificationDto[];
-}
+export const REQUEST_PATH = '/notification';
+export type ResultSetNotification = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
+export type NotificationDto = components['schemas']['NotificationDto'];
 
 export const useNotifications = () => {
-  const { user, authenticated } = useKeycloak();
+  const user = useUserContext();
 
   const userId = user?.email || user?.name || '';
 
   return useQuery({
-    queryKey: ["notifications", userId],
+    queryKey: [REQUEST_PATH, userId],
     queryFn: async (): Promise<ResultSetNotification> => {
       if (!userId) {
         throw new Error("User not authenticated");
@@ -32,24 +23,17 @@ export const useNotifications = () => {
       const queryParams = new URLSearchParams({
         userId: userId
       });
+      const queryString = queryParams.toString();
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH + (queryString ? `?${queryString}` : ''));
 
-      const functionNameWithParams = `list-notifications?${queryParams.toString()}`;
-
-      const { data, error } = await supabase.functions.invoke(functionNameWithParams, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (error) {
-        console.error("Error fetching notifications:", error);
-        throw error;
+      if (response.ok) {
+        const data = await response.json();
+        return data as ResultSetNotification;
       }
 
-      return data;
+      throw new Error('Server returned error response: ' + response.status);
     },
-    enabled: authenticated && !!userId,
+    enabled: user.isAuthenticated && !!userId,
     refetchInterval: 5 * 60 * 1000, // Poll every 5 minutes
     refetchOnWindowFocus: true,
     refetchOnMount: true,
