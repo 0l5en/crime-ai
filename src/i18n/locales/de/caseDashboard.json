@@ -33,5 +33,58 @@
     "relationshipToCase": "Bezug zum Fall",
     "alibi": "Alibi",
     "interrogate": "Verhören"
+  },
+  "interrogation": {
+    "back": "Zurück",
+    "interrogationWith": "Verhör mit",
+    "yearsOld": "Jahre alt",
+    "askQuestion": "Frage stellen",
+    "typePlaceholder": "Geben Sie hier Ihre Frage ein...",
+    "processing": "Ihre Frage wird verarbeitet...",
+    "roles": {
+      "criminalAssistant": "Krimineller Assistent",
+      "digitalExpert": "Digital-Experte",
+      "forensicExpert": "Forensik-Experte",
+      "ballisticExpert": "Ballistik-Experte",
+      "documentExpert": "Dokumenten-Experte",
+      "traceExpert": "Spurensicherungs-Experte",
+      "forensicPathologist": "Gerichtsmediziner",
+      "perpetrator": "Täter"
+    }
+  },
+  "evidenceReport": {
+    "title": "Beweis-Bericht",
+    "analysis": "Analyse",
+    "methods": "Methoden",
+    "conclusion": "Schlussfolgerung",
+    "discussion": "Beweis-Diskussion",
+    "askPlaceholder": "Stellen Sie eine Frage zu diesem Beweis-Bericht...",
+    "loading": "Lädt..."
+  },
+  "solutionPage": {
+    "tryAgain": "Erneut versuchen",
+    "resultTitle": "Fall-Lösungs-Ergebnis",
+    "successTitle": "Herzlichen Glückwunsch! Sie haben den Fall gelöst!",
+    "failureTitle": "Leider ist diese Lösung nicht korrekt.",
+    "successMessage": "Großartige Detektivarbeit! Sie haben den Täter, die Beweise und das Motiv korrekt identifiziert.",
+    "failureMessage": "Bitte versuchen Sie es erneut mit einer anderen Kombination von Verdächtigen, Beweisen und Motiven.",
+    "solutionSummary": "Lösungs-Zusammenfassung",
+    "rateCase": "Fall bewerten",
+    "thankYou": "Vielen Dank für Ihre Bewertung!",
+    "backToCase": "Zurück zum Fall",
+    "backToCases": "Zurück zu den Fällen",
+    "solveTheCase": "Lösen Sie den Fall",
+    "selectInstruction": "Wählen Sie Verdächtige, Beweise und Motive aus, um diesen Fall zu lösen (mindestens eins von jedem)",
+    "selectSuspects": "Verdächtige auswählen",
+    "selected": "ausgewählt",
+    "noSuspects": "Keine Verdächtigen verfügbar",
+    "selectEvidence": "Wichtige Beweise auswählen",
+    "noEvidence": "Keine Beweise verfügbar",
+    "selectMotives": "Motive auswählen",
+    "noMotives": "Keine Motive verfügbar",
+    "validating": "Lösung wird überprüft...",
+    "submitting": "Wird gesendet...",
+    "submitSolution": "Lösung einreichen",
+    "pleaseSelect": "Bitte wählen Sie mindestens einen Verdächtigen, ein Beweisstück und ein Motiv aus"
   }
 }

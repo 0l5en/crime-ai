@@ -33,5 +33,58 @@
     "relationshipToCase": "Relazione con il caso",
     "alibi": "Alibi",
     "interrogate": "Interrogare"
+  },
+  "interrogation": {
+    "back": "Indietro",
+    "interrogationWith": "Interrogatorio con",
+    "yearsOld": "anni",
+    "askQuestion": "Fai una Domanda",
+    "typePlaceholder": "Digita qui la tua domanda...",
+    "processing": "Elaborazione della tua domanda...",
+    "roles": {
+      "criminalAssistant": "Assistente Criminale",
+      "digitalExpert": "Esperto Digitale",
+      "forensicExpert": "Esperto Forense",
+      "ballisticExpert": "Esperto Balistico",
+      "documentExpert": "Esperto di Documenti",
+      "traceExpert": "Esperto di Tracce",
+      "forensicPathologist": "Patologo Forense",
+      "perpetrator": "Autore"
+    }
+  },
+  "evidenceReport": {
+    "title": "Rapporto Prove",
+    "analysis": "Analisi",
+    "methods": "Metodi",
+    "conclusion": "Conclusione",
+    "discussion": "Discussione Prove",
+    "askPlaceholder": "Fai una domanda su questo rapporto prove...",
+    "loading": "Caricamento..."
+  },
+  "solutionPage": {
+    "tryAgain": "Riprova",
+    "resultTitle": "Risultato Soluzione Caso",
+    "successTitle": "Congratulazioni! Hai risolto il caso!",
+    "failureTitle": "Purtroppo, questa soluzione non è corretta.",
+    "successMessage": "Ottimo lavoro investigativo! Hai identificato correttamente il colpevole, le prove e il movente.",
+    "failureMessage": "Riprova con una diversa combinazione di sospetti, prove e moventi.",
+    "solutionSummary": "Riepilogo Soluzione",
+    "rateCase": "Valuta questo Caso",
+    "thankYou": "Grazie per aver valutato questo caso!",
+    "backToCase": "Torna al Caso",
+    "backToCases": "Torna ai Casi",
+    "solveTheCase": "Risolvi il Caso",
+    "selectInstruction": "Seleziona sospetti, prove e moventi per risolvere questo caso (almeno uno per categoria)",
+    "selectSuspects": "Seleziona Sospetti",
+    "selected": "selezionato",
+    "noSuspects": "Nessun sospetto disponibile",
+    "selectEvidence": "Seleziona Prove Chiave",
+    "noEvidence": "Nessuna prova disponibile",
+    "selectMotives": "Seleziona Moventi",
+    "noMotives": "Nessun movente disponibile",
+    "validating": "Validazione soluzione...",
+    "submitting": "Invio in corso...",
+    "submitSolution": "Invia Soluzione",
+    "pleaseSelect": "Seleziona almeno un sospetto, una prova e un movente"
   }
 }

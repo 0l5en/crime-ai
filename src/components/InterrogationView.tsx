@@ -6,6 +6,7 @@ import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import type { components } from '@/openapi/crimeAiSchema';
 import { ArrowLeft, Send } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ConversationHistory from './ConversationHistory';
 
 type PersonDto = components['schemas']['PersonDto'];
@@ -18,6 +19,7 @@ interface InterrogationViewProps {
 
 const InterrogationView = ({ person, onBack, embedded = false }: InterrogationViewProps) => {
   const { user } = useKeycloak();
+  const { t } = useTranslation('caseDashboard');
   const [question, setQuestion] = useState('');
   const [interrogationId, setInterrogationId] = useState<string | null>(null);
 
@@ -88,21 +90,21 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
     const primaryRole = roles[0];
     switch (primaryRole) {
       case 'CRIMINAL_ASSISTANT':
-        return 'Criminal Assistant';
+        return t('interrogation.roles.criminalAssistant');
       case 'DIGITAL_EXPERT':
-        return 'Digital Expert';
+        return t('interrogation.roles.digitalExpert');
       case 'FORENSIC_EXPERT':
-        return 'Forensic Expert';
+        return t('interrogation.roles.forensicExpert');
       case 'BALLISTIC_EXPERT':
-        return 'Ballistic Expert';
+        return t('interrogation.roles.ballisticExpert');
       case 'DOCUMENT_EXPERT':
-        return 'Document Expert';
+        return t('interrogation.roles.documentExpert');
       case 'TRACE_EXPERT':
-        return 'Trace Expert';
+        return t('interrogation.roles.traceExpert');
       case 'FORENSIC_PATHOLOGIST':
-        return 'Forensic Pathologist';
+        return t('interrogation.roles.forensicPathologist');
       case 'PERPETRATOR':
-        return 'Perpetrator';
+        return t('interrogation.roles.perpetrator');
       default:
         return primaryRole.toLowerCase();
     }
@@ -122,7 +124,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
             onClick={onBack}
           >
             <ArrowLeft className="me-2" />
-            Back
+            {t('interrogation.back')}
           </button>
 
           <div className="d-flex align-items-center">
@@ -146,10 +148,10 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
 
             <div>
               <h2 className="h3 mb-1">
-                Interrogation with {person.name}
+                {t('interrogation.interrogationWith')} {person.name}
               </h2>
               <p className="text-muted mb-0">
-                {person.age} years old • {person.profession}
+                {person.age} {t('interrogation.yearsOld')} • {person.profession}
               </p>
             </div>
           </div>
@@ -159,7 +161,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
       {/* Question input form */}
       <div className="card border-secondary mb-4">
         <div className="card-header">
-          <h5 className="card-title">Ask a Question</h5>
+          <h5 className="card-title">{t('interrogation.askQuestion')}</h5>
         </div>
         <div className="card-body">
           <form onSubmit={handleSubmitQuestion} className="d-flex gap-2">
@@ -168,7 +170,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
               className="form-control border-secondary flex-grow-1"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Type your question here..."
+              placeholder={t('interrogation.typePlaceholder')}
               disabled={createAnswerMutation.isPending}
             />
             <button
@@ -189,7 +191,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
 
       {createAnswerMutation.isPending && (
         <div className="text-center text-danger mt-3">
-          <p>Processing your question...</p>
+          <p>{t('interrogation.processing')}</p>
         </div>
       )}
     </div>

@@ -15,11 +15,13 @@ import StarRating from "@/components/StarRating";
 import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CaseSolution = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
   const { user } = useKeycloak();
+  const { t } = useTranslation('caseDashboard');
 
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
@@ -143,10 +145,10 @@ const CaseSolution = () => {
               onClick={resetSelections}
             >
               <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-              Try Again
+              {t('solutionPage.tryAgain')}
             </button>
 
-            <h1 className="h2 mb-0">Case Solution Result</h1>
+            <h1 className="h2 mb-0">{t('solutionPage.resultTitle')}</h1>
           </div>
 
           <div className="row justify-content-center">
@@ -161,13 +163,13 @@ const CaseSolution = () => {
                     )}
 
                     <h2 className={`h3 mb-3 ${isSolved ? 'text-success' : 'text-danger'}`}>
-                      {isSolved ? 'Congratulations! You solved the case!' : 'Unfortunately, this solution is incorrect.'}
+                      {isSolved ? t('solutionPage.successTitle') : t('solutionPage.failureTitle')}
                     </h2>
 
                     <p className="lead">
                       {isSolved
-                        ? 'Great detective work! You correctly identified the culprit, evidence, and motive.'
-                        : 'Please try again with a different combination of suspects, evidence, and motives.'
+                        ? t('solutionPage.successMessage')
+                        : t('solutionPage.failureMessage')
                       }
                     </p>
                   </div>
@@ -175,7 +177,7 @@ const CaseSolution = () => {
                   {/* Solution Summary - nur bei erfolgreicher Lösung */}
                   {isSolved && crimeCase?.summary && (
                     <div className="mb-4 p-4 bg-light border rounded">
-                      <h3 className="h5 mb-3 text-success">Solution Summary</h3>
+                      <h3 className="h5 mb-3 text-success">{t('solutionPage.solutionSummary')}</h3>
                       <p className="text-start" style={{ whiteSpace: 'pre-line' }}>
                         {crimeCase.summary}
                       </p>
@@ -185,7 +187,7 @@ const CaseSolution = () => {
                   {/* Rating Section - nur bei erfolgreicher Lösung */}
                   {isSolved && (
                     <div className="mb-4">
-                      <h3 className="h5 mb-3">Rate this Case</h3>
+                      <h3 className="h5 mb-3">{t('solutionPage.rateCase')}</h3>
                       <div className="d-flex justify-content-center">
                         <StarRating
                           rating={userRating}
@@ -198,7 +200,7 @@ const CaseSolution = () => {
                       </div>
                       {userRating > 0 && (
                         <p className="text-muted mt-2 small">
-                          Thank you for rating this case!
+                          {t('solutionPage.thankYou')}
                         </p>
                       )}
                     </div>
@@ -209,19 +211,19 @@ const CaseSolution = () => {
                       onClick={resetSelections}
                       className="btn btn-secondary"
                     >
-                      Try Again
+                      {t('solutionPage.tryAgain')}
                     </button>
                     <button
                       onClick={() => navigate(`/case/${caseId}`)}
                       className="btn btn-primary"
                     >
-                      Back to Case
+                      {t('solutionPage.backToCase')}
                     </button>
                     <button
                       onClick={() => navigate('/')}
                       className="btn btn-danger"
                     >
-                      Back to Cases
+                      {t('solutionPage.backToCases')}
                     </button>
                   </div>
                 </div>
@@ -244,15 +246,15 @@ const CaseSolution = () => {
             onClick={() => navigate(`/case/${caseId}`)}
           >
             <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-            Back to Case
+            {t('solutionPage.backToCase')}
           </button>
 
           <div>
             <h1 className="h2 mb-1">
-              Solve the Case: {crimeCase?.title}
+              {t('solutionPage.solveTheCase')}: {crimeCase?.title}
             </h1>
             <p className="text-muted mb-0">
-              Select suspects, evidence, and motives to solve this case (at least one of each)
+              {t('solutionPage.selectInstruction')}
             </p>
           </div>
         </div>
@@ -261,9 +263,9 @@ const CaseSolution = () => {
         <div className="card border-secondary mb-5">
           <div className="card-header">
             <h3 className="card-title">
-              Select Suspects
+              {t('solutionPage.selectSuspects')}
               {selectedSuspects.length > 0 && (
-                <span className="badge bg-success ms-2">{selectedSuspects.length} selected</span>
+                <span className="badge bg-success ms-2">{selectedSuspects.length} {t('solutionPage.selected')}</span>
               )}
             </h3>
           </div>
@@ -283,7 +285,7 @@ const CaseSolution = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-muted text-center py-4">No suspects available</p>
+              <p className="text-muted text-center py-4">{t('solutionPage.noSuspects')}</p>
             )}
           </div>
         </div>
@@ -292,10 +294,10 @@ const CaseSolution = () => {
         <div className="card border-secondary mb-5">
           <div className="card-header">
             <h3 className="card-title">
-              Select Key Evidence
+              {t('solutionPage.selectEvidence')}
               {selectedEvidences.length > 0 && (
                 <span className="badge bg-primary ms-2">
-                  {selectedEvidences.length} selected
+                  {selectedEvidences.length} {t('solutionPage.selected')}
                 </span>
               )}
             </h3>
@@ -316,7 +318,7 @@ const CaseSolution = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-muted text-center py-4">No evidence available</p>
+              <p className="text-muted text-center py-4">{t('solutionPage.noEvidence')}</p>
             )}
           </div>
         </div>
@@ -325,9 +327,9 @@ const CaseSolution = () => {
         <div className="card border-secondary mb-5">
           <div className="card-header">
             <h3 className="card-title">
-              Select Motives
+              {t('solutionPage.selectMotives')}
               {selectedMotives.length > 0 && (
-                <span className="badge bg-warning ms-2">{selectedMotives.length} selected</span>
+                <span className="badge bg-warning ms-2">{selectedMotives.length} {t('solutionPage.selected')}</span>
               )}
             </h3>
           </div>
@@ -346,7 +348,7 @@ const CaseSolution = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-muted text-center py-4">No motives available</p>
+              <p className="text-muted text-center py-4">{t('solutionPage.noMotives')}</p>
             )}
           </div>
         </div>
@@ -358,12 +360,12 @@ const CaseSolution = () => {
             className="btn btn-danger btn-lg px-5 py-3"
             disabled={selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0 || createSolutionMutation.isPending || isValidating}
           >
-            {isValidating ? 'Validating Solution...' : createSolutionMutation.isPending ? 'Submitting...' : 'Submit Solution'}
+            {isValidating ? t('solutionPage.validating') : createSolutionMutation.isPending ? t('solutionPage.submitting') : t('solutionPage.submitSolution')}
           </button>
 
           {(selectedSuspects.length === 0 || selectedEvidences.length === 0 || selectedMotives.length === 0) && (
             <p className="text-muted mt-3 small">
-              Please select at least one suspect, one piece of evidence, and one motive
+              {t('solutionPage.pleaseSelect')}
             </p>
           )}
         </div>

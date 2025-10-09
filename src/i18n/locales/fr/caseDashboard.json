@@ -33,5 +33,58 @@
     "relationshipToCase": "Lien avec l'affaire",
     "alibi": "Alibi",
     "interrogate": "Interroger"
+  },
+  "interrogation": {
+    "back": "Retour",
+    "interrogationWith": "Interrogatoire avec",
+    "yearsOld": "ans",
+    "askQuestion": "Poser une Question",
+    "typePlaceholder": "Tapez votre question ici...",
+    "processing": "Traitement de votre question...",
+    "roles": {
+      "criminalAssistant": "Assistant Criminel",
+      "digitalExpert": "Expert Numérique",
+      "forensicExpert": "Expert Médico-légal",
+      "ballisticExpert": "Expert Balistique",
+      "documentExpert": "Expert en Documents",
+      "traceExpert": "Expert en Traces",
+      "forensicPathologist": "Médecin Légiste",
+      "perpetrator": "Auteur"
+    }
+  },
+  "evidenceReport": {
+    "title": "Rapport de Preuves",
+    "analysis": "Analyse",
+    "methods": "Méthodes",
+    "conclusion": "Conclusion",
+    "discussion": "Discussion sur les Preuves",
+    "askPlaceholder": "Posez une question sur ce rapport de preuves...",
+    "loading": "Chargement..."
+  },
+  "solutionPage": {
+    "tryAgain": "Réessayer",
+    "resultTitle": "Résultat de la Solution",
+    "successTitle": "Félicitations ! Vous avez résolu l'affaire !",
+    "failureTitle": "Malheureusement, cette solution est incorrecte.",
+    "successMessage": "Excellent travail de détective ! Vous avez correctement identifié le coupable, les preuves et le mobile.",
+    "failureMessage": "Veuillez réessayer avec une combinaison différente de suspects, preuves et mobiles.",
+    "solutionSummary": "Résumé de la Solution",
+    "rateCase": "Évaluer cette Affaire",
+    "thankYou": "Merci d'avoir évalué cette affaire !",
+    "backToCase": "Retour à l'Affaire",
+    "backToCases": "Retour aux Affaires",
+    "solveTheCase": "Résoudre l'Affaire",
+    "selectInstruction": "Sélectionnez des suspects, des preuves et des mobiles pour résoudre cette affaire (au moins un de chaque)",
+    "selectSuspects": "Sélectionner les Suspects",
+    "selected": "sélectionné",
+    "noSuspects": "Aucun suspect disponible",
+    "selectEvidence": "Sélectionner les Preuves Clés",
+    "noEvidence": "Aucune preuve disponible",
+    "selectMotives": "Sélectionner les Mobiles",
+    "noMotives": "Aucun mobile disponible",
+    "validating": "Validation de la solution...",
+    "submitting": "Envoi en cours...",
+    "submitSolution": "Soumettre la Solution",
+    "pleaseSelect": "Veuillez sélectionner au moins un suspect, une preuve et un mobile"
   }
 }

@@ -5,6 +5,7 @@ import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import { format } from 'date-fns';
 import { Send } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ConversationHistory from './ConversationHistory';
@@ -20,6 +21,7 @@ interface EvidenceReportCardProps {
 const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: EvidenceReportCardProps) => {
   const [question, setQuestion] = useState('');
   const { user } = useKeycloak();
+  const { t } = useTranslation('caseDashboard');
 
   const createAnswer = useCreateInterrogationAnswer();
 
@@ -67,27 +69,27 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
   return (
     <div className="card border-secondary mb-3">
       <div className="card-header d-flex justify-content-between align-items-center">
-        <h6 className="mb-0 fw-semibold">Evidence Report</h6>
+        <h6 className="mb-0 fw-semibold">{t('evidenceReport.title')}</h6>
       </div>
       <div className="card-body">
         {/* Evidence Report Content with Markdown Support */}
         <div className="card-text mb-3 markdown-content">
           <div className="mb-3">
-            <h6 className="fw-semibold mb-2">Analysis</h6>
+            <h6 className="fw-semibold mb-2">{t('evidenceReport.analysis')}</h6>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {analysis}
             </ReactMarkdown>
           </div>
 
           <div className="mb-3">
-            <h6 className="fw-semibold mb-2">Methods</h6>
+            <h6 className="fw-semibold mb-2">{t('evidenceReport.methods')}</h6>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {methods}
             </ReactMarkdown>
           </div>
 
           <div className="mb-3">
-            <h6 className="fw-semibold mb-2">Conclusion</h6>
+            <h6 className="fw-semibold mb-2">{t('evidenceReport.conclusion')}</h6>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {conclusion}
             </ReactMarkdown>
@@ -98,7 +100,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
 
         {/* Interrogation Section */}
         <div className="mt-3">
-          <h6 className="mb-3">Evidence Discussion</h6>
+          <h6 className="mb-3">{t('evidenceReport.discussion')}</h6>
 
           {/* Question Input Form */}
           {personId && user?.email && (
@@ -107,7 +109,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
                 <input
                   type="text"
                   className="form-control border-secondary"
-                  placeholder="Ask a question about this evidence report..."
+                  placeholder={t('evidenceReport.askPlaceholder')}
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   disabled={createAnswer.isPending}
@@ -119,7 +121,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
                 >
                   {createAnswer.isPending ? (
                     <div className="spinner-border spinner-border-sm me-2" role="status">
-                      <span className="visually-hidden">Loading...</span>
+                      <span className="visually-hidden">{t('evidenceReport.loading')}</span>
                     </div>
                   ) : (
                     <Send size={16} />
