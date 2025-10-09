@@ -25,5 +25,13 @@
     "rate": "Évaluer cette affaire",
     "rating": "note",
     "ratings": "notes"
+  },
+  "cards": {
+    "years": "ans",
+    "profession": "Profession",
+    "maritalStatus": "État civil",
+    "relationshipToCase": "Lien avec l'affaire",
+    "alibi": "Alibi",
+    "interrogate": "Interroger"
   }
 }

@@ -25,5 +25,13 @@
     "rate": "Bewerten Sie diesen Fall",
     "rating": "Bewertung",
     "ratings": "Bewertungen"
+  },
+  "cards": {
+    "years": "Jahre",
+    "profession": "Beruf",
+    "maritalStatus": "Familienstand",
+    "relationshipToCase": "Bezug zum Fall",
+    "alibi": "Alibi",
+    "interrogate": "Verhören"
   }
 }

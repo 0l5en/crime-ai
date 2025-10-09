@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 
 interface SuspectCardProps {
   name: string;
@@ -22,6 +23,8 @@ const SuspectCard = ({
   alibiContent,
   onInterrogate
 }: SuspectCardProps) => {
+  const { t } = useTranslation('caseDashboard');
+  
   const getInitials = (fullName: string) => {
     return fullName
       .split(' ')
@@ -60,7 +63,7 @@ const SuspectCard = ({
           <div className="flex-grow-1">
             <h5 className="card-title mb-1" data-testid="suspect-name">{name}</h5>
             <span className="badge text-bg-secondary" data-testid="witness-age">
-              {age} years
+              {age} {t('cards.years')}
             </span>
           </div>
         </div>
@@ -68,22 +71,22 @@ const SuspectCard = ({
 
       <div className="card-body d-flex flex-column gap-3 flex-grow-1">
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Profession:</h4>
+          <h4 className="small fw-medium text-muted mb-1">{t('cards.profession')}</h4>
           <p className="mb-0" data-testid="suspect-profession">{profession}</p>
         </div>
 
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Marital status:</h4>
+          <h4 className="small fw-medium text-muted mb-1">{t('cards.maritalStatus')}</h4>
           <p className="mb-0" data-testid="suspect-marital-status">{maritalStatus}</p>
         </div>
 
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Relation to case:</h4>
+          <h4 className="small fw-medium text-muted mb-1">{t('cards.relationshipToCase')}</h4>
           <p className="mb-0" data-testid="suspect-relationship">{relationshipToCase}</p>
         </div>
         {alibiContent &&
           <div>
-            <h4 className="small fw-medium text-muted mb-1">Alibi:</h4>
+            <h4 className="small fw-medium text-muted mb-1">{t('cards.alibi')}</h4>
             <p className="mb-0" data-testid="suspect-alibi">{alibiContent}</p>
           </div>
         }
@@ -95,7 +98,7 @@ const SuspectCard = ({
               className="btn btn-danger w-100 btn-sm"
               data-testid="suspect-interrogate-button"
             >
-              Interrogate
+              {t('cards.interrogate')}
             </button>
           </div>
         )}

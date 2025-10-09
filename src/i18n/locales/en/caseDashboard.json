@@ -25,5 +25,13 @@
     "rate": "Rate this case",
     "rating": "rating",
     "ratings": "ratings"
+  },
+  "cards": {
+    "years": "years",
+    "profession": "Profession",
+    "maritalStatus": "Marital status",
+    "relationshipToCase": "Relation to case",
+    "alibi": "Alibi",
+    "interrogate": "Interrogate"
   }
 }

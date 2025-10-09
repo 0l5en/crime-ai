@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 
 interface WitnessCardProps {
   name: string;
@@ -20,6 +21,8 @@ const WitnessCard = ({
   imageUrl,
   onInterrogate
 }: WitnessCardProps) => {
+  const { t } = useTranslation('caseDashboard');
+  
   const getInitials = (fullName: string) => {
     return fullName
       .split(' ')
@@ -58,7 +61,7 @@ const WitnessCard = ({
           <div className="flex-grow-1">
             <h5 className="card-title mb-1" data-testid="witness-name">{name}</h5>
             <span className="badge text-bg-secondary" data-testid="witness-age">
-              {age} years
+              {age} {t('cards.years')}
             </span>
           </div>
         </div>
@@ -66,17 +69,17 @@ const WitnessCard = ({
 
       <div className="card-body d-flex flex-column gap-3 flex-grow-1">
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Beruf</h4>
+          <h4 className="small fw-medium text-muted mb-1">{t('cards.profession')}</h4>
           <p className="mb-0" data-testid="witness-profession">{profession}</p>
         </div>
 
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Familienstand</h4>
+          <h4 className="small fw-medium text-muted mb-1">{t('cards.maritalStatus')}</h4>
           <p className="mb-0" data-testid="witness-marital-status">{maritalStatus}</p>
         </div>
 
         <div>
-          <h4 className="small fw-medium text-muted mb-1">Bezug zum Fall</h4>
+          <h4 className="small fw-medium text-muted mb-1">{t('cards.relationshipToCase')}</h4>
           <p className="small mb-0" data-testid="witness-relationship">{relationshipToCase}</p>
         </div>
 
@@ -87,7 +90,7 @@ const WitnessCard = ({
               className="btn btn-primary w-100 btn-sm"
               data-testid="witness-interrogate-button"
             >
-              Interrogate
+              {t('cards.interrogate')}
             </button>
           </div>
         )}

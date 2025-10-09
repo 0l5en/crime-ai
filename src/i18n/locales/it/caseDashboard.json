@@ -25,5 +25,13 @@
     "rate": "Valuta questo caso",
     "rating": "valutazione",
     "ratings": "valutazioni"
+  },
+  "cards": {
+    "years": "anni",
+    "profession": "Professione",
+    "maritalStatus": "Stato civile",
+    "relationshipToCase": "Relazione con il caso",
+    "alibi": "Alibi",
+    "interrogate": "Interrogare"
   }
 }
