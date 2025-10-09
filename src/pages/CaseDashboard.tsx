@@ -81,6 +81,13 @@ const CaseDashboard = () => {
     setSelectedSuspect(null);
   };
 
+  // Scroll to top when evidence is selected
+  useEffect(() => {
+    if (selectedEvidence) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [selectedEvidence]);
+
   const handleEvidenceSelect = (evidence: any) => {
     setSelectedEvidence(evidence);
   };
