@@ -26,7 +26,7 @@ const Cases = () => {
   } = useCrimeCases({
     caseGeneratorFormType: "BASIC",
     status: "PUBLISHED,PREMIUM",
-    maxResults: (page * 6).toString(),
+    maxResults: (page * 3).toString(),
   });
 
   // Scroll to top when component mounts
