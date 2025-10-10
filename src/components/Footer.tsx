@@ -36,19 +36,18 @@ const Footer = () => {
             <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '1.0rem' }}>
               {t('footer.description')}
             </p>
-            <div className="d-flex flex-column align-items-start mb-3 mb-md-0 mt-3">
+            <div className="d-flex align-items-center gap-2 mb-3 mb-md-0 mt-3">
               <StarRating 
-                rating={userRating}
+                rating={stats.averageRating}
                 onRatingChange={handleRatingChange}
                 readonly={false}
                 size={24}
-                showCount={true}
-                count={stats.totalRatings}
+                showCount={false}
               />
-              {userRating > 0 && (
-                <p className="text-success mt-1 mb-0" style={{ fontSize: '0.75rem' }}>
-                  {t('footer.thankYouRating')}
-                </p>
+              {stats.totalRatings > 0 && (
+                <span className="text-secondary" style={{ fontSize: '0.9rem' }}>
+                  {stats.averageRating.toFixed(1)} / {stats.totalRatings}
+                </span>
               )}
             </div>
           </div>
