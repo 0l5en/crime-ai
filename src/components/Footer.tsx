@@ -8,9 +8,8 @@ import { useEffect } from "react";
 const Footer = () => {
   const { t } = useTranslation('common');
   const user = useUserContext();
-  const { setRating, getUserRating, getSiteStats } = useSiteRating(user.name || undefined);
+  const { setRating, getSiteStats } = useSiteRating(user.name || undefined);
   const stats = getSiteStats();
-  const userRating = getUserRating();
 
   // Update schema on mount and when stats change
   useEffect(() => {
