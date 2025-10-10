@@ -1,8 +1,27 @@
-import { Facebook, Github, Instagram, Twitter } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import StarRating from "./StarRating";
+import { useSiteRating } from "@/hooks/useSiteRating";
+import { useUserContext } from "@/contexts/UserContext";
+import { updateSchemaRating } from "@/utils/updateSchemaRating";
+import { useEffect } from "react";
 
 const Footer = () => {
   const { t } = useTranslation('common');
+  const user = useUserContext();
+  const { setRating, getUserRating, getSiteStats } = useSiteRating(user.name || undefined);
+  const stats = getSiteStats();
+  const userRating = getUserRating();
+
+  // Update schema on mount and when stats change
+  useEffect(() => {
+    updateSchemaRating(stats.averageRating, stats.totalRatings);
+  }, [stats.averageRating, stats.totalRatings]);
+
+  const handleRatingChange = (rating: number) => {
+    setRating(rating);
+    // Stats will be recalculated and useEffect will update schema
+  };
+
   return (
     <footer className="bg-body py-4 mt-auto">
       <div className="container">
@@ -17,19 +36,23 @@ const Footer = () => {
             <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '1.0rem' }}>
               {t('footer.description')}
             </p>
-            <div className="d-flex gap-3 mb-3 mb-md-0">
-              <a href="#" className="text-secondary" style={{ fontSize: '1.2rem' }}>
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-secondary" style={{ fontSize: '1.2rem' }}>
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-secondary" style={{ fontSize: '1.2rem' }}>
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-secondary" style={{ fontSize: '1.2rem' }}>
-                <Github size={20} />
-              </a>
+            <div className="d-flex flex-column align-items-start mb-3 mb-md-0">
+              <p className="text-secondary mb-1" style={{ fontSize: '0.9rem' }}>
+                {t('footer.rateUs')}
+              </p>
+              <StarRating 
+                rating={userRating}
+                onRatingChange={handleRatingChange}
+                readonly={false}
+                size={24}
+                showCount={true}
+                count={stats.totalRatings}
+              />
+              {userRating > 0 && (
+                <p className="text-success mt-1 mb-0" style={{ fontSize: '0.75rem' }}>
+                  {t('footer.thankYouRating')}
+                </p>
+              )}
             </div>
           </div>
           <div className="col-md-6">
