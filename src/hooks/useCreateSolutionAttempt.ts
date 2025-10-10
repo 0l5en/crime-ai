@@ -1,37 +1,41 @@
-
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { components } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
+import { REQUEST_PATH as solutionAttemptsQueryKey } from './useSolutionAttempts';
+import { getCsrfToken } from './util';
 
-type CreateSolutionAttemptDto = components['schemas']['CreateSolutionAttemptDto'];
+const REQUEST_PATH = '/crimecase/{id}/solution-attempt';
+type CreateSolutionAttemptDto = paths[typeof REQUEST_PATH]['post']['requestBody']['content']['application/json'];
 
 export const useCreateSolutionAttempt = (caseId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (data: CreateSolutionAttemptDto): Promise<string> => {
-      console.log(`Creating solution attempt for case ${caseId}:`, data);
-      
-      const { data: response, error } = await supabase.functions.invoke('create-solution-attempt', {
+
+      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', caseId), {
         method: 'POST',
-        body: { ...data, caseId },
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-XSRF-TOKEN': getCsrfToken()
+        },
+        body: JSON.stringify(data)
       });
-      
-      if (error) {
-        console.error('Edge function error:', error);
-        throw new Error(`Failed to create solution attempt: ${error.message}`);
+
+      if (response.ok) {
+        return;
       }
-      
-      console.log('Solution attempt created with ID:', response);
-      return response as string;
+
+      throw new Error('Server returned error response: ' + response.status);
     },
     onSuccess: (_, variables) => {
       // Invalidate related queries to refresh data
       queryClient.invalidateQueries({
-        queryKey: ['solutionAttempts', caseId]
+        queryKey: [solutionAttemptsQueryKey, caseId]
       });
       queryClient.invalidateQueries({
-        queryKey: ['solutionAttempts', caseId, variables.userId]
+        queryKey: [solutionAttemptsQueryKey, caseId, variables.userId]
       });
     },
   });

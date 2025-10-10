@@ -1,4 +1,3 @@
-
 import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';

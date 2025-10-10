@@ -2,7 +2,7 @@ import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';
 
-const REQUEST_PATH = '/crimecase/{id}/solution-attempt';
+export const REQUEST_PATH = '/crimecase/{id}/solution-attempt';
 type ResultSetSolutionAttempt = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const useSolutionAttempts = (caseId: string, userId?: string, success?: string) => {

@@ -32,8 +32,8 @@ export const useCreateCrimeCaseVacationRental = () => {
         throw data;
       }
 
-      // Check for success response (202 request was accepted)
-      if (response.status === 202) {
+      // Check for success response
+      if (response.ok) {
         return { locationUrl: response.headers.get('location') };
       }
 
