@@ -26,12 +26,15 @@ const NotificationBadge = () => {
 
   return (
     <button 
-      className={`nav-button position-relative ${isOnEmailPage ? 'bg-accent' : ''}`}
+      className="nav-button position-relative"
       onClick={handleClick}
+      style={{
+        backgroundColor: isOnEmailPage ? 'hsl(var(--accent))' : 'transparent',
+        transition: 'background-color 0.2s ease'
+      }}
     >
       <Mail
         size={20}
-        className=""
         style={{ cursor: 'pointer' }}
       />
       {unreadCount > 0 && (
