@@ -127,12 +127,12 @@
     "noEvidence": "Keine Beweise für diesen Fall verfügbar",
     "location": "Fundort",
     "evidenceTypes": {
-      "DIGITAL": "Digital",
-      "FORENSIC": "Forensisch",
-      "BALLISTIC": "Ballistisch",
-      "DOCUMENT": "Dokument",
-      "TRACE": "Spur",
-      "OTHER": "Sonstiges"
+      "DIGITAL": "DIGITAL",
+      "FORENSIC": "FORENSISCH",
+      "BALLISTIC": "BALLISTISCH",
+      "DOCUMENT": "DOKUMENT",
+      "TRACE": "SPUR",
+      "OTHER": "SONSTIGES"
     }
   },
   "suspects": {

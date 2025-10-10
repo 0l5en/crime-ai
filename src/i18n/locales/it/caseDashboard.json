@@ -127,12 +127,12 @@
     "noEvidence": "Nessuna prova disponibile per questo caso",
     "location": "Posizione",
     "evidenceTypes": {
-      "DIGITAL": "Digitale",
-      "FORENSIC": "Forense",
-      "BALLISTIC": "Balistico",
-      "DOCUMENT": "Documento",
-      "TRACE": "Traccia",
-      "OTHER": "Altro"
+      "DIGITAL": "DIGITALE",
+      "FORENSIC": "FORENSE",
+      "BALLISTIC": "BALISTICO",
+      "DOCUMENT": "DOCUMENTO",
+      "TRACE": "TRACCIA",
+      "OTHER": "ALTRO"
     }
   },
   "suspects": {
