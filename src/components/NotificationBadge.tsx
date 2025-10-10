@@ -1,10 +1,21 @@
 import { useNotifications } from "@/hooks/useNotifications";
 import { Mail } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NotificationBadge = () => {
   const { data: notifications, isLoading, error } = useNotifications();
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const isOnEmailPage = location.pathname === '/emails';
+
+  const handleClick = () => {
+    if (isOnEmailPage) {
+      navigate(-1);
+    } else {
+      navigate('/emails');
+    }
+  };
 
   // Don't render anything if loading or error
   if (isLoading || error) {
@@ -14,7 +25,10 @@ const NotificationBadge = () => {
   const unreadCount = notifications?.items?.filter(n => !n.read).length || 0;
 
   return (
-    <button className="nav-button position-relative" onClick={() => navigate('/emails')}>
+    <button 
+      className={`nav-button position-relative ${isOnEmailPage ? 'bg-accent' : ''}`}
+      onClick={handleClick}
+    >
       <Mail
         size={20}
         className=""
