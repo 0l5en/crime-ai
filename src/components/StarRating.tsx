@@ -61,7 +61,7 @@ const StarRating = ({
               className={`${
                 starNumber <= displayRating
                   ? 'fill-primary text-primary'
-                  : 'text-gray-300'
+                  : 'text-primary'
               } transition-colors`}
             />
           </button>

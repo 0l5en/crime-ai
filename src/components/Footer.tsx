@@ -36,7 +36,7 @@ const Footer = () => {
             <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '1.0rem' }}>
               {t('footer.description')}
             </p>
-            <div className="d-flex flex-column align-items-start mb-3 mb-md-0">
+            <div className="d-flex flex-column align-items-start mb-3 mb-md-0 mt-3">
               <StarRating 
                 rating={userRating}
                 onRatingChange={handleRatingChange}
