@@ -125,7 +125,15 @@
     "unknownLocation": "Posizione sconosciuta",
     "pendingAnalysis": "Analisi in attesa",
     "noEvidence": "Nessuna prova disponibile per questo caso",
-    "location": "Posizione"
+    "location": "Posizione",
+    "evidenceTypes": {
+      "DIGITAL": "Digitale",
+      "FORENSIC": "Forense",
+      "BALLISTIC": "Balistico",
+      "DOCUMENT": "Documento",
+      "TRACE": "Traccia",
+      "OTHER": "Altro"
+    }
   },
   "suspects": {
     "loadingSuspects": "Caricamento sospetti...",

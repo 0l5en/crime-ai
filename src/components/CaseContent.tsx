@@ -133,7 +133,7 @@ const CaseContent = ({
               <h2 className="mb-0">{selectedEvidence.title}</h2>
               {selectedEvidence.evidenceType && (
                 <span className={`badge ${getEvidenceTypeColor(selectedEvidence.evidenceType)} badge-pill fs-6`}>
-                  {selectedEvidence.evidenceType}
+                  {t(`evidence.evidenceTypes.${selectedEvidence.evidenceType}`)}
                 </span>
               )}
             </div>

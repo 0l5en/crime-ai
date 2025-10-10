@@ -41,7 +41,7 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
       {evidenceType && (
         <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 10 }}>
           <span className={`badge ${getEvidenceTypeColor(evidenceType)} badge-pill fs-6`}>
-            {evidenceType}
+            {t(`evidence.evidenceTypes.${evidenceType}`)}
           </span>
         </div>
       )}

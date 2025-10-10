@@ -125,7 +125,15 @@
     "unknownLocation": "Unknown location",
     "pendingAnalysis": "Pending analysis",
     "noEvidence": "No evidence available for this case",
-    "location": "Location"
+    "location": "Location",
+    "evidenceTypes": {
+      "DIGITAL": "Digital",
+      "FORENSIC": "Forensic",
+      "BALLISTIC": "Ballistic",
+      "DOCUMENT": "Document",
+      "TRACE": "Trace",
+      "OTHER": "Other"
+    }
   },
   "suspects": {
     "loadingSuspects": "Loading suspects...",
