@@ -3,7 +3,9 @@ import Header from "@/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
-import { useSolutionSpoiler } from "@/hooks/useSolutionSpoiler";
+import { usePerpetratorsByCaseId } from "@/hooks/usePerpetratorsByCaseId";
+import { useSolutionEvidences } from "@/hooks/useSolutionEvidences";
+import { useCaseMotives } from "@/hooks/useCaseMotives";
 import type { components } from '@/openapi/crimeAiSchema';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -232,7 +234,23 @@ const AdminCaseManagement = () => {
 };
 
 const SolutionRow = ({ caseId }: { caseId: string }) => {
-  const { data: solution, isLoading, error } = useSolutionSpoiler(caseId);
+  const { data: perpetrators, isLoading: loadingPerps, error: errorPerps } = usePerpetratorsByCaseId(caseId);
+  const { data: evidences, isLoading: loadingEvidence, error: errorEvidence } = useSolutionEvidences(caseId);
+  
+  const perpetratorIds = perpetrators?.items?.map(p => p.id.toString()) || [];
+  const { data: motives, isLoading: loadingMotives, error: errorMotives } = useCaseMotives(
+    caseId,
+    perpetratorIds[0]
+  );
+
+  const isLoading = loadingPerps || loadingEvidence || loadingMotives;
+  const error = errorPerps || errorEvidence || errorMotives;
+
+  const solution = {
+    personNames: perpetrators?.items?.map(p => p.name) || [],
+    evidenceTitles: evidences?.items?.map(e => e.title) || [],
+    motiveTitles: motives?.items?.map(m => m.title) || []
+  };
 
   return (
     <tr>

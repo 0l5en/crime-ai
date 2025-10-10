@@ -6,12 +6,17 @@ import { PATH_CRIME_AI_API } from './constants';
 const REQUEST_PATH = '/crimecase/{id}/motive';
 type ResultSetMotive = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
-export const useCaseMotives = (caseId: string) => {
+export const useCaseMotives = (caseId: string, personId?: string) => {
   return useQuery({
-    queryKey: [REQUEST_PATH, caseId],
+    queryKey: [REQUEST_PATH, caseId, personId],
     queryFn: async (): Promise<ResultSetMotive> => {
-
-      const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', caseId));
+      const searchParams = new URLSearchParams();
+      if (personId) searchParams.append('personId', personId);
+      const queryString = searchParams.toString();
+      
+      const response = await fetch(
+        PATH_CRIME_AI_API + REQUEST_PATH.replace('{id}', caseId) + (queryString ? `?${queryString}` : '')
+      );
 
       if (response.ok) {
         const data = await response.json();

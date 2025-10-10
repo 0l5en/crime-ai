@@ -1,7 +1,9 @@
 
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { useSolutionSpoiler } from "@/hooks/useSolutionSpoiler";
+import { usePerpetratorsByCaseId } from "@/hooks/usePerpetratorsByCaseId";
+import { useSolutionEvidences } from "@/hooks/useSolutionEvidences";
+import { useCaseMotives } from "@/hooks/useCaseMotives";
 
 interface SolutionSpoilerProps {
   caseId: string;
@@ -9,7 +11,17 @@ interface SolutionSpoilerProps {
 
 const SolutionSpoiler = ({ caseId }: SolutionSpoilerProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { data: solutionSpoiler, isLoading, error } = useSolutionSpoiler(caseId);
+  const { data: perpetrators, isLoading: loadingPerps, error: errorPerps } = usePerpetratorsByCaseId(caseId);
+  const { data: evidences, isLoading: loadingEvidence, error: errorEvidence } = useSolutionEvidences(caseId);
+  
+  const perpetratorIds = perpetrators?.items?.map(p => p.id.toString()) || [];
+  const { data: motives, isLoading: loadingMotives, error: errorMotives } = useCaseMotives(
+    caseId,
+    perpetratorIds[0] // Use first perpetrator's ID for motives
+  );
+
+  const isLoading = loadingPerps || loadingEvidence || loadingMotives;
+  const error = errorPerps || errorEvidence || errorMotives;
 
   if (isLoading) {
     return (
@@ -49,7 +61,7 @@ const SolutionSpoiler = ({ caseId }: SolutionSpoilerProps) => {
           </button>
         </div>
 
-        {isVisible && solutionSpoiler ? (
+        {isVisible ? (
           <div className="row g-3">
             <div className="col-md-4">
               <div 
@@ -58,13 +70,17 @@ const SolutionSpoiler = ({ caseId }: SolutionSpoilerProps) => {
               >
                 <div className="card-body">
                   <h5 className="card-title text-white mb-3">Key Evidence</h5>
-                  <ul className="list-unstyled text-white">
-                    {solutionSpoiler.evidenceTitles.map((evidence, index) => (
-                      <li key={index} className="mb-2">
-                        • {evidence}
-                      </li>
-                    ))}
-                  </ul>
+                  {evidences?.items && evidences.items.length > 0 ? (
+                    <ul className="list-unstyled text-white">
+                      {evidences.items.map((evidence) => (
+                        <li key={evidence.id} className="mb-2">
+                          • {evidence.title}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-white">No evidence available</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -76,13 +92,17 @@ const SolutionSpoiler = ({ caseId }: SolutionSpoilerProps) => {
               >
                 <div className="card-body">
                   <h5 className="card-title text-dark mb-3">Motives</h5>
-                  <ul className="list-unstyled text-dark">
-                    {solutionSpoiler.motiveTitles.map((motive, index) => (
-                      <li key={index} className="mb-2">
-                        • {motive}
-                      </li>
-                    ))}
-                  </ul>
+                  {motives?.items && motives.items.length > 0 ? (
+                    <ul className="list-unstyled text-dark">
+                      {motives.items.map((motive) => (
+                        <li key={motive.id} className="mb-2">
+                          • {motive.title}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-dark">No motives available</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -94,25 +114,29 @@ const SolutionSpoiler = ({ caseId }: SolutionSpoilerProps) => {
               >
                 <div className="card-body">
                   <h5 className="card-title text-white mb-3">Key Persons</h5>
-                  <ul className="list-unstyled text-white">
-                    {solutionSpoiler.personNames.map((person, index) => (
-                      <li key={index} className="mb-2">
-                        • {person}
-                      </li>
-                    ))}
-                  </ul>
+                  {perpetrators?.items && perpetrators.items.length > 0 ? (
+                    <ul className="list-unstyled text-white">
+                      {perpetrators.items.map((person) => (
+                        <li key={person.id} className="mb-2">
+                          • {person.name}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-white">No persons available</p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-        ) : !isVisible ? (
+        ) : (
           <div className="text-center text-muted py-4">
             <p className="mb-0">
               <strong>Warning:</strong> This will reveal the solution to the case. 
               Click "Show Solution" only if you want to see the spoiler.
             </p>
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );
