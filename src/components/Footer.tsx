@@ -37,9 +37,6 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="d-flex flex-column align-items-start mb-3 mb-md-0">
-              <p className="text-secondary mb-1" style={{ fontSize: '0.9rem' }}>
-                {t('footer.rateUs')}
-              </p>
               <StarRating 
                 rating={userRating}
                 onRatingChange={handleRatingChange}

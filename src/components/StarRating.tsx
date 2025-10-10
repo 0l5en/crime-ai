@@ -49,7 +49,7 @@ const StarRating = ({
           <button
             key={starNumber}
             type="button"
-            className={`${readonly ? 'cursor-default' : 'cursor-pointer hover:scale-110'} transition-transform`}
+            className={`${readonly ? 'cursor-default' : 'cursor-pointer hover:scale-110'} transition-transform bg-transparent border-0 p-0`}
             onClick={() => handleStarClick(starNumber)}
             onMouseEnter={() => handleStarHover(starNumber)}
             onMouseLeave={handleMouseLeave}
@@ -60,7 +60,7 @@ const StarRating = ({
               size={size}
               className={`${
                 starNumber <= displayRating
-                  ? 'fill-yellow-400 text-yellow-400'
+                  ? 'fill-primary text-primary'
                   : 'text-gray-300'
               } transition-colors`}
             />
