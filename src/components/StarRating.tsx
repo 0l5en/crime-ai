@@ -56,14 +56,14 @@ const StarRating = ({
             disabled={readonly}
             aria-label={readonly ? undefined : `Rate ${starNumber} stars`}
           >
-          <Star
-            size={size}
-            className={`${
-              starNumber <= displayRating
-                ? 'fill-accent text-accent'
-                : 'fill-none text-accent'
-            } transition-colors`}
-          />
+            <Star
+              size={size}
+              className={`${
+                starNumber <= displayRating
+                  ? 'fill-primary text-primary'
+                  : 'text-primary'
+              } transition-colors`}
+            />
           </button>
         ))}
       </div>
