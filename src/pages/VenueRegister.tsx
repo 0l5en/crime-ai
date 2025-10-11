@@ -3,12 +3,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Building2, QrCode, BarChart3, Users, Gift } from "lucide-react";
 
 const VenueRegister = () => {
   const { t } = useTranslation('venueRegister');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const registerSchema = z.object({
     firstName: z.string().min(2, t('validation.firstNameMin')),

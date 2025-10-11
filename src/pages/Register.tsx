@@ -3,11 +3,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const Register = () => {
   const { t } = useTranslation('register');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const registerSchema = z.object({
     firstName: z.string().min(2, t('validation.firstNameMin')),
