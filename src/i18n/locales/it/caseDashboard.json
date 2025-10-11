@@ -38,10 +38,11 @@
   "interrogation": {
     "back": "Indietro",
     "interrogationWith": "Interrogatorio con",
+    "questioningOf": "Interrogazione di",
     "yearsOld": "anni",
     "askQuestion": "Fai una Domanda",
-    "typePlaceholder": "Digita qui la tua domanda...",
-    "processing": "Elaborazione della tua domanda...",
+    "typePlaceholder": "Scrivi qui la tua domanda...",
+    "processing": "Elaborazione della domanda...",
     "roles": {
       "criminalAssistant": "Assistente Criminale",
       "digitalExpert": "Esperto Digitale",

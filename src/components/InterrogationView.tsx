@@ -147,7 +147,10 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
 
             <div>
               <h2 className="h3 mb-1">
-                {t('interrogation.interrogationWith')} {person.name}
+                {person.roles.includes('WITNESS') 
+                  ? `${t('interrogation.questioningOf')} ${person.name}`
+                  : `${t('interrogation.interrogationWith')} ${person.name}`
+                }
               </h2>
               <p className="text-muted mb-0">
                 {person.age} {t('interrogation.yearsOld')} • {person.profession}
