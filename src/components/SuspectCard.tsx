@@ -95,7 +95,8 @@ const SuspectCard = ({
           <div className="pt-2 mt-auto">
             <button
               onClick={onInterrogate}
-              className="btn btn-danger w-100 btn-sm"
+              className="btn btn-danger w-100"
+              style={{ fontSize: '1.1rem', padding: '0.625rem 1rem' }}
               data-testid="suspect-interrogate-button"
             >
               {t('cards.interrogate')}
