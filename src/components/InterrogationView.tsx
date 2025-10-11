@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
 import ConversationHistory from './ConversationHistory';
+import FingerprintIcon from './FingerprintIcon';
 
 type PersonDto = components['schemas']['PersonDto'];
 
@@ -177,13 +178,17 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
               placeholder={t('interrogation.typePlaceholder')}
               disabled={createAnswerMutation.isPending}
             />
-            <button
-              type="submit"
-              disabled={!question.trim() || createAnswerMutation.isPending}
-              className="btn btn-primary"
-            >
-              <Send style={{ width: '16px', height: '16px' }} />
-            </button>
+                <button
+                  type="submit"
+                  disabled={!question.trim() || createAnswerMutation.isPending}
+                  className="btn btn-primary"
+                >
+                  {createAnswerMutation.isPending ? (
+                    <FingerprintIcon spinning size={16} />
+                  ) : (
+                    <Send style={{ width: '16px', height: '16px' }} />
+                  )}
+                </button>
           </form>
         </div>
       </div>

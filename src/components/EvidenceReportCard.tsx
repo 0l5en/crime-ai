@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ConversationHistory from './ConversationHistory';
+import FingerprintIcon from './FingerprintIcon';
 
 interface EvidenceReportCardProps {
   id: number;
@@ -120,9 +121,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
                   disabled={!question.trim() || createAnswer.isPending}
                 >
                   {createAnswer.isPending ? (
-                    <div className="spinner-border spinner-border-sm me-2" role="status">
-                      <span className="visually-hidden">{t('evidenceReport.loading')}</span>
-                    </div>
+                    <FingerprintIcon spinning size={16} />
                   ) : (
                     <Send size={16} />
                   )}

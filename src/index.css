@@ -401,3 +401,17 @@ body {
 .footer-link:hover {
   color: var(--bs-primary) !important;
 }
+
+/* Fingerprint spinning animation */
+@keyframes spin-fingerprint {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-fingerprint {
+  animation: spin-fingerprint 1s linear infinite;
+}
