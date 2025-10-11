@@ -6,6 +6,7 @@ import type { components } from '@/openapi/crimeAiSchema';
 import { ArrowLeft, Send } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useIsMobile } from '@/hooks/use-mobile';
 import ConversationHistory from './ConversationHistory';
 
 type PersonDto = components['schemas']['PersonDto'];
@@ -19,6 +20,7 @@ interface InterrogationViewProps {
 const InterrogationView = ({ person, onBack, embedded = false }: InterrogationViewProps) => {
   const user = useUserContext();
   const { t } = useTranslation('caseDashboard');
+  const isMobile = useIsMobile();
   const [question, setQuestion] = useState('');
   const [interrogationId, setInterrogationId] = useState<string | null>(null);
 
@@ -146,7 +148,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
             </div>
 
             <div>
-              <h2 className="h3 mb-1">
+              <h2 className={`${isMobile ? 'h5' : 'h3'} mb-1`}>
                 {person.roles.includes('WITNESS') 
                   ? `${t('interrogation.questioningOf')} ${person.name}`
                   : `${t('interrogation.interrogationWith')} ${person.name}`
