@@ -148,13 +148,13 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
             </div>
 
             <div>
-              <h2 className={`${isMobile ? 'h5' : 'h3'} mb-1`}>
+              <h2 className={`${isMobile ? 'h6' : 'h3'} mb-1`}>
                 {person.roles.includes('WITNESS') 
                   ? `${t('interrogation.questioningOf')} ${person.name}`
                   : `${t('interrogation.interrogationWith')} ${person.name}`
                 }
               </h2>
-              <p className="text-muted mb-0">
+              <p className={`text-muted mb-0 ${isMobile ? 'small' : ''}`}>
                 {person.age} {t('interrogation.yearsOld')} • {person.profession}
               </p>
             </div>
