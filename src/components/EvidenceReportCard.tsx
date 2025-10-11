@@ -3,13 +3,12 @@ import { useKeycloak } from '@/contexts/KeycloakContext';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import { format } from 'date-fns';
-import { Send } from 'lucide-react';
+import { Send, Fingerprint } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ConversationHistory from './ConversationHistory';
-import FingerprintIcon from './FingerprintIcon';
 
 interface EvidenceReportCardProps {
   id: number;
@@ -121,7 +120,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
                   disabled={!question.trim() || createAnswer.isPending}
                 >
                   {createAnswer.isPending ? (
-                    <FingerprintIcon spinning size={16} />
+                    <Fingerprint className="animate-spin-fingerprint" size={16} />
                   ) : (
                     <Send size={16} />
                   )}

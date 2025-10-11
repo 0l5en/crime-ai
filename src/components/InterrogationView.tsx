@@ -3,12 +3,11 @@ import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnsw
 import { useInterrogations } from '@/hooks/useInterrogations';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import type { components } from '@/openapi/crimeAiSchema';
-import { ArrowLeft, Send } from 'lucide-react';
+import { ArrowLeft, Send, Fingerprint } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
 import ConversationHistory from './ConversationHistory';
-import FingerprintIcon from './FingerprintIcon';
 
 type PersonDto = components['schemas']['PersonDto'];
 
@@ -184,7 +183,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
                   className="btn btn-primary"
                 >
                   {createAnswerMutation.isPending ? (
-                    <FingerprintIcon spinning size={16} />
+                    <Fingerprint className="animate-spin-fingerprint" size={16} />
                   ) : (
                     <Send style={{ width: '16px', height: '16px' }} />
                   )}
