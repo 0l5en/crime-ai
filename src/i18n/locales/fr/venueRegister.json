@@ -1,0 +1,49 @@
+{
+  "title": "S'inscrire en tant que Propriétaire de Lieu",
+  "subtitle": "Créez des expériences mystérieuses inoubliables pour vos invités",
+  "features": {
+    "title": "Pourquoi DetectivesGame pour Votre Lieu?",
+    "subtitle": "Transformez votre emplacement en une aventure de détective interactive",
+    "items": {
+      "exclusive": {
+        "title": "Cas Exclusif pour Votre Lieu",
+        "description": "Obtenez un cas criminel créé sur mesure spécifiquement pour votre emplacement"
+      },
+      "unlimited": {
+        "title": "Accès Illimité pour les Invités",
+        "description": "Tous vos invités peuvent jouer le cas gratuitement - sans limites"
+      },
+      "qrCode": {
+        "title": "Accès Facile par QR Code",
+        "description": "Les invités scannent simplement un QR code et commencent l'aventure instantanément"
+      },
+      "analytics": {
+        "title": "Analyses Détaillées",
+        "description": "Suivez l'engagement et voyez comment les invités interagissent avec votre cas"
+      },
+      "free": {
+        "title": "Gratuit et Sans Engagement",
+        "description": "Pas de frais cachés, pas d'obligations - essayez-le sans risque"
+      }
+    }
+  },
+  "form": {
+    "firstName": "Prénom",
+    "email": "Adresse Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "submit": "S'inscrire Maintenant",
+    "alreadyRegistered": "Déjà inscrit?",
+    "signIn": "Se connecter"
+  },
+  "validation": {
+    "firstNameMin": "Le prénom doit contenir au moins 2 caractères",
+    "emailInvalid": "Veuillez saisir une adresse email valide",
+    "passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordUppercase": "Le mot de passe doit contenir au moins une lettre majuscule",
+    "passwordLowercase": "Le mot de passe doit contenir au moins une lettre minuscule",
+    "passwordNumber": "Le mot de passe doit contenir au moins un chiffre",
+    "passwordMismatch": "Les mots de passe ne correspondent pas"
+  },
+  "inactive": "L'inscription du lieu n'est actuellement pas disponible"
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Register as Venue Owner",
+  "subtitle": "Create unforgettable mystery experiences for your guests",
+  "features": {
+    "title": "Why DetectivesGame for Your Venue?",
+    "subtitle": "Transform your location into an interactive detective adventure",
+    "items": {
+      "exclusive": {
+        "title": "Exclusive Case for Your Venue",
+        "description": "Get a custom-created crime case specifically tailored to your location"
+      },
+      "unlimited": {
+        "title": "Unlimited Guest Access",
+        "description": "All your guests can play the case for free - no limits"
+      },
+      "qrCode": {
+        "title": "Easy QR Code Access",
+        "description": "Guests simply scan a QR code and start the adventure instantly"
+      },
+      "analytics": {
+        "title": "Detailed Analytics",
+        "description": "Track engagement and see how guests interact with your case"
+      },
+      "free": {
+        "title": "Free & No Commitment",
+        "description": "No hidden costs, no obligations - try it risk-free"
+      }
+    }
+  },
+  "form": {
+    "firstName": "First Name",
+    "email": "Email Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Register Now",
+    "alreadyRegistered": "Already registered?",
+    "signIn": "Sign In"
+  },
+  "validation": {
+    "firstNameMin": "First name must be at least 2 characters",
+    "emailInvalid": "Please enter a valid email address",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordUppercase": "Password must contain at least one uppercase letter",
+    "passwordLowercase": "Password must contain at least one lowercase letter",
+    "passwordNumber": "Password must contain at least one number",
+    "passwordMismatch": "Passwords do not match"
+  },
+  "inactive": "Venue registration is currently unavailable"
+}

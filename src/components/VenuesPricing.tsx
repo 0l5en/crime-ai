@@ -1,17 +1,13 @@
 import { Check } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const VenuesPricing = () => {
   const { t } = useTranslation('venues');
+  const navigate = useNavigate();
   
   const scrollToContact = () => {
-    const contactSection = document.querySelector('[data-section="contact"]');
-    if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    navigate('/venue-register');
   };
 
   return (

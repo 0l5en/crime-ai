@@ -1,8 +1,10 @@
 import { ArrowRight, CreditCard, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const VenuesCTA = () => {
   const { t } = useTranslation('venues');
+  const navigate = useNavigate();
 
   return (
     <section 
@@ -55,6 +57,7 @@ const VenuesCTA = () => {
             {/* CTA Buttons */}
             <div className="d-flex flex-column flex-md-row gap-3 justify-content-center">
               <button 
+                onClick={() => navigate('/venue-register')}
                 className="px-5 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2" 
                 style={{ 
                   fontSize: '1.1rem',

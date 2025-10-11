@@ -38,6 +38,11 @@ import registerEN from './locales/en/register.json';
 import registerIT from './locales/it/register.json';
 import registerFR from './locales/fr/register.json';
 
+import venueRegisterDE from './locales/de/venueRegister.json';
+import venueRegisterEN from './locales/en/venueRegister.json';
+import venueRegisterIT from './locales/it/venueRegister.json';
+import venueRegisterFR from './locales/fr/venueRegister.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -47,6 +52,7 @@ const resources = {
     caseDashboard: caseDashboardDE,
     legal: legalDE,
     register: registerDE,
+    venueRegister: venueRegisterDE,
   },
   en: {
     common: commonEN,
@@ -56,6 +62,7 @@ const resources = {
     caseDashboard: caseDashboardEN,
     legal: legalEN,
     register: registerEN,
+    venueRegister: venueRegisterEN,
   },
   it: {
     common: commonIT,
@@ -65,6 +72,7 @@ const resources = {
     caseDashboard: caseDashboardIT,
     legal: legalIT,
     register: registerIT,
+    venueRegister: venueRegisterIT,
   },
   fr: {
     common: commonFR,
@@ -74,6 +82,7 @@ const resources = {
     caseDashboard: caseDashboardFR,
     legal: legalFR,
     register: registerFR,
+    venueRegister: venueRegisterFR,
   },
 };
 
