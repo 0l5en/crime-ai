@@ -1,0 +1,16 @@
+{
+  "loading": "Chargement des e-mails...",
+  "error": "Erreur lors du chargement des e-mails. Veuillez réessayer.",
+  "inboxEmpty": "Boîte de réception vide",
+  "noEmailsYet": "Vous n'avez pas encore reçu d'e-mails.",
+  "inbox": "Boîte de réception",
+  "email": "E-mail",
+  "emails": "E-mails",
+  "selectEmail": "Sélectionner un e-mail",
+  "selectEmailDescription": "Sélectionnez un e-mail dans la liste pour afficher son contenu.",
+  "autopsyReport": "Rapport d'autopsie",
+  "report": "Rapport",
+  "unknown": "Inconnu",
+  "reply": "Répondre",
+  "notImplemented": "Le contenu pour ce type de rapport n'est pas encore implémenté."
+}

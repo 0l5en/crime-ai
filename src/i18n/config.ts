@@ -43,6 +43,11 @@ import venueRegisterEN from './locales/en/venueRegister.json';
 import venueRegisterIT from './locales/it/venueRegister.json';
 import venueRegisterFR from './locales/fr/venueRegister.json';
 
+import emailsDE from './locales/de/emails.json';
+import emailsEN from './locales/en/emails.json';
+import emailsIT from './locales/it/emails.json';
+import emailsFR from './locales/fr/emails.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -53,6 +58,7 @@ const resources = {
     legal: legalDE,
     register: registerDE,
     venueRegister: venueRegisterDE,
+    emails: emailsDE,
   },
   en: {
     common: commonEN,
@@ -63,6 +69,7 @@ const resources = {
     legal: legalEN,
     register: registerEN,
     venueRegister: venueRegisterEN,
+    emails: emailsEN,
   },
   it: {
     common: commonIT,
@@ -73,6 +80,7 @@ const resources = {
     legal: legalIT,
     register: registerIT,
     venueRegister: venueRegisterIT,
+    emails: emailsIT,
   },
   fr: {
     common: commonFR,
@@ -83,6 +91,7 @@ const resources = {
     legal: legalFR,
     register: registerFR,
     venueRegister: venueRegisterFR,
+    emails: emailsFR,
   },
 };
 

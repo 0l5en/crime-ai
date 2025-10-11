@@ -1,7 +1,8 @@
 import { NotificationDto } from "@/hooks/useNotifications";
 import { formatDistanceToNow } from "date-fns";
-import { enUS } from "date-fns/locale";
+import { enUS, de, it, fr } from "date-fns/locale";
 import { FileText, Stethoscope } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface EmailListItemProps {
   email: NotificationDto;
@@ -10,6 +11,17 @@ interface EmailListItemProps {
 }
 
 const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
+  const { t, i18n } = useTranslation('emails');
+  
+  const getLocale = () => {
+    switch (i18n.language) {
+      case 'de': return de;
+      case 'it': return it;
+      case 'fr': return fr;
+      default: return enUS;
+    }
+  };
+
   const getIcon = () => {
     switch (email.notificationContextType) {
       case "AUTOPSY_REPORT":
@@ -22,9 +34,9 @@ const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
   const getTypeLabel = () => {
     switch (email.notificationContextType) {
       case "AUTOPSY_REPORT":
-        return "Autopsy Report";
+        return t('autopsyReport');
       default:
-        return "Report";
+        return t('report');
     }
   };
 
@@ -32,10 +44,10 @@ const EmailListItem = ({ email, isSelected, onClick }: EmailListItemProps) => {
     try {
       return formatDistanceToNow(new Date(dateString), { 
         addSuffix: true, 
-        locale: enUS 
+        locale: getLocale()
       });
     } catch {
-      return "Unknown";
+      return t('unknown');
     }
   };
 

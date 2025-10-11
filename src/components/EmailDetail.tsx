@@ -1,22 +1,33 @@
 import { NotificationDto } from "@/hooks/useNotifications";
 import { format, formatDistanceToNow } from "date-fns";
-import { enUS } from "date-fns/locale";
+import { enUS, de, it, fr } from "date-fns/locale";
 import { Clock, Mail, Reply, User } from "lucide-react";
 import { Button, Card } from "react-bootstrap";
 import AutopsyReportCard from "./AutopsyReportCard";
+import { useTranslation } from "react-i18next";
 
 interface EmailDetailProps {
   email: NotificationDto | null;
 }
 
 const EmailDetail = ({ email }: EmailDetailProps) => {
+  const { t, i18n } = useTranslation('emails');
+  
+  const getLocale = () => {
+    switch (i18n.language) {
+      case 'de': return de;
+      case 'it': return it;
+      case 'fr': return fr;
+      default: return enUS;
+    }
+  };
 
   if (!email) {
     return (
       <div className="d-flex flex-column justify-content-center align-items-center h-100 text-muted">
         <Mail size={64} className="mb-3 opacity-50" />
-        <h5>Select an Email</h5>
-        <p>Select an email from the list to view its content.</p>
+        <h5>{t('selectEmail')}</h5>
+        <p>{t('selectEmailDescription')}</p>
       </div>
     );
   }
@@ -25,11 +36,11 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
     try {
       const date = new Date(dateString);
       return {
-        full: format(date, "MM/dd/yyyy 'at' HH:mm", { locale: enUS }),
-        relative: formatDistanceToNow(date, { addSuffix: true, locale: enUS })
+        full: format(date, "MM/dd/yyyy 'at' HH:mm", { locale: getLocale() }),
+        relative: formatDistanceToNow(date, { addSuffix: true, locale: getLocale() })
       };
     } catch {
-      return { full: "Unknown", relative: "Unknown" };
+      return { full: t('unknown'), relative: t('unknown') };
     }
   };
 
@@ -41,7 +52,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
         return (
           <Card className="mt-3">
             <Card.Body>
-              <p>Content for this report type is not yet implemented.</p>
+              <p>{t('notImplemented')}</p>
             </Card.Body>
           </Card>
         );
@@ -70,7 +81,7 @@ const EmailDetail = ({ email }: EmailDetailProps) => {
               onClick={() => console.log('Reply clicked')} // Placeholder functionality
             >
               <Reply size={16} className="me-1" />
-              Reply
+              {t('reply')}
             </Button>
           </div>
         </div>

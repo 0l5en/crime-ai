@@ -1,0 +1,16 @@
+{
+  "loading": "Loading emails...",
+  "error": "Error loading emails. Please try again.",
+  "inboxEmpty": "Inbox Empty",
+  "noEmailsYet": "You haven't received any emails yet.",
+  "inbox": "Inbox",
+  "email": "Email",
+  "emails": "Emails",
+  "selectEmail": "Select an Email",
+  "selectEmailDescription": "Select an email from the list to view its content.",
+  "autopsyReport": "Autopsy Report",
+  "report": "Report",
+  "unknown": "Unknown",
+  "reply": "Reply",
+  "notImplemented": "Content for this report type is not yet implemented."
+}
