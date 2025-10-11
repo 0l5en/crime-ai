@@ -34,7 +34,7 @@ const Hero = () => {
           className="fw-bold text-white mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-            fontSize: 'clamp(1.5rem, 5vw, 3rem)',
+            fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
             lineHeight: '1.2'
           }}
         >
