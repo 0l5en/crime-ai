@@ -32,7 +32,8 @@
     "maritalStatus": "État civil",
     "relationshipToCase": "Lien avec l'affaire",
     "alibi": "Alibi",
-    "interrogate": "Interroger"
+    "interrogate": "Interroger",
+    "question": "Questionner"
   },
   "interrogation": {
     "back": "Retour",

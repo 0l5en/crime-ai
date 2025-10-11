@@ -32,7 +32,8 @@
     "maritalStatus": "Familienstand",
     "relationshipToCase": "Bezug zum Fall",
     "alibi": "Alibi",
-    "interrogate": "Verhören"
+    "interrogate": "Verhören",
+    "question": "Befragen"
   },
   "interrogation": {
     "back": "Zurück",

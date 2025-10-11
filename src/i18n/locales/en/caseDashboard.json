@@ -32,7 +32,8 @@
     "maritalStatus": "Marital status",
     "relationshipToCase": "Relation to case",
     "alibi": "Alibi",
-    "interrogate": "Interrogate"
+    "interrogate": "Interrogate",
+    "question": "Question"
   },
   "interrogation": {
     "back": "Back",

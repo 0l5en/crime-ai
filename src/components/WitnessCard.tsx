@@ -91,7 +91,7 @@ const WitnessCard = ({
               style={{ fontSize: '1.1rem', padding: '0.625rem 1rem' }}
               data-testid="witness-interrogate-button"
             >
-              {t('cards.interrogate')}
+              {t('cards.question')}
             </button>
           </div>
         )}
