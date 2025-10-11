@@ -396,3 +396,8 @@ body {
     height: 60vh !important;
   }
 }
+
+/* Footer link hover effect */
+.footer-link:hover {
+  color: var(--bs-primary) !important;
+}

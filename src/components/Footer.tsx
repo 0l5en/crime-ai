@@ -54,21 +54,21 @@ const Footer = () => {
           <div className="col-md-6">
             <div className="d-flex flex-column align-items-md-end">
               <div className="d-flex gap-4 mb-2 flex-wrap justify-content-center justify-content-md-end">
-                <a href="/terms" className="text-secondary text-decoration-none" style={{ fontSize: '0.8rem' }}>
-                  {t('footer.terms')}
-                </a>
-                <a href="/privacy" className="text-secondary text-decoration-none" style={{ fontSize: '0.8rem' }}>
-                  {t('footer.privacy')}
-                </a>
-                <a href="/cookies" className="text-secondary text-decoration-none" style={{ fontSize: '0.8rem' }}>
-                  {t('footer.cookies')}
-                </a>
-                <a href="/imprint" className="text-secondary text-decoration-none" style={{ fontSize: '0.8rem' }}>
-                  {t('footer.imprint')}
-                </a>
-                <a href="#" className="text-secondary text-decoration-none" style={{ fontSize: '0.8rem' }}>
-                  {t('footer.contact')}
-                </a>
+              <a href="/terms" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
+                {t('footer.terms')}
+              </a>
+              <a href="/privacy" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
+                {t('footer.privacy')}
+              </a>
+              <a href="/cookies" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
+                {t('footer.cookies')}
+              </a>
+              <a href="/imprint" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
+                {t('footer.imprint')}
+              </a>
+              <a href="mailto:kontakt@detectivesgame.com" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
+                {t('footer.contact')}
+              </a>
               </div>
               <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: '0.7rem' }}>
                 {t('footer.copyright')}

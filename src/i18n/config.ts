@@ -28,6 +28,11 @@ import caseDashboardEN from './locales/en/caseDashboard.json';
 import caseDashboardIT from './locales/it/caseDashboard.json';
 import caseDashboardFR from './locales/fr/caseDashboard.json';
 
+import legalDE from './locales/de/legal.json';
+import legalEN from './locales/en/legal.json';
+import legalIT from './locales/it/legal.json';
+import legalFR from './locales/fr/legal.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -35,6 +40,7 @@ const resources = {
     venues: venuesDE,
     cases: casesDE,
     caseDashboard: caseDashboardDE,
+    legal: legalDE,
   },
   en: {
     common: commonEN,
@@ -42,6 +48,7 @@ const resources = {
     venues: venuesEN,
     cases: casesEN,
     caseDashboard: caseDashboardEN,
+    legal: legalEN,
   },
   it: {
     common: commonIT,
@@ -49,6 +56,7 @@ const resources = {
     venues: venuesIT,
     cases: casesIT,
     caseDashboard: caseDashboardIT,
+    legal: legalIT,
   },
   fr: {
     common: commonFR,
@@ -56,6 +64,7 @@ const resources = {
     venues: venuesFR,
     cases: casesFR,
     caseDashboard: caseDashboardFR,
+    legal: legalFR,
   },
 };
 

@@ -1,0 +1,225 @@
+{
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: January 23, 2025",
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "Welcome to DetectivesGame. By accessing or using our website and services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not use our services."
+      },
+      "service": {
+        "title": "2. Description of Service",
+        "content": "DetectivesGame provides interactive detective games and mystery cases that you can play online. We reserve the right to modify or discontinue our services at any time."
+      },
+      "accounts": {
+        "title": "3. User Accounts",
+        "content": "To access certain features, you must create an account. You are responsible for maintaining the confidentiality of your account and monitoring all activities under your account. You must notify us immediately of any unauthorized use of your account."
+      },
+      "payments": {
+        "title": "4. Payments and Subscriptions",
+        "content": "Certain features of our services may require payment. You agree to provide accurate and complete payment information and authorize us to charge your chosen payment method for any fees incurred. All payments are non-refundable unless otherwise stated."
+      },
+      "ip": {
+        "title": "5. Intellectual Property",
+        "content": "All content on DetectivesGame, including text, graphics, logos, and software, is the property of DetectivesGame or its licensors and is protected by intellectual property laws. You may not reproduce, distribute, or use our content without express written permission."
+      },
+      "conduct": {
+        "title": "6. User Conduct",
+        "content": "You agree not to use our services for any illegal purposes or in any way that violates applicable law. You must not attempt to interfere with our systems or gain unauthorized access."
+      },
+      "termination": {
+        "title": "7. Termination",
+        "content": "We reserve the right to terminate or suspend your account and access to our services at our sole discretion, without prior notice, especially for violations of these terms."
+      },
+      "disclaimer": {
+        "title": "8. Disclaimer",
+        "content": "Our services are provided \"as is\" without any warranties, express or implied. We do not guarantee that our services will be uninterrupted or error-free."
+      },
+      "limitation": {
+        "title": "9. Limitation of Liability",
+        "content": "DetectivesGame shall not be liable for any indirect, incidental, special, or consequential damages arising from your use or inability to use our services."
+      },
+      "changes": {
+        "title": "10. Changes to Terms",
+        "content": "We may update these terms at any time. We will notify you of material changes by posting the updated terms on our website. Your continued use after such changes constitutes your acceptance of the new terms."
+      },
+      "governing": {
+        "title": "11. Governing Law",
+        "content": "These terms shall be governed by and construed in accordance with the laws of Germany, without regard to its conflict of law provisions."
+      },
+      "contact": {
+        "title": "12. Contact",
+        "content": "For questions about these terms, please contact us at legal@detectivesgame.com."
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: January 23, 2025",
+    "intro": "At DetectivesGame, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal data.",
+    "sections": {
+      "collection": {
+        "title": "1. Information We Collect",
+        "content": "We collect information you provide directly to us, such as name, email address, and payment information. We also automatically collect information about your use of our services, including IP address, browser type, and device information."
+      },
+      "usage": {
+        "title": "2. How We Use Information",
+        "content": "We use your information to provide and improve our services, communicate with you, and personalize your experience. We may also use your data for analytical purposes and fraud prevention."
+      },
+      "sharing": {
+        "title": "3. Information Sharing",
+        "content": "We do not sell your personal information. We may share your information with service providers who assist us in providing our services, or when required by law."
+      },
+      "security": {
+        "title": "4. Data Security",
+        "content": "We implement reasonable security measures to protect your information. However, no method of transmission over the Internet or electronic storage is 100% secure."
+      },
+      "retention": {
+        "title": "5. Data Retention",
+        "content": "We retain your personal information for as long as necessary for the purposes described in this Privacy Policy or as required by law."
+      },
+      "rights": {
+        "title": "6. Your Rights",
+        "content": "You have the right to access, correct, or delete your personal information. You may also object to or restrict the processing of your data."
+      },
+      "cookies": {
+        "title": "7. Cookies",
+        "content": "We use cookies and similar technologies to enhance your experience. For more information, see our Cookie Policy."
+      },
+      "children": {
+        "title": "8. Children's Privacy",
+        "content": "Our services are not directed to children under 13. We do not knowingly collect information from children under 13."
+      },
+      "international": {
+        "title": "9. International Data Transfers",
+        "content": "Your information may be transferred to and processed in countries outside your country of residence. We ensure appropriate safeguards are in place."
+      },
+      "thirdParty": {
+        "title": "10. Third-Party Services",
+        "content": "Our services may contain links to third-party websites. We are not responsible for the privacy practices of these websites."
+      },
+      "changes": {
+        "title": "11. Changes to This Policy",
+        "content": "We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy on our website."
+      },
+      "gdpr": {
+        "title": "12. GDPR Rights (EU Residents)",
+        "content": "If you are a resident of the European Union, you have additional rights under GDPR, including the right to data portability and the right to lodge a complaint with a supervisory authority."
+      },
+      "contact": {
+        "title": "13. Contact",
+        "content": "For questions about this Privacy Policy, please contact us at privacy@detectivesgame.com."
+      }
+    }
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "lastUpdated": "Last Updated: January 23, 2025",
+    "intro": "This Cookie Policy explains what cookies are, how we use them, and your choices regarding cookies.",
+    "sections": {
+      "what": {
+        "title": "1. What Are Cookies?",
+        "content": "Cookies are small text files stored on your device when you visit a website. They help the website remember your actions and preferences."
+      },
+      "why": {
+        "title": "2. Why We Use Cookies",
+        "content": "We use cookies to make our website functional, improve your experience, analyze performance, and provide relevant content."
+      },
+      "types": {
+        "title": "3. Types of Cookies",
+        "content": "We use both session cookies (which expire when you close your browser) and persistent cookies (which remain on your device until they expire or you delete them)."
+      },
+      "firstParty": {
+        "title": "4. First-Party Cookies",
+        "list": [
+          "Authentication cookies: To manage your login session",
+          "Preference cookies: To store your settings and preferences",
+          "Security cookies: To protect against fraudulent activity",
+          "Analytics cookies: To track website usage and performance"
+        ]
+      },
+      "thirdParty": {
+        "title": "5. Third-Party Cookies",
+        "content": "We may use third-party cookies for analytics services (like Google Analytics) and other functionality. These third parties have their own privacy policies."
+      },
+      "similar": {
+        "title": "6. Similar Technologies",
+        "content": "In addition to cookies, we may use similar technologies such as local storage, web beacons, and device fingerprinting."
+      },
+      "manage": {
+        "title": "7. Managing Your Cookie Preferences",
+        "content": "You can control cookies through your browser settings. Most browsers allow you to refuse cookies or alert you when a cookie is being set. You can also use our cookie preference center."
+      },
+      "disabling": {
+        "title": "8. Impact of Disabling Cookies",
+        "content": "If you disable cookies, some features of our website may not function properly. You may not be able to access certain areas of the website or receive personalized experiences."
+      },
+      "updates": {
+        "title": "9. Updates to This Policy",
+        "content": "We may update this Cookie Policy to reflect changes in our use of cookies or for legal reasons."
+      },
+      "legal": {
+        "title": "10. Legal Basis",
+        "content": "We use cookies based on your consent or our legitimate interests in providing and improving our services."
+      },
+      "international": {
+        "title": "11. International Transfers",
+        "content": "Some of our third-party service providers may be located in countries outside the EU. We ensure appropriate safeguards are in place."
+      },
+      "contact": {
+        "title": "12. Contact",
+        "content": "For questions about our use of cookies, please contact us at cookies@detectivesgame.com."
+      }
+    }
+  },
+  "imprint": {
+    "title": "Legal Notice",
+    "sections": {
+      "company": {
+        "title": "Company Information",
+        "name": "moo.codes",
+        "address": "Sample Street 123",
+        "city": "12345 Sample City",
+        "country": "Germany"
+      },
+      "contact": {
+        "title": "Contact",
+        "email": "contact@detectivesgame.com",
+        "phone": "+49 (0) 123 456789"
+      },
+      "representative": {
+        "title": "Represented by",
+        "content": "Managing Director: [Name]"
+      },
+      "register": {
+        "title": "Register Entry",
+        "court": "Register Court: [Court]",
+        "number": "Register Number: [Number]"
+      },
+      "vat": {
+        "title": "VAT ID",
+        "content": "VAT identification number: [VAT-ID]"
+      },
+      "dispute": {
+        "title": "Dispute Resolution",
+        "content": "The European Commission provides a platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr. Our email address can be found above in the legal notice. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+      },
+      "liability": {
+        "title": "Liability for Content",
+        "content": "As a service provider, we are responsible for our own content on these pages under general laws. However, we are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity."
+      },
+      "copyright": {
+        "title": "Copyright",
+        "content": "The content and works created by the site operators on these pages are subject to German copyright law. Reproduction, editing, distribution, and any kind of use beyond the limits of copyright require the written consent of the respective author or creator."
+      },
+      "privacy": {
+        "title": "Data Protection",
+        "content": "The use of our website is generally possible without providing personal data. Insofar as personal data is collected on our pages, this is always done on a voluntary basis. This data will not be passed on to third parties without your express consent. For more information, see our Privacy Policy."
+      },
+      "accessibility": {
+        "title": "Accessibility",
+        "content": "We strive to make our website accessible to all users. If you have difficulty accessing content, please contact us."
+      }
+    }
+  }
+}
