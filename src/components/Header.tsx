@@ -93,9 +93,11 @@ const Header = () => {
 
                 {/* Sign Up Button */}
                 <div className="nav-item">
-                  <button className="btn btn-danger">
-                    {t('nav.signUp')}
-                  </button>
+                  <Link to="/register" className="text-decoration-none">
+                    <button className="btn btn-danger">
+                      {t('nav.signUp')}
+                    </button>
+                  </Link>
                 </div>
               </>
             )}
@@ -215,9 +217,11 @@ const Header = () => {
             ) : (
               <div className="d-grid gap-2">
                 <SignInButton />
-                <button className="btn btn-danger">
-                  {t('nav.signUp')}
-                </button>
+                <Link to="/register" className="text-decoration-none">
+                  <button className="btn btn-danger w-100">
+                    {t('nav.signUp')}
+                  </button>
+                </Link>
               </div>
             )}
           </div>

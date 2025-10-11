@@ -22,6 +22,7 @@ import Terms from "./pages/Terms";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenuesPage from "./pages/VenuesPage";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/cases" element={<Cases />} />
                 <Route path="/venues" element={<VenuesPage />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/cookies" element={<Cookies />} />

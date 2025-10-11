@@ -1,0 +1,33 @@
+{
+  "title": "Register Now",
+  "subtitle": "Become part of the Detective community",
+  "features": {
+    "title": "Why DetectivesGame?",
+    "items": {
+      "cases": "Solve thrilling crime cases",
+      "time": "Race against time",
+      "tools": "Realistic investigation tools",
+      "leaderboard": "Rankings and highscores",
+      "updates": "New cases regularly"
+    }
+  },
+  "form": {
+    "firstName": "First Name",
+    "email": "Email Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Register",
+    "alreadyRegistered": "Already registered?",
+    "signIn": "Sign In"
+  },
+  "validation": {
+    "firstNameMin": "First name must be at least 2 characters long",
+    "emailInvalid": "Please enter a valid email address",
+    "passwordMin": "Password must be at least 8 characters long",
+    "passwordUppercase": "Password must contain at least one uppercase letter",
+    "passwordLowercase": "Password must contain at least one lowercase letter",
+    "passwordNumber": "Password must contain at least one number",
+    "passwordMismatch": "Passwords do not match"
+  },
+  "inactive": "Registration is currently not available"
+}

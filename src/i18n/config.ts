@@ -33,6 +33,11 @@ import legalEN from './locales/en/legal.json';
 import legalIT from './locales/it/legal.json';
 import legalFR from './locales/fr/legal.json';
 
+import registerDE from './locales/de/register.json';
+import registerEN from './locales/en/register.json';
+import registerIT from './locales/it/register.json';
+import registerFR from './locales/fr/register.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -41,6 +46,7 @@ const resources = {
     cases: casesDE,
     caseDashboard: caseDashboardDE,
     legal: legalDE,
+    register: registerDE,
   },
   en: {
     common: commonEN,
@@ -49,6 +55,7 @@ const resources = {
     cases: casesEN,
     caseDashboard: caseDashboardEN,
     legal: legalEN,
+    register: registerEN,
   },
   it: {
     common: commonIT,
@@ -57,6 +64,7 @@ const resources = {
     cases: casesIT,
     caseDashboard: caseDashboardIT,
     legal: legalIT,
+    register: registerIT,
   },
   fr: {
     common: commonFR,
@@ -65,6 +73,7 @@ const resources = {
     cases: casesFR,
     caseDashboard: caseDashboardFR,
     legal: legalFR,
+    register: registerFR,
   },
 };
 
