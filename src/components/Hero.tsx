@@ -34,14 +34,13 @@ const Hero = () => {
           className="fw-bold text-white mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-            fontSize: 'clamp(1.2rem, 3vw, 4rem)',
-            lineHeight: '1.1',
-            whiteSpace: 'nowrap'
+            fontSize: 'clamp(1.5rem, 5vw, 4rem)',
+            lineHeight: '1.2'
           }}
         >
           {t('hero.title')}
         </h1>
-        <p className="lead text-white mb-5 mx-auto" style={{ maxWidth: '70%', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: '1.25rem' }}>
+        <p className="lead text-white mb-5 mx-auto" style={{ maxWidth: '90%', textShadow: '1px 1px 2px rgba(0,0,0,0.8)', fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>
           {t('hero.subtitle')}
         </p>
         <button 
