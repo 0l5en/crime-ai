@@ -11,9 +11,14 @@ const NotificationBadge = () => {
 
   const handleClick = () => {
     if (isOnEmailPage) {
-      navigate(-1);
+      // Zurück zur ursprünglichen URL (mit allen Query-Parametern und State)
+      const from = (location.state as any)?.from || '/cases';
+      navigate(from, { replace: true });
     } else {
-      navigate('/emails');
+      // Aktuelle URL (inkl. Query-Parameter) im State speichern
+      navigate('/emails', { 
+        state: { from: location.pathname + location.search } 
+      });
     }
   };
 
