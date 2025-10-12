@@ -415,3 +415,100 @@ body {
 .animate-spin-fingerprint {
   animation: spin-fingerprint 1s linear infinite;
 }
+
+/* ============================================
+   Analytics Dashboard Styles (Bootstrap 5)
+   ============================================ */
+
+.analytics-page {
+  background-color: #0a0e1a;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.analytics-kpi-card {
+  background-color: #1a1f2e;
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analytics-kpi-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.analytics-chart-card {
+  background-color: #1a1f2e;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.analytics-text-primary {
+  color: #ef4444;
+}
+
+.analytics-text-secondary {
+  color: #8b92a7;
+}
+
+.analytics-bg-dark {
+  background-color: #0a0e1a;
+}
+
+.analytics-bg-card {
+  background-color: #1a1f2e;
+}
+
+.analytics-trend-up {
+  color: #10b981;
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.analytics-trend-down {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.analytics-icon-wrapper {
+  background-color: #0a0e1a;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.analytics-venue-item {
+  background-color: #0a0e1a;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.analytics-venue-item:hover {
+  background-color: rgba(10, 14, 26, 0.8);
+}
+
+.analytics-activity-item {
+  background-color: #0a0e1a;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.analytics-activity-item:hover {
+  background-color: rgba(10, 14, 26, 0.8);
+}
+
+.analytics-health-bar {
+  background-color: #0a0e1a;
+  height: 0.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.analytics-health-bar-fill {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #10b981;
+}

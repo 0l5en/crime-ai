@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { 
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
@@ -6,7 +5,7 @@ import {
 import { 
   Users, Briefcase, CheckCircle, Target, Crown, Building,
   TrendingUp, TrendingDown, Clock, Star, Activity, 
-  ArrowUpRight, ArrowDownRight, Calendar
+  ArrowUpRight, Calendar
 } from 'lucide-react';
 
 const AdminAnalytics = () => {
@@ -108,275 +107,306 @@ const AdminAnalytics = () => {
   ];
 
   return (
-    <div className="min-h-screen p-6" style={{ backgroundColor: '#0a0e1a' }}>
-      <div className="max-w-[1600px] mx-auto space-y-6">
+    <div className="analytics-page">
+      <div className="container-fluid" style={{ maxWidth: '1600px' }}>
+        
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Analytics Dashboard</h1>
-            <p className="text-[#8b92a7]">Real-time system overview and performance metrics</p>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-lg" style={{ backgroundColor: '#1a1f2e' }}>
-            <Calendar className="w-4 h-4 text-[#8b92a7]" />
-            <span className="text-white text-sm">Last 30 days</span>
+        <div className="row mb-5">
+          <div className="col-12">
+            <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
+              <div>
+                <h1 className="display-4 fw-bold text-white mb-2">Analytics Dashboard</h1>
+                <p className="analytics-text-secondary mb-0">Real-time system overview and performance metrics</p>
+              </div>
+              <div className="d-flex align-items-center gap-2 px-4 py-2 rounded analytics-bg-card">
+                <Calendar className="analytics-text-secondary" size={16} />
+                <span className="text-white small">Last 30 days</span>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* KPI Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="row g-4 mb-4">
           {kpiData.map((kpi, index) => {
             const Icon = kpi.icon;
             const TrendIcon = kpi.trend === 'up' ? TrendingUp : TrendingDown;
+            const trendClass = kpi.trend === 'up' ? 'analytics-trend-up' : 'analytics-trend-down';
             const trendColor = kpi.trend === 'up' ? '#10b981' : '#ef4444';
             
             return (
-              <Card 
-                key={index} 
-                className="p-6 border-none transition-all hover:scale-105"
-                style={{ backgroundColor: '#1a1f2e' }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: '#0a0e1a' }}>
-                    <Icon className="w-6 h-6" style={{ color: '#ef4444' }} />
-                  </div>
-                  <div className="flex items-center gap-1 px-2 py-1 rounded" style={{ backgroundColor: trendColor + '20' }}>
-                    <TrendIcon className="w-4 h-4" style={{ color: trendColor }} />
-                    <span className="text-sm font-semibold" style={{ color: trendColor }}>
-                      {kpi.change}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <p className="text-sm text-[#8b92a7]">{kpi.title}</p>
-                  <p className="text-4xl font-bold text-white">{kpi.value}</p>
-                </div>
+              <div key={index} className="col-12 col-md-6 col-lg-4">
+                <div className="card analytics-kpi-card h-100">
+                  <div className="card-body p-4">
+                    <div className="d-flex align-items-start justify-content-between mb-4">
+                      <div className="analytics-icon-wrapper">
+                        <Icon className="analytics-text-primary" size={24} />
+                      </div>
+                      <div className={`d-flex align-items-center gap-1 px-2 py-1 rounded ${trendClass}`}>
+                        <TrendIcon size={16} />
+                        <span className="small fw-semibold">{kpi.change}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mb-4">
+                      <p className="small analytics-text-secondary mb-2">{kpi.title}</p>
+                      <p className="display-5 fw-bold text-white mb-0">{kpi.value}</p>
+                    </div>
 
-                {/* Mini Sparkline */}
-                <div className="mt-4 h-12">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={kpi.sparkline.map((val, i) => ({ value: val }))}>
-                      <Line 
-                        type="monotone" 
-                        dataKey="value" 
-                        stroke={trendColor} 
-                        strokeWidth={2}
-                        dot={false}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                    {/* Mini Sparkline */}
+                    <div style={{ height: '48px' }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={kpi.sparkline.map((val, i) => ({ value: val }))}>
+                          <Line 
+                            type="monotone" 
+                            dataKey="value" 
+                            stroke={trendColor} 
+                            strokeWidth={2}
+                            dot={false}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
 
         {/* Main Chart - User Activity */}
-        <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-white mb-2">User Activity Over Time</h2>
-            <p className="text-[#8b92a7]">Track user growth and engagement trends</p>
+        <div className="row mb-4">
+          <div className="col-12">
+            <div className="card analytics-chart-card">
+              <div className="card-body p-4">
+                <div className="mb-4">
+                  <h2 className="h3 fw-bold text-white mb-2">User Activity Over Time</h2>
+                  <p className="analytics-text-secondary mb-0">Track user growth and engagement trends</p>
+                </div>
+                <ResponsiveContainer width="100%" height={400}>
+                  <LineChart data={userActivityData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3e" />
+                    <XAxis dataKey="date" stroke="#8b92a7" />
+                    <YAxis stroke="#8b92a7" />
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a2f3e', borderRadius: '8px' }}
+                      labelStyle={{ color: '#8b92a7' }}
+                    />
+                    <Legend />
+                    <Line type="monotone" dataKey="totalUsers" stroke="#3b82f6" strokeWidth={3} name="Total Users" />
+                    <Line type="monotone" dataKey="activeUsers" stroke="#10b981" strokeWidth={3} name="Active Users" />
+                    <Line type="monotone" dataKey="newSignups" stroke="#ef4444" strokeWidth={3} name="New Signups" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </div>
-          <ResponsiveContainer width="100%" height={400}>
-            <LineChart data={userActivityData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3e" />
-              <XAxis dataKey="date" stroke="#8b92a7" />
-              <YAxis stroke="#8b92a7" />
-              <Tooltip 
-                contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a2f3e', borderRadius: '8px' }}
-                labelStyle={{ color: '#8b92a7' }}
-              />
-              <Legend />
-              <Line type="monotone" dataKey="totalUsers" stroke="#3b82f6" strokeWidth={3} name="Total Users" />
-              <Line type="monotone" dataKey="activeUsers" stroke="#10b981" strokeWidth={3} name="Active Users" />
-              <Line type="monotone" dataKey="newSignups" stroke="#ef4444" strokeWidth={3} name="New Signups" />
-            </LineChart>
-          </ResponsiveContainer>
-        </Card>
+        </div>
 
         {/* Two Column Section - Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="row g-4 mb-4">
           {/* Pie Chart - User Distribution */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-white mb-2">User Distribution by Role</h2>
-              <p className="text-[#8b92a7]">Breakdown of user types</p>
+          <div className="col-12 col-lg-6">
+            <div className="card analytics-chart-card h-100">
+              <div className="card-body p-4">
+                <div className="mb-4">
+                  <h2 className="h4 fw-bold text-white mb-2">User Distribution by Role</h2>
+                  <p className="analytics-text-secondary mb-0">Breakdown of user types</p>
+                </div>
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={userRoleData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                      outerRadius={100}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {userRoleData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a2f3e', borderRadius: '8px' }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={userRoleData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={100}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {userRoleData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a2f3e', borderRadius: '8px' }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
-          </Card>
+          </div>
 
           {/* Bar Chart - Cases by Status */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-white mb-2">Cases by Status</h2>
-              <p className="text-[#8b92a7]">Current case distribution</p>
+          <div className="col-12 col-lg-6">
+            <div className="card analytics-chart-card h-100">
+              <div className="card-body p-4">
+                <div className="mb-4">
+                  <h2 className="h4 fw-bold text-white mb-2">Cases by Status</h2>
+                  <p className="analytics-text-secondary mb-0">Current case distribution</p>
+                </div>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={caseStatusData} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3e" />
+                    <XAxis type="number" stroke="#8b92a7" />
+                    <YAxis dataKey="status" type="category" stroke="#8b92a7" width={100} />
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a2f3e', borderRadius: '8px' }}
+                    />
+                    <Bar dataKey="count" radius={[0, 8, 8, 0]}>
+                      {caseStatusData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={caseStatusData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3e" />
-                <XAxis type="number" stroke="#8b92a7" />
-                <YAxis dataKey="status" type="category" stroke="#8b92a7" width={100} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a2f3e', borderRadius: '8px' }}
-                />
-                <Bar dataKey="count" radius={[0, 8, 8, 0]}>
-                  {caseStatusData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </Card>
+          </div>
         </div>
 
         {/* Two Column Section - Table & Activity Feed */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="row g-4 mb-4">
           {/* Top Venues Table */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-white mb-2">Top Venues</h2>
-              <p className="text-[#8b92a7]">Best performing venues by activity</p>
-            </div>
-            <div className="space-y-3">
-              {topVenues.map((venue, index) => (
-                <div 
-                  key={index}
-                  className="p-4 rounded-lg hover:bg-opacity-80 transition-all cursor-pointer"
-                  style={{ backgroundColor: '#0a0e1a' }}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl font-bold text-[#ef4444]">#{index + 1}</span>
-                      <span className="text-white font-semibold">{venue.name}</span>
-                    </div>
-                    <ArrowUpRight className="w-5 h-5 text-[#8b92a7]" />
-                  </div>
-                  <div className="flex items-center justify-between text-sm text-[#8b92a7] ml-12">
-                    <span>{venue.cases} cases</span>
-                    <span>{venue.users} users</span>
-                    <span className="text-[#10b981] font-semibold">{venue.revenue}</span>
-                  </div>
+          <div className="col-12 col-lg-6">
+            <div className="card analytics-chart-card h-100">
+              <div className="card-body p-4">
+                <div className="mb-4">
+                  <h2 className="h4 fw-bold text-white mb-2">Top Venues</h2>
+                  <p className="analytics-text-secondary mb-0">Best performing venues by activity</p>
                 </div>
-              ))}
+                <div className="d-flex flex-column gap-3">
+                  {topVenues.map((venue, index) => (
+                    <div key={index} className="analytics-venue-item">
+                      <div className="d-flex align-items-center justify-content-between mb-2">
+                        <div className="d-flex align-items-center gap-3">
+                          <span className="display-6 fw-bold analytics-text-primary">#{index + 1}</span>
+                          <span className="text-white fw-semibold">{venue.name}</span>
+                        </div>
+                        <ArrowUpRight className="analytics-text-secondary" size={20} />
+                      </div>
+                      <div className="d-flex align-items-center justify-content-between small analytics-text-secondary" style={{ marginLeft: '3.5rem' }}>
+                        <span>{venue.cases} cases</span>
+                        <span>{venue.users} users</span>
+                        <span className="fw-semibold" style={{ color: '#10b981' }}>{venue.revenue}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          </Card>
+          </div>
 
           {/* Recent Activity Feed */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-white mb-2">Recent Activity</h2>
-              <p className="text-[#8b92a7]">Latest system events and updates</p>
+          <div className="col-12 col-lg-6">
+            <div className="card analytics-chart-card h-100">
+              <div className="card-body p-4">
+                <div className="mb-4">
+                  <h2 className="h4 fw-bold text-white mb-2">Recent Activity</h2>
+                  <p className="analytics-text-secondary mb-0">Latest system events and updates</p>
+                </div>
+                <div className="d-flex flex-column gap-3">
+                  {recentActivity.map((activity, index) => {
+                    const Icon = activity.icon;
+                    return (
+                      <div key={index} className="analytics-activity-item d-flex align-items-start gap-3">
+                        <div className="p-2 rounded analytics-bg-card">
+                          <Icon className="analytics-text-primary" size={16} />
+                        </div>
+                        <div className="flex-grow-1">
+                          <p className="text-white small mb-1">{activity.text}</p>
+                          <p className="analytics-text-secondary mb-0" style={{ fontSize: '0.75rem' }}>{activity.time}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
-            <div className="space-y-4">
-              {recentActivity.map((activity, index) => {
-                const Icon = activity.icon;
-                return (
-                  <div 
-                    key={index}
-                    className="flex items-start gap-4 p-3 rounded-lg hover:bg-opacity-80 transition-all"
-                    style={{ backgroundColor: '#0a0e1a' }}
-                  >
-                    <div className="p-2 rounded" style={{ backgroundColor: '#1a1f2e' }}>
-                      <Icon className="w-4 h-4 text-[#ef4444]" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">{activity.text}</p>
-                      <p className="text-[#8b92a7] text-xs mt-1">{activity.time}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Card>
+          </div>
         </div>
 
         {/* Bottom Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="row g-4">
           {/* Average Case Completion Time */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="flex items-center gap-4">
-              <div className="p-4 rounded-lg" style={{ backgroundColor: '#0a0e1a' }}>
-                <Clock className="w-8 h-8 text-[#3b82f6]" />
-              </div>
-              <div>
-                <p className="text-[#8b92a7] text-sm mb-1">Avg. Completion Time</p>
-                <p className="text-3xl font-bold text-white">4.2 days</p>
-                <div className="flex items-center gap-1 mt-1">
-                  <TrendingDown className="w-4 h-4 text-[#10b981]" />
-                  <span className="text-sm text-[#10b981]">-12% faster</span>
+          <div className="col-12 col-md-4">
+            <div className="card analytics-kpi-card">
+              <div className="card-body p-4">
+                <div className="d-flex align-items-center gap-4">
+                  <div className="analytics-icon-wrapper">
+                    <Clock style={{ color: '#3b82f6' }} size={32} />
+                  </div>
+                  <div>
+                    <p className="analytics-text-secondary small mb-1">Avg. Completion Time</p>
+                    <p className="display-6 fw-bold text-white mb-1">4.2 days</p>
+                    <div className="d-flex align-items-center gap-1">
+                      <TrendingDown style={{ color: '#10b981' }} size={16} />
+                      <span className="small" style={{ color: '#10b981' }}>-12% faster</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
 
           {/* User Satisfaction Score */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="flex items-center gap-4">
-              <div className="p-4 rounded-lg" style={{ backgroundColor: '#0a0e1a' }}>
-                <Star className="w-8 h-8 text-[#f59e0b]" />
-              </div>
-              <div>
-                <p className="text-[#8b92a7] text-sm mb-1">User Satisfaction</p>
-                <div className="flex items-center gap-2">
-                  <p className="text-3xl font-bold text-white">4.8</p>
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star 
-                        key={star} 
-                        className="w-4 h-4" 
-                        fill={star <= 4 ? "#f59e0b" : "none"} 
-                        stroke="#f59e0b" 
-                      />
-                    ))}
+          <div className="col-12 col-md-4">
+            <div className="card analytics-kpi-card">
+              <div className="card-body p-4">
+                <div className="d-flex align-items-center gap-4">
+                  <div className="analytics-icon-wrapper">
+                    <Star style={{ color: '#f59e0b' }} size={32} />
                   </div>
-                </div>
-                <div className="flex items-center gap-1 mt-1">
-                  <TrendingUp className="w-4 h-4 text-[#10b981]" />
-                  <span className="text-sm text-[#10b981]">+0.3 this month</span>
+                  <div>
+                    <p className="analytics-text-secondary small mb-1">User Satisfaction</p>
+                    <div className="d-flex align-items-center gap-2 mb-1">
+                      <p className="display-6 fw-bold text-white mb-0">4.8</p>
+                      <div className="d-flex">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star 
+                            key={star} 
+                            size={16}
+                            fill={star <= 4 ? "#f59e0b" : "none"} 
+                            stroke="#f59e0b" 
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-center gap-1">
+                      <TrendingUp style={{ color: '#10b981' }} size={16} />
+                      <span className="small" style={{ color: '#10b981' }}>+0.3 this month</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
 
           {/* System Health Status */}
-          <Card className="p-6 border-none" style={{ backgroundColor: '#1a1f2e' }}>
-            <div className="flex items-center gap-4">
-              <div className="p-4 rounded-lg" style={{ backgroundColor: '#0a0e1a' }}>
-                <Activity className="w-8 h-8 text-[#10b981]" />
-              </div>
-              <div>
-                <p className="text-[#8b92a7] text-sm mb-1">System Health</p>
-                <p className="text-3xl font-bold text-white">Excellent</p>
-                <div className="flex items-center gap-2 mt-2">
-                  <div className="flex-1 h-2 rounded-full" style={{ backgroundColor: '#0a0e1a' }}>
-                    <div className="h-2 rounded-full" style={{ width: '98%', backgroundColor: '#10b981' }} />
+          <div className="col-12 col-md-4">
+            <div className="card analytics-kpi-card">
+              <div className="card-body p-4">
+                <div className="d-flex align-items-center gap-4">
+                  <div className="analytics-icon-wrapper">
+                    <Activity style={{ color: '#10b981' }} size={32} />
                   </div>
-                  <span className="text-sm text-[#10b981]">98%</span>
+                  <div className="flex-grow-1">
+                    <p className="analytics-text-secondary small mb-1">System Health</p>
+                    <p className="display-6 fw-bold text-white mb-2">Excellent</p>
+                    <div className="d-flex align-items-center gap-2">
+                      <div className="analytics-health-bar flex-grow-1">
+                        <div className="analytics-health-bar-fill" style={{ width: '98%' }} />
+                      </div>
+                      <span className="small" style={{ color: '#10b981' }}>98%</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
+
       </div>
     </div>
   );
