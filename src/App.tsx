@@ -10,6 +10,7 @@ import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
+import AdminUserManagement from "./pages/AdminUserManagement";
 import CaseDashboard from "./pages/CaseDashboard";
 import Cases from "./pages/Cases";
 import CaseSolution from "./pages/CaseSolution";
@@ -123,6 +124,14 @@ const App = () => {
                   element={
                     <ProtectedRoute requiredRoles={['admin']}>
                       <AdminAnalytics />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/users"
+                  element={
+                    <ProtectedRoute requiredRoles={['admin']}>
+                      <AdminUserManagement />
                     </ProtectedRoute>
                   }
                 />
