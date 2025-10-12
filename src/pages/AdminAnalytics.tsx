@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import { 
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
@@ -107,8 +108,10 @@ const AdminAnalytics = () => {
   ];
 
   return (
-    <div className="analytics-page">
-      <div className="container-fluid" style={{ maxWidth: '1600px' }}>
+    <>
+      <Header />
+      <div className="analytics-page">
+        <div className="container-fluid" style={{ maxWidth: '1600px' }}>
         
         {/* Header */}
         <div className="row mb-5">
@@ -409,6 +412,7 @@ const AdminAnalytics = () => {
 
       </div>
     </div>
+    </>
   );
 };
 
