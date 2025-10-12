@@ -31,49 +31,49 @@ const AdminAnalytics = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ backgroundColor: '#0a0e1a' }}>
       <Header />
 
-      <div className="container py-8">
+      <div className="container py-12">
         {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Analytics & Reports</h1>
-          <p className="text-muted-foreground">Insights into user behavior and system performance.</p>
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>Analytics & Reports</h1>
+          <p style={{ color: '#8b92a7' }}>Insights into user behavior and system performance.</p>
         </div>
 
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6 hover:border-accent/50 transition-colors">
-            <p className="text-sm text-muted-foreground mb-3 font-medium">Total Users</p>
-            <p className="text-4xl font-bold mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">12,456</p>
-            <div className="flex items-center gap-1.5 text-sm text-emerald-500 font-medium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
+            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>Total Users</p>
+            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>12,456</p>
+            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#10b981' }}>
               <TrendingUp size={14} strokeWidth={2.5} />
               <span>12.5% vs last month</span>
             </div>
           </div>
 
-          <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6 hover:border-accent/50 transition-colors">
-            <p className="text-sm text-muted-foreground mb-3 font-medium">Active Users</p>
-            <p className="text-4xl font-bold mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">8,921</p>
-            <div className="flex items-center gap-1.5 text-sm text-emerald-500 font-medium">
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
+            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>Active Users</p>
+            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>8,921</p>
+            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#10b981' }}>
               <TrendingUp size={14} strokeWidth={2.5} />
               <span>8.2% vs last month</span>
             </div>
           </div>
 
-          <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6 hover:border-accent/50 transition-colors">
-            <p className="text-sm text-muted-foreground mb-3 font-medium">New Signups</p>
-            <p className="text-4xl font-bold mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">1,102</p>
-            <div className="flex items-center gap-1.5 text-sm text-accent font-medium">
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
+            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>New Signups</p>
+            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>1,102</p>
+            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#ef4444' }}>
               <TrendingDown size={14} strokeWidth={2.5} />
               <span>3.1% vs last month</span>
             </div>
           </div>
 
-          <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6 hover:border-accent/50 transition-colors">
-            <p className="text-sm text-muted-foreground mb-3 font-medium">Bounce Rate</p>
-            <p className="text-4xl font-bold mb-2 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text">23.8%</p>
-            <div className="flex items-center gap-1.5 text-sm text-emerald-500 font-medium">
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
+            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>Bounce Rate</p>
+            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>23.8%</p>
+            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#10b981' }}>
               <TrendingDown size={14} strokeWidth={2.5} />
               <span>5.4% vs last month</span>
             </div>
@@ -81,66 +81,69 @@ const AdminAnalytics = () => {
         </div>
 
         {/* User Behavior Chart */}
-        <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6 mb-8">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold">User Behavior Analysis</h2>
-            <select className="bg-card border border-border/50 rounded-lg px-4 py-2 text-sm font-medium hover:border-accent/50 transition-colors cursor-pointer">
+        <div className="rounded-lg p-6 mb-8" style={{ backgroundColor: '#1a1f2e' }}>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-bold" style={{ color: '#ffffff' }}>User Behavior Analysis</h2>
+            <select className="rounded-lg px-4 py-2 text-sm cursor-pointer" style={{ backgroundColor: '#0a0e1a', color: '#8b92a7', border: '1px solid #2a3142' }}>
               <option>Last 30 days</option>
               <option>Last 7 days</option>
               <option>Last 90 days</option>
             </select>
           </div>
-          <ResponsiveContainer width="100%" height={320}>
+          <ResponsiveContainer width="100%" height={300}>
             <BarChart data={behaviorData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#2a3142" vertical={false} />
               <XAxis 
                 dataKey="name" 
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                stroke="#8b92a7"
+                tick={{ fill: '#8b92a7', fontSize: 12 }}
                 tickLine={false}
                 axisLine={false}
               />
               <YAxis 
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                stroke="#8b92a7"
+                tick={{ fill: '#8b92a7', fontSize: 12 }}
                 tickLine={false}
                 axisLine={false}
               />
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                  backgroundColor: '#1a1f2e',
+                  border: '1px solid #2a3142',
+                  borderRadius: '0.5rem',
+                  color: '#ffffff'
                 }}
-                cursor={{ fill: 'hsl(var(--accent))', opacity: 0.1 }}
+                cursor={{ fill: '#ef4444', opacity: 0.1 }}
               />
               <Bar 
                 dataKey="value" 
-                fill="hsl(var(--accent))" 
-                radius={[6, 6, 0, 0]}
-                maxBarSize={60}
+                fill="#ef4444" 
+                radius={[4, 4, 0, 0]}
+                maxBarSize={80}
               />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Bottom Section - Venue Stats and Referrers */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* User Count per Venue */}
-          <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6">
-            <h2 className="text-2xl font-bold mb-8">User Count per Venue</h2>
-            <div className="space-y-7">
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
+            <h2 className="text-xl font-bold mb-6" style={{ color: '#ffffff' }}>User Count per Venue</h2>
+            <div className="space-y-6">
               {venueData.map((venue) => (
                 <div key={venue.name}>
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-sm font-semibold">{venue.name}</span>
-                    <span className="text-sm text-muted-foreground font-medium">{venue.users.toLocaleString()} users</span>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm" style={{ color: '#ffffff' }}>{venue.name}</span>
+                    <span className="text-sm" style={{ color: '#8b92a7' }}>{venue.users.toLocaleString()} users</span>
                   </div>
-                  <div className="w-full bg-muted/50 rounded-full h-2.5 overflow-hidden">
+                  <div className="w-full rounded-full h-2 overflow-hidden" style={{ backgroundColor: '#2a3142' }}>
                     <div 
-                      className="bg-accent h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]" 
-                      style={{ width: `${(venue.users / venue.maxUsers) * 100}%` }}
+                      className="h-full rounded-full transition-all duration-500" 
+                      style={{ 
+                        width: `${(venue.users / venue.maxUsers) * 100}%`,
+                        backgroundColor: '#ef4444'
+                      }}
                     />
                   </div>
                 </div>
@@ -149,23 +152,23 @@ const AdminAnalytics = () => {
           </div>
 
           {/* Top Referrers */}
-          <div className="bg-card/50 backdrop-blur border border-border/50 rounded-xl p-6">
-            <h2 className="text-2xl font-bold mb-8">Top Referrers</h2>
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
+            <h2 className="text-xl font-bold mb-6" style={{ color: '#ffffff' }}>Top Referrers</h2>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-border/50">
-                    <th className="text-left py-3 px-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Source</th>
-                    <th className="text-right py-3 px-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Users</th>
-                    <th className="text-right py-3 px-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Conversion</th>
+                  <tr style={{ borderBottom: '1px solid #2a3142' }}>
+                    <th className="text-left py-3 text-sm font-medium" style={{ color: '#8b92a7' }}>Source</th>
+                    <th className="text-right py-3 text-sm font-medium" style={{ color: '#8b92a7' }}>Users</th>
+                    <th className="text-right py-3 text-sm font-medium" style={{ color: '#8b92a7' }}>Conversion</th>
                   </tr>
                 </thead>
                 <tbody>
                   {referrerData.map((referrer, index) => (
-                    <tr key={referrer.source} className="border-b border-border/30 last:border-0 hover:bg-muted/20 transition-colors">
-                      <td className="py-4 px-2 text-sm font-medium">{referrer.source}</td>
-                      <td className="py-4 px-2 text-sm text-right font-semibold">{referrer.users.toLocaleString()}</td>
-                      <td className="py-4 px-2 text-sm text-right text-emerald-500 font-bold">{referrer.conversion}</td>
+                    <tr key={referrer.source} style={{ borderBottom: index < referrerData.length - 1 ? '1px solid #2a3142' : 'none' }}>
+                      <td className="py-4 text-sm" style={{ color: '#ffffff' }}>{referrer.source}</td>
+                      <td className="py-4 text-sm text-right" style={{ color: '#ffffff' }}>{referrer.users.toLocaleString()}</td>
+                      <td className="py-4 text-sm text-right font-medium" style={{ color: '#10b981' }}>{referrer.conversion}</td>
                     </tr>
                   ))}
                 </tbody>
