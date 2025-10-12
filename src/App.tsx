@@ -7,6 +7,7 @@ import { KeycloakProvider } from "./contexts/KeycloakContext";
 import { UserProvider } from "./contexts/UserContext";
 import AdminCaseGenerator from "./pages/AdminCaseGenerator";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
+import AdminAnalytics from "./pages/AdminAnalytics";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
 import CaseDashboard from "./pages/CaseDashboard";
@@ -114,6 +115,14 @@ const App = () => {
                   element={
                     <ProtectedRoute requiredRoles={['admin']}>
                       <AdminPromptManagement />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/analytics"
+                  element={
+                    <ProtectedRoute requiredRoles={['admin']}>
+                      <AdminAnalytics />
                     </ProtectedRoute>
                   }
                 />
