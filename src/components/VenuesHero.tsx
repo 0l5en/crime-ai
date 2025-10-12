@@ -35,12 +35,25 @@ const VenuesHero = () => {
           className="display-2 fw-bold text-light mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-            lineHeight: '1.1'
+            lineHeight: '1.2',
+            fontSize: 'clamp(2rem, 6vw, 4rem)'
           }}
         >
-          {t('hero.title')}
+          {t('hero.title').split('Krimi-Erlebnis').map((part, i, arr) => (
+            i < arr.length - 1 ? (
+              <span key={i}>
+                {part}
+                <span style={{ color: 'var(--bs-danger)' }}>Krimi-Erlebnis</span>
+              </span>
+            ) : part
+          ))}
         </h1>
-        <p className="lead text-light mb-5 mx-auto fs-4" style={{ maxWidth: '800px', textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+        <p className="lead text-light mb-5 mx-auto" style={{ 
+          maxWidth: '800px', 
+          textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
+          fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+          lineHeight: '1.6'
+        }}>
           {t('hero.subtitle')}
         </p>
         <div className="d-flex gap-3 justify-content-center flex-wrap mb-4">

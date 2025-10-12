@@ -14,9 +14,18 @@ const VenuesFAQ = () => {
     <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="row justify-content-center mb-5">
-          <div className="col-lg-8 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--bs-light)' }}>{t('faq.title')}</h2>
-            <p className="lead text-light" style={{ opacity: '0.9' }}>
+          <div className="col-lg-10 text-center">
+            <h2 className="display-3 fw-bold mb-4" style={{ 
+              color: 'var(--bs-light)',
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)'
+            }}>
+              {t('faq.title')}
+            </h2>
+            <p className="lead text-light" style={{ 
+              opacity: '0.85',
+              fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+              lineHeight: '1.7'
+            }}>
               {t('faq.subtitle')}
             </p>
           </div>
