@@ -32,11 +32,11 @@ const VenuesHero = () => {
     >
       <div className="container text-center">
         <h1 
-          className="display-2 fw-bold text-light mb-4" 
+          className="display-3 fw-bold text-light mb-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
             lineHeight: '1.2',
-            fontSize: 'clamp(2rem, 6vw, 4rem)'
+            fontSize: 'clamp(1.75rem, 5vw, 3.5rem)'
           }}
         >
           {t('hero.title').split('Krimi-Erlebnis').map((part, i, arr) => (

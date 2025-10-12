@@ -18,9 +18,9 @@ const VenuesTestimonials = () => {
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-10 text-center">
-            <h2 className="display-3 fw-bold mb-4" style={{ 
+            <h2 className="display-4 fw-bold mb-4" style={{ 
               color: 'var(--bs-light)',
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)'
+              fontSize: 'clamp(1.75rem, 4vw, 3rem)'
             }}>
               {t('testimonials.title')}
             </h2>
