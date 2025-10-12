@@ -1,6 +1,6 @@
-import lauraAvatar from "@/assets/laura-avatar.jpg";
-import marcusAvatar from "@/assets/marcus-avatar.jpg";
-import thomasAvatar from "@/assets/thomas-avatar.jpg";
+import gamerAvatar1 from "@/assets/gamer-avatar-1.jpg";
+import gamerAvatar2 from "@/assets/gamer-avatar-2.jpg";
+import gamerAvatar3 from "@/assets/gamer-avatar-3.jpg";
 import { Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -11,21 +11,21 @@ const GameReviews = () => {
     {
       name: "Marcus W.",
       roleKey: "reviews.review1.role",
-      avatar: marcusAvatar,
+      avatar: gamerAvatar1,
       rating: 5,
       textKey: "reviews.review1.text"
     },
     {
       name: "Laura K.",
       roleKey: "reviews.review2.role",
-      avatar: lauraAvatar,
+      avatar: gamerAvatar2,
       rating: 5,
       textKey: "reviews.review2.text"
     },
     {
       name: "Thomas S.",
       roleKey: "reviews.review3.role",
-      avatar: thomasAvatar,
+      avatar: gamerAvatar3,
       rating: 5,
       textKey: "reviews.review3.text"
     }
