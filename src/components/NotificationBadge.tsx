@@ -40,7 +40,10 @@ const NotificationBadge = () => {
     >
       <Mail
         size={20}
-        style={{ cursor: 'pointer' }}
+        style={{ 
+          cursor: 'pointer',
+          color: isOnEmailPage ? 'hsl(var(--accent))' : 'currentColor'
+        }}
       />
       {unreadCount > 0 && (
         <span
