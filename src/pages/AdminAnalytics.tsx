@@ -42,40 +42,60 @@ const AdminAnalytics = () => {
         </div>
 
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
-            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>Total Users</p>
-            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>12,456</p>
-            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#10b981' }}>
-              <TrendingUp size={14} strokeWidth={2.5} />
-              <span>12.5% vs last month</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          {/* Total Users Kachel */}
+          <div className="rounded-xl p-6 border" style={{ backgroundColor: '#1a1f2e', borderColor: '#2a3142' }}>
+            <div className="flex flex-col h-full">
+              <p className="text-sm font-medium mb-4" style={{ color: '#8b92a7' }}>Total Users</p>
+              <div className="flex-1 flex flex-col justify-center">
+                <p className="text-5xl font-bold mb-3" style={{ color: '#ffffff', letterSpacing: '-0.02em' }}>12,456</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm font-medium pt-2" style={{ color: '#10b981', borderTop: '1px solid #2a3142' }}>
+                <TrendingUp size={16} strokeWidth={2.5} />
+                <span>12.5% vs last month</span>
+              </div>
             </div>
           </div>
 
-          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
-            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>Active Users</p>
-            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>8,921</p>
-            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#10b981' }}>
-              <TrendingUp size={14} strokeWidth={2.5} />
-              <span>8.2% vs last month</span>
+          {/* Active Users Kachel */}
+          <div className="rounded-xl p-6 border" style={{ backgroundColor: '#1a1f2e', borderColor: '#2a3142' }}>
+            <div className="flex flex-col h-full">
+              <p className="text-sm font-medium mb-4" style={{ color: '#8b92a7' }}>Active Users</p>
+              <div className="flex-1 flex flex-col justify-center">
+                <p className="text-5xl font-bold mb-3" style={{ color: '#ffffff', letterSpacing: '-0.02em' }}>8,921</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm font-medium pt-2" style={{ color: '#10b981', borderTop: '1px solid #2a3142' }}>
+                <TrendingUp size={16} strokeWidth={2.5} />
+                <span>8.2% vs last month</span>
+              </div>
             </div>
           </div>
 
-          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
-            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>New Signups</p>
-            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>1,102</p>
-            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#ef4444' }}>
-              <TrendingDown size={14} strokeWidth={2.5} />
-              <span>3.1% vs last month</span>
+          {/* New Signups Kachel */}
+          <div className="rounded-xl p-6 border" style={{ backgroundColor: '#1a1f2e', borderColor: '#2a3142' }}>
+            <div className="flex flex-col h-full">
+              <p className="text-sm font-medium mb-4" style={{ color: '#8b92a7' }}>New Signups</p>
+              <div className="flex-1 flex flex-col justify-center">
+                <p className="text-5xl font-bold mb-3" style={{ color: '#ffffff', letterSpacing: '-0.02em' }}>1,102</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm font-medium pt-2" style={{ color: '#ef4444', borderTop: '1px solid #2a3142' }}>
+                <TrendingDown size={16} strokeWidth={2.5} />
+                <span>3.1% vs last month</span>
+              </div>
             </div>
           </div>
 
-          <div className="rounded-lg p-6" style={{ backgroundColor: '#1a1f2e' }}>
-            <p className="text-sm mb-3" style={{ color: '#8b92a7' }}>Bounce Rate</p>
-            <p className="text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>23.8%</p>
-            <div className="flex items-center gap-1.5 text-sm" style={{ color: '#10b981' }}>
-              <TrendingDown size={14} strokeWidth={2.5} />
-              <span>5.4% vs last month</span>
+          {/* Bounce Rate Kachel */}
+          <div className="rounded-xl p-6 border" style={{ backgroundColor: '#1a1f2e', borderColor: '#2a3142' }}>
+            <div className="flex flex-col h-full">
+              <p className="text-sm font-medium mb-4" style={{ color: '#8b92a7' }}>Bounce Rate</p>
+              <div className="flex-1 flex flex-col justify-center">
+                <p className="text-5xl font-bold mb-3" style={{ color: '#ffffff', letterSpacing: '-0.02em' }}>23.8%</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm font-medium pt-2" style={{ color: '#10b981', borderTop: '1px solid #2a3142' }}>
+                <TrendingDown size={16} strokeWidth={2.5} />
+                <span>5.4% vs last month</span>
+              </div>
             </div>
           </div>
         </div>
