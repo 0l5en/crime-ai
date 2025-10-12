@@ -2,15 +2,15 @@
   "hero": {
     "title": "Verwandeln Sie Ihre Ferienwohnung in ein unvergessliches Krimi-Erlebnis",
     "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel, das in Ihren Räumlichkeiten spielt und sie begeistern wird",
-    "cta": "Jetzt beginnen",
-    "trial": "7 Tage kostenlos · Ab $9.99/Monat"
+    "cta": "Jetzt anfragen",
+    "trial": "7-tägige kostenlose Testversion · Ab $9.99/Monat"
   },
   "why": {
     "title": "Warum Veranstaltungsorte uns wählen",
     "subtitle": "Schließen Sie sich hunderten von Immobilienbesitzern an, die ihre Gäste bereits mit individuellen Detektiv-Mysterien begeistern.",
     "benefits": {
       "unique": {
-        "title": "Einzigartiges lokales Erlebnis",
+        "title": "Einzigartiges Erlebnis",
         "description": "Verwandeln Sie Ihre Immobilie in den Schauplatz eines fesselnden Mysteriums, das ihre einzigartigen Merkmale und ihren lokalen Charakter zur Geltung bringt."
       },
       "satisfaction": {
@@ -29,21 +29,21 @@
     "steps": {
       "trial": {
         "title": "Kostenlose Testversion starten",
-        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Registrieren Sie Ihren kostenlosen Account, um zu starten."
+        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Geben Sie Ihre Zahlungsdetails ein, um zu starten."
       },
       "register": {
         "title": "Ihre Location registrieren",
-        "description": "Teilen Sie uns Details über Ihre Immobilie mit, einschließlich Layout, einzigartiger Merkmale und gewünschter Gästeerfahrung."
+        "description": "Teilen Sie Details über Ihre Immobilie mit, einschließlich Layout, einzigartiger Merkmale und gewünschter Gästeerfahrung."
       },
       "exclusive": {
         "title": "Exklusiven Case erhalten",
-        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Kriminalfall innerhalb von 24 Stunden, speziell auf Ihre Location zugeschnitten."
+        "description": "Erhalten Sie Ihren individuellen Mystery-Case innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Location zugeschnitten."
       }
     }
   },
   "pricing": {
     "title": "Einfache, transparente Preise",
-    "subtitle": "Erschwingliches monatliches Abonnement mit risikofreier 7 Tage Testphase",
+    "subtitle": "Erschwingliches monatliches Abonnement mit risikofreier Testphase",
     "plan": {
       "name": "Venue Owner Plan",
       "price": "$9.99",
@@ -167,8 +167,8 @@
     "subtitleHighlight": "KI-gesteuerten",
     "subtitleEnd": "Detektiverlebnissen. Unser Algorithmus erstellt individuelle Mysterien, die auf Ihren Raum zugeschnitten sind und Social-Media-Shares und Wiederholungsbesuche fördern.",
     "features": {
-      "ai": "KI-gesteuerte Fälle",
-      "trial": "7 Tage Testphase",
+      "ai": "KI-gesteuerte Cases",
+      "trial": "7-tägige kostenlose Testversion",
       "cancel": "Jederzeit kündbar"
     },
     "buttons": {
