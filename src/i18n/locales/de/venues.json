@@ -3,7 +3,7 @@
     "title": "Verwandeln Sie Ihre Ferienwohnung in ein unvergessliches Krimi-Erlebnis",
     "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel das in Ihrer Ferienwohnung spielt.",
     "cta": "Jetzt kostenlos starten",
-    "trial": "7-tägige kostenlose Testversion · Ab $9.99/Monat"
+    "trial": "7-tägige Testphase · Danach 9.99€/Monat"
   },
   "why": {
     "title": "Warum Ferienwohnungen uns wählen",
@@ -29,15 +29,15 @@
     "steps": {
       "trial": {
         "title": "Kostenlose Testversion starten",
-        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Geben Sie Ihre Zahlungsdetails ein, um zu starten."
+        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Legen Sie Ihre Ferienwohnung an, um zu starten."
       },
       "register": {
         "title": "Ihre Ferienwohnung registrieren",
-        "description": "Teilen Sie Details über Ihre Ferienwohnung mit, einschließlich Layout, einzigartiger Merkmale und gewünschter Gästeerfahrung."
+        "description": "Teilen Sie uns Details über Ihre Ferienwohnung mit, einschließlich Zimmeranzahl, einzigartiger Merkmale und gewünschter Gästeerfahrung."
       },
       "exclusive": {
         "title": "Exklusiven Case erhalten",
-        "description": "Erhalten Sie Ihren individuellen Mystery-Case innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Ferienwohnung zugeschnitten."
+        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Ferienwohnung zugeschnitten."
       }
     }
   },
@@ -91,7 +91,7 @@
         "title": "Buchungen & Stornierungen",
         "q1": {
           "question": "Kann ich mein Abonnement jederzeit kündigen?",
-          "answer": "Ja, Sie können Ihr Abonnement jederzeit ohne Strafen oder Gebühren kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
+          "answer": "Ja, Sie können Ihr Abonnement jederzeit zum nächsten Buchungstermin kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
         },
         "q2": {
           "question": "Was passiert während der 7-tägigen kostenlosen Testversion?",
@@ -99,7 +99,7 @@
         },
         "q3": {
           "question": "Bieten Sie Rückerstattungen an?",
-          "answer": "Wir bieten eine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Case nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität."
+          "answer": "Wir bieten keine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Case nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität. Bei Problemen kontaktieren Sie uns einfach und wir werden eine Lösung finden."
         }
       },
       "analytics": {
@@ -168,7 +168,7 @@
     "subtitleEnd": "Detektiverlebnissen. Unser Algorithmus erstellt individuelle Mysterien, die auf Ihre Ferienwohnung zugeschnitten sind und begeisterte Bewertungen und Wiederholungsbuchungen fördern.",
     "features": {
       "ai": "KI-gesteuerte Cases",
-      "trial": "7-tägige kostenlose Testversion",
+      "trial": "7-tägige Testphase",
       "cancel": "Jederzeit kündbar"
     },
     "buttons": {
