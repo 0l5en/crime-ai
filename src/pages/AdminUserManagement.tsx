@@ -207,7 +207,7 @@ const AdminUserManagement = () => {
             <div className="col-12">
               <div className="d-flex justify-content-between align-items-center">
                 <div>
-                  <h1 className="display-5 fw-bold mb-2 analytics-text-primary">
+                  <h1 className="display-5 fw-bold mb-2 text-white">
                     User Management
                   </h1>
                   <p className="analytics-text-secondary mb-0">
@@ -299,7 +299,7 @@ const AdminUserManagement = () => {
               const isExpanded = expandedUsers.has(user.id);
               
               return (
-                <div key={user.id} className="col-lg-6">
+                <div key={user.id} className="col-12">
                   <div className="card analytics-user-card">
                     <div className="card-body">
                       
