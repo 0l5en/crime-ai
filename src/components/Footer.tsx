@@ -6,7 +6,7 @@ import { updateSchemaRating } from "@/utils/updateSchemaRating";
 import { useEffect } from "react";
 
 const Footer = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const user = useUserContext();
   const { setRating, getUserRating, getSiteStats } = useSiteRating(user.name || undefined);
   const stats = getSiteStats();
@@ -29,15 +29,15 @@ const Footer = () => {
           <div className="col-md-6">
             <div className="d-flex align-items-center mb-3 mb-md-0">
               <h5 className="mb-0 me-2">DetectivesGame</h5>
-              <span className="badge bg-primary rounded-pill px-2 py-1" style={{ fontSize: '0.6rem' }}>
+              <span className="badge bg-primary rounded-pill px-2 py-1" style={{ fontSize: "0.6rem" }}>
                 BETA
               </span>
             </div>
-            <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: '1.0rem' }}>
-              {t('footer.description')}
+            <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: "0.9rem" }}>
+              {t("footer.description")}
             </p>
             <div className="d-flex align-items-center gap-2 mb-3 mb-md-0 mt-3">
-              <StarRating 
+              <StarRating
                 rating={stats.averageRating}
                 onRatingChange={handleRatingChange}
                 readonly={false}
@@ -45,7 +45,7 @@ const Footer = () => {
                 showCount={false}
               />
               {stats.totalRatings > 0 && (
-                <span className="text-secondary" style={{ fontSize: '0.9rem' }}>
+                <span className="text-secondary" style={{ fontSize: "0.9rem" }}>
                   {stats.averageRating.toFixed(1)} / {stats.totalRatings}
                 </span>
               )}
@@ -54,24 +54,44 @@ const Footer = () => {
           <div className="col-md-6">
             <div className="d-flex flex-column align-items-md-end">
               <div className="d-flex gap-4 mb-2 flex-wrap justify-content-center justify-content-md-end">
-              <a href="/terms" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
-                {t('footer.terms')}
-              </a>
-              <a href="/privacy" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
-                {t('footer.privacy')}
-              </a>
-              <a href="/cookies" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
-                {t('footer.cookies')}
-              </a>
-              <a href="/imprint" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
-                {t('footer.imprint')}
-              </a>
-              <a href="mailto:kontakt@detectivesgame.com" className="text-secondary text-decoration-none footer-link" style={{ fontSize: '0.8rem', transition: 'color 0.2s ease' }}>
-                {t('footer.contact')}
-              </a>
+                <a
+                  href="/terms"
+                  className="text-secondary text-decoration-none footer-link"
+                  style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
+                >
+                  {t("footer.terms")}
+                </a>
+                <a
+                  href="/privacy"
+                  className="text-secondary text-decoration-none footer-link"
+                  style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
+                >
+                  {t("footer.privacy")}
+                </a>
+                <a
+                  href="/cookies"
+                  className="text-secondary text-decoration-none footer-link"
+                  style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
+                >
+                  {t("footer.cookies")}
+                </a>
+                <a
+                  href="/imprint"
+                  className="text-secondary text-decoration-none footer-link"
+                  style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
+                >
+                  {t("footer.imprint")}
+                </a>
+                <a
+                  href="mailto:kontakt@detectivesgame.com"
+                  className="text-secondary text-decoration-none footer-link"
+                  style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
+                >
+                  {t("footer.contact")}
+                </a>
               </div>
-              <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: '0.7rem' }}>
-                {t('footer.copyright')}
+              <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: "0.7rem" }}>
+                {t("footer.copyright")}
               </p>
             </div>
           </div>
