@@ -11,19 +11,19 @@ const VenuesFAQ = () => {
   };
 
   return (
-    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
-      <div className="container">
-        <div className="row justify-content-center mb-5">
+    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="container px-3">
+        <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ 
+            <h2 className="fw-bold mb-3 mb-md-4" style={{ 
               color: 'var(--bs-light)',
-              fontSize: 'clamp(1.75rem, 4vw, 3rem)'
+              fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('faq.title')}
             </h2>
-            <p className="lead text-light" style={{ 
+            <p className="text-light px-2" style={{ 
               opacity: '0.85',
-              fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+              fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
               {t('faq.subtitle')}
@@ -34,19 +34,20 @@ const VenuesFAQ = () => {
         <div className="row justify-content-center">
           <div className="col-lg-10">
             {['gettingStarted', 'bookings', 'analytics', 'support'].map((categoryKey, categoryIndex) => (
-              <div key={categoryIndex} className="mb-5">
+              <div key={categoryIndex} className="mb-4 mb-md-5">
                 <h3 
-                  className="mb-4 pb-3 fw-semibold" 
+                  className="mb-3 mb-md-4 pb-2 pb-md-3 fw-semibold" 
                   style={{ 
                     color: 'var(--bs-light)', 
                     borderBottom: '2px solid var(--bs-danger)',
-                    display: 'inline-block'
+                    display: 'inline-block',
+                    fontSize: 'clamp(1.1rem, 3vw, 1.3rem)'
                   }}
                 >
                   {t(`faq.categories.${categoryKey}.title`)}
                 </h3>
                 
-                <div className="space-y-3">
+                <div>
                   {['q1', 'q2', 'q3'].map((questionKey, questionIndex) => {
                     const itemId = `faq-${categoryIndex}-${questionIndex}`;
                     const isOpen = openItem === itemId;
@@ -54,7 +55,7 @@ const VenuesFAQ = () => {
                     return (
                       <div 
                         key={questionIndex}
-                        className="mb-3"
+                        className="mb-2 mb-md-3"
                         style={{
                           border: '1px solid var(--bs-border-color)',
                           borderRadius: '12px',
@@ -74,15 +75,16 @@ const VenuesFAQ = () => {
                         }}
                       >
                         <button
-                          className="w-100 p-4 text-start d-flex justify-content-between align-items-center"
+                          className="w-100 text-start d-flex justify-content-between align-items-center"
                           style={{
                             backgroundColor: 'transparent',
                             border: 'none',
                             color: 'var(--bs-light)',
-                            fontSize: '1.1rem',
+                            fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
                             fontWeight: '600',
                             cursor: 'pointer',
-                            transition: 'all 0.3s ease'
+                            transition: 'all 0.3s ease',
+                            padding: 'clamp(0.75rem, 2vw, 1rem)'
                           }}
                           onClick={() => toggleItem(itemId)}
                           onMouseEnter={(e) => {
@@ -94,30 +96,33 @@ const VenuesFAQ = () => {
                         >
                           <span>{t(`faq.categories.${categoryKey}.${questionKey}.question`)}</span>
                           <ChevronDown 
-                            size={20} 
+                            size={window.innerWidth < 768 ? 18 : 20}
                             style={{ 
                               transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                               transition: 'transform 0.3s ease',
-                              color: 'var(--bs-danger)'
+                              color: 'var(--bs-danger)',
+                              marginLeft: '0.5rem',
+                              flexShrink: 0
                             }}
                           />
                         </button>
                         
                         <div
                           style={{
-                            maxHeight: isOpen ? '200px' : '0',
+                            maxHeight: isOpen ? '300px' : '0',
                             overflow: 'hidden',
                             transition: 'max-height 0.3s ease'
                           }}
                         >
                           <div 
-                            className="p-4"
                             style={{ 
                               backgroundColor: 'rgba(95, 95, 95, 0.1)',
                               borderTop: '1px solid var(--bs-border-color)',
                               color: 'var(--bs-light)',
                               opacity: '0.9',
-                              lineHeight: '1.7'
+                              lineHeight: '1.7',
+                              padding: 'clamp(0.75rem, 2vw, 1rem)',
+                              fontSize: 'clamp(0.85rem, 2vw, 1rem)'
                             }}
                           >
                             {t(`faq.categories.${categoryKey}.${questionKey}.answer`)}

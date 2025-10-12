@@ -30,13 +30,13 @@ const VenuesHero = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="container text-center">
+      <div className="container text-center px-3">
         <h1 
-          className="display-3 fw-bold text-light mb-4" 
+          className="fw-bold text-light mb-3 mb-md-4" 
           style={{ 
             textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
             lineHeight: '1.2',
-            fontSize: 'clamp(1.75rem, 5vw, 3.5rem)'
+            fontSize: 'clamp(1.5rem, 4vw, 3.5rem)'
           }}
         >
           {t('hero.title').split('Krimi-Erlebnis').map((part, i, arr) => (
@@ -48,30 +48,38 @@ const VenuesHero = () => {
             ) : part
           ))}
         </h1>
-        <p className="lead text-light mb-5 mx-auto" style={{ 
+        <p className="lead text-light mb-4 mb-md-5 mx-auto px-2" style={{ 
           maxWidth: '800px', 
           textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
-          fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+          fontSize: 'clamp(0.95rem, 2vw, 1.25rem)',
           lineHeight: '1.6'
         }}>
           {t('hero.subtitle')}
         </p>
-        <div className="d-flex gap-3 justify-content-center flex-wrap mb-4">
+        <div className="d-flex gap-2 gap-md-3 justify-content-center flex-wrap mb-3 mb-md-4 px-2">
           <button 
             onClick={scrollToContact}
-            className="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
+            className="btn btn-danger rounded-pill shadow-lg fw-semibold"
+            style={{
+              padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
+              fontSize: 'clamp(0.95rem, 2vw, 1.15rem)'
+            }}
           >
             {t('hero.cta')}
           </button>
           <button 
             onClick={scrollToHowItWorks}
-            className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg fw-semibold fs-5"
+            className="btn btn-outline-light rounded-pill shadow-lg fw-semibold"
+            style={{
+              padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
+              fontSize: 'clamp(0.95rem, 2vw, 1.15rem)'
+            }}
           >
             {t('howItWorks.title')}
           </button>
         </div>
-        <p className="text-light opacity-75">
-          <small>{t('hero.trial')}</small>
+        <p className="text-light opacity-75 px-2" style={{ fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)' }}>
+          {t('hero.trial')}
         </p>
       </div>
     </section>

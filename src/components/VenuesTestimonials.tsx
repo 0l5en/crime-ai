@@ -14,19 +14,19 @@ const VenuesTestimonials = () => {
   };
 
   return (
-    <section className="py-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
-      <div className="container">
-        <div className="row justify-content-center mb-5">
+    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="container px-3">
+        <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
-            <h2 className="display-4 fw-bold mb-4" style={{ 
+            <h2 className="fw-bold mb-3 mb-md-4" style={{ 
               color: 'var(--bs-light)',
-              fontSize: 'clamp(1.75rem, 4vw, 3rem)'
+              fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('testimonials.title')}
             </h2>
-            <p className="lead text-light" style={{ 
+            <p className="text-light px-2" style={{ 
               opacity: '0.85',
-              fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+              fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
               {t('testimonials.subtitle')}
@@ -34,16 +34,17 @@ const VenuesTestimonials = () => {
           </div>
         </div>
 
-        <div className="row g-4">
+        <div className="row g-3 g-md-4">
           {['sarah', 'marcus', 'elena'].map((testimonialKey, index) => (
             <div key={index} className="col-lg-4">
               <div 
-                className="p-5 h-100 position-relative d-flex flex-column"
+                className="h-100 position-relative d-flex flex-column"
                 style={{
                   border: '1px solid rgba(203, 25, 28, 0.2)',
                   borderRadius: '20px',
                   backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  padding: 'clamp(1.5rem, 4vw, 3rem)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--bs-danger)';
@@ -57,13 +58,13 @@ const VenuesTestimonials = () => {
                 }}
               >
                 {/* Avatar and Quote Icon */}
-                <div className="mb-4 d-flex align-items-center justify-content-between">
+                <div className="mb-3 mb-md-4 d-flex align-items-center justify-content-between">
                   <img 
                     src={avatars[testimonialKey]} 
                     alt={t(`testimonials.items.${testimonialKey}.name`)}
                     style={{
-                      width: '60px',
-                      height: '60px',
+                      width: 'clamp(50px, 12vw, 60px)',
+                      height: 'clamp(50px, 12vw, 60px)',
                       borderRadius: '50%',
                       objectFit: 'cover',
                       border: '3px solid var(--bs-danger)'
@@ -72,22 +73,22 @@ const VenuesTestimonials = () => {
                   <div
                     className="d-flex align-items-center justify-content-center"
                     style={{
-                      width: '48px',
-                      height: '48px',
+                      width: 'clamp(40px, 10vw, 48px)',
+                      height: 'clamp(40px, 10vw, 48px)',
                       backgroundColor: 'rgba(203, 25, 28, 0.15)',
                       borderRadius: '50%'
                     }}
                   >
-                    <Quote size={24} style={{ color: 'var(--bs-danger)' }} />
+                    <Quote size={window.innerWidth < 768 ? 20 : 24} style={{ color: 'var(--bs-danger)' }} />
                   </div>
                 </div>
 
                 {/* Rating */}
-                <div className="mb-3 d-flex">
+                <div className="mb-2 mb-md-3 d-flex">
                   {[...Array(5)].map((_, i) => (
                     <Star 
                       key={i} 
-                      size={20} 
+                      size={window.innerWidth < 768 ? 16 : 20}
                       style={{ color: '#ffc107', fill: '#ffc107' }}
                       className="me-1"
                     />
@@ -95,13 +96,13 @@ const VenuesTestimonials = () => {
                 </div>
 
                 {/* Testimonial Text */}
-                <blockquote className="mb-4 flex-grow-1">
+                <blockquote className="mb-3 mb-md-4 flex-grow-1">
                   <p 
                     className="text-light mb-0" 
                     style={{ 
                       fontStyle: 'italic', 
                       lineHeight: '1.7',
-                      fontSize: '1.05rem',
+                      fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
                       opacity: '0.9'
                     }}
                   >
@@ -111,24 +112,24 @@ const VenuesTestimonials = () => {
 
                 {/* Author Info */}
                 <div 
-                  className="pt-4 mt-auto"
+                  className="pt-3 pt-md-4 mt-auto"
                   style={{ borderTop: '2px solid var(--bs-danger)' }}
                 >
                   <h6 
                     className="mb-2 fw-bold" 
-                    style={{ color: 'var(--bs-light)', fontSize: '1.2rem' }}
+                    style={{ color: 'var(--bs-light)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}
                   >
                     {t(`testimonials.items.${testimonialKey}.name`)}
                   </h6>
                   <p 
                     className="text-light mb-1" 
-                    style={{ opacity: '0.8', fontSize: '0.95rem' }}
+                    style={{ opacity: '0.8', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}
                   >
                     {t(`testimonials.items.${testimonialKey}.venue`)}
                   </p>
                   <p 
-                    className="text-light small mb-0" 
-                    style={{ opacity: '0.6' }}
+                    className="text-light mb-0" 
+                    style={{ opacity: '0.6', fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)' }}
                   >
                     {t(`testimonials.items.${testimonialKey}.location`)}
                   </p>

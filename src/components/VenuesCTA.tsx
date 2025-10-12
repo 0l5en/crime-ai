@@ -8,26 +8,26 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-5 bg-dark text-light d-flex align-items-center" 
+      className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" 
       style={{ minHeight: '100vh' }} 
       data-section="contact"
     >
-      <div className="container">
+      <div className="container px-3">
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
-            <h3 className="display-2 fw-bold mb-5 text-white" style={{
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+            <h3 className="fw-bold mb-3 mb-md-5 text-white" style={{
+              fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
               lineHeight: '1.2'
             }}>
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
             </h3>
             
-            <p className="lead mb-5 text-light" style={{ 
-              fontSize: 'clamp(1rem, 2vw, 1.25rem)', 
+            <p className="mb-4 mb-md-5 text-light px-2" style={{ 
+              fontSize: 'clamp(0.9rem, 2vw, 1.25rem)', 
               opacity: '0.85',
               lineHeight: '1.7',
               maxWidth: '800px',
-              margin: '0 auto 3rem'
+              margin: '0 auto'
             }}>
               {t('cta.subtitle')} <span style={{ color: 'var(--bs-danger)', fontWeight: '600' }}>{t('cta.subtitleHighlight')}</span> {t('cta.subtitleEnd')}
             </p>
@@ -35,7 +35,7 @@ const VenuesCTA = () => {
             
 
             {/* Feature Benefits */}
-            <div className="row justify-content-center mb-5 g-4">
+            <div className="row justify-content-center mb-3 mb-md-5 g-2 g-md-4">
               {[
                 { icon: CreditCard, key: 'ai' },
                 { icon: MessageCircle, key: 'trial' },
@@ -82,13 +82,14 @@ const VenuesCTA = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="d-flex flex-column flex-md-row gap-4 justify-content-center">
+            <div className="d-flex flex-column flex-md-row gap-2 gap-md-4 justify-content-center">
               <button 
                 onClick={() => navigate('/venue-register')}
-                className="px-6 py-4 fw-bold d-flex align-items-center justify-content-center gap-3" 
+                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3" 
                 style={{ 
-                  fontSize: '1.25rem',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                   borderRadius: '16px',
+                  padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem)',
                   backgroundColor: 'var(--bs-danger)',
                   color: 'white',
                   border: 'none',
@@ -112,10 +113,11 @@ const VenuesCTA = () => {
               </button>
               
               <button 
-                className="px-6 py-4 fw-bold d-flex align-items-center justify-content-center gap-3" 
+                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3" 
                 style={{ 
-                  fontSize: '1.25rem',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                   borderRadius: '16px',
+                  padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem)',
                   backgroundColor: 'transparent',
                   color: 'white',
                   border: '2px solid var(--bs-danger)',
