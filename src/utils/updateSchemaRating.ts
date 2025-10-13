@@ -4,10 +4,13 @@ export const updateSchemaRating = (averageRating: number, totalRatings: number) 
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": "Game",
     "name": "DetectivesGame",
     "url": "https://detectivesgame.com",
     "description": "Interactive AI-powered detective game where you solve criminal cases",
+    "genre": ["Mystery", "Detective", "Puzzle"],
+    "gamePlatform": "Web Browser",
+    "applicationCategory": "Game",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": averageRating > 0 ? averageRating.toFixed(1) : "0",
