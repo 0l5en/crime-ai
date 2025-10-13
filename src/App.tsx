@@ -26,6 +26,7 @@ import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenuesPage from "./pages/VenuesPage";
 import Register from "./pages/Register";
 import VenueRegister from "./pages/VenueRegister";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -132,6 +133,14 @@ const App = () => {
                   element={
                     <ProtectedRoute requiredRoles={['admin']}>
                       <AdminUserManagement />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute requiredRoles={['admin', 'standard', 'vacation-rental']}>
+                      <Profile />
                     </ProtectedRoute>
                   }
                 />
