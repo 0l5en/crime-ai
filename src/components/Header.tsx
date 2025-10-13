@@ -43,7 +43,7 @@ const Header = () => {
 
                 {/* User Profile */}
                 {user && (
-                  <div className="nav-item d-flex align-items-center gap-2">
+                  <Link to="/profile" className="nav-item d-flex align-items-center gap-2 text-decoration-none" style={{ cursor: 'pointer' }}>
                     <div className="text-end">
                       <div className="small fw-medium">{user.name || user.email}</div>
                       <div className="text-muted" style={{ fontSize: '0.75rem' }}>
@@ -53,7 +53,7 @@ const Header = () => {
                     <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '32px', height: '32px', fontSize: '0.875rem' }}>
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </div>
-                  </div>
+                  </Link>
                 )}
 
                 {/* Admin Link */}
@@ -93,9 +93,11 @@ const Header = () => {
 
                 {/* Sign Up Button */}
                 <div className="nav-item">
-                  <button className="btn btn-danger">
-                    {t('nav.signUp')}
-                  </button>
+                  <Link to="/register" className="text-decoration-none">
+                    <button className="btn btn-danger">
+                      {t('nav.signUp')}
+                    </button>
+                  </Link>
                 </div>
               </>
             )}
@@ -161,19 +163,30 @@ const Header = () => {
             {/* User Section for authenticated users */}
             {user.isAuthenticated && (
               <div className="mb-4 p-3 border rounded">
-                <div className="d-flex align-items-center gap-3 mb-3">
-                  <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
-                    {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
-                  </div>
-                  <div className="flex-grow-1">
-                    <div className="fw-medium">{user.name || user.email}</div>
-                    <div className="text-muted small">
-                      {user.roles.join(', ') || 'No roles'}
+                <Link to="/profile" className="text-decoration-none" data-bs-dismiss="offcanvas">
+                  <div className="d-flex align-items-center gap-3 mb-3" style={{ cursor: 'pointer' }}>
+                    <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
+                      {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </div>
+                    <div className="flex-grow-1">
+                      <div className="fw-medium">{user.name || user.email}</div>
+                      <div className="text-muted small">
+                        {user.roles.join(', ') || 'No roles'}
+                      </div>
+                    </div>
+                    {/* Notification Badge for Mobile */}
+                    <NotificationBadge />
                   </div>
-                  {/* Notification Badge for Mobile */}
-                  <NotificationBadge />
-                </div>
+                </Link>
+
+                {/* View Profile Button */}
+                <Link
+                  to="/profile"
+                  className="btn btn-outline-danger w-100 mb-2"
+                  data-bs-dismiss="offcanvas"
+                >
+                  View Profile
+                </Link>
 
                 {/* Vacation Rental Dashboard Link - Mobile */}
                 {user.hasAnyRole('vacation-rental') && (
@@ -215,9 +228,11 @@ const Header = () => {
             ) : (
               <div className="d-grid gap-2">
                 <SignInButton />
-                <button className="btn btn-danger">
-                  {t('nav.signUp')}
-                </button>
+                <Link to="/register" className="text-decoration-none">
+                  <button className="btn btn-danger w-100">
+                    {t('nav.signUp')}
+                  </button>
+                </Link>
               </div>
             )}
           </div>

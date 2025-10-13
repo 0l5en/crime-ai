@@ -1,0 +1,16 @@
+{
+  "loading": "Caricamento email...",
+  "error": "Errore nel caricamento delle email. Riprova.",
+  "inboxEmpty": "Casella vuota",
+  "noEmailsYet": "Non hai ancora ricevuto email.",
+  "inbox": "Casella",
+  "email": "Email",
+  "emails": "Email",
+  "selectEmail": "Seleziona un'email",
+  "selectEmailDescription": "Seleziona un'email dall'elenco per visualizzarne il contenuto.",
+  "autopsyReport": "Referto autoptico",
+  "report": "Referto",
+  "unknown": "Sconosciuto",
+  "reply": "Rispondi",
+  "notImplemented": "Il contenuto per questo tipo di referto non è ancora implementato."
+}

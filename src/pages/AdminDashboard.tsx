@@ -15,8 +15,8 @@ const AdminDashboard = () => {
         </div>
 
         <div className="row g-4">
-          <div className="col-md-6 col-lg-3">
-            <div className="card">
+          <div className="col-md-6 col-lg-3" onClick={() => navigate("/admin/users")}>
+            <div className="card card-hover" style={{ cursor: "pointer" }}>
               <div className="card-body p-4">
                 <h3 className="h5 fw-semibold mb-2">Users</h3>
                 <p className="text-muted">Manage users and roles</p>
@@ -24,17 +24,8 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          <div className="col-md-6 col-lg-3">
-            <div className="card">
-              <div className="card-body p-4">
-                <h3 className="h5 fw-semibold mb-2">Account</h3>
-                <p className="text-muted">Manage your account</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 col-lg-3">
-            <div className="card">
+          <div className="col-md-6 col-lg-3" onClick={() => navigate("/admin/analytics")}>
+            <div className="card card-hover" style={{ cursor: "pointer" }}>
               <div className="card-body p-4">
                 <h3 className="h5 fw-semibold mb-2">Analytics</h3>
                 <p className="text-muted">System reports and analytics</p>

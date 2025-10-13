@@ -32,11 +32,13 @@
     "maritalStatus": "Marital status",
     "relationshipToCase": "Relation to case",
     "alibi": "Alibi",
-    "interrogate": "Interrogate"
+    "interrogate": "Interrogate",
+    "question": "Question"
   },
   "interrogation": {
     "back": "Back",
     "interrogationWith": "Interrogation with",
+    "questioningOf": "Questioning of",
     "yearsOld": "years old",
     "askQuestion": "Ask a Question",
     "typePlaceholder": "Type your question here...",

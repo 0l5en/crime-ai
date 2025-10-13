@@ -4,10 +4,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserProvider } from "./contexts/UserContext";
+import AdminAnalytics from "./pages/AdminAnalytics";
 import AdminCaseGenerator from "./pages/AdminCaseGenerator";
 import AdminCaseManagement from "./pages/AdminCaseManagement";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminPromptManagement from "./pages/AdminPromptManagement";
+import AdminUserManagement from "./pages/AdminUserManagement";
 import CaseDashboard from "./pages/CaseDashboard";
 import Cases from "./pages/Cases";
 import CaseSolution from "./pages/CaseSolution";
@@ -17,9 +19,12 @@ import Imprint from "./pages/Imprint";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
 import Terms from "./pages/Terms";
 import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
+import VenueRegister from "./pages/VenueRegister";
 import VenuesPage from "./pages/VenuesPage";
 
 const queryClient = new QueryClient();
@@ -35,6 +40,8 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/cases" element={<Cases />} />
               <Route path="/venues" element={<VenuesPage />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/venue-register" element={<VenueRegister />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/cookies" element={<Cookies />} />
@@ -108,6 +115,30 @@ const App = () => {
                 element={
                   <ProtectedRoute requiredRoles={['admin']}>
                     <AdminPromptManagement />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/analytics"
+                element={
+                  <ProtectedRoute requiredRoles={['admin']}>
+                    <AdminAnalytics />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/users"
+                element={
+                  <ProtectedRoute requiredRoles={['admin']}>
+                    <AdminUserManagement />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute requiredRoles={['admin', 'standard', 'vacation-rental']}>
+                    <Profile />
                   </ProtectedRoute>
                 }
               />

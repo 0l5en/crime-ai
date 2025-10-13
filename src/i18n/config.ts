@@ -28,6 +28,26 @@ import caseDashboardEN from './locales/en/caseDashboard.json';
 import caseDashboardIT from './locales/it/caseDashboard.json';
 import caseDashboardFR from './locales/fr/caseDashboard.json';
 
+import legalDE from './locales/de/legal.json';
+import legalEN from './locales/en/legal.json';
+import legalIT from './locales/it/legal.json';
+import legalFR from './locales/fr/legal.json';
+
+import registerDE from './locales/de/register.json';
+import registerEN from './locales/en/register.json';
+import registerIT from './locales/it/register.json';
+import registerFR from './locales/fr/register.json';
+
+import venueRegisterDE from './locales/de/venueRegister.json';
+import venueRegisterEN from './locales/en/venueRegister.json';
+import venueRegisterIT from './locales/it/venueRegister.json';
+import venueRegisterFR from './locales/fr/venueRegister.json';
+
+import emailsDE from './locales/de/emails.json';
+import emailsEN from './locales/en/emails.json';
+import emailsIT from './locales/it/emails.json';
+import emailsFR from './locales/fr/emails.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -35,6 +55,10 @@ const resources = {
     venues: venuesDE,
     cases: casesDE,
     caseDashboard: caseDashboardDE,
+    legal: legalDE,
+    register: registerDE,
+    venueRegister: venueRegisterDE,
+    emails: emailsDE,
   },
   en: {
     common: commonEN,
@@ -42,6 +66,10 @@ const resources = {
     venues: venuesEN,
     cases: casesEN,
     caseDashboard: caseDashboardEN,
+    legal: legalEN,
+    register: registerEN,
+    venueRegister: venueRegisterEN,
+    emails: emailsEN,
   },
   it: {
     common: commonIT,
@@ -49,6 +77,10 @@ const resources = {
     venues: venuesIT,
     cases: casesIT,
     caseDashboard: caseDashboardIT,
+    legal: legalIT,
+    register: registerIT,
+    venueRegister: venueRegisterIT,
+    emails: emailsIT,
   },
   fr: {
     common: commonFR,
@@ -56,6 +88,10 @@ const resources = {
     venues: venuesFR,
     cases: casesFR,
     caseDashboard: caseDashboardFR,
+    legal: legalFR,
+    register: registerFR,
+    venueRegister: venueRegisterFR,
+    emails: emailsFR,
   },
 };
 

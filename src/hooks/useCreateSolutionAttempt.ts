@@ -24,7 +24,7 @@ export const useCreateSolutionAttempt = (caseId: string) => {
       });
 
       if (response.ok) {
-        return;
+        return '';
       }
 
       throw new Error('Server returned error response: ' + response.status);

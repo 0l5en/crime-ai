@@ -32,11 +32,13 @@
     "maritalStatus": "État civil",
     "relationshipToCase": "Lien avec l'affaire",
     "alibi": "Alibi",
-    "interrogate": "Interroger"
+    "interrogate": "Interroger",
+    "question": "Questionner"
   },
   "interrogation": {
     "back": "Retour",
     "interrogationWith": "Interrogatoire avec",
+    "questioningOf": "Entretien avec",
     "yearsOld": "ans",
     "askQuestion": "Poser une Question",
     "typePlaceholder": "Tapez votre question ici...",

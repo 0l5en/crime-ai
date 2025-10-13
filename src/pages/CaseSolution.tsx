@@ -5,6 +5,7 @@ import MotiveSelectionCard from "@/components/MotiveSelectionCard";
 import StarRating from "@/components/StarRating";
 import SuspectSelectionCard from "@/components/SuspectSelectionCard";
 import { useUserContext } from '@/contexts/UserContext';
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useCaseEvidences } from "@/hooks/useCaseEvidences";
 import { useCaseMotives } from "@/hooks/useCaseMotives";
 import { useCaseRating } from "@/hooks/useCaseRating";
@@ -22,6 +23,7 @@ const CaseSolution = () => {
   const navigate = useNavigate();
   const user = useUserContext();
   const { t } = useTranslation('caseDashboard');
+  const isMobile = useIsMobile();
 
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);
   const [selectedEvidences, setSelectedEvidences] = useState<number[]>([]);
@@ -148,7 +150,7 @@ const CaseSolution = () => {
               {t('solutionPage.tryAgain')}
             </button>
 
-            <h1 className="h2 mb-0">{t('solutionPage.resultTitle')}</h1>
+            <h1 className={`${isMobile ? 'h5' : 'h2'} mb-0`}>{t('solutionPage.resultTitle')}</h1>
           </div>
 
           <div className="row justify-content-center">
@@ -250,10 +252,10 @@ const CaseSolution = () => {
           </button>
 
           <div>
-            <h1 className="h2 mb-1">
+            <h1 className={`${isMobile ? 'h5' : 'h2'} mb-1`}>
               {t('solutionPage.solveTheCase')}: {crimeCase?.title}
             </h1>
-            <p className="text-muted mb-0">
+            <p className={`text-muted mb-0 ${isMobile ? 'small' : ''}`}>
               {t('solutionPage.selectInstruction')}
             </p>
           </div>

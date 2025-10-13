@@ -1,43 +1,43 @@
 {
   "hero": {
-    "title": "Verwandeln Sie Ihre Veranstaltung in ein unvergessliches Krimi-Erlebnis",
-    "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel, das sie begeistern wird",
-    "cta": "Jetzt anfragen",
-    "trial": "7-tägige kostenlose Testversion · Ab $9.99/Monat"
+    "title": "Verwandeln Sie Ihre Ferienwohnung in ein unvergessliches Krimi-Erlebnis",
+    "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel das in Ihrer Ferienwohnung spielt.",
+    "cta": "Jetzt kostenlos starten",
+    "trial": "7-tägige Testphase · Danach 9.99€/Monat"
   },
   "why": {
-    "title": "Warum Veranstaltungsorte uns wählen",
-    "subtitle": "Schließen Sie sich hunderten von Immobilienbesitzern an, die ihre Gäste bereits mit individuellen Detektiv-Mysterien begeistern.",
+    "title": "Warum Ferienwohnungen uns wählen",
+    "subtitle": "Schließen Sie sich hunderten von Ferienwohnungsbesitzern an, die ihre Gäste bereits mit individuellen Detektiv-Mysterien begeistern.",
     "benefits": {
       "unique": {
-        "title": "Einzigartiges lokales Erlebnis",
-        "description": "Verwandeln Sie Ihre Immobilie in den Schauplatz eines fesselnden Mysteriums, das ihre einzigartigen Merkmale und ihren lokalen Charakter zur Geltung bringt."
+        "title": "Einzigartiges Erlebnis",
+        "description": "Verwandeln Sie Ihre Ferienwohnung in den Schauplatz eines fesselnden Mysteriums, das ihre einzigartigen Merkmale und ihren lokalen Charakter zur Geltung bringt."
       },
       "satisfaction": {
         "title": "Gästezufriedenheit",
-        "description": "Bieten Sie eine unvergessliche Aktivität, die Ihre Location in Bewertungen hervorhebt und Gäste für weitere Abenteuer zurückkehren lässt."
+        "description": "Bieten Sie eine unvergessliche Aktivität, die Ihre Ferienwohnung in Bewertungen hervorhebt und Gäste für weitere Aufenthalte zurückkehren lässt."
       },
       "growth": {
-        "title": "Geschäftswachstum",
-        "description": "Gewinnen Sie neue Kunden, fördern Sie längere Aufenthalte und schaffen Sie mit Premium-Mystery-Erlebnissen eine zusätzliche Einnahmequelle."
+        "title": "Mehr Buchungen",
+        "description": "Steigern Sie Ihre Buchungsrate, fördern Sie längere Aufenthalte und schaffen Sie mit Premium-Mystery-Erlebnissen eine zusätzliche Einnahmequelle."
       }
     }
   },
   "howItWorks": {
     "title": "So funktioniert's",
-    "subtitle": "Ihr individueller Venue-Case ist ganz einfach. Wir übernehmen die gesamte kreative Arbeit, während Sie sich auf das Hosten großartiger Erlebnisse konzentrieren.",
+    "subtitle": "Ihr individueller Ferienwohnungs-Case ist ganz einfach. Wir übernehmen die gesamte kreative Arbeit, während Sie sich auf das Hosten großartiger Erlebnisse konzentrieren.",
     "steps": {
       "trial": {
         "title": "Kostenlose Testversion starten",
-        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Geben Sie Ihre Zahlungsdetails ein, um zu starten."
+        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Legen Sie Ihre Ferienwohnung an, um zu starten."
       },
       "register": {
-        "title": "Ihre Location registrieren",
-        "description": "Teilen Sie Details über Ihre Immobilie mit, einschließlich Layout, einzigartiger Merkmale und gewünschter Gästeerfahrung."
+        "title": "Ihre Ferienwohnung registrieren",
+        "description": "Teilen Sie uns Details über Ihre Ferienwohnung mit, einschließlich Zimmeranzahl, einzigartiger Merkmale und gewünschter Gästeerfahrung."
       },
       "exclusive": {
         "title": "Exklusiven Case erhalten",
-        "description": "Erhalten Sie Ihren individuellen Mystery-Case innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Location zugeschnitten."
+        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Ferienwohnung zugeschnitten."
       }
     }
   },
@@ -45,21 +45,21 @@
     "title": "Einfache, transparente Preise",
     "subtitle": "Erschwingliches monatliches Abonnement mit risikofreier Testphase",
     "plan": {
-      "name": "Venue Owner Plan",
+      "name": "Ferienwohnungs-Plan",
       "price": "$9.99",
       "period": "/Monat",
       "trial": "Nach 7-tägiger kostenloser Testversion"
     },
     "enhance": {
-      "title": "Verbessern Sie das Erlebnis Ihrer Location",
-      "description1": "Verwandeln Sie Ihre Immobilie in ein interaktives Abenteuer, das Gäste sich merken und teilen werden. Unsere individuellen Detektiv-Cases bieten ein einzigartiges Erlebnis, das Ihre Location von der Konkurrenz abhebt.",
-      "description2": "Ideal für Hotels, Ferienwohnungen, Restaurants, Cafés, Museen und andere Besucherattraktionen. Testen Sie es risikofrei mit unserer 7-tägigen Testversion, um die Auswirkungen auf Gästezufriedenheit und Engagement zu sehen."
+      "title": "Verbessern Sie das Erlebnis Ihrer Ferienwohnung",
+      "description1": "Verwandeln Sie Ihre Ferienwohnung in ein interaktives Abenteuer, das Gäste sich merken und teilen werden. Unsere individuellen Detektiv-Cases bieten ein einzigartiges Erlebnis, das Ihre Ferienwohnung von anderen abhebt.",
+      "description2": "Perfekt für Ferienwohnungen, Apartments und Ferienhäuser. Testen Sie es risikofrei mit unserer 7-tägigen Testversion, um die Auswirkungen auf Gästezufriedenheit und Engagement zu sehen."
     },
     "includes": "Beinhaltet:",
     "features": {
-      "exclusive": "Exklusiver individueller Detektiv-Case in Ihrer Location",
-      "unlimited": "Unbegrenzter Gästezugang zu Ihrem Venue-Case",
-      "profile": "Dediziertes Venue-Profil mit QR-Code",
+      "exclusive": "Exklusiver individueller Detektiv-Case für Ihre Ferienwohnung",
+      "unlimited": "Unbegrenzter Gästezugang zu Ihrem Ferienwohnungs-Case",
+      "profile": "Dediziertes Ferienwohnungs-Profil mit QR-Code",
       "referral": "Personalisiertes Empfehlungssystem",
       "public": "Möglichkeit, Ihren Case für Marketing öffentlich zu machen",
       "analytics": "Monatliche Case-Performance-Analysen",
@@ -70,28 +70,28 @@
   },
   "faq": {
     "title": "Häufig gestellte Fragen",
-    "subtitle": "Alles, was Sie über die Erstellung individueller Venue-Mystery-Cases wissen müssen.",
+    "subtitle": "Alles, was Sie über die Erstellung individueller Ferienwohnungs-Mystery-Cases wissen müssen.",
     "categories": {
       "gettingStarted": {
         "title": "Erste Schritte",
         "q1": {
-          "question": "Wie beginne ich mit einem individuellen Venue-Case?",
-          "answer": "Melden Sie sich einfach für unsere 7-tägige kostenlose Testversion an. Sie geben Details über Ihre Location an, und unser Team erstellt einen individuellen Mystery-Case, der auf Ihren spezifischen Standort und Ihre Gästeerlebnis-Ziele zugeschnitten ist."
+          "question": "Wie beginne ich mit einem individuellen Ferienwohnungs-Case?",
+          "answer": "Melden Sie sich einfach für unsere 7-tägige kostenlose Testversion an. Sie geben Details über Ihre Ferienwohnung an, und unser Team erstellt einen individuellen Mystery-Case, der auf Ihre spezifische Ferienwohnung und Ihre Gästeerlebnis-Ziele zugeschnitten ist."
         },
         "q2": {
-          "question": "Welche Informationen benötigen Sie über meine Location?",
-          "answer": "Wir benötigen grundlegende Details wie Ihren Location-Typ, Layout, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Immobilie einzigartig machen. Dies hilft uns, das perfekte Mystery-Erlebnis zu gestalten."
+          "question": "Welche Informationen benötigen Sie über meine Ferienwohnung?",
+          "answer": "Wir benötigen grundlegende Details wie Layout, Anzahl der Zimmer, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Ferienwohnung einzigartig machen. Dies hilft uns, das perfekte Mystery-Erlebnis zu gestalten."
         },
         "q3": {
           "question": "Wie lange dauert die Erstellung meines individuellen Cases?",
-          "answer": "Ihr exklusiver individueller Case wird innerhalb von 24 Stunden nach Abschluss Ihrer Venue-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um ein einzigartiges Mystery zu erstellen, das auf Ihre spezifische Immobilie zugeschnitten ist."
+          "answer": "Ihr exklusiver individueller Case wird innerhalb von 24 Stunden nach Abschluss Ihrer Ferienwohnungs-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um ein einzigartiges Mystery zu erstellen, das auf Ihre spezifische Ferienwohnung zugeschnitten ist."
         }
       },
       "bookings": {
         "title": "Buchungen & Stornierungen",
         "q1": {
           "question": "Kann ich mein Abonnement jederzeit kündigen?",
-          "answer": "Ja, Sie können Ihr Abonnement jederzeit ohne Strafen oder Gebühren kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
+          "answer": "Ja, Sie können Ihr Abonnement jederzeit zum nächsten Buchungstermin kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
         },
         "q2": {
           "question": "Was passiert während der 7-tägigen kostenlosen Testversion?",
@@ -99,7 +99,7 @@
         },
         "q3": {
           "question": "Bieten Sie Rückerstattungen an?",
-          "answer": "Wir bieten eine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Case nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität."
+          "answer": "Wir bieten keine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Case nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität. Bei Problemen kontaktieren Sie uns einfach und wir werden eine Lösung finden."
         }
       },
       "analytics": {
@@ -135,8 +135,8 @@
     }
   },
   "testimonials": {
-    "title": "Was Venue-Besitzer sagen",
-    "subtitle": "Schließen Sie sich hunderten erfolgreichen Venue-Besitzern an, die ihr Gästeerlebnis transformiert haben.",
+    "title": "Was Ferienwohnungsbesitzer sagen",
+    "subtitle": "Schließen Sie sich hunderten erfolgreichen Ferienwohnungsbesitzern an, die ihr Gästeerlebnis transformiert haben.",
     "items": {
       "sarah": {
         "name": "Sarah Mitchell",
@@ -160,19 +160,19 @@
   },
   "cta": {
     "title": "Verwandeln Sie Ihre",
-    "titleHighlight1": "Venue",
+    "titleHighlight1": "Ferienwohnung",
     "titleMiddle": "in ein",
     "titleHighlight2": "Mystery-Abenteuer",
-    "subtitle": "Erhöhen Sie Ihre Location mit unseren",
+    "subtitle": "Bereichern Sie Ihre Ferienwohnung mit unseren",
     "subtitleHighlight": "KI-gesteuerten",
-    "subtitleEnd": "Detektiverlebnissen. Unser Algorithmus erstellt individuelle Mysterien, die auf Ihren Raum zugeschnitten sind und Social-Media-Shares und Wiederholungsbesuche fördern.",
+    "subtitleEnd": "Detektiverlebnissen. Unser Algorithmus erstellt individuelle Mysterien, die auf Ihre Ferienwohnung zugeschnitten sind und begeisterte Bewertungen und Wiederholungsbuchungen fördern.",
     "features": {
       "ai": "KI-gesteuerte Cases",
-      "trial": "7-tägige kostenlose Testversion",
+      "trial": "7-tägige Testphase",
       "cancel": "Jederzeit kündbar"
     },
     "buttons": {
-      "register": "Als Venue-Besitzer registrieren",
+      "register": "Als Ferienwohnungsbesitzer registrieren",
       "contact": "Kontaktieren Sie uns"
     }
   }

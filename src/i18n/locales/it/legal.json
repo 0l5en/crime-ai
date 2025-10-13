@@ -1,0 +1,225 @@
+{
+  "terms": {
+    "title": "Termini di Servizio",
+    "lastUpdated": "Ultimo Aggiornamento: 23 gennaio 2025",
+    "sections": {
+      "acceptance": {
+        "title": "1. Accettazione dei Termini",
+        "content": "Benvenuto su DetectivesGame. Accedendo o utilizzando il nostro sito web e i nostri servizi, accetti di essere vincolato da questi Termini di Servizio. Se non sei d'accordo con qualsiasi parte di questi termini, non puoi utilizzare i nostri servizi."
+      },
+      "service": {
+        "title": "2. Descrizione del Servizio",
+        "content": "DetectivesGame fornisce giochi investigativi interattivi e casi misteriosi che puoi giocare online. Ci riserviamo il diritto di modificare o interrompere i nostri servizi in qualsiasi momento."
+      },
+      "accounts": {
+        "title": "3. Account Utente",
+        "content": "Per accedere a determinate funzionalità, devi creare un account. Sei responsabile del mantenimento della riservatezza del tuo account e del monitoraggio di tutte le attività sotto il tuo account. Devi notificarci immediatamente qualsiasi uso non autorizzato del tuo account."
+      },
+      "payments": {
+        "title": "4. Pagamenti e Abbonamenti",
+        "content": "Alcune funzionalità dei nostri servizi potrebbero richiedere un pagamento. Accetti di fornire informazioni di pagamento accurate e complete e di autorizzarci ad addebitare il metodo di pagamento scelto per eventuali commissioni sostenute. Tutti i pagamenti non sono rimborsabili salvo diversa indicazione."
+      },
+      "ip": {
+        "title": "5. Proprietà Intellettuale",
+        "content": "Tutti i contenuti su DetectivesGame, inclusi testi, grafica, loghi e software, sono di proprietà di DetectivesGame o dei suoi licenziatari e sono protetti dalle leggi sulla proprietà intellettuale. Non puoi riprodurre, distribuire o utilizzare i nostri contenuti senza espressa autorizzazione scritta."
+      },
+      "conduct": {
+        "title": "6. Condotta dell'Utente",
+        "content": "Accetti di non utilizzare i nostri servizi per scopi illegali o in qualsiasi modo che violi le leggi applicabili. Non devi tentare di interferire con i nostri sistemi o ottenere accesso non autorizzato."
+      },
+      "termination": {
+        "title": "7. Risoluzione",
+        "content": "Ci riserviamo il diritto di terminare o sospendere il tuo account e l'accesso ai nostri servizi a nostra esclusiva discrezione, senza preavviso, specialmente per violazioni di questi termini."
+      },
+      "disclaimer": {
+        "title": "8. Disclaimer",
+        "content": "I nostri servizi sono forniti \"così come sono\" senza garanzie di alcun tipo, esplicite o implicite. Non garantiamo che i nostri servizi saranno ininterrotti o privi di errori."
+      },
+      "limitation": {
+        "title": "9. Limitazione di Responsabilità",
+        "content": "DetectivesGame non sarà responsabile per danni indiretti, incidentali, speciali o consequenziali derivanti dall'uso o dall'impossibilità di utilizzare i nostri servizi."
+      },
+      "changes": {
+        "title": "10. Modifiche ai Termini",
+        "content": "Possiamo aggiornare questi termini in qualsiasi momento. Ti informeremo delle modifiche sostanziali pubblicando i termini aggiornati sul nostro sito web. Il tuo uso continuato dopo tali modifiche costituisce la tua accettazione dei nuovi termini."
+      },
+      "governing": {
+        "title": "11. Legge Applicabile",
+        "content": "Questi termini saranno regolati e interpretati in conformità con le leggi della Germania, senza riguardo alle sue disposizioni sui conflitti di legge."
+      },
+      "contact": {
+        "title": "12. Contatto",
+        "content": "Per domande su questi termini, contattaci a legal@detectivesgame.com."
+      }
+    }
+  },
+  "privacy": {
+    "title": "Informativa sulla Privacy",
+    "lastUpdated": "Ultimo Aggiornamento: 23 gennaio 2025",
+    "intro": "In DetectivesGame, prendiamo sul serio la tua privacy. Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.",
+    "sections": {
+      "collection": {
+        "title": "1. Informazioni che Raccogliamo",
+        "content": "Raccogliamo informazioni che ci fornisci direttamente, come nome, indirizzo email e informazioni di pagamento. Raccogliamo anche automaticamente informazioni sull'uso dei nostri servizi, inclusi indirizzo IP, tipo di browser e informazioni sul dispositivo."
+      },
+      "usage": {
+        "title": "2. Come Utilizziamo le Informazioni",
+        "content": "Utilizziamo le tue informazioni per fornire e migliorare i nostri servizi, comunicare con te e personalizzare la tua esperienza. Possiamo anche utilizzare i tuoi dati per scopi analitici e prevenzione delle frodi."
+      },
+      "sharing": {
+        "title": "3. Condivisione delle Informazioni",
+        "content": "Non vendiamo le tue informazioni personali. Possiamo condividere le tue informazioni con fornitori di servizi che ci assistono nel fornire i nostri servizi, o quando richiesto dalla legge."
+      },
+      "security": {
+        "title": "4. Sicurezza dei Dati",
+        "content": "Implementiamo misure di sicurezza ragionevoli per proteggere le tue informazioni. Tuttavia, nessun metodo di trasmissione su Internet o archiviazione elettronica è sicuro al 100%."
+      },
+      "retention": {
+        "title": "5. Conservazione dei Dati",
+        "content": "Conserviamo le tue informazioni personali per il tempo necessario per gli scopi descritti in questa Informativa sulla Privacy o come richiesto dalla legge."
+      },
+      "rights": {
+        "title": "6. I Tuoi Diritti",
+        "content": "Hai il diritto di accedere, correggere o eliminare le tue informazioni personali. Puoi anche opporti o limitare il trattamento dei tuoi dati."
+      },
+      "cookies": {
+        "title": "7. Cookie",
+        "content": "Utilizziamo cookie e tecnologie simili per migliorare la tua esperienza. Per ulteriori informazioni, consulta la nostra Politica sui Cookie."
+      },
+      "children": {
+        "title": "8. Privacy dei Minori",
+        "content": "I nostri servizi non sono rivolti a minori di 13 anni. Non raccogliamo consapevolmente informazioni da minori di 13 anni."
+      },
+      "international": {
+        "title": "9. Trasferimenti Internazionali di Dati",
+        "content": "Le tue informazioni potrebbero essere trasferite e elaborate in paesi al di fuori del tuo paese di residenza. Garantiamo che siano in atto adeguate misure di salvaguardia."
+      },
+      "thirdParty": {
+        "title": "10. Servizi di Terze Parti",
+        "content": "I nostri servizi possono contenere link a siti web di terze parti. Non siamo responsabili delle pratiche sulla privacy di questi siti web."
+      },
+      "changes": {
+        "title": "11. Modifiche a Questa Politica",
+        "content": "Possiamo aggiornare questa Informativa sulla Privacy di tanto in tanto. Ti informeremo delle modifiche sostanziali pubblicando la politica aggiornata sul nostro sito web."
+      },
+      "gdpr": {
+        "title": "12. Diritti GDPR (Residenti UE)",
+        "content": "Se sei residente nell'Unione Europea, hai diritti aggiuntivi ai sensi del GDPR, incluso il diritto alla portabilità dei dati e il diritto di presentare un reclamo presso un'autorità di controllo."
+      },
+      "contact": {
+        "title": "13. Contatto",
+        "content": "Per domande su questa Informativa sulla Privacy, contattaci a privacy@detectivesgame.com."
+      }
+    }
+  },
+  "cookies": {
+    "title": "Politica sui Cookie",
+    "lastUpdated": "Ultimo Aggiornamento: 23 gennaio 2025",
+    "intro": "Questa Politica sui Cookie spiega cosa sono i cookie, come li utilizziamo e le tue scelte riguardo ai cookie.",
+    "sections": {
+      "what": {
+        "title": "1. Cosa Sono i Cookie?",
+        "content": "I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Aiutano il sito web a ricordare le tue azioni e preferenze."
+      },
+      "why": {
+        "title": "2. Perché Utilizziamo i Cookie",
+        "content": "Utilizziamo i cookie per rendere il nostro sito web funzionale, migliorare la tua esperienza, analizzare le prestazioni e fornire contenuti pertinenti."
+      },
+      "types": {
+        "title": "3. Tipi di Cookie",
+        "content": "Utilizziamo sia cookie di sessione (che scadono quando chiudi il browser) sia cookie persistenti (che rimangono sul tuo dispositivo fino alla scadenza o all'eliminazione)."
+      },
+      "firstParty": {
+        "title": "4. Cookie di Prima Parte",
+        "list": [
+          "Cookie di autenticazione: per gestire la tua sessione di accesso",
+          "Cookie di preferenze: per memorizzare le tue impostazioni e preferenze",
+          "Cookie di sicurezza: per proteggere da attività fraudolente",
+          "Cookie di analisi: per tracciare l'utilizzo e le prestazioni del sito web"
+        ]
+      },
+      "thirdParty": {
+        "title": "5. Cookie di Terze Parti",
+        "content": "Possiamo utilizzare cookie di terze parti per servizi di analisi (come Google Analytics) e altre funzionalità. Queste terze parti hanno le proprie politiche sulla privacy."
+      },
+      "similar": {
+        "title": "6. Tecnologie Simili",
+        "content": "Oltre ai cookie, possiamo utilizzare tecnologie simili come l'archiviazione locale, i web beacon e il fingerprinting del dispositivo."
+      },
+      "manage": {
+        "title": "7. Gestione delle Preferenze sui Cookie",
+        "content": "Puoi controllare i cookie attraverso le impostazioni del tuo browser. La maggior parte dei browser ti consente di rifiutare i cookie o di avvisarti quando viene impostato un cookie. Puoi anche utilizzare il nostro centro preferenze sui cookie."
+      },
+      "disabling": {
+        "title": "8. Impatto della Disabilitazione dei Cookie",
+        "content": "Se disabiliti i cookie, alcune funzionalità del nostro sito web potrebbero non funzionare correttamente. Potresti non essere in grado di accedere a determinate aree del sito web o ricevere esperienze personalizzate."
+      },
+      "updates": {
+        "title": "9. Aggiornamenti a Questa Politica",
+        "content": "Possiamo aggiornare questa Politica sui Cookie per riflettere i cambiamenti nel nostro utilizzo dei cookie o per motivi legali."
+      },
+      "legal": {
+        "title": "10. Base Legale",
+        "content": "Utilizziamo i cookie in base al tuo consenso o ai nostri legittimi interessi nel fornire e migliorare i nostri servizi."
+      },
+      "international": {
+        "title": "11. Trasferimenti Internazionali",
+        "content": "Alcuni dei nostri fornitori di servizi di terze parti potrebbero trovarsi in paesi al di fuori dell'UE. Garantiamo che siano in atto adeguate misure di salvaguardia."
+      },
+      "contact": {
+        "title": "12. Contatto",
+        "content": "Per domande sul nostro utilizzo dei cookie, contattaci a cookies@detectivesgame.com."
+      }
+    }
+  },
+  "imprint": {
+    "title": "Note Legali",
+    "sections": {
+      "company": {
+        "title": "Informazioni sull'Azienda",
+        "name": "moo.codes",
+        "address": "Via Esempio 123",
+        "city": "12345 Città Esempio",
+        "country": "Germania"
+      },
+      "contact": {
+        "title": "Contatto",
+        "email": "contatto@detectivesgame.com",
+        "phone": "+49 (0) 123 456789"
+      },
+      "representative": {
+        "title": "Rappresentato da",
+        "content": "Amministratore Delegato: [Nome]"
+      },
+      "register": {
+        "title": "Iscrizione al Registro",
+        "court": "Tribunale del Registro: [Tribunale]",
+        "number": "Numero di Registro: [Numero]"
+      },
+      "vat": {
+        "title": "Partita IVA",
+        "content": "Numero di identificazione IVA: [P.IVA]"
+      },
+      "dispute": {
+        "title": "Risoluzione delle Controversie",
+        "content": "La Commissione Europea fornisce una piattaforma per la risoluzione online delle controversie (ODR): https://ec.europa.eu/consumers/odr. Il nostro indirizzo email si trova sopra nelle note legali. Non siamo disposti né obbligati a partecipare a procedimenti di risoluzione delle controversie davanti a un collegio arbitrale dei consumatori."
+      },
+      "liability": {
+        "title": "Responsabilità per i Contenuti",
+        "content": "Come fornitore di servizi, siamo responsabili dei nostri contenuti su queste pagine secondo le leggi generali. Tuttavia, non siamo obbligati a monitorare le informazioni di terze parti trasmesse o memorizzate o a indagare su circostanze che indicano attività illegali."
+      },
+      "copyright": {
+        "title": "Copyright",
+        "content": "I contenuti e le opere creati dagli operatori del sito su queste pagine sono soggetti al diritto d'autore tedesco. La riproduzione, la modifica, la distribuzione e qualsiasi tipo di utilizzo al di là dei limiti del diritto d'autore richiedono il consenso scritto del rispettivo autore o creatore."
+      },
+      "privacy": {
+        "title": "Protezione dei Dati",
+        "content": "L'uso del nostro sito web è generalmente possibile senza fornire dati personali. Nella misura in cui i dati personali vengono raccolti sulle nostre pagine, ciò avviene sempre su base volontaria. Questi dati non saranno trasmessi a terzi senza il tuo espresso consenso. Per ulteriori informazioni, consulta la nostra Informativa sulla Privacy."
+      },
+      "accessibility": {
+        "title": "Accessibilità",
+        "content": "Ci sforziamo di rendere il nostro sito web accessibile a tutti gli utenti. Se hai difficoltà ad accedere ai contenuti, contattaci."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "loading": "E-Mails werden geladen...",
+  "error": "Fehler beim Laden der E-Mails. Bitte versuchen Sie es erneut.",
+  "inboxEmpty": "Posteingang leer",
+  "noEmailsYet": "Sie haben noch keine E-Mails erhalten.",
+  "inbox": "Posteingang",
+  "email": "E-Mail",
+  "emails": "E-Mails",
+  "selectEmail": "E-Mail auswählen",
+  "selectEmailDescription": "Wählen Sie eine E-Mail aus der Liste aus, um ihren Inhalt anzuzeigen.",
+  "autopsyReport": "Autopsiebericht",
+  "report": "Bericht",
+  "unknown": "Unbekannt",
+  "reply": "Antworten",
+  "notImplemented": "Inhalt für diesen Berichtstyp ist noch nicht implementiert."
+}

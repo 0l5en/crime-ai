@@ -1,0 +1,33 @@
+{
+  "title": "S'inscrire maintenant",
+  "subtitle": "Rejoignez la communauté Detective",
+  "features": {
+    "title": "Pourquoi DetectivesGame?",
+    "items": {
+      "cases": "Résolvez des affaires criminelles passionnantes",
+      "time": "Course contre la montre",
+      "tools": "Outils d'enquête réalistes",
+      "leaderboard": "Classements et meilleurs scores",
+      "updates": "Nouvelles affaires régulièrement"
+    }
+  },
+  "form": {
+    "firstName": "Prénom",
+    "email": "Adresse Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "submit": "S'inscrire",
+    "alreadyRegistered": "Déjà inscrit?",
+    "signIn": "Se connecter"
+  },
+  "validation": {
+    "firstNameMin": "Le prénom doit comporter au moins 2 caractères",
+    "emailInvalid": "Veuillez saisir une adresse email valide",
+    "passwordMin": "Le mot de passe doit comporter au moins 8 caractères",
+    "passwordUppercase": "Le mot de passe doit contenir au moins une lettre majuscule",
+    "passwordLowercase": "Le mot de passe doit contenir au moins une lettre minuscule",
+    "passwordNumber": "Le mot de passe doit contenir au moins un chiffre",
+    "passwordMismatch": "Les mots de passe ne correspondent pas"
+  },
+  "inactive": "L'inscription n'est actuellement pas disponible"
+}

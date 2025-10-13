@@ -32,11 +32,13 @@
     "maritalStatus": "Familienstand",
     "relationshipToCase": "Bezug zum Fall",
     "alibi": "Alibi",
-    "interrogate": "Verhören"
+    "interrogate": "Verhören",
+    "question": "Befragen"
   },
   "interrogation": {
     "back": "Zurück",
     "interrogationWith": "Verhör mit",
+    "questioningOf": "Befragung von",
     "yearsOld": "Jahre alt",
     "askQuestion": "Frage stellen",
     "typePlaceholder": "Geben Sie hier Ihre Frage ein...",

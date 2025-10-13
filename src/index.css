@@ -396,3 +396,340 @@ body {
     height: 60vh !important;
   }
 }
+
+/* Footer link hover effect */
+.footer-link:hover {
+  color: var(--bs-primary) !important;
+}
+
+/* Fingerprint spinning animation */
+@keyframes spin-fingerprint {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-fingerprint {
+  animation: spin-fingerprint 1s linear infinite;
+}
+
+/* ============================================
+   User Management Styles (Bootstrap 5)
+   ============================================ */
+
+.analytics-user-card {
+  background-color: #1a1f2e;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.analytics-user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.2);
+}
+
+.analytics-user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.analytics-user-details {
+  background-color: rgba(10, 14, 26, 0.5);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.analytics-status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Analytics Dashboard Styles (Bootstrap 5)
+   ============================================ */
+
+.analytics-page {
+  background-color: #0a0e1a;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.analytics-kpi-card {
+  background-color: #1a1f2e;
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analytics-kpi-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.analytics-chart-card {
+  background-color: #1a1f2e;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.analytics-text-primary {
+  color: #ef4444;
+}
+
+.analytics-text-secondary {
+  color: #8b92a7;
+}
+
+.analytics-bg-dark {
+  background-color: #0a0e1a;
+}
+
+.analytics-bg-card {
+  background-color: #1a1f2e;
+}
+
+.analytics-trend-up {
+  color: #10b981;
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.analytics-trend-down {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.analytics-icon-wrapper {
+  background-color: #0a0e1a;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.analytics-venue-item {
+  background-color: #0a0e1a;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.analytics-venue-item:hover {
+  background-color: rgba(10, 14, 26, 0.8);
+}
+
+.analytics-activity-item {
+  background-color: #0a0e1a;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.analytics-activity-item:hover {
+  background-color: rgba(10, 14, 26, 0.8);
+}
+
+.analytics-health-bar {
+  background-color: #0a0e1a;
+  height: 0.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.analytics-health-bar-fill {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #10b981;
+}
+
+/* ==================== Profile Page Styles ==================== */
+
+.profile-page {
+  background-color: #0a0e1a;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.profile-card {
+  background-color: #1a1f2e;
+  border: none;
+  border-radius: 12px;
+  color: white;
+}
+
+.profile-card .card-body {
+  padding: 1.5rem;
+}
+
+/* Avatar Section */
+.profile-avatar-section {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0 auto;
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+}
+
+/* Profile Info */
+.profile-info {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-info h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.profile-badge-premium {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1a1f2e;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.profile-badge-free {
+  background-color: #6b7280;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+/* Quick Stats */
+.profile-stats {
+  padding: 1.5rem 1rem;
+}
+
+.profile-stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-stat-item:last-child {
+  border-bottom: none;
+}
+
+.profile-stat-label {
+  color: #8b92a7;
+  font-size: 0.875rem;
+}
+
+.profile-stat-value {
+  color: white;
+  font-weight: 600;
+}
+
+/* Input Fields */
+.profile-input {
+  background-color: #0a0e1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.profile-input:focus {
+  background-color: #0a0e1a;
+  border-color: #ef4444;
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgba(239, 68, 68, 0.25);
+}
+
+.profile-input:disabled {
+  background-color: rgba(10, 14, 26, 0.5);
+  color: #8b92a7;
+}
+
+/* Statistics Boxes */
+.profile-stat-box {
+  background-color: rgba(10, 14, 26, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.profile-stat-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.2);
+}
+
+.profile-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.profile-stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-stat-content .profile-stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.profile-stat-content .profile-stat-label {
+  font-size: 0.875rem;
+  color: #8b92a7;
+}
+
+/* Premium Info */
+.profile-premium-info {
+  background-color: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .profile-page {
+    padding: 1rem;
+  }
+  
+  .profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+}

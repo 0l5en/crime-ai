@@ -41,6 +41,7 @@ const CaseDashboard = () => {
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
+    navigate(`/case/${caseId}?tab=${tab}`, { replace: true });
   };
 
   const { data: crimeCase, isLoading: caseLoading } = useCrimeCase(caseId || '');
@@ -52,6 +53,39 @@ const CaseDashboard = () => {
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId || '');
   const { data: forensicPathologist, isLoading: pathologistLoading } = useForensicPathologist(caseId || '');
   const { data: evidenceReports, isLoading: reportsLoading } = useEvidenceReports(selectedEvidence?.id?.toString() || '', selectedEvidence ? undefined : '');
+
+  // Restore selected witness from URL parameter
+  useEffect(() => {
+    const witnessId = searchParams.get('witnessId');
+    if (witnessId && witnesses?.items && !selectedWitness) {
+      const witness = witnesses.items.find((w: any) => w.id?.toString() === witnessId);
+      if (witness) {
+        setSelectedWitness(witness);
+      }
+    }
+  }, [searchParams, witnesses, selectedWitness]);
+
+  // Restore selected suspect from URL parameter
+  useEffect(() => {
+    const suspectId = searchParams.get('suspectId');
+    if (suspectId && suspects?.items && !selectedSuspect) {
+      const suspect = suspects.items.find((s: any) => s.id?.toString() === suspectId);
+      if (suspect) {
+        setSelectedSuspect(suspect);
+      }
+    }
+  }, [searchParams, suspects, selectedSuspect]);
+
+  // Restore selected evidence from URL parameter
+  useEffect(() => {
+    const evidenceId = searchParams.get('evidenceId');
+    if (evidenceId && evidences?.items && !selectedEvidence) {
+      const evidence = evidences.items.find((e: any) => e.id?.toString() === evidenceId);
+      if (evidence) {
+        setSelectedEvidence(evidence);
+      }
+    }
+  }, [searchParams, evidences, selectedEvidence]);
 
   const getImageColor = (index: number) => {
     const colors = [
@@ -67,18 +101,22 @@ const CaseDashboard = () => {
 
   const handleWitnessSelect = (witness: any) => {
     setSelectedWitness(witness);
+    navigate(`/case/${caseId}?tab=witnesses&witnessId=${witness.id}`, { replace: true });
   };
 
   const handleSuspectSelect = (suspect: any) => {
     setSelectedSuspect(suspect);
+    navigate(`/case/${caseId}?tab=suspects&suspectId=${suspect.id}`, { replace: true });
   };
 
   const handleBackToWitnessList = () => {
     setSelectedWitness(null);
+    navigate(`/case/${caseId}?tab=witnesses`, { replace: true });
   };
 
   const handleBackToSuspectList = () => {
     setSelectedSuspect(null);
+    navigate(`/case/${caseId}?tab=suspects`, { replace: true });
   };
 
   // Scroll to top when evidence is selected
@@ -90,10 +128,12 @@ const CaseDashboard = () => {
 
   const handleEvidenceSelect = (evidence: any) => {
     setSelectedEvidence(evidence);
+    navigate(`/case/${caseId}?tab=evidence&evidenceId=${evidence.id}`, { replace: true });
   };
 
   const handleBackToEvidenceList = () => {
     setSelectedEvidence(null);
+    navigate(`/case/${caseId}?tab=evidence`, { replace: true });
   };
 
   return (

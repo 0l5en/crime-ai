@@ -3,9 +3,10 @@ import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnsw
 import { useInterrogations } from '@/hooks/useInterrogations';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import type { components } from '@/openapi/crimeAiSchema';
-import { ArrowLeft, Send } from 'lucide-react';
+import { ArrowLeft, Send, Fingerprint } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useIsMobile } from '@/hooks/use-mobile';
 import ConversationHistory from './ConversationHistory';
 
 type PersonDto = components['schemas']['PersonDto'];
@@ -19,6 +20,7 @@ interface InterrogationViewProps {
 const InterrogationView = ({ person, onBack, embedded = false }: InterrogationViewProps) => {
   const user = useUserContext();
   const { t } = useTranslation('caseDashboard');
+  const isMobile = useIsMobile();
   const [question, setQuestion] = useState('');
   const [interrogationId, setInterrogationId] = useState<string | null>(null);
 
@@ -146,10 +148,13 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
             </div>
 
             <div>
-              <h2 className="h3 mb-1">
-                {t('interrogation.interrogationWith')} {person.name}
+              <h2 className={`${isMobile ? 'h6' : 'h3'} mb-1`}>
+                {person.roles.includes('WITNESS') 
+                  ? `${t('interrogation.questioningOf')} ${person.name}`
+                  : `${t('interrogation.interrogationWith')} ${person.name}`
+                }
               </h2>
-              <p className="text-muted mb-0">
+              <p className={`text-muted mb-0 ${isMobile ? 'small' : ''}`}>
                 {person.age} {t('interrogation.yearsOld')} • {person.profession}
               </p>
             </div>
@@ -172,13 +177,17 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
               placeholder={t('interrogation.typePlaceholder')}
               disabled={createAnswerMutation.isPending}
             />
-            <button
-              type="submit"
-              disabled={!question.trim() || createAnswerMutation.isPending}
-              className="btn btn-primary"
-            >
-              <Send style={{ width: '16px', height: '16px' }} />
-            </button>
+                <button
+                  type="submit"
+                  disabled={!question.trim() || createAnswerMutation.isPending}
+                  className="btn btn-primary"
+                >
+                  {createAnswerMutation.isPending ? (
+                    <Fingerprint className="animate-spin-fingerprint" size={16} />
+                  ) : (
+                    <Send style={{ width: '16px', height: '16px' }} />
+                  )}
+                </button>
           </form>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useUserContext } from '@/contexts/UserContext';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import { format } from 'date-fns';
-import { Send } from 'lucide-react';
+import { Send, Fingerprint } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
@@ -120,9 +120,7 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
                   disabled={!question.trim() || createAnswer.isPending}
                 >
                   {createAnswer.isPending ? (
-                    <div className="spinner-border spinner-border-sm me-2" role="status">
-                      <span className="visually-hidden">{t('evidenceReport.loading')}</span>
-                    </div>
+                    <Fingerprint className="animate-spin-fingerprint" size={16} />
                   ) : (
                     <Send size={16} />
                   )}
