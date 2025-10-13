@@ -1,10 +1,10 @@
-import { useState, useEffect, useCallback } from "react";
-import { useKeycloak } from "@/contexts/KeycloakContext";
-import { useCrimeCases } from "@/hooks/useCrimeCases";
-import { useTranslation } from "react-i18next";
+import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { useUserContext } from '@/contexts/UserContext';
+import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Cases = () => {
   const { t } = useTranslation("cases");
@@ -17,7 +17,7 @@ const Cases = () => {
     language: "all", // 'all', 'german', 'english'
   });
 
-  const { user } = useKeycloak();
+  const user = useUserContext();
 
   const {
     data: crimeCases,

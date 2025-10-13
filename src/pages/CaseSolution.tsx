@@ -2,25 +2,25 @@
 import EvidenceSelectionCard from "@/components/EvidenceSelectionCard";
 import Header from "@/components/Header";
 import MotiveSelectionCard from "@/components/MotiveSelectionCard";
+import StarRating from "@/components/StarRating";
 import SuspectSelectionCard from "@/components/SuspectSelectionCard";
-import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useUserContext } from '@/contexts/UserContext';
 import { useCaseEvidences } from "@/hooks/useCaseEvidences";
 import { useCaseMotives } from "@/hooks/useCaseMotives";
+import { useCaseRating } from "@/hooks/useCaseRating";
 import { useCaseSuspects } from "@/hooks/useCaseSuspects";
 import { useCreateSolutionAttempt } from "@/hooks/useCreateSolutionAttempt";
 import { useCrimeCase } from "@/hooks/useCrimeCase";
 import { useSolutionAttempts } from "@/hooks/useSolutionAttempts";
-import { useCaseRating } from "@/hooks/useCaseRating";
-import StarRating from "@/components/StarRating";
 import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CaseSolution = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
-  const { user } = useKeycloak();
+  const user = useUserContext();
   const { t } = useTranslation('caseDashboard');
 
   const [selectedSuspects, setSelectedSuspects] = useState<number[]>([]);

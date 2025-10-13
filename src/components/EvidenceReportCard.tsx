@@ -1,5 +1,5 @@
 
-import { useKeycloak } from '@/contexts/KeycloakContext';
+import { useUserContext } from '@/contexts/UserContext';
 import { useCreateInterrogationAnswer } from '@/hooks/useCreateInterrogationAnswer';
 import { useQuestionAndAnswers } from '@/hooks/useQuestionAndAnswers';
 import { format } from 'date-fns';
@@ -20,7 +20,7 @@ interface EvidenceReportCardProps {
 
 const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: EvidenceReportCardProps) => {
   const [question, setQuestion] = useState('');
-  const { user } = useKeycloak();
+  const user = useUserContext();
   const { t } = useTranslation('caseDashboard');
 
   const createAnswer = useCreateInterrogationAnswer();

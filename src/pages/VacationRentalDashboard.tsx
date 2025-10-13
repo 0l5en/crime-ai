@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import QRCodeCard from "@/components/QRCodeCard";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
-import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useUserContext } from '@/contexts/UserContext';
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useEffect, useState } from "react";
 
@@ -16,7 +16,7 @@ interface GeneratingCase {
 }
 
 const VacationRentalDashboard = () => {
-  const { user } = useKeycloak();
+  const user = useUserContext();
   const { data: crimeCases, isLoading, error, refetch } = useCrimeCases({
     caseGeneratorFormType: 'VACATION_RENTAL',
     userId: user?.email || '',

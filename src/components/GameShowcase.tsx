@@ -1,7 +1,7 @@
-import { useKeycloak } from "@/contexts/KeycloakContext";
+import { useUserContext } from '@/contexts/UserContext';
 import { useCrimeCases } from "@/hooks/useCrimeCases";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import GameCard from "./GameCard";
 
 const GameShowcase = () => {
@@ -10,7 +10,7 @@ const GameShowcase = () => {
     caseGeneratorFormType: 'BASIC',
     status: 'PUBLISHED,PREMIUM'
   });
-  const { user } = useKeycloak();
+  const user = useUserContext();
   const navigate = useNavigate();
 
   const getImageColor = (index: number) => {
