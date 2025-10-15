@@ -95,43 +95,6 @@ const EvidenceReportCard = ({ id, analysis, methods, conclusion, personId }: Evi
             </ReactMarkdown>
           </div>
         </div>
-
-        <hr className="border-secondary my-3" />
-
-        {/* Interrogation Section */}
-        <div className="mt-3">
-          <h6 className="mb-3">{t('evidenceReport.discussion')}</h6>
-
-          {/* Question Input Form */}
-          {personId && user?.email && (
-            <form onSubmit={handleSubmit} className="mb-3">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control border-secondary"
-                  placeholder={t('evidenceReport.askPlaceholder')}
-                  value={question}
-                  onChange={(e) => setQuestion(e.target.value)}
-                  disabled={createAnswer.isPending}
-                />
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={!question.trim() || createAnswer.isPending}
-                >
-                  {createAnswer.isPending ? (
-                    <Fingerprint className="animate-spin-fingerprint" size={16} />
-                  ) : (
-                    <Send size={16} />
-                  )}
-                </button>
-              </div>
-            </form>
-          )}
-
-          <ConversationHistory questionAndAnswers={questionAndAnswers?.items ?? []} pending={qaLoading} />
-
-        </div>
       </div>
     </div>
   );
