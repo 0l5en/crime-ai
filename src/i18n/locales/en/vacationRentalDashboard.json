@@ -1,0 +1,35 @@
+{
+  "loading": "Loading...",
+  "loadingCases": "Loading your Vacation Rental Cases...",
+  "errorLoading": "Error loading cases:",
+  "tabs": {
+    "cases": "Cases",
+    "promotion": "Promotion",
+    "subscription": "Subscription"
+  },
+  "cases": {
+    "noCasesTitle": "No Cases Available Yet",
+    "noCasesMessage": "You haven't created any Vacation Rental Cases yet. Create your first case through the admin area.",
+    "createFirstCase": "Create First Case",
+    "readyCases": "Ready Cases",
+    "generatingCases": "Generating Cases",
+    "totalCases": "Total Cases"
+  },
+  "promotion": {
+    "noQRCodesTitle": "No QR Codes Available",
+    "noQRCodesMessage": "Create some vacation rental cases first to generate QR codes for promotion.",
+    "goToCases": "Go to Cases"
+  },
+  "subscription": {
+    "title": "Subscription",
+    "message": "Manage your subscription and billing information here."
+  },
+  "header": {
+    "title": "Vacation Rental Dashboard",
+    "subtitle": "Manage your vacation rental cases, promotions and subscription"
+  },
+  "createForm": {
+    "title": "Create New Vacation Rental Case",
+    "backToOverview": "Back to Overview"
+  }
+}

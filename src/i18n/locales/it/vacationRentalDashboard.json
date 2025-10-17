@@ -1,0 +1,35 @@
+{
+  "loading": "Caricamento...",
+  "loadingCases": "Caricamento dei tuoi casi di affitto vacanze...",
+  "errorLoading": "Errore nel caricamento dei casi:",
+  "tabs": {
+    "cases": "Casi",
+    "promotion": "Promozione",
+    "subscription": "Abbonamento"
+  },
+  "cases": {
+    "noCasesTitle": "Nessun caso disponibile ancora",
+    "noCasesMessage": "Non hai ancora creato alcun caso di affitto vacanze. Crea il tuo primo caso attraverso l'area amministrativa.",
+    "createFirstCase": "Crea il primo caso",
+    "readyCases": "Casi pronti",
+    "generatingCases": "Casi in generazione",
+    "totalCases": "Casi totali"
+  },
+  "promotion": {
+    "noQRCodesTitle": "Nessun codice QR disponibile",
+    "noQRCodesMessage": "Crea prima alcuni casi di affitto vacanze per generare codici QR per la promozione.",
+    "goToCases": "Vai ai casi"
+  },
+  "subscription": {
+    "title": "Abbonamento",
+    "message": "Gestisci qui il tuo abbonamento e le informazioni di fatturazione."
+  },
+  "header": {
+    "title": "Dashboard Affitti Vacanze",
+    "subtitle": "Gestisci i tuoi casi di affitto vacanze, promozioni e abbonamento"
+  },
+  "createForm": {
+    "title": "Crea nuovo caso di affitto vacanze",
+    "backToOverview": "Torna alla panoramica"
+  }
+}

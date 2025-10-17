@@ -1,0 +1,35 @@
+{
+  "loading": "Lädt...",
+  "loadingCases": "Ihre Ferienwohnung-Fälle werden geladen...",
+  "errorLoading": "Fehler beim Laden der Fälle:",
+  "tabs": {
+    "cases": "Fälle",
+    "promotion": "Werbung",
+    "subscription": "Abo"
+  },
+  "cases": {
+    "noCasesTitle": "Noch keine Fälle verfügbar",
+    "noCasesMessage": "Sie haben noch keine Ferienwohnung-Fälle erstellt. Erstellen Sie Ihren ersten Fall über den Admin-Bereich.",
+    "createFirstCase": "Ersten Fall erstellen",
+    "readyCases": "Fertige Fälle",
+    "generatingCases": "Fälle werden generiert",
+    "totalCases": "Gesamt-Fälle"
+  },
+  "promotion": {
+    "noQRCodesTitle": "Keine QR-Codes verfügbar",
+    "noQRCodesMessage": "Erstellen Sie zuerst einige Ferienwohnung-Fälle, um QR-Codes für die Werbung zu generieren.",
+    "goToCases": "Zu den Fällen"
+  },
+  "subscription": {
+    "title": "Abonnement",
+    "message": "Verwalten Sie hier Ihr Abonnement und Ihre Rechnungsinformationen."
+  },
+  "header": {
+    "title": "Ferienwohnung Dashboard",
+    "subtitle": "Verwalten Sie Ihre Ferienwohnung-Fälle, Werbung und Abonnement"
+  },
+  "createForm": {
+    "title": "Neuen Ferienwohnung-Fall erstellen",
+    "backToOverview": "Zurück zur Übersicht"
+  }
+}
