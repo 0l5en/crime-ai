@@ -1,0 +1,41 @@
+{
+  "title": "Tableau de bord Location de vacances",
+  "subtitle": "Gérez vos cas de location de vacances, promotions et abonnement",
+  "loading": "Chargement...",
+  "loadingCases": "Chargement de vos cas de location de vacances...",
+  "errorLoading": "Erreur lors du chargement des cas",
+  "tabs": {
+    "cases": "Cas",
+    "promotion": "Promotion",
+    "subscription": "Abonnement"
+  },
+  "casesTab": {
+    "noCasesTitle": "Aucun cas disponible pour le moment",
+    "noCasesDescription": "Vous n'avez pas encore créé de cas de location de vacances. Créez votre premier cas via l'espace administrateur.",
+    "createFirstCase": "Créer le premier cas",
+    "stats": {
+      "readyCases": "Cas prêts",
+      "generatingCases": "Cas en création",
+      "totalCases": "Total des cas"
+    }
+  },
+  "promotionTab": {
+    "noQRCodesTitle": "Aucun QR code disponible",
+    "noQRCodesDescription": "Créez d'abord des cas de location de vacances pour générer des QR codes pour la promotion.",
+    "goToCases": "Aller aux cas",
+    "scanToAccess": "Scannez pour accéder directement au cas",
+    "downloadQRCode": "Télécharger le QR code"
+  },
+  "subscriptionTab": {
+    "title": "Abonnement",
+    "description": "Gérez votre abonnement et vos informations de facturation ici."
+  },
+  "form": {
+    "title": "Créer un nouveau cas de location de vacances",
+    "backToOverview": "Retour à l'aperçu"
+  },
+  "addCaseCard": {
+    "title": "Ajouter un nouveau cas",
+    "description": "Créer un nouveau cas de location de vacances"
+  }
+}

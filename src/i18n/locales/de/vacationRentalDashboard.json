@@ -1,0 +1,41 @@
+{
+  "title": "Ferienwohnungs-Dashboard",
+  "subtitle": "Verwalten Sie Ihre Ferienwohnungs-Cases, Promotions und Abonnement",
+  "loading": "Lädt...",
+  "loadingCases": "Lade Ihre Ferienwohnungs-Cases...",
+  "errorLoading": "Fehler beim Laden der Cases",
+  "tabs": {
+    "cases": "Cases",
+    "promotion": "Promotion",
+    "subscription": "Abonnement"
+  },
+  "casesTab": {
+    "noCasesTitle": "Noch keine Cases verfügbar",
+    "noCasesDescription": "Sie haben noch keine Ferienwohnungs-Cases erstellt. Erstellen Sie Ihren ersten Case über den Admin-Bereich.",
+    "createFirstCase": "Ersten Case erstellen",
+    "stats": {
+      "readyCases": "Fertige Cases",
+      "generatingCases": "Cases in Erstellung",
+      "totalCases": "Cases gesamt"
+    }
+  },
+  "promotionTab": {
+    "noQRCodesTitle": "Keine QR-Codes verfügbar",
+    "noQRCodesDescription": "Erstellen Sie zuerst einige Ferienwohnungs-Cases, um QR-Codes für die Promotion zu generieren.",
+    "goToCases": "Zu den Cases",
+    "scanToAccess": "Scannen Sie, um direkt auf den Case zuzugreifen",
+    "downloadQRCode": "QR-Code herunterladen"
+  },
+  "subscriptionTab": {
+    "title": "Abonnement",
+    "description": "Verwalten Sie hier Ihr Abonnement und Ihre Rechnungsinformationen."
+  },
+  "form": {
+    "title": "Neuen Ferienwohnungs-Case erstellen",
+    "backToOverview": "Zurück zur Übersicht"
+  },
+  "addCaseCard": {
+    "title": "Neuen Case hinzufügen",
+    "description": "Erstellen Sie einen neuen Ferienwohnungs-Case"
+  }
+}

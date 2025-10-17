@@ -1,5 +1,6 @@
 import QRCode from 'qrcode';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface QRCodeCardProps {
   caseId: string;
@@ -7,6 +8,7 @@ interface QRCodeCardProps {
 }
 
 const QRCodeCard = ({ caseId, title }: QRCodeCardProps) => {
+  const { t } = useTranslation('vacationRentalDashboard');
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>('');
   const caseUrl = `https://detectivesgame.com/case/${caseId}`;
 
@@ -59,7 +61,7 @@ const QRCodeCard = ({ caseId, title }: QRCodeCardProps) => {
 
         <div className="mt-auto">
           <p className="text-muted small mb-3">
-            Scan to access case directly
+            {t('promotionTab.scanToAccess')}
           </p>
           <button
             onClick={handleDownload}
@@ -67,7 +69,7 @@ const QRCodeCard = ({ caseId, title }: QRCodeCardProps) => {
             disabled={!qrCodeDataUrl}
           >
             <i className="bi bi-download me-2"></i>
-            Download QR Code
+            {t('promotionTab.downloadQRCode')}
           </button>
         </div>
       </div>

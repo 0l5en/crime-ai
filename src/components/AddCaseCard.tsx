@@ -1,8 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 interface AddCaseCardProps {
   onClick: () => void;
 }
 
 const AddCaseCard = ({ onClick }: AddCaseCardProps) => {
+  const { t } = useTranslation('vacationRentalDashboard');
+  
   return (
     <div
       className="card border-secondary card-hover h-100 d-flex align-items-center justify-content-center"
@@ -13,9 +17,9 @@ const AddCaseCard = ({ onClick }: AddCaseCardProps) => {
         <div className="mb-3">
           <i className="bi bi-plus-circle display-1 text-danger"></i>
         </div>
-        <h5 className="card-title mb-2">Add New Case</h5>
+        <h5 className="card-title mb-2">{t('addCaseCard.title')}</h5>
         <p className="card-text text-muted">
-          Create a new vacation rental case
+          {t('addCaseCard.description')}
         </p>
       </div>
     </div>

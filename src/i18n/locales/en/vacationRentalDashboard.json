@@ -1,0 +1,41 @@
+{
+  "title": "Vacation Rental Dashboard",
+  "subtitle": "Manage your vacation rental cases, promotions and subscription",
+  "loading": "Loading...",
+  "loadingCases": "Loading your Vacation Rental Cases...",
+  "errorLoading": "Error loading cases",
+  "tabs": {
+    "cases": "Cases",
+    "promotion": "Promotion",
+    "subscription": "Subscription"
+  },
+  "casesTab": {
+    "noCasesTitle": "No Cases Available Yet",
+    "noCasesDescription": "You haven't created any Vacation Rental Cases yet. Create your first case through the admin area.",
+    "createFirstCase": "Create First Case",
+    "stats": {
+      "readyCases": "Ready Cases",
+      "generatingCases": "Generating Cases",
+      "totalCases": "Total Cases"
+    }
+  },
+  "promotionTab": {
+    "noQRCodesTitle": "No QR Codes Available",
+    "noQRCodesDescription": "Create some vacation rental cases first to generate QR codes for promotion.",
+    "goToCases": "Go to Cases",
+    "scanToAccess": "Scan to access case directly",
+    "downloadQRCode": "Download QR Code"
+  },
+  "subscriptionTab": {
+    "title": "Subscription",
+    "description": "Manage your subscription and billing information here."
+  },
+  "form": {
+    "title": "Create New Vacation Rental Case",
+    "backToOverview": "Back to Overview"
+  },
+  "addCaseCard": {
+    "title": "Add New Case",
+    "description": "Create a new vacation rental case"
+  }
+}

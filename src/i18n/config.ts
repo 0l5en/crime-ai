@@ -48,6 +48,11 @@ import emailsEN from './locales/en/emails.json';
 import emailsIT from './locales/it/emails.json';
 import emailsFR from './locales/fr/emails.json';
 
+import vacationRentalDashboardDE from './locales/de/vacationRentalDashboard.json';
+import vacationRentalDashboardEN from './locales/en/vacationRentalDashboard.json';
+import vacationRentalDashboardIT from './locales/it/vacationRentalDashboard.json';
+import vacationRentalDashboardFR from './locales/fr/vacationRentalDashboard.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -59,6 +64,7 @@ const resources = {
     register: registerDE,
     venueRegister: venueRegisterDE,
     emails: emailsDE,
+    vacationRentalDashboard: vacationRentalDashboardDE,
   },
   en: {
     common: commonEN,
@@ -70,6 +76,7 @@ const resources = {
     register: registerEN,
     venueRegister: venueRegisterEN,
     emails: emailsEN,
+    vacationRentalDashboard: vacationRentalDashboardEN,
   },
   it: {
     common: commonIT,
@@ -81,6 +88,7 @@ const resources = {
     register: registerIT,
     venueRegister: venueRegisterIT,
     emails: emailsIT,
+    vacationRentalDashboard: vacationRentalDashboardIT,
   },
   fr: {
     common: commonFR,
@@ -92,6 +100,7 @@ const resources = {
     register: registerFR,
     venueRegister: venueRegisterFR,
     emails: emailsFR,
+    vacationRentalDashboard: vacationRentalDashboardFR,
   },
 };
 

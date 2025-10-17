@@ -1,5 +1,6 @@
 import { CreditCard, FileText, Home } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
+import { useTranslation } from 'react-i18next';
 
 interface VacationRentalDashboardTabsProps {
   activeTab: string;
@@ -7,12 +8,13 @@ interface VacationRentalDashboardTabsProps {
 }
 
 const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalDashboardTabsProps) => {
+  const { t } = useTranslation('vacationRentalDashboard');
   const isMobile = useIsMobile();
 
   const tabs = [
-    { id: 'cases', label: 'Cases', icon: Home },
-    { id: 'promotion', label: 'Promotion', icon: FileText },
-    { id: 'subscription', label: 'Subscription', icon: CreditCard },
+    { id: 'cases', label: t('tabs.cases'), icon: Home },
+    { id: 'promotion', label: t('tabs.promotion'), icon: FileText },
+    { id: 'subscription', label: t('tabs.subscription'), icon: CreditCard },
   ];
 
   return (

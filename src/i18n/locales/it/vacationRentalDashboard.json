@@ -1,0 +1,41 @@
+{
+  "title": "Dashboard Affitti Vacanze",
+  "subtitle": "Gestisci i tuoi casi di affitti vacanze, promozioni e abbonamento",
+  "loading": "Caricamento...",
+  "loadingCases": "Caricamento dei tuoi casi di affitti vacanze...",
+  "errorLoading": "Errore nel caricamento dei casi",
+  "tabs": {
+    "cases": "Casi",
+    "promotion": "Promozione",
+    "subscription": "Abbonamento"
+  },
+  "casesTab": {
+    "noCasesTitle": "Nessun caso disponibile",
+    "noCasesDescription": "Non hai ancora creato casi di affitti vacanze. Crea il tuo primo caso tramite l'area amministratore.",
+    "createFirstCase": "Crea il primo caso",
+    "stats": {
+      "readyCases": "Casi pronti",
+      "generatingCases": "Casi in creazione",
+      "totalCases": "Casi totali"
+    }
+  },
+  "promotionTab": {
+    "noQRCodesTitle": "Nessun QR code disponibile",
+    "noQRCodesDescription": "Crea prima alcuni casi di affitti vacanze per generare QR code per la promozione.",
+    "goToCases": "Vai ai casi",
+    "scanToAccess": "Scansiona per accedere direttamente al caso",
+    "downloadQRCode": "Scarica QR code"
+  },
+  "subscriptionTab": {
+    "title": "Abbonamento",
+    "description": "Gestisci qui il tuo abbonamento e le informazioni di fatturazione."
+  },
+  "form": {
+    "title": "Crea nuovo caso di affitti vacanze",
+    "backToOverview": "Torna alla panoramica"
+  },
+  "addCaseCard": {
+    "title": "Aggiungi nuovo caso",
+    "description": "Crea un nuovo caso di affitti vacanze"
+  }
+}
