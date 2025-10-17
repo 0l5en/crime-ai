@@ -8,7 +8,6 @@ import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTab
 import { useUserContext } from '@/contexts/UserContext';
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useEffect, useState } from "react";
-import { useTranslation } from 'react-i18next';
 
 interface GeneratingCase {
   tempId: string;
@@ -17,7 +16,6 @@ interface GeneratingCase {
 }
 
 const VacationRentalDashboard = () => {
-  const { t } = useTranslation('vacationRentalDashboard');
   const user = useUserContext();
   const { data: crimeCases, isLoading, error, refetch } = useCrimeCases({
     caseGeneratorFormType: 'VACATION_RENTAL',
@@ -67,9 +65,9 @@ const VacationRentalDashboard = () => {
         <div className="container-fluid py-5">
           <div className="text-center">
             <div className="spinner-border text-danger" role="status">
-              <span className="visually-hidden">{t('loading')}</span>
+              <span className="visually-hidden">Loading...</span>
             </div>
-            <p className="mt-3 text-muted">{t('loadingCases')}</p>
+            <p className="mt-3 text-muted">Loading your Vacation Rental Cases...</p>
           </div>
         </div>
       </div>
@@ -84,7 +82,7 @@ const VacationRentalDashboard = () => {
           <div className="text-center">
             <div className="alert alert-danger" role="alert">
               <i className="bi bi-exclamation-triangle-fill me-2"></i>
-              {t('errorLoading')} {error.message}
+              Error loading cases: {error.message}
             </div>
           </div>
         </div>
@@ -114,16 +112,17 @@ const VacationRentalDashboard = () => {
         <div className="text-center py-5">
           <div className="rounded-3 p-5 border border-secondary">
             <i className="bi bi-house-door display-1 text-muted mb-3"></i>
-            <h3 className="mb-3">{t('cases.noCasesTitle')}</h3>
+            <h3 className="mb-3">No Cases Available Yet</h3>
             <p className="text-muted mb-4">
-              {t('cases.noCasesMessage')}
+              You haven't created any Vacation Rental Cases yet.
+              Create your first case through the admin area.
             </p>
             <button
               onClick={handleCreateNewCase}
               className="btn btn-danger btn-lg"
             >
               <i className="bi bi-plus-circle me-2"></i>
-              {t('cases.createFirstCase')}
+              Create First Case
             </button>
           </div>
         </div>
@@ -166,13 +165,13 @@ const VacationRentalDashboard = () => {
             <div className="col-md-4">
               <div className="bg-body rounded p-3">
                 <div className="display-6 text-danger fw-bold">{cases.length}</div>
-                <div className="text-muted small">{t('cases.readyCases')}</div>
+                <div className="text-muted small">Ready Cases</div>
               </div>
             </div>
             <div className="col-md-4">
               <div className="bg-body rounded p-3">
                 <div className="display-6 text-primary fw-bold">{generatingCases.length}</div>
-                <div className="text-muted small">{t('cases.generatingCases')}</div>
+                <div className="text-muted small">Generating Cases</div>
               </div>
             </div>
             <div className="col-md-4">
@@ -180,7 +179,7 @@ const VacationRentalDashboard = () => {
                 <div className="display-6 text-primary fw-bold">
                   {cases.length + generatingCases.length}
                 </div>
-                <div className="text-muted small">{t('cases.totalCases')}</div>
+                <div className="text-muted small">Total Cases</div>
               </div>
             </div>
           </div>
@@ -195,16 +194,16 @@ const VacationRentalDashboard = () => {
         <div className="text-center py-5">
           <div className="rounded-3 p-5 border border-secondary">
             <i className="bi bi-qr-code display-1 text-muted mb-3"></i>
-            <h3 className="mb-3">{t('promotion.noQRCodesTitle')}</h3>
+            <h3 className="mb-3">No QR Codes Available</h3>
             <p className="text-muted mb-4">
-              {t('promotion.noQRCodesMessage')}
+              Create some vacation rental cases first to generate QR codes for promotion.
             </p>
             <button
               onClick={() => setActiveTab('cases')}
               className="btn btn-danger"
             >
               <i className="bi bi-plus-circle me-2"></i>
-              {t('promotion.goToCases')}
+              Go to Cases
             </button>
           </div>
         </div>
@@ -227,9 +226,9 @@ const VacationRentalDashboard = () => {
     <div className="text-center py-5">
       <div className="rounded-3 p-5 border border-secondary">
         <i className="bi bi-credit-card display-1 text-muted mb-3"></i>
-        <h3 className="mb-3">{t('subscription.title')}</h3>
+        <h3 className="mb-3">Subscription</h3>
         <p className="text-muted mb-4">
-          {t('subscription.message')}
+          Manage your subscription and billing information here.
         </p>
       </div>
     </div>
@@ -245,10 +244,10 @@ const VacationRentalDashboard = () => {
               {/* Header Section */}
               <div className="text-center mb-5">
                 <h1 className="display-4 fw-bold mb-3">
-                  {t('header.title')}
+                  Vacation Rental Dashboard
                 </h1>
                 <p className="lead text-muted">
-                  {t('header.subtitle')}
+                  Manage your vacation rental cases, promotions and subscription
                 </p>
               </div>
 
@@ -271,14 +270,14 @@ const VacationRentalDashboard = () => {
               {/* Header Section for Form */}
               <div className="text-center mb-5">
                 <h1 className="display-4 fw-bold mb-3">
-                  {t('createForm.title')}
+                  Create New Vacation Rental Case
                 </h1>
                 <button
                   onClick={handleFormCancel}
                   className="btn btn-outline-secondary mb-4"
                 >
                   <i className="bi bi-arrow-left me-2"></i>
-                  {t('createForm.backToOverview')}
+                  Back to Overview
                 </button>
               </div>
 
