@@ -116,7 +116,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
       <div
         className="position-fixed bg-white border rounded-top case-notes-panel"
         style={{
-          bottom: isOpen ? '0' : '-400px',
+          bottom: isOpen ? '0' : '-100vh',
           left: '20px',
           right: '20px',
           height: '400px',
