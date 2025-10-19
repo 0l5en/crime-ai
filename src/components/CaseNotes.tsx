@@ -78,7 +78,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
       {/* Floating Notes Button */}
       <button
         onClick={handleToggle}
-        className="btn btn-primary position-fixed d-flex align-items-center justify-content-center"
+        className="btn btn-primary position-fixed d-flex align-items-center justify-content-center case-notes-button"
         style={{
           bottom: '20px',
           right: '20px',
@@ -98,7 +98,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="position-fixed"
+          className="position-fixed case-notes-backdrop"
           style={{
             top: 0,
             left: 0,
@@ -106,7 +106,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
             bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
             backdropFilter: 'blur(4px)',
-            zIndex: 1040,
+            zIndex: 1045,
           }}
           onClick={handleClose}
         />

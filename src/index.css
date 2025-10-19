@@ -397,6 +397,38 @@ body {
   }
 }
 
+/* Responsive adjustments for floating notes button */
+@media (max-width: 768px) {
+  .case-notes-button {
+    bottom: 80px !important;
+    right: 15px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+/* Extra adjustments for very small screens (portrait) */
+@media (max-width: 480px) and (orientation: portrait) {
+  .case-notes-button {
+    bottom: 70px !important;
+    right: 12px !important;
+    z-index: 1055 !important;
+  }
+}
+
+/* Z-index hierarchy for mobile overlays */
+.offcanvas-backdrop {
+  z-index: 1040 !important;
+}
+
+.case-notes-backdrop {
+  z-index: 1045 !important;
+}
+
+.case-notes-panel {
+  z-index: 1060 !important;
+}
+
 /* Footer link hover effect */
 .footer-link:hover {
   color: var(--bs-primary) !important;
