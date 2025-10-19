@@ -42,10 +42,11 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
     };
   }, [notes, caseId]);
 
-  // Focus textarea when panel opens
+  // Focus textarea and scroll to top when panel opens
   useEffect(() => {
     if (isOpen && textareaRef.current) {
       textareaRef.current.focus();
+      textareaRef.current.scrollTop = 0;
     }
   }, [isOpen]);
 
