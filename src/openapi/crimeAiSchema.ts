@@ -404,6 +404,40 @@ export interface paths {
     patch: operations["updateNotification"];
     trace?: never;
   };
+  "/crimecase-generation-attempt-all": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of all CrimeCaseGenerationAttempts. */
+    get: operations["listAllCaseGenerationAttempts"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/crimecase-generation-attempt-my": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of my CrimeCaseGenerationAttempts. */
+    get: operations["listMyCaseGenerationAttempts"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -660,6 +694,15 @@ export interface components {
     };
     ResultSetNotification: {
       items?: components["schemas"]["NotificationDto"][];
+    };
+    CrimeCaseGenerationAttemptDto: {
+      /** Format: int64 */
+      id: number;
+      status: "CREATED" | "SUBSCRIBED";
+      created: string;
+    };
+    ResultSetCrimeCaseGenerationAttemptDto: {
+      items?: components["schemas"]["CrimeCaseGenerationAttemptDto"][];
     };
     CreateCaseGeneratorFormBasicDto: {
       caseGeneratorForm: "BASIC" | "VACATION_RENTAL";
@@ -1804,6 +1847,60 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listAllCaseGenerationAttempts: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetCrimeCaseGenerationAttemptDto"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listMyCaseGenerationAttempts: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetCrimeCaseGenerationAttemptDto"];
+        };
       };
       /** @description if any internal error occurs while processing the request */
       500: {
