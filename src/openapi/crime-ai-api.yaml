@@ -691,6 +691,32 @@ paths:
           description: Successful operation.
         "500":
           description: if any internal error occurs while processing the request
+  /crimecase-generation-attempt-all:
+    get:
+      summary: Get a list of all CrimeCaseGenerationAttempts.
+      operationId: listAllCaseGenerationAttempts
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetCrimeCaseGenerationAttemptDto"
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-generation-attempt-my:
+    get:
+      summary: Get a list of my CrimeCaseGenerationAttempts.
+      operationId: listMyCaseGenerationAttempts
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetCrimeCaseGenerationAttemptDto"
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     UserInfoDto:
@@ -1387,3 +1413,27 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NotificationDto"
+    CrimeCaseGenerationAttemptDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        status:
+          type: string
+          enum:
+          - CREATED
+          - SUBSCRIBED
+        created:
+          type: string
+      required:
+      - created
+      - id
+      - status
+    ResultSetCrimeCaseGenerationAttemptDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/CrimeCaseGenerationAttemptDto"
