@@ -63,10 +63,10 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     name: "nearbySightseeingAttractions"
   });
 
-  // Parse property path from server errors (e.g., "formBase.fullAddress" -> "fullAddress")
+  // Parse property path from server errors (e.g., "formBasic.fullAddress" -> "fullAddress")
   const parsePropertyPath = (propertyPath: string): string => {
-    if (propertyPath.startsWith('formBase.')) {
-      return propertyPath.substring('formBase.'.length);
+    if (propertyPath.startsWith('formBasic.')) {
+      return propertyPath.substring('formBasic.'.length);
     }
     return propertyPath;
   };
@@ -109,7 +109,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     // Prepare the data in the format expected by the API (new structure)
     const formData: CreateCaseGeneratorFormVacationRentalDto = {
       userId: userId,
-      formBase: {
+      formBasic: {
         caseGeneratorForm: "BASIC" as const,
         language: data.language,
         epoch: data.epoch,

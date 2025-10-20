@@ -87,7 +87,7 @@ export interface CreateCaseGeneratorFormBasicDto {
 }
 
 export interface CreateCaseGeneratorFormVacationRentalDto {
-  formBase: CreateCaseGeneratorFormBasicDto;
+  formBasic: CreateCaseGeneratorFormBasicDto;
   venueFloors: number;
   venueBedrooms: number;
   venueBathrooms: number;

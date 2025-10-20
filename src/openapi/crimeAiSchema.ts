@@ -720,7 +720,7 @@ export interface components {
       historicalCulturalContext?: string;
     };
     CreateCaseGeneratorFormVacationRentalDto: {
-      formBase: components["schemas"]["CreateCaseGeneratorFormBasicDto"];
+      formBasic: components["schemas"]["CreateCaseGeneratorFormBasicDto"];
       /** Format: int32 */
       venueFloors: number;
       /** Format: int32 */
