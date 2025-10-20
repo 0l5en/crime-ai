@@ -56,68 +56,6 @@ paths:
                 $ref: "#/components/schemas/ResultSetCrimeCase"
         "500":
           description: if any internal error occurs while processing the request
-    post:
-      summary: start a task to create a new crime case
-      operationId: createCrimeCase
-      requestBody:
-        description: the data required to create a new crime case
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TemplateContextDto"
-        required: true
-      responses:
-        "202":
-          description: If the task was started successfully. The response will contain
-            a Location Header to get the status of the task.
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase-basic:
-    post:
-      summary: start a task to create a new basic crime case
-      operationId: createCrimeCaseBasic
-      requestBody:
-        description: the data required to create a new basic crime case
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
-        required: true
-      responses:
-        "202":
-          description: If the task was started successfully. The response will contain
-            a Location Header to get the status of the task.
-        "400":
-          description: If the request contains faulty input data.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Violations"
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase-vacation-rental:
-    post:
-      summary: start a task to create a new vacation rental crime case
-      operationId: createCrimeCaseVacationRental
-      requestBody:
-        description: the data required to create a new vacation rental crime case
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateCaseGeneratorFormVacationRentalDto"
-        required: true
-      responses:
-        "202":
-          description: If the task was started successfully. The response will contain
-            a Location Header to get the status of the task.
-        "400":
-          description: If the request contains faulty input data.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Violations"
-        "500":
-          description: if any internal error occurs while processing the request
   /crimecase/{id}:
     get:
       summary: get crime case details by id
@@ -346,6 +284,93 @@ paths:
         "201":
           description: successful operation responds with the generated id of the
             entity
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase/{id}/subscription:
+    get:
+      summary: get the subscription of a crime case
+      operationId: getSubscription
+      parameters:
+      - name: id
+        in: path
+        description: crime case id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubscriptionDto"
+        "404":
+          description: the crime case has no subscription
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-basic:
+    post:
+      summary: start a task to create a new basic crime case
+      operationId: createCrimeCaseBasic
+      requestBody:
+        description: the data required to create a new basic crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
+        required: true
+      responses:
+        "202":
+          description: If the task was started successfully. The response will contain
+            a Location Header to get the status of the task.
+        "400":
+          description: If the request contains faulty input data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Violations"
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-vacation-rental:
+    post:
+      summary: start a task to create a new vacation rental crime case
+      operationId: createCrimeCaseVacationRental
+      requestBody:
+        description: the data required to create a new vacation rental crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCaseGeneratorFormVacationRentalDto"
+        required: true
+      responses:
+        "202":
+          description: If the task was started successfully. The response will contain
+            a Location Header to get the status of the task.
+        "400":
+          description: If the request contains faulty input data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Violations"
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-vacation-rental/{id}:
+    post:
+      summary: get payment link for vacation rental form data
+      operationId: createPaymentLinkVacationRental
+      parameters:
+      - name: id
+        in: query
+        description: the id of the data submitted in the vacation rental form
+        schema:
+          type: string
+      responses:
+        "202":
+          description: If the payment link created successfully. The response will
+            contain a Location Header that belongs to the checkout page for the vacation
+            rental crime case.
+        "400":
+          description: If the request contains faulty input data.
         "500":
           description: if any internal error occurs while processing the request
   /interrogation:
@@ -589,25 +614,6 @@ paths:
           description: if there are missing or invalid parameters
         "500":
           description: if any internal error occurs while processing the request
-    post:
-      summary: "Create a new autopsy report for a victim. If a report already exist\
-        \ for the given identifier (reportAuthor, victimId), this operation will do\
-        \ nothing."
-      operationId: createAutopsyReport
-      requestBody:
-        description: the data required to create a new report
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateAutopsyReportDto"
-        required: true
-      responses:
-        "201":
-          description: successful operation without response body
-        "400":
-          description: if an invalid request body was send
-        "500":
-          description: if any internal error occurs while processing the request
   /autopsy-report-request:
     post:
       summary: "Create a new request for autopsy report of a victim. If a request\
@@ -741,136 +747,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/CrimeCaseDto"
-    TemplateContextDto:
-      type: object
-      properties:
-        variables:
-          type: array
-          items:
-            $ref: "#/components/schemas/TemplateVariableDto"
-          uniqueItems: true
-      required:
-      - variables
-    TemplateVariableDto:
-      type: object
-      properties:
-        key:
-          type: string
-          minLength: 1
-        value:
-          type: string
-          minLength: 1
-      required:
-      - key
-      - value
-    CreateCaseGeneratorFormBasicDto:
-      type: object
-      properties:
-        caseGeneratorForm:
-          type: string
-          enum:
-          - BASIC
-          - VACATION_RENTAL
-        language:
-          type: string
-          minLength: 1
-        epoch:
-          type: string
-          enum:
-          - TWENTIES
-          - PRESENT
-          - FUTURE
-        theme:
-          type: string
-          enum:
-          - MURDER
-          - ROBBERY
-          - KIDNAPPING
-        additionalThemeDetails:
-          type: string
-        fullAddress:
-          type: string
-          minLength: 1
-        venueName:
-          type: string
-          minLength: 1
-        venueDescription:
-          type: string
-          minLength: 1
-        nearbySightseeingAttractions:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateSightseeingAttractionDto"
-        approximateYearOfConstruction:
-          type: integer
-          format: int32
-        historicalFeaturesAndLegends:
-          type: string
-        historicalCulturalContext:
-          type: string
-      required:
-      - caseGeneratorForm
-      - epoch
-      - fullAddress
-      - language
-      - nearbySightseeingAttractions
-      - theme
-      - venueDescription
-      - venueName
-    CreateSightseeingAttractionDto:
-      type: object
-      properties:
-        attractionName:
-          type: string
-          minLength: 1
-        distanceToVenue:
-          type: integer
-          format: int32
-      required:
-      - attractionName
-      - distanceToVenue
-    Violation:
-      type: object
-      properties:
-        message:
-          type: string
-        propertyPath:
-          type: string
-    Violations:
-      type: object
-      properties:
-        violations:
-          type: array
-          items:
-            $ref: "#/components/schemas/Violation"
-    CreateCaseGeneratorFormVacationRentalDto:
-      type: object
-      properties:
-        formBase:
-          $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
-        venueFloors:
-          type: integer
-          format: int32
-        venueBedrooms:
-          type: integer
-          format: int32
-        venueBathrooms:
-          type: integer
-          format: int32
-        maxGuests:
-          type: integer
-          format: int32
-        roomLayoutDescription:
-          type: string
-        userId:
-          type: string
-      required:
-      - formBase
-      - maxGuests
-      - userId
-      - venueBathrooms
-      - venueBedrooms
-      - venueFloors
     CrimeSceneDto:
       type: object
       properties:
@@ -1098,6 +974,114 @@ components:
       - evidenceIds
       - motiveIds
       - personIds
+    SubscriptionDto:
+      type: object
+      properties:
+        testPeriodEnd:
+          type: string
+        subscriptionPeriodEnd:
+          type: string
+        canceled:
+          type: boolean
+    CreateCaseGeneratorFormBasicDto:
+      type: object
+      properties:
+        language:
+          type: string
+          minLength: 1
+        epoch:
+          type: string
+          enum:
+          - TWENTIES
+          - PRESENT
+          - FUTURE
+        theme:
+          type: string
+          enum:
+          - MURDER
+          - ROBBERY
+          - KIDNAPPING
+        additionalThemeDetails:
+          type: string
+        fullAddress:
+          type: string
+          minLength: 1
+        venueName:
+          type: string
+          minLength: 1
+        venueDescription:
+          type: string
+          minLength: 1
+        nearbySightseeingAttractions:
+          type: array
+          items:
+            $ref: "#/components/schemas/CreateSightseeingAttractionDto"
+        approximateYearOfConstruction:
+          type: integer
+          format: int32
+        historicalFeaturesAndLegends:
+          type: string
+        historicalCulturalContext:
+          type: string
+      required:
+      - epoch
+      - fullAddress
+      - language
+      - nearbySightseeingAttractions
+      - theme
+      - venueDescription
+      - venueName
+    CreateSightseeingAttractionDto:
+      type: object
+      properties:
+        attractionName:
+          type: string
+          minLength: 1
+        distanceToVenue:
+          type: integer
+          format: int32
+      required:
+      - attractionName
+      - distanceToVenue
+    Violation:
+      type: object
+      properties:
+        message:
+          type: string
+        propertyPath:
+          type: string
+    Violations:
+      type: object
+      properties:
+        violations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Violation"
+    CreateCaseGeneratorFormVacationRentalDto:
+      type: object
+      properties:
+        formBasic:
+          $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
+        venueFloors:
+          type: integer
+          format: int32
+        venueBedrooms:
+          type: integer
+          format: int32
+        venueBathrooms:
+          type: integer
+          format: int32
+        maxGuests:
+          type: integer
+          format: int32
+        roomLayoutDescription:
+          type: string
+      required:
+      - formBasic
+      - maxGuests
+      - venueBathrooms
+      - venueBedrooms
+      - venueFloors
     InterrogationDto:
       type: object
       properties:
@@ -1237,6 +1221,28 @@ components:
       - id
       - name
       - template
+    TemplateContextDto:
+      type: object
+      properties:
+        variables:
+          type: array
+          items:
+            $ref: "#/components/schemas/TemplateVariableDto"
+          uniqueItems: true
+      required:
+      - variables
+    TemplateVariableDto:
+      type: object
+      properties:
+        key:
+          type: string
+          minLength: 1
+        value:
+          type: string
+          minLength: 1
+      required:
+      - key
+      - value
     EvidenceReportDto:
       type: object
       properties:
@@ -1317,18 +1323,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AutopsyReportDto"
-    CreateAutopsyReportDto:
-      type: object
-      properties:
-        reportAuthorId:
-          type: integer
-          format: int64
-        victimId:
-          type: integer
-          format: int64
-      required:
-      - reportAuthorId
-      - victimId
     CreateAutopsyReportRequestDto:
       type: object
       properties:
