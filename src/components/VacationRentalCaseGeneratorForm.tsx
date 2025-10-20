@@ -27,12 +27,11 @@ interface VacationRentalFormData {
 }
 
 interface VacationRentalCaseGeneratorFormProps {
-  onSuccess: (locationUrl: string) => void;
+  onSuccess?: () => void;
   onCancel: () => void;
-  onGenerationStart?: (tempCase: { tempId: string; venueName: string }) => void;
 }
 
-const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStart }: VacationRentalCaseGeneratorFormProps) => {
+const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
   const { toast } = useToast();
   const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
@@ -131,19 +130,10 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel, onGenerationStar
       roomLayoutDescription: data.roomLayoutDescription || undefined,
     };
 
-    // Generate temporary ID and notify parent about generation start
-    const tempId = `temp-${Date.now()}`;
-    if (onGenerationStart) {
-      onGenerationStart({ tempId, venueName: data.venueName });
-    }
-
     createCrimeCase(formData, {
       onSuccess: (response) => {
-        toast({
-          title: "Success!",
-          description: "Vacation Rental Crime Case is being created...",
-        });
-        onSuccess(response.locationUrl);
+        // Redirect to Stripe Checkout
+        window.location.href = response.locationUrl;
       },
       onError: (error: any) => {
         console.error('Error creating Vacation Rental Crime Case:', error);

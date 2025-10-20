@@ -32,9 +32,13 @@ export const useCreateCrimeCaseVacationRental = () => {
         throw data;
       }
 
-      // Check for success response
-      if (response.ok) {
-        return { locationUrl: response.headers.get('location') };
+      // Check for success response with Stripe Checkout URL in Location header
+      if (response.status === 201 || response.status === 202) {
+        const locationUrl = response.headers.get('location');
+        if (!locationUrl) {
+          throw new Error('Location header missing in response');
+        }
+        return { locationUrl };
       }
 
       throw new Error('Server returned error response: ' + response.status);

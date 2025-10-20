@@ -7,53 +7,36 @@ import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGene
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
 import { useUserContext } from '@/contexts/UserContext';
 import { useCrimeCases } from "@/hooks/useCrimeCases";
-import { useEffect, useState } from "react";
+import { useMyCaseGenerationAttempts } from "@/hooks/useMyCaseGenerationAttempts";
+import { useState } from "react";
 import { useTranslation } from 'react-i18next';
-
-interface GeneratingCase {
-  tempId: string;
-  venueName: string;
-  startTime: number;
-}
 
 const VacationRentalDashboard = () => {
   const { t } = useTranslation('vacationRentalDashboard');
   const user = useUserContext();
-  const { data: crimeCases, isLoading, error, refetch } = useCrimeCases({
+  
+  // Crime Cases Hook (veröffentlichte Fälle)
+  const { data: crimeCases, isLoading: casesLoading, error: casesError } = useCrimeCases({
     caseGeneratorFormType: 'VACATION_RENTAL',
     userId: user?.email || '',
   });
+  
+  // Generation Attempts Hook (in Bearbeitung)
+  const { data: generationAttempts, isLoading: attemptsLoading } = useMyCaseGenerationAttempts();
+  
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [generatingCases, setGeneratingCases] = useState<GeneratingCase[]>([]);
   const [activeTab, setActiveTab] = useState('cases');
-
-  // Polling effect to refresh cases and remove completed generating cases
-  useEffect(() => {
-    if (generatingCases.length > 0) {
-      const interval = setInterval(() => {
-        refetch();
-
-        // Remove generating cases older than 5 minutes (in case something went wrong)
-        const now = Date.now();
-        setGeneratingCases(prev => prev.filter(gc => now - gc.startTime < 5 * 60 * 1000));
-      }, 5000); // Poll every 5 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [generatingCases.length, refetch]);
+  
+  const isLoading = casesLoading || attemptsLoading;
+  const error = casesError;
 
   // Form handlers
   const handleCreateNewCase = () => {
     setShowCreateForm(true);
   };
 
-  const handleGenerationStart = (tempCase: { tempId: string; venueName: string }) => {
-    setGeneratingCases(prev => [...prev, { ...tempCase, startTime: Date.now() }]);
-  };
-
-  const handleFormSuccess = (locationUrl: string) => {
+  const handleFormSuccess = () => {
     setShowCreateForm(false);
-    refetch(); // Reload cases after successful creation
   };
 
   const handleFormCancel = () => {
@@ -107,87 +90,97 @@ const VacationRentalDashboard = () => {
     }
   };
 
-  const renderCasesContent = () => (
-    <>
-      {/* Cases Grid */}
-      {cases.length === 0 && generatingCases.length === 0 ? (
-        <div className="text-center py-5">
-          <div className="rounded-3 p-5 border border-secondary">
-            <i className="bi bi-house-door display-1 text-muted mb-3"></i>
-            <h3 className="mb-3">{t('casesTab.noCasesTitle')}</h3>
-            <p className="text-muted mb-4">
-              {t('casesTab.noCasesDescription')}
-            </p>
-            <button
-              onClick={handleCreateNewCase}
-              className="btn btn-danger btn-lg"
-            >
-              <i className="bi bi-plus-circle me-2"></i>
-              {t('casesTab.createFirstCase')}
-            </button>
+  const renderCasesContent = () => {
+    const cases = crimeCases?.items || [];
+    const attempts = generationAttempts?.items || [];
+    
+    // Filter attempts: Nur CREATED oder SUBSCRIBED ohne zugeordneten Fall
+    const pendingAttempts = attempts.filter(attempt => 
+      attempt.status === 'CREATED' || attempt.status === 'SUBSCRIBED'
+    );
+    
+    return (
+      <>
+        {cases.length === 0 && pendingAttempts.length === 0 ? (
+          <div className="text-center py-5">
+            <div className="rounded-3 p-5 border border-secondary">
+              <i className="bi bi-house-door display-1 text-muted mb-3"></i>
+              <h3 className="mb-3">{t('casesTab.noCasesTitle')}</h3>
+              <p className="text-muted mb-4">
+                {t('casesTab.noCasesDescription')}
+              </p>
+              <button
+                onClick={handleCreateNewCase}
+                className="btn btn-danger btn-lg"
+              >
+                <i className="bi bi-plus-circle me-2"></i>
+                {t('casesTab.createFirstCase')}
+              </button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="row g-4">
-          {/* Generating Cases */}
-          {generatingCases.map((generatingCase) => (
-            <div key={generatingCase.tempId} className="col-12 col-md-6 col-lg-4">
-              <GeneratingCaseCard
-                venueName={generatingCase.venueName}
-                tempId={generatingCase.tempId}
-              />
-            </div>
-          ))}
+        ) : (
+          <div className="row g-4">
+            {/* Pending Generation Attempts */}
+            {pendingAttempts.map((attempt) => (
+              <div key={attempt.id} className="col-12 col-md-6 col-lg-4">
+                <GeneratingCaseCard
+                  attemptId={attempt.id}
+                  status={attempt.status}
+                  created={attempt.created}
+                />
+              </div>
+            ))}
 
-          {/* Actual Cases */}
-          {cases.map((crimeCase) => (
-            <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
-              <GameCard
-                caseId={crimeCase.id}
-                title={crimeCase.title}
-                description={crimeCase.description}
-                imageUrl={crimeCase.imageUrl}
-                hideDescription={true}
-              />
-            </div>
-          ))}
+            {/* Published Cases */}
+            {cases.map((crimeCase) => (
+              <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
+                <GameCard
+                  caseId={crimeCase.id}
+                  title={crimeCase.title}
+                  description={crimeCase.description}
+                  imageUrl={crimeCase.imageUrl}
+                  hideDescription={true}
+                />
+              </div>
+            ))}
 
-          {/* Add New Case Card */}
-          <div className="col-12 col-md-6 col-lg-4">
-            <AddCaseCard onClick={handleCreateNewCase} />
+            {/* Add New Case Card */}
+            <div className="col-12 col-md-6 col-lg-4">
+              <AddCaseCard onClick={handleCreateNewCase} />
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Stats Section */}
-      {(cases.length > 0 || generatingCases.length > 0) && (
-        <div className="mt-5 pt-4 border-top border-secondary">
-          <div className="row text-center">
-            <div className="col-md-4">
-              <div className="bg-body rounded p-3">
-                <div className="display-6 text-danger fw-bold">{cases.length}</div>
-                <div className="text-muted small">{t('casesTab.stats.readyCases')}</div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="bg-body rounded p-3">
-                <div className="display-6 text-primary fw-bold">{generatingCases.length}</div>
-                <div className="text-muted small">{t('casesTab.stats.generatingCases')}</div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="bg-body rounded p-3">
-                <div className="display-6 text-primary fw-bold">
-                  {cases.length + generatingCases.length}
+        {/* Stats Section */}
+        {(cases.length > 0 || pendingAttempts.length > 0) && (
+          <div className="mt-5 pt-4 border-top border-secondary">
+            <div className="row text-center">
+              <div className="col-md-4">
+                <div className="bg-body rounded p-3">
+                  <div className="display-6 text-danger fw-bold">{cases.length}</div>
+                  <div className="text-muted small">{t('casesTab.stats.readyCases')}</div>
                 </div>
-                <div className="text-muted small">{t('casesTab.stats.totalCases')}</div>
+              </div>
+              <div className="col-md-4">
+                <div className="bg-body rounded p-3">
+                  <div className="display-6 text-primary fw-bold">{pendingAttempts.length}</div>
+                  <div className="text-muted small">{t('casesTab.stats.generatingCases')}</div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="bg-body rounded p-3">
+                  <div className="display-6 text-primary fw-bold">
+                    {cases.length + pendingAttempts.length}
+                  </div>
+                  <div className="text-muted small">{t('casesTab.stats.totalCases')}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </>
-  );
+        )}
+      </>
+    );
+  };
 
   const renderPromotionContent = () => (
     <>
@@ -286,7 +279,6 @@ const VacationRentalDashboard = () => {
               <VacationRentalCaseGeneratorForm
                 onSuccess={handleFormSuccess}
                 onCancel={handleFormCancel}
-                onGenerationStart={handleGenerationStart}
               />
             </div>
           </div>

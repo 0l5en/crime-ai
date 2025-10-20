@@ -1,16 +1,12 @@
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
-import CaseGenerator from "@/components/CaseGenerator";
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const VacationRentalCaseGenerator = () => {
-
-    const [taskUrl, setTaskUrl] = useState<string | null>(null);
     const navigate = useNavigate();
 
-    // Handle form success
-    const handleFormSuccess = (locationUrl: string) => {
-        setTaskUrl(locationUrl);
+    // Handle form success - redirects to Stripe automatically via window.location.href
+    const handleFormSuccess = () => {
+        // Form redirects to Stripe automatically
     };
 
     // Handle form cancel
@@ -18,11 +14,14 @@ const VacationRentalCaseGenerator = () => {
         navigate('/admin/cases');
     };
 
-    return <CaseGenerator taskUrl={taskUrl} setTaskUrl={setTaskUrl} generatorForm={<VacationRentalCaseGeneratorForm
-        onSuccess={handleFormSuccess}
-        onCancel={handleFormCancel}
-    />} />
-
+    return (
+        <div className="container-fluid p-4">
+            <VacationRentalCaseGeneratorForm
+                onSuccess={handleFormSuccess}
+                onCancel={handleFormCancel}
+            />
+        </div>
+    );
 };
 
 export default VacationRentalCaseGenerator;
