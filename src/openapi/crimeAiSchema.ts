@@ -30,10 +30,9 @@ export interface paths {
       cookie?: never;
     };
     /** get the latest crime cases */
-    get: operations["listCrimeCases"];
+    get: operations["listCrimeCasesAll"];
     put?: never;
-    /** start a task to create a new crime case */
-    post: operations["createCrimeCase"];
+    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -47,7 +46,8 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    get?: never;
+    /** get a list of basic crime cases */
+    get: operations["listCrimeCasesBasic"];
     put?: never;
     /** start a task to create a new basic crime case */
     post: operations["createCrimeCaseBasic"];
@@ -64,7 +64,8 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    get?: never;
+    /** get a list of vacation rental crime cases */
+    get: operations["listCrimeCasesVacationRental"];
     put?: never;
     /** start a task to create a new vacation rental crime case */
     post: operations["createCrimeCaseVacationRental"];
@@ -168,8 +169,8 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Get a list of solution attempts */
-    get: operations["listCrimeCaseSolutionAttempts"];
+    /** Get a list of solution attempts. */
+    get: operations["listSolutionAttempts"];
     put?: never;
     /** create a new attempt at a solution */
     post: operations["createSolutionAttempt"];
@@ -179,15 +180,15 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/crimecase/{id}/solution-spoiler": {
+  "/crimecase/{id}/subscription": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** Get a solution spoiler */
-    get: operations["getSolutionSpoiler"];
+    /** get the subscription of a crime case */
+    get: operations["getSubscription"];
     put?: never;
     post?: never;
     delete?: never;
@@ -196,36 +197,17 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/evidence-report": {
+  "/crimecase-vacation-rental/{id}": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** Get evidence reports */
-    get: operations["listEvidenceReports"];
+    get?: never;
     put?: never;
-    /** Create a new evidence report */
-    post: operations["createEvidenceReport"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/autopsy-report": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Get a list of autopsy reports */
-    get: operations["listAutopsyReports"];
-    put?: never;
-    /** Create a new autopsy report */
-    post: operations["createAutopsyReport"];
+    /** get payment link for vacation rental form data */
+    post: operations["createPaymentLinkVacationRental"];
     delete?: never;
     options?: never;
     head?: never;
@@ -239,7 +221,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Get a list of interrogations */
+    /** Get a list of interrogations. */
     get: operations["listInterrogations"];
     put?: never;
     /** create a new interrogation answer for a given question */
@@ -352,6 +334,41 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/evidence-report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of evidence reports. */
+    get: operations["listEvidenceReports"];
+    put?: never;
+    /** Create a new report for an evidence. */
+    post: operations["createEvidenceReport"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/autopsy-report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get a list of autopsy reports. */
+    get: operations["listAutopsyReports"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/autopsy-report-request": {
     parameters: {
       query?: never;
@@ -361,7 +378,7 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Create a new request for autopsy report of a victim. If a request already exist for the given identifier (userId, victimId), this operation will do nothing. */
+    /** Create a new request for autopsy report of a victim. */
     post: operations["createAutopsyReportRequest"];
     delete?: never;
     options?: never;
@@ -465,19 +482,6 @@ export interface components {
     ResultSetCrimeCase: {
       items?: components["schemas"]["CrimeCaseDto"][];
     };
-    CreateCrimeCaseDto: {
-      /** Format: int32 */
-      amountEvidences: number;
-      /** Format: int32 */
-      amountPersons: number;
-      /** Format: int32 */
-      difficultyLevel: number;
-      era: string;
-      language: string;
-      location: string;
-      /** Format: int32 */
-      maxAmountMotivesPerSuspect: number;
-    };
     CrimeSceneDto: {
       /** Format: int64 */
       id: number;
@@ -533,7 +537,6 @@ export interface components {
       id: number;
       userId: string;
       success: boolean;
-      /** Format: date-time */
       createdAt: string;
     };
     ResultSetSolutionAttempt: {
@@ -548,10 +551,10 @@ export interface components {
       motiveIds: number[];
       personIds: number[];
     };
-    SolutionSpoilerDto: {
-      evidenceTitles: string[];
-      motiveTitles: string[];
-      personNames: string[];
+    SubscriptionDto: {
+      testPeriodEnd?: string;
+      subscriptionPeriodEnd?: string;
+      canceled?: boolean;
     };
     AlibiDto: {
       /** Format: int64 */
@@ -581,6 +584,7 @@ export interface components {
       items?: components["schemas"]["PersonDto"][];
     };
     AutopsyReportDto: {
+      title: string;
       /** Format: int64 */
       id: number;
       /** Format: int64 */
@@ -626,7 +630,6 @@ export interface components {
     QuestionAndAnswerDto: {
       question: string;
       answer: string;
-      /** Format: date-time */
       createdAt: string;
     };
     ResultSetQuestionAndAnswer: {
@@ -639,7 +642,6 @@ export interface components {
     PromptTemplateVersionDto: {
       /** Format: int64 */
       id: number;
-      /** Format: date-time */
       createdAt: string;
     };
     ResultSetPromptTemplateVersion: {
@@ -658,15 +660,14 @@ export interface components {
       id: number;
       name: string;
       template: string;
-      /** Format: date-time */
       createdAt: string;
     };
     TemplateContextDto: {
-      variables?: components["schemas"]["TemplateVariableDto"][];
+      variables: components["schemas"]["TemplateVariableDto"][];
     };
     TemplateVariableDto: {
-      key?: string;
-      value?: string;
+      key: string;
+      value: string;
     };
     CreateAutopsyReportRequestDto: {
       userId: string;
@@ -676,9 +677,7 @@ export interface components {
     TaskInfoDto: {
       id: string;
       taskStatus: "PENDING" | "COMPLETED";
-      /** Format: date-time */
       createdAt: string;
-      /** Format: date-time */
       completedAt?: string;
     };
     NotificationDto: {
@@ -689,7 +688,6 @@ export interface components {
       nameOfSender: string;
       subject: string;
       read: boolean;
-      /** Format: date-time */
       createdAt: string;
     };
     ResultSetNotification: {
@@ -730,7 +728,6 @@ export interface components {
       /** Format: int32 */
       maxGuests: number;
       roomLayoutDescription?: string;
-      userId: string;
     };
     CreateSightseeingAttractionDto: {
       attractionName: string;
@@ -782,7 +779,7 @@ export interface operations {
       };
     };
   };
-  listCrimeCases: {
+  listCrimeCasesAll: {
     parameters: {
       query?: {
         /** @description The maximum number of elements that should be returned. If this parameter is not specified, the default value of 10 will be used. */
@@ -818,26 +815,26 @@ export interface operations {
       };
     };
   };
-  createCrimeCase: {
+  listCrimeCasesBasic: {
     parameters: {
-      query?: never;
+      query?: {
+        /** @description The maximum number of elements that should be returned. If this parameter is not specified, the default value of 10 will be used. */
+        maxResults?: string;
+      };
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** @description the data required to create a new crime case */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateCrimeCaseDto"];
-      };
-    };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
-      201: {
+      200: {
         headers: {
           [name: string]: unknown;
         };
-        content?: never;
+        content: {
+          "application/json": components["schemas"]["ResultSetCrimeCase"];
+        };
       };
       /** @description if any internal error occurs while processing the request */
       500: {
@@ -876,6 +873,36 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Violations"];
+        };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listCrimeCasesVacationRental: {
+    parameters: {
+      query?: {
+        /** @description The maximum number of elements that should be returned. If this parameter is not specified, the default value of 10 will be used. */
+        maxResults?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetCrimeCase"];
         };
       };
       /** @description if any internal error occurs while processing the request */
@@ -1202,11 +1229,11 @@ export interface operations {
       };
     };
   };
-  listCrimeCaseSolutionAttempts: {
+  listSolutionAttempts: {
     parameters: {
       query?: {
         /** @description the id of a logged in user playing a crime case */
-        "userId"?: string;
+        userId?: string;
         /** @description If the value '0' is specified, only unsuccessful solution attempts are selected; if a value other than '0' is specified, only successful solution attempts are selected. */
         success?: string;
       };
@@ -1270,7 +1297,7 @@ export interface operations {
       };
     };
   };
-  getSolutionSpoiler: {
+  getSubscription: {
     parameters: {
       query?: never;
       header?: never;
@@ -1282,17 +1309,52 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description Successful operation responds with a solution spoiler */
+      /** @description successful operation */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["SolutionSpoilerDto"];
+          "application/json": components["schemas"]["SubscriptionDto"];
         };
       };
-      /** @description if no solution spoiler exist for the given crime case */
+      /** @description the crime case has no subscription */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createPaymentLinkVacationRental: {
+    parameters: {
+      query?: {
+        /** @description the id of the data submitted in the vacation rental form */
+        id?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description If the payment link created successfully. The response will contain a Location Header that belongs to the checkout page for the vacation rental crime case. */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description If the request contains faulty input data. */
+      400: {
         headers: {
           [name: string]: unknown;
         };
@@ -1311,9 +1373,9 @@ export interface operations {
     parameters: {
       query?: {
         /** @description The ID of the person who should create the report */
-        "personId"?: string;
+        personId?: string;
         /** @description The ID of the evidence from which the report is to be created */
-        "evidenceId"?: string;
+        evidenceId?: string;
       };
       header?: never;
       path?: never;
@@ -1387,11 +1449,11 @@ export interface operations {
     parameters: {
       query?: {
         /** @description The ID of the report author */
-        "reportAuthorId"?: string;
+        reportAuthorId?: string;
         /** @description The ID of the victim */
-        "victimId"?: string;
+        victimId?: string;
         /** @description The ID of the notification */
-        "notificationId"?: string;
+        notificationId?: string;
       };
       header?: never;
       path?: never;
@@ -1424,52 +1486,15 @@ export interface operations {
       };
     };
   };
-  createAutopsyReport: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description the data required to create a new report */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateAutopsyReportDto"];
-      };
-    };
-    responses: {
-      /** @description successful operation without response body */
-      201: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description if an invalid request body was send */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description if any internal error occurs while processing the request */
-      500: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
   listInterrogations: {
     parameters: {
       query?: {
         /** @description the id of a logged in user playing a crime case */
-        "userId"?: string;
+        userId?: string;
         /** @description the id of a person from a criminal case with whom the interrogation was conducted */
-        "personId"?: string;
+        personId?: string;
         /** @description The id of a reference the interrogation is based on. The special value 'null' can be used to select interrogations not having a reference. */
-        "referenceId"?: string;
+        referenceId?: string;
       };
       header?: never;
       path?: never;
@@ -1765,7 +1790,7 @@ export interface operations {
       query?: never;
       header?: never;
       path: {
-        /** @description task id */
+        /** @description the id of a task */
         id: string;
       };
       cookie?: never;
