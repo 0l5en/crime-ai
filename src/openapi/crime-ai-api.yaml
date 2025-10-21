@@ -22,7 +22,7 @@ paths:
   /crimecase:
     get:
       summary: get the latest crime cases
-      operationId: listCrimeCases
+      operationId: listCrimeCasesAll
       parameters:
       - name: maxResults
         in: query
@@ -54,6 +54,90 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ResultSetCrimeCase"
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-basic:
+    get:
+      summary: get a list of basic crime cases
+      operationId: listCrimeCasesBasic
+      parameters:
+      - name: maxResults
+        in: query
+        description: "The maximum number of elements that should be returned. If this\
+          \ parameter is not specified, the default value of 10 will be used."
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetCrimeCase"
+        "500":
+          description: if any internal error occurs while processing the request
+    post:
+      summary: start a task to create a new basic crime case
+      operationId: createCrimeCaseBasic
+      requestBody:
+        description: the data required to create a new basic crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
+        required: true
+      responses:
+        "202":
+          description: If the task was started successfully. The response will contain
+            a Location Header to get the status of the task.
+        "400":
+          description: If the request contains faulty input data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Violations"
+        "500":
+          description: if any internal error occurs while processing the request
+  /crimecase-vacation-rental:
+    get:
+      summary: get a list of vacation rental crime cases
+      operationId: listCrimeCasesBasic_1
+      parameters:
+      - name: maxResults
+        in: query
+        description: "The maximum number of elements that should be returned. If this\
+          \ parameter is not specified, the default value of 10 will be used."
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetCrimeCase"
+        "500":
+          description: if any internal error occurs while processing the request
+    post:
+      summary: start a task to create a new vacation rental crime case
+      operationId: createCrimeCaseVacationRental
+      requestBody:
+        description: the data required to create a new vacation rental crime case
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCaseGeneratorFormVacationRentalDto"
+        required: true
+      responses:
+        "202":
+          description: If the task was started successfully. The response will contain
+            a Location Header to get the status of the task.
+        "400":
+          description: If the request contains faulty input data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Violations"
         "500":
           description: if any internal error occurs while processing the request
   /crimecase/{id}:
@@ -306,52 +390,6 @@ paths:
                 $ref: "#/components/schemas/SubscriptionDto"
         "404":
           description: the crime case has no subscription
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase-basic:
-    post:
-      summary: start a task to create a new basic crime case
-      operationId: createCrimeCaseBasic
-      requestBody:
-        description: the data required to create a new basic crime case
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
-        required: true
-      responses:
-        "202":
-          description: If the task was started successfully. The response will contain
-            a Location Header to get the status of the task.
-        "400":
-          description: If the request contains faulty input data.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Violations"
-        "500":
-          description: if any internal error occurs while processing the request
-  /crimecase-vacation-rental:
-    post:
-      summary: start a task to create a new vacation rental crime case
-      operationId: createCrimeCaseVacationRental
-      requestBody:
-        description: the data required to create a new vacation rental crime case
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateCaseGeneratorFormVacationRentalDto"
-        required: true
-      responses:
-        "202":
-          description: If the task was started successfully. The response will contain
-            a Location Header to get the status of the task.
-        "400":
-          description: If the request contains faulty input data.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Violations"
         "500":
           description: if any internal error occurs while processing the request
   /crimecase-vacation-rental/{id}:
