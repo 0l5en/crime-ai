@@ -696,7 +696,7 @@ export interface components {
     CrimeCaseGenerationAttemptDto: {
       /** Format: int64 */
       id: number;
-      status: "CREATED" | "SUBSCRIBED";
+      status: "CREATED" | "SUBSCRIBED" | "GENERATED";
       created: string;
     };
     ResultSetCrimeCaseGenerationAttemptDto: {

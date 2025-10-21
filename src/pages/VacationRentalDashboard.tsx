@@ -89,14 +89,9 @@ const VacationRentalDashboard = () => {
     const cases = crimeCases?.items || [];
     const attempts = generationAttempts?.items || [];
 
-    // Filter attempts: Nur CREATED oder SUBSCRIBED ohne zugeordneten Fall
-    const pendingAttempts = attempts.filter(attempt =>
-      attempt.status === 'CREATED' || attempt.status === 'SUBSCRIBED'
-    );
-
     return (
       <>
-        {cases.length === 0 && pendingAttempts.length === 0 ? (
+        {cases.length === 0 && attempts.length === 0 ? (
           <div className="text-center py-5">
             <div className="rounded-3 p-5 border border-secondary">
               <i className="bi bi-house-door display-1 text-muted mb-3"></i>
@@ -115,12 +110,11 @@ const VacationRentalDashboard = () => {
           </div>
         ) : (
           <div className="row g-4">
-            {/* Pending Generation Attempts */}
-            {pendingAttempts.map((attempt) => (
+            {/* all attempts */}
+            {attempts.map((attempt) => (
               <div key={attempt.id} className="col-12 col-md-6 col-lg-4">
                 <GeneratingCaseCard
                   attemptId={attempt.id}
-                  status={attempt.status}
                   created={attempt.created}
                 />
               </div>
@@ -147,7 +141,7 @@ const VacationRentalDashboard = () => {
         )}
 
         {/* Stats Section */}
-        {(cases.length > 0 || pendingAttempts.length > 0) && (
+        {(cases.length > 0 || attempts.length > 0) && (
           <div className="mt-5 pt-4 border-top border-secondary">
             <div className="row text-center">
               <div className="col-md-4">
@@ -158,14 +152,14 @@ const VacationRentalDashboard = () => {
               </div>
               <div className="col-md-4">
                 <div className="bg-body rounded p-3">
-                  <div className="display-6 text-primary fw-bold">{pendingAttempts.length}</div>
+                  <div className="display-6 text-primary fw-bold">{attempts.length}</div>
                   <div className="text-muted small">{t('casesTab.stats.generatingCases')}</div>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="bg-body rounded p-3">
                   <div className="display-6 text-primary fw-bold">
-                    {cases.length + pendingAttempts.length}
+                    {cases.length + attempts.length}
                   </div>
                   <div className="text-muted small">{t('casesTab.stats.totalCases')}</div>
                 </div>
