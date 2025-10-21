@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import Header from "@/components/Header";
 import { useUserContext } from '@/contexts/UserContext';
-import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useCrimeCases } from "@/hooks/useCrimeCasesBasic";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -24,8 +24,6 @@ const Cases = () => {
     isLoading,
     error,
   } = useCrimeCases({
-    caseGeneratorFormType: "BASIC",
-    status: "PUBLISHED,PREMIUM",
     maxResults: (page * 6).toString(),
   });
 

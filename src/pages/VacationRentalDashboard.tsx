@@ -5,28 +5,23 @@ import Header from "@/components/Header";
 import QRCodeCard from "@/components/QRCodeCard";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
-import { useUserContext } from '@/contexts/UserContext';
-import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useCrimeCases } from "@/hooks/useCrimeCasesVacationRental";
 import { useMyCaseGenerationAttempts } from "@/hooks/useMyCaseGenerationAttempts";
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
 
 const VacationRentalDashboard = () => {
   const { t } = useTranslation('vacationRentalDashboard');
-  const user = useUserContext();
-  
+
   // Crime Cases Hook (veröffentlichte Fälle)
-  const { data: crimeCases, isLoading: casesLoading, error: casesError } = useCrimeCases({
-    caseGeneratorFormType: 'VACATION_RENTAL',
-    userId: user?.email || '',
-  });
-  
+  const { data: crimeCases, isLoading: casesLoading, error: casesError } = useCrimeCases();
+
   // Generation Attempts Hook (in Bearbeitung)
   const { data: generationAttempts, isLoading: attemptsLoading } = useMyCaseGenerationAttempts();
-  
+
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [activeTab, setActiveTab] = useState('cases');
-  
+
   const isLoading = casesLoading || attemptsLoading;
   const error = casesError;
 
@@ -93,12 +88,12 @@ const VacationRentalDashboard = () => {
   const renderCasesContent = () => {
     const cases = crimeCases?.items || [];
     const attempts = generationAttempts?.items || [];
-    
+
     // Filter attempts: Nur CREATED oder SUBSCRIBED ohne zugeordneten Fall
-    const pendingAttempts = attempts.filter(attempt => 
+    const pendingAttempts = attempts.filter(attempt =>
       attempt.status === 'CREATED' || attempt.status === 'SUBSCRIBED'
     );
-    
+
     return (
       <>
         {cases.length === 0 && pendingAttempts.length === 0 ? (
