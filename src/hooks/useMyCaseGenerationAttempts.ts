@@ -28,7 +28,7 @@ export const useMyCaseGenerationAttempts = () => {
       throw new Error('Server returned error response: ' + response.status);
     },
     enabled: user.isAuthenticated && !!userId,
-    refetchInterval: 5 * 60 * 1000, // Poll alle 5 Minuten
+    refetchInterval: 5 * 60 * 1000, // 5 minutes
     refetchOnWindowFocus: true,
     refetchOnMount: true,
   });

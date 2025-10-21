@@ -26,6 +26,8 @@ export const useCrimeCases = (params?: CrimeCasesParams) => {
       throw new Error('Server returned error response: ' + response.status);
 
     },
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    refetchInterval: 5 * 60 * 1000, // 5 minutes
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
   });
 };
