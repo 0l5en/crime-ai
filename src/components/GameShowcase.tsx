@@ -1,15 +1,12 @@
 import { useUserContext } from '@/contexts/UserContext';
-import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useCrimeCases } from "@/hooks/useCrimeCasesBasic";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import GameCard from "./GameCard";
 
 const GameShowcase = () => {
   const { t } = useTranslation('home');
-  const { data: crimeCases, isLoading, error } = useCrimeCases({
-    caseGeneratorFormType: 'BASIC',
-    status: 'PUBLISHED,PREMIUM'
-  });
+  const { data: crimeCases, isLoading, error } = useCrimeCases();
   const user = useUserContext();
   const navigate = useNavigate();
 
