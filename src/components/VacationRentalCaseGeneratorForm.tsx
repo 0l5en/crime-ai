@@ -32,7 +32,7 @@ interface VacationRentalCaseGeneratorFormProps {
 }
 
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('vacationRentalDashboard');
   const { toast } = useToast();
   const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
@@ -171,19 +171,19 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Grundeinstellungen Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.basicSettings')}</h5>
+                <h5 className="mb-0">{t('form.sections.basicSettings')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Language */}
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="language" className="form-label">{t('vacationRentalDashboard.form.fields.language.label')} *</label>
+                    <label htmlFor="language" className="form-label">{t('form.fields.language.label')} *</label>
                     <input
                       type="text"
                       id="language"
-                      placeholder={t('vacationRentalDashboard.form.fields.language.placeholder')}
+                      placeholder={t('form.fields.language.placeholder')}
                       className={`form-control ${errors.language || serverErrors.language ? 'is-invalid' : ''}`}
-                      {...register('language', { required: t('vacationRentalDashboard.form.fields.language.required') })}
+                      {...register('language', { required: t('form.fields.language.required') })}
                     />
                     {(errors.language || serverErrors.language) && (
                       <div className="invalid-feedback d-block">
@@ -194,15 +194,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Epoch */}
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="epoch" className="form-label">{t('vacationRentalDashboard.form.fields.epoch.label')} *</label>
+                    <label htmlFor="epoch" className="form-label">{t('form.fields.epoch.label')} *</label>
                     <select
                       id="epoch"
                       className={`form-select ${errors.epoch || serverErrors.epoch ? 'is-invalid' : ''}`}
-                      {...register('epoch', { required: t('vacationRentalDashboard.form.fields.epoch.required') })}
+                      {...register('epoch', { required: t('form.fields.epoch.required') })}
                     >
-                      <option value="TWENTIES">{t('vacationRentalDashboard.form.fields.epoch.options.twenties')}</option>
-                      <option value="PRESENT">{t('vacationRentalDashboard.form.fields.epoch.options.present')}</option>
-                      <option value="FUTURE">{t('vacationRentalDashboard.form.fields.epoch.options.future')}</option>
+                      <option value="TWENTIES">{t('form.fields.epoch.options.twenties')}</option>
+                      <option value="PRESENT">{t('form.fields.epoch.options.present')}</option>
+                      <option value="FUTURE">{t('form.fields.epoch.options.future')}</option>
                     </select>
                     {(errors.epoch || serverErrors.epoch) && (
                       <div className="invalid-feedback d-block">
@@ -213,15 +213,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Theme */}
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="theme" className="form-label">{t('vacationRentalDashboard.form.fields.theme.label')} *</label>
+                    <label htmlFor="theme" className="form-label">{t('form.fields.theme.label')} *</label>
                     <select
                       id="theme"
                       className={`form-select ${errors.theme || serverErrors.theme ? 'is-invalid' : ''}`}
-                      {...register('theme', { required: t('vacationRentalDashboard.form.fields.theme.required') })}
+                      {...register('theme', { required: t('form.fields.theme.required') })}
                     >
-                      <option value="MURDER">{t('vacationRentalDashboard.form.fields.theme.options.murder')}</option>
-                      <option value="ROBBERY">{t('vacationRentalDashboard.form.fields.theme.options.robbery')}</option>
-                      <option value="KIDNAPPING">{t('vacationRentalDashboard.form.fields.theme.options.kidnapping')}</option>
+                      <option value="MURDER">{t('form.fields.theme.options.murder')}</option>
+                      <option value="ROBBERY">{t('form.fields.theme.options.robbery')}</option>
+                      <option value="KIDNAPPING">{t('form.fields.theme.options.kidnapping')}</option>
                     </select>
                     {(errors.theme || serverErrors.theme) && (
                       <div className="invalid-feedback d-block">
@@ -239,18 +239,18 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Örtlichkeit Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.location')}</h5>
+                <h5 className="mb-0">{t('form.sections.location')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Full Address */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="fullAddress" className="form-label">{t('vacationRentalDashboard.form.fields.fullAddress.label')} *</label>
+                    <label htmlFor="fullAddress" className="form-label">{t('form.fields.fullAddress.label')} *</label>
                     <input
                       type="text"
                       id="fullAddress"
                       className={`form-control ${errors.fullAddress || serverErrors.fullAddress ? 'is-invalid' : ''}`}
-                      {...register('fullAddress', { required: t('vacationRentalDashboard.form.fields.fullAddress.required') })}
+                      {...register('fullAddress', { required: t('form.fields.fullAddress.required') })}
                     />
                     {(errors.fullAddress || serverErrors.fullAddress) && (
                       <div className="invalid-feedback d-block">
@@ -261,12 +261,12 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Name */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueName" className="form-label">{t('vacationRentalDashboard.form.fields.venueName.label')} *</label>
+                    <label htmlFor="venueName" className="form-label">{t('form.fields.venueName.label')} *</label>
                     <input
                       type="text"
                       id="venueName"
                       className={`form-control ${errors.venueName || serverErrors.venueName ? 'is-invalid' : ''}`}
-                      {...register('venueName', { required: t('vacationRentalDashboard.form.fields.venueName.required') })}
+                      {...register('venueName', { required: t('form.fields.venueName.required') })}
                     />
                     {(errors.venueName || serverErrors.venueName) && (
                       <div className="invalid-feedback d-block">
@@ -277,15 +277,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Description */}
                   <div className="col-12 mb-3">
-                    <label htmlFor="venueDescription" className="form-label">{t('vacationRentalDashboard.form.fields.venueDescription.label')} *</label>
+                    <label htmlFor="venueDescription" className="form-label">{t('form.fields.venueDescription.label')} *</label>
                     <small className="form-text text-muted d-block mb-2">
-                      {t('vacationRentalDashboard.form.fields.venueDescription.helpText')}
+                      {t('form.fields.venueDescription.helpText')}
                     </small>
                     <textarea
                       id="venueDescription"
                       className={`form-control ${errors.venueDescription || serverErrors.venueDescription ? 'is-invalid' : ''}`}
                       rows={3}
-                      {...register('venueDescription', { required: t('vacationRentalDashboard.form.fields.venueDescription.required') })}
+                      {...register('venueDescription', { required: t('form.fields.venueDescription.required') })}
                     />
                     {(errors.venueDescription || serverErrors.venueDescription) && (
                       <div className="invalid-feedback d-block">
@@ -300,21 +300,21 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Ferienwohnungs-Details Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.rentalDetails')}</h5>
+                <h5 className="mb-0">{t('form.sections.rentalDetails')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Venue Floors */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueFloors" className="form-label">{t('vacationRentalDashboard.form.fields.venueFloors.label')} *</label>
+                    <label htmlFor="venueFloors" className="form-label">{t('form.fields.venueFloors.label')} *</label>
                     <input
                       type="number"
                       id="venueFloors"
                       min="1"
                       className={`form-control ${errors.venueFloors || serverErrors.venueFloors ? 'is-invalid' : ''}`}
                       {...register('venueFloors', {
-                        required: t('vacationRentalDashboard.form.fields.venueFloors.required'),
-                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.venueFloors.min') }
+                        required: t('form.fields.venueFloors.required'),
+                        min: { value: 1, message: t('form.fields.venueFloors.min') }
                       })}
                     />
                     {(errors.venueFloors || serverErrors.venueFloors) && (
@@ -326,15 +326,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Bedrooms */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueBedrooms" className="form-label">{t('vacationRentalDashboard.form.fields.venueBedrooms.label')} *</label>
+                    <label htmlFor="venueBedrooms" className="form-label">{t('form.fields.venueBedrooms.label')} *</label>
                     <input
                       type="number"
                       id="venueBedrooms"
                       min="1"
                       className={`form-control ${errors.venueBedrooms || serverErrors.venueBedrooms ? 'is-invalid' : ''}`}
                       {...register('venueBedrooms', {
-                        required: t('vacationRentalDashboard.form.fields.venueBedrooms.required'),
-                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.venueBedrooms.min') }
+                        required: t('form.fields.venueBedrooms.required'),
+                        min: { value: 1, message: t('form.fields.venueBedrooms.min') }
                       })}
                     />
                     {(errors.venueBedrooms || serverErrors.venueBedrooms) && (
@@ -346,15 +346,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Bathrooms */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueBathrooms" className="form-label">{t('vacationRentalDashboard.form.fields.venueBathrooms.label')} *</label>
+                    <label htmlFor="venueBathrooms" className="form-label">{t('form.fields.venueBathrooms.label')} *</label>
                     <input
                       type="number"
                       id="venueBathrooms"
                       min="1"
                       className={`form-control ${errors.venueBathrooms || serverErrors.venueBathrooms ? 'is-invalid' : ''}`}
                       {...register('venueBathrooms', {
-                        required: t('vacationRentalDashboard.form.fields.venueBathrooms.required'),
-                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.venueBathrooms.min') }
+                        required: t('form.fields.venueBathrooms.required'),
+                        min: { value: 1, message: t('form.fields.venueBathrooms.min') }
                       })}
                     />
                     {(errors.venueBathrooms || serverErrors.venueBathrooms) && (
@@ -366,15 +366,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Max Guests */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="maxGuests" className="form-label">{t('vacationRentalDashboard.form.fields.maxGuests.label')} *</label>
+                    <label htmlFor="maxGuests" className="form-label">{t('form.fields.maxGuests.label')} *</label>
                     <input
                       type="number"
                       id="maxGuests"
                       min="1"
                       className={`form-control ${errors.maxGuests || serverErrors.maxGuests ? 'is-invalid' : ''}`}
                       {...register('maxGuests', {
-                        required: t('vacationRentalDashboard.form.fields.maxGuests.required'),
-                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.maxGuests.min') }
+                        required: t('form.fields.maxGuests.required'),
+                        min: { value: 1, message: t('form.fields.maxGuests.min') }
                       })}
                     />
                     {(errors.maxGuests || serverErrors.maxGuests) && (
@@ -386,9 +386,9 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Room Layout Description */}
                   <div className="col-12 mb-3">
-                    <label htmlFor="roomLayoutDescription" className="form-label">{t('vacationRentalDashboard.form.fields.roomLayoutDescription.label')}</label>
+                    <label htmlFor="roomLayoutDescription" className="form-label">{t('form.fields.roomLayoutDescription.label')}</label>
                     <small className="form-text text-muted d-block mb-2">
-                      {t('vacationRentalDashboard.form.fields.roomLayoutDescription.helpText')}
+                      {t('form.fields.roomLayoutDescription.helpText')}
                     </small>
                     <textarea
                       id="roomLayoutDescription"
@@ -409,7 +409,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Sehenswürdigkeiten Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.attractions')}</h5>
+                <h5 className="mb-0">{t('form.sections.attractions')}</h5>
               </div>
               <div className="card-body">
                 {fields.map((field, index) => (
@@ -418,9 +418,9 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                       <input
                         type="text"
                         className={`form-control ${errors.nearbySightseeingAttractions?.[index]?.attractionName || serverErrors[`nearbySightseeingAttractions.${index}.attractionName`] ? 'is-invalid' : ''}`}
-                        placeholder={t('vacationRentalDashboard.form.fields.attractionName.placeholder')}
+                        placeholder={t('form.fields.attractionName.placeholder')}
                         {...register(`nearbySightseeingAttractions.${index}.attractionName`, {
-                          required: t('vacationRentalDashboard.form.fields.attractionName.required')
+                          required: t('form.fields.attractionName.required')
                         })}
                       />
                       {(errors.nearbySightseeingAttractions?.[index]?.attractionName || serverErrors[`nearbySightseeingAttractions.${index}.attractionName`]) && (
@@ -435,10 +435,10 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                         min="0"
                         step="0.1"
                         className={`form-control ${errors.nearbySightseeingAttractions?.[index]?.distanceToVenue || serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`] ? 'is-invalid' : ''}`}
-                        placeholder={t('vacationRentalDashboard.form.fields.attractionDistance.placeholder')}
+                        placeholder={t('form.fields.attractionDistance.placeholder')}
                         {...register(`nearbySightseeingAttractions.${index}.distanceToVenue`, {
-                          required: t('vacationRentalDashboard.form.fields.attractionDistance.required'),
-                          min: { value: 0, message: t('vacationRentalDashboard.form.fields.attractionDistance.min') }
+                          required: t('form.fields.attractionDistance.required'),
+                          min: { value: 0, message: t('form.fields.attractionDistance.min') }
                         })}
                       />
                       {(errors.nearbySightseeingAttractions?.[index]?.distanceToVenue || serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`]) && (
@@ -453,7 +453,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                         className="btn btn-outline-danger w-100"
                         onClick={() => removeAttraction(index)}
                       >
-                        {t('vacationRentalDashboard.form.buttons.removeAttraction')}
+                        {t('form.buttons.removeAttraction')}
                       </button>
                     </div>
                   </div>
@@ -463,7 +463,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                   className="btn btn-outline-primary"
                   onClick={addAttraction}
                 >
-                  {t('vacationRentalDashboard.form.buttons.addAttraction')}
+                  {t('form.buttons.addAttraction')}
                 </button>
               </div>
             </div>
@@ -471,13 +471,13 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Historische Informationen Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.historicalInfo')}</h5>
+                <h5 className="mb-0">{t('form.sections.historicalInfo')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Approximate Year of Construction */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="approximateYearOfConstruction" className="form-label">{t('vacationRentalDashboard.form.fields.approximateYearOfConstruction.label')}</label>
+                    <label htmlFor="approximateYearOfConstruction" className="form-label">{t('form.fields.approximateYearOfConstruction.label')}</label>
                     <input
                       type="number"
                       id="approximateYearOfConstruction"
@@ -495,7 +495,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Historical Features and Legends */}
                   <div className="col-12 mb-3">
-                    <label htmlFor="historicalFeaturesAndLegends" className="form-label">{t('vacationRentalDashboard.form.fields.historicalFeaturesAndLegends.label')}</label>
+                    <label htmlFor="historicalFeaturesAndLegends" className="form-label">{t('form.fields.historicalFeaturesAndLegends.label')}</label>
                     <textarea
                       id="historicalFeaturesAndLegends"
                       className={`form-control ${errors.historicalFeaturesAndLegends || serverErrors.historicalFeaturesAndLegends ? 'is-invalid' : ''}`}
@@ -512,8 +512,8 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
               </div>
             </div>
 
-            {/* Sticky Action Buttons */}
-            <div className="sticky-bottom bg-white border-top p-3 shadow-sm">
+            {/* Action Buttons */}
+            <div className="mt-4 p-3 border-top">
               <div className="d-flex gap-2 justify-content-end">
                 <button
                   type="button"
@@ -521,14 +521,14 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                   onClick={onCancel}
                   disabled={isPending}
                 >
-                  {t('vacationRentalDashboard.form.buttons.cancel')}
+                  {t('form.buttons.cancel')}
                 </button>
                 <button
                   type="submit"
                   className="btn btn-primary"
                   disabled={isPending}
                 >
-                  {isPending ? t('vacationRentalDashboard.form.buttons.submitting') : t('vacationRentalDashboard.form.buttons.submit')}
+                  {isPending ? t('form.buttons.submitting') : t('form.buttons.submit')}
                 </button>
               </div>
             </div>
