@@ -1,15 +1,13 @@
 
+import CaseRowEditable from "@/components/CaseRowEditable";
 import Header from "@/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useDeleteCrimeCase } from "@/hooks/useDeleteCrimeCase";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
-import { usePerpetratorsByCaseId } from "@/hooks/usePerpetratorsByCaseId";
-import { useSolutionEvidences } from "@/hooks/useSolutionEvidences";
-import { useCaseMotives } from "@/hooks/useCaseMotives";
 import type { components } from '@/openapi/crimeAiSchema';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, ChevronUp } from "lucide-react";
 
 type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
@@ -20,27 +18,13 @@ const AdminCaseManagement = () => {
   const { toast } = useToast();
   const [updatingCaseId, setUpdatingCaseId] = useState<string | null>(null);
   const [expandedCaseIds, setExpandedCaseIds] = useState<Set<string>>(new Set());
+  const deleteCrimeCase = useDeleteCrimeCase();
 
-  const handleStatusUpdate = async (crimeCaseDto: CrimeCaseDto) => {
-    try {
-      setUpdatingCaseId(crimeCaseDto.id);
-      await updateCrimeCase.mutateAsync({
-        caseId: crimeCaseDto.id,
-        crimeCaseDto
-      });
-      toast({
-        title: "Status aktualisiert",
-        description: `Der Status wurde erfolgreich geändert.`,
-      });
-    } catch (error) {
-      toast({
-        title: "Fehler",
-        description: "Der Status konnte nicht aktualisiert werden.",
-      });
-    } finally {
-      setUpdatingCaseId(null);
-    }
-  };
+
+
+  const handleDeleteCrimeCase = async (caseId: string) => {
+    await deleteCrimeCase.mutateAsync({ caseId });
+  }
 
   const toggleSolution = (caseId: string) => {
     setExpandedCaseIds((prev) => {
@@ -115,107 +99,11 @@ const AdminCaseManagement = () => {
                   <th className="text-muted">Status</th>
                   <th className="text-muted">Aktionen</th>
                   <th className="text-muted">Lösung</th>
+                  <th className="text-muted"></th>
                 </tr>
               </thead>
               <tbody>
-                {crimeCases.items.map((crimeCase) => {
-                  const isExpanded = expandedCaseIds.has(crimeCase.id);
-                  return (
-                    <>
-                      <tr key={crimeCase.id} className="border-secondary">
-                        <td className="text-light font-monospace small">
-                          {crimeCase.id.substring(0, 8)}...
-                        </td>
-                        <td className="text-light fw-semibold">
-                          {crimeCase.title}
-                        </td>
-                        <td className="text-muted" style={{ maxWidth: '300px' }}>
-                          <div className="text-truncate">{crimeCase.description}</div>
-                        </td>
-                        <td>
-                          <span className={`badge ${crimeCase.status === 'PUBLISHED' ? 'bg-success' :
-                            crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
-                              'bg-secondary'
-                            }`}>
-                            {crimeCase.status === 'PUBLISHED' ? 'Veröffentlicht' :
-                              crimeCase.status === 'PREMIUM' ? 'Premium' :
-                                'Unveröffentlicht'}
-                          </span>
-                        </td>
-                        <td>
-                          <div className="d-flex gap-2">
-                            <button
-                              className="btn btn-info btn-sm"
-                              onClick={() => navigate(`/case/${crimeCase.id}`)}
-                            >
-                              Ansehen
-                            </button>
-                            <button className="btn btn-warning btn-sm">
-                              Bearbeiten
-                            </button>
-                            <div className="dropdown">
-                              <button
-                                className="btn btn-secondary btn-sm dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                disabled={updatingCaseId === crimeCase.id}
-                                style={{ zIndex: 1000 }}
-                              >
-                                {updatingCaseId === crimeCase.id ? (
-                                  <span className="spinner-border spinner-border-sm me-2" />
-                                ) : null}
-                                Status ändern
-                              </button>
-                              <ul
-                                className="dropdown-menu dropdown-menu-dark bg-secondary border border-secondary"
-                                style={{ zIndex: 1050 }}
-                              >
-                                <li>
-                                  <button
-                                    className="dropdown-item"
-                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
-                                    disabled={crimeCase.status === 'UNPUBLISHED'}
-                                  >
-                                    Unveröffentlicht
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="dropdown-item"
-                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
-                                    disabled={crimeCase.status === 'PUBLISHED'}
-                                  >
-                                    Veröffentlicht
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="dropdown-item"
-                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PREMIUM' })}
-                                    disabled={crimeCase.status === 'PREMIUM'}
-                                  >
-                                    Premium
-                                  </button>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <button
-                            className="btn btn-sm btn-outline-info"
-                            onClick={() => toggleSolution(crimeCase.id)}
-                          >
-                            {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                            {isExpanded ? ' Verbergen' : ' Anzeigen'}
-                          </button>
-                        </td>
-                      </tr>
-                      {isExpanded && (
-                        <SolutionRow caseId={crimeCase.id} />
-                      )}
-                    </>
-                  );
-                })}
+                {crimeCases.items.map((crimeCase) => <CaseRowEditable crimeCase={crimeCase} key={crimeCase.id} />)}
               </tbody>
             </table>
           </div>
@@ -233,114 +121,6 @@ const AdminCaseManagement = () => {
   );
 };
 
-const SolutionRow = ({ caseId }: { caseId: string }) => {
-  const { data: perpetrators, isLoading: loadingPerps, error: errorPerps } = usePerpetratorsByCaseId(caseId);
-  const { data: evidences, isLoading: loadingEvidence, error: errorEvidence } = useSolutionEvidences(caseId);
-  
-  const perpetratorIds = perpetrators?.items?.map(p => p.id.toString()) || [];
-  const { data: motives, isLoading: loadingMotives, error: errorMotives } = useCaseMotives(
-    caseId,
-    perpetratorIds[0]
-  );
 
-  const isLoading = loadingPerps || loadingEvidence || loadingMotives;
-  const error = errorPerps || errorEvidence || errorMotives;
-
-  const solution = {
-    personNames: perpetrators?.items?.map(p => p.name) || [],
-    evidenceTitles: evidences?.items?.map(e => e.title) || [],
-    motiveTitles: motives?.items?.map(m => m.title) || []
-  };
-
-  return (
-    <tr>
-      <td colSpan={6} className="bg-dark border-secondary">
-        <div className="p-4">
-          {isLoading && (
-            <div className="d-flex align-items-center gap-2 text-muted">
-              <span className="spinner-border spinner-border-sm" />
-              Lade Lösung...
-            </div>
-          )}
-          
-          {error && (
-            <div className="text-warning">
-              <strong>⚠️ Lösung nicht verfügbar</strong>
-              <p className="mb-0 small mt-1">
-                {error.message.includes('404') 
-                  ? 'Für diesen Fall wurde noch keine Lösung generiert.' 
-                  : 'Fehler beim Laden der Lösung.'}
-              </p>
-            </div>
-          )}
-          
-          {solution && !isLoading && (
-            <div className="row g-3">
-              {/* Täter */}
-              {solution.personNames && solution.personNames.length > 0 && (
-                <div className="col-md-4">
-                  <div className="card bg-danger bg-opacity-10 border-danger">
-                    <div className="card-body">
-                      <h6 className="text-danger mb-3">
-                        <strong>🔴 Täter</strong>
-                      </h6>
-                      <div className="d-flex flex-wrap gap-2">
-                        {solution.personNames.map((name, idx) => (
-                          <span key={idx} className="badge bg-danger">
-                            {name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Beweise */}
-              {solution.evidenceTitles && solution.evidenceTitles.length > 0 && (
-                <div className="col-md-4">
-                  <div className="card bg-warning bg-opacity-10 border-warning">
-                    <div className="card-body">
-                      <h6 className="text-warning mb-3">
-                        <strong>🔍 Überführende Beweise</strong>
-                      </h6>
-                      <ul className="list-unstyled mb-0">
-                        {solution.evidenceTitles.map((title, idx) => (
-                          <li key={idx} className="text-light small mb-1">
-                            • {title}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Motive */}
-              {solution.motiveTitles && solution.motiveTitles.length > 0 && (
-                <div className="col-md-4">
-                  <div className="card bg-info bg-opacity-10 border-info">
-                    <div className="card-body">
-                      <h6 className="text-info mb-3">
-                        <strong>💡 Motive</strong>
-                      </h6>
-                      <ul className="list-unstyled mb-0">
-                        {solution.motiveTitles.map((title, idx) => (
-                          <li key={idx} className="text-light small mb-1">
-                            • {title}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </td>
-    </tr>
-  );
-};
 
 export default AdminCaseManagement;
