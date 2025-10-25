@@ -20,7 +20,7 @@ const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalD
     <div className="mb-4">
       <div className="row g-4">
         {tabs.map((tab) => (
-          <div key={tab.id} className="col-12 col-md-6 col-lg-4">
+          <div key={tab.id} className="col-12 col-lg-6">
             <button
               className={`btn btn-outline-primary ${isMobile ? 'px-2 py-3' : 'px-4 py-3'} fw-medium w-100 text-center d-flex align-items-center justify-content-center ${activeTab === tab.id
                 ? 'active text-primary'
