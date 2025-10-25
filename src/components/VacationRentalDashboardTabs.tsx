@@ -1,4 +1,4 @@
-import { CreditCard, FileText, Home } from 'lucide-react';
+import { FileText, Home } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +14,6 @@ const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalD
   const tabs = [
     { id: 'cases', label: t('tabs.cases'), icon: Home },
     { id: 'promotion', label: t('tabs.promotion'), icon: FileText },
-    { id: 'subscription', label: t('tabs.subscription'), icon: CreditCard },
   ];
 
   return (
