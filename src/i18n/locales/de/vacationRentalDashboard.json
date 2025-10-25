@@ -37,5 +37,12 @@
   "addCaseCard": {
     "title": "Neuen Case hinzufügen",
     "description": "Erstellen Sie einen neuen Ferienwohnungs-Case"
+  },
+  "subscription": {
+    "subscriptionId": "Abonnement-ID",
+    "trialEnds": "Testphase endet",
+    "activeUntil": "Aktiv bis",
+    "canceled": "Abonnement gekündigt",
+    "manageButton": "Abonnement verwalten"
   }
 }

@@ -129,6 +129,8 @@ const VacationRentalDashboard = () => {
                   description={crimeCase.description}
                   imageUrl={crimeCase.imageUrl}
                   hideDescription={true}
+                  showSubscriptionInfo={true}
+                  subscriptionId={crimeCase.id}
                 />
               </div>
             ))}

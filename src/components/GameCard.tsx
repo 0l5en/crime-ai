@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import StarRating from './StarRating';
 import { useTranslation } from 'react-i18next';
+import { useCaseSubscription } from '@/hooks/useCaseSubscription';
+import { format } from 'date-fns';
 
 interface GameCardProps {
   title: string;
@@ -14,6 +16,8 @@ interface GameCardProps {
   hideDescription?: boolean;
   averageRating?: number;
   ratingCount?: number;
+  showSubscriptionInfo?: boolean;
+  subscriptionId?: string;
 }
 
 const GameCard = ({
@@ -27,10 +31,21 @@ const GameCard = ({
   onClick,
   hideDescription = false,
   averageRating,
-  ratingCount
+  ratingCount,
+  showSubscriptionInfo = false,
+  subscriptionId
 }: GameCardProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation('cases');
+  const { t: tDashboard } = useTranslation('vacationRentalDashboard');
+  
+  const { data: subscription, isLoading: subscriptionLoading } = useCaseSubscription(
+    showSubscriptionInfo ? caseId : undefined
+  );
+
+  const formatDate = (isoDate: string) => {
+    return format(new Date(isoDate), 'dd.MM.yyyy');
+  };
 
   const handleCardClick = () => {
     if (onClick) {
@@ -58,28 +73,93 @@ const GameCard = ({
     >
       <img className="card-img-top" src={imageUrl} alt="Crime case image"></img>
       <div className="card-body p-4 d-flex flex-column">
-        <h5 className="card-title mb-3" data-testid="case-title">{title}</h5>
+        <div className="d-flex justify-content-between align-items-start mb-3">
+          <h5 className="card-title mb-0" data-testid="case-title">{title}</h5>
+          {showSubscriptionInfo && subscriptionId && (
+            <span className="badge bg-info text-dark ms-2 flex-shrink-0">
+              ID: {subscriptionId.slice(0, 8)}
+            </span>
+          )}
+        </div>
+        
         {!hideDescription && (
           <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
             {description}
           </p>
         )}
         
-        {/* Rating Display */}
-        {(averageRating !== undefined && averageRating > 0) || (ratingCount !== undefined && ratingCount > 0) ? (
+        {/* Subscription Info oder Rating Display */}
+        {showSubscriptionInfo ? (
           <div className="mt-auto">
-            <StarRating
-              rating={averageRating || 0}
-              readonly={true}
-              size={16}
-              showCount={true}
-              count={ratingCount || 0}
-            />
+            {subscriptionLoading ? (
+              <div className="text-center py-2">
+                <div className="spinner-border spinner-border-sm text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            ) : subscription ? (
+              <>
+                {subscription.testPeriodEnd && (
+                  <p className="text-warning small mb-2">
+                    <i className="bi bi-clock me-1"></i>
+                    {tDashboard('subscription.trialEnds')} {formatDate(subscription.testPeriodEnd)}
+                  </p>
+                )}
+                {subscription.subscriptionPeriodEnd && !subscription.canceled && (
+                  <p className="text-success small mb-2">
+                    <i className="bi bi-check-circle me-1"></i>
+                    {tDashboard('subscription.activeUntil')} {formatDate(subscription.subscriptionPeriodEnd)}
+                  </p>
+                )}
+                {subscription.canceled && (
+                  <p className="text-danger small mb-2">
+                    <i className="bi bi-x-circle me-1"></i>
+                    {tDashboard('subscription.canceled')}
+                  </p>
+                )}
+                <a 
+                  href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-primary btn-sm w-100 mt-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <i className="bi bi-gear me-1"></i>
+                  {tDashboard('subscription.manageButton')}
+                </a>
+              </>
+            ) : (
+              <a 
+                href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-primary btn-sm w-100"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <i className="bi bi-gear me-1"></i>
+                {tDashboard('subscription.manageButton')}
+              </a>
+            )}
           </div>
         ) : (
-          <div className="mt-auto">
-            <p className="text-muted small mb-0">{t('card.notYetRated')}</p>
-          </div>
+          <>
+            {/* Rating Display */}
+            {(averageRating !== undefined && averageRating > 0) || (ratingCount !== undefined && ratingCount > 0) ? (
+              <div className="mt-auto">
+                <StarRating
+                  rating={averageRating || 0}
+                  readonly={true}
+                  size={16}
+                  showCount={true}
+                  count={ratingCount || 0}
+                />
+              </div>
+            ) : (
+              <div className="mt-auto">
+                <p className="text-muted small mb-0">{t('card.notYetRated')}</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

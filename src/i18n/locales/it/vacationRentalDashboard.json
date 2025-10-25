@@ -37,5 +37,12 @@
   "addCaseCard": {
     "title": "Aggiungi nuovo caso",
     "description": "Crea un nuovo caso di affitti vacanze"
+  },
+  "subscription": {
+    "subscriptionId": "ID abbonamento",
+    "trialEnds": "Prova termina",
+    "activeUntil": "Attivo fino al",
+    "canceled": "Abbonamento annullato",
+    "manageButton": "Gestisci abbonamento"
   }
 }

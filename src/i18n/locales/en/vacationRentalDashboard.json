@@ -37,5 +37,12 @@
   "addCaseCard": {
     "title": "Add New Case",
     "description": "Create a new vacation rental case"
+  },
+  "subscription": {
+    "subscriptionId": "Subscription ID",
+    "trialEnds": "Trial ends",
+    "activeUntil": "Active until",
+    "canceled": "Subscription canceled",
+    "manageButton": "Manage Subscription"
   }
 }
