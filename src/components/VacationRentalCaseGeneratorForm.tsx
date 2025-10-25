@@ -4,6 +4,7 @@ import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVaca
 import { useState } from 'react';
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import type { CreateCaseGeneratorFormVacationRentalDto, CreateSightseeingAttractionDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
+import { useTranslation } from 'react-i18next';
 
 // Extend the basic form data with vacation rental specific fields
 interface VacationRentalFormData {
@@ -31,6 +32,7 @@ interface VacationRentalCaseGeneratorFormProps {
 }
 
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
@@ -169,19 +171,19 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Grundeinstellungen Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">Grundeinstellungen</h5>
+                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.basicSettings')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Language */}
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="language" className="form-label">Sprache *</label>
+                    <label htmlFor="language" className="form-label">{t('vacationRentalDashboard.form.fields.language.label')} *</label>
                     <input
                       type="text"
                       id="language"
-                      placeholder="z.B. Deutsch, English, Français"
+                      placeholder={t('vacationRentalDashboard.form.fields.language.placeholder')}
                       className={`form-control ${errors.language || serverErrors.language ? 'is-invalid' : ''}`}
-                      {...register('language', { required: 'Sprache ist erforderlich' })}
+                      {...register('language', { required: t('vacationRentalDashboard.form.fields.language.required') })}
                     />
                     {(errors.language || serverErrors.language) && (
                       <div className="invalid-feedback d-block">
@@ -192,15 +194,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Epoch */}
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="epoch" className="form-label">Epoche *</label>
+                    <label htmlFor="epoch" className="form-label">{t('vacationRentalDashboard.form.fields.epoch.label')} *</label>
                     <select
                       id="epoch"
                       className={`form-select ${errors.epoch || serverErrors.epoch ? 'is-invalid' : ''}`}
-                      {...register('epoch', { required: 'Epoche ist erforderlich' })}
+                      {...register('epoch', { required: t('vacationRentalDashboard.form.fields.epoch.required') })}
                     >
-                      <option value="TWENTIES">1920er</option>
-                      <option value="PRESENT">Gegenwart</option>
-                      <option value="FUTURE">Zukunft</option>
+                      <option value="TWENTIES">{t('vacationRentalDashboard.form.fields.epoch.options.twenties')}</option>
+                      <option value="PRESENT">{t('vacationRentalDashboard.form.fields.epoch.options.present')}</option>
+                      <option value="FUTURE">{t('vacationRentalDashboard.form.fields.epoch.options.future')}</option>
                     </select>
                     {(errors.epoch || serverErrors.epoch) && (
                       <div className="invalid-feedback d-block">
@@ -211,15 +213,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Theme */}
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="theme" className="form-label">Thema *</label>
+                    <label htmlFor="theme" className="form-label">{t('vacationRentalDashboard.form.fields.theme.label')} *</label>
                     <select
                       id="theme"
                       className={`form-select ${errors.theme || serverErrors.theme ? 'is-invalid' : ''}`}
-                      {...register('theme', { required: 'Thema ist erforderlich' })}
+                      {...register('theme', { required: t('vacationRentalDashboard.form.fields.theme.required') })}
                     >
-                      <option value="MURDER">Mord</option>
-                      <option value="ROBBERY">Raub</option>
-                      <option value="KIDNAPPING">Entführung</option>
+                      <option value="MURDER">{t('vacationRentalDashboard.form.fields.theme.options.murder')}</option>
+                      <option value="ROBBERY">{t('vacationRentalDashboard.form.fields.theme.options.robbery')}</option>
+                      <option value="KIDNAPPING">{t('vacationRentalDashboard.form.fields.theme.options.kidnapping')}</option>
                     </select>
                     {(errors.theme || serverErrors.theme) && (
                       <div className="invalid-feedback d-block">
@@ -237,18 +239,18 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Örtlichkeit Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">Örtlichkeit</h5>
+                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.location')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Full Address */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="fullAddress" className="form-label">Vollständige Adresse *</label>
+                    <label htmlFor="fullAddress" className="form-label">{t('vacationRentalDashboard.form.fields.fullAddress.label')} *</label>
                     <input
                       type="text"
                       id="fullAddress"
                       className={`form-control ${errors.fullAddress || serverErrors.fullAddress ? 'is-invalid' : ''}`}
-                      {...register('fullAddress', { required: 'Adresse ist erforderlich' })}
+                      {...register('fullAddress', { required: t('vacationRentalDashboard.form.fields.fullAddress.required') })}
                     />
                     {(errors.fullAddress || serverErrors.fullAddress) && (
                       <div className="invalid-feedback d-block">
@@ -259,12 +261,12 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Name */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueName" className="form-label">Name der Unterkunft *</label>
+                    <label htmlFor="venueName" className="form-label">{t('vacationRentalDashboard.form.fields.venueName.label')} *</label>
                     <input
                       type="text"
                       id="venueName"
                       className={`form-control ${errors.venueName || serverErrors.venueName ? 'is-invalid' : ''}`}
-                      {...register('venueName', { required: 'Name ist erforderlich' })}
+                      {...register('venueName', { required: t('vacationRentalDashboard.form.fields.venueName.required') })}
                     />
                     {(errors.venueName || serverErrors.venueName) && (
                       <div className="invalid-feedback d-block">
@@ -275,15 +277,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Description */}
                   <div className="col-12 mb-3">
-                    <label htmlFor="venueDescription" className="form-label">Beschreibung der Unterkunft *</label>
+                    <label htmlFor="venueDescription" className="form-label">{t('vacationRentalDashboard.form.fields.venueDescription.label')} *</label>
                     <small className="form-text text-muted d-block mb-2">
-                      Beschreiben Sie Architektur, Einrichtungsstil und Besonderheiten
+                      {t('vacationRentalDashboard.form.fields.venueDescription.helpText')}
                     </small>
                     <textarea
                       id="venueDescription"
                       className={`form-control ${errors.venueDescription || serverErrors.venueDescription ? 'is-invalid' : ''}`}
                       rows={3}
-                      {...register('venueDescription', { required: 'Beschreibung ist erforderlich' })}
+                      {...register('venueDescription', { required: t('vacationRentalDashboard.form.fields.venueDescription.required') })}
                     />
                     {(errors.venueDescription || serverErrors.venueDescription) && (
                       <div className="invalid-feedback d-block">
@@ -298,21 +300,21 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Ferienwohnungs-Details Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">Ferienwohnungs-Details</h5>
+                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.rentalDetails')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Venue Floors */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueFloors" className="form-label">Anzahl Stockwerke *</label>
+                    <label htmlFor="venueFloors" className="form-label">{t('vacationRentalDashboard.form.fields.venueFloors.label')} *</label>
                     <input
                       type="number"
                       id="venueFloors"
                       min="1"
                       className={`form-control ${errors.venueFloors || serverErrors.venueFloors ? 'is-invalid' : ''}`}
                       {...register('venueFloors', {
-                        required: 'Anzahl Stockwerke ist erforderlich',
-                        min: { value: 1, message: 'Mindestens 1 Stockwerk erforderlich' }
+                        required: t('vacationRentalDashboard.form.fields.venueFloors.required'),
+                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.venueFloors.min') }
                       })}
                     />
                     {(errors.venueFloors || serverErrors.venueFloors) && (
@@ -324,15 +326,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Bedrooms */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueBedrooms" className="form-label">Anzahl Schlafzimmer *</label>
+                    <label htmlFor="venueBedrooms" className="form-label">{t('vacationRentalDashboard.form.fields.venueBedrooms.label')} *</label>
                     <input
                       type="number"
                       id="venueBedrooms"
                       min="1"
                       className={`form-control ${errors.venueBedrooms || serverErrors.venueBedrooms ? 'is-invalid' : ''}`}
                       {...register('venueBedrooms', {
-                        required: 'Anzahl Schlafzimmer ist erforderlich',
-                        min: { value: 1, message: 'Mindestens 1 Schlafzimmer erforderlich' }
+                        required: t('vacationRentalDashboard.form.fields.venueBedrooms.required'),
+                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.venueBedrooms.min') }
                       })}
                     />
                     {(errors.venueBedrooms || serverErrors.venueBedrooms) && (
@@ -344,15 +346,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Venue Bathrooms */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="venueBathrooms" className="form-label">Anzahl Badezimmer *</label>
+                    <label htmlFor="venueBathrooms" className="form-label">{t('vacationRentalDashboard.form.fields.venueBathrooms.label')} *</label>
                     <input
                       type="number"
                       id="venueBathrooms"
                       min="1"
                       className={`form-control ${errors.venueBathrooms || serverErrors.venueBathrooms ? 'is-invalid' : ''}`}
                       {...register('venueBathrooms', {
-                        required: 'Anzahl Badezimmer ist erforderlich',
-                        min: { value: 1, message: 'Mindestens 1 Badezimmer erforderlich' }
+                        required: t('vacationRentalDashboard.form.fields.venueBathrooms.required'),
+                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.venueBathrooms.min') }
                       })}
                     />
                     {(errors.venueBathrooms || serverErrors.venueBathrooms) && (
@@ -364,15 +366,15 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Max Guests */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="maxGuests" className="form-label">Maximale Gästeanzahl *</label>
+                    <label htmlFor="maxGuests" className="form-label">{t('vacationRentalDashboard.form.fields.maxGuests.label')} *</label>
                     <input
                       type="number"
                       id="maxGuests"
                       min="1"
                       className={`form-control ${errors.maxGuests || serverErrors.maxGuests ? 'is-invalid' : ''}`}
                       {...register('maxGuests', {
-                        required: 'Maximale Gästeanzahl ist erforderlich',
-                        min: { value: 1, message: 'Mindestens 1 Gast erforderlich' }
+                        required: t('vacationRentalDashboard.form.fields.maxGuests.required'),
+                        min: { value: 1, message: t('vacationRentalDashboard.form.fields.maxGuests.min') }
                       })}
                     />
                     {(errors.maxGuests || serverErrors.maxGuests) && (
@@ -384,9 +386,9 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Room Layout Description */}
                   <div className="col-12 mb-3">
-                    <label htmlFor="roomLayoutDescription" className="form-label">Raumaufteilung (optional)</label>
+                    <label htmlFor="roomLayoutDescription" className="form-label">{t('vacationRentalDashboard.form.fields.roomLayoutDescription.label')}</label>
                     <small className="form-text text-muted d-block mb-2">
-                      Beschreiben Sie die Raumaufteilung über alle Stockwerke
+                      {t('vacationRentalDashboard.form.fields.roomLayoutDescription.helpText')}
                     </small>
                     <textarea
                       id="roomLayoutDescription"
@@ -407,7 +409,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Sehenswürdigkeiten Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">Sehenswürdigkeiten in der Nähe</h5>
+                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.attractions')}</h5>
               </div>
               <div className="card-body">
                 {fields.map((field, index) => (
@@ -416,9 +418,9 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                       <input
                         type="text"
                         className={`form-control ${errors.nearbySightseeingAttractions?.[index]?.attractionName || serverErrors[`nearbySightseeingAttractions.${index}.attractionName`] ? 'is-invalid' : ''}`}
-                        placeholder="Name der Sehenswürdigkeit"
+                        placeholder={t('vacationRentalDashboard.form.fields.attractionName.placeholder')}
                         {...register(`nearbySightseeingAttractions.${index}.attractionName`, {
-                          required: 'Name ist erforderlich'
+                          required: t('vacationRentalDashboard.form.fields.attractionName.required')
                         })}
                       />
                       {(errors.nearbySightseeingAttractions?.[index]?.attractionName || serverErrors[`nearbySightseeingAttractions.${index}.attractionName`]) && (
@@ -433,10 +435,10 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                         min="0"
                         step="0.1"
                         className={`form-control ${errors.nearbySightseeingAttractions?.[index]?.distanceToVenue || serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`] ? 'is-invalid' : ''}`}
-                        placeholder="Entfernung (km)"
+                        placeholder={t('vacationRentalDashboard.form.fields.attractionDistance.placeholder')}
                         {...register(`nearbySightseeingAttractions.${index}.distanceToVenue`, {
-                          required: 'Entfernung ist erforderlich',
-                          min: { value: 0, message: 'Entfernung muss positiv sein' }
+                          required: t('vacationRentalDashboard.form.fields.attractionDistance.required'),
+                          min: { value: 0, message: t('vacationRentalDashboard.form.fields.attractionDistance.min') }
                         })}
                       />
                       {(errors.nearbySightseeingAttractions?.[index]?.distanceToVenue || serverErrors[`nearbySightseeingAttractions.${index}.distanceToVenue`]) && (
@@ -451,7 +453,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                         className="btn btn-outline-danger w-100"
                         onClick={() => removeAttraction(index)}
                       >
-                        Entfernen
+                        {t('vacationRentalDashboard.form.buttons.removeAttraction')}
                       </button>
                     </div>
                   </div>
@@ -461,7 +463,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                   className="btn btn-outline-primary"
                   onClick={addAttraction}
                 >
-                  + Sehenswürdigkeit hinzufügen
+                  {t('vacationRentalDashboard.form.buttons.addAttraction')}
                 </button>
               </div>
             </div>
@@ -469,13 +471,13 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             {/* Historische Informationen Card */}
             <div className="card mb-4">
               <div className="card-header">
-                <h5 className="mb-0">Historische Informationen (optional)</h5>
+                <h5 className="mb-0">{t('vacationRentalDashboard.form.sections.historicalInfo')}</h5>
               </div>
               <div className="card-body">
                 <div className="row">
                   {/* Approximate Year of Construction */}
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="approximateYearOfConstruction" className="form-label">Ungefähres Baujahr</label>
+                    <label htmlFor="approximateYearOfConstruction" className="form-label">{t('vacationRentalDashboard.form.fields.approximateYearOfConstruction.label')}</label>
                     <input
                       type="number"
                       id="approximateYearOfConstruction"
@@ -493,7 +495,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
                   {/* Historical Features and Legends */}
                   <div className="col-12 mb-3">
-                    <label htmlFor="historicalFeaturesAndLegends" className="form-label">Historische Merkmale und Legenden</label>
+                    <label htmlFor="historicalFeaturesAndLegends" className="form-label">{t('vacationRentalDashboard.form.fields.historicalFeaturesAndLegends.label')}</label>
                     <textarea
                       id="historicalFeaturesAndLegends"
                       className={`form-control ${errors.historicalFeaturesAndLegends || serverErrors.historicalFeaturesAndLegends ? 'is-invalid' : ''}`}
@@ -519,14 +521,14 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
                   onClick={onCancel}
                   disabled={isPending}
                 >
-                  Abbrechen
+                  {t('vacationRentalDashboard.form.buttons.cancel')}
                 </button>
                 <button
                   type="submit"
                   className="btn btn-primary"
                   disabled={isPending}
                 >
-                  {isPending ? 'Wird erstellt...' : 'Ferienwohnungs-Fall erstellen'}
+                  {isPending ? t('vacationRentalDashboard.form.buttons.submitting') : t('vacationRentalDashboard.form.buttons.submit')}
                 </button>
               </div>
             </div>

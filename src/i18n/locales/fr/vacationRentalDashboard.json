@@ -32,7 +32,98 @@
   },
   "form": {
     "title": "Créer un nouveau cas de location de vacances",
-    "backToOverview": "Retour à l'aperçu"
+    "backToOverview": "Retour à l'aperçu",
+    "sections": {
+      "basicSettings": "Paramètres de base",
+      "location": "Localisation",
+      "rentalDetails": "Détails de la location de vacances",
+      "attractions": "Attractions à proximité",
+      "historicalInfo": "Informations historiques (facultatif)"
+    },
+    "fields": {
+      "language": {
+        "label": "Langue",
+        "placeholder": "par ex. Deutsch, English, Français",
+        "required": "La langue est requise"
+      },
+      "epoch": {
+        "label": "Époque",
+        "required": "L'époque est requise",
+        "options": {
+          "twenties": "Années 1920",
+          "present": "Présent",
+          "future": "Futur"
+        }
+      },
+      "theme": {
+        "label": "Thème",
+        "required": "Le thème est requis",
+        "options": {
+          "murder": "Meurtre",
+          "robbery": "Vol",
+          "kidnapping": "Enlèvement"
+        }
+      },
+      "fullAddress": {
+        "label": "Adresse complète",
+        "required": "L'adresse est requise"
+      },
+      "venueName": {
+        "label": "Nom du logement",
+        "required": "Le nom est requis"
+      },
+      "venueDescription": {
+        "label": "Description du logement",
+        "helpText": "Décrivez l'architecture, le style intérieur et les particularités",
+        "required": "La description est requise"
+      },
+      "venueFloors": {
+        "label": "Nombre d'étages",
+        "required": "Le nombre d'étages est requis",
+        "min": "Au moins 1 étage requis"
+      },
+      "venueBedrooms": {
+        "label": "Nombre de chambres",
+        "required": "Le nombre de chambres est requis",
+        "min": "Au moins 1 chambre requise"
+      },
+      "venueBathrooms": {
+        "label": "Nombre de salles de bain",
+        "required": "Le nombre de salles de bain est requis",
+        "min": "Au moins 1 salle de bain requise"
+      },
+      "maxGuests": {
+        "label": "Nombre maximum d'invités",
+        "required": "Le nombre maximum d'invités est requis",
+        "min": "Au moins 1 invité requis"
+      },
+      "roomLayoutDescription": {
+        "label": "Disposition des pièces (facultatif)",
+        "helpText": "Décrivez la disposition des pièces sur tous les étages"
+      },
+      "approximateYearOfConstruction": {
+        "label": "Année de construction approximative"
+      },
+      "historicalFeaturesAndLegends": {
+        "label": "Caractéristiques historiques et légendes"
+      },
+      "attractionName": {
+        "placeholder": "Nom de l'attraction",
+        "required": "Le nom est requis"
+      },
+      "attractionDistance": {
+        "placeholder": "Distance (km)",
+        "required": "La distance est requise",
+        "min": "La distance doit être positive"
+      }
+    },
+    "buttons": {
+      "addAttraction": "+ Ajouter une attraction",
+      "removeAttraction": "Supprimer",
+      "cancel": "Annuler",
+      "submit": "Créer un cas de location de vacances",
+      "submitting": "Création en cours..."
+    }
   },
   "addCaseCard": {
     "title": "Ajouter un nouveau cas",

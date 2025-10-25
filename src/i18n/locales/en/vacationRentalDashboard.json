@@ -32,7 +32,98 @@
   },
   "form": {
     "title": "Create New Vacation Rental Case",
-    "backToOverview": "Back to Overview"
+    "backToOverview": "Back to Overview",
+    "sections": {
+      "basicSettings": "Basic Settings",
+      "location": "Location",
+      "rentalDetails": "Vacation Rental Details",
+      "attractions": "Nearby Attractions",
+      "historicalInfo": "Historical Information (optional)"
+    },
+    "fields": {
+      "language": {
+        "label": "Language",
+        "placeholder": "e.g. German, English, Français",
+        "required": "Language is required"
+      },
+      "epoch": {
+        "label": "Epoch",
+        "required": "Epoch is required",
+        "options": {
+          "twenties": "1920s",
+          "present": "Present",
+          "future": "Future"
+        }
+      },
+      "theme": {
+        "label": "Theme",
+        "required": "Theme is required",
+        "options": {
+          "murder": "Murder",
+          "robbery": "Robbery",
+          "kidnapping": "Kidnapping"
+        }
+      },
+      "fullAddress": {
+        "label": "Full Address",
+        "required": "Address is required"
+      },
+      "venueName": {
+        "label": "Venue Name",
+        "required": "Name is required"
+      },
+      "venueDescription": {
+        "label": "Venue Description",
+        "helpText": "Describe architecture, interior style, and special features",
+        "required": "Description is required"
+      },
+      "venueFloors": {
+        "label": "Number of Floors",
+        "required": "Number of floors is required",
+        "min": "At least 1 floor required"
+      },
+      "venueBedrooms": {
+        "label": "Number of Bedrooms",
+        "required": "Number of bedrooms is required",
+        "min": "At least 1 bedroom required"
+      },
+      "venueBathrooms": {
+        "label": "Number of Bathrooms",
+        "required": "Number of bathrooms is required",
+        "min": "At least 1 bathroom required"
+      },
+      "maxGuests": {
+        "label": "Maximum Number of Guests",
+        "required": "Maximum number of guests is required",
+        "min": "At least 1 guest required"
+      },
+      "roomLayoutDescription": {
+        "label": "Room Layout (optional)",
+        "helpText": "Describe the room layout across all floors"
+      },
+      "approximateYearOfConstruction": {
+        "label": "Approximate Year of Construction"
+      },
+      "historicalFeaturesAndLegends": {
+        "label": "Historical Features and Legends"
+      },
+      "attractionName": {
+        "placeholder": "Attraction Name",
+        "required": "Name is required"
+      },
+      "attractionDistance": {
+        "placeholder": "Distance (km)",
+        "required": "Distance is required",
+        "min": "Distance must be positive"
+      }
+    },
+    "buttons": {
+      "addAttraction": "+ Add Attraction",
+      "removeAttraction": "Remove",
+      "cancel": "Cancel",
+      "submit": "Create Vacation Rental Case",
+      "submitting": "Creating..."
+    }
   },
   "addCaseCard": {
     "title": "Add New Case",

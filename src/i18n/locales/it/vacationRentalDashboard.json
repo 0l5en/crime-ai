@@ -32,7 +32,98 @@
   },
   "form": {
     "title": "Crea nuovo caso di affitti vacanze",
-    "backToOverview": "Torna alla panoramica"
+    "backToOverview": "Torna alla panoramica",
+    "sections": {
+      "basicSettings": "Impostazioni di base",
+      "location": "Posizione",
+      "rentalDetails": "Dettagli affitto vacanze",
+      "attractions": "Attrazioni nelle vicinanze",
+      "historicalInfo": "Informazioni storiche (facoltativo)"
+    },
+    "fields": {
+      "language": {
+        "label": "Lingua",
+        "placeholder": "es. Deutsch, English, Français",
+        "required": "La lingua è obbligatoria"
+      },
+      "epoch": {
+        "label": "Epoca",
+        "required": "L'epoca è obbligatoria",
+        "options": {
+          "twenties": "Anni '20",
+          "present": "Presente",
+          "future": "Futuro"
+        }
+      },
+      "theme": {
+        "label": "Tema",
+        "required": "Il tema è obbligatorio",
+        "options": {
+          "murder": "Omicidio",
+          "robbery": "Rapina",
+          "kidnapping": "Rapimento"
+        }
+      },
+      "fullAddress": {
+        "label": "Indirizzo completo",
+        "required": "L'indirizzo è obbligatorio"
+      },
+      "venueName": {
+        "label": "Nome dell'alloggio",
+        "required": "Il nome è obbligatorio"
+      },
+      "venueDescription": {
+        "label": "Descrizione dell'alloggio",
+        "helpText": "Descrivi architettura, stile d'arredamento e caratteristiche speciali",
+        "required": "La descrizione è obbligatoria"
+      },
+      "venueFloors": {
+        "label": "Numero di piani",
+        "required": "Il numero di piani è obbligatorio",
+        "min": "Almeno 1 piano richiesto"
+      },
+      "venueBedrooms": {
+        "label": "Numero di camere da letto",
+        "required": "Il numero di camere da letto è obbligatorio",
+        "min": "Almeno 1 camera da letto richiesta"
+      },
+      "venueBathrooms": {
+        "label": "Numero di bagni",
+        "required": "Il numero di bagni è obbligatorio",
+        "min": "Almeno 1 bagno richiesto"
+      },
+      "maxGuests": {
+        "label": "Numero massimo di ospiti",
+        "required": "Il numero massimo di ospiti è obbligatorio",
+        "min": "Almeno 1 ospite richiesto"
+      },
+      "roomLayoutDescription": {
+        "label": "Disposizione stanze (facoltativo)",
+        "helpText": "Descrivi la disposizione delle stanze su tutti i piani"
+      },
+      "approximateYearOfConstruction": {
+        "label": "Anno di costruzione approssimativo"
+      },
+      "historicalFeaturesAndLegends": {
+        "label": "Caratteristiche storiche e leggende"
+      },
+      "attractionName": {
+        "placeholder": "Nome dell'attrazione",
+        "required": "Il nome è obbligatorio"
+      },
+      "attractionDistance": {
+        "placeholder": "Distanza (km)",
+        "required": "La distanza è obbligatoria",
+        "min": "La distanza deve essere positiva"
+      }
+    },
+    "buttons": {
+      "addAttraction": "+ Aggiungi attrazione",
+      "removeAttraction": "Rimuovi",
+      "cancel": "Annulla",
+      "submit": "Crea caso affitto vacanze",
+      "submitting": "Creazione in corso..."
+    }
   },
   "addCaseCard": {
     "title": "Aggiungi nuovo caso",

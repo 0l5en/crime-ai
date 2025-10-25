@@ -32,7 +32,98 @@
   },
   "form": {
     "title": "Neuen Ferienwohnungs-Case erstellen",
-    "backToOverview": "Zurück zur Übersicht"
+    "backToOverview": "Zurück zur Übersicht",
+    "sections": {
+      "basicSettings": "Grundeinstellungen",
+      "location": "Örtlichkeit",
+      "rentalDetails": "Ferienwohnungs-Details",
+      "attractions": "Sehenswürdigkeiten in der Nähe",
+      "historicalInfo": "Historische Informationen (optional)"
+    },
+    "fields": {
+      "language": {
+        "label": "Sprache",
+        "placeholder": "z.B. Deutsch, English, Français",
+        "required": "Sprache ist erforderlich"
+      },
+      "epoch": {
+        "label": "Epoche",
+        "required": "Epoche ist erforderlich",
+        "options": {
+          "twenties": "1920er",
+          "present": "Gegenwart",
+          "future": "Zukunft"
+        }
+      },
+      "theme": {
+        "label": "Thema",
+        "required": "Thema ist erforderlich",
+        "options": {
+          "murder": "Mord",
+          "robbery": "Raub",
+          "kidnapping": "Entführung"
+        }
+      },
+      "fullAddress": {
+        "label": "Vollständige Adresse",
+        "required": "Adresse ist erforderlich"
+      },
+      "venueName": {
+        "label": "Name der Unterkunft",
+        "required": "Name ist erforderlich"
+      },
+      "venueDescription": {
+        "label": "Beschreibung der Unterkunft",
+        "helpText": "Beschreiben Sie Architektur, Einrichtungsstil und Besonderheiten",
+        "required": "Beschreibung ist erforderlich"
+      },
+      "venueFloors": {
+        "label": "Anzahl Stockwerke",
+        "required": "Anzahl Stockwerke ist erforderlich",
+        "min": "Mindestens 1 Stockwerk erforderlich"
+      },
+      "venueBedrooms": {
+        "label": "Anzahl Schlafzimmer",
+        "required": "Anzahl Schlafzimmer ist erforderlich",
+        "min": "Mindestens 1 Schlafzimmer erforderlich"
+      },
+      "venueBathrooms": {
+        "label": "Anzahl Badezimmer",
+        "required": "Anzahl Badezimmer ist erforderlich",
+        "min": "Mindestens 1 Badezimmer erforderlich"
+      },
+      "maxGuests": {
+        "label": "Maximale Gästeanzahl",
+        "required": "Maximale Gästeanzahl ist erforderlich",
+        "min": "Mindestens 1 Gast erforderlich"
+      },
+      "roomLayoutDescription": {
+        "label": "Raumaufteilung (optional)",
+        "helpText": "Beschreiben Sie die Raumaufteilung über alle Stockwerke"
+      },
+      "approximateYearOfConstruction": {
+        "label": "Ungefähres Baujahr"
+      },
+      "historicalFeaturesAndLegends": {
+        "label": "Historische Merkmale und Legenden"
+      },
+      "attractionName": {
+        "placeholder": "Name der Sehenswürdigkeit",
+        "required": "Name ist erforderlich"
+      },
+      "attractionDistance": {
+        "placeholder": "Entfernung (km)",
+        "required": "Entfernung ist erforderlich",
+        "min": "Entfernung muss positiv sein"
+      }
+    },
+    "buttons": {
+      "addAttraction": "+ Sehenswürdigkeit hinzufügen",
+      "removeAttraction": "Entfernen",
+      "cancel": "Abbrechen",
+      "submit": "Ferienwohnungs-Fall erstellen",
+      "submitting": "Wird erstellt..."
+    }
   },
   "addCaseCard": {
     "title": "Neuen Case hinzufügen",
