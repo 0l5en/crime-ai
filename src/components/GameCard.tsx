@@ -92,12 +92,12 @@ const GameCard = ({
         {showSubscriptionInfo ? (
           <div className="mt-auto">
             {subscriptionLoading ? (
-              <div className="text-center py-2">
+              <div className="text-center py-2 mb-2">
                 <div className="spinner-border spinner-border-sm text-primary" role="status">
                   <span className="visually-hidden">Loading...</span>
                 </div>
               </div>
-            ) : subscription ? (
+            ) : subscription && (
               <>
                 {subscription.testPeriodEnd && (
                   <p className="text-warning small mb-2">
@@ -117,29 +117,18 @@ const GameCard = ({
                     {tDashboard('subscription.canceled')}
                   </p>
                 )}
-                <a 
-                  href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline-primary btn-sm w-100 mt-2"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <i className="bi bi-gear me-1"></i>
-                  {tDashboard('subscription.manageButton')}
-                </a>
               </>
-            ) : (
-              <a 
-                href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline-primary btn-sm w-100"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <i className="bi bi-gear me-1"></i>
-                {tDashboard('subscription.manageButton')}
-              </a>
             )}
+            <a 
+              href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline-primary btn-sm w-100"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <i className="bi bi-gear me-1"></i>
+              {tDashboard('subscription.manageButton')}
+            </a>
           </div>
         ) : (
           <>

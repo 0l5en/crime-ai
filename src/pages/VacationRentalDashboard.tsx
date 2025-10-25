@@ -112,7 +112,7 @@ const VacationRentalDashboard = () => {
           <div className="row g-4">
             {/* all attempts */}
             {attempts.map((attempt) => (
-              <div key={attempt.id} className="col-12 col-md-6 col-lg-4">
+              <div key={attempt.id} className="col-12 col-lg-6">
                 <GeneratingCaseCard
                   attemptId={attempt.id}
                   created={attempt.created}
@@ -122,7 +122,7 @@ const VacationRentalDashboard = () => {
 
             {/* Published Cases */}
             {cases.map((crimeCase) => (
-              <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
+              <div key={crimeCase.id} className="col-12 col-lg-6">
                 <GameCard
                   caseId={crimeCase.id}
                   title={crimeCase.title}
@@ -136,7 +136,7 @@ const VacationRentalDashboard = () => {
             ))}
 
             {/* Add New Case Card */}
-            <div className="col-12 col-md-6 col-lg-4">
+            <div className="col-12 col-lg-6">
               <AddCaseCard onClick={handleCreateNewCase} />
             </div>
           </div>
@@ -195,7 +195,7 @@ const VacationRentalDashboard = () => {
       ) : (
         <div className="row g-4">
           {cases.map((crimeCase) => (
-            <div key={crimeCase.id} className="col-12 col-md-6 col-lg-4">
+            <div key={crimeCase.id} className="col-12 col-lg-6">
               <QRCodeCard
                 caseId={crimeCase.id}
                 title={crimeCase.title}
