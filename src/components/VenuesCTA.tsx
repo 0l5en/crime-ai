@@ -16,7 +16,7 @@ const VenuesCTA = () => {
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
             <h3 className="fw-bold mb-3 mb-md-5 text-white" style={{
-              fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+              fontSize: 'clamp(1.25rem, 4vw, 2.5rem)',
               lineHeight: '1.2'
             }}>
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
@@ -82,10 +82,10 @@ const VenuesCTA = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="d-flex flex-column flex-md-row gap-2 gap-md-4 justify-content-center">
+            <div className="d-flex flex-column flex-md-row gap-2 gap-md-4 justify-content-center mx-auto" style={{ maxWidth: '100%' }}>
               <button 
                 onClick={() => navigate('/venue-register')}
-                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3" 
+                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3 flex-grow-1" 
                 style={{ 
                   fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                   borderRadius: '16px',
@@ -94,8 +94,7 @@ const VenuesCTA = () => {
                   color: 'white',
                   border: 'none',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 6px 25px rgba(203, 25, 28, 0.4)',
-                  minWidth: '250px'
+                  boxShadow: '0 6px 25px rgba(203, 25, 28, 0.4)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#a8161a';
@@ -113,7 +112,7 @@ const VenuesCTA = () => {
               </button>
               
               <button 
-                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3" 
+                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3 flex-grow-1" 
                 style={{ 
                   fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                   borderRadius: '16px',
@@ -121,8 +120,7 @@ const VenuesCTA = () => {
                   backgroundColor: 'transparent',
                   color: 'white',
                   border: '2px solid var(--bs-danger)',
-                  transition: 'all 0.3s ease',
-                  minWidth: '250px'
+                  transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.15)';
