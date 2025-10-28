@@ -1,22 +1,26 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Building2, QrCode, BarChart3, Users, Gift } from "lucide-react";
+import Header from "@/components/Header";
+import SignInButton from "@/components/SignInButton";
+import useRegisterVacationRental from "@/hooks/useRegisterVacationRental";
+import useSignIn from "@/hooks/useSignIn";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { BarChart3, Building2, Gift, QrCode, Users } from "lucide-react";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { z } from "zod";
 
 const VenueRegister = () => {
   const { t } = useTranslation('venueRegister');
+  const registerVactionRental = useRegisterVacationRental();
+  const { signIn } = useSignIn({ postLoginSuccessUri: new URL(window.location.href).origin + '/vacation-rental-dashboard' });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const registerSchema = z.object({
-    firstName: z.string().min(2, t('validation.firstNameMin')),
+    userName: z.string().min(2, t('validation.userNameMin')),
     email: z.string().email(t('validation.emailInvalid')),
     password: z.string()
       .min(8, t('validation.passwordMin'))
@@ -39,8 +43,21 @@ const VenueRegister = () => {
     resolver: zodResolver(registerSchema)
   });
 
+  const createRegistration = async (data: RegisterFormData) => {
+    if (data.userName && data.email && data.password) {
+      await registerVactionRental.mutateAsync({ userName: data.userName, email: data.email, password: data.password });
+      // TODO isSuccess is false - find out why !!!
+      if (!registerVactionRental.isError) {
+        signIn();
+      } else {
+        // TODO display error message
+        console.error("an error occured while trying to register as vacation rental:", registerVactionRental.error);
+      }
+    }
+  }
+
   const onSubmit = (data: RegisterFormData) => {
-    console.log('Venue registration data:', data);
+    createRegistration(data);
   };
 
   const features = [
@@ -54,12 +71,12 @@ const VenueRegister = () => {
   return (
     <div className="min-vh-100 d-flex flex-column" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
-      
+
       <main className="flex-grow-1">
         <div className="container-fluid py-5">
           <div className="row g-0 min-vh-100">
             {/* Left side - Features */}
-            <div 
+            <div
               className="col-lg-6 d-flex align-items-center justify-content-center p-5 text-light"
               style={{
                 background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)'
@@ -72,11 +89,11 @@ const VenueRegister = () => {
                 <p className="lead mb-5 opacity-75">
                   {t('features.subtitle')}
                 </p>
-                
+
                 <div className="d-flex flex-column gap-4">
                   {features.map(({ icon: Icon, key }) => (
                     <div key={key} className="d-flex align-items-start gap-3">
-                      <div 
+                      <div
                         className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
                         style={{
                           width: '48px',
@@ -113,27 +130,21 @@ const VenueRegister = () => {
                   </p>
                 </div>
 
-                {/* Inactive Banner */}
-                <div className="alert alert-warning mb-4 d-flex align-items-center">
-                  <i className="bi bi-info-circle me-2"></i>
-                  <span>{t('inactive')}</span>
-                </div>
-
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-3">
-                    <label htmlFor="firstName" className="form-label fw-semibold">
-                      {t('form.firstName')}
+                    <label htmlFor="userName" className="form-label fw-semibold">
+                      {t('form.userName')}
                     </label>
                     <input
-                      {...register('firstName')}
+                      {...register('userName')}
                       type="text"
-                      className={`form-control form-control-lg ${errors.firstName ? 'is-invalid' : ''}`}
-                      id="firstName"
+                      className={`form-control form-control-lg ${errors.userName ? 'is-invalid' : ''}`}
+                      id="userName"
                       autoComplete="given-name"
                     />
-                    {errors.firstName && (
+                    {errors.userName && (
                       <div className="invalid-feedback">
-                        {errors.firstName.message}
+                        {errors.userName.message}
                       </div>
                     )}
                   </div>
@@ -195,7 +206,6 @@ const VenueRegister = () => {
                   <button
                     type="submit"
                     className="btn btn-danger w-100 py-3 fw-semibold mb-4"
-                    disabled={true}
                     title={t('inactive')}
                   >
                     {t('form.submit')}
@@ -203,9 +213,7 @@ const VenueRegister = () => {
 
                   <div className="text-center">
                     <span className="text-muted">{t('form.alreadyRegistered')} </span>
-                    <Link to="/" className="text-danger text-decoration-none fw-semibold">
-                      {t('form.signIn')}
-                    </Link>
+                    <SignInButton />
                   </div>
                 </form>
               </div>
