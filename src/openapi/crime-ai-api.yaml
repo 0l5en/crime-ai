@@ -19,6 +19,24 @@ paths:
                 $ref: "#/components/schemas/UserInfoDto"
         "500":
           description: if any internal error occurs while processing the request
+  /register-vacation-rental:
+    post:
+      summary: create a new registration of a user of type vacation rental
+      operationId: createUserRegistrationVacationRental
+      requestBody:
+        description: the data required to create a new registration
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRegistrationDto"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+        "409":
+          description: if the username or email already exist
+        "500":
+          description: if any internal error occurs while processing the request
   /crimecase:
     get:
       summary: get the latest crime cases
@@ -773,6 +791,22 @@ components:
         exp:
           type: integer
           format: int64
+    CreateRegistrationDto:
+      type: object
+      properties:
+        userName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+      required:
+      - email
+      - password
+      - userName
     CrimeCaseDto:
       type: object
       properties:
@@ -1462,6 +1496,7 @@ components:
           enum:
           - CREATED
           - SUBSCRIBED
+          - GENERATED
         created:
           type: string
       required:
