@@ -22,6 +22,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/register-vacation-rental": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** create a new registration of a user of type vacation rental */
+    post: operations["createUserRegistrationVacationRental"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/crimecase": {
     parameters: {
       query?: never;
@@ -469,6 +486,11 @@ export interface components {
       /** Format: int64 */
       exp: number;
     };
+    CreateRegistrationDto: {
+      userName: string;
+      email: string;
+      password: string;
+    };
     CrimeCaseDto: {
       id: string;
       title: string;
@@ -769,6 +791,43 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["UserInfoDto"];
         };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createUserRegistrationVacationRental: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the data required to create a new registration */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateRegistrationDto"];
+      };
+    };
+    responses: {
+      /** @description successful operation */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if the username or email already exist */
+      409: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description if any internal error occurs while processing the request */
       500: {
