@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface GeneratingCaseCardProps {
@@ -27,9 +28,12 @@ const GeneratingCaseCard = ({ attemptId, created }: GeneratingCaseCardProps) => 
           <p className="card-text text-muted mb-4">
             <strong>{t('generatingCard.created')}:</strong> {formattedDate}
           </p>
-          <p className="card-text text-muted" style={{ textAlign: 'justify' }}>
+          <p className="card-text text-muted mb-4" style={{ textAlign: 'justify' }}>
             {t('generatingCard.description')}
           </p>
+          <div className="d-flex justify-content-center mt-auto">
+            <Settings size={48} className="text-primary" style={{ opacity: 0.3 }} />
+          </div>
         </div>
       </div>
     </div>
