@@ -1,4 +1,5 @@
 import AddCaseCard from "@/components/AddCaseCard";
+import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
@@ -262,6 +263,7 @@ const VacationRentalDashboard = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };
