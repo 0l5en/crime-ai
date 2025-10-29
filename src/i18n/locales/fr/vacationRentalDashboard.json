@@ -135,5 +135,12 @@
     "activeUntil": "Actif jusqu'au",
     "canceled": "Abonnement annulé",
     "manageButton": "Gérer l'abonnement"
+  },
+  "generatingCard": {
+    "title": "Cas #{{id}}",
+    "status": "Statut",
+    "statusInProgress": "En cours",
+    "created": "Créé",
+    "description": "Génération de votre cas de location de vacances... Cela prend généralement jusqu'à 24 heures."
   }
 }

@@ -135,5 +135,12 @@
     "activeUntil": "Active until",
     "canceled": "Subscription canceled",
     "manageButton": "Manage Subscription"
+  },
+  "generatingCard": {
+    "title": "Case #{{id}}",
+    "status": "Status",
+    "statusInProgress": "In Progress",
+    "created": "Created",
+    "description": "Generating your vacation rental case... This usually takes up to 24 hours."
   }
 }

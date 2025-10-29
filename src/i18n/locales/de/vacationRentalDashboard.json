@@ -135,5 +135,12 @@
     "activeUntil": "Aktiv bis",
     "canceled": "Abonnement gekündigt",
     "manageButton": "Abonnement verwalten"
+  },
+  "generatingCard": {
+    "title": "Fall #{{id}}",
+    "status": "Status",
+    "statusInProgress": "In Bearbeitung",
+    "created": "Erstellt",
+    "description": "Ihr Ferienhaus-Fall wird generiert... Dies dauert normalerweise bis zu 24 Stunden."
   }
 }

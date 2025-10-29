@@ -135,5 +135,12 @@
     "activeUntil": "Attivo fino al",
     "canceled": "Abbonamento annullato",
     "manageButton": "Gestisci abbonamento"
+  },
+  "generatingCard": {
+    "title": "Caso #{{id}}",
+    "status": "Stato",
+    "statusInProgress": "In corso",
+    "created": "Creato",
+    "description": "Generazione del caso di affitto vacanze... Questo di solito richiede fino a 24 ore."
   }
 }
