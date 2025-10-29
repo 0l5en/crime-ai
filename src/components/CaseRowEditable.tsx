@@ -31,84 +31,98 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 
     return (
         <>
-            <tr key={crimeCase.id} className="hover:bg-muted/50 transition-colors">
-                <td className="px-6 py-4 text-sm text-foreground">
+            <tr key={crimeCase.id} className="border-secondary">
+                <td>
                     {pending ? (
-                        <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-primary border-r-transparent" />
+                        <span className="spinner-border spinner-border-sm me-2" />
                     ) : <>{crimeCase.id.substring(0, 8)}...</>}
                 </td>
-                <td className="px-6 py-4 text-sm font-semibold text-foreground">
+                <td className="fw-semibold">
                     {crimeCase.title}
                 </td>
-                <td className="px-6 py-4 text-sm text-muted-foreground max-w-xs">
-                    <div className="truncate">{crimeCase.description}</div>
+                <td className="text-muted" style={{ maxWidth: '300px' }}>
+                    <div className="text-truncate">{crimeCase.description}</div>
                 </td>
-                <td className="px-6 py-4">
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
-                        crimeCase.status === 'PUBLISHED' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
-                        crimeCase.status === 'PREMIUM' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
-                        'bg-muted text-muted-foreground border border-border'
-                    }`}>
+                <td>
+                    <span className={`badge ${crimeCase.status === 'PUBLISHED' ? 'bg-success' :
+                        crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
+                            'bg-secondary'
+                        }`}>
                         {crimeCase.status === 'PUBLISHED' ? 'Veröffentlicht' :
                             crimeCase.status === 'PREMIUM' ? 'Premium' :
                                 'Unveröffentlicht'}
                     </span>
                 </td>
-                <td className="px-6 py-4">
-                    <div className="flex gap-2">
+                <td>
+                    <div className="d-flex gap-2">
                         <button
-                            className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 border border-primary/30 disabled:opacity-50 transition-colors"
+                            className="btn btn-info btn-sm"
                             disabled={pending}
                             onClick={() => navigate(`/case/${crimeCase.id}`)}
                         >
                             Ansehen
                         </button>
-                        <div className="relative group">
+                        <button className="btn btn-warning btn-sm" disabled={pending}>
+                            Bearbeiten
+                        </button>
+                        <div className="dropdown">
                             <button
-                                className="px-3 py-1.5 text-xs font-medium rounded-md bg-muted text-foreground hover:bg-muted/80 border border-border disabled:opacity-50 transition-colors"
+                                className="btn btn-secondary btn-sm dropdown-toggle"
+                                data-bs-toggle="dropdown"
                                 disabled={pending}
+                                style={{ zIndex: 1000 }}
                             >
-                                Status ändern ▼
+
+                                Status ändern
                             </button>
-                            <div className="absolute left-0 top-full mt-1 hidden group-hover:block bg-card border border-border rounded-md shadow-lg min-w-[140px] z-50">
-                                <button
-                                    className="block w-full px-4 py-2 text-left text-sm hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors first:rounded-t-md"
-                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
-                                    disabled={crimeCase.status === 'UNPUBLISHED'}
-                                >
-                                    Unveröffentlicht
-                                </button>
-                                <button
-                                    className="block w-full px-4 py-2 text-left text-sm hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
-                                    disabled={crimeCase.status === 'PUBLISHED'}
-                                >
-                                    Veröffentlicht
-                                </button>
-                                <button
-                                    className="block w-full px-4 py-2 text-left text-sm hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors last:rounded-b-md"
-                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PREMIUM' })}
-                                    disabled={crimeCase.status === 'PREMIUM'}
-                                >
-                                    Premium
-                                </button>
-                            </div>
+                            <ul
+                                className="dropdown-menu dropdown-menu-dark bg-secondary border border-secondary"
+                                style={{ zIndex: 1050 }}
+                            >
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
+                                        disabled={crimeCase.status === 'UNPUBLISHED'}
+                                    >
+                                        Unveröffentlicht
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
+                                        disabled={crimeCase.status === 'PUBLISHED'}
+                                    >
+                                        Veröffentlicht
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PREMIUM' })}
+                                        disabled={crimeCase.status === 'PREMIUM'}
+                                    >
+                                        Premium
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </td>
-                <td className="px-6 py-4">
+                <td>
                     <button
-                        className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 border border-primary/30 disabled:opacity-50 transition-colors"
+                        className="btn btn-sm btn-outline-info"
                         onClick={() => expanded === 'SolutionExpanded' ? setExpanded('None') : setExpanded('SolutionExpanded')}
                         disabled={pending}
                     >
-                        {expanded === 'SolutionExpanded' ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                        {expanded === 'SolutionExpanded' ? 'Verbergen' : 'Anzeigen'}
+                        {expanded === 'SolutionExpanded' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        {expanded === 'SolutionExpanded' ? ' Verbergen' : ' Anzeigen'}
                     </button>
                 </td>
-                <td className="px-6 py-4">
+                <td>
                     <button
-                        className="px-3 py-1.5 text-xs font-medium rounded-md bg-destructive/10 text-destructive hover:bg-destructive/20 border border-destructive/30 disabled:opacity-50 transition-colors"
+                        className="btn btn-danger btn-sm"
                         onClick={() => setExpanded('DeleteWarningExpanded')}
                         disabled={pending}
                     >
@@ -130,20 +144,20 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 const DeleteWarningRow = ({ pending, deleteCrimeCase, cancelDelete }: { pending: boolean; deleteCrimeCase: () => void; cancelDelete: () => void }) => {
     return (
         <tr>
-            <td colSpan={7} className="px-6 py-8 bg-destructive/5 border-t border-border">
-                <div className="flex flex-col items-center gap-4">
-                    <h1 className="text-2xl font-bold text-destructive text-center">⚠️ Achtung ⚠️</h1>
-                    <h2 className="text-lg text-center text-foreground">Beim Löschen werden sämtliche Daten für den Fall gelöscht!</h2>
-                    <div className="flex gap-4">
+            <td colSpan={7} className="bg-dark border-secondary">
+                <div className="d-flex flex-column">
+                    <h1 className="text-danger mb-3 text-center">⚠️ Achtung ⚠️</h1>
+                    <h2 className="text-center">Beim Löschen werden sämtliche Daten für den Fall gelöscht!</h2>
+                    <div className="d-flex justify-content-center">
                         <button
-                            className="px-6 py-2 text-sm font-medium rounded-md bg-destructive text-destructive-foreground hover:bg-destructive/90 disabled:opacity-50 transition-colors"
+                            className="btn btn-danger btn-sm m-4"
                             onClick={() => deleteCrimeCase()}
                             disabled={pending}
                         >
                             Löschen bestätigen
                         </button>
                         <button
-                            className="px-6 py-2 text-sm font-medium rounded-md bg-muted text-foreground hover:bg-muted/80 border border-border disabled:opacity-50 transition-colors"
+                            className="btn btn-secondary btn-sm m-4"
                             onClick={cancelDelete}
                             disabled={pending}
                         >
@@ -177,19 +191,19 @@ const SolutionRow = ({ caseId }: { caseId: string }) => {
 
     return (
         <tr>
-            <td colSpan={7} className="px-6 py-6 bg-muted/30 border-t border-border">
-                <div className="space-y-4">
+            <td colSpan={7} className="bg-dark border-secondary">
+                <div className="p-4">
                     {isLoading && (
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                            <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-primary border-r-transparent" />
+                        <div className="d-flex align-items-center gap-2 text-muted">
+                            <span className="spinner-border spinner-border-sm" />
                             Lade Lösung...
                         </div>
                     )}
 
                     {error && (
-                        <div className="text-yellow-400 bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-                            <strong className="block mb-1">⚠️ Lösung nicht verfügbar</strong>
-                            <p className="text-sm">
+                        <div className="text-warning">
+                            <strong>⚠️ Lösung nicht verfügbar</strong>
+                            <p className="mb-0 small mt-1">
                                 {error.message.includes('404')
                                     ? 'Für diesen Fall wurde noch keine Lösung generiert.'
                                     : 'Fehler beim Laden der Lösung.'}
@@ -198,52 +212,64 @@ const SolutionRow = ({ caseId }: { caseId: string }) => {
                     )}
 
                     {solution && !isLoading && (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="row g-3">
                             {/* Täter */}
                             {solution.personNames && solution.personNames.length > 0 && (
-                                <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
-                                    <h6 className="text-red-400 font-semibold mb-3">
-                                        🔴 Täter
-                                    </h6>
-                                    <div className="flex flex-wrap gap-2">
-                                        {solution.personNames.map((name, idx) => (
-                                            <span key={idx} className="px-2 py-1 text-xs bg-red-500/20 text-red-400 border border-red-500/30 rounded">
-                                                {name}
-                                            </span>
-                                        ))}
+                                <div className="col-md-4">
+                                    <div className="card bg-danger bg-opacity-10 border-danger">
+                                        <div className="card-body">
+                                            <h6 className="text-danger mb-3">
+                                                <strong>🔴 Täter</strong>
+                                            </h6>
+                                            <div className="d-flex flex-wrap gap-2">
+                                                {solution.personNames.map((name, idx) => (
+                                                    <span key={idx} className="badge bg-danger">
+                                                        {name}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             )}
 
                             {/* Beweise */}
                             {solution.evidenceTitles && solution.evidenceTitles.length > 0 && (
-                                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-                                    <h6 className="text-yellow-400 font-semibold mb-3">
-                                        🔍 Überführende Beweise
-                                    </h6>
-                                    <ul className="list-none space-y-1">
-                                        {solution.evidenceTitles.map((title, idx) => (
-                                            <li key={idx} className="text-foreground text-sm">
-                                                • {title}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <div className="col-md-4">
+                                    <div className="card bg-warning bg-opacity-10 border-warning">
+                                        <div className="card-body">
+                                            <h6 className="text-warning mb-3">
+                                                <strong>🔍 Überführende Beweise</strong>
+                                            </h6>
+                                            <ul className="list-unstyled mb-0">
+                                                {solution.evidenceTitles.map((title, idx) => (
+                                                    <li key={idx} className="text-light small mb-1">
+                                                        • {title}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             )}
 
                             {/* Motive */}
                             {solution.motiveTitles && solution.motiveTitles.length > 0 && (
-                                <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-                                    <h6 className="text-blue-400 font-semibold mb-3">
-                                        💡 Motive
-                                    </h6>
-                                    <ul className="list-none space-y-1">
-                                        {solution.motiveTitles.map((title, idx) => (
-                                            <li key={idx} className="text-foreground text-sm">
-                                                • {title}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <div className="col-md-4">
+                                    <div className="card bg-info bg-opacity-10 border-info">
+                                        <div className="card-body">
+                                            <h6 className="text-info mb-3">
+                                                <strong>💡 Motive</strong>
+                                            </h6>
+                                            <ul className="list-unstyled mb-0">
+                                                {solution.motiveTitles.map((title, idx) => (
+                                                    <li key={idx} className="text-light small mb-1">
+                                                        • {title}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             )}
                         </div>
