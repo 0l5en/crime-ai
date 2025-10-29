@@ -31,19 +31,21 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 
     return (
         <>
-            <tr key={crimeCase.id} className="border-secondary">
-                <td>
+            <tr key={crimeCase.id} className="border-secondary align-middle">
+                <td className="ps-4">
                     {pending ? (
                         <span className="spinner-border spinner-border-sm me-2" />
-                    ) : <>{crimeCase.id.substring(0, 8)}...</>}
+                    ) : (
+                        <code className="text-info small">{crimeCase.id.substring(0, 8)}...</code>
+                    )}
                 </td>
-                <td className="fw-semibold">
+                <td className="fw-bold text-white">
                     {crimeCase.title}
                 </td>
                 <td className="text-muted" style={{ maxWidth: '300px' }}>
-                    <div className="text-truncate">{crimeCase.description}</div>
+                    <div className="text-truncate small">{crimeCase.description}</div>
                 </td>
-                <td>
+                <td className="text-center">
                     <span className={`badge ${crimeCase.status === 'PUBLISHED' ? 'bg-success' :
                         crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
                             'bg-secondary'
@@ -56,27 +58,25 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                 <td>
                     <div className="d-flex gap-2">
                         <button
-                            className="btn btn-info btn-sm"
+                            className="btn btn-primary btn-sm"
                             disabled={pending}
                             onClick={() => navigate(`/case/${crimeCase.id}`)}
                         >
+                            <i className="bi bi-eye me-1"></i>
                             Ansehen
-                        </button>
-                        <button className="btn btn-warning btn-sm" disabled={pending}>
-                            Bearbeiten
                         </button>
                         <div className="dropdown">
                             <button
-                                className="btn btn-secondary btn-sm dropdown-toggle"
+                                className="btn btn-outline-light btn-sm dropdown-toggle"
                                 data-bs-toggle="dropdown"
                                 disabled={pending}
                                 style={{ zIndex: 1000 }}
                             >
-
+                                <i className="bi bi-pencil-square me-1"></i>
                                 Status ändern
                             </button>
                             <ul
-                                className="dropdown-menu dropdown-menu-dark bg-secondary border border-secondary"
+                                className="dropdown-menu dropdown-menu-dark bg-dark border-secondary"
                                 style={{ zIndex: 1050 }}
                             >
                                 <li>
@@ -85,6 +85,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                                         onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
                                         disabled={crimeCase.status === 'UNPUBLISHED'}
                                     >
+                                        <i className="bi bi-x-circle me-2"></i>
                                         Unveröffentlicht
                                     </button>
                                 </li>
@@ -94,6 +95,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                                         onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
                                         disabled={crimeCase.status === 'PUBLISHED'}
                                     >
+                                        <i className="bi bi-check-circle me-2"></i>
                                         Veröffentlicht
                                     </button>
                                 </li>
@@ -103,6 +105,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                                         onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PREMIUM' })}
                                         disabled={crimeCase.status === 'PREMIUM'}
                                     >
+                                        <i className="bi bi-star me-2"></i>
                                         Premium
                                     </button>
                                 </li>
@@ -110,23 +113,24 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                         </div>
                     </div>
                 </td>
-                <td>
+                <td className="text-center">
                     <button
                         className="btn btn-sm btn-outline-info"
                         onClick={() => expanded === 'SolutionExpanded' ? setExpanded('None') : setExpanded('SolutionExpanded')}
                         disabled={pending}
+                        title={expanded === 'SolutionExpanded' ? 'Lösung verbergen' : 'Lösung anzeigen'}
                     >
                         {expanded === 'SolutionExpanded' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                        {expanded === 'SolutionExpanded' ? ' Verbergen' : ' Anzeigen'}
                     </button>
                 </td>
-                <td>
+                <td className="text-center pe-4">
                     <button
                         className="btn btn-danger btn-sm"
                         onClick={() => setExpanded('DeleteWarningExpanded')}
                         disabled={pending}
+                        title="Fall löschen"
                     >
-                        Löschen
+                        <i className="bi bi-trash"></i>
                     </button>
                 </td>
             </tr>

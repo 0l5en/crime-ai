@@ -89,23 +89,27 @@ const AdminCaseManagement = () => {
         )}
 
         {!isLoading && !error && crimeCases?.items && crimeCases.items.length > 0 && (
-          <div className="card bg-secondary border-secondary">
-            <table className="table table-dark table-striped">
-              <thead>
-                <tr className="border-secondary">
-                  <th className="text-muted">ID</th>
-                  <th className="text-muted">Titel</th>
-                  <th className="text-muted">Beschreibung</th>
-                  <th className="text-muted">Status</th>
-                  <th className="text-muted">Aktionen</th>
-                  <th className="text-muted">Lösung</th>
-                  <th className="text-muted"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {crimeCases.items.map((crimeCase) => <CaseRowEditable crimeCase={crimeCase} key={crimeCase.id} />)}
-              </tbody>
-            </table>
+          <div className="card bg-dark border-secondary shadow-lg">
+            <div className="card-body p-0">
+              <div className="table-responsive">
+                <table className="table table-dark table-hover mb-0">
+                  <thead className="border-bottom border-secondary">
+                    <tr>
+                      <th className="text-muted fw-semibold ps-4" style={{ width: '120px' }}>ID</th>
+                      <th className="text-muted fw-semibold" style={{ width: '200px' }}>Titel</th>
+                      <th className="text-muted fw-semibold" style={{ width: '300px' }}>Beschreibung</th>
+                      <th className="text-muted fw-semibold text-center" style={{ width: '120px' }}>Status</th>
+                      <th className="text-muted fw-semibold" style={{ width: '200px' }}>Aktionen</th>
+                      <th className="text-muted fw-semibold text-center" style={{ width: '100px' }}>Lösung</th>
+                      <th className="text-muted fw-semibold text-center pe-4" style={{ width: '100px' }}>Löschen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {crimeCases.items.map((crimeCase) => <CaseRowEditable crimeCase={crimeCase} key={crimeCase.id} />)}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         )}
 
