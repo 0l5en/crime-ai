@@ -12,7 +12,7 @@ const GeneratingCaseCard = ({ attemptId, created }: GeneratingCaseCardProps) => 
   const formattedDate = format(createdDate, 'dd.MM.yyyy HH:mm');
 
   return (
-    <div className="card border-secondary h-100" style={{ minHeight: '400px' }}>
+    <div className="card border-secondary card-hover h-100" style={{ minHeight: '400px' }}>
       <div className="card-body d-flex flex-column justify-content-between p-4">
         <div className="flex-grow-1">
           <div className="d-flex align-items-center mb-3">
