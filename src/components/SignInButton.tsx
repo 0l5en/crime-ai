@@ -3,12 +3,12 @@ import useLoginOptions from "@/hooks/useLoginOptions";
 import useSignIn from "@/hooks/useSignIn";
 import { useTranslation } from "react-i18next";
 
-const SignInButton = () => {
+const SignInButton = ({ postLoginSuccessUri }: { postLoginSuccessUri?: string }) => {
 
     const { t } = useTranslation('common');
     const { data } = useLoginOptions();
     const user = useUserContext();
-    const { signIn } = useSignIn({});
+    const { signIn } = useSignIn({ postLoginSuccessUri });
 
     return (
         <button

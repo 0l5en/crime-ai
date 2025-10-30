@@ -1,6 +1,6 @@
 import { useUserContext } from "@/contexts/UserContext";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 import LogoutButton from "./LogoutButton";
 import NotificationBadge from "./NotificationBadge";
@@ -10,7 +10,7 @@ import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   const user = useUserContext();
   const { t } = useTranslation('common');
-
+  const location = useLocation();
   return (
     <>
       <nav className="navbar navbar-expand-lg sticky-top border-bottom bg-body">
@@ -87,18 +87,22 @@ const Header = () => {
             ) : (
               <>
                 {/* Sign In Button */}
-                <div className="nav-item">
-                  <SignInButton />
-                </div>
+                {location.pathname !== '/register' &&
+                  <div className="nav-item">
+                    <SignInButton />
+                  </div>
+                }
 
                 {/* Sign Up Button */}
-                <div className="nav-item">
-                  <Link to="/register" className="text-decoration-none">
-                    <button className="btn btn-danger">
-                      {t('nav.signUp')}
-                    </button>
-                  </Link>
-                </div>
+                {location.pathname !== '/register' &&
+                  <div className="nav-item">
+                    <Link to="/register" className="text-decoration-none">
+                      <button className="btn btn-danger">
+                        {t('nav.signUp')}
+                      </button>
+                    </Link>
+                  </div>
+                }
               </>
             )}
           </div>

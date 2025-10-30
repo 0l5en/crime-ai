@@ -12,7 +12,7 @@
     }
   },
   "form": {
-    "firstName": "Nome",
+    "userName": "Nome utente",
     "email": "Indirizzo Email",
     "password": "Password",
     "confirmPassword": "Conferma Password",
@@ -21,7 +21,7 @@
     "signIn": "Accedi"
   },
   "validation": {
-    "firstNameMin": "Il nome deve contenere almeno 2 caratteri",
+    "userNameMin": "Il nome utente deve contenere almeno 2 caratteri",
     "emailInvalid": "Inserisci un indirizzo email valido",
     "passwordMin": "La password deve contenere almeno 8 caratteri",
     "passwordUppercase": "La password deve contenere almeno una lettera maiuscola",

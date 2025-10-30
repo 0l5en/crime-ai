@@ -6,9 +6,9 @@ import { getCsrfToken } from "./util";
 const REQUEST_PATH = '/register';
 type CreateRegistrationDto = paths[typeof REQUEST_PATH]['post']['requestBody']['content']['application/json'];
 
-const useRegisterVacationRental = () => {
+const useRegisterUser = () => {
     return useMutation({
-        mutationFn: async (registration: Omit<CreateRegistrationDto, 'userType'>): Promise<void> => {
+        mutationFn: async (registration: CreateRegistrationDto): Promise<void> => {
             const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH, {
                 method: 'POST',
                 headers: {
@@ -16,7 +16,7 @@ const useRegisterVacationRental = () => {
                     'Content-Type': 'application/json',
                     'X-XSRF-TOKEN': getCsrfToken()
                 },
-                body: JSON.stringify({ ...registration, userType: 'VACATION_RENTAL' })
+                body: JSON.stringify(registration)
             });
 
             if (response.ok) {
@@ -29,4 +29,4 @@ const useRegisterVacationRental = () => {
         }
     });
 };
-export default useRegisterVacationRental;
+export default useRegisterUser;

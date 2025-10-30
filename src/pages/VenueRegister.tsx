@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SignInButton from "@/components/SignInButton";
-import useRegisterVacationRental from "@/hooks/useRegisterVacationRental";
+import useRegisterUser from "@/hooks/useRegisterUser";
 import useSignIn from "@/hooks/useSignIn";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BarChart3, Building2, Gift, QrCode, Users } from "lucide-react";
@@ -12,7 +12,7 @@ import { z } from "zod";
 
 const VenueRegister = () => {
   const { t } = useTranslation('venueRegister');
-  const registerVactionRental = useRegisterVacationRental();
+  const registerUser = useRegisterUser();
   const { signIn } = useSignIn({ postLoginSuccessUri: new URL(window.location.href).origin + '/vacation-rental-dashboard' });
 
   useEffect(() => {
@@ -45,13 +45,13 @@ const VenueRegister = () => {
 
   const createRegistration = async (data: RegisterFormData) => {
     if (data.userName && data.email && data.password) {
-      await registerVactionRental.mutateAsync({ userName: data.userName, email: data.email, password: data.password });
+      await registerUser.mutateAsync({ userName: data.userName, email: data.email, password: data.password, userType: 'VACATION_RENTAL' });
       // TODO isSuccess is false - find out why !!!
-      if (!registerVactionRental.isError) {
+      if (!registerUser.isError) {
         signIn();
       } else {
         // TODO display error message
-        console.error("an error occured while trying to register as vacation rental:", registerVactionRental.error);
+        console.error("an error occured while trying to register as vacation rental:", registerUser.error);
       }
     }
   }

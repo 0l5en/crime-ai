@@ -1,21 +1,26 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import SignInButton from "@/components/SignInButton";
+import useRegisterUser from "@/hooks/useRegisterUser";
+import useSignIn from "@/hooks/useSignIn";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { z } from "zod";
 
 const Register = () => {
   const { t } = useTranslation('register');
+  const registerUser = useRegisterUser();
+  const postLoginSuccessUri = new URL(window.location.href).origin + '/';
+  const { signIn } = useSignIn({ postLoginSuccessUri });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const registerSchema = z.object({
-    firstName: z.string().min(2, t('validation.firstNameMin')),
+    userName: z.string().min(2, t('validation.userNameMin')),
     email: z.string().email(t('validation.emailInvalid')),
     password: z.string()
       .min(8, t('validation.passwordMin'))
@@ -34,14 +39,25 @@ const Register = () => {
     resolver: zodResolver(registerSchema)
   });
 
+  const createRegistration = async (data: RegisterFormData) => {
+    if (data.userName && data.email && data.password) {
+      try {
+        await registerUser.mutateAsync({ userName: data.userName, email: data.email, password: data.password, userType: 'STANDARD' });
+        signIn();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
   const onSubmit = (data: RegisterFormData) => {
-    console.log('Registration data:', data);
+    createRegistration(data);
   };
 
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header />
-      
+
       <main className="flex-grow-1 py-5">
         <div className="container-fluid" style={{ maxWidth: '1400px' }}>
           <div className="row g-5 align-items-center">
@@ -93,24 +109,19 @@ const Register = () => {
                   <h1 className="h2 fw-bold mb-2">{t('title')}</h1>
                   <p className="text-muted mb-4">{t('subtitle')}</p>
 
-                  <div className="alert alert-warning mb-4" role="alert">
-                    <i className="bi bi-info-circle me-2"></i>
-                    {t('inactive')}
-                  </div>
-
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
-                      <label htmlFor="firstName" className="form-label">
-                        {t('form.firstName')}
+                      <label htmlFor="userName" className="form-label">
+                        {t('form.userName')}
                       </label>
                       <input
                         type="text"
-                        className={`form-control ${errors.firstName ? 'is-invalid' : ''}`}
-                        id="firstName"
-                        {...register('firstName')}
+                        className={`form-control ${errors.userName ? 'is-invalid' : ''}`}
+                        id="userName"
+                        {...register('userName')}
                       />
-                      {errors.firstName && (
-                        <div className="invalid-feedback">{errors.firstName.message}</div>
+                      {errors.userName && (
+                        <div className="invalid-feedback">{errors.userName.message}</div>
                       )}
                     </div>
 
@@ -162,16 +173,13 @@ const Register = () => {
                     <button
                       type="submit"
                       className="btn btn-danger w-100 py-3 mb-3"
-                      disabled={true}
                     >
                       {t('form.submit')}
                     </button>
 
                     <div className="text-center">
                       <span className="text-muted">{t('form.alreadyRegistered')} </span>
-                      <Link to="/" className="text-decoration-none fw-semibold">
-                        {t('form.signIn')}
-                      </Link>
+                      <SignInButton postLoginSuccessUri={postLoginSuccessUri} />
                     </div>
                   </form>
                 </div>
