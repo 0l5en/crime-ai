@@ -19,10 +19,10 @@ paths:
                 $ref: "#/components/schemas/UserInfoDto"
         "500":
           description: if any internal error occurs while processing the request
-  /register-vacation-rental:
+  /register:
     post:
       summary: create a new registration of a user of type vacation rental
-      operationId: createUserRegistrationVacationRental
+      operationId: createRegistration
       requestBody:
         description: the data required to create a new registration
         content:
@@ -794,6 +794,11 @@ components:
     CreateRegistrationDto:
       type: object
       properties:
+        userType:
+          type: string
+          enum:
+          - VACATION_RENTAL
+          - STANDARD
         userName:
           type: string
           minLength: 1
@@ -807,6 +812,7 @@ components:
       - email
       - password
       - userName
+      - userType
     CrimeCaseDto:
       type: object
       properties:
