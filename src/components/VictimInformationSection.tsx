@@ -1,5 +1,6 @@
 import { useUserContext } from "@/contexts/UserContext";
 import { useCreateAutopsyReportRequest } from "@/hooks/useCreateAutopsyReportRequest";
+import { useAutopsyReportRequests } from "@/hooks/useAutopsyReportRequests";
 import { components } from "@/openapi/crimeAiSchema";
 import { User } from "lucide-react";
 import { useTranslation } from 'react-i18next';
@@ -45,12 +46,16 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
     const { t } = useTranslation('caseDashboard');
     const requestAutopsyReportMutation = useCreateAutopsyReportRequest();
     const user = useUserContext();
+    const autopsyRequests = useAutopsyReportRequests(victim.id?.toString());
 
     const handleRequestAutopsyReport = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!user?.email) return;
         await requestAutopsyReportMutation.mutateAsync({ victimId: victim.id, userId: user.email });
     };
+
+    const hasExistingRequest = autopsyRequests.data?.items && autopsyRequests.data.items.length > 0;
+    const firstRequest = hasExistingRequest ? autopsyRequests.data.items[0] : null;
 
     return (
         <div className="col-12">
@@ -69,14 +74,21 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                             </p>
                             {victim.lifeStatus === 'DEAD' &&
                                 <p className="mt-4">
-                                    <button
-                                        disabled={requestAutopsyReportMutation.isPending}
-                                        onClick={handleRequestAutopsyReport}
-                                        className="btn btn-primary"
-                                        data-testid="request-autopsy-report-button"
-                                    >
-                                        {t('overview.requestAutopsyReport')}
-                                    </button>
+                                    {!hasExistingRequest ? (
+                                        <button
+                                            disabled={requestAutopsyReportMutation.isPending}
+                                            onClick={handleRequestAutopsyReport}
+                                            className="btn btn-primary"
+                                            data-testid="request-autopsy-report-button"
+                                        >
+                                            {t('overview.requestAutopsyReport')}
+                                        </button>
+                                    ) : firstRequest ? (
+                                        <span className="text-muted">
+                                            {t('overview.autopsyReportRequested')}{' '}
+                                            {new Date(firstRequest.createdAt).toLocaleDateString() + ' ' + new Date(firstRequest.createdAt).toLocaleTimeString()}
+                                        </span>
+                                    ) : null}
                                 </p>}
                         </div>
 
