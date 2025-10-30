@@ -671,6 +671,25 @@ paths:
         "500":
           description: if any internal error occurs while processing the request
   /autopsy-report-request:
+    get:
+      summary: list autopsy report requests that belong to the currently logged-in
+        user.
+      operationId: listAutopsyReportRequests
+      parameters:
+      - name: victimId
+        in: query
+        description: Filter the results by the specified ID of a victim.
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation returns a list of autopsy report requests
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetAutopsyReportRequest"
+        "500":
+          description: if any internal error occurs while processing the request
     post:
       summary: "Create a new request for autopsy report of a victim. If a request\
         \ already exist for the given identifier (userId, victimId), this operation\
@@ -1427,6 +1446,29 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AutopsyReportDto"
+    AutopsyReportRequestDto:
+      type: object
+      properties:
+        victimId:
+          type: integer
+          format: int64
+        userId:
+          type: string
+          minLength: 1
+        createdAt:
+          type: string
+          minLength: 1
+      required:
+      - createdAt
+      - userId
+      - victimId
+    ResultSetAutopsyReportRequest:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/AutopsyReportRequestDto"
     CreateAutopsyReportRequestDto:
       type: object
       properties:
