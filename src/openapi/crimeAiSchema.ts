@@ -393,7 +393,8 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    get?: never;
+    /** list autopsy report requests that belong to the currently logged-in user. */
+    get: operations["listAutopsyReportRequests"];
     put?: never;
     /** Create a new request for autopsy report of a victim. */
     post: operations["createAutopsyReportRequest"];
@@ -691,6 +692,15 @@ export interface components {
     TemplateVariableDto: {
       key: string;
       value: string;
+    };
+    AutopsyReportRequestDto: {
+      /** Format: int64 */
+      victimId: number;
+      userId: string;
+      createdAt: string;
+    };
+    ResultSetAutopsyReportRequest: {
+      items?: components["schemas"]["AutopsyReportRequestDto"][];
     };
     CreateAutopsyReportRequestDto: {
       userId: string;
@@ -1536,6 +1546,36 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listAutopsyReportRequests: {
+    parameters: {
+      query?: {
+        /** @description Filter the results by the specified ID of a victim. */
+        victimId?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation returns a list of autopsy report requests */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetAutopsyReportRequest"];
+        };
       };
       /** @description if any internal error occurs while processing the request */
       500: {
