@@ -22,7 +22,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/register-vacation-rental": {
+  "/register": {
     parameters: {
       query?: never;
       header?: never;
@@ -32,7 +32,7 @@ export interface paths {
     get?: never;
     put?: never;
     /** create a new registration of a user of type vacation rental */
-    post: operations["createUserRegistrationVacationRental"];
+    post: operations["createRegistration"];
     delete?: never;
     options?: never;
     head?: never;
@@ -487,6 +487,7 @@ export interface components {
       exp: number;
     };
     CreateRegistrationDto: {
+      userType: "VACATION_RENTAL" | "STANDARD";
       userName: string;
       email: string;
       password: string;
@@ -801,7 +802,7 @@ export interface operations {
       };
     };
   };
-  createUserRegistrationVacationRental: {
+  createRegistration: {
     parameters: {
       query?: never;
       header?: never;

@@ -3,12 +3,12 @@ import { useMutation } from "@tanstack/react-query";
 import { PATH_CRIME_AI_API } from "./constants";
 import { getCsrfToken } from "./util";
 
-const REQUEST_PATH = '/register-vacation-rental';
+const REQUEST_PATH = '/register';
 type CreateRegistrationDto = paths[typeof REQUEST_PATH]['post']['requestBody']['content']['application/json'];
 
 const useRegisterVacationRental = () => {
     return useMutation({
-        mutationFn: async (registration: CreateRegistrationDto): Promise<void> => {
+        mutationFn: async (registration: Omit<CreateRegistrationDto, 'userType'>): Promise<void> => {
             const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH, {
                 method: 'POST',
                 headers: {
@@ -16,7 +16,7 @@ const useRegisterVacationRental = () => {
                     'Content-Type': 'application/json',
                     'X-XSRF-TOKEN': getCsrfToken()
                 },
-                body: JSON.stringify(registration)
+                body: JSON.stringify({ ...registration, userType: 'VACATION_RENTAL' })
             });
 
             if (response.ok) {
