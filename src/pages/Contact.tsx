@@ -51,7 +51,7 @@ const Contact = () => {
       <div 
         className="position-relative text-white py-5"
         style={{
-          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+          background: '#000000',
           minHeight: '300px'
         }}
       >
