@@ -119,7 +119,7 @@
     "alive": "alive"
   },
   "evidence": {
-    "back": "Back",
+    "back": "Back to evidence",
     "documentContent": "Document Content",
     "evidenceReportsTitle": "Evidence Reports",
     "loadingReports": "Loading evidence reports...",
