@@ -178,8 +178,8 @@
       "company": {
         "title": "Informations sur l'Entreprise",
         "name": "moo.codes",
-        "address": "Rue Exemple 123",
-        "city": "12345 Ville Exemple",
+        "address": "Trautenauer Str. 5",
+        "city": "10318 Berlin",
         "country": "Allemagne"
       },
       "contact": {
@@ -189,7 +189,7 @@
       },
       "representative": {
         "title": "Représenté par",
-        "content": "Directeur Général : [Nom]"
+        "content": "Directeur Général : Oliver Beuth"
       },
       "register": {
         "title": "Inscription au Registre",

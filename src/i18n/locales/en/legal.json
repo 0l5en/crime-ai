@@ -178,18 +178,18 @@
       "company": {
         "title": "Company Information",
         "name": "moo.codes",
-        "address": "Sample Street 123",
-        "city": "12345 Sample City",
+        "address": "Trautenauer Str. 5",
+        "city": "10318 Berlin",
         "country": "Germany"
       },
       "contact": {
         "title": "Contact",
-        "email": "contact@detectivesgame.com",
+        "email": "info@detectivesgame.com",
         "phone": "+49 (0) 123 456789"
       },
       "representative": {
         "title": "Represented by",
-        "content": "Managing Director: [Name]"
+        "content": "Managing Director: Oliver Beuth"
       },
       "register": {
         "title": "Register Entry",

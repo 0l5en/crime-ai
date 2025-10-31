@@ -178,18 +178,18 @@
       "company": {
         "title": "Informazioni sull'Azienda",
         "name": "moo.codes",
-        "address": "Via Esempio 123",
-        "city": "12345 Città Esempio",
+        "address": "Trautenauer Str. 5",
+        "city": "10318 Berlin",
         "country": "Germania"
       },
       "contact": {
         "title": "Contatto",
-        "email": "contatto@detectivesgame.com",
+        "email": "info@detectivesgame.com",
         "phone": "+49 (0) 123 456789"
       },
       "representative": {
         "title": "Rappresentato da",
-        "content": "Amministratore Delegato: [Nome]"
+        "content": "Amministratore Delegato: Oliver Beuth"
       },
       "register": {
         "title": "Iscrizione al Registro",

@@ -178,18 +178,18 @@
       "company": {
         "title": "Angaben gemäß § 5 TMG",
         "name": "moo.codes",
-        "address": "Musterstraße 123",
-        "city": "12345 Musterstadt",
+        "address": "Trautenauer Str. 5",
+        "city": "10318 Berlin",
         "country": "Deutschland"
       },
       "contact": {
         "title": "Kontakt",
-        "email": "kontakt@detectivesgame.com",
+        "email": "info@detectivesgame.com",
         "phone": "+49 (0) 123 456789"
       },
       "representative": {
         "title": "Vertreten durch",
-        "content": "Geschäftsführer: [Name]"
+        "content": "Geschäftsführer: Oliver Beuth"
       },
       "register": {
         "title": "Registereintrag",
