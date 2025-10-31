@@ -24,7 +24,7 @@ const SuspectCard = ({
   onInterrogate
 }: SuspectCardProps) => {
   const { t } = useTranslation('caseDashboard');
-  
+
   const getInitials = (fullName: string) => {
     return fullName
       .split(' ')
@@ -82,12 +82,12 @@ const SuspectCard = ({
 
         <div>
           <h4 className="small fw-medium text-muted mb-1">{t('cards.relationshipToCase')}</h4>
-          <p className="mb-0" data-testid="suspect-relationship">{relationshipToCase}</p>
+          <p className="mb-0" data-testid="suspect-relationship" style={{ textAlign: 'justify' }}>{relationshipToCase}</p>
         </div>
         {alibiContent &&
           <div>
             <h4 className="small fw-medium text-muted mb-1">{t('cards.alibi')}</h4>
-            <p className="mb-0" data-testid="suspect-alibi">{alibiContent}</p>
+            <p className="mb-0" data-testid="suspect-alibi" style={{ textAlign: 'justify' }}>{alibiContent}</p>
           </div>
         }
 

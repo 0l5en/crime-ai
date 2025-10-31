@@ -31,7 +31,7 @@ const getEvidenceTypeColor = (type: string) => {
 
 const EvidenceCard = ({ title, description, location, analysisResult, imageColor, evidenceType, imageUrl, onClick }: EvidenceCardProps) => {
   const { t } = useTranslation('caseDashboard');
-  
+
   return (
     <div
       className={`card border-secondary card-hover position-relative h-100 d-flex flex-column ${onClick ? 'cursor-pointer' : ''}`}
@@ -63,7 +63,7 @@ const EvidenceCard = ({ title, description, location, analysisResult, imageColor
       </div>
       <div className="card-body p-4 flex-grow-1 d-flex flex-column">
         <h5 className="card-title mb-3">{title}</h5>
-        <p className="card-text text-muted mb-4 flex-grow-1">
+        <p className="card-text text-muted mb-4 flex-grow-1" style={{ textAlign: 'justify' }}>
           {description}
         </p>
         <div className="small mt-auto">

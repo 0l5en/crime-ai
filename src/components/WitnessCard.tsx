@@ -22,7 +22,7 @@ const WitnessCard = ({
   onInterrogate
 }: WitnessCardProps) => {
   const { t } = useTranslation('caseDashboard');
-  
+
   const getInitials = (fullName: string) => {
     return fullName
       .split(' ')
@@ -80,7 +80,7 @@ const WitnessCard = ({
 
         <div>
           <h4 className="small fw-medium text-muted mb-1">{t('cards.relationshipToCase')}</h4>
-          <p className="small mb-0" data-testid="witness-relationship">{relationshipToCase}</p>
+          <p className="small mb-0" data-testid="witness-relationship" style={{ textAlign: 'justify' }}>{relationshipToCase}</p>
         </div>
 
         {onInterrogate && (
