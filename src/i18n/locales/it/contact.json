@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "title": "Contattaci",
+    "subtitle": "Hai domande o suggerimenti? Ci piacerebbe sentirti!"
+  },
+  "form": {
+    "title": "Modulo di contatto",
+    "name": "Nome",
+    "namePlaceholder": "Il tuo nome",
+    "email": "Email",
+    "emailPlaceholder": "tua.email@esempio.it",
+    "subject": "Oggetto",
+    "subjectPlaceholder": "Di cosa si tratta?",
+    "message": "Messaggio",
+    "messagePlaceholder": "Il tuo messaggio...",
+    "submit": "Invia messaggio",
+    "comingSoon": "Il modulo di contatto sarà attivato a breve.",
+    "recaptchaRequired": "Verifica di non essere un robot"
+  },
+  "validation": {
+    "nameRequired": "Inserisci il tuo nome",
+    "emailRequired": "Inserisci la tua email",
+    "emailInvalid": "Inserisci un indirizzo email valido",
+    "subjectRequired": "Inserisci un oggetto",
+    "messageRequired": "Inserisci un messaggio"
+  }
+}

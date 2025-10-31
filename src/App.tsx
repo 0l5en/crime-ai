@@ -26,6 +26,7 @@ import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenueRegister from "./pages/VenueRegister";
 import VenuesPage from "./pages/VenuesPage";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => {
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/cookies" element={<Cookies />} />
               <Route path="/imprint" element={<Imprint />} />
+              <Route path="/contact" element={<Contact />} />
               <Route
                 path="/case/:caseId"
                 element={

@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
 import { useSiteRating } from "@/hooks/useSiteRating";
 import { useUserContext } from "@/contexts/UserContext";
@@ -82,13 +83,13 @@ const Footer = () => {
                 >
                   {t("footer.imprint")}
                 </a>
-                <a
-                  href="mailto:kontakt@detectivesgame.com"
+                <Link
+                  to="/contact"
                   className="text-secondary text-decoration-none footer-link"
                   style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
                 >
                   {t("footer.contact")}
-                </a>
+                </Link>
               </div>
               <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: "0.7rem" }}>
                 {t("footer.copyright")}

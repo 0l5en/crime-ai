@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "title": "Contact Us",
+    "subtitle": "Have questions or suggestions? We'd love to hear from you!"
+  },
+  "form": {
+    "title": "Contact Form",
+    "name": "Name",
+    "namePlaceholder": "Your Name",
+    "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "message": "Message",
+    "messagePlaceholder": "Your message to us...",
+    "submit": "Send Message",
+    "comingSoon": "The contact form will be activated soon.",
+    "recaptchaRequired": "Please verify that you are not a robot"
+  },
+  "validation": {
+    "nameRequired": "Please enter your name",
+    "emailRequired": "Please enter your email",
+    "emailInvalid": "Please enter a valid email address",
+    "subjectRequired": "Please enter a subject",
+    "messageRequired": "Please enter a message"
+  }
+}
