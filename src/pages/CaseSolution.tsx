@@ -245,7 +245,7 @@ const CaseSolution = () => {
         <div className="d-flex align-items-center mb-5">
           <button
             onClick={() => navigate(`/case/${caseId}`)}
-            className="btn btn-primary"
+            className="btn btn-primary me-3"
           >
             <ArrowLeft className="me-2" />
             {t('solutionPage.backToCase')}
