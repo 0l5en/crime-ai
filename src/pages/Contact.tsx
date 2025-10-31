@@ -52,7 +52,7 @@ const Contact = () => {
         className="position-relative text-white py-5"
         style={{
           background: "#000000",
-          minHeight: "200px",
+          minHeight: "120px",
         }}
       >
         <div
