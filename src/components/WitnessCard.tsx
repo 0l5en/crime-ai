@@ -1,3 +1,4 @@
+import { replaceISODateTimeString } from '@/hooks/util';
 import { useTranslation } from 'react-i18next';
 
 interface WitnessCardProps {
@@ -80,7 +81,7 @@ const WitnessCard = ({
 
         <div>
           <h4 className="small fw-medium text-muted mb-1">{t('cards.relationshipToCase')}</h4>
-          <p className="small mb-0" data-testid="witness-relationship" style={{ textAlign: 'justify' }}>{relationshipToCase}</p>
+          <p className="small mb-0" data-testid="witness-relationship" style={{ textAlign: 'justify' }}>{replaceISODateTimeString(relationshipToCase)}</p>
         </div>
 
         {onInterrogate && (

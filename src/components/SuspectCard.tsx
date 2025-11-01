@@ -1,3 +1,4 @@
+import { replaceISODateTimeString } from '@/hooks/util';
 import { useTranslation } from 'react-i18next';
 
 interface SuspectCardProps {
@@ -82,12 +83,12 @@ const SuspectCard = ({
 
         <div>
           <h4 className="small fw-medium text-muted mb-1">{t('cards.relationshipToCase')}</h4>
-          <p className="mb-0" data-testid="suspect-relationship" style={{ textAlign: 'justify' }}>{relationshipToCase}</p>
+          <p className="mb-0" data-testid="suspect-relationship" style={{ textAlign: 'justify' }}>{replaceISODateTimeString(relationshipToCase)}</p>
         </div>
         {alibiContent &&
           <div>
             <h4 className="small fw-medium text-muted mb-1">{t('cards.alibi')}</h4>
-            <p className="mb-0" data-testid="suspect-alibi" style={{ textAlign: 'justify' }}>{alibiContent}</p>
+            <p className="mb-0" data-testid="suspect-alibi" style={{ textAlign: 'justify' }}>{replaceISODateTimeString(alibiContent)}</p>
           </div>
         }
 
