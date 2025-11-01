@@ -1,4 +1,4 @@
-import { useState, useRef, FormEvent } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import ReCAPTCHA from "react-google-recaptcha";
 import Header from "@/components/Header";
@@ -14,6 +14,10 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -73,7 +77,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Form Section */}
-      <main className="flex-grow-1 py-5">
+      <main className="flex-grow-1 py-3">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-xl-7">
