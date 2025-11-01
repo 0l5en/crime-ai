@@ -1,7 +1,7 @@
-import { useToast } from "@/hooks/use-toast";
 import { RequestBody as CreateCrimeCaseBasicDto, useCreateCrimeCaseBasic } from "@/hooks/useCreateCrimeCaseBasic";
 import { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
+import toast from "react-hot-toast";
 import type { Violations } from "../../supabase/functions/_shared/crime-api-types";
 interface BasicCaseGeneratorFormProps {
   onSuccess: (locationUrl: string) => void;
@@ -9,7 +9,6 @@ interface BasicCaseGeneratorFormProps {
 }
 
 const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormProps) => {
-  const { toast } = useToast();
   const [serverErrors, setServerErrors] = useState<Record<string, string>>({});
 
   // Form management
@@ -119,32 +118,17 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
         historicalCulturalContext: data.historicalCulturalContext || undefined
       };
 
-      console.log('Submitting form data:', formData);
-
       const result = await createCaseMutation.mutateAsync(formData);
+      toast.success('Die Fallerstellung wurde gestartet. Bitte warten Sie...');
       onSuccess(result.locationUrl);
 
-      toast({
-        title: "Fall wird erstellt",
-        description: "Die Fallerstellung wurde gestartet. Bitte warten Sie...",
-      });
-
     } catch (error: any) {
-      console.error('Form submission error:', error);
-
       // Handle validation errors from server
       if (error?.context) {
-        console.log('map server error violations: ', error.context);
         mapServerErrorsToForm(error.context);
-        toast({
-          title: "Validierungsfehler",
-          description: "Bitte korrigieren Sie die markierten Felder.",
-        });
+        toast.error('Bitte korrigieren Sie die markierten Felder.');
       } else {
-        toast({
-          title: "Fehler",
-          description: error.message || "Ein unbekannter Fehler ist aufgetreten.",
-        });
+        toast.error('Ein unbekannter Fehler ist aufgetreten.');
       }
     }
   };

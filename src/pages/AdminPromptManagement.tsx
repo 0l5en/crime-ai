@@ -1,20 +1,18 @@
 
 import Header from "@/components/Header";
-import { useToast } from "@/hooks/use-toast";
 import { useCreatePromptTemplate } from "@/hooks/useCreatePromptTemplate";
 import { usePromptTemplate } from "@/hooks/usePromptTemplate";
 import { usePromptTemplateIdentifiers } from "@/hooks/usePromptTemplateIdentifiers";
 import { usePromptTemplateVersions } from "@/hooks/usePromptTemplateVersions";
 import { Clock, FileText, Loader2, Save } from "lucide-react";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const AdminPromptManagement = () => {
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>("");
   const [selectedVersionId, setSelectedVersionId] = useState<string>("");
   const [editedContent, setEditedContent] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
-
-  const { toast } = useToast();
 
   const { data: identifiers, isLoading: identifiersLoading, error: identifiersError } = usePromptTemplateIdentifiers();
   const selectedTemplateName = identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId)?.name;
@@ -32,10 +30,7 @@ const AdminPromptManagement = () => {
   const handleSave = async () => {
     const currentTemplate = identifiers?.items?.find(item => item.id?.toString() === selectedTemplateId);
     if (!currentTemplate?.name || !editedContent.trim()) {
-      toast({
-        title: "Fehler",
-        description: "Template-Name und Inhalt sind erforderlich",
-      });
+      toast.error('Template-Name und Inhalt sind erforderlich');
       return;
     }
 
@@ -44,20 +39,13 @@ const AdminPromptManagement = () => {
         name: currentTemplate.name,
         template: editedContent,
       });
-
-      toast({
-        title: "Erfolgreich gespeichert",
-        description: "Das Template wurde erfolgreich erstellt",
-      });
+      toast.success('Das Template wurde erfolgreich erstellt');
 
       setIsEditing(false);
       // Reset selected version to show the new version will appear in the list
       setSelectedVersionId("");
     } catch (error) {
-      toast({
-        title: "Fehler beim Speichern",
-        description: "Das Template konnte nicht gespeichert werden",
-      });
+      toast.error('Das Template konnte nicht gespeichert werden: ' + error.messsage);
     }
   };
 

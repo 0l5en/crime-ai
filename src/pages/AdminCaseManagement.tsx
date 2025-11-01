@@ -1,42 +1,12 @@
 
 import CaseRowEditable from "@/components/CaseRowEditable";
 import Header from "@/components/Header";
-import { useToast } from "@/hooks/use-toast";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
-import { useDeleteCrimeCase } from "@/hooks/useDeleteCrimeCase";
-import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
-import type { components } from '@/openapi/crimeAiSchema';
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
   const { data: crimeCases, isLoading, error } = useCrimeCases();
-  const updateCrimeCase = useUpdateCrimeCase();
-  const { toast } = useToast();
-  const [updatingCaseId, setUpdatingCaseId] = useState<string | null>(null);
-  const [expandedCaseIds, setExpandedCaseIds] = useState<Set<string>>(new Set());
-  const deleteCrimeCase = useDeleteCrimeCase();
-
-
-
-  const handleDeleteCrimeCase = async (caseId: string) => {
-    await deleteCrimeCase.mutateAsync({ caseId });
-  }
-
-  const toggleSolution = (caseId: string) => {
-    setExpandedCaseIds((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(caseId)) {
-        newSet.delete(caseId);
-      } else {
-        newSet.add(caseId);
-      }
-      return newSet;
-    });
-  };
 
   return (
     <div className="min-vh-100 bg-dark">

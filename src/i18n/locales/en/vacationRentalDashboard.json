@@ -142,5 +142,12 @@
     "statusInProgress": "In Progress",
     "created": "Created",
     "description": "Generating your vacation rental case... This usually takes up to 24 hours."
+  },
+  "error": {
+    "messages": {
+      "noUsername": "Username not available. Please log in again.",
+      "formValidationError": "Please correct the highlighted fields.",
+      "unknownError": "An unknown error occurred."
+    }
   }
 }

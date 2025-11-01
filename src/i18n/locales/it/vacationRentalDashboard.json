@@ -142,5 +142,12 @@
     "statusInProgress": "In corso",
     "created": "Creato",
     "description": "Generazione del caso di affitto vacanze... Questo di solito richiede fino a 24 ore."
+  },
+  "error": {
+    "messages": {
+      "noUsername": "Nome utente non disponibile. Effettua nuovamente l'accesso.",
+      "formValidationError": "Correggere i campi evidenziati.",
+      "unknownError": "Si è verificato un errore sconosciuto."
+    }
   }
 }

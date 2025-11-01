@@ -1,10 +1,10 @@
 import { useUserContext } from '@/contexts/UserContext';
-import { useToast } from '@/hooks/use-toast';
 import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVacationRental';
 import { useState } from 'react';
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
-import type { CreateCaseGeneratorFormVacationRentalDto, CreateSightseeingAttractionDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
+import toast from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
+import type { CreateCaseGeneratorFormVacationRentalDto, CreateSightseeingAttractionDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
 
 // Extend the basic form data with vacation rental specific fields
 interface VacationRentalFormData {
@@ -33,7 +33,6 @@ interface VacationRentalCaseGeneratorFormProps {
 
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
-  const { toast } = useToast();
   const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
   const [serverErrors, setServerErrors] = useState<{ [key: string]: string }>({});
@@ -97,12 +96,9 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     clearErrors();
 
     // Get user email for userId
-    const userId = user?.email;
+    const userId = user?.name;
     if (!userId) {
-      toast({
-        title: "Error",
-        description: "User email not available. Please log in again.",
-      });
+      toast.error(t('error.messages.noUsername'));
       return;
     }
 
@@ -135,20 +131,12 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
         window.location.href = response.locationUrl;
       },
       onError: (error: any) => {
-        console.error('Error creating Vacation Rental Crime Case:', error);
-
         // Handle validation errors
         if (error.context?.violations) {
           mapServerErrorsToForm(error.context);
-          toast({
-            title: "Validation Error",
-            description: "Please check your inputs.",
-          });
+          toast.error(t('error.messages.formValidationError'));
         } else {
-          toast({
-            title: "Error!",
-            description: error.message || "An unknown error occurred.",
-          });
+          toast.error(t('error.messages.unknownError'));
         }
       },
     });
@@ -167,7 +155,7 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
       <div className="d-flex justify-content-center">
         <div style={{ maxWidth: '900px', width: '100%', margin: '0 auto' }}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            
+
             {/* Grundeinstellungen Card */}
             <div className="card mb-4">
               <div className="card-header">

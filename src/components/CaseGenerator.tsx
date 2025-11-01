@@ -1,12 +1,11 @@
-import { useToast } from "@/hooks/use-toast";
 import { useTaskInfo } from "@/hooks/useTaskInfo";
 import { ReactNode, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 
 const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: ReactNode; taskUrl: string | null; setTaskUrl: (taskUrl: string) => void }) => {
     const navigate = useNavigate();
-    const { toast } = useToast();
     const [taskId, setTaskId] = useState<string | null>(null);
 
     // Task polling
@@ -28,10 +27,7 @@ const CaseGenerator = ({ generatorForm, taskUrl, setTaskUrl }: { generatorForm: 
             const currentStatus = taskInfo.taskStatus;
 
             if (currentStatus === 'COMPLETED') {
-                toast({
-                    title: "Erfolg",
-                    description: "Der Fall wurde erfolgreich erstellt!",
-                });
+                toast.success('Der Fall wurde erfolgreich erstellt!');
                 navigate('/admin/cases');
             }
         }

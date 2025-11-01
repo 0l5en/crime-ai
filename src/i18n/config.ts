@@ -1,62 +1,67 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 
 // Import translation files
 import commonDE from './locales/de/common.json';
 import commonEN from './locales/en/common.json';
-import commonIT from './locales/it/common.json';
 import commonFR from './locales/fr/common.json';
+import commonIT from './locales/it/common.json';
 
 import homeDE from './locales/de/home.json';
 import homeEN from './locales/en/home.json';
-import homeIT from './locales/it/home.json';
 import homeFR from './locales/fr/home.json';
+import homeIT from './locales/it/home.json';
 
 import venuesDE from './locales/de/venues.json';
 import venuesEN from './locales/en/venues.json';
-import venuesIT from './locales/it/venues.json';
 import venuesFR from './locales/fr/venues.json';
+import venuesIT from './locales/it/venues.json';
 
 import casesDE from './locales/de/cases.json';
 import casesEN from './locales/en/cases.json';
-import casesIT from './locales/it/cases.json';
 import casesFR from './locales/fr/cases.json';
+import casesIT from './locales/it/cases.json';
 
 import caseDashboardDE from './locales/de/caseDashboard.json';
 import caseDashboardEN from './locales/en/caseDashboard.json';
-import caseDashboardIT from './locales/it/caseDashboard.json';
 import caseDashboardFR from './locales/fr/caseDashboard.json';
+import caseDashboardIT from './locales/it/caseDashboard.json';
 
 import legalDE from './locales/de/legal.json';
 import legalEN from './locales/en/legal.json';
-import legalIT from './locales/it/legal.json';
 import legalFR from './locales/fr/legal.json';
+import legalIT from './locales/it/legal.json';
 
 import registerDE from './locales/de/register.json';
 import registerEN from './locales/en/register.json';
-import registerIT from './locales/it/register.json';
 import registerFR from './locales/fr/register.json';
+import registerIT from './locales/it/register.json';
 
 import venueRegisterDE from './locales/de/venueRegister.json';
 import venueRegisterEN from './locales/en/venueRegister.json';
-import venueRegisterIT from './locales/it/venueRegister.json';
 import venueRegisterFR from './locales/fr/venueRegister.json';
+import venueRegisterIT from './locales/it/venueRegister.json';
 
 import emailsDE from './locales/de/emails.json';
 import emailsEN from './locales/en/emails.json';
-import emailsIT from './locales/it/emails.json';
 import emailsFR from './locales/fr/emails.json';
+import emailsIT from './locales/it/emails.json';
 
 import vacationRentalDashboardDE from './locales/de/vacationRentalDashboard.json';
 import vacationRentalDashboardEN from './locales/en/vacationRentalDashboard.json';
-import vacationRentalDashboardIT from './locales/it/vacationRentalDashboard.json';
 import vacationRentalDashboardFR from './locales/fr/vacationRentalDashboard.json';
+import vacationRentalDashboardIT from './locales/it/vacationRentalDashboard.json';
 
 import contactDE from './locales/de/contact.json';
 import contactEN from './locales/en/contact.json';
-import contactIT from './locales/it/contact.json';
 import contactFR from './locales/fr/contact.json';
+import contactIT from './locales/it/contact.json';
+
+import createAutopsyReportRequestDE from './locales/de/createAutopsyReportRequest.json';
+import createAutopsyReportRequestEN from './locales/en/createAutopsyReportRequest.json';
+import createAutopsyReportRequestFR from './locales/fr/createAutopsyReportRequest.json';
+import createAutopsyReportRequestIT from './locales/it/createAutopsyReportRequest.json';
 
 const resources = {
   de: {
@@ -71,6 +76,7 @@ const resources = {
     emails: emailsDE,
     vacationRentalDashboard: vacationRentalDashboardDE,
     contact: contactDE,
+    createAutopsyReportRequest: createAutopsyReportRequestDE,
   },
   en: {
     common: commonEN,
@@ -84,6 +90,7 @@ const resources = {
     emails: emailsEN,
     vacationRentalDashboard: vacationRentalDashboardEN,
     contact: contactEN,
+    createAutopsyReportRequest: createAutopsyReportRequestEN,
   },
   it: {
     common: commonIT,
@@ -97,6 +104,7 @@ const resources = {
     emails: emailsIT,
     vacationRentalDashboard: vacationRentalDashboardIT,
     contact: contactIT,
+    createAutopsyReportRequest: createAutopsyReportRequestIT,
   },
   fr: {
     common: commonFR,
@@ -110,6 +118,7 @@ const resources = {
     emails: emailsFR,
     vacationRentalDashboard: vacationRentalDashboardFR,
     contact: contactFR,
+    createAutopsyReportRequest: createAutopsyReportRequestFR,
   },
 };
 

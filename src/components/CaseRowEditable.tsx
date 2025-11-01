@@ -6,6 +6,7 @@ import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
 import { components } from "@/openapi/crimeAiSchema";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
@@ -19,14 +20,21 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
     const pending = updateCrimeCase.isPending || deleteCrimeCase.isPending;
 
     const handleStatusUpdate = async (crimeCaseDto: CrimeCaseDto) => {
-        await updateCrimeCase.mutateAsync({
-            caseId: crimeCaseDto.id,
-            crimeCaseDto
-        });
+        try {
+            await updateCrimeCase.mutateAsync({ caseId: crimeCaseDto.id, crimeCaseDto });
+            toast.success('Status wurde geändert.');
+        } catch (error) {
+            toast.error('Status konnte nicht geändert werden: ' + error.message);
+        }
     };
 
     const handleCrimeCaseDelete = async () => {
-        await deleteCrimeCase.mutateAsync({ caseId: crimeCase.id });
+        try {
+            await deleteCrimeCase.mutateAsync({ caseId: crimeCase.id });
+            toast.success('Kriminalfall wurde gelöscht.');
+        } catch (error) {
+            toast.error('Fehler beim Löschen des Kriminallfalls: ' + error.message);
+        }
     }
 
     return (

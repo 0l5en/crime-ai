@@ -142,5 +142,12 @@
     "statusInProgress": "En cours",
     "created": "Créé",
     "description": "Génération de votre cas de location de vacances... Cela prend généralement jusqu'à 24 heures."
+  },
+  "error": {
+    "messages": {
+      "noUsername": "Nom d'utilisateur introuvable. Veuillez vous reconnecter.",
+      "formValidationError": "Veuillez corriger les champs surlignés.",
+      "unknownError": "Une erreur inconnue s'est produite."
+    }
   }
 }

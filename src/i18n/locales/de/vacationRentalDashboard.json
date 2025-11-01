@@ -142,5 +142,12 @@
     "statusInProgress": "In Bearbeitung",
     "created": "Erstellt",
     "description": "Ihr Ferienhaus-Fall wird generiert... Dies dauert normalerweise bis zu 24 Stunden."
+  },
+  "error": {
+    "messages": {
+      "noUsername": "Benutzername nicht verfügbar. Bitte melden Sie sich erneut an.",
+      "formValidationError": "Bitte korrigieren Sie die markierten Felder.",
+      "unknownError": "Es ist ein unbekannter Fehler aufgetreten."
+    }
   }
 }
