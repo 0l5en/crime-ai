@@ -1,8 +1,7 @@
+import { useCaseSubscription } from '@/hooks/useCaseSubscription';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import StarRating from './StarRating';
-import { useTranslation } from 'react-i18next';
-import { useCaseSubscription } from '@/hooks/useCaseSubscription';
-import { format } from 'date-fns';
 
 interface GameCardProps {
   title: string;
@@ -38,13 +37,14 @@ const GameCard = ({
   const navigate = useNavigate();
   const { t } = useTranslation('cases');
   const { t: tDashboard } = useTranslation('vacationRentalDashboard');
-  
+
   const { data: subscription, isLoading: subscriptionLoading } = useCaseSubscription(
     showSubscriptionInfo ? caseId : undefined
   );
 
   const formatDate = (isoDate: string) => {
-    return format(new Date(isoDate), 'dd.MM.yyyy');
+    const date = new Date(isoDate);
+    return date.toLocaleDateString();
   };
 
   const handleCardClick = () => {
@@ -81,18 +81,18 @@ const GameCard = ({
             </span>
           )}
         </div>
-        
+
         {!hideDescription && (
           <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
             {description}
           </p>
         )}
-        
+
         {/* Subscription Info oder Rating Display */}
         {showSubscriptionInfo ? (
           <div className="mt-auto">
-            {/* Subscription Status - nur wenn Daten vorhanden */}
-            {subscription?.testPeriodEnd && (
+            {/* Subscription Status */}
+            {subscription?.testPeriodEnd && new Date(subscription.testPeriodEnd).getTime() > new Date().getTime() && (
               <p className="text-warning small mb-2">
                 <i className="bi bi-clock me-1"></i>
                 {tDashboard('subscription.trialEnds')} {formatDate(subscription.testPeriodEnd)}
@@ -107,12 +107,12 @@ const GameCard = ({
             {subscription?.canceled && (
               <p className="text-danger small mb-2">
                 <i className="bi bi-x-circle me-1"></i>
-                {tDashboard('subscription.canceled')}
+                {tDashboard('subscription.canceled')}{' '}{subscription?.subscriptionPeriodEnd && formatDate(subscription.subscriptionPeriodEnd)}
               </p>
             )}
-            
+
             {/* Manage Button - immer anzeigen */}
-            <a 
+            <a
               href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
               target="_blank"
               rel="noopener noreferrer"

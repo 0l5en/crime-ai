@@ -132,8 +132,8 @@
   "subscription": {
     "subscriptionId": "Subscription ID",
     "trialEnds": "Trial ends",
-    "activeUntil": "Active until",
-    "canceled": "Subscription canceled",
+    "activeUntil": "Next payment date",
+    "canceled": "Subscription cancelled as of",
     "manageButton": "Manage Subscription"
   },
   "generatingCard": {

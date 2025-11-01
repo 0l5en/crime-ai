@@ -1,12 +1,11 @@
+import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
 import createClient from 'openapi-fetch';
-import type { paths } from '@/openapi/crimeAiSchema';
+import { PATH_CRIME_AI_API } from './constants';
 import { getCsrfToken } from './util';
 
-const apiBaseUrl = import.meta.env.VITE_CRIME_AI_API_BASE_URL || '';
-
 export const useCaseSubscription = (caseId: string | undefined) => {
-  const client = createClient<paths>({ baseUrl: apiBaseUrl });
+  const client = createClient<paths>({ baseUrl: PATH_CRIME_AI_API });
 
   return useQuery({
     queryKey: ['caseSubscription', caseId],
@@ -14,7 +13,6 @@ export const useCaseSubscription = (caseId: string | undefined) => {
       if (!caseId) {
         throw new Error('Case ID is required');
       }
-
       const response = await client.GET('/crimecase/{id}/subscription', {
         params: {
           path: { id: caseId },
@@ -26,7 +24,7 @@ export const useCaseSubscription = (caseId: string | undefined) => {
       });
 
       if (response.error) {
-        // 404 bedeutet keine Subscription vorhanden - nicht als Fehler behandeln
+        // 404 no Subscription available
         if (response.response.status === 404) {
           return null;
         }

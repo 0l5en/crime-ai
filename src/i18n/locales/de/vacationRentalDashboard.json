@@ -132,8 +132,8 @@
   "subscription": {
     "subscriptionId": "Abonnement-ID",
     "trialEnds": "Testphase endet",
-    "activeUntil": "Aktiv bis",
-    "canceled": "Abonnement gekündigt",
+    "activeUntil": "Nächster Zahlungstermin",
+    "canceled": "Abonnement gekündigt zum",
     "manageButton": "Abonnement verwalten"
   },
   "generatingCard": {

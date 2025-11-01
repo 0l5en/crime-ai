@@ -132,8 +132,8 @@
   "subscription": {
     "subscriptionId": "ID abbonamento",
     "trialEnds": "Prova termina",
-    "activeUntil": "Attivo fino al",
-    "canceled": "Abbonamento annullato",
+    "activeUntil": "Prossima data di pagamento",
+    "canceled": "Abbonamento annullato a partire dal",
     "manageButton": "Gestisci abbonamento"
   },
   "generatingCard": {
