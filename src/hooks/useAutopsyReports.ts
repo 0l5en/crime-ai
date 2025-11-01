@@ -8,7 +8,7 @@ type ResultSetAutopsyReport = paths[typeof REQUEST_PATH]['get']['responses']['20
 
 export const useAutopsyReports = ({ reportAuthorId, victimId, notificationId }: { reportAuthorId?: number, victimId?: number, notificationId?: number }) => {
   return useQuery({
-    queryKey: [REQUEST_PATH, reportAuthorId, victimId, notificationId],
+    queryKey: [REQUEST_PATH, { victimId, reportAuthorId, notificationId }],
     queryFn: async (): Promise<ResultSetAutopsyReport> => {
 
       // Build query string from parameters

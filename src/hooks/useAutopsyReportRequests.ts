@@ -2,7 +2,7 @@ import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';
 
-const REQUEST_PATH = '/autopsy-report-request';
+export const REQUEST_PATH = '/autopsy-report-request';
 type ResultSetAutopsyReportRequest = paths[typeof REQUEST_PATH]['get']['responses']['200']['content']['application/json'];
 
 export const useAutopsyReportRequests = (victimId?: string) => {
@@ -12,7 +12,7 @@ export const useAutopsyReportRequests = (victimId?: string) => {
 
       const searchParams = new URLSearchParams();
       if (victimId) searchParams.append('victimId', victimId);
-      
+
       const queryString = searchParams.toString();
       const response = await fetch(PATH_CRIME_AI_API + REQUEST_PATH + (queryString ? `?${queryString}` : ''));
 

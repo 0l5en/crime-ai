@@ -704,7 +704,6 @@ export interface components {
       items?: components["schemas"]["AutopsyReportRequestDto"][];
     };
     CreateAutopsyReportRequestDto: {
-      userId: string;
       /** Format: int64 */
       victimId: number;
     };

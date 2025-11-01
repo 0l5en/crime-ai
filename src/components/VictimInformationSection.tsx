@@ -1,6 +1,6 @@
 import { useUserContext } from "@/contexts/UserContext";
-import { useCreateAutopsyReportRequest } from "@/hooks/useCreateAutopsyReportRequest";
 import { useAutopsyReportRequests } from "@/hooks/useAutopsyReportRequests";
+import { useCreateAutopsyReportRequest } from "@/hooks/useCreateAutopsyReportRequest";
 import { components } from "@/openapi/crimeAiSchema";
 import { User } from "lucide-react";
 import { useTranslation } from 'react-i18next';
@@ -51,7 +51,7 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
     const handleRequestAutopsyReport = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!user?.email) return;
-        await requestAutopsyReportMutation.mutateAsync({ victimId: victim.id, userId: user.email });
+        await requestAutopsyReportMutation.mutateAsync({ victimId: victim.id });
     };
 
     const hasExistingRequest = autopsyRequests.data?.items && autopsyRequests.data.items.length > 0;
@@ -76,7 +76,7 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                                 <p className="mt-4">
                                     {!hasExistingRequest ? (
                                         <button
-                                            disabled={requestAutopsyReportMutation.isPending}
+                                            disabled={requestAutopsyReportMutation.isPending || autopsyRequests.isPending}
                                             onClick={handleRequestAutopsyReport}
                                             className="btn btn-primary"
                                             data-testid="request-autopsy-report-button"

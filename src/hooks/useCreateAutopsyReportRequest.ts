@@ -1,13 +1,15 @@
 import { useToast } from "@/hooks/use-toast";
 import { paths } from "@/openapi/crimeAiSchema";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { PATH_CRIME_AI_API } from "./constants";
+import { REQUEST_PATH as autopsyReportRequestQueryKey } from './useAutopsyReportRequests';
 import { getCsrfToken } from "./util";
 
 const REQUEST_PATH = '/autopsy-report-request';
 type CreateAutopsyReportRequestDto = paths[typeof REQUEST_PATH]['post']['requestBody']['content']['application/json'];
 
 export const useCreateAutopsyReportRequest = () => {
+  const queryClient = useQueryClient();
   const { toast } = useToast();
 
   return useMutation({
@@ -30,6 +32,7 @@ export const useCreateAutopsyReportRequest = () => {
       throw new Error('Server returned error response: ' + response.status);
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [autopsyReportRequestQueryKey] });
       toast({
         title: "Request submitted",
         description: "Your autopsy report request has been submitted successfully.",
