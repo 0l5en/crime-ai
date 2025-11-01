@@ -11,11 +11,6 @@ const Cases = () => {
   const [page, setPage] = useState(1);
   const [allCases, setAllCases] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
-  const [selectedFilters, setSelectedFilters] = useState({
-    type: "all", // 'all', 'free', 'premium'
-    epoch: "all", // 'all', 'ancient', 'medieval', 'modern', 'contemporary'
-    language: "all", // 'all', 'german', 'english'
-  });
 
   const user = useUserContext();
 
@@ -83,99 +78,6 @@ const Cases = () => {
             <p className="lead" style={{ color: "var(--bs-secondary)" }}>
               {t("subtitle")}
             </p>
-          </div>
-
-          {/* Filters Section (Placeholders - Not Functional Yet) */}
-          <div
-            className="card mb-5"
-            style={{ backgroundColor: "var(--bs-body-bg)", border: "1px solid var(--bs-border-color)" }}
-          >
-            <div className="card-body">
-              <h5 className="card-title mb-4" style={{ color: "var(--bs-body-color)" }}>
-                {t("filters.title")}
-              </h5>
-
-              <div className="row g-3">
-                {/* Free vs Premium Filter */}
-                <div className="col-md-4">
-                  <label className="form-label fw-semibold" style={{ color: "var(--bs-body-color)" }}>
-                    {t("filters.caseType.label")}
-                  </label>
-                  <select
-                    className="form-select"
-                    value={selectedFilters.type}
-                    onChange={(e) => setSelectedFilters((prev) => ({ ...prev, type: e.target.value }))}
-                    style={{
-                      backgroundColor: "var(--bs-body-bg)",
-                      border: "1px solid var(--bs-border-color)",
-                      color: "var(--bs-body-color)",
-                    }}
-                  >
-                    <option value="all">{t("filters.caseType.all")}</option>
-                    <option value="free">{t("filters.caseType.free")}</option>
-                    <option value="premium">{t("filters.caseType.premium")}</option>
-                  </select>
-                </div>
-
-                {/* Epoch Filter */}
-                <div className="col-md-4">
-                  <label className="form-label fw-semibold" style={{ color: "var(--bs-body-color)" }}>
-                    {t("filters.timePeriod.label")}
-                  </label>
-                  <select
-                    className="form-select"
-                    value={selectedFilters.epoch}
-                    onChange={(e) => setSelectedFilters((prev) => ({ ...prev, epoch: e.target.value }))}
-                    style={{
-                      backgroundColor: "var(--bs-body-bg)",
-                      border: "1px solid var(--bs-border-color)",
-                      color: "var(--bs-body-color)",
-                    }}
-                  >
-                    <option value="all">{t("filters.timePeriod.all")}</option>
-                    <option value="ancient">{t("filters.timePeriod.ancient")}</option>
-                    <option value="medieval">{t("filters.timePeriod.medieval")}</option>
-                    <option value="modern">{t("filters.timePeriod.modern")}</option>
-                    <option value="contemporary">{t("filters.timePeriod.contemporary")}</option>
-                  </select>
-                </div>
-
-                {/* Language Filter */}
-                <div className="col-md-4">
-                  <label className="form-label fw-semibold" style={{ color: "var(--bs-body-color)" }}>
-                    {t("filters.language.label")}
-                  </label>
-                  <select
-                    className="form-select"
-                    value={selectedFilters.language}
-                    onChange={(e) => setSelectedFilters((prev) => ({ ...prev, language: e.target.value }))}
-                    style={{
-                      backgroundColor: "var(--bs-body-bg)",
-                      border: "1px solid var(--bs-border-color)",
-                      color: "var(--bs-body-color)",
-                    }}
-                  >
-                    <option value="all">{t("filters.language.all")}</option>
-                    <option value="german">{t("filters.language.german")}</option>
-                    <option value="english">{t("filters.language.english")}</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Reset Filters Button */}
-              <div className="mt-3">
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => setSelectedFilters({ type: "all", epoch: "all", language: "all" })}
-                  style={{
-                    borderColor: "var(--bs-primary)",
-                    color: "var(--bs-primary)",
-                  }}
-                >
-                  {t("filters.reset")}
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Loading State */}
