@@ -34,7 +34,9 @@
     "confirmPassword": "Conferma Password",
     "submit": "Registrati Ora",
     "alreadyRegistered": "Già registrato?",
-    "signIn": "Accedi"
+    "signIn": "Accedi",
+    "termsPrefix": "Registrandoti, accetti i nostri",
+    "termsLink": "Termini e Condizioni"
   },
   "validation": {
     "userNameMin": "Il nome utente deve contenere almeno 2 caratteri",

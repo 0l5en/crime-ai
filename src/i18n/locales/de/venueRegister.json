@@ -34,7 +34,9 @@
     "confirmPassword": "Passwort wiederholen",
     "submit": "Jetzt registrieren",
     "alreadyRegistered": "Bereits registriert?",
-    "signIn": "Anmelden"
+    "signIn": "Anmelden",
+    "termsPrefix": "Durch die Registrierung akzeptieren Sie unsere",
+    "termsLink": "AGB"
   },
   "validation": {
     "userNameMin": "Benutzername muss mindestens 2 Zeichen lang sein",

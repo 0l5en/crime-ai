@@ -170,6 +170,15 @@ const Register = () => {
                       )}
                     </div>
 
+                    <div className="text-center mb-3">
+                      <small className="text-muted">
+                        {t('form.termsPrefix')}{' '}
+                        <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                          {t('form.termsLink')}
+                        </a>
+                      </small>
+                    </div>
+
                     <button
                       type="submit"
                       className="btn btn-danger w-100 py-3 mb-3"
