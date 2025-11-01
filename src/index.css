@@ -702,6 +702,12 @@ body {
   color: #8b92a7;
 }
 
+/* Chat/Interrogation Input Fields with red focus */
+.chat-input.form-control:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 0.25rem rgba(239, 68, 68, 0.25) !important;
+}
+
 /* Statistics Boxes */
 .profile-stat-box {
   background-color: rgba(10, 14, 26, 0.5);

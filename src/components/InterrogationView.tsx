@@ -171,7 +171,7 @@ const InterrogationView = ({ person, onBack, embedded = false }: InterrogationVi
           <form onSubmit={handleSubmitQuestion} className="d-flex gap-2">
             <input
               type="text"
-              className="form-control border-secondary flex-grow-1"
+              className="form-control border-secondary flex-grow-1 chat-input"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder={t('interrogation.typePlaceholder')}
