@@ -43,13 +43,7 @@ const Header = () => {
 
                 {/* User Profile */}
                 {user && (
-                  <Link to="/profile" className="nav-item d-flex align-items-center gap-2 text-decoration-none" style={{ cursor: 'pointer' }}>
-                    <div className="text-end">
-                      <div className="small fw-medium">{user.name || user.email}</div>
-                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>
-                        {user.roles.join(', ') || 'No roles'}
-                      </div>
-                    </div>
+                  <Link to="/profile" className="nav-item text-decoration-none" style={{ cursor: 'pointer' }}>
                     <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '32px', height: '32px', fontSize: '0.875rem' }}>
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </div>
@@ -171,12 +165,6 @@ const Header = () => {
                   <div className="d-flex align-items-center gap-3 mb-3" style={{ cursor: 'pointer' }}>
                     <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
-                    </div>
-                    <div className="flex-grow-1">
-                      <div className="fw-medium">{user.name || user.email}</div>
-                      <div className="text-muted small">
-                        {user.roles.join(', ') || 'No roles'}
-                      </div>
                     </div>
                     {/* Notification Badge for Mobile */}
                     <NotificationBadge />
