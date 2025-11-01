@@ -125,7 +125,7 @@ const GameCard = ({
           </div>
         ) : (
           <>
-            {/* Rating Display */}
+            {/* Rating Display - nur wenn vorhanden */}
             {(averageRating !== undefined && averageRating > 0) || (ratingCount !== undefined && ratingCount > 0) ? (
               <div className="mt-auto">
                 <StarRating
@@ -136,11 +136,7 @@ const GameCard = ({
                   count={ratingCount || 0}
                 />
               </div>
-            ) : (
-              <div className="mt-auto">
-                <p className="text-muted small mb-0">{t('card.notYetRated')}</p>
-              </div>
-            )}
+            ) : null}
           </>
         )}
       </div>
