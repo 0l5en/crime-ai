@@ -619,6 +619,7 @@ export interface components {
       conclusionsAndAssessment: string;
       timeOfDeathFrom: string;
       timeOfDeathTo: string;
+      imageUrl: string
     };
     ResultSetAutopsyReport: {
       items?: components["schemas"]["AutopsyReportDto"][];

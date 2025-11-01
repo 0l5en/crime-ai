@@ -692,8 +692,8 @@ paths:
           description: if any internal error occurs while processing the request
     post:
       summary: "Create a new request for autopsy report of a victim. If a request\
-        \ already exist for the given identifier (userId, victimId), this operation\
-        \ will do nothing."
+        \ already exist for the given authenticated user and given victimId, this\
+        \ operation will do nothing."
       operationId: createAutopsyReportRequest
       requestBody:
         description: the data required to create a new request
@@ -733,15 +733,8 @@ paths:
           description: if any internal error occurs while processing the request
   /notification:
     get:
-      summary: Get a list of notifications.
+      summary: Get a list of notifications of the authenticated user.
       operationId: listNotifications
-      parameters:
-      - name: userId
-        in: query
-        description: the id of a logged in user playing a crime case
-        required: true
-        schema:
-          type: string
       responses:
         "200":
           description: Successful operation.
@@ -1417,6 +1410,11 @@ components:
         reportAuthorId:
           type: integer
           format: int64
+        victimId:
+          type: integer
+          format: int64
+        caseId:
+          type: string
         externalExamination:
           type: string
         internalExamination:
@@ -1429,7 +1427,10 @@ components:
           type: string
         timeOfDeathTo:
           type: string
+        imageUrl:
+          type: string
       required:
+      - caseId
       - causeOfDeath
       - conclusionsAndAssessment
       - externalExamination
@@ -1439,6 +1440,7 @@ components:
       - timeOfDeathFrom
       - timeOfDeathTo
       - title
+      - victimId
     ResultSetAutopsyReport:
       type: object
       properties:
@@ -1472,13 +1474,10 @@ components:
     CreateAutopsyReportRequestDto:
       type: object
       properties:
-        userId:
-          type: string
         victimId:
           type: integer
           format: int64
       required:
-      - userId
       - victimId
     TaskInfoDto:
       type: object

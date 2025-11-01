@@ -251,14 +251,6 @@ const CaseSolution = () => {
             {t('solutionPage.backToCase')}
           </button>
 
-          {/* <button
-            className="btn btn-secondary btn-sm me-3"
-            onClick={() => navigate(`/case/${caseId}`)}
-          >
-            <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-            {t('solutionPage.backToCase')}
-          </button> */}
-
           <div>
             <h1 className={`${isMobile ? 'h5' : 'h2'} mb-1`}>
               {t('solutionPage.solveTheCase')}: {crimeCase?.title}
