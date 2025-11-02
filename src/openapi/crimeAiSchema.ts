@@ -473,6 +473,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/user-profile": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Get a list of user profiles. */
+    post: operations["listUserProfiles"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -488,7 +505,7 @@ export interface components {
       exp: number;
     };
     CreateRegistrationDto: {
-      userType: "VACATION_RENTAL" | "STANDARD";
+      userType: "VACATION_RENTAL" | "STANDARD" | "ADMIN";
       userName: string;
       email: string;
       password: string;
@@ -773,6 +790,26 @@ export interface components {
     Violation: {
       message?: string;
       propertyPath?: string;
+    };
+    UserProfileFilterDto: {
+      groupName?: string;
+      search?: string;
+      enabled?: boolean;
+      /** Format: int32 */
+      firstResult?: number;
+      /** Format: int32 */
+      maxResults?: number;
+    };
+    ResultSetUserProfileDto: {
+      items?: components["schemas"]["UserProfileDto"][];
+    };
+    UserProfileDto: {
+      id: string;
+      username: string;
+      email: string;
+      userTypes: string[];
+      createdAt: string;
+      enabled?: boolean;
     };
   };
   responses: never;
@@ -2026,6 +2063,45 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["ResultSetCrimeCaseGenerationAttemptDto"];
         };
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  listUserProfiles: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the search filter */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UserProfileFilterDto"];
+      };
+    };
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultSetUserProfileDto"];
+        };
+      };
+      /** @description if the search filter contains invalid or incomplete data */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description if any internal error occurs while processing the request */
       500: {
