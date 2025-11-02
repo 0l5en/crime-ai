@@ -62,7 +62,7 @@ const Register = () => {
         <div className="container-fluid" style={{ maxWidth: '1400px' }}>
           <div className="row g-5 align-items-center">
             {/* Left Side - Features */}
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-none d-lg-block">
               <div className="p-5 rounded-4" style={{ background: 'linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-primary-dark) 100%)' }}>
                 <h2 className="display-5 fw-bold text-white mb-4">
                   {t('features.title')}

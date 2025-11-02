@@ -4,7 +4,11 @@ import { useState } from 'react';
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import toast from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
-import type { CreateCaseGeneratorFormVacationRentalDto, CreateSightseeingAttractionDto, Violations } from '../../supabase/functions/_shared/crime-api-types';
+import type { components } from "@/openapi/crimeAiSchema";
+
+type CreateCaseGeneratorFormVacationRentalDto = components['schemas']['CreateCaseGeneratorFormVacationRentalDto'];
+type CreateSightseeingAttractionDto = components['schemas']['CreateSightseeingAttractionDto'];
+type Violations = components['schemas']['Violations'];
 
 // Extend the basic form data with vacation rental specific fields
 interface VacationRentalFormData {
@@ -104,7 +108,6 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
     // Prepare the data in the format expected by the API (new structure)
     const formData: CreateCaseGeneratorFormVacationRentalDto = {
-      userId: userId,
       formBasic: {
         caseGeneratorForm: "BASIC" as const,
         language: data.language,
