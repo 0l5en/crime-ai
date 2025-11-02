@@ -785,6 +785,28 @@ paths:
                 $ref: "#/components/schemas/ResultSetCrimeCaseGenerationAttemptDto"
         "500":
           description: if any internal error occurs while processing the request
+  /user-profile:
+    post:
+      summary: Get a list of user profiles.
+      operationId: listUserProfiles
+      requestBody:
+        description: the search filter
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfileFilterDto"
+        required: true
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetUserProfileDto"
+        "400":
+          description: if the search filter contains invalid or incomplete data
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     UserInfoDto:
@@ -811,6 +833,7 @@ components:
           enum:
           - VACATION_RENTAL
           - STANDARD
+          - ADMIN
         userName:
           type: string
           minLength: 1
@@ -1557,3 +1580,52 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/CrimeCaseGenerationAttemptDto"
+    UserProfileFilterDto:
+      type: object
+      properties:
+        groupName:
+          type: string
+        search:
+          type: string
+        enabled:
+          type: boolean
+        firstResult:
+          type: integer
+          format: int32
+        maxResults:
+          type: integer
+          format: int32
+    ResultSetUserProfileDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserProfileDto"
+    UserProfileDto:
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        username:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          minLength: 1
+        userTypes:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          minLength: 1
+        enabled:
+          type: boolean
+      required:
+      - createdAt
+      - email
+      - id
+      - userTypes
+      - username
