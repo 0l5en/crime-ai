@@ -2,9 +2,7 @@ import { RequestBody as CreateCrimeCaseBasicDto, useCreateCrimeCaseBasic } from 
 import { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import toast from "react-hot-toast";
-import type { components } from "@/openapi/crimeAiSchema";
-
-type Violations = components["schemas"]["Violations"];
+import type { Violations } from "../../supabase/functions/_shared/crime-api-types";
 interface BasicCaseGeneratorFormProps {
   onSuccess: (locationUrl: string) => void;
   onCancel: () => void;
