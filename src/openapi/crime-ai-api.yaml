@@ -1605,27 +1605,23 @@ components:
     UserProfileDto:
       type: object
       properties:
-        id:
-          type: string
-          minLength: 1
-        username:
+        userName:
           type: string
           minLength: 1
         email:
           type: string
           minLength: 1
-        userTypes:
+        groups:
           type: array
           items:
             type: string
+        enabled:
+          type: boolean
         createdAt:
           type: string
           minLength: 1
-        enabled:
-          type: boolean
       required:
       - createdAt
       - email
-      - id
-      - userTypes
-      - username
+      - groups
+      - userName

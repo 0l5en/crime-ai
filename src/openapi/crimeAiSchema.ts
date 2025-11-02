@@ -804,12 +804,11 @@ export interface components {
       items?: components["schemas"]["UserProfileDto"][];
     };
     UserProfileDto: {
-      id: string;
-      username: string;
+      userName: string;
       email: string;
-      userTypes: string[];
+      groups: string[];
       createdAt: string;
-      enabled?: boolean;
+      enabled: boolean;
     };
   };
   responses: never;
