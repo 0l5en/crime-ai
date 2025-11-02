@@ -135,11 +135,11 @@ body {
 
 .card-hover:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 6px 10px 25px rgba(200, 50, 50, 0.6);
 }
 
 [data-bs-theme="dark"] .card-hover:hover {
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+  box-shadow: 6px 10px 25px rgba(200, 50, 50, 0.6);
 }
 
 /* Custom button variants */
@@ -439,6 +439,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -483,10 +484,19 @@ body {
   margin-top: 1rem;
 }
 
-.analytics-status-dot {
+.analytics-status-dot-enabled {
   width: 8px;
   height: 8px;
-  background-color: #10b981;
+  background-color: var(--bs-success);
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.analytics-status-dot-disabled {
+  width: 8px;
+  height: 8px;
+  background-color: var(--bs-primary);
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0;
@@ -764,7 +774,7 @@ body {
   .profile-page {
     padding: 1rem;
   }
-  
+
   .profile-avatar-large {
     width: 80px;
     height: 80px;

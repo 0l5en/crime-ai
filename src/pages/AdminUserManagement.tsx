@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import { useCountUserProfiles } from "@/hooks/useCountUserProfiles";
 import { useUserProfiles } from "@/hooks/useUserProfiles";
 import { components } from "@/openapi/crimeAiSchema";
 import {
@@ -11,7 +12,7 @@ import {
   User,
   UserCheck
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Collapse, Form, Modal } from "react-bootstrap";
 
 type UserProfileDto = components['schemas']['UserProfileDto'];
@@ -20,6 +21,9 @@ type UserProfileFilterDto = components['schemas']['UserProfileFilterDto'];
 const AdminUserManagement = () => {
   const [userProfileFilterDto, setUserProfileFilterDto] = useState<UserProfileFilterDto>({ firstResult: 0, maxResults: 10 });
   const { data: resultSetUserProfileDto, isPending: resultSetUserProfileDtoPending } = useUserProfiles(userProfileFilterDto);
+  const { data: resultCountUserProfileDto, isPending: resultCountUserProfileDtoPending } = useCountUserProfiles(userProfileFilterDto);
+  const pending = resultSetUserProfileDtoPending || resultCountUserProfileDtoPending;
+  const inputRef = useRef(null);
 
   const [expandedUsers, setExpandedUsers] = useState<Set<string>>(new Set());
 
@@ -80,221 +84,216 @@ const AdminUserManagement = () => {
     return date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
-  return (
-    <>
-      <Header />
-      <div className="analytics-page">
-        <div className="container-fluid" style={{ maxWidth: '1600px' }}>
+  const updateSearchFilter = () => {
+    setUserProfileFilterDto(current => ({ ...current, search: inputRef.current.value }));
+  }
 
-          {/* Header */}
-          <div className="row mb-5">
-            <div className="col-12">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h1 className="display-5 fw-bold mb-2 text-white">
-                    User Management
-                  </h1>
-                  <p className="analytics-text-secondary mb-0">
-                    Manage users, roles, and permissions
-                  </p>
-                </div>
-                <div className="analytics-kpi-badge">
-                  TODO: Total amount of users found for selection
-                </div>
+  useEffect(() => {
+    if (inputRef.current && !pending) {
+      inputRef.current.focus();
+    }
+  }, [pending]);
+
+  return (
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
+      <Header />
+      <div className="container py-5">
+
+        {/* Header */}
+        <div className="row mb-5">
+          <div className="col-12">
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h1 className="display-5 fw-bold mb-2">
+                  User Management
+                </h1>
+                <p className="analytics-text-secondary mb-0">
+                  Manage users, roles, and permissions
+                </p>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Filter/Search Section */}
-          <div className="row g-3 mb-4">
-            <div className="col-md-4">
-              <div className="position-relative">
-                <Search
-                  className="position-absolute"
-                  size={20}
-                  style={{ left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#8b92a7' }}
-                />
-                <input
-                  type="text"
-                  className="form-control ps-5"
-                  placeholder="Search by username or email..."
-                  value={userProfileFilterDto.search}
-                  disabled={resultSetUserProfileDtoPending}
-                  onChange={(e) => setUserProfileFilterDto(current => ({ ...current, search: e.target.value }))}
-                  style={{
-                    backgroundColor: '#1a1f2e',
-                    border: '1px solid #2a2f3e',
-                    color: '#fff',
-                    height: '48px'
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="position-relative">
-                <Filter
-                  className="position-absolute"
-                  size={20}
-                  style={{ left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#8b92a7' }}
-                />
-                <select
-                  className="form-select ps-5"
-                  disabled={resultSetUserProfileDtoPending}
-                  value={userProfileFilterDto.groupName}
-                  onChange={(e) => setUserProfileFilterDto(current => ({ ...current, groupName: e.target.value !== 'all' ? e.target.value : undefined }))}
-                  style={{
-                    backgroundColor: '#1a1f2e',
-                    border: '1px solid #2a2f3e',
-                    color: '#fff',
-                    height: '48px'
-                  }}
-                >
-                  <option value="all">All Groups</option>
-                  <option value="admin">Admin</option>
-                  <option value="standard">Standard</option>
-                  <option value="vacation-rental">Vacation Rental</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <select
-                className="form-select"
-                disabled={resultSetUserProfileDtoPending}
-                value={userProfileFilterDto.enabled !== undefined ? userProfileFilterDto.enabled ? 'active' : 'inactive' : 'all'}
-                onChange={(e) => setUserProfileFilterDto(current => ({ ...current, enabled: e.target.value === 'all' ? undefined : e.target.value === 'active' ? true : false }))}
+        {/* Filter/Search Section */}
+        <div className="row g-3 mb-4">
+          <div className="col-md-4">
+            <div className="input-group">
+              <input
+                ref={inputRef}
+                type="text"
+                className="form-control"
+                placeholder="Search by username or email..."
+                disabled={pending}
+                onKeyDown={(e) => e.key === 'Enter' && updateSearchFilter()}
                 style={{
-                  backgroundColor: '#1a1f2e',
-                  border: '1px solid #2a2f3e',
-                  color: '#fff',
+                  height: '48px'
+                }}
+              />
+              <button className="btn btn-secondary" onClick={() => updateSearchFilter()}><Search /></button>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="position-relative">
+              <Filter
+                className="position-absolute"
+                size={20}
+                style={{ left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#8b92a7' }}
+              />
+              <select
+                className="form-select ps-5"
+                disabled={pending}
+                value={userProfileFilterDto.groupName}
+                onChange={(e) => setUserProfileFilterDto(current => ({ ...current, groupName: e.target.value !== 'all' ? e.target.value : undefined }))}
+                style={{
                   height: '48px'
                 }}
               >
-                <option value="all">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+                <option value="all">All Groups</option>
+                <option value="admin">Admin</option>
+                <option value="standard">Standard</option>
+                <option value="vacation-rental">Vacation Rental</option>
               </select>
             </div>
           </div>
 
-          {/* User Cards Grid */}
-          <div className="row g-4">
-            {resultSetUserProfileDto && resultSetUserProfileDto.items?.map((user) => {
-              const isExpanded = expandedUsers.has(user.userName);
+          <div className="col-md-3">
+            <select
+              className="form-select"
+              disabled={pending}
+              value={userProfileFilterDto.enabled !== undefined ? userProfileFilterDto.enabled ? 'active' : 'inactive' : 'all'}
+              onChange={(e) => setUserProfileFilterDto(current => ({ ...current, enabled: e.target.value === 'all' ? undefined : e.target.value === 'active' ? true : false }))}
+              style={{
+                height: '48px'
+              }}
+            >
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div className="col-md-2 d-flex justify-content-end">
+            <h1 className="me-1">{resultCountUserProfileDto && resultCountUserProfileDto.count}</h1>
+          </div>
+        </div>
 
-              return (
-                <div key={user.userName} className="col-12">
-                  <div className="card analytics-user-card">
-                    <div className="card-body">
+        {/* User Cards Grid */}
+        <div className="row g-4">
+          {resultSetUserProfileDto && resultSetUserProfileDto.items?.map((user) => {
+            const isExpanded = expandedUsers.has(user.userName);
 
-                      {/* Card Header - Always Visible */}
-                      <div className="d-flex justify-content-between align-items-start mb-3">
-                        <div className="d-flex align-items-center gap-3">
-                          {/* Avatar */}
-                          <div className="analytics-user-avatar">
-                            <User size={32} />
-                          </div>
+            return (
+              <div key={user.userName} className="col-12">
+                <div className="card card-hover">
+                  <div className="card-body">
 
-                          {/* User Info */}
-                          <div>
-                            <h5 className="mb-1 fw-bold">{user.userName}</h5>
-                            <small className="analytics-text-secondary">{user.email}</small>
-                          </div>
+                    {/* Card Header - Always Visible */}
+                    <div className="d-flex justify-content-between align-items-start">
+                      <div className="d-flex align-items-center gap-3">
+                        {/* Avatar */}
+                        <div className="analytics-user-avatar">
+                          <User size={32} />
                         </div>
 
-                        {/* Status & Badges */}
-                        <div className="d-flex align-items-center gap-2">
-                          {user.groups.length > 0 &&
-                            <>
-                              <span className={`badge ${getGroupBadgeClass(user.groups[0])}`}>
-                                {getGroupIcon(user.groups[0])}
-                                {user.groups[0]}
-                              </span>
-                              {user.groups.find(group => group === 'premium') && (
-                                <Crown size={20} style={{ color: '#fbbf24' }} />
-                              )}
-                            </>
-                          }
-                          {user.enabled && <span className="analytics-status-dot"></span>}
+                        {/* User Info */}
+                        <div>
+                          <h5 className="mb-1 fw-bold">{user.userName}</h5>
+                          <small className="analytics-text-secondary">{user.email}</small>
                         </div>
                       </div>
 
-                      {/* Collapsible Details */}
-                      <Collapse in={isExpanded}>
-                        <div>
-                          <div className="analytics-user-details">
-                            <div className="row g-3">
-                              <div className="col-6">
-                                <small className="analytics-text-secondary d-block mb-1">Username</small>
-                                <p className="mb-0 small">{user.userName}</p>
-                              </div>
-                              <div className="col-6">
-                                <small className="analytics-text-secondary d-block mb-1">Registered</small>
-                                <p className="mb-0 small">{formatDate(new Date(user.createdAt))}</p>
-                              </div>
-                              <div className="col-6">
-                                <small className="analytics-text-secondary d-block mb-1">Total Cases</small>
-                                <p className="mb-0 fw-bold">10</p>
-                              </div>
-                              <div className="col-6">
-                                <small className="analytics-text-secondary d-block mb-1">Cases Solved</small>
-                                <p className="mb-0 fw-bold">5</p>
-                              </div>
-                              <div className="col-6">
-                                <small className="analytics-text-secondary d-block mb-1">Success Rate</small>
-                                <p className="mb-0 fw-bold" style={{ color: 71 >= 70 ? '#10b981' : '#ef4444' }}>
-                                  71%
-                                </p>
-                              </div>
-                              <div className="col-6">
-                                <small className="analytics-text-secondary d-block mb-1">Status</small>
-                                <p className="mb-0">
-                                  <span className={`badge ${user.enabled ? 'bg-success' : 'bg-secondary'}`}>
-                                    {user.enabled ? 'Active' : 'Inactive'}
-                                  </span>
-                                </p>
-                              </div>
+                      {/* Status & Badges */}
+                      <div className="d-flex align-items-center gap-2">
+                        {user.groups.length > 0 &&
+                          <>
+                            <span className={`d-flex align-items-center badge ${getGroupBadgeClass(user.groups[0])}`}>
+                              {getGroupIcon(user.groups[0])}
+                              {user.groups[0]}
+                            </span>
+                            {user.groups.find(group => group === 'premium') && (
+                              <Crown size={20} style={{ color: '#fbbf24' }} />
+                            )}
+                          </>
+                        }
+                        <span className={'analytics-status-dot' + (user.enabled ? '-enabled' : '-disabled')}></span>
+                      </div>
+                    </div>
+
+                    {/* Collapsible Details */}
+                    <Collapse in={isExpanded}>
+                      <div className="mt-3 border " style={{ borderRadius: '10px' }}>
+                        <div className="p-4">
+                          <div className="row g-2">
+                            <div className="col-6">
+                              <small className="analytics-text-secondary d-block mb-1">Username</small>
+                              <p className="mb-0 small">{user.userName}</p>
+                            </div>
+                            <div className="col-6">
+                              <small className="analytics-text-secondary d-block mb-1">Registered</small>
+                              <p className="mb-0 small">{formatDate(new Date(user.createdAt))}</p>
+                            </div>
+                            <div className="col-6">
+                              <small className="analytics-text-secondary d-block mb-1">Total Cases</small>
+                              <p className="mb-0 fw-bold">10</p>
+                            </div>
+                            <div className="col-6">
+                              <small className="analytics-text-secondary d-block mb-1">Cases Solved</small>
+                              <p className="mb-0 fw-bold">5</p>
+                            </div>
+                            <div className="col-6">
+                              <small className="analytics-text-secondary d-block mb-1">Success Rate</small>
+                              <p className="mb-0 fw-bold" style={{ color: 71 >= 70 ? '#10b981' : '#ef4444' }}>
+                                71%
+                              </p>
+                            </div>
+                            <div className="col-6">
+                              <small className="analytics-text-secondary d-block mb-1">Status</small>
+                              <p className="mb-0">
+                                <span className={`badge ${user.enabled ? 'bg-success' : 'bg-secondary'}`}>
+                                  {user.enabled ? 'Active' : 'Inactive'}
+                                </span>
+                              </p>
                             </div>
                           </div>
                         </div>
-                      </Collapse>
+                      </div>
+                    </Collapse>
 
-                      {/* Expand/Collapse Button */}
-                      <button
-                        className="btn btn-link w-100 text-center p-2 mt-2"
-                        onClick={() => toggleExpand(user.userName)}
-                        style={{ textDecoration: 'none', color: '#ef4444' }}
-                      >
-                        {isExpanded ? (
-                          <>
-                            <ChevronUp size={18} className="me-1" />
-                            Show Less
-                          </>
-                        ) : (
-                          <>
-                            <ChevronDown size={18} className="me-1" />
-                            Show More
-                          </>
-                        )}
-                      </button>
-                    </div>
+                    {/* Expand/Collapse Button */}
+                    <button
+                      className="btn btn-link w-100 text-center"
+                      onClick={() => toggleExpand(user.userName)}
+                      style={{ textDecoration: 'none', color: '#ef4444' }}
+                    >
+                      {isExpanded ? (
+                        <>
+                          <ChevronUp size={18} className="me-1" />
+                          Show Less
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown size={18} className="me-1" />
+                          Show More
+                        </>
+                      )}
+                    </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* No Results */}
-          {resultSetUserProfileDto && resultSetUserProfileDto.items?.length === 0 && (
-            <div className="text-center py-5">
-              <User size={64} className="mb-3" style={{ color: '#8b92a7' }} />
-              <h3 className="analytics-text-secondary">No users found</h3>
-              <p className="analytics-text-secondary">Try adjusting your filters</p>
-            </div>
-          )}
-
+              </div>
+            );
+          })}
         </div>
+
+        {/* No Results */}
+        {resultSetUserProfileDto && resultSetUserProfileDto.items?.length === 0 && (
+          <div className="text-center py-5">
+            <User size={64} className="mb-3" style={{ color: '#8b92a7' }} />
+            <h3 className="analytics-text-secondary">No users found</h3>
+            <p className="analytics-text-secondary">Try adjusting your filters</p>
+          </div>
+        )}
+
       </div>
 
       {/* Delete Confirmation Modal */}
@@ -357,7 +356,7 @@ const AdminUserManagement = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div >
   );
 };
 

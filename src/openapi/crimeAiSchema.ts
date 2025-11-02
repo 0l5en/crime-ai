@@ -490,6 +490,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+
+  "/user-profile-count": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Count user profiles. */
+    post: operations["countUserProfiles"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -810,6 +828,10 @@ export interface components {
       createdAt: string;
       enabled: boolean;
     };
+    ResultCount: {
+      /** Format: int64 */
+      count: number;
+    }
   };
   responses: never;
   parameters: never;
@@ -2093,6 +2115,45 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["ResultSetUserProfileDto"];
+        };
+      };
+      /** @description if the search filter contains invalid or incomplete data */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description if any internal error occurs while processing the request */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  countUserProfiles: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description the search filter */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UserProfileFilterDto"];
+      };
+    };
+    responses: {
+      /** @description Successful operation. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ResultCount"];
         };
       };
       /** @description if the search filter contains invalid or incomplete data */

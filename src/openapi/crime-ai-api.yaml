@@ -807,6 +807,28 @@ paths:
           description: if the search filter contains invalid or incomplete data
         "500":
           description: if any internal error occurs while processing the request
+  /user-profile-count:
+    post:
+      summary: Count user profiles.
+      operationId: countUserProfiles
+      requestBody:
+        description: the search filter
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfileFilterDto"
+        required: true
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultCount"
+        "400":
+          description: if the search filter contains invalid or incomplete data
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     UserInfoDto:
@@ -1623,5 +1645,12 @@ components:
       required:
       - createdAt
       - email
+      - enabled
       - groups
       - userName
+    ResultCount:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
