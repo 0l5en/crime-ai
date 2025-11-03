@@ -32,7 +32,7 @@ const Profile = () => {
   return (
     <>
       <Header />
-      <div className="profile-page">
+      <div className="profile-page" style={{ backgroundColor: '#000000' }}>
         <Container>
           {/* Page Header */}
           <Row className="mb-4">
@@ -176,62 +176,6 @@ const Profile = () => {
                 </div>
               </Card>
 
-              {/* Statistics Card */}
-              <Card className="profile-card">
-                <div className="card-body">
-                  <h4 className="mb-4 text-white">Your Statistics</h4>
-
-                  <Row className="g-3">
-                    <Col sm={6}>
-                      <div className="profile-stat-box">
-                        <div className="profile-stat-icon">
-                          <FileText size={24} />
-                        </div>
-                        <div className="profile-stat-content">
-                          <span className="profile-stat-value">24</span>
-                          <span className="profile-stat-label">Cases Played</span>
-                        </div>
-                      </div>
-                    </Col>
-
-                    <Col sm={6}>
-                      <div className="profile-stat-box">
-                        <div className="profile-stat-icon">
-                          <CheckCircle size={24} />
-                        </div>
-                        <div className="profile-stat-content">
-                          <span className="profile-stat-value">18</span>
-                          <span className="profile-stat-label">Cases Solved</span>
-                        </div>
-                      </div>
-                    </Col>
-
-                    <Col sm={6}>
-                      <div className="profile-stat-box">
-                        <div className="profile-stat-icon">
-                          <TrendingUp size={24} />
-                        </div>
-                        <div className="profile-stat-content">
-                          <span className="profile-stat-value">75%</span>
-                          <span className="profile-stat-label">Success Rate</span>
-                        </div>
-                      </div>
-                    </Col>
-
-                    <Col sm={6}>
-                      <div className="profile-stat-box">
-                        <div className="profile-stat-icon">
-                          <Users size={24} />
-                        </div>
-                        <div className="profile-stat-content">
-                          <span className="profile-stat-value">3</span>
-                          <span className="profile-stat-label">Referrals</span>
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Card>
             </Col>
           </Row>
         </Container>
