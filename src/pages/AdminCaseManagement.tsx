@@ -9,7 +9,7 @@ const AdminCaseManagement = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLimit, setDisplayLimit] = useState(10);
-  const { data: crimeCases, isLoading, error } = useCrimeCases();
+  const { data: crimeCases, isLoading, error } = useCrimeCases({ maxResults: '1000' });
 
   // Filter cases based on search term
   const filteredCases = useMemo(() => {
