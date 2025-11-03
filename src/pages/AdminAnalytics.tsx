@@ -110,7 +110,7 @@ const AdminAnalytics = () => {
   return (
     <>
       <Header />
-      <div className="analytics-page">
+      <div className="analytics-page" style={{ backgroundColor: '#000000' }}>
         <div className="container-fluid" style={{ maxWidth: '1600px' }}>
         
         {/* Header */}
