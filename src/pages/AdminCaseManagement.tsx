@@ -3,13 +3,33 @@ import CaseRowEditable from "@/components/CaseRowEditable";
 import Header from "@/components/Header";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
 import { useNavigate } from "react-router-dom";
+import { useState, useMemo } from "react";
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [displayLimit, setDisplayLimit] = useState(10);
   const { data: crimeCases, isLoading, error } = useCrimeCases();
 
+  // Filter cases based on search term
+  const filteredCases = useMemo(() => {
+    if (!crimeCases?.items) return [];
+    if (!searchTerm.trim()) return crimeCases.items;
+    
+    const lowerSearch = searchTerm.toLowerCase();
+    return crimeCases.items.filter(crimeCase => 
+      crimeCase.title?.toLowerCase().includes(lowerSearch) ||
+      crimeCase.description?.toLowerCase().includes(lowerSearch) ||
+      crimeCase.id?.toLowerCase().includes(lowerSearch)
+    );
+  }, [crimeCases?.items, searchTerm]);
+
+  // Get cases to display based on current limit
+  const displayedCases = filteredCases.slice(0, displayLimit);
+  const hasMore = displayLimit < filteredCases.length;
+
   return (
-    <div className="min-vh-100 bg-dark">
+    <div className="min-vh-100" style={{ backgroundColor: '#000000' }}>
       <Header />
 
       <div className="container py-5">
@@ -28,6 +48,41 @@ const AdminCaseManagement = () => {
           >
             Neuen Fall generieren
           </button>
+        </div>
+
+        {/* Search Bar */}
+        <div className="mb-4">
+          <div className="input-group input-group-lg">
+            <span className="input-group-text bg-dark border-secondary text-muted">
+              <i className="bi bi-search"></i>
+            </span>
+            <input
+              type="text"
+              className="form-control bg-dark border-secondary text-light"
+              placeholder="Suche nach Titel, Beschreibung oder ID..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setDisplayLimit(10); // Reset limit when searching
+              }}
+            />
+            {searchTerm && (
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => {
+                  setSearchTerm("");
+                  setDisplayLimit(10);
+                }}
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            )}
+          </div>
+          {searchTerm && (
+            <div className="text-muted mt-2">
+              {filteredCases.length} {filteredCases.length === 1 ? 'Fall' : 'Fälle'} gefunden
+            </div>
+          )}
         </div>
 
         {isLoading && (
@@ -58,7 +113,15 @@ const AdminCaseManagement = () => {
           </div>
         )}
 
-        {!isLoading && !error && crimeCases?.items && crimeCases.items.length > 0 && (
+        {!isLoading && !error && filteredCases.length === 0 && searchTerm && (
+          <div className="text-center py-5">
+            <div className="text-muted h5">
+              Keine Fälle gefunden für "{searchTerm}"
+            </div>
+          </div>
+        )}
+
+        {!isLoading && !error && displayedCases.length > 0 && (
           <div className="card bg-dark border-secondary shadow-lg">
             <div className="card-body p-0">
               <div className="table-responsive">
@@ -75,7 +138,7 @@ const AdminCaseManagement = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {crimeCases.items.map((crimeCase) => <CaseRowEditable crimeCase={crimeCase} key={crimeCase.id} />)}
+                    {displayedCases.map((crimeCase) => <CaseRowEditable crimeCase={crimeCase} key={crimeCase.id} />)}
                   </tbody>
                 </table>
               </div>
@@ -83,11 +146,25 @@ const AdminCaseManagement = () => {
           </div>
         )}
 
-        {!isLoading && !error && crimeCases?.items && crimeCases.items.length > 0 && (
-          <div className="mt-4 text-center">
-            <p className="text-muted">
-              Insgesamt {crimeCases.items.length} Kriminalfälle gefunden
-            </p>
+        {!isLoading && !error && displayedCases.length > 0 && (
+          <div className="mt-4">
+            <div className="text-center">
+              <p className="text-muted">
+                Zeige {displayedCases.length} von {filteredCases.length} {filteredCases.length === 1 ? 'Fall' : 'Fällen'}
+                {searchTerm && ` (gefiltert von ${crimeCases?.items?.length || 0} gesamt)`}
+              </p>
+            </div>
+            
+            {hasMore && (
+              <div className="text-center mt-3">
+                <button
+                  className="btn btn-outline-light btn-lg"
+                  onClick={() => setDisplayLimit(prev => prev + 10)}
+                >
+                  Mehr Fälle laden
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
