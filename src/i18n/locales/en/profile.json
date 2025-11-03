@@ -1,0 +1,35 @@
+{
+  "title": "My Profile",
+  "subtitle": "Manage your account settings",
+  "changeAvatar": "Change Avatar",
+  "accountSettings": "Account Settings",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "changePassword": "Change Password",
+  "subscription": "Subscription",
+  "premiumMember": "Premium Member",
+  "freePlan": "Free Plan",
+  "upgradeText": "Upgrade to Premium to unlock exclusive cases, advanced features, and more!",
+  "upgradeToPremium": "Upgrade to Premium",
+  "premiumInfo": "You're currently enjoying all Premium features!",
+  "manageSubscription": "Manage Subscription",
+  "referralLink": "Referral Link",
+  "referralText": "Share your unique link and earn rewards!",
+  "copy": "Copy",
+  "copied": "Copied!",
+  "memberSince": "Member Since",
+  "lastActivity": "Last Activity",
+  "changePasswordModal": {
+    "title": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "cancel": "Cancel",
+    "update": "Update Password"
+  },
+  "changeAvatarModal": {
+    "title": "Change Avatar",
+    "message": "Avatar upload functionality will be available soon.",
+    "close": "Close"
+  }
+}

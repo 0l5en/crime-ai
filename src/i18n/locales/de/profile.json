@@ -1,0 +1,35 @@
+{
+  "title": "Mein Profil",
+  "subtitle": "Verwalten Sie Ihre Kontoeinstellungen",
+  "changeAvatar": "Avatar ändern",
+  "accountSettings": "Kontoeinstellungen",
+  "emailAddress": "E-Mail-Adresse",
+  "password": "Passwort",
+  "changePassword": "Passwort ändern",
+  "subscription": "Abonnement",
+  "premiumMember": "Premium-Mitglied",
+  "freePlan": "Kostenloser Plan",
+  "upgradeText": "Upgraden Sie auf Premium, um exklusive Fälle, erweiterte Funktionen und mehr freizuschalten!",
+  "upgradeToPremium": "Auf Premium upgraden",
+  "premiumInfo": "Sie genießen derzeit alle Premium-Funktionen!",
+  "manageSubscription": "Abonnement verwalten",
+  "referralLink": "Empfehlungslink",
+  "referralText": "Teilen Sie Ihren einzigartigen Link und verdienen Sie Belohnungen!",
+  "copy": "Kopieren",
+  "copied": "Kopiert!",
+  "memberSince": "Mitglied seit",
+  "lastActivity": "Letzte Aktivität",
+  "changePasswordModal": {
+    "title": "Passwort ändern",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Neues Passwort bestätigen",
+    "cancel": "Abbrechen",
+    "update": "Passwort aktualisieren"
+  },
+  "changeAvatarModal": {
+    "title": "Avatar ändern",
+    "message": "Die Avatar-Upload-Funktion wird bald verfügbar sein.",
+    "close": "Schließen"
+  }
+}

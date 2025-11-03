@@ -1,0 +1,35 @@
+{
+  "title": "Mon Profil",
+  "subtitle": "Gérer les paramètres de votre compte",
+  "changeAvatar": "Changer l'Avatar",
+  "accountSettings": "Paramètres du Compte",
+  "emailAddress": "Adresse E-mail",
+  "password": "Mot de Passe",
+  "changePassword": "Changer le Mot de Passe",
+  "subscription": "Abonnement",
+  "premiumMember": "Membre Premium",
+  "freePlan": "Plan Gratuit",
+  "upgradeText": "Passez à Premium pour débloquer des cas exclusifs, des fonctionnalités avancées et plus encore !",
+  "upgradeToPremium": "Passer à Premium",
+  "premiumInfo": "Vous profitez actuellement de toutes les fonctionnalités Premium !",
+  "manageSubscription": "Gérer l'Abonnement",
+  "referralLink": "Lien de Parrainage",
+  "referralText": "Partagez votre lien unique et gagnez des récompenses !",
+  "copy": "Copier",
+  "copied": "Copié !",
+  "memberSince": "Membre depuis",
+  "lastActivity": "Dernière Activité",
+  "changePasswordModal": {
+    "title": "Changer le Mot de Passe",
+    "currentPassword": "Mot de Passe Actuel",
+    "newPassword": "Nouveau Mot de Passe",
+    "confirmPassword": "Confirmer le Nouveau Mot de Passe",
+    "cancel": "Annuler",
+    "update": "Mettre à Jour le Mot de Passe"
+  },
+  "changeAvatarModal": {
+    "title": "Changer l'Avatar",
+    "message": "La fonctionnalité de téléchargement d'avatar sera bientôt disponible.",
+    "close": "Fermer"
+  }
+}

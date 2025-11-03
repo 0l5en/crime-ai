@@ -1,0 +1,35 @@
+{
+  "title": "Il Mio Profilo",
+  "subtitle": "Gestisci le impostazioni del tuo account",
+  "changeAvatar": "Cambia Avatar",
+  "accountSettings": "Impostazioni Account",
+  "emailAddress": "Indirizzo Email",
+  "password": "Password",
+  "changePassword": "Cambia Password",
+  "subscription": "Abbonamento",
+  "premiumMember": "Membro Premium",
+  "freePlan": "Piano Gratuito",
+  "upgradeText": "Passa a Premium per sbloccare casi esclusivi, funzionalità avanzate e altro ancora!",
+  "upgradeToPremium": "Passa a Premium",
+  "premiumInfo": "Stai attualmente godendo di tutte le funzionalità Premium!",
+  "manageSubscription": "Gestisci Abbonamento",
+  "referralLink": "Link di Riferimento",
+  "referralText": "Condividi il tuo link unico e guadagna ricompense!",
+  "copy": "Copia",
+  "copied": "Copiato!",
+  "memberSince": "Membro dal",
+  "lastActivity": "Ultima Attività",
+  "changePasswordModal": {
+    "title": "Cambia Password",
+    "currentPassword": "Password Attuale",
+    "newPassword": "Nuova Password",
+    "confirmPassword": "Conferma Nuova Password",
+    "cancel": "Annulla",
+    "update": "Aggiorna Password"
+  },
+  "changeAvatarModal": {
+    "title": "Cambia Avatar",
+    "message": "La funzionalità di caricamento avatar sarà presto disponibile.",
+    "close": "Chiudi"
+  }
+}

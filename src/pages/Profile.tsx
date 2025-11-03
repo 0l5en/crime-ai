@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
-import { Lock, Crown, Copy, Check, FileText, CheckCircle, TrendingUp, Users } from 'lucide-react';
+import { Lock, Crown, Copy, Check } from 'lucide-react';
 import Header from '@/components/Header';
 import { useUserContext } from '@/contexts/UserContext';
+import { useTranslation } from 'react-i18next';
+import { useMyUserProfile } from '@/hooks/useMyUserProfile';
+import { format } from 'date-fns';
+import { de, enUS, fr, it } from 'date-fns/locale';
 
 const Profile = () => {
+  const { t, i18n } = useTranslation('profile');
   const user = useUserContext();
+  const { data: userProfile } = useMyUserProfile();
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -19,9 +25,17 @@ const Profile = () => {
   // Generate referral link
   const referralLink = `${window.location.origin}/?ref=${user.email}`;
   
-  // TODO: Replace with actual API data
-  const registrationDate = "Jan 2024";
-  const lastActivity = "Today";
+  // Get locale for date formatting
+  const dateLocales = { de, en: enUS, fr, it };
+  const currentLocale = dateLocales[i18n.language as keyof typeof dateLocales] || enUS;
+  
+  // Format registration date
+  const registrationDate = userProfile?.createdAt 
+    ? format(new Date(userProfile.createdAt), 'PP', { locale: currentLocale })
+    : '-';
+  
+  // TODO: Replace with actual last activity data
+  const lastActivity = t('lastActivity') === 'Last Activity' ? 'Today' : 'Heute';
 
   const copyReferralLink = () => {
     navigator.clipboard.writeText(referralLink);
@@ -37,8 +51,8 @@ const Profile = () => {
           {/* Page Header */}
           <Row className="mb-4">
             <Col>
-              <h1 className="text-white">My Profile</h1>
-              <p className="analytics-text-secondary">Manage your account settings</p>
+              <h1 className="text-white">{t('title')}</h1>
+              <p className="analytics-text-secondary">{t('subtitle')}</p>
             </Col>
           </Row>
 
@@ -56,7 +70,7 @@ const Profile = () => {
                     className="btn btn-sm btn-outline-danger mt-3"
                     onClick={() => setShowAvatarModal(true)}
                   >
-                    Change Avatar
+                    {t('changeAvatar')}
                   </button>
                 </div>
 
@@ -67,18 +81,18 @@ const Profile = () => {
 
                   {/* Subscription Badge */}
                   <span className={`badge ${isPremium ? 'profile-badge-premium' : 'profile-badge-free'}`}>
-                    {isPremium ? 'Premium' : 'Free'}
+                    {isPremium ? t('premiumMember') : t('freePlan')}
                   </span>
                 </div>
 
                 {/* Quick Stats */}
                 <div className="profile-stats">
                   <div className="profile-stat-item">
-                    <span className="profile-stat-label">Member Since</span>
+                    <span className="profile-stat-label">{t('memberSince')}</span>
                     <span className="profile-stat-value">{registrationDate}</span>
                   </div>
                   <div className="profile-stat-item">
-                    <span className="profile-stat-label">Last Activity</span>
+                    <span className="profile-stat-label">{t('lastActivity')}</span>
                     <span className="profile-stat-value">{lastActivity}</span>
                   </div>
                 </div>
@@ -90,11 +104,11 @@ const Profile = () => {
               {/* Account Settings Card */}
               <Card className="profile-card mb-4">
                 <div className="card-body">
-                  <h4 className="mb-4 text-white">Account Settings</h4>
+                  <h4 className="mb-4 text-white">{t('accountSettings')}</h4>
 
                   {/* Email (read-only) */}
                   <div className="mb-4">
-                    <label className="form-label text-white">Email Address</label>
+                    <label className="form-label text-white">{t('emailAddress')}</label>
                     <input
                       type="email"
                       className="form-control profile-input"
@@ -105,12 +119,12 @@ const Profile = () => {
 
                   {/* Change Password Button */}
                   <div className="mb-4">
-                    <label className="form-label text-white">Password</label>
+                    <label className="form-label text-white">{t('password')}</label>
                     <button
                       className="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2"
                       onClick={() => setShowPasswordModal(true)}
                     >
-                      <Lock size={16} /> Change Password
+                      <Lock size={16} /> {t('changePassword')}
                     </button>
                   </div>
                 </div>
@@ -120,19 +134,19 @@ const Profile = () => {
               <Card className="profile-card mb-4">
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="mb-0 text-white">Subscription</h4>
+                    <h4 className="mb-0 text-white">{t('subscription')}</h4>
                     <span className={`badge ${isPremium ? 'profile-badge-premium' : 'profile-badge-free'}`}>
-                      {isPremium ? 'Premium Member' : 'Free Plan'}
+                      {isPremium ? t('premiumMember') : t('freePlan')}
                     </span>
                   </div>
 
                   {!isPremium && (
                     <>
                       <p className="analytics-text-secondary mb-3">
-                        Upgrade to Premium to unlock exclusive cases, advanced features, and more!
+                        {t('upgradeText')}
                       </p>
                       <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center gap-2">
-                        <Crown size={16} /> Upgrade to Premium
+                        <Crown size={16} /> {t('upgradeToPremium')}
                       </button>
                     </>
                   )}
@@ -140,10 +154,10 @@ const Profile = () => {
                   {isPremium && (
                     <div className="profile-premium-info">
                       <p className="analytics-text-secondary mb-2">
-                        You're currently enjoying all Premium features!
+                        {t('premiumInfo')}
                       </p>
                       <button className="btn btn-outline-secondary w-100">
-                        Manage Subscription
+                        {t('manageSubscription')}
                       </button>
                     </div>
                   )}
@@ -153,9 +167,9 @@ const Profile = () => {
               {/* Referral Card */}
               <Card className="profile-card mb-4">
                 <div className="card-body">
-                  <h4 className="mb-3 text-white">Referral Link</h4>
+                  <h4 className="mb-3 text-white">{t('referralLink')}</h4>
                   <p className="analytics-text-secondary mb-3">
-                    Share your unique link and earn rewards!
+                    {t('referralText')}
                   </p>
 
                   <div className="input-group">
@@ -170,7 +184,7 @@ const Profile = () => {
                       onClick={copyReferralLink}
                     >
                       {copied ? <Check size={16} /> : <Copy size={16} />}
-                      {copied ? 'Copied!' : 'Copy'}
+                      {copied ? t('copied') : t('copy')}
                     </button>
                   </div>
                 </div>
@@ -184,30 +198,30 @@ const Profile = () => {
       {/* Change Password Modal */}
       <Modal show={showPasswordModal} onHide={() => setShowPasswordModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Change Password</Modal.Title>
+          <Modal.Title>{t('changePasswordModal.title')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
             <div className="mb-3">
-              <label className="form-label">Current Password</label>
+              <label className="form-label">{t('changePasswordModal.currentPassword')}</label>
               <input type="password" className="form-control" />
             </div>
             <div className="mb-3">
-              <label className="form-label">New Password</label>
+              <label className="form-label">{t('changePasswordModal.newPassword')}</label>
               <input type="password" className="form-control" />
             </div>
             <div className="mb-3">
-              <label className="form-label">Confirm New Password</label>
+              <label className="form-label">{t('changePasswordModal.confirmPassword')}</label>
               <input type="password" className="form-control" />
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <button className="btn btn-secondary" onClick={() => setShowPasswordModal(false)}>
-            Cancel
+            {t('changePasswordModal.cancel')}
           </button>
           <button className="btn btn-danger">
-            Update Password
+            {t('changePasswordModal.update')}
           </button>
         </Modal.Footer>
       </Modal>
@@ -215,11 +229,11 @@ const Profile = () => {
       {/* Change Avatar Modal */}
       <Modal show={showAvatarModal} onHide={() => setShowAvatarModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Change Avatar</Modal.Title>
+          <Modal.Title>{t('changeAvatarModal.title')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="text-center">
-            <p className="text-muted mb-3">Avatar upload functionality will be available soon.</p>
+            <p className="text-muted mb-3">{t('changeAvatarModal.message')}</p>
             <div className="profile-avatar-large mx-auto">
               {initials}
             </div>
@@ -227,7 +241,7 @@ const Profile = () => {
         </Modal.Body>
         <Modal.Footer>
           <button className="btn btn-secondary" onClick={() => setShowAvatarModal(false)}>
-            Close
+            {t('changeAvatarModal.close')}
           </button>
         </Modal.Footer>
       </Modal>

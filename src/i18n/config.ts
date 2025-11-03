@@ -63,6 +63,11 @@ import createAutopsyReportRequestEN from './locales/en/createAutopsyReportReques
 import createAutopsyReportRequestFR from './locales/fr/createAutopsyReportRequest.json';
 import createAutopsyReportRequestIT from './locales/it/createAutopsyReportRequest.json';
 
+import profileDE from './locales/de/profile.json';
+import profileEN from './locales/en/profile.json';
+import profileFR from './locales/fr/profile.json';
+import profileIT from './locales/it/profile.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -77,6 +82,7 @@ const resources = {
     vacationRentalDashboard: vacationRentalDashboardDE,
     contact: contactDE,
     createAutopsyReportRequest: createAutopsyReportRequestDE,
+    profile: profileDE,
   },
   en: {
     common: commonEN,
@@ -91,6 +97,7 @@ const resources = {
     vacationRentalDashboard: vacationRentalDashboardEN,
     contact: contactEN,
     createAutopsyReportRequest: createAutopsyReportRequestEN,
+    profile: profileEN,
   },
   it: {
     common: commonIT,
@@ -105,6 +112,7 @@ const resources = {
     vacationRentalDashboard: vacationRentalDashboardIT,
     contact: contactIT,
     createAutopsyReportRequest: createAutopsyReportRequestIT,
+    profile: profileIT,
   },
   fr: {
     common: commonFR,
@@ -119,6 +127,7 @@ const resources = {
     vacationRentalDashboard: vacationRentalDashboardFR,
     contact: contactFR,
     createAutopsyReportRequest: createAutopsyReportRequestFR,
+    profile: profileFR,
   },
 };
 
