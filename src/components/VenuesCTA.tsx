@@ -16,7 +16,7 @@ const VenuesCTA = () => {
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
             <h3 className="fw-bold mb-3 mb-md-5 text-white" style={{
-              fontSize: 'clamp(1.25rem, 4vw, 2.5rem)',
+              fontSize: 'clamp(1.1rem, 3.5vw, 2rem)',
               lineHeight: '1.2'
             }}>
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
