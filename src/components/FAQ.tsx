@@ -1,27 +1,32 @@
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '@/hooks/useTheme';
 
 const FAQ = () => {
   const { t } = useTranslation('faq');
+  const { theme } = useTheme();
   const [openItem, setOpenItem] = useState<string | null>(null);
   
   const toggleItem = (itemId: string) => {
     setOpenItem(openItem === itemId ? null : itemId);
   };
 
+  const isDark = theme === 'dark';
+
   return (
-    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: 'var(--bs-light)',
+              color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('title')}
             </h2>
-            <p className="text-light px-2" style={{ 
+            <p className="px-2" style={{ 
+              color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)',
               opacity: '0.85',
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
@@ -38,7 +43,7 @@ const FAQ = () => {
                 <h3 
                   className="mb-3 mb-md-4 pb-2 pb-md-3 fw-semibold" 
                   style={{ 
-                    color: 'var(--bs-light)', 
+                    color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)', 
                     borderBottom: '2px solid var(--bs-danger)',
                     display: 'inline-block',
                     fontSize: 'clamp(1.1rem, 3vw, 1.3rem)'
@@ -79,7 +84,7 @@ const FAQ = () => {
                           style={{
                             backgroundColor: 'transparent',
                             border: 'none',
-                            color: 'var(--bs-light)',
+                            color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)',
                             fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
                             fontWeight: '600',
                             cursor: 'pointer',
@@ -91,7 +96,8 @@ const FAQ = () => {
                             e.currentTarget.style.color = 'var(--bs-danger)';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.color = 'var(--bs-light)';
+                            const baseColor = isDark ? 'var(--bs-light)' : 'var(--bs-dark)';
+                            e.currentTarget.style.color = baseColor;
                           }}
                         >
                           <span>{t(`categories.${categoryKey}.${questionKey}.question`)}</span>
@@ -116,9 +122,9 @@ const FAQ = () => {
                         >
                           <div 
                             style={{ 
-                              backgroundColor: 'rgba(95, 95, 95, 0.1)',
+                              backgroundColor: isDark ? 'rgba(95, 95, 95, 0.1)' : 'rgba(0, 0, 0, 0.05)',
                               borderTop: '1px solid var(--bs-border-color)',
-                              color: 'var(--bs-light)',
+                              color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)',
                               opacity: '0.9',
                               lineHeight: '1.7',
                               padding: 'clamp(0.75rem, 2vw, 1rem)',
