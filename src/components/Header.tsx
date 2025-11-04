@@ -88,9 +88,9 @@ const Header = () => {
                 }
 
                 {/* Sign Up Button */}
-                {location.pathname !== '/register' &&
+                {location.pathname !== '/register' && location.pathname !== '/venue-register' &&
                   <div className="nav-item">
-                    <Link to="/register" className="text-decoration-none">
+                    <Link to={location.pathname === '/venues' ? '/venue-register' : '/register'} className="text-decoration-none">
                       <button className="btn btn-danger">
                         {t('nav.signUp')}
                       </button>
@@ -220,7 +220,7 @@ const Header = () => {
             ) : (
               <div className="d-grid gap-2">
                 <SignInButton />
-                <Link to="/register" className="text-decoration-none">
+                <Link to={location.pathname === '/venues' ? '/venue-register' : '/register'} className="text-decoration-none">
                   <button className="btn btn-danger w-100">
                     {t('nav.signUp')}
                   </button>
