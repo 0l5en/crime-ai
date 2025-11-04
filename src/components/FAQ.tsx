@@ -20,13 +20,13 @@ const FAQ = () => {
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)',
+              color: isDark ? '#ffffff' : 'var(--bs-dark)',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('title')}
             </h2>
             <p className="px-2" style={{ 
-              color: isDark ? 'var(--bs-light)' : 'var(--bs-dark)',
+              color: isDark ? '#ffffff' : 'var(--bs-dark)',
               opacity: '0.85',
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
