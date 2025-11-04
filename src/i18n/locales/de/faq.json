@@ -1,0 +1,66 @@
+{
+  "title": "Häufig gestellte Fragen",
+  "subtitle": "Finde Antworten auf die häufigsten Fragen über DetectivesGame",
+  "categories": {
+    "general": {
+      "title": "Allgemein",
+      "q1": {
+        "question": "Was ist DetectivesGame?",
+        "answer": "DetectivesGame ist ein interaktives Detektivspiel, in dem du spannende Kriminalfälle löst. Untersuche Tatorte, verhöre Verdächtige und Zeugen, analysiere Beweise und finde den Täter."
+      },
+      "q2": {
+        "question": "Wie funktioniert das Spiel?",
+        "answer": "Wähle einen Fall aus, untersuche den Tatort, sammle Beweise, führe Verhöre durch und versuche den Fall zu lösen. Du kannst jederzeit eine Lösung einreichen und erhältst sofortiges Feedback."
+      },
+      "q3": {
+        "question": "Ist das Spiel kostenlos?",
+        "answer": "Ja! Wir bieten kostenlose Fälle an, die du jederzeit spielen kannst. Du kannst das Spiel ohne Einschränkungen testen und entscheiden, ob du später auf Premium upgraden möchtest."
+      }
+    },
+    "freePlayers": {
+      "title": "Kostenlose Spieler",
+      "q1": {
+        "question": "Was bekomme ich als kostenloser Spieler?",
+        "answer": "Als kostenloser Spieler hast du Zugriff auf ausgewählte Kriminalfälle, grundlegende Ermittlungstools, Verhöre von Verdächtigen und Zeugen sowie alle grundlegenden Spielfunktionen."
+      },
+      "q2": {
+        "question": "Gibt es Einschränkungen für kostenlose Spieler?",
+        "answer": "Kostenlose Spieler haben Zugriff auf eine begrenzte Auswahl an Fällen und grundlegende Ermittlungstools. Premium-Fälle und spezielle Features sind Premium-Mitgliedern vorbehalten."
+      },
+      "q3": {
+        "question": "Kann ich später auf Premium upgraden?",
+        "answer": "Ja, du kannst jederzeit auf Premium upgraden und sofort auf alle Premium-Inhalte zugreifen. Dein Spielfortschritt bleibt dabei erhalten."
+      }
+    },
+    "premium": {
+      "title": "Premium-Mitgliedschaft",
+      "q1": {
+        "question": "Was kostet Premium?",
+        "answer": "Die Premium-Mitgliedschaft kostet nur 4,99€ pro Monat. Damit erhältst du Zugriff auf alle Premium-Fälle, spezielle Ermittlungstools und exklusive Features."
+      },
+      "q2": {
+        "question": "Was bekomme ich als Premium-Mitglied?",
+        "answer": "Als Premium-Mitglied erhältst du jeden Monat neue exklusive Premium-Fälle, Zugriff auf spezielle Ermittlungstools wie DNA-Analysen und Autopsieberichte, Prioritätssupport und frühzeitigen Zugang zu neuen Features."
+      },
+      "q3": {
+        "question": "Kann ich Premium jederzeit kündigen?",
+        "answer": "Ja, du kannst deine Premium-Mitgliedschaft jederzeit kündigen. Nach der Kündigung läuft dein Zugang bis zum Ende des bezahlten Zeitraums und wird dann automatisch beendet."
+      }
+    },
+    "support": {
+      "title": "Support",
+      "q1": {
+        "question": "Wie kann ich den Support kontaktieren?",
+        "answer": "Du kannst uns jederzeit über das Kontaktformular oder per E-Mail erreichen. Premium-Mitglieder erhalten Prioritätssupport."
+      },
+      "q2": {
+        "question": "Gibt es einen technischen Support?",
+        "answer": "Ja, unser Support-Team hilft dir bei allen technischen Fragen und Problemen. Premium-Mitglieder erhalten schnellere Antwortzeiten."
+      },
+      "q3": {
+        "question": "Wo finde ich weitere Informationen?",
+        "answer": "Weitere Informationen findest du in unseren Nutzungsbedingungen, der Datenschutzerklärung oder direkt auf unserer Website."
+      }
+    }
+  }
+}

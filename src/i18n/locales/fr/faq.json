@@ -1,0 +1,66 @@
+{
+  "title": "Questions Fréquemment Posées",
+  "subtitle": "Trouvez des réponses aux questions les plus courantes sur DetectivesGame",
+  "categories": {
+    "general": {
+      "title": "Général",
+      "q1": {
+        "question": "Qu'est-ce que DetectivesGame ?",
+        "answer": "DetectivesGame est un jeu de détective interactif où vous résolvez des affaires criminelles passionnantes. Enquêtez sur les scènes de crime, interrogez des suspects et des témoins, analysez des preuves et trouvez le coupable."
+      },
+      "q2": {
+        "question": "Comment fonctionne le jeu ?",
+        "answer": "Choisissez une affaire, enquêtez sur la scène de crime, collectez des preuves, menez des interrogatoires et essayez de résoudre l'affaire. Vous pouvez soumettre une solution à tout moment et recevoir un retour immédiat."
+      },
+      "q3": {
+        "question": "Le jeu est-il gratuit ?",
+        "answer": "Oui ! Nous proposons des affaires gratuites que vous pouvez jouer à tout moment. Vous pouvez tester le jeu sans restrictions et décider plus tard si vous souhaitez passer à Premium."
+      }
+    },
+    "freePlayers": {
+      "title": "Joueurs Gratuits",
+      "q1": {
+        "question": "Qu'est-ce que j'obtiens en tant que joueur gratuit ?",
+        "answer": "En tant que joueur gratuit, vous avez accès à des affaires criminelles sélectionnées, des outils d'enquête de base, des interrogatoires de suspects et témoins, ainsi que toutes les fonctionnalités de jeu de base."
+      },
+      "q2": {
+        "question": "Y a-t-il des restrictions pour les joueurs gratuits ?",
+        "answer": "Les joueurs gratuits ont accès à une sélection limitée d'affaires et aux outils d'enquête de base. Les affaires Premium et les fonctionnalités spéciales sont réservées aux membres Premium."
+      },
+      "q3": {
+        "question": "Puis-je passer à Premium plus tard ?",
+        "answer": "Oui, vous pouvez passer à Premium à tout moment et accéder immédiatement à tout le contenu Premium. Votre progression de jeu sera préservée."
+      }
+    },
+    "premium": {
+      "title": "Adhésion Premium",
+      "q1": {
+        "question": "Combien coûte Premium ?",
+        "answer": "L'adhésion Premium coûte seulement 4,99€ par mois. Avec cela, vous obtenez l'accès à toutes les affaires Premium, des outils d'enquête spéciaux et des fonctionnalités exclusives."
+      },
+      "q2": {
+        "question": "Qu'est-ce que j'obtiens en tant que membre Premium ?",
+        "answer": "En tant que membre Premium, vous recevez de nouvelles affaires Premium exclusives chaque mois, l'accès à des outils d'enquête spéciaux comme les analyses ADN et les rapports d'autopsie, un support prioritaire et un accès anticipé aux nouvelles fonctionnalités."
+      },
+      "q3": {
+        "question": "Puis-je annuler Premium à tout moment ?",
+        "answer": "Oui, vous pouvez annuler votre adhésion Premium à tout moment. Après l'annulation, votre accès continuera jusqu'à la fin de la période payée puis se terminera automatiquement."
+      }
+    },
+    "support": {
+      "title": "Support",
+      "q1": {
+        "question": "Comment puis-je contacter le support ?",
+        "answer": "Vous pouvez nous contacter à tout moment via le formulaire de contact ou par e-mail. Les membres Premium bénéficient d'un support prioritaire."
+      },
+      "q2": {
+        "question": "Y a-t-il un support technique ?",
+        "answer": "Oui, notre équipe de support vous aide avec toutes les questions et problèmes techniques. Les membres Premium reçoivent des temps de réponse plus rapides."
+      },
+      "q3": {
+        "question": "Où puis-je trouver plus d'informations ?",
+        "answer": "Vous pouvez trouver plus d'informations dans nos conditions d'utilisation, notre politique de confidentialité ou directement sur notre site Web."
+      }
+    }
+  }
+}

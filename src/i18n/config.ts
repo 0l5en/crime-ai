@@ -68,6 +68,11 @@ import profileEN from './locales/en/profile.json';
 import profileFR from './locales/fr/profile.json';
 import profileIT from './locales/it/profile.json';
 
+import faqDE from './locales/de/faq.json';
+import faqEN from './locales/en/faq.json';
+import faqFR from './locales/fr/faq.json';
+import faqIT from './locales/it/faq.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -83,6 +88,7 @@ const resources = {
     contact: contactDE,
     createAutopsyReportRequest: createAutopsyReportRequestDE,
     profile: profileDE,
+    faq: faqDE,
   },
   en: {
     common: commonEN,
@@ -98,6 +104,7 @@ const resources = {
     contact: contactEN,
     createAutopsyReportRequest: createAutopsyReportRequestEN,
     profile: profileEN,
+    faq: faqEN,
   },
   it: {
     common: commonIT,
@@ -113,6 +120,7 @@ const resources = {
     contact: contactIT,
     createAutopsyReportRequest: createAutopsyReportRequestIT,
     profile: profileIT,
+    faq: faqIT,
   },
   fr: {
     common: commonFR,
@@ -128,6 +136,7 @@ const resources = {
     contact: contactFR,
     createAutopsyReportRequest: createAutopsyReportRequestFR,
     profile: profileFR,
+    faq: faqFR,
   },
 };
 

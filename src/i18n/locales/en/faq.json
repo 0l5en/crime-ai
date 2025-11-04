@@ -1,0 +1,66 @@
+{
+  "title": "Frequently Asked Questions",
+  "subtitle": "Find answers to the most common questions about DetectivesGame",
+  "categories": {
+    "general": {
+      "title": "General",
+      "q1": {
+        "question": "What is DetectivesGame?",
+        "answer": "DetectivesGame is an interactive detective game where you solve exciting criminal cases. Investigate crime scenes, interrogate suspects and witnesses, analyze evidence, and find the perpetrator."
+      },
+      "q2": {
+        "question": "How does the game work?",
+        "answer": "Choose a case, investigate the crime scene, collect evidence, conduct interrogations, and try to solve the case. You can submit a solution at any time and receive immediate feedback."
+      },
+      "q3": {
+        "question": "Is the game free?",
+        "answer": "Yes! We offer free cases that you can play anytime. You can test the game without restrictions and decide later if you want to upgrade to Premium."
+      }
+    },
+    "freePlayers": {
+      "title": "Free Players",
+      "q1": {
+        "question": "What do I get as a free player?",
+        "answer": "As a free player, you have access to selected criminal cases, basic investigation tools, interrogations of suspects and witnesses, and all basic game features."
+      },
+      "q2": {
+        "question": "Are there restrictions for free players?",
+        "answer": "Free players have access to a limited selection of cases and basic investigation tools. Premium cases and special features are reserved for Premium members."
+      },
+      "q3": {
+        "question": "Can I upgrade to Premium later?",
+        "answer": "Yes, you can upgrade to Premium at any time and immediately access all Premium content. Your game progress will be preserved."
+      }
+    },
+    "premium": {
+      "title": "Premium Membership",
+      "q1": {
+        "question": "How much does Premium cost?",
+        "answer": "The Premium membership costs only €4.99 per month. With this, you get access to all Premium cases, special investigation tools, and exclusive features."
+      },
+      "q2": {
+        "question": "What do I get as a Premium member?",
+        "answer": "As a Premium member, you receive new exclusive Premium cases every month, access to special investigation tools like DNA analyses and autopsy reports, priority support, and early access to new features."
+      },
+      "q3": {
+        "question": "Can I cancel Premium at any time?",
+        "answer": "Yes, you can cancel your Premium membership at any time. After cancellation, your access will continue until the end of the paid period and will then automatically end."
+      }
+    },
+    "support": {
+      "title": "Support",
+      "q1": {
+        "question": "How can I contact support?",
+        "answer": "You can reach us anytime via the contact form or email. Premium members receive priority support."
+      },
+      "q2": {
+        "question": "Is there technical support?",
+        "answer": "Yes, our support team helps you with all technical questions and issues. Premium members receive faster response times."
+      },
+      "q3": {
+        "question": "Where can I find more information?",
+        "answer": "You can find more information in our terms of service, privacy policy, or directly on our website."
+      }
+    }
+  }
+}

@@ -90,6 +90,13 @@ const Footer = () => {
                 >
                   {t("footer.contact")}
                 </Link>
+                <Link
+                  to="/faq"
+                  className="text-secondary text-decoration-none footer-link"
+                  style={{ fontSize: "0.8rem", transition: "color 0.2s ease" }}
+                >
+                  FAQ
+                </Link>
               </div>
               <p className="mb-0 text-secondary text-center text-md-end" style={{ fontSize: "0.7rem" }}>
                 {t("footer.copyright")}

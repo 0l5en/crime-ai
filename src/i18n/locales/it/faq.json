@@ -1,0 +1,66 @@
+{
+  "title": "Domande Frequenti",
+  "subtitle": "Trova risposte alle domande più comuni su DetectivesGame",
+  "categories": {
+    "general": {
+      "title": "Generale",
+      "q1": {
+        "question": "Cos'è DetectivesGame?",
+        "answer": "DetectivesGame è un gioco investigativo interattivo in cui risolvi casi criminali entusiasmanti. Indaga scene del crimine, interroga sospetti e testimoni, analizza prove e trova il colpevole."
+      },
+      "q2": {
+        "question": "Come funziona il gioco?",
+        "answer": "Scegli un caso, indaga la scena del crimine, raccogli prove, conduci interrogatori e prova a risolvere il caso. Puoi inviare una soluzione in qualsiasi momento e ricevere un feedback immediato."
+      },
+      "q3": {
+        "question": "Il gioco è gratuito?",
+        "answer": "Sì! Offriamo casi gratuiti che puoi giocare in qualsiasi momento. Puoi testare il gioco senza restrizioni e decidere più tardi se vuoi passare a Premium."
+      }
+    },
+    "freePlayers": {
+      "title": "Giocatori Gratuiti",
+      "q1": {
+        "question": "Cosa ottengo come giocatore gratuito?",
+        "answer": "Come giocatore gratuito, hai accesso a casi criminali selezionati, strumenti investigativi di base, interrogatori di sospetti e testimoni, e tutte le funzionalità di gioco di base."
+      },
+      "q2": {
+        "question": "Ci sono restrizioni per i giocatori gratuiti?",
+        "answer": "I giocatori gratuiti hanno accesso a una selezione limitata di casi e strumenti investigativi di base. I casi Premium e le funzionalità speciali sono riservati ai membri Premium."
+      },
+      "q3": {
+        "question": "Posso passare a Premium in seguito?",
+        "answer": "Sì, puoi passare a Premium in qualsiasi momento e accedere immediatamente a tutti i contenuti Premium. Il tuo progresso di gioco sarà preservato."
+      }
+    },
+    "premium": {
+      "title": "Abbonamento Premium",
+      "q1": {
+        "question": "Quanto costa Premium?",
+        "answer": "L'abbonamento Premium costa solo 4,99€ al mese. Con questo, ottieni l'accesso a tutti i casi Premium, strumenti investigativi speciali e funzionalità esclusive."
+      },
+      "q2": {
+        "question": "Cosa ottengo come membro Premium?",
+        "answer": "Come membro Premium, ricevi ogni mese nuovi casi Premium esclusivi, accesso a strumenti investigativi speciali come analisi del DNA e rapporti autoptici, supporto prioritario e accesso anticipato alle nuove funzionalità."
+      },
+      "q3": {
+        "question": "Posso cancellare Premium in qualsiasi momento?",
+        "answer": "Sì, puoi cancellare il tuo abbonamento Premium in qualsiasi momento. Dopo la cancellazione, il tuo accesso continuerà fino alla fine del periodo pagato e poi terminerà automaticamente."
+      }
+    },
+    "support": {
+      "title": "Supporto",
+      "q1": {
+        "question": "Come posso contattare il supporto?",
+        "answer": "Puoi contattarci in qualsiasi momento tramite il modulo di contatto o via email. I membri Premium ricevono supporto prioritario."
+      },
+      "q2": {
+        "question": "C'è un supporto tecnico?",
+        "answer": "Sì, il nostro team di supporto ti aiuta con tutte le domande e i problemi tecnici. I membri Premium ricevono tempi di risposta più rapidi."
+      },
+      "q3": {
+        "question": "Dove posso trovare ulteriori informazioni?",
+        "answer": "Puoi trovare ulteriori informazioni nei nostri termini di servizio, nell'informativa sulla privacy o direttamente sul nostro sito web."
+      }
+    }
+  }
+}
