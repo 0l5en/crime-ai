@@ -2,6 +2,7 @@
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserProvider } from "./contexts/UserContext";
 import AdminAnalytics from "./pages/AdminAnalytics";
@@ -13,6 +14,7 @@ import AdminUserManagement from "./pages/AdminUserManagement";
 import CaseDashboard from "./pages/CaseDashboard";
 import Cases from "./pages/Cases";
 import CaseSolution from "./pages/CaseSolution";
+import CaseTeaser from "./pages/CaseTeaser";
 import Cookies from "./pages/Cookies";
 import EmailInbox from "./pages/EmailInbox";
 import Imprint from "./pages/Imprint";
@@ -35,12 +37,14 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <UserProvider>
-          <BrowserRouter>
-            <Routes>
+      <HelmetProvider>
+        <ThemeProvider>
+          <UserProvider>
+            <BrowserRouter>
+              <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/cases" element={<Cases />} />
+              <Route path="/case-preview/:caseId" element={<CaseTeaser />} />
               <Route path="/venues" element={<VenuesPage />} />
               <Route path="/register" element={<Register />} />
               <Route path="/venue-register" element={<VenueRegister />} />
@@ -147,10 +151,11 @@ const App = () => {
                 }
               />
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </UserProvider>
-      </ThemeProvider>
+              </Routes>
+            </BrowserRouter>
+          </UserProvider>
+        </ThemeProvider>
+      </HelmetProvider>
     </QueryClientProvider>
   );
 }
