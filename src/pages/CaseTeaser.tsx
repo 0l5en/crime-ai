@@ -8,10 +8,18 @@ import { useCaseSuspects } from '@/hooks/useCaseSuspects';
 import { useUserContext } from '@/contexts/UserContext';
 import { FileText, Users, UserCheck } from 'lucide-react';
 
+// Mapping von URL-Slugs zu Case-IDs
+const CASE_SLUG_TO_ID: Record<string, string> = {
+  'mord-in-area-51': 'area-51-murder', // Wird später mit der echten Case-ID ersetzt
+};
+
 const CaseTeaser = () => {
-  const { caseId } = useParams<{ caseId: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const user = useUserContext();
+
+  // Case-ID aus dem Slug ermitteln
+  const caseId = slug ? CASE_SLUG_TO_ID[slug] : undefined;
 
   const { data: crimeCase, isLoading: caseLoading } = useCrimeCase(caseId || '');
   const { data: victims, isLoading: victimsLoading } = useCaseVictims(caseId || '');
@@ -39,7 +47,7 @@ const CaseTeaser = () => {
     );
   }
 
-  if (!crimeCase) {
+  if (!caseId || !crimeCase) {
     return (
       <div className="container py-5">
         <div className="alert alert-danger">Fall nicht gefunden</div>
@@ -52,7 +60,7 @@ const CaseTeaser = () => {
   const witnessCount = witnesses?.items?.length || 0;
   const suspectCount = suspects?.items?.length || 0;
 
-  const pageUrl = `${window.location.origin}/case-preview/${caseId}`;
+  const pageUrl = `${window.location.origin}/case-preview/${slug}`;
   const imageUrl = crimeCase.imageUrl || '';
 
   const structuredData = {
