@@ -829,6 +829,19 @@ paths:
           description: if the search filter contains invalid or incomplete data
         "500":
           description: if any internal error occurs while processing the request
+  /user-profile-my:
+    get:
+      summary: Get user profile of the authenticated user.
+      operationId: getMyUserProfile
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfileDto"
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     UserInfoDto:
