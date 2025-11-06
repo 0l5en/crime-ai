@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
-import { Lock, Crown, Copy, Check } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import Header from '@/components/Header';
 import { useUserContext } from '@/contexts/UserContext';
 import { useTranslation } from 'react-i18next';
@@ -14,16 +14,9 @@ const Profile = () => {
   const { data: userProfile } = useMyUserProfile();
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   // Get user initials for avatar
   const initials = user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U';
-  
-  // TODO: Replace with actual premium status check
-  const isPremium = user.hasAnyRole('admin'); // Placeholder
-  
-  // Generate referral link
-  const referralLink = `${window.location.origin}/?ref=${user.email}`;
   
   // Get locale for date formatting
   const dateLocales = { de, en: enUS, fr, it };
@@ -33,15 +26,6 @@ const Profile = () => {
   const registrationDate = userProfile?.createdAt 
     ? format(new Date(userProfile.createdAt), 'PP', { locale: currentLocale })
     : '-';
-  
-  // TODO: Replace with actual last activity data
-  const lastActivity = t('lastActivity') === 'Last Activity' ? 'Today' : 'Heute';
-
-  const copyReferralLink = () => {
-    navigator.clipboard.writeText(referralLink);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <>
@@ -78,11 +62,6 @@ const Profile = () => {
                 <div className="profile-info">
                   <h3>{user.name || 'User'}</h3>
                   <p className="text-muted">{user.email}</p>
-
-                  {/* Subscription Badge */}
-                  <span className={`badge ${isPremium ? 'profile-badge-premium' : 'profile-badge-free'}`}>
-                    {isPremium ? t('premiumMember') : t('freePlan')}
-                  </span>
                 </div>
 
                 {/* Quick Stats */}
@@ -90,10 +69,6 @@ const Profile = () => {
                   <div className="profile-stat-item">
                     <span className="profile-stat-label">{t('memberSince')}</span>
                     <span className="profile-stat-value">{registrationDate}</span>
-                  </div>
-                  <div className="profile-stat-item">
-                    <span className="profile-stat-label">{t('lastActivity')}</span>
-                    <span className="profile-stat-value">{lastActivity}</span>
                   </div>
                 </div>
               </Card>
@@ -129,67 +104,6 @@ const Profile = () => {
                   </div>
                 </div>
               </Card>
-
-              {/* Subscription Card */}
-              <Card className="profile-card mb-4">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="mb-0 text-white">{t('subscription')}</h4>
-                    <span className={`badge ${isPremium ? 'profile-badge-premium' : 'profile-badge-free'}`}>
-                      {isPremium ? t('premiumMember') : t('freePlan')}
-                    </span>
-                  </div>
-
-                  {!isPremium && (
-                    <>
-                      <p className="analytics-text-secondary mb-3">
-                        {t('upgradeText')}
-                      </p>
-                      <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center gap-2">
-                        <Crown size={16} /> {t('upgradeToPremium')}
-                      </button>
-                    </>
-                  )}
-
-                  {isPremium && (
-                    <div className="profile-premium-info">
-                      <p className="analytics-text-secondary mb-2">
-                        {t('premiumInfo')}
-                      </p>
-                      <button className="btn btn-outline-secondary w-100">
-                        {t('manageSubscription')}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </Card>
-
-              {/* Referral Card */}
-              <Card className="profile-card mb-4">
-                <div className="card-body">
-                  <h4 className="mb-3 text-white">{t('referralLink')}</h4>
-                  <p className="analytics-text-secondary mb-3">
-                    {t('referralText')}
-                  </p>
-
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control profile-input"
-                      value={referralLink}
-                      readOnly
-                    />
-                    <button
-                      className="btn btn-danger d-flex align-items-center gap-2"
-                      onClick={copyReferralLink}
-                    >
-                      {copied ? <Check size={16} /> : <Copy size={16} />}
-                      {copied ? t('copied') : t('copy')}
-                    </button>
-                  </div>
-                </div>
-              </Card>
-
             </Col>
           </Row>
         </Container>
