@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
-import { Lock } from 'lucide-react';
+import { Lock, Share2, Facebook, Twitter, Mail } from 'lucide-react';
 import Header from '@/components/Header';
 import { useUserContext } from '@/contexts/UserContext';
 import { useTranslation } from 'react-i18next';
@@ -68,6 +68,63 @@ const Profile = () => {
                   <div className="profile-stat-item">
                     <span className="profile-stat-label">{t('memberSince')}</span>
                     <span className="profile-stat-value">{registrationDate}</span>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Share Section */}
+              <Card className="profile-card mt-4">
+                <div className="card-body">
+                  <h5 className="text-white mb-3 d-flex align-items-center gap-2">
+                    <Share2 size={18} />
+                    {t('shareSection.title')}
+                  </h5>
+                  <p className="analytics-text-secondary small mb-3">
+                    {t('shareSection.description')}
+                  </p>
+                  
+                  <div className="d-grid gap-2">
+                    {/* WhatsApp */}
+                    <a
+                      href={`https://wa.me/?text=${encodeURIComponent(t('shareSection.shareText') + ' https://detectivesgame.com')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-success d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <i className="bi bi-whatsapp"></i>
+                      WhatsApp
+                    </a>
+                    
+                    {/* Facebook */}
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://detectivesgame.com')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <Facebook size={16} />
+                      Facebook
+                    </a>
+                    
+                    {/* Twitter/X */}
+                    <a
+                      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent('https://detectivesgame.com')}&text=${encodeURIComponent(t('shareSection.shareText'))}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-info d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <Twitter size={16} />
+                      X (Twitter)
+                    </a>
+                    
+                    {/* Email */}
+                    <a
+                      href={`mailto:?subject=${encodeURIComponent(t('shareSection.emailSubject'))}&body=${encodeURIComponent(t('shareSection.shareText') + ' https://detectivesgame.com')}`}
+                      className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <Mail size={16} />
+                      E-Mail
+                    </a>
                   </div>
                 </div>
               </Card>
