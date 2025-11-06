@@ -12,7 +12,6 @@ const Profile = () => {
   const { t, i18n } = useTranslation('profile');
   const user = useUserContext();
   const { data: userProfile } = useMyUserProfile();
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
 
   // Get user initials for avatar
@@ -92,14 +91,47 @@ const Profile = () => {
                     />
                   </div>
 
-                  {/* Change Password Button */}
+                  {/* Password Change Section */}
                   <div className="mb-4">
-                    <label className="form-label text-white">{t('password')}</label>
-                    <button
-                      className="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2"
-                      onClick={() => setShowPasswordModal(true)}
+                    <label className="form-label text-white d-flex align-items-center gap-2">
+                      <Lock size={16} /> {t('password')}
+                    </label>
+                    
+                    <div className="mb-3">
+                      <label className="form-label text-white-50 small">{t('changePasswordModal.currentPassword')}</label>
+                      <input 
+                        type="password" 
+                        className="form-control profile-input" 
+                        placeholder="••••••••"
+                        disabled
+                      />
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label text-white-50 small">{t('changePasswordModal.newPassword')}</label>
+                      <input 
+                        type="password" 
+                        className="form-control profile-input" 
+                        placeholder="••••••••"
+                        disabled
+                      />
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label text-white-50 small">{t('changePasswordModal.confirmPassword')}</label>
+                      <input 
+                        type="password" 
+                        className="form-control profile-input" 
+                        placeholder="••••••••"
+                        disabled
+                      />
+                    </div>
+                    
+                    <button 
+                      className="btn btn-danger w-100"
+                      disabled
                     >
-                      <Lock size={16} /> {t('changePassword')}
+                      {t('changePasswordModal.update')}
                     </button>
                   </div>
                 </div>
@@ -108,37 +140,6 @@ const Profile = () => {
           </Row>
         </Container>
       </div>
-
-      {/* Change Password Modal */}
-      <Modal show={showPasswordModal} onHide={() => setShowPasswordModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{t('changePasswordModal.title')}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form>
-            <div className="mb-3">
-              <label className="form-label">{t('changePasswordModal.currentPassword')}</label>
-              <input type="password" className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">{t('changePasswordModal.newPassword')}</label>
-              <input type="password" className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">{t('changePasswordModal.confirmPassword')}</label>
-              <input type="password" className="form-control" />
-            </div>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="btn btn-secondary" onClick={() => setShowPasswordModal(false)}>
-            {t('changePasswordModal.cancel')}
-          </button>
-          <button className="btn btn-danger">
-            {t('changePasswordModal.update')}
-          </button>
-        </Modal.Footer>
-      </Modal>
 
       {/* Change Avatar Modal */}
       <Modal show={showAvatarModal} onHide={() => setShowAvatarModal(false)}>
