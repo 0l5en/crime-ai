@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
@@ -5,6 +6,10 @@ import { useTheme } from "@/hooks/useTheme";
 
 const FAQPage = () => {
   const { theme } = useTheme();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <div 
