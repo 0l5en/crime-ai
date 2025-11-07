@@ -135,16 +135,13 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
               : crimeScene
                 ? (
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-12 col-md-8 order-1 order-md-1">
                       <h4 className="h5 mb-3">
                         {crimeScene.title}
                       </h4>
-                      <p className="mb-0" style={{ textAlign: "justify" }}>
-                        {crimeScene.description}
-                      </p>
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-12 col-md-4 order-2 order-md-2 mb-3 mb-md-0">
                       <div
                         className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                         style={{
@@ -167,6 +164,12 @@ const CaseOverview = ({ caseId, crimeCase, crimeScene, sceneLoading }: CaseOverv
                           </div>
                         )}
                       </div>
+                    </div>
+
+                    <div className="col-12 col-md-8 order-3 order-md-1">
+                      <p className="mb-0" style={{ textAlign: "justify" }}>
+                        {crimeScene.description}
+                      </p>
                     </div>
                   </div>
                 ) : (<p className="mb-0">{t('overview.noAssignedScene')}</p>)
