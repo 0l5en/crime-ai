@@ -54,6 +54,12 @@ const CaseTeaser = () => {
 
   const pageUrl = `${window.location.origin}/case-preview/${caseId}`;
   const imageUrl = crimeCase.imageUrl || '';
+  
+  console.log('CaseTeaser Debug:', { 
+    caseId, 
+    imageUrl, 
+    crimeCaseData: crimeCase 
+  });
 
   const structuredData = {
     "@context": "https://schema.org",
