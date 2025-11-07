@@ -132,7 +132,7 @@ const CaseNotes: React.FC<CaseNotesProps> = ({ caseId }) => {
           <h6 className="mb-0 text-dark fw-semibold">{t('caseNotes.title')}</h6>
           <button
             onClick={handleClose}
-            className="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center"
+            className="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center"
             style={{ width: '32px', height: '32px' }}
             aria-label={t('caseNotes.closeNotes')}
           >
