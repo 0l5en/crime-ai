@@ -119,14 +119,26 @@ const CaseTeaser = () => {
                 )}
               </div>
               <div className="col-lg-5">
-                {imageUrl && (
+                {imageUrl ? (
                   <img 
                     src={imageUrl} 
                     alt={crimeCase.title}
                     className="img-fluid rounded shadow-lg w-100"
                     style={{ maxHeight: '400px', objectFit: 'cover' }}
                     loading="eager"
+                    onError={(e) => {
+                      console.error('Image failed to load:', imageUrl);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => console.log('Image loaded successfully:', imageUrl)}
                   />
+                ) : (
+                  <div 
+                    className="bg-secondary bg-opacity-25 rounded shadow-lg w-100 d-flex align-items-center justify-content-center"
+                    style={{ height: '400px' }}
+                  >
+                    <p className="text-muted">Kein Fallbild verfügbar</p>
+                  </div>
                 )}
               </div>
             </div>
