@@ -3,7 +3,7 @@ import useLoginOptions from "@/hooks/useLoginOptions";
 import useSignIn from "@/hooks/useSignIn";
 import { useTranslation } from "react-i18next";
 
-const SignInButton = ({ postLoginSuccessUri }: { postLoginSuccessUri?: string }) => {
+const SignInButton = ({ postLoginSuccessUri, onBeforeSignIn }: { postLoginSuccessUri?: string; onBeforeSignIn?: () => void }) => {
 
     const { t } = useTranslation('common');
     const { data } = useLoginOptions();
@@ -14,7 +14,12 @@ const SignInButton = ({ postLoginSuccessUri }: { postLoginSuccessUri?: string })
         <button
             className="btn btn-outline-secondary"
             disabled={user.isAuthenticated || data === undefined || data.length === 0 || data[0].loginUri === undefined}
-            onClick={() => signIn()}
+            onClick={() => {
+                if (onBeforeSignIn) {
+                    onBeforeSignIn();
+                }
+                signIn();
+            }}
         >
             {t('nav.signIn')}
         </button>

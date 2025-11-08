@@ -11,6 +11,18 @@ const Header = () => {
   const user = useUserContext();
   const { t } = useTranslation('common');
   const location = useLocation();
+
+  // Helper function to close the mobile offcanvas menu
+  const closeOffcanvas = () => {
+    const offcanvas = document.getElementById('mobileOffcanvas');
+    if (offcanvas) {
+      const bsOffcanvas = (window as any).bootstrap?.Offcanvas?.getInstance(offcanvas);
+      if (bsOffcanvas) {
+        bsOffcanvas.hide();
+      }
+    }
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg sticky-top border-bottom bg-body">
@@ -160,7 +172,7 @@ const Header = () => {
           {/* User Section for authenticated users */}
           {user.isAuthenticated && (
             <div className="mb-4 p-3 border rounded">
-              <Link to="/profile" className="text-decoration-none" data-bs-dismiss="offcanvas">
+              <Link to="/profile" className="text-decoration-none" onClick={closeOffcanvas}>
                 <div className="d-flex align-items-center gap-3 mb-3" style={{ cursor: 'pointer' }}>
                   <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
                     {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
@@ -174,7 +186,7 @@ const Header = () => {
               <Link
                 to="/profile"
                 className="btn btn-outline-danger w-100 mb-2 text-decoration-none"
-                data-bs-dismiss="offcanvas"
+                onClick={closeOffcanvas}
               >
                 View Profile
               </Link>
@@ -184,7 +196,7 @@ const Header = () => {
                 <Link
                   to="/vacation-rental-dashboard"
                   className="btn btn-outline-primary bg-transparent border-warning text-warning w-100 mb-2 text-decoration-none"
-                  data-bs-dismiss="offcanvas"
+                  onClick={closeOffcanvas}
                 >
                   <i className="bi bi-house-door me-2"></i>
                   {t('nav.myCases')}
@@ -196,7 +208,7 @@ const Header = () => {
                 <Link
                   to="/admin"
                   className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2 text-decoration-none"
-                  data-bs-dismiss="offcanvas"
+                  onClick={closeOffcanvas}
                 >
                   {t('nav.admin')}
                 </Link>
@@ -207,21 +219,17 @@ const Header = () => {
           {/* Action Buttons */}
           <div className="mt-4">
             {user.isAuthenticated ? (
-              <LogoutButton onLogout={() => {
-                // Close offcanvas after logout
-                const offcanvas = document.getElementById('mobileOffcanvas');
-                if (offcanvas) {
-                  const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
-                  bsOffcanvas.hide();
-                }
-              }} />
+              <LogoutButton onLogout={closeOffcanvas} />
             ) : (
               <div className="d-grid gap-2">
-                <SignInButton postLoginSuccessUri={window.location.pathname} />
+                <SignInButton 
+                  postLoginSuccessUri={window.location.pathname}
+                  onBeforeSignIn={closeOffcanvas}
+                />
                 <Link 
                   to={location.pathname === '/venues' ? '/venue-register' : '/register'} 
                   className="btn btn-danger w-100 text-decoration-none"
-                  data-bs-dismiss="offcanvas"
+                  onClick={closeOffcanvas}
                 >
                   {t('nav.signUp')}
                 </Link>
