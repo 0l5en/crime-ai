@@ -218,10 +218,12 @@ const Header = () => {
             ) : (
               <div className="d-grid gap-2">
                 <SignInButton postLoginSuccessUri={window.location.pathname} />
-                <Link to={location.pathname === '/venues' ? '/venue-register' : '/register'} className="text-decoration-none" data-bs-dismiss="offcanvas">
-                  <button className="btn btn-danger w-100">
-                    {t('nav.signUp')}
-                  </button>
+                <Link 
+                  to={location.pathname === '/venues' ? '/venue-register' : '/register'} 
+                  className="btn btn-danger w-100 text-decoration-none"
+                  data-bs-dismiss="offcanvas"
+                >
+                  {t('nav.signUp')}
                 </Link>
               </div>
             )}
