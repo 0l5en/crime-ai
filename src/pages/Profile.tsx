@@ -1,28 +1,30 @@
-import { useState } from 'react';
-import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
-import { Lock, Share2, Facebook, Twitter, Mail } from 'lucide-react';
 import Header from '@/components/Header';
 import { useUserContext } from '@/contexts/UserContext';
-import { useTranslation } from 'react-i18next';
 import { useMyUserProfile } from '@/hooks/useMyUserProfile';
+import { useMyUserProfilePassword } from '@/hooks/useMyUserProfilePassword';
 import { format } from 'date-fns';
 import { de, enUS, fr, it } from 'date-fns/locale';
+import { Facebook, Lock, Mail, Share2, Twitter } from 'lucide-react';
+import { useState } from 'react';
+import { Card, Col, Container, Modal, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
   const { t, i18n } = useTranslation('profile');
   const user = useUserContext();
   const { data: userProfile } = useMyUserProfile();
+  const requestUpdatePasswordMail = useMyUserProfilePassword();
   const [showAvatarModal, setShowAvatarModal] = useState(false);
 
   // Get user initials for avatar
   const initials = user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U';
-  
+
   // Get locale for date formatting
   const dateLocales = { de, en: enUS, fr, it };
   const currentLocale = dateLocales[i18n.language as keyof typeof dateLocales] || enUS;
-  
+
   // Format registration date
-  const registrationDate = userProfile?.createdAt 
+  const registrationDate = userProfile?.createdAt
     ? format(new Date(userProfile.createdAt), 'PP', { locale: currentLocale })
     : '-';
 
@@ -49,12 +51,6 @@ const Profile = () => {
                   <div className="profile-avatar-large">
                     {initials}
                   </div>
-                  <button 
-                    className="btn btn-sm btn-outline-danger mt-3"
-                    onClick={() => setShowAvatarModal(true)}
-                  >
-                    {t('changeAvatar')}
-                  </button>
                 </div>
 
                 {/* Basic Info */}
@@ -82,7 +78,7 @@ const Profile = () => {
                   <p className="analytics-text-secondary small mb-3">
                     {t('shareSection.description')}
                   </p>
-                  
+
                   <div className="d-grid gap-2">
                     {/* WhatsApp */}
                     <a
@@ -94,7 +90,7 @@ const Profile = () => {
                       <i className="bi bi-whatsapp"></i>
                       WhatsApp
                     </a>
-                    
+
                     {/* Facebook */}
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://detectivesgame.com')}`}
@@ -105,7 +101,7 @@ const Profile = () => {
                       <Facebook size={16} />
                       Facebook
                     </a>
-                    
+
                     {/* Twitter/X */}
                     <a
                       href={`https://twitter.com/intent/tweet?url=${encodeURIComponent('https://detectivesgame.com')}&text=${encodeURIComponent(t('shareSection.shareText'))}`}
@@ -116,7 +112,7 @@ const Profile = () => {
                       <Twitter size={16} />
                       X (Twitter)
                     </a>
-                    
+
                     {/* Email */}
                     <a
                       href={`mailto:?subject=${encodeURIComponent(t('shareSection.emailSubject'))}&body=${encodeURIComponent(t('shareSection.shareText') + ' https://detectivesgame.com')}`}
@@ -153,40 +149,11 @@ const Profile = () => {
                     <label className="form-label text-white d-flex align-items-center gap-2">
                       <Lock size={16} /> {t('password')}
                     </label>
-                    
-                    <div className="mb-3">
-                      <label className="form-label text-white-50 small">{t('changePasswordModal.currentPassword')}</label>
-                      <input 
-                        type="password" 
-                        className="form-control profile-input" 
-                        placeholder="••••••••"
-                        disabled
-                      />
-                    </div>
-                    
-                    <div className="mb-3">
-                      <label className="form-label text-white-50 small">{t('changePasswordModal.newPassword')}</label>
-                      <input 
-                        type="password" 
-                        className="form-control profile-input" 
-                        placeholder="••••••••"
-                        disabled
-                      />
-                    </div>
-                    
-                    <div className="mb-3">
-                      <label className="form-label text-white-50 small">{t('changePasswordModal.confirmPassword')}</label>
-                      <input 
-                        type="password" 
-                        className="form-control profile-input" 
-                        placeholder="••••••••"
-                        disabled
-                      />
-                    </div>
-                    
-                    <button 
+
+                    <button
                       className="btn btn-danger w-100"
-                      disabled
+                      disabled={requestUpdatePasswordMail.isPending}
+                      onClick={() => requestUpdatePasswordMail.mutate()}
                     >
                       {t('changePasswordModal.update')}
                     </button>

@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: https://crime-ai.0l5en.de/bff/crime-ai-api
+- url: https://crime-ai.0l5en.de
   description: Generated server url
 paths:
   /me:
@@ -119,7 +119,7 @@ paths:
   /crimecase-vacation-rental:
     get:
       summary: get a list of vacation rental crime cases
-      operationId: listCrimeCasesBasic_1
+      operationId: listCrimeCasesVacationRental
       parameters:
       - name: maxResults
         in: query

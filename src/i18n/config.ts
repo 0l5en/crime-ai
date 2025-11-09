@@ -73,6 +73,11 @@ import faqEN from './locales/en/faq.json';
 import faqFR from './locales/fr/faq.json';
 import faqIT from './locales/it/faq.json';
 
+import useMyUserProfilePasswordDE from './locales/de/useMyUserProfilePassword.json';
+import useMyUserProfilePasswordEN from './locales/en/useMyUserProfilePassword.json';
+import useMyUserProfilePasswordFR from './locales/fr/useMyUserProfilePassword.json';
+import useMyUserProfilePasswordIT from './locales/it/useMyUserProfilePassword.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -89,6 +94,7 @@ const resources = {
     createAutopsyReportRequest: createAutopsyReportRequestDE,
     profile: profileDE,
     faq: faqDE,
+    useMyUserProfilePassword: useMyUserProfilePasswordDE,
   },
   en: {
     common: commonEN,
@@ -105,6 +111,7 @@ const resources = {
     createAutopsyReportRequest: createAutopsyReportRequestEN,
     profile: profileEN,
     faq: faqEN,
+    useMyUserProfilePassword: useMyUserProfilePasswordEN,
   },
   it: {
     common: commonIT,
@@ -121,6 +128,7 @@ const resources = {
     createAutopsyReportRequest: createAutopsyReportRequestIT,
     profile: profileIT,
     faq: faqIT,
+    useMyUserProfilePassword: useMyUserProfilePasswordIT,
   },
   fr: {
     common: commonFR,
@@ -137,6 +145,7 @@ const resources = {
     createAutopsyReportRequest: createAutopsyReportRequestFR,
     profile: profileFR,
     faq: faqFR,
+    useMyUserProfilePassword: useMyUserProfilePasswordFR,
   },
 };
 
