@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: https://crime-ai.0l5en.de
+- url: https://crime-ai.0l5en.de/bff/crime-ai-api
   description: Generated server url
 paths:
   /me:
@@ -925,6 +925,11 @@ components:
           - UNPUBLISHED
           - PUBLISHED
           - PREMIUM
+        type:
+          type: string
+          enum:
+          - BASIC
+          - VACATION_RENTAL
       required:
       - description
       - id

@@ -2,8 +2,8 @@
 import CaseRowEditable from "@/components/CaseRowEditable";
 import Header from "@/components/Header";
 import { useCrimeCases } from "@/hooks/useCrimeCases";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState, useMemo } from "react";
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
@@ -15,9 +15,9 @@ const AdminCaseManagement = () => {
   const filteredCases = useMemo(() => {
     if (!crimeCases?.items) return [];
     if (!searchTerm.trim()) return crimeCases.items;
-    
+
     const lowerSearch = searchTerm.toLowerCase();
-    return crimeCases.items.filter(crimeCase => 
+    return crimeCases.items.filter(crimeCase =>
       crimeCase.title?.toLowerCase().includes(lowerSearch) ||
       crimeCase.description?.toLowerCase().includes(lowerSearch) ||
       crimeCase.id?.toLowerCase().includes(lowerSearch)
@@ -29,10 +29,10 @@ const AdminCaseManagement = () => {
   const hasMore = displayLimit < filteredCases.length;
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: '#000000' }}>
+    <div className="min-vh-100">
       <Header />
 
-      <div className="container py-5">
+      <div className="container-fluid py-5">
         <div className="d-flex align-items-center justify-content-between mb-5">
           <div>
             <h1 className="display-4 fw-bold text-light mb-4">
@@ -128,13 +128,14 @@ const AdminCaseManagement = () => {
                 <table className="table table-dark table-hover mb-0">
                   <thead className="border-bottom border-secondary">
                     <tr>
-                      <th className="text-muted fw-semibold ps-4" style={{ width: '120px' }}>ID</th>
-                      <th className="text-muted fw-semibold" style={{ width: '200px' }}>Titel</th>
-                      <th className="text-muted fw-semibold" style={{ width: '300px' }}>Beschreibung</th>
-                      <th className="text-muted fw-semibold text-center" style={{ width: '120px' }}>Status</th>
-                      <th className="text-muted fw-semibold" style={{ width: '200px' }}>Aktionen</th>
-                      <th className="text-muted fw-semibold text-center" style={{ width: '100px' }}>Lösung</th>
-                      <th className="text-muted fw-semibold text-center pe-4" style={{ width: '100px' }}>Löschen</th>
+                      <th className="text-muted fw-semibold ps-4">ID</th>
+                      <th className="text-muted fw-semibold">Titel</th>
+                      <th className="text-muted fw-semibold">Beschreibung</th>
+                      <th className="text-muted fw-semibold">Typ</th>
+                      <th className="text-muted fw-semibold">Status</th>
+                      <th className="text-muted fw-semibold">Aktionen</th>
+                      <th className="text-muted fw-semibold text-center">Lösung</th>
+                      <th className="text-muted fw-semibold text-center pe-4">Löschen</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -154,7 +155,7 @@ const AdminCaseManagement = () => {
                 {searchTerm && ` (gefiltert von ${crimeCases?.items?.length || 0} gesamt)`}
               </p>
             </div>
-            
+
             {hasMore && (
               <div className="text-center mt-3">
                 <button

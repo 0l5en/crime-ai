@@ -569,6 +569,8 @@ export interface components {
             imageUrl?: string;
             /** @enum {string} */
             status: "UNPUBLISHED" | "PUBLISHED" | "PREMIUM";
+            /** @enum {string} */
+            type?: "BASIC" | "VACATION_RENTAL";
         };
         ResultSetCrimeCase: {
             items?: components["schemas"]["CrimeCaseDto"][];

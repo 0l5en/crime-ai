@@ -53,7 +53,14 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                 <td className="text-muted" style={{ maxWidth: '300px' }}>
                     <div className="text-truncate small">{crimeCase.description}</div>
                 </td>
-                <td className="text-center">
+                <td>
+                    <div className="d-flex">
+                        <span className={`d-flex align-items-center badge ${crimeCase.type === 'VACATION_RENTAL' ? 'bg-info' : 'bg-primary'}`}>
+                            <span>{crimeCase.type === 'VACATION_RENTAL' ? 'Ferienwohnung' : 'Basis'}</span>
+                        </span>
+                    </div>
+                </td>
+                <td>
                     <span className={`badge ${crimeCase.status === 'PUBLISHED' ? 'bg-success' :
                         crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
                             'bg-secondary'
@@ -107,16 +114,6 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                                         Veröffentlicht
                                     </button>
                                 </li>
-                                <li>
-                                    <button
-                                        className="dropdown-item"
-                                        onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PREMIUM' })}
-                                        disabled={crimeCase.status === 'PREMIUM'}
-                                    >
-                                        <i className="bi bi-star me-2"></i>
-                                        Premium
-                                    </button>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -156,7 +153,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 const DeleteWarningRow = ({ pending, deleteCrimeCase, cancelDelete }: { pending: boolean; deleteCrimeCase: () => void; cancelDelete: () => void }) => {
     return (
         <tr>
-            <td colSpan={7} className="bg-dark border-secondary">
+            <td colSpan={8} className="bg-dark border-secondary">
                 <div className="d-flex flex-column">
                     <h1 className="text-danger mb-3 text-center">⚠️ Achtung ⚠️</h1>
                     <h2 className="text-center">Beim Löschen werden sämtliche Daten für den Fall gelöscht!</h2>
@@ -203,7 +200,7 @@ const SolutionRow = ({ caseId }: { caseId: string }) => {
 
     return (
         <tr>
-            <td colSpan={7} className="bg-dark border-secondary">
+            <td colSpan={8} className="bg-dark border-secondary">
                 <div className="p-4">
                     {isLoading && (
                         <div className="d-flex align-items-center gap-2 text-muted">
