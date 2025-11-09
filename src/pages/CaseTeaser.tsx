@@ -54,6 +54,12 @@ const CaseTeaser = () => {
 
   const pageUrl = `${window.location.origin}/case-preview/${caseId}`;
   const imageUrl = crimeCase.imageUrl || '';
+  
+  console.log('CaseTeaser Debug:', { 
+    caseId, 
+    imageUrl, 
+    crimeCaseData: crimeCase 
+  });
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -103,22 +109,36 @@ const CaseTeaser = () => {
 
       <main className="container-fluid px-0">
         {/* Hero Section */}
-        <section className="position-relative" style={{ minHeight: '60vh' }}>
-          <div 
-            className="position-absolute top-0 start-0 w-100 h-100"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(${imageUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          />
-          <div className="position-relative container py-5" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center' }}>
-            <div className="row justify-content-center w-100">
-              <div className="col-lg-10 text-center text-white">
-                <h1 className="display-4 fw-bold mb-4">{crimeCase.title}</h1>
+        <section className="bg-dark py-5">
+          <div className="container py-4">
+            <div className="row align-items-start g-4">
+              <div className="col-lg-7">
+                <h1 className="display-4 fw-bold mb-4 text-white">{crimeCase.title}</h1>
                 {crimeCase.summary && (
-                  <p className="lead fs-4 mb-5">{crimeCase.summary}</p>
+                  <p className="lead fs-4 text-white-50">{crimeCase.summary}</p>
+                )}
+              </div>
+              <div className="col-lg-5">
+                {imageUrl ? (
+                  <img 
+                    src={imageUrl} 
+                    alt={crimeCase.title}
+                    className="img-fluid rounded shadow-lg w-100"
+                    style={{ maxHeight: '400px', objectFit: 'cover' }}
+                    loading="eager"
+                    onError={(e) => {
+                      console.error('Image failed to load:', imageUrl);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => console.log('Image loaded successfully:', imageUrl)}
+                  />
+                ) : (
+                  <div 
+                    className="bg-secondary bg-opacity-25 rounded shadow-lg w-100 d-flex align-items-center justify-content-center"
+                    style={{ height: '400px' }}
+                  >
+                    <p className="text-muted">Kein Fallbild verfügbar</p>
+                  </div>
                 )}
               </div>
             </div>

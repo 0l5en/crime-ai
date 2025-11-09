@@ -11,6 +11,18 @@ const Header = () => {
   const user = useUserContext();
   const { t } = useTranslation('common');
   const location = useLocation();
+
+  // Helper function to close the mobile offcanvas menu
+  const closeOffcanvas = () => {
+    const offcanvas = document.getElementById('mobileOffcanvas');
+    if (offcanvas) {
+      const bsOffcanvas = (window as any).bootstrap?.Offcanvas?.getInstance(offcanvas);
+      if (bsOffcanvas) {
+        bsOffcanvas.hide();
+      }
+    }
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg sticky-top border-bottom bg-body">
@@ -145,85 +157,81 @@ const Header = () => {
         </div>
 
         {/* Offcanvas Body */}
-        <div className="offcanvas-body d-flex flex-column justify-content-between">
-          <div>
-            {/* Language Selector */}
-            <div className="mb-4">
-              <LanguageSelector variant="mobile" />
-            </div>
-
-            {/* Theme Toggle */}
-            <div className="mb-4 d-flex align-items-center justify-content-between">
-              <span>Theme</span>
-              <ThemeToggle />
-            </div>
-
-            {/* User Section for authenticated users */}
-            {user.isAuthenticated && (
-              <div className="mb-4 p-3 border rounded">
-                <Link to="/profile" className="text-decoration-none" data-bs-dismiss="offcanvas">
-                  <div className="d-flex align-items-center gap-3 mb-3" style={{ cursor: 'pointer' }}>
-                    <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
-                      {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
-                    </div>
-                    {/* Notification Badge for Mobile */}
-                    <NotificationBadge />
-                  </div>
-                </Link>
-
-                {/* View Profile Button */}
-                <Link
-                  to="/profile"
-                  className="btn btn-outline-danger w-100 mb-2"
-                  data-bs-dismiss="offcanvas"
-                >
-                  View Profile
-                </Link>
-
-                {/* Vacation Rental Dashboard Link - Mobile */}
-                {user.hasAnyRole('vacation-rental') && (
-                  <Link
-                    to="/vacation-rental-dashboard"
-                    className="btn btn-outline-primary bg-transparent border-warning text-warning w-100 mb-2"
-                    data-bs-dismiss="offcanvas"
-                  >
-                    <i className="bi bi-house-door me-2"></i>
-                    {t('nav.myCases')}
-                  </Link>
-                )}
-
-                {/* Admin Link for mobile */}
-                {user.hasAnyRole('admin') && (
-                  <Link
-                    to="/admin"
-                    className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2"
-                    data-bs-dismiss="offcanvas"
-                  >
-                    {t('nav.admin')}
-                  </Link>
-                )}
-              </div>
-            )}
+        <div className="offcanvas-body d-flex flex-column" style={{ paddingBottom: '2rem' }}>
+          {/* Language Selector */}
+          <div className="mb-4">
+            <LanguageSelector variant="mobile" />
           </div>
 
-          {/* Bottom Action Buttons */}
-          <div className="mt-auto">
+          {/* Theme Toggle */}
+          <div className="mb-4 d-flex align-items-center justify-content-between">
+            <span>Theme</span>
+            <ThemeToggle />
+          </div>
+
+          {/* User Section for authenticated users */}
+          {user.isAuthenticated && (
+            <div className="mb-4 p-3 border rounded">
+              <Link to="/profile" className="text-decoration-none" onClick={closeOffcanvas}>
+                <div className="d-flex align-items-center gap-3 mb-3" style={{ cursor: 'pointer' }}>
+                  <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold" style={{ width: '40px', height: '40px' }}>
+                    {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
+                  </div>
+                  {/* Notification Badge for Mobile */}
+                  <NotificationBadge />
+                </div>
+              </Link>
+
+              {/* View Profile Button */}
+              <Link
+                to="/profile"
+                className="btn btn-outline-danger w-100 mb-2 text-decoration-none"
+                onClick={closeOffcanvas}
+              >
+                View Profile
+              </Link>
+
+              {/* Vacation Rental Dashboard Link - Mobile */}
+              {user.hasAnyRole('vacation-rental') && (
+                <Link
+                  to="/vacation-rental-dashboard"
+                  className="btn btn-outline-primary bg-transparent border-warning text-warning w-100 mb-2 text-decoration-none"
+                  onClick={closeOffcanvas}
+                >
+                  <i className="bi bi-house-door me-2"></i>
+                  {t('nav.myCases')}
+                </Link>
+              )}
+
+              {/* Admin Link for mobile */}
+              {user.hasAnyRole('admin') && (
+                <Link
+                  to="/admin"
+                  className="btn btn-outline-primary bg-transparent border-danger text-danger w-100 mb-2 text-decoration-none"
+                  onClick={closeOffcanvas}
+                >
+                  {t('nav.admin')}
+                </Link>
+              )}
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="mt-4">
             {user.isAuthenticated ? (
-              <LogoutButton onLogout={() => {
-                // Close offcanvas after logout
-                const offcanvas = document.getElementById('mobileOffcanvas');
-                if (offcanvas) {
-                  const bsOffcanvas = new (window as any).bootstrap.Offcanvas(offcanvas);
-                  bsOffcanvas.hide();
-                }
-              }} />
+              <LogoutButton onLogout={closeOffcanvas} />
             ) : (
               <div className="d-grid gap-2">
-                <SignInButton />
-                <Link to={location.pathname === '/venues' ? '/venue-register' : '/register'} className="text-decoration-none">
-                  <button className="btn btn-danger w-100">
-                    {t('nav.signUp')}
-                  </button>
+                <SignInButton 
+                  postLoginSuccessUri={window.location.pathname}
+                  onBeforeSignIn={closeOffcanvas}
+                />
+                <Link 
+                  to={location.pathname === '/venues' ? '/venue-register' : '/register'} 
+                  className="btn btn-danger w-100 text-decoration-none"
+                  onClick={closeOffcanvas}
+                >
+                  {t('nav.signUp')}
                 </Link>
               </div>
             )}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
-import { Lock, Crown, Copy, Check } from 'lucide-react';
+import { Lock, Share2, Facebook, Twitter, Mail } from 'lucide-react';
 import Header from '@/components/Header';
 import { useUserContext } from '@/contexts/UserContext';
 import { useTranslation } from 'react-i18next';
@@ -12,18 +12,10 @@ const Profile = () => {
   const { t, i18n } = useTranslation('profile');
   const user = useUserContext();
   const { data: userProfile } = useMyUserProfile();
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   // Get user initials for avatar
   const initials = user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U';
-  
-  // TODO: Replace with actual premium status check
-  const isPremium = user.hasAnyRole('admin'); // Placeholder
-  
-  // Generate referral link
-  const referralLink = `${window.location.origin}/?ref=${user.email}`;
   
   // Get locale for date formatting
   const dateLocales = { de, en: enUS, fr, it };
@@ -33,15 +25,6 @@ const Profile = () => {
   const registrationDate = userProfile?.createdAt 
     ? format(new Date(userProfile.createdAt), 'PP', { locale: currentLocale })
     : '-';
-  
-  // TODO: Replace with actual last activity data
-  const lastActivity = t('lastActivity') === 'Last Activity' ? 'Today' : 'Heute';
-
-  const copyReferralLink = () => {
-    navigator.clipboard.writeText(referralLink);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <>
@@ -78,11 +61,6 @@ const Profile = () => {
                 <div className="profile-info">
                   <h3>{user.name || 'User'}</h3>
                   <p className="text-muted">{user.email}</p>
-
-                  {/* Subscription Badge */}
-                  <span className={`badge ${isPremium ? 'profile-badge-premium' : 'profile-badge-free'}`}>
-                    {isPremium ? t('premiumMember') : t('freePlan')}
-                  </span>
                 </div>
 
                 {/* Quick Stats */}
@@ -91,9 +69,62 @@ const Profile = () => {
                     <span className="profile-stat-label">{t('memberSince')}</span>
                     <span className="profile-stat-value">{registrationDate}</span>
                   </div>
-                  <div className="profile-stat-item">
-                    <span className="profile-stat-label">{t('lastActivity')}</span>
-                    <span className="profile-stat-value">{lastActivity}</span>
+                </div>
+              </Card>
+
+              {/* Share Section */}
+              <Card className="profile-card mt-4">
+                <div className="card-body">
+                  <h5 className="text-white mb-3 d-flex align-items-center gap-2">
+                    <Share2 size={18} />
+                    {t('shareSection.title')}
+                  </h5>
+                  <p className="analytics-text-secondary small mb-3">
+                    {t('shareSection.description')}
+                  </p>
+                  
+                  <div className="d-grid gap-2">
+                    {/* WhatsApp */}
+                    <a
+                      href={`https://wa.me/?text=${encodeURIComponent(t('shareSection.shareText') + ' https://detectivesgame.com')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-success d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <i className="bi bi-whatsapp"></i>
+                      WhatsApp
+                    </a>
+                    
+                    {/* Facebook */}
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://detectivesgame.com')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <Facebook size={16} />
+                      Facebook
+                    </a>
+                    
+                    {/* Twitter/X */}
+                    <a
+                      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent('https://detectivesgame.com')}&text=${encodeURIComponent(t('shareSection.shareText'))}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-info d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <Twitter size={16} />
+                      X (Twitter)
+                    </a>
+                    
+                    {/* Email */}
+                    <a
+                      href={`mailto:?subject=${encodeURIComponent(t('shareSection.emailSubject'))}&body=${encodeURIComponent(t('shareSection.shareText') + ' https://detectivesgame.com')}`}
+                      className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2"
+                    >
+                      <Mail size={16} />
+                      E-Mail
+                    </a>
                   </div>
                 </div>
               </Card>
@@ -117,114 +148,55 @@ const Profile = () => {
                     />
                   </div>
 
-                  {/* Change Password Button */}
+                  {/* Password Change Section */}
                   <div className="mb-4">
-                    <label className="form-label text-white">{t('password')}</label>
-                    <button
-                      className="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2"
-                      onClick={() => setShowPasswordModal(true)}
-                    >
-                      <Lock size={16} /> {t('changePassword')}
-                    </button>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Subscription Card */}
-              <Card className="profile-card mb-4">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="mb-0 text-white">{t('subscription')}</h4>
-                    <span className={`badge ${isPremium ? 'profile-badge-premium' : 'profile-badge-free'}`}>
-                      {isPremium ? t('premiumMember') : t('freePlan')}
-                    </span>
-                  </div>
-
-                  {!isPremium && (
-                    <>
-                      <p className="analytics-text-secondary mb-3">
-                        {t('upgradeText')}
-                      </p>
-                      <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center gap-2">
-                        <Crown size={16} /> {t('upgradeToPremium')}
-                      </button>
-                    </>
-                  )}
-
-                  {isPremium && (
-                    <div className="profile-premium-info">
-                      <p className="analytics-text-secondary mb-2">
-                        {t('premiumInfo')}
-                      </p>
-                      <button className="btn btn-outline-secondary w-100">
-                        {t('manageSubscription')}
-                      </button>
+                    <label className="form-label text-white d-flex align-items-center gap-2">
+                      <Lock size={16} /> {t('password')}
+                    </label>
+                    
+                    <div className="mb-3">
+                      <label className="form-label text-white-50 small">{t('changePasswordModal.currentPassword')}</label>
+                      <input 
+                        type="password" 
+                        className="form-control profile-input" 
+                        placeholder="••••••••"
+                        disabled
+                      />
                     </div>
-                  )}
-                </div>
-              </Card>
-
-              {/* Referral Card */}
-              <Card className="profile-card mb-4">
-                <div className="card-body">
-                  <h4 className="mb-3 text-white">{t('referralLink')}</h4>
-                  <p className="analytics-text-secondary mb-3">
-                    {t('referralText')}
-                  </p>
-
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control profile-input"
-                      value={referralLink}
-                      readOnly
-                    />
-                    <button
-                      className="btn btn-danger d-flex align-items-center gap-2"
-                      onClick={copyReferralLink}
+                    
+                    <div className="mb-3">
+                      <label className="form-label text-white-50 small">{t('changePasswordModal.newPassword')}</label>
+                      <input 
+                        type="password" 
+                        className="form-control profile-input" 
+                        placeholder="••••••••"
+                        disabled
+                      />
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label text-white-50 small">{t('changePasswordModal.confirmPassword')}</label>
+                      <input 
+                        type="password" 
+                        className="form-control profile-input" 
+                        placeholder="••••••••"
+                        disabled
+                      />
+                    </div>
+                    
+                    <button 
+                      className="btn btn-danger w-100"
+                      disabled
                     >
-                      {copied ? <Check size={16} /> : <Copy size={16} />}
-                      {copied ? t('copied') : t('copy')}
+                      {t('changePasswordModal.update')}
                     </button>
                   </div>
                 </div>
               </Card>
-
             </Col>
           </Row>
         </Container>
       </div>
-
-      {/* Change Password Modal */}
-      <Modal show={showPasswordModal} onHide={() => setShowPasswordModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{t('changePasswordModal.title')}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form>
-            <div className="mb-3">
-              <label className="form-label">{t('changePasswordModal.currentPassword')}</label>
-              <input type="password" className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">{t('changePasswordModal.newPassword')}</label>
-              <input type="password" className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">{t('changePasswordModal.confirmPassword')}</label>
-              <input type="password" className="form-control" />
-            </div>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="btn btn-secondary" onClick={() => setShowPasswordModal(false)}>
-            {t('changePasswordModal.cancel')}
-          </button>
-          <button className="btn btn-danger">
-            {t('changePasswordModal.update')}
-          </button>
-        </Modal.Footer>
-      </Modal>
 
       {/* Change Avatar Modal */}
       <Modal show={showAvatarModal} onHide={() => setShowAvatarModal(false)}>

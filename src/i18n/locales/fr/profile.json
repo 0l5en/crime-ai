@@ -31,5 +31,11 @@
     "title": "Changer l'Avatar",
     "message": "La fonctionnalité de téléchargement d'avatar sera bientôt disponible.",
     "close": "Fermer"
+  },
+  "shareSection": {
+    "title": "Partager DetectivesGame",
+    "description": "Aidez-nous à grandir en partageant DetectivesGame avec vos amis !",
+    "shareText": "Découvrez DetectivesGame - résolvez des affaires criminelles passionnantes !",
+    "emailSubject": "Découvrez DetectivesGame"
   }
 }

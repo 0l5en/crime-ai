@@ -2,7 +2,7 @@ import useLogout from "@/hooks/useLogout";
 import { useTranslation } from "react-i18next";
 
 const LogoutButton = ({ onLogout }: { onLogout?: () => void }) => {
-    const { mutate: logout, isPending, isSuccess } = useLogout();
+    const { mutate: logout, isPending } = useLogout();
     const { t } = useTranslation('common');
     return (
         <button
@@ -10,10 +10,10 @@ const LogoutButton = ({ onLogout }: { onLogout?: () => void }) => {
             disabled={isPending}
             type="submit"
             onClick={() => {
-                logout();
-                if (isSuccess && onLogout) {
+                if (onLogout) {
                     onLogout();
                 }
+                logout();
             }}
         >
             {t('nav.logout')}

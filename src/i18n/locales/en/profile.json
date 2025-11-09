@@ -31,5 +31,11 @@
     "title": "Change Avatar",
     "message": "Avatar upload functionality will be available soon.",
     "close": "Close"
+  },
+  "shareSection": {
+    "title": "Share DetectivesGame",
+    "description": "Help us grow by sharing DetectivesGame with your friends!",
+    "shareText": "Check out DetectivesGame - solve exciting crime cases!",
+    "emailSubject": "Discover DetectivesGame"
   }
 }

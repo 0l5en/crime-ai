@@ -31,5 +31,11 @@
     "title": "Cambia Avatar",
     "message": "La funzionalità di caricamento avatar sarà presto disponibile.",
     "close": "Chiudi"
+  },
+  "shareSection": {
+    "title": "Condividi DetectivesGame",
+    "description": "Aiutaci a crescere condividendo DetectivesGame con i tuoi amici!",
+    "shareText": "Scopri DetectivesGame - risolvi emozionanti casi criminali!",
+    "emailSubject": "Scopri DetectivesGame"
   }
 }

@@ -28,16 +28,16 @@ const Footer = () => {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-6">
-            <div className="d-flex align-items-center mb-3 mb-md-0">
+            <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
               <h5 className="mb-0 me-2">DetectivesGame</h5>
               <span className="badge bg-primary rounded-pill px-2 py-1" style={{ fontSize: "0.6rem" }}>
                 BETA
               </span>
             </div>
-            <p className="mb-3 mb-md-0 text-secondary" style={{ fontSize: "0.95rem" }}>
+            <p className="mb-3 mb-md-0 text-secondary text-center text-md-start" style={{ fontSize: "0.95rem" }}>
               {t("footer.description")}
             </p>
-            <div className="d-flex align-items-center gap-2 mb-3 mb-md-0 mt-3">
+            <div className="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-3 mb-md-0 mt-3">
               <StarRating
                 rating={stats.averageRating}
                 onRatingChange={handleRatingChange}

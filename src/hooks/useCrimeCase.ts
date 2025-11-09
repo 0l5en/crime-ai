@@ -14,6 +14,12 @@ export const useCrimeCase = (caseId: string) => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log('useCrimeCase API Response:', {
+          caseId,
+          hasImageUrl: !!data.imageUrl,
+          imageUrl: data.imageUrl,
+          fullData: data
+        });
         return data as CrimeCaseDto;
       }
 

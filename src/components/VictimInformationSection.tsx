@@ -65,34 +65,13 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                 <div className="card-body p-4">
                     <h3 className="h4 mb-3">{t('overview.victimInformation')}</h3>
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-12 col-md-8 order-1 order-md-1">
                             <h4 className="h5 mb-3">
                                 {victim.name}
                             </h4>
-                            <p className="mb-0" style={{ textAlign: 'justify' }}>
-                                {formatVictimDetails(victim, t)}
-                            </p>
-                            {victim.lifeStatus === 'DEAD' &&
-                                <p className="mt-4">
-                                    {!hasExistingRequest ? (
-                                        <button
-                                            disabled={requestAutopsyReportMutation.isPending || autopsyRequests.isPending}
-                                            onClick={handleRequestAutopsyReport}
-                                            className="btn btn-primary"
-                                            data-testid="request-autopsy-report-button"
-                                        >
-                                            {t('overview.requestAutopsyReport')}
-                                        </button>
-                                    ) : firstRequest ? (
-                                        <span className="text-muted">
-                                            {t('overview.autopsyReportRequested')}{' '}
-                                            {new Date(firstRequest.createdAt).toLocaleDateString() + ' ' + new Date(firstRequest.createdAt).toLocaleTimeString()}
-                                        </span>
-                                    ) : null}
-                                </p>}
                         </div>
 
-                        <div className="col-md-4">
+                        <div className="col-12 col-md-4 order-2 order-md-2 mb-3 mb-md-0">
                             <div
                                 className="d-flex align-items-center justify-content-center rounded position-relative overflow-hidden"
                                 style={{
@@ -118,6 +97,30 @@ const VictimInfomationSection = ({ victim }: { victim: PersonDto }) => {
                                     </div>
                                 )}
                             </div>
+                        </div>
+
+                        <div className="col-12 col-md-8 order-3 order-md-1">
+                            <p className="mb-0" style={{ textAlign: 'justify' }}>
+                                {formatVictimDetails(victim, t)}
+                            </p>
+                            {victim.lifeStatus === 'DEAD' &&
+                                <p className="mt-4">
+                                    {!hasExistingRequest ? (
+                                        <button
+                                            disabled={requestAutopsyReportMutation.isPending || autopsyRequests.isPending}
+                                            onClick={handleRequestAutopsyReport}
+                                            className="btn btn-primary"
+                                            data-testid="request-autopsy-report-button"
+                                        >
+                                            {t('overview.requestAutopsyReport')}
+                                        </button>
+                                    ) : firstRequest ? (
+                                        <span className="text-muted">
+                                            {t('overview.autopsyReportRequested')}{' '}
+                                            {new Date(firstRequest.createdAt).toLocaleDateString() + ' ' + new Date(firstRequest.createdAt).toLocaleTimeString()}
+                                        </span>
+                                    ) : null}
+                                </p>}
                         </div>
                     </div>
                 </div>
