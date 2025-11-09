@@ -842,6 +842,25 @@ paths:
                 $ref: "#/components/schemas/UserProfileDto"
         "500":
           description: if any internal error occurs while processing the request
+  /user-profile-my-password:
+    put:
+      summary: Send email to authenticated user to reset the password.
+      operationId: sendUpdatePasswordMail
+      parameters:
+      - name: redirectUri
+        in: query
+        description: A URI to which the user is redirected after successfully changing
+          their password.
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: Successful operation.
+        "502":
+          description: if the underlying service endpoint returned an error
+        "500":
+          description: if any internal error occurs while processing the request
 components:
   schemas:
     UserInfoDto:
@@ -1640,6 +1659,9 @@ components:
     UserProfileDto:
       type: object
       properties:
+        id:
+          type: string
+          minLength: 1
         userName:
           type: string
           minLength: 1
@@ -1660,6 +1682,7 @@ components:
       - email
       - enabled
       - groups
+      - id
       - userName
     ResultCount:
       type: object
