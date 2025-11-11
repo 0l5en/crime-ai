@@ -8,7 +8,7 @@ import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGene
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
 import { useCrimeCases } from "@/hooks/useCrimeCasesVacationRental";
 import { useMyCaseGenerationAttempts } from "@/hooks/useMyCaseGenerationAttempts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 
 const VacationRentalDashboard = () => {
@@ -25,6 +25,13 @@ const VacationRentalDashboard = () => {
 
   const isLoading = casesLoading || attemptsLoading;
   const error = casesError;
+
+  // Scroll to top when form is shown
+  useEffect(() => {
+    if (showCreateForm) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showCreateForm]);
 
   // Form handlers
   const handleCreateNewCase = () => {
