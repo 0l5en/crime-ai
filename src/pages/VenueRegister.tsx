@@ -119,20 +119,20 @@ const VenueRegister = () => {
             </div>
 
             {/* Right side - Form */}
-            <div className="col-lg-6 d-flex align-items-center justify-content-center p-5">
-              <div className="w-100" style={{ maxWidth: '450px' }}>
-                <div className="text-center mb-4">
+            <div className="col-lg-6 d-flex align-items-center justify-content-center p-4 p-md-5">
+              <div className="w-100" style={{ maxWidth: '500px' }}>
+                <div className="text-center mb-5">
                   <h1 className="h4 fw-bold mb-3">
                     {t('title')}
                   </h1>
-                  <p className="text-muted">
+                  <p className="text-muted fs-6">
                     {t('subtitle')}
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="mb-3">
-                    <label htmlFor="userName" className="form-label fw-semibold">
+                  <div className="mb-4">
+                    <label htmlFor="userName" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
                       {t('form.userName')}
                     </label>
                     <input
@@ -141,16 +141,31 @@ const VenueRegister = () => {
                       className={`form-control form-control-lg ${errors.userName ? 'is-invalid' : ''}`}
                       id="userName"
                       autoComplete="given-name"
+                      style={{
+                        borderRadius: '12px',
+                        border: '2px solid #e2e8f0',
+                        padding: '14px 16px',
+                        fontSize: '1rem',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(203, 25, 28, 0.1)';
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = '#e2e8f0';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
                     />
                     {errors.userName && (
-                      <div className="invalid-feedback">
+                      <div className="invalid-feedback d-block mt-2 ms-2">
                         {errors.userName.message}
                       </div>
                     )}
                   </div>
 
-                  <div className="mb-3">
-                    <label htmlFor="email" className="form-label fw-semibold">
+                  <div className="mb-4">
+                    <label htmlFor="email" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
                       {t('form.email')}
                     </label>
                     <input
@@ -159,16 +174,31 @@ const VenueRegister = () => {
                       className={`form-control form-control-lg ${errors.email ? 'is-invalid' : ''}`}
                       id="email"
                       autoComplete="email"
+                      style={{
+                        borderRadius: '12px',
+                        border: '2px solid #e2e8f0',
+                        padding: '14px 16px',
+                        fontSize: '1rem',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(203, 25, 28, 0.1)';
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = '#e2e8f0';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
                     />
                     {errors.email && (
-                      <div className="invalid-feedback">
+                      <div className="invalid-feedback d-block mt-2 ms-2">
                         {errors.email.message}
                       </div>
                     )}
                   </div>
 
-                  <div className="mb-3">
-                    <label htmlFor="password" className="form-label fw-semibold">
+                  <div className="mb-4">
+                    <label htmlFor="password" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
                       {t('form.password')}
                     </label>
                     <input
@@ -177,16 +207,31 @@ const VenueRegister = () => {
                       className={`form-control form-control-lg ${errors.password ? 'is-invalid' : ''}`}
                       id="password"
                       autoComplete="new-password"
+                      style={{
+                        borderRadius: '12px',
+                        border: '2px solid #e2e8f0',
+                        padding: '14px 16px',
+                        fontSize: '1rem',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(203, 25, 28, 0.1)';
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = '#e2e8f0';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
                     />
                     {errors.password && (
-                      <div className="invalid-feedback">
+                      <div className="invalid-feedback d-block mt-2 ms-2">
                         {errors.password.message}
                       </div>
                     )}
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="confirmPassword" className="form-label fw-semibold">
+                    <label htmlFor="confirmPassword" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
                       {t('form.confirmPassword')}
                     </label>
                     <input
@@ -195,18 +240,46 @@ const VenueRegister = () => {
                       className={`form-control form-control-lg ${errors.confirmPassword ? 'is-invalid' : ''}`}
                       id="confirmPassword"
                       autoComplete="new-password"
+                      style={{
+                        borderRadius: '12px',
+                        border: '2px solid #e2e8f0',
+                        padding: '14px 16px',
+                        fontSize: '1rem',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(203, 25, 28, 0.1)';
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = '#e2e8f0';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
                     />
                     {errors.confirmPassword && (
-                      <div className="invalid-feedback">
+                      <div className="invalid-feedback d-block mt-2 ms-2">
                         {errors.confirmPassword.message}
                       </div>
                     )}
                   </div>
 
-                  <div className="text-center mb-3">
+                  <div 
+                    className="text-center mb-4 p-3"
+                    style={{
+                      backgroundColor: '#f7fafc',
+                      borderRadius: '12px',
+                      border: '1px solid #e2e8f0'
+                    }}
+                  >
                     <small className="text-muted">
                       {t('form.termsPrefix')}{' '}
-                      <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                      <a 
+                        href="/terms" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-decoration-none fw-semibold"
+                        style={{ color: 'var(--bs-danger)' }}
+                      >
                         {t('form.termsLink')}
                       </a>
                     </small>
@@ -214,13 +287,37 @@ const VenueRegister = () => {
 
                   <button
                     type="submit"
-                    className="btn btn-danger w-100 py-3 fw-semibold mb-4"
+                    className="btn btn-danger w-100 fw-semibold mb-4"
                     title={t('inactive')}
+                    style={{
+                      padding: '16px',
+                      fontSize: '1.1rem',
+                      borderRadius: '12px',
+                      border: 'none',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 20px rgba(203, 25, 28, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#a8161a';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 25px rgba(203, 25, 28, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = '';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(203, 25, 28, 0.3)';
+                    }}
                   >
                     {t('form.submit')}
                   </button>
 
-                  <div className="text-center">
+                  <div 
+                    className="text-center p-3"
+                    style={{
+                      backgroundColor: '#f7fafc',
+                      borderRadius: '12px'
+                    }}
+                  >
                     <span className="text-muted">{t('form.alreadyRegistered')} </span>
                     <SignInButton />
                   </div>
