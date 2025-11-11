@@ -9,11 +9,12 @@ interface FlyerDownloadCardProps {
   title: string;
 }
 
-type ColorVariant = 'original' | 'accent' | 'teal' | 'purple' | 'green' | 'pink' | 'navy' | 'gold';
+type ColorVariant = 'original' | 'accent' | 'teal' | 'purple' | 'green' | 'pink' | 'navy' | 'gold' | 'custom';
 
 const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
   const [colorVariant, setColorVariant] = useState<ColorVariant>('original');
+  const [customColor, setCustomColor] = useState<string>('#FF8C42');
   const [flyerDataUrl, setFlyerDataUrl] = useState<string>('');
   const [printTemplateDataUrl, setPrintTemplateDataUrl] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(true);
@@ -88,18 +89,30 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
 
     const data = imageData.data;
     
-    // Target colors
+    // Target colors (darker/stronger variants for better contrast)
     const targetColors = {
       accent: { r: 220, g: 53, b: 69 }, // #dc3545 - Red
-      teal: { r: 13, g: 202, b: 240 }, // #0dcaf0 - Cyan/Teal
-      purple: { r: 130, g: 59, b: 216 }, // #823bd8 - Purple
-      green: { r: 25, g: 135, b: 84 }, // #198754 - Green
-      pink: { r: 214, g: 51, b: 132 }, // #d63384 - Pink
-      navy: { r: 13, g: 110, b: 253 }, // #0d6efd - Navy Blue
-      gold: { r: 255, g: 193, b: 7 }, // #ffc107 - Gold/Yellow
+      teal: { r: 8, g: 145, b: 178 }, // #0891b2 - Darker Teal/Cyan
+      purple: { r: 109, g: 40, b: 217 }, // #6d28d9 - Darker Purple
+      green: { r: 21, g: 128, b: 61 }, // #15803d - Darker Green
+      pink: { r: 190, g: 24, b: 93 }, // #be185d - Darker Pink
+      navy: { r: 29, g: 78, b: 216 }, // #1d4ed8 - Darker Navy Blue
+      gold: { r: 202, g: 138, b: 4 }, // #ca8a04 - Darker Gold/Yellow
     };
 
-    const target = targetColors[targetColor];
+    let target;
+    if (targetColor === 'custom') {
+      // Parse custom hex color
+      const hex = customColor.replace('#', '');
+      target = {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16),
+      };
+    } else {
+      target = targetColors[targetColor];
+    }
+
     const targetHsl = rgbToHsl(target.r, target.g, target.b);
 
     for (let i = 0; i < data.length; i += 4) {
@@ -196,7 +209,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
     };
 
     generateFlyer();
-  }, [caseId, colorVariant]);
+  }, [caseId, colorVariant, customColor]);
 
   const generatePrintTemplate = async () => {
     if (!flyerDataUrl) return;
@@ -335,7 +348,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#0dcaf0',
+                backgroundColor: '#0891b2',
                 boxShadow: colorVariant === 'teal' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
               title="Teal"
@@ -347,7 +360,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#823bd8',
+                backgroundColor: '#6d28d9',
                 boxShadow: colorVariant === 'purple' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
               title="Purple"
@@ -359,7 +372,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#198754',
+                backgroundColor: '#15803d',
                 boxShadow: colorVariant === 'green' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
               title="Green"
@@ -371,7 +384,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#d63384',
+                backgroundColor: '#be185d',
                 boxShadow: colorVariant === 'pink' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
               title="Pink"
@@ -383,7 +396,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#0d6efd',
+                backgroundColor: '#1d4ed8',
                 boxShadow: colorVariant === 'navy' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
               title="Navy Blue"
@@ -395,12 +408,41 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#ffc107',
+                backgroundColor: '#ca8a04',
                 boxShadow: colorVariant === 'gold' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
               title="Gold"
             />
           </div>
+        </div>
+
+        {/* Custom Color Picker */}
+        <div className="mb-3">
+          <label className="form-label fw-semibold">{t('promotionTab.customColor', 'Eigene Farbe (Hex-Code)')}</label>
+          <div className="d-flex gap-2 align-items-center">
+            <input
+              type="text"
+              className="form-control"
+              value={customColor}
+              onChange={(e) => setCustomColor(e.target.value)}
+              placeholder="#FF8C42"
+              pattern="^#[0-9A-Fa-f]{6}$"
+              maxLength={7}
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('custom')}
+              className={`btn rounded-circle p-0 flex-shrink-0 ${colorVariant === 'custom' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '40px',
+                height: '40px',
+                backgroundColor: customColor,
+                boxShadow: colorVariant === 'custom' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title={t('promotionTab.applyCustomColor', 'Eigene Farbe anwenden')}
+            />
+          </div>
+          <small className="text-muted">{t('promotionTab.customColorHint', 'Geben Sie einen Hex-Code ein (z.B. #FF8C42) und klicken Sie den Kreis, um Ihre Markenfarbe zu verwenden.')}</small>
         </div>
         
         {isGenerating ? (
