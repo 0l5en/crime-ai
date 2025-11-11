@@ -29,7 +29,7 @@
     "steps": {
       "trial": {
         "title": "Kostenlos registrieren",
-        "description": "Erstellen Sie Ihr kostenloses Konto und beginnen Sie Ihre Fallgenerierung. Legen Sie Ihre Ferienwohnung an, um sofort zu starten."
+        "description": "Erstellen Sie Ihr kostenloses Konto und beginnen Sie Ihre Fallgenerierung. Legen Sie ganz einfach Ihre Ferienwohnung an, um sofort zu starten."
       },
       "register": {
         "title": "Ferienwohnungsdetails",
@@ -37,7 +37,7 @@
       },
       "exclusive": {
         "title": "Exklusiven Fall erhalten",
-        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Location zugeschnitten."
+        "description": "Erhalten Sie Ihren individuellen, interaktiv und KI-gestützt spielbaren Detektivfall innerhalb von 24 Stunden und testen Sie Ihren Fall kostenlos."
       }
     }
   },
