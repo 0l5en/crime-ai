@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 import { useTranslation } from 'react-i18next';
 import { Download, Printer } from 'lucide-react';
-import flyerTemplate from '@/assets/venueflyer-template.png';
+import flyerTemplate from '@/assets/venueflyer-template-new.png';
 
 interface FlyerDownloadCardProps {
   caseId: string;
