@@ -292,25 +292,49 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
     document.body.removeChild(link);
   };
 
-  const handleShare = (platform: 'facebook' | 'twitter' | 'whatsapp' | 'pinterest' | 'email') => {
+  const handleShare = async (platform: 'facebook' | 'twitter' | 'whatsapp' | 'pinterest' | 'email') => {
+    if (!flyerDataUrl) return;
+    
     const caseUrl = `${window.location.origin}/case/${caseId}`;
+    const shareText = title;
+    
+    // For platforms that support image sharing, we use the Web Share API if available
+    // Otherwise, fall back to standard share URLs with the case link
+    if (navigator.share && platform !== 'email') {
+      try {
+        // Convert data URL to blob
+        const response = await fetch(flyerDataUrl);
+        const blob = await response.blob();
+        const file = new File([blob], `flyer-${title}.png`, { type: 'image/png' });
+        
+        await navigator.share({
+          title: shareText,
+          text: shareText,
+          url: caseUrl,
+          files: [file]
+        });
+        return;
+      } catch (error) {
+        console.log('Web Share API not supported or cancelled, falling back to URL sharing');
+      }
+    }
+    
     let shareUrl = '';
-
     switch (platform) {
       case 'facebook':
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(caseUrl)}`;
         break;
       case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(caseUrl)}&text=${encodeURIComponent(title)}`;
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(caseUrl)}&text=${encodeURIComponent(shareText)}`;
         break;
       case 'whatsapp':
-        shareUrl = `https://wa.me/?text=${encodeURIComponent(title + ' ' + caseUrl)}`;
+        shareUrl = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + caseUrl)}`;
         break;
       case 'pinterest':
-        shareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(caseUrl)}&description=${encodeURIComponent(title)}`;
+        shareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(caseUrl)}&description=${encodeURIComponent(shareText)}`;
         break;
       case 'email':
-        shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(caseUrl)}`;
+        shareUrl = `mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent('Schau dir diesen Detektivfall an: ' + caseUrl)}`;
         break;
     }
 
@@ -468,36 +492,40 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               </button>
 
               {/* Share Buttons */}
-              <div className="d-flex gap-2 mt-2 justify-content-center">
+              <div className="d-flex gap-2 mt-2 w-100">
                 <button
                   onClick={() => handleShare('facebook')}
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary flex-fill"
                   title="Facebook"
                   aria-label="Share on Facebook"
+                  disabled={!flyerDataUrl}
                 >
                   <Facebook size={20} />
                 </button>
                 <button
                   onClick={() => handleShare('twitter')}
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary flex-fill"
                   title="X (Twitter)"
                   aria-label="Share on X"
+                  disabled={!flyerDataUrl}
                 >
                   <Twitter size={20} />
                 </button>
                 <button
                   onClick={() => handleShare('whatsapp')}
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary flex-fill"
                   title="WhatsApp"
                   aria-label="Share on WhatsApp"
+                  disabled={!flyerDataUrl}
                 >
                   <MessageCircle size={20} />
                 </button>
                 <button
                   onClick={() => handleShare('pinterest')}
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary flex-fill"
                   title="Pinterest"
                   aria-label="Share on Pinterest"
+                  disabled={!flyerDataUrl}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M8.5 21c6.5-1.5 10-9.5 10-13.5 0-3.5-2.5-6.5-6.5-6.5-4 0-7 3-7 7 0 2.5 1.5 4.5 3.5 4.5 1.5 0 2.5-1 2.5-2.5 0-1.5-1-2.5-2-2.5"/>
@@ -505,9 +533,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
                 </button>
                 <button
                   onClick={() => handleShare('email')}
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary flex-fill"
                   title="Email"
                   aria-label="Share via Email"
+                  disabled={!flyerDataUrl}
                 >
                   <Mail size={20} />
                 </button>
