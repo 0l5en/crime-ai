@@ -242,7 +242,7 @@ const VacationRentalDashboard = () => {
             <div className="col-12 col-lg-10 col-xl-8">
               {/* Header Section for Form */}
               <div className="text-center mb-5">
-                <h1 className="display-4 fw-bold mb-3">
+                <h1 className="h2 fw-bold mb-3">
                   {t('form.title')}
                 </h1>
                 <p className="text-muted mb-4" style={{ maxWidth: '800px', margin: '0 auto', fontSize: '0.95rem' }}>
