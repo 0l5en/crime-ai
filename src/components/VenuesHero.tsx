@@ -1,9 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const VenuesHero = () => {
   const { t } = useTranslation('venues');
   const navigate = useNavigate();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const scrollToContact = () => {
     navigate('/venue-register');
@@ -24,10 +35,11 @@ const VenuesHero = () => {
       className="position-relative d-flex align-items-center justify-content-center px-4"
       style={{
         minHeight: '100vh',
-        backgroundImage: `linear-gradient(rgba(247, 250, 252, 0.92), rgba(247, 250, 252, 0.92)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
+        backgroundImage: `linear-gradient(rgba(247, 250, 252, 0.82), rgba(247, 250, 252, 0.82)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundPosition: `center ${scrollY * 0.5}px`,
+        backgroundRepeat: 'no-repeat',
+        transition: 'background-position 0.1s ease-out'
       }}
     >
       <div className="container text-center px-3">
