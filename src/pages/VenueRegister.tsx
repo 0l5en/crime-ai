@@ -83,7 +83,7 @@ const VenueRegister = () => {
               }}
             >
               <div className="w-100" style={{ maxWidth: '500px' }}>
-                <h2 className="display-5 fw-bold mb-4 text-light">
+                <h2 className="h3 fw-bold mb-4 text-light">
                   {t('features.title')}
                 </h2>
                 <p className="lead mb-5 opacity-75">
@@ -122,7 +122,7 @@ const VenueRegister = () => {
             <div className="col-lg-6 d-flex align-items-center justify-content-center p-5">
               <div className="w-100" style={{ maxWidth: '450px' }}>
                 <div className="text-center mb-4">
-                  <h1 className="display-6 fw-bold mb-3">
+                  <h1 className="h4 fw-bold mb-3">
                     {t('title')}
                   </h1>
                   <p className="text-muted">
