@@ -266,9 +266,9 @@ const VenueRegister = () => {
                   <div 
                     className="text-center mb-4 p-3"
                     style={{
-                      backgroundColor: '#f7fafc',
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
                       borderRadius: '12px',
-                      border: '1px solid #e2e8f0'
+                      border: '1px solid rgba(255, 255, 255, 0.1)'
                     }}
                   >
                     <small className="text-muted">
@@ -314,8 +314,9 @@ const VenueRegister = () => {
                   <div 
                     className="text-center p-3"
                     style={{
-                      backgroundColor: '#f7fafc',
-                      borderRadius: '12px'
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(255, 255, 255, 0.1)'
                     }}
                   >
                     <span className="text-muted">{t('form.alreadyRegistered')} </span>
