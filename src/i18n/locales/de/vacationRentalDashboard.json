@@ -155,5 +155,10 @@
       "formValidationError": "Bitte korrigieren Sie die markierten Felder.",
       "unknownError": "Es ist ein unbekannter Fehler aufgetreten."
     }
+  },
+  "autosave": {
+    "restored": "Ihre zuvor eingegebenen Daten wurden wiederhergestellt.",
+    "saved": "Fortschritt automatisch gespeichert",
+    "cleared": "Gespeicherte Daten gelöscht"
   }
 }

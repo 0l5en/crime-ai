@@ -155,5 +155,10 @@
       "formValidationError": "Please correct the highlighted fields.",
       "unknownError": "An unknown error occurred."
     }
+  },
+  "autosave": {
+    "restored": "Your previously entered data has been restored.",
+    "saved": "Progress automatically saved",
+    "cleared": "Saved data cleared"
   }
 }

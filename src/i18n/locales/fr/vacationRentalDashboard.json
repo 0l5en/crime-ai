@@ -155,5 +155,10 @@
       "formValidationError": "Veuillez corriger les champs surlignés.",
       "unknownError": "Une erreur inconnue s'est produite."
     }
+  },
+  "autosave": {
+    "restored": "Vos données précédemment saisies ont été restaurées.",
+    "saved": "Progression enregistrée automatiquement",
+    "cleared": "Données enregistrées effacées"
   }
 }

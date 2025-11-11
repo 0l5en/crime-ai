@@ -155,5 +155,10 @@
       "formValidationError": "Correggere i campi evidenziati.",
       "unknownError": "Si è verificato un errore sconosciuto."
     }
+  },
+  "autosave": {
+    "restored": "I tuoi dati inseriti in precedenza sono stati ripristinati.",
+    "saved": "Progresso salvato automaticamente",
+    "cleared": "Dati salvati cancellati"
   }
 }

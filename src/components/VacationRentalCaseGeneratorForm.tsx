@@ -1,6 +1,6 @@
 import { useUserContext } from '@/contexts/UserContext';
 import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVacationRental';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { SubmitHandler, useFieldArray, useForm, useWatch } from 'react-hook-form';
 import toast from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
@@ -35,14 +35,30 @@ interface VacationRentalCaseGeneratorFormProps {
   onCancel: () => void;
 }
 
+const AUTOSAVE_KEY = 'vacationRentalForm_autosave';
+
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
   const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
   const [serverErrors, setServerErrors] = useState<{ [key: string]: string }>({});
+  const hasRestoredData = useRef(false);
 
-  const { register, handleSubmit, control, formState: { errors }, setError, clearErrors } = useForm<VacationRentalFormData>({
-    defaultValues: {
+  // Load saved data from localStorage
+  const getSavedFormData = (): Partial<VacationRentalFormData> | null => {
+    try {
+      const saved = localStorage.getItem(AUTOSAVE_KEY);
+      return saved ? JSON.parse(saved) : null;
+    } catch (error) {
+      console.error('Error loading autosaved data:', error);
+      return null;
+    }
+  };
+
+  const savedData = getSavedFormData();
+
+  const { register, handleSubmit, control, formState: { errors }, setError, clearErrors, reset } = useForm<VacationRentalFormData>({
+    defaultValues: savedData || {
       language: '',
       epoch: 'PRESENT',
       theme: 'MURDER',
@@ -60,6 +76,17 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
       roomLayoutDescription: ''
     }
   });
+
+  // Show notification if data was restored
+  useEffect(() => {
+    if (savedData && !hasRestoredData.current) {
+      toast.success(t('autosave.restored'), {
+        duration: 4000,
+        icon: '💾'
+      });
+      hasRestoredData.current = true;
+    }
+  }, [savedData, t]);
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -95,6 +122,30 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
       percentage
     };
   }, [watchedValues]);
+
+  // Autosave to localStorage with debounce
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (watchedValues && Object.keys(watchedValues).length > 0) {
+        try {
+          localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(watchedValues));
+        } catch (error) {
+          console.error('Error saving form data:', error);
+        }
+      }
+    }, 1000); // Save after 1 second of inactivity
+
+    return () => clearTimeout(timeoutId);
+  }, [watchedValues]);
+
+  // Clear autosave data
+  const clearAutosaveData = () => {
+    try {
+      localStorage.removeItem(AUTOSAVE_KEY);
+    } catch (error) {
+      console.error('Error clearing autosaved data:', error);
+    }
+  };
 
   // Parse property path from server errors (e.g., "formBasic.fullAddress" -> "fullAddress")
   const parsePropertyPath = (propertyPath: string): string => {
@@ -159,6 +210,8 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
     createCrimeCase(formData, {
       onSuccess: (response) => {
+        // Clear autosaved data on successful submission
+        clearAutosaveData();
         // Redirect to Stripe Checkout
         window.location.href = response.locationUrl;
       },
