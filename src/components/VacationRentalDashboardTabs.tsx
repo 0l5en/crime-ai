@@ -1,4 +1,4 @@
-import { FolderOpen, QrCode, CreditCard } from 'lucide-react';
+import { FolderOpen, Megaphone } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useTranslation } from 'react-i18next';
 
@@ -13,15 +13,14 @@ const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalD
 
   const tabs = [
     { id: 'cases', label: t('tabs.cases'), icon: FolderOpen },
-    { id: 'promotion', label: t('tabs.promotion'), icon: QrCode },
-    { id: 'subscription', label: t('tabs.subscription'), icon: CreditCard },
+    { id: 'promotion', label: t('tabs.promotion'), icon: Megaphone },
   ];
 
   return (
     <div className="mb-4">
-      <div className="row g-3">
+      <div className="row g-4">
         {tabs.map((tab) => (
-          <div key={tab.id} className="col-12 col-lg-4">
+          <div key={tab.id} className="col-12 col-lg-6">
             <button
               className={`btn btn-outline-primary ${isMobile ? 'px-2 py-3' : 'px-4 py-3'} fw-medium w-100 text-center d-flex align-items-center justify-content-center ${activeTab === tab.id
                 ? 'active text-primary'
