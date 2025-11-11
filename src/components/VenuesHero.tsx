@@ -37,9 +37,9 @@ const VenuesHero = () => {
         minHeight: '100vh',
         backgroundImage: `linear-gradient(rgba(247, 250, 252, 0.82), rgba(247, 250, 252, 0.82)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
         backgroundSize: 'cover',
-        backgroundPosition: `center ${scrollY * 0.5}px`,
+        backgroundPosition: `center ${scrollY * 0.3}px`,
         backgroundRepeat: 'no-repeat',
-        transition: 'background-position 0.1s ease-out'
+        willChange: 'background-position'
       }}
     >
       <div className="container text-center px-3">
