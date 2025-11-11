@@ -207,10 +207,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               </div>
             )}
             
-            <div className="d-flex gap-2">
+            <div className="d-flex flex-column gap-2">
               <button
                 onClick={handleDownload}
-                className="btn btn-primary flex-fill d-flex align-items-center justify-content-center gap-2"
+                className="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2"
                 disabled={!flyerDataUrl}
               >
                 <Download size={20} />
@@ -219,7 +219,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               
               <button
                 onClick={generatePrintTemplate}
-                className="btn btn-outline-primary flex-fill d-flex align-items-center justify-content-center gap-2"
+                className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2"
                 disabled={!flyerDataUrl || isGeneratingPrint}
               >
                 <Printer size={20} />
