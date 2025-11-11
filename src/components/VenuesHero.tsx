@@ -24,7 +24,10 @@ const VenuesHero = () => {
       className="position-relative d-flex align-items-center justify-content-center px-4"
       style={{
         minHeight: '100vh',
-        backgroundColor: '#F7FAFC'
+        backgroundImage: `linear-gradient(rgba(247, 250, 252, 0.92), rgba(247, 250, 252, 0.92)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
     >
       <div className="container text-center px-3">
