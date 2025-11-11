@@ -11,18 +11,18 @@ const VenuesPricing = () => {
   };
 
   return (
-    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: 'white' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: 'var(--bs-light)',
+              color: '#2d3748',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('pricing.title')}
             </h2>
-            <p className="mb-4 mb-md-5 text-light px-2" style={{ 
-              opacity: '0.85',
+            <p className="mb-4 mb-md-5 px-2" style={{ 
+              color: '#4a5568',
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
@@ -39,10 +39,10 @@ const VenuesPricing = () => {
                 <div 
                   className="text-center mb-3 mb-md-4"
                   style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                    backgroundColor: '#f7fafc',
                     borderRadius: '20px',
-                    border: '2px solid var(--bs-danger)',
-                    boxShadow: '0 8px 30px rgba(203, 25, 28, 0.2)',
+                    border: '3px solid var(--bs-danger)',
+                    boxShadow: '0 8px 30px rgba(203, 25, 28, 0.15)',
                     padding: 'clamp(1.5rem, 4vw, 3rem)'
                   }}
                 >
@@ -51,11 +51,11 @@ const VenuesPricing = () => {
                   </h3>
                   
                   <div className="mb-3 mb-md-4">
-                    <span className="fw-bold text-light" style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}>{t('pricing.plan.price')}</span>
-                    <span className="text-light" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}> {t('pricing.plan.period')}</span>
+                    <span className="fw-bold" style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', color: '#2d3748' }}>{t('pricing.plan.price')}</span>
+                    <span style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', color: '#4a5568' }}> {t('pricing.plan.period')}</span>
                   </div>
                   
-                  <p className="mb-0 text-light" style={{ opacity: '0.85', fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>
+                  <p className="mb-0" style={{ color: '#4a5568', fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>
                     {t('pricing.plan.trial')}
                   </p>
                 </div>
@@ -65,10 +65,10 @@ const VenuesPricing = () => {
                   <h4 className="fw-bold mb-2 mb-md-3" style={{ color: 'var(--bs-danger)', fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>
                     {t('pricing.enhance.title')}
                   </h4>
-                  <p className="text-light mb-2 mb-md-3" style={{ opacity: '0.85', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
+                  <p className="mb-2 mb-md-3" style={{ color: '#4a5568', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
                     {t('pricing.enhance.description1')}
                   </p>
-                  <p className="text-light mb-0" style={{ opacity: '0.85', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
+                  <p className="mb-0" style={{ color: '#4a5568', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
                     {t('pricing.enhance.description2')}
                   </p>
                 </div>
@@ -79,9 +79,9 @@ const VenuesPricing = () => {
                 <div 
                   className="flex-grow-1"
                   style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                    backgroundColor: '#f7fafc',
                     borderRadius: '20px',
-                    border: '1px solid rgba(203, 25, 28, 0.2)',
+                    border: '2px solid #e2e8f0',
                     padding: 'clamp(1.5rem, 4vw, 3rem)'
                   }}
                 >
@@ -103,7 +103,7 @@ const VenuesPricing = () => {
                         >
                           <Check size={window.innerWidth < 768 ? 12 : 14} style={{ color: 'white' }} strokeWidth={3} />
                         </div>
-                        <span className="text-light" style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', opacity: '0.9', lineHeight: '1.5' }}>
+                        <span style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', color: '#2d3748', lineHeight: '1.5' }}>
                           {t(`pricing.features.${feature}`)}
                         </span>
                       </li>
@@ -138,7 +138,7 @@ const VenuesPricing = () => {
                     {t('pricing.cta')}
                   </button>
                   
-                  <p className="text-light text-center mb-0" style={{ opacity: '0.7', fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>
+                  <p className="text-center mb-0" style={{ color: '#718096', fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>
                     {t('pricing.noCommitment')}
                   </p>
                 </div>

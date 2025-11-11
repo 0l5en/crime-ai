@@ -21,10 +21,10 @@ const VenuesHero = () => {
 
   return (
     <section 
-      className="position-relative d-flex align-items-center justify-content-center text-light px-4 bg-dark"
+      className="position-relative d-flex align-items-center justify-content-center px-4"
       style={{
         minHeight: '100vh',
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -32,9 +32,9 @@ const VenuesHero = () => {
     >
       <div className="container text-center px-3">
         <h1 
-          className="fw-bold text-light mb-3 mb-md-4" 
+          className="fw-bold mb-3 mb-md-4" 
           style={{ 
-            textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+            color: '#2d3748',
             lineHeight: '1.2',
             fontSize: 'clamp(1.5rem, 4vw, 3.5rem)'
           }}
@@ -48,9 +48,9 @@ const VenuesHero = () => {
             ) : part
           ))}
         </h1>
-        <p className="lead text-light mb-4 mb-md-5 mx-auto px-2" style={{ 
+        <p className="lead mb-4 mb-md-5 mx-auto px-2" style={{ 
           maxWidth: '800px', 
-          textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
+          color: '#4a5568',
           fontSize: 'clamp(0.95rem, 2vw, 1.25rem)',
           lineHeight: '1.6'
         }}>
@@ -69,7 +69,7 @@ const VenuesHero = () => {
           </button>
           <button 
             onClick={scrollToHowItWorks}
-            className="btn btn-outline-light rounded-pill shadow-lg fw-semibold"
+            className="btn btn-outline-danger rounded-pill shadow fw-semibold"
             style={{
               padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
               fontSize: 'clamp(0.95rem, 2vw, 1.15rem)'
@@ -78,7 +78,7 @@ const VenuesHero = () => {
             {t('howItWorks.title')}
           </button>
         </div>
-        <p className="text-light opacity-75 px-2" style={{ fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)' }}>
+        <p className="px-2" style={{ fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)', color: '#718096' }}>
           {t('hero.trial')}
         </p>
       </div>

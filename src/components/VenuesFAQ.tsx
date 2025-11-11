@@ -11,18 +11,18 @@ const VenuesFAQ = () => {
   };
 
   return (
-    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: 'var(--bs-light)',
+              color: '#2d3748',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('faq.title')}
             </h2>
-            <p className="text-light px-2" style={{ 
-              opacity: '0.85',
+            <p className="px-2" style={{ 
+              color: '#4a5568',
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
@@ -38,8 +38,8 @@ const VenuesFAQ = () => {
                 <h3 
                   className="mb-3 mb-md-4 pb-2 pb-md-3 fw-semibold" 
                   style={{ 
-                    color: 'var(--bs-light)', 
-                    borderBottom: '2px solid var(--bs-danger)',
+                    color: '#2d3748', 
+                    borderBottom: '3px solid var(--bs-danger)',
                     display: 'inline-block',
                     fontSize: 'clamp(1.1rem, 3vw, 1.3rem)'
                   }}
@@ -57,9 +57,9 @@ const VenuesFAQ = () => {
                         key={questionIndex}
                         className="mb-2 mb-md-3"
                         style={{
-                          border: '1px solid var(--bs-border-color)',
+                          border: '2px solid #e2e8f0',
                           borderRadius: '12px',
-                          backgroundColor: 'transparent',
+                          backgroundColor: 'white',
                           overflow: 'hidden',
                           transition: 'all 0.3s ease'
                         }}
@@ -70,7 +70,7 @@ const VenuesFAQ = () => {
                         }}
                         onMouseLeave={(e) => {
                           if (!isOpen) {
-                            e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                            e.currentTarget.style.borderColor = '#e2e8f0';
                           }
                         }}
                       >
@@ -79,7 +79,7 @@ const VenuesFAQ = () => {
                           style={{
                             backgroundColor: 'transparent',
                             border: 'none',
-                            color: 'var(--bs-light)',
+                            color: '#2d3748',
                             fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
                             fontWeight: '600',
                             cursor: 'pointer',
@@ -91,7 +91,7 @@ const VenuesFAQ = () => {
                             e.currentTarget.style.color = 'var(--bs-danger)';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.color = 'var(--bs-light)';
+                            e.currentTarget.style.color = '#2d3748';
                           }}
                         >
                           <span>{t(`faq.categories.${categoryKey}.${questionKey}.question`)}</span>
@@ -116,10 +116,9 @@ const VenuesFAQ = () => {
                         >
                           <div 
                             style={{ 
-                              backgroundColor: 'rgba(95, 95, 95, 0.1)',
-                              borderTop: '1px solid var(--bs-border-color)',
-                              color: 'var(--bs-light)',
-                              opacity: '0.9',
+                              backgroundColor: '#f7fafc',
+                              borderTop: '1px solid #e2e8f0',
+                              color: '#4a5568',
                               lineHeight: '1.7',
                               padding: 'clamp(0.75rem, 2vw, 1rem)',
                               fontSize: 'clamp(0.85rem, 2vw, 1rem)'

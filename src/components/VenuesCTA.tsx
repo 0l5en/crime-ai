@@ -8,23 +8,24 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" 
-      style={{ minHeight: '100vh' }} 
+      className="py-4 py-md-5 d-flex align-items-center" 
+      style={{ minHeight: '100vh', backgroundColor: 'white' }} 
       data-section="contact"
     >
       <div className="container px-3">
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
-            <h3 className="fw-bold mb-3 mb-md-5 text-white" style={{
+            <h3 className="fw-bold mb-3 mb-md-5" style={{
               fontSize: 'clamp(1.1rem, 3.5vw, 2rem)',
-              lineHeight: '1.2'
+              lineHeight: '1.2',
+              color: '#2d3748'
             }}>
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
             </h3>
             
-            <p className="mb-4 mb-md-5 text-light px-2" style={{ 
+            <p className="mb-4 mb-md-5 px-2" style={{ 
               fontSize: 'clamp(0.9rem, 2vw, 1.25rem)', 
-              opacity: '0.85',
+              color: '#4a5568',
               lineHeight: '1.7',
               maxWidth: '800px',
               margin: '0 auto'
@@ -47,18 +48,20 @@ const VenuesCTA = () => {
                     <div 
                       className="d-flex align-items-center justify-content-center p-3"
                       style={{
-                        backgroundColor: 'rgba(203, 25, 28, 0.1)',
+                        backgroundColor: '#fff5f5',
                         borderRadius: '12px',
-                        border: '1px solid rgba(203, 25, 28, 0.3)',
+                        border: '2px solid rgba(203, 25, 28, 0.2)',
                         transition: 'all 0.3s ease'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.15)';
+                        e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.08)';
                         e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.borderColor = 'var(--bs-danger)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.1)';
+                        e.currentTarget.style.backgroundColor = '#fff5f5';
                         e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
                       }}
                     >
                       <div
@@ -72,7 +75,7 @@ const VenuesCTA = () => {
                       >
                         <IconComponent size={20} style={{ color: 'white' }} />
                       </div>
-                      <span className="text-light fw-semibold" style={{ fontSize: '1.1rem' }}>
+                      <span className="fw-semibold" style={{ fontSize: '1.1rem', color: '#2d3748' }}>
                         {t(`cta.features.${feature.key}`)}
                       </span>
                     </div>
@@ -118,18 +121,18 @@ const VenuesCTA = () => {
                   fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                   borderRadius: '16px',
                   padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem)',
-                  backgroundColor: 'transparent',
-                  color: 'white',
+                  backgroundColor: 'white',
+                  color: 'var(--bs-danger)',
                   border: '2px solid var(--bs-danger)',
                   transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.15)';
+                  e.currentTarget.style.backgroundColor = '#fff5f5';
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.backgroundColor = 'white';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}

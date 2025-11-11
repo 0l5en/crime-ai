@@ -5,19 +5,19 @@ const WhyVenueOwners = () => {
   const { t } = useTranslation('venues');
 
   return (
-    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: 'var(--bs-light)',
+              color: '#2d3748',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('why.title')}
             </h2>
-            <p className="text-light mb-0 px-2" style={{ 
+            <p className="mb-0 px-2" style={{ 
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
-              opacity: '0.85',
+              color: '#4a5568',
               lineHeight: '1.7'
             }}>
               {t('why.subtitle')}
@@ -35,19 +35,19 @@ const WhyVenueOwners = () => {
             return (
               <div key={index} className="col-md-4">
                 <div className="text-center h-100" style={{
-                  border: '1px solid rgba(203, 25, 28, 0.2)',
+                  border: '2px solid #e2e8f0',
                   borderRadius: '16px',
-                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  backgroundColor: 'white',
                   transition: 'all 0.3s ease',
                   padding: 'clamp(1.5rem, 4vw, 3rem)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--bs-danger)';
                   e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(203, 25, 28, 0.2)';
+                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(203, 25, 28, 0.15)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
+                  e.currentTarget.style.borderColor = '#e2e8f0';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}>
@@ -68,16 +68,16 @@ const WhyVenueOwners = () => {
                     />
                   </div>
                   <h4 className="mb-2 mb-md-3" style={{ 
-                    color: 'var(--bs-light)', 
+                    color: '#2d3748', 
                     fontWeight: '700',
                     fontSize: 'clamp(1.1rem, 3vw, 1.5rem)'
                   }}>
                     {t(`why.benefits.${benefit.key}.title`)}
                   </h4>
-                  <p className="text-light mb-0" style={{ 
+                  <p className="mb-0" style={{ 
                     lineHeight: '1.7',
                     fontSize: 'clamp(0.9rem, 2vw, 1rem)',
-                    opacity: '0.85'
+                    color: '#4a5568'
                   }}>
                     {t(`why.benefits.${benefit.key}.description`)}
                   </p>
