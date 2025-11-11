@@ -65,10 +65,10 @@ const VenuesPricing = () => {
                   <h4 className="fw-bold mb-2 mb-md-3" style={{ color: 'var(--bs-danger)', fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>
                     {t('pricing.enhance.title')}
                   </h4>
-                  <p className="mb-2 mb-md-3" style={{ color: '#4a5568', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
+                  <p className="mb-2 mb-md-3" style={{ color: '#4a5568', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)', textAlign: 'justify' }}>
                     {t('pricing.enhance.description1')}
                   </p>
-                  <p className="mb-0" style={{ color: '#4a5568', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
+                  <p className="mb-0" style={{ color: '#4a5568', lineHeight: '1.8', fontSize: 'clamp(0.9rem, 2vw, 1rem)', textAlign: 'justify' }}>
                     {t('pricing.enhance.description2')}
                   </p>
                 </div>
