@@ -88,15 +88,15 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
 
     const data = imageData.data;
     
-    // Target colors
+    // Target colors - Darker variants for better contrast
     const targetColors = {
-      accent: { r: 220, g: 53, b: 69 }, // #dc3545 - Red
-      teal: { r: 13, g: 202, b: 240 }, // #0dcaf0 - Cyan/Teal
-      purple: { r: 130, g: 59, b: 216 }, // #823bd8 - Purple
-      green: { r: 25, g: 135, b: 84 }, // #198754 - Green
-      pink: { r: 214, g: 51, b: 132 }, // #d63384 - Pink
-      navy: { r: 13, g: 110, b: 253 }, // #0d6efd - Navy Blue
-      gold: { r: 255, g: 193, b: 7 }, // #ffc107 - Gold/Yellow
+      accent: { r: 167, g: 29, b: 42 }, // #a71d2a - Dark Red
+      teal: { r: 14, g: 116, b: 144 }, // #0e7490 - Dark Teal
+      purple: { r: 91, g: 33, b: 182 }, // #5b21b6 - Dark Purple
+      green: { r: 21, g: 83, b: 45 }, // #15532d - Dark Green
+      pink: { r: 131, g: 24, b: 67 }, // #831843 - Dark Pink
+      navy: { r: 8, g: 66, b: 152 }, // #084298 - Dark Navy
+      gold: { r: 166, g: 124, b: 0 }, // #a67c00 - Dark Gold
     };
 
     const target = targetColors[targetColor];
@@ -323,10 +323,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#dc3545',
+                backgroundColor: '#a71d2a',
                 boxShadow: colorVariant === 'accent' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Red"
+              title="Dark Red"
             />
             <button
               type="button"
@@ -335,10 +335,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#0dcaf0',
+                backgroundColor: '#0e7490',
                 boxShadow: colorVariant === 'teal' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Teal"
+              title="Dark Teal"
             />
             <button
               type="button"
@@ -347,10 +347,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#823bd8',
+                backgroundColor: '#5b21b6',
                 boxShadow: colorVariant === 'purple' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Purple"
+              title="Dark Purple"
             />
             <button
               type="button"
@@ -359,10 +359,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#198754',
+                backgroundColor: '#15532d',
                 boxShadow: colorVariant === 'green' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Green"
+              title="Dark Green"
             />
             <button
               type="button"
@@ -371,10 +371,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#d63384',
+                backgroundColor: '#831843',
                 boxShadow: colorVariant === 'pink' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Pink"
+              title="Dark Pink"
             />
             <button
               type="button"
@@ -383,10 +383,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#0d6efd',
+                backgroundColor: '#084298',
                 boxShadow: colorVariant === 'navy' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Navy Blue"
+              title="Dark Navy"
             />
             <button
               type="button"
@@ -395,10 +395,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
               style={{ 
                 aspectRatio: '1',
                 minWidth: '32px',
-                backgroundColor: '#ffc107',
+                backgroundColor: '#a67c00',
                 boxShadow: colorVariant === 'gold' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
-              title="Gold"
+              title="Dark Gold"
             />
           </div>
         </div>
