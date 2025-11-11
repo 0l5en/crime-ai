@@ -33,11 +33,11 @@
       },
       "register": {
         "title": "Ferienwohnungsdetails",
-        "description": "Teilen Sie uns Details über Ihre Ferienwohnung mit, einschließlich Zimmeranzahl, einzigartiger Merkmale und gewünschter Gästeerfahrung."
+        "description": "Teilen Sie uns Details über Ihre Ferienwohnung mit, einschließlich Zimmeranzahl und einzigartigen Merkmalen ihrer Ferienwohnung."
       },
       "exclusive": {
         "title": "Exklusiven Fall erhalten",
-        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Ferienwohnung zugeschnitten."
+        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Location zugeschnitten."
       }
     }
   },
