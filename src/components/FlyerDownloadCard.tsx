@@ -303,14 +303,14 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
         {/* Color Variant Selection */}
         <div className="mb-3">
           <label className="form-label fw-semibold">{t('promotionTab.colorVariant')}</label>
-          <div className="d-flex flex-wrap gap-2">
+          <div className="d-grid gap-2" style={{ gridTemplateColumns: 'repeat(8, 1fr)' }}>
             <button
               type="button"
               onClick={() => setColorVariant('original')}
-              className={`btn rounded-circle ${colorVariant === 'original' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'original' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#FF8C42',
                 boxShadow: colorVariant === 'original' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -319,10 +319,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('accent')}
-              className={`btn rounded-circle ${colorVariant === 'accent' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'accent' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#dc3545',
                 boxShadow: colorVariant === 'accent' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -331,10 +331,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('teal')}
-              className={`btn rounded-circle ${colorVariant === 'teal' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'teal' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#0dcaf0',
                 boxShadow: colorVariant === 'teal' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -343,10 +343,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('purple')}
-              className={`btn rounded-circle ${colorVariant === 'purple' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'purple' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#823bd8',
                 boxShadow: colorVariant === 'purple' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -355,10 +355,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('green')}
-              className={`btn rounded-circle ${colorVariant === 'green' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'green' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#198754',
                 boxShadow: colorVariant === 'green' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -367,10 +367,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('pink')}
-              className={`btn rounded-circle ${colorVariant === 'pink' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'pink' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#d63384',
                 boxShadow: colorVariant === 'pink' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -379,10 +379,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('navy')}
-              className={`btn rounded-circle ${colorVariant === 'navy' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'navy' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#0d6efd',
                 boxShadow: colorVariant === 'navy' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
@@ -391,10 +391,10 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
             <button
               type="button"
               onClick={() => setColorVariant('gold')}
-              className={`btn rounded-circle ${colorVariant === 'gold' ? 'border-dark border-3' : 'border border-2'}`}
+              className={`btn rounded-circle p-0 ${colorVariant === 'gold' ? 'border-dark border-3' : 'border border-2'}`}
               style={{ 
-                width: '48px', 
-                height: '48px', 
+                aspectRatio: '1',
+                minWidth: '32px',
                 backgroundColor: '#ffc107',
                 boxShadow: colorVariant === 'gold' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
               }}
