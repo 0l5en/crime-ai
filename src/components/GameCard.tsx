@@ -116,10 +116,10 @@ const GameCard = ({
               href="https://billing.stripe.com/p/login/dRm5kDfTF1He6gf3Dv67S00"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline-primary btn-sm w-100"
+              className="btn btn-outline-primary btn-lg w-100 mt-3 fs-5"
               onClick={(e) => e.stopPropagation()}
             >
-              <i className="bi bi-gear me-1"></i>
+              <i className="bi bi-gear me-2"></i>
               {tDashboard('subscription.manageButton')}
             </a>
           </div>
