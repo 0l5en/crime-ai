@@ -64,10 +64,9 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
         });
 
         // Position QR code in top-left corner
-        const qrSize = 180;
-        const padding = 30;
-        const qrX = padding;
-        const qrY = padding;
+        const qrSize = 150;
+        const qrX = 20;
+        const qrY = 20;
 
         ctx.drawImage(qrImg, qrX, qrY, qrSize, qrSize);
 
