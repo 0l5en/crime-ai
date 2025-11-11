@@ -11,7 +11,7 @@ const VenuesPricing = () => {
   };
 
   return (
-    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
@@ -39,7 +39,7 @@ const VenuesPricing = () => {
                 <div 
                   className="text-center mb-3 mb-md-4"
                   style={{
-                    backgroundColor: '#f7fafc',
+                    backgroundColor: 'white',
                     borderRadius: '20px',
                     border: '3px solid var(--bs-danger)',
                     boxShadow: '0 8px 30px rgba(203, 25, 28, 0.15)',
@@ -79,9 +79,9 @@ const VenuesPricing = () => {
                 <div 
                   className="flex-grow-1"
                   style={{
-                    backgroundColor: '#f7fafc',
+                    backgroundColor: 'white',
                     borderRadius: '20px',
-                    border: '2px solid #e2e8f0',
+                    border: '2px solid rgba(203, 25, 28, 0.2)',
                     padding: 'clamp(1.5rem, 4vw, 3rem)'
                   }}
                 >

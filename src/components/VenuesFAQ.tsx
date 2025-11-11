@@ -11,7 +11,7 @@ const VenuesFAQ = () => {
   };
 
   return (
-    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: 'white' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
@@ -57,20 +57,22 @@ const VenuesFAQ = () => {
                         key={questionIndex}
                         className="mb-2 mb-md-3"
                         style={{
-                          border: '2px solid #e2e8f0',
+                          border: '2px solid rgba(203, 25, 28, 0.2)',
                           borderRadius: '12px',
-                          backgroundColor: 'white',
+                          backgroundColor: '#fff5f5',
                           overflow: 'hidden',
                           transition: 'all 0.3s ease'
                         }}
                         onMouseEnter={(e) => {
                           if (!isOpen) {
                             e.currentTarget.style.borderColor = 'var(--bs-danger)';
+                            e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.08)';
                           }
                         }}
                         onMouseLeave={(e) => {
                           if (!isOpen) {
-                            e.currentTarget.style.borderColor = '#e2e8f0';
+                            e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
+                            e.currentTarget.style.backgroundColor = '#fff5f5';
                           }
                         }}
                       >
@@ -116,8 +118,8 @@ const VenuesFAQ = () => {
                         >
                           <div 
                             style={{ 
-                              backgroundColor: '#f7fafc',
-                              borderTop: '1px solid #e2e8f0',
+                              backgroundColor: 'white',
+                              borderTop: '1px solid rgba(203, 25, 28, 0.2)',
                               color: '#4a5568',
                               lineHeight: '1.7',
                               padding: 'clamp(0.75rem, 2vw, 1rem)',

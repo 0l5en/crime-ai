@@ -5,7 +5,7 @@ const WhyVenueOwners = () => {
   const { t } = useTranslation('venues');
 
   return (
-    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: 'white' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
@@ -35,21 +35,23 @@ const WhyVenueOwners = () => {
             return (
               <div key={index} className="col-md-4">
                 <div className="text-center h-100" style={{
-                  border: '2px solid #e2e8f0',
+                  border: '2px solid rgba(203, 25, 28, 0.2)',
                   borderRadius: '16px',
-                  backgroundColor: 'white',
+                  backgroundColor: '#fff5f5',
                   transition: 'all 0.3s ease',
                   padding: 'clamp(1.5rem, 4vw, 3rem)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--bs-danger)';
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(203, 25, 28, 0.15)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.08)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#e2e8f0';
+                  e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.backgroundColor = '#fff5f5';
                 }}>
                   <div className="mb-3 mb-md-4" style={{
                     width: 'clamp(60px, 15vw, 80px)',

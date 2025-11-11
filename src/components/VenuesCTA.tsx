@@ -9,7 +9,7 @@ const VenuesCTA = () => {
   return (
     <section 
       className="py-4 py-md-5 d-flex align-items-center" 
-      style={{ minHeight: '100vh', backgroundColor: 'white' }} 
+      style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }} 
       data-section="contact"
     >
       <div className="container px-3">
