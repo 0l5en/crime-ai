@@ -34,6 +34,11 @@
     "title": "Créez Votre Cas de Location de Vacances",
     "description": "Remplissez le formulaire ci-dessous pour créer un cas criminel unique pour votre location de vacances. La génération prend jusqu'à 24 heures. Vous serez notifié par e-mail une fois que votre cas sera prêt. Ensuite, vous pourrez générer des codes QR que vos invités pourront scanner pour jouer le cas.",
     "backToOverview": "Retour à l'aperçu",
+    "progress": {
+      "title": "Progression du formulaire",
+      "completed": "{{completed}} sur {{total}} champs obligatoires complétés",
+      "percentage": "{{percentage}}% terminé"
+    },
     "sections": {
       "basicSettings": "Paramètres de base",
       "location": "Localisation",
