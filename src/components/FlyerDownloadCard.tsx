@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 import { useTranslation } from 'react-i18next';
-import { Download, Printer } from 'lucide-react';
+import { Download, Printer, Facebook, Twitter, MessageCircle, Mail } from 'lucide-react';
 import flyerTemplate from '@/assets/venueflyer-template-new.png';
 
 interface FlyerDownloadCardProps {
@@ -292,6 +292,31 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
     document.body.removeChild(link);
   };
 
+  const handleShare = (platform: 'facebook' | 'twitter' | 'whatsapp' | 'pinterest' | 'email') => {
+    const caseUrl = `${window.location.origin}/case/${caseId}`;
+    let shareUrl = '';
+
+    switch (platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(caseUrl)}`;
+        break;
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(caseUrl)}&text=${encodeURIComponent(title)}`;
+        break;
+      case 'whatsapp':
+        shareUrl = `https://wa.me/?text=${encodeURIComponent(title + ' ' + caseUrl)}`;
+        break;
+      case 'pinterest':
+        shareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(caseUrl)}&description=${encodeURIComponent(title)}`;
+        break;
+      case 'email':
+        shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(caseUrl)}`;
+        break;
+    }
+
+    window.open(shareUrl, platform === 'email' ? '_self' : '_blank', platform === 'email' ? undefined : 'noopener,noreferrer');
+  };
+
   return (
     <div className="card shadow-sm">
       <div className="card-body">
@@ -441,6 +466,52 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
                 <Printer size={20} />
                 {isGeneratingPrint ? t('loading') : t('promotionTab.downloadPrintTemplate')}
               </button>
+
+              {/* Share Buttons */}
+              <div className="d-flex gap-2 mt-2 justify-content-center">
+                <button
+                  onClick={() => handleShare('facebook')}
+                  className="btn btn-outline-secondary"
+                  title="Facebook"
+                  aria-label="Share on Facebook"
+                >
+                  <Facebook size={20} />
+                </button>
+                <button
+                  onClick={() => handleShare('twitter')}
+                  className="btn btn-outline-secondary"
+                  title="X (Twitter)"
+                  aria-label="Share on X"
+                >
+                  <Twitter size={20} />
+                </button>
+                <button
+                  onClick={() => handleShare('whatsapp')}
+                  className="btn btn-outline-secondary"
+                  title="WhatsApp"
+                  aria-label="Share on WhatsApp"
+                >
+                  <MessageCircle size={20} />
+                </button>
+                <button
+                  onClick={() => handleShare('pinterest')}
+                  className="btn btn-outline-secondary"
+                  title="Pinterest"
+                  aria-label="Share on Pinterest"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M8.5 21c6.5-1.5 10-9.5 10-13.5 0-3.5-2.5-6.5-6.5-6.5-4 0-7 3-7 7 0 2.5 1.5 4.5 3.5 4.5 1.5 0 2.5-1 2.5-2.5 0-1.5-1-2.5-2-2.5"/>
+                  </svg>
+                </button>
+                <button
+                  onClick={() => handleShare('email')}
+                  className="btn btn-outline-secondary"
+                  title="Email"
+                  aria-label="Share via Email"
+                >
+                  <Mail size={20} />
+                </button>
+              </div>
             </div>
           </>
         )}
