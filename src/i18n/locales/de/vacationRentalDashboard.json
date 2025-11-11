@@ -31,7 +31,8 @@
     "description": "Verwalten Sie hier Ihr Abonnement und Ihre Rechnungsinformationen."
   },
   "form": {
-    "title": "Neuen Ferienwohnungs-Case erstellen",
+    "title": "Erstellen Sie Ihren Ferienwohnungsfall",
+    "description": "Füllen Sie das folgende Formular aus, um einen einzigartigen Kriminalfall für Ihre Ferienwohnung zu erstellen. Die Generierung dauert bis zu 24 Stunden. Sie werden per E-Mail benachrichtigt, sobald Ihr Fall bereit ist. Anschließend können Sie QR-Codes generieren, die Ihre Gäste scannen können, um den Fall zu spielen.",
     "backToOverview": "Zurück zur Übersicht",
     "sections": {
       "basicSettings": "Grundeinstellungen",

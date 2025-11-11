@@ -245,6 +245,9 @@ const VacationRentalDashboard = () => {
                 <h1 className="display-4 fw-bold mb-3">
                   {t('form.title')}
                 </h1>
+                <p className="lead text-muted mb-4" style={{ maxWidth: '800px', margin: '0 auto' }}>
+                  {t('form.description')}
+                </p>
                 <button
                   onClick={handleFormCancel}
                   className="btn btn-outline-secondary mb-4"

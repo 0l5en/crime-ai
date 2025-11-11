@@ -109,7 +109,6 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     // Prepare the data in the format expected by the API (new structure)
     const formData: CreateCaseGeneratorFormVacationRentalDto = {
       formBasic: {
-        caseGeneratorForm: "BASIC" as const,
         language: data.language,
         epoch: data.epoch,
         theme: data.theme,
