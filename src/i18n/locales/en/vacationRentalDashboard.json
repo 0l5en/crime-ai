@@ -25,10 +25,14 @@
     "goToCases": "Go to Cases",
     "scanToAccess": "Scan to access case directly",
     "downloadFlyer": "Download Flyer",
-    "downloadPrintTemplate": "Download Print Template",
+    "downloadPrintTemplate": "Download Print Template (A4, 5 Flyers)",
     "flyerPreview": "Flyer Preview",
-    "flyerDescription": "This flyer contains the QR code to your case. Print it and hand it out to your guests.",
-    "printTemplateDescription": "A4 print template with 5 flyers to cut out"
+    "flyerDescription": "Download a pre-made flyer with QR code that you can print and distribute.",
+    "printTemplateDescription": "Download an A4 print template with 5 flyers ready to cut out.",
+    "colorVariant": "Color Variant",
+    "originalColor": "Orange (Original)",
+    "accentColor": "Red (Accent)",
+    "tealColor": "Teal"
   },
   "subscriptionTab": {
     "title": "Subscription",

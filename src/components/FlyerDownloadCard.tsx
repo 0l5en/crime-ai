@@ -9,12 +9,113 @@ interface FlyerDownloadCardProps {
   title: string;
 }
 
+type ColorVariant = 'original' | 'accent' | 'teal';
+
 const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
+  const [colorVariant, setColorVariant] = useState<ColorVariant>('original');
   const [flyerDataUrl, setFlyerDataUrl] = useState<string>('');
   const [printTemplateDataUrl, setPrintTemplateDataUrl] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(true);
   const [isGeneratingPrint, setIsGeneratingPrint] = useState(false);
+
+  // Helper functions for color conversion
+  const rgbToHsl = (r: number, g: number, b: number): { h: number; s: number; l: number } => {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;
+    let s = 0;
+    const l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+      switch (max) {
+        case r:
+          h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+          break;
+        case g:
+          h = ((b - r) / d + 2) / 6;
+          break;
+        case b:
+          h = ((r - g) / d + 4) / 6;
+          break;
+      }
+    }
+
+    return { h: h * 360, s, l };
+  };
+
+  const hslToRgb = (h: number, s: number, l: number): { r: number; g: number; b: number } => {
+    h /= 360;
+
+    let r, g, b;
+
+    if (s === 0) {
+      r = g = b = l;
+    } else {
+      const hue2rgb = (p: number, q: number, t: number) => {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+        return p;
+      };
+
+      const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      const p = 2 * l - q;
+
+      r = hue2rgb(p, q, h + 1 / 3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return {
+      r: Math.round(r * 255),
+      g: Math.round(g * 255),
+      b: Math.round(b * 255),
+    };
+  };
+
+  const applyColorFilter = (imageData: ImageData, targetColor: ColorVariant): ImageData => {
+    if (targetColor === 'original') return imageData;
+
+    const data = imageData.data;
+    
+    // Target colors
+    const targetColors = {
+      accent: { r: 220, g: 53, b: 69 }, // #dc3545
+      teal: { r: 13, g: 202, b: 240 }, // #0dcaf0
+    };
+
+    const target = targetColors[targetColor];
+    const targetHsl = rgbToHsl(target.r, target.g, target.b);
+
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+
+      const hsl = rgbToHsl(r, g, b);
+
+      // Detect orange tones (Hue 20-40°, Saturation > 30%)
+      if (hsl.h >= 20 && hsl.h <= 40 && hsl.s > 0.3) {
+        // Replace with target color, preserving lightness and adjusting saturation
+        const newRgb = hslToRgb(targetHsl.h, hsl.s, hsl.l);
+        data[i] = newRgb.r;
+        data[i + 1] = newRgb.g;
+        data[i + 2] = newRgb.b;
+      }
+    }
+
+    return imageData;
+  };
 
   useEffect(() => {
     const generateFlyer = async () => {
@@ -57,6 +158,13 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
         // Draw template image
         ctx.drawImage(templateImg, 0, 0);
 
+        // Apply color filter if not original
+        if (colorVariant !== 'original') {
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const filteredImageData = applyColorFilter(imageData, colorVariant);
+          ctx.putImageData(filteredImageData, 0, 0);
+        }
+
         // Load and draw QR code on top-left
         const qrImg = new Image();
         await new Promise((resolve, reject) => {
@@ -83,7 +191,7 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
     };
 
     generateFlyer();
-  }, [caseId]);
+  }, [caseId, colorVariant]);
 
   const generatePrintTemplate = async () => {
     if (!flyerDataUrl) return;
@@ -186,6 +294,55 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
         <p className="text-muted mb-3">
           {t('promotionTab.flyerDescription')}
         </p>
+
+        {/* Color Variant Selection */}
+        <div className="mb-3">
+          <label className="form-label fw-semibold">{t('promotionTab.colorVariant')}</label>
+          <div className="d-flex gap-3">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="colorVariant"
+                id="colorOriginal"
+                value="original"
+                checked={colorVariant === 'original'}
+                onChange={(e) => setColorVariant(e.target.value as ColorVariant)}
+              />
+              <label className="form-check-label" htmlFor="colorOriginal">
+                {t('promotionTab.originalColor')}
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="colorVariant"
+                id="colorAccent"
+                value="accent"
+                checked={colorVariant === 'accent'}
+                onChange={(e) => setColorVariant(e.target.value as ColorVariant)}
+              />
+              <label className="form-check-label" htmlFor="colorAccent">
+                {t('promotionTab.accentColor')}
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="colorVariant"
+                id="colorTeal"
+                value="teal"
+                checked={colorVariant === 'teal'}
+                onChange={(e) => setColorVariant(e.target.value as ColorVariant)}
+              />
+              <label className="form-check-label" htmlFor="colorTeal">
+                {t('promotionTab.tealColor')}
+              </label>
+            </div>
+          </div>
+        </div>
         
         {isGenerating ? (
           <div className="text-center py-5">

@@ -25,10 +25,14 @@
     "goToCases": "Zu den Cases",
     "scanToAccess": "Scannen Sie, um direkt auf den Case zuzugreifen",
     "downloadFlyer": "Flyer herunterladen",
-    "downloadPrintTemplate": "Druckvorlage herunterladen",
+    "downloadPrintTemplate": "Druckvorlage herunterladen (A4, 5 Flyer)",
     "flyerPreview": "Flyer-Vorschau",
-    "flyerDescription": "Dieser Flyer enthält den QR-Code zu Ihrem Fall. Drucken Sie ihn aus und geben Sie ihn an Ihre Gäste weiter.",
-    "printTemplateDescription": "A4-Druckvorlage mit 5 Flyern zum Ausschneiden"
+    "flyerDescription": "Laden Sie einen vorgefertigten Flyer mit QR-Code herunter, den Sie ausdrucken und verteilen können.",
+    "printTemplateDescription": "Laden Sie eine A4-Druckvorlage mit 5 Flyern zum Ausschneiden herunter.",
+    "colorVariant": "Farbvariante",
+    "originalColor": "Orange (Original)",
+    "accentColor": "Rot (Akzent)",
+    "tealColor": "Grünblau"
   },
   "subscriptionTab": {
     "title": "Abonnement",

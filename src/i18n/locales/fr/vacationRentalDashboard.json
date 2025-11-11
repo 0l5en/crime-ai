@@ -24,11 +24,15 @@
     "noQRCodesDescription": "Créez d'abord des cas de location de vacances pour générer des QR codes pour la promotion.",
     "goToCases": "Aller aux cas",
     "scanToAccess": "Scannez pour accéder directement au cas",
-    "downloadFlyer": "Télécharger le flyer",
-    "downloadPrintTemplate": "Télécharger le modèle d'impression",
-    "flyerPreview": "Aperçu du flyer",
-    "flyerDescription": "Ce flyer contient le code QR de votre affaire. Imprimez-le et distribuez-le à vos clients.",
-    "printTemplateDescription": "Modèle d'impression A4 avec 5 flyers à découper"
+    "downloadFlyer": "Télécharger le dépliant",
+    "downloadPrintTemplate": "Télécharger le modèle d'impression (A4, 5 dépliants)",
+    "flyerPreview": "Aperçu du dépliant",
+    "flyerDescription": "Téléchargez un dépliant pré-fait avec code QR que vous pouvez imprimer et distribuer.",
+    "printTemplateDescription": "Téléchargez un modèle d'impression A4 avec 5 dépliants prêts à découper.",
+    "colorVariant": "Variante de couleur",
+    "originalColor": "Orange (Original)",
+    "accentColor": "Rouge (Accent)",
+    "tealColor": "Bleu-vert"
   },
   "subscriptionTab": {
     "title": "Abonnement",
