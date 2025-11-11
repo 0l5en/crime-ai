@@ -25,8 +25,10 @@
     "goToCases": "Zu den Cases",
     "scanToAccess": "Scannen Sie, um direkt auf den Case zuzugreifen",
     "downloadFlyer": "Flyer herunterladen",
+    "downloadPrintTemplate": "Druckvorlage herunterladen",
     "flyerPreview": "Flyer-Vorschau",
-    "flyerDescription": "Dieser Flyer enthält den QR-Code zu Ihrem Fall. Drucken Sie ihn aus und geben Sie ihn an Ihre Gäste weiter."
+    "flyerDescription": "Dieser Flyer enthält den QR-Code zu Ihrem Fall. Drucken Sie ihn aus und geben Sie ihn an Ihre Gäste weiter.",
+    "printTemplateDescription": "A4-Druckvorlage mit 5 Flyern zum Ausschneiden"
   },
   "subscriptionTab": {
     "title": "Abonnement",

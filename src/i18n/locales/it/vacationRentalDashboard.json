@@ -25,8 +25,10 @@
     "goToCases": "Vai ai casi",
     "scanToAccess": "Scansiona per accedere direttamente al caso",
     "downloadFlyer": "Scarica volantino",
+    "downloadPrintTemplate": "Scarica modello di stampa",
     "flyerPreview": "Anteprima volantino",
-    "flyerDescription": "Questo volantino contiene il codice QR del tuo caso. Stampalo e distribuiscilo ai tuoi ospiti."
+    "flyerDescription": "Questo volantino contiene il codice QR del tuo caso. Stampalo e distribuiscilo ai tuoi ospiti.",
+    "printTemplateDescription": "Modello di stampa A4 con 5 volantini da ritagliare"
   },
   "subscriptionTab": {
     "title": "Abbonamento",
