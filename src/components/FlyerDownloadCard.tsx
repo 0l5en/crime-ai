@@ -9,7 +9,7 @@ interface FlyerDownloadCardProps {
   title: string;
 }
 
-type ColorVariant = 'original' | 'accent' | 'teal';
+type ColorVariant = 'original' | 'accent' | 'teal' | 'purple' | 'green' | 'pink' | 'navy' | 'gold';
 
 const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
@@ -90,8 +90,13 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
     
     // Target colors
     const targetColors = {
-      accent: { r: 220, g: 53, b: 69 }, // #dc3545
-      teal: { r: 13, g: 202, b: 240 }, // #0dcaf0
+      accent: { r: 220, g: 53, b: 69 }, // #dc3545 - Red
+      teal: { r: 13, g: 202, b: 240 }, // #0dcaf0 - Cyan/Teal
+      purple: { r: 130, g: 59, b: 216 }, // #823bd8 - Purple
+      green: { r: 25, g: 135, b: 84 }, // #198754 - Green
+      pink: { r: 214, g: 51, b: 132 }, // #d63384 - Pink
+      navy: { r: 13, g: 110, b: 253 }, // #0d6efd - Navy Blue
+      gold: { r: 255, g: 193, b: 7 }, // #ffc107 - Gold/Yellow
     };
 
     const target = targetColors[targetColor];
@@ -298,49 +303,103 @@ const FlyerDownloadCard = ({ caseId, title }: FlyerDownloadCardProps) => {
         {/* Color Variant Selection */}
         <div className="mb-3">
           <label className="form-label fw-semibold">{t('promotionTab.colorVariant')}</label>
-          <div className="d-flex gap-3">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="colorVariant"
-                id="colorOriginal"
-                value="original"
-                checked={colorVariant === 'original'}
-                onChange={(e) => setColorVariant(e.target.value as ColorVariant)}
-              />
-              <label className="form-check-label" htmlFor="colorOriginal">
-                {t('promotionTab.originalColor')}
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="colorVariant"
-                id="colorAccent"
-                value="accent"
-                checked={colorVariant === 'accent'}
-                onChange={(e) => setColorVariant(e.target.value as ColorVariant)}
-              />
-              <label className="form-check-label" htmlFor="colorAccent">
-                {t('promotionTab.accentColor')}
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="colorVariant"
-                id="colorTeal"
-                value="teal"
-                checked={colorVariant === 'teal'}
-                onChange={(e) => setColorVariant(e.target.value as ColorVariant)}
-              />
-              <label className="form-check-label" htmlFor="colorTeal">
-                {t('promotionTab.tealColor')}
-              </label>
-            </div>
+          <div className="d-flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setColorVariant('original')}
+              className={`btn rounded-circle ${colorVariant === 'original' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#FF8C42',
+                boxShadow: colorVariant === 'original' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Orange (Original)"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('accent')}
+              className={`btn rounded-circle ${colorVariant === 'accent' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#dc3545',
+                boxShadow: colorVariant === 'accent' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Red"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('teal')}
+              className={`btn rounded-circle ${colorVariant === 'teal' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#0dcaf0',
+                boxShadow: colorVariant === 'teal' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Teal"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('purple')}
+              className={`btn rounded-circle ${colorVariant === 'purple' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#823bd8',
+                boxShadow: colorVariant === 'purple' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Purple"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('green')}
+              className={`btn rounded-circle ${colorVariant === 'green' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#198754',
+                boxShadow: colorVariant === 'green' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Green"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('pink')}
+              className={`btn rounded-circle ${colorVariant === 'pink' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#d63384',
+                boxShadow: colorVariant === 'pink' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Pink"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('navy')}
+              className={`btn rounded-circle ${colorVariant === 'navy' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#0d6efd',
+                boxShadow: colorVariant === 'navy' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Navy Blue"
+            />
+            <button
+              type="button"
+              onClick={() => setColorVariant('gold')}
+              className={`btn rounded-circle ${colorVariant === 'gold' ? 'border-dark border-3' : 'border border-2'}`}
+              style={{ 
+                width: '48px', 
+                height: '48px', 
+                backgroundColor: '#ffc107',
+                boxShadow: colorVariant === 'gold' ? '0 0 0 2px white, 0 0 0 4px #212529' : 'none'
+              }}
+              title="Gold"
+            />
           </div>
         </div>
         
