@@ -28,15 +28,15 @@
     "subtitle": "Ihr individueller Ferienwohnungs-Case ist ganz einfach. Wir übernehmen die gesamte kreative Arbeit, während Sie sich auf das Hosten großartiger Erlebnisse konzentrieren.",
     "steps": {
       "trial": {
-        "title": "Kostenlose Testversion starten",
+        "title": "Kostenlos registrieren",
         "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Legen Sie Ihre Ferienwohnung an, um zu starten."
       },
       "register": {
-        "title": "Ihre Ferienwohnung registrieren",
+        "title": "Ihre Ferienwohnungsdetails",
         "description": "Teilen Sie uns Details über Ihre Ferienwohnung mit, einschließlich Zimmeranzahl, einzigartiger Merkmale und gewünschter Gästeerfahrung."
       },
       "exclusive": {
-        "title": "Exklusiven Case erhalten",
+        "title": "Exklusiven Fall erhalten",
         "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Ferienwohnung zugeschnitten."
       }
     }
