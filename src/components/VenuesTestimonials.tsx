@@ -14,18 +14,18 @@ const VenuesTestimonials = () => {
   };
 
   return (
-    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }}>
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: 'white' }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: 'var(--bs-light)',
+              color: '#2d3748',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('testimonials.title')}
             </h2>
-            <p className="text-light px-2" style={{ 
-              opacity: '0.85',
+            <p className="px-2" style={{ 
+              color: '#4a5568',
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
@@ -40,21 +40,23 @@ const VenuesTestimonials = () => {
               <div 
                 className="h-100 position-relative d-flex flex-column"
                 style={{
-                  border: '1px solid rgba(203, 25, 28, 0.2)',
+                  border: '2px solid rgba(203, 25, 28, 0.2)',
                   borderRadius: '20px',
-                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  backgroundColor: '#fff5f5',
                   transition: 'all 0.3s ease',
                   padding: 'clamp(1.5rem, 4vw, 3rem)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--bs-danger)';
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(203, 25, 28, 0.2)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.08)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.backgroundColor = '#fff5f5';
                 }}
               >
                 {/* Avatar and Quote Icon */}
@@ -75,8 +77,9 @@ const VenuesTestimonials = () => {
                     style={{
                       width: 'clamp(40px, 10vw, 48px)',
                       height: 'clamp(40px, 10vw, 48px)',
-                      backgroundColor: 'rgba(203, 25, 28, 0.15)',
-                      borderRadius: '50%'
+                      backgroundColor: 'white',
+                      borderRadius: '50%',
+                      border: '2px solid var(--bs-danger)'
                     }}
                   >
                     <Quote size={window.innerWidth < 768 ? 20 : 24} style={{ color: 'var(--bs-danger)' }} />
@@ -98,12 +101,12 @@ const VenuesTestimonials = () => {
                 {/* Testimonial Text */}
                 <blockquote className="mb-3 mb-md-4 flex-grow-1">
                   <p 
-                    className="text-light mb-0" 
+                    className="mb-0" 
                     style={{ 
                       fontStyle: 'italic', 
                       lineHeight: '1.7',
                       fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
-                      opacity: '0.9'
+                      color: '#2d3748'
                     }}
                   >
                     "{t(`testimonials.items.${testimonialKey}.text`)}"
@@ -117,19 +120,19 @@ const VenuesTestimonials = () => {
                 >
                   <h6 
                     className="mb-2 fw-bold" 
-                    style={{ color: 'var(--bs-light)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}
+                    style={{ color: '#2d3748', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}
                   >
                     {t(`testimonials.items.${testimonialKey}.name`)}
                   </h6>
                   <p 
-                    className="text-light mb-1" 
-                    style={{ opacity: '0.8', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}
+                    className="mb-1" 
+                    style={{ color: '#4a5568', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}
                   >
                     {t(`testimonials.items.${testimonialKey}.venue`)}
                   </p>
                   <p 
-                    className="text-light mb-0" 
-                    style={{ opacity: '0.6', fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)' }}
+                    className="mb-0" 
+                    style={{ color: '#718096', fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)' }}
                   >
                     {t(`testimonials.items.${testimonialKey}.location`)}
                   </p>

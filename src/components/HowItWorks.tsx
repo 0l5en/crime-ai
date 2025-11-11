@@ -5,18 +5,18 @@ const HowItWorks = () => {
   const { t } = useTranslation('venues');
 
   return (
-    <section className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" style={{ minHeight: '100vh' }} data-section="how-it-works">
+    <section className="py-4 py-md-5 d-flex align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }} data-section="how-it-works">
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
           <div className="col-lg-10 text-center">
             <h2 className="fw-bold mb-3 mb-md-4" style={{ 
-              color: 'var(--bs-light)',
+              color: '#2d3748',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
               {t('howItWorks.title')}
             </h2>
-            <p className="text-light px-2" style={{ 
-              opacity: '0.85',
+            <p className="px-2" style={{ 
+              color: '#4a5568',
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
@@ -37,22 +37,24 @@ const HowItWorks = () => {
                 <div 
                   className="text-center h-100"
                   style={{
-                    border: '1px solid rgba(203, 25, 28, 0.2)',
+                    border: '2px solid rgba(203, 25, 28, 0.2)',
                     borderRadius: '20px',
-                    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                    backgroundColor: 'white',
                     transition: 'all 0.3s ease',
                     position: 'relative',
                     padding: 'clamp(1.5rem, 4vw, 3rem)'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = 'var(--bs-danger)';
-                    e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = '0 12px 40px rgba(203, 25, 28, 0.2)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
+                    e.currentTarget.style.backgroundColor = '#fff5f5';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
                     e.currentTarget.style.transform = 'translateY(0)';
                     e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.backgroundColor = 'white';
                   }}
                 >
                   {/* Step Number Badge */}
@@ -73,7 +75,7 @@ const HowItWorks = () => {
                       fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                       fontWeight: 'bold',
                       boxShadow: '0 4px 15px rgba(203, 25, 28, 0.4)',
-                      border: '3px solid var(--bs-dark)'
+                      border: '3px solid white'
                     }}
                   >
                     {step.number}
@@ -86,7 +88,7 @@ const HowItWorks = () => {
                       style={{
                         width: 'clamp(70px, 18vw, 100px)',
                         height: 'clamp(70px, 18vw, 100px)',
-                        backgroundColor: 'rgba(203, 25, 28, 0.1)',
+                        backgroundColor: '#fff5f5',
                         borderRadius: '50%',
                         border: '3px solid var(--bs-danger)'
                       }}
@@ -102,7 +104,7 @@ const HowItWorks = () => {
                   <h4 
                     className="mb-2 mb-md-3" 
                     style={{ 
-                      color: 'var(--bs-light)', 
+                      color: '#2d3748', 
                       fontWeight: '700',
                       fontSize: 'clamp(1.1rem, 3vw, 1.5rem)'
                     }}
@@ -112,9 +114,9 @@ const HowItWorks = () => {
 
                   {/* Description */}
                   <p 
-                    className="text-light mb-0" 
+                    className="mb-0" 
                     style={{ 
-                      opacity: '0.85',
+                      color: '#4a5568',
                       lineHeight: '1.7',
                       fontSize: 'clamp(0.9rem, 2vw, 1rem)'
                     }}
