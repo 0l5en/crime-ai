@@ -245,7 +245,7 @@ const VacationRentalDashboard = () => {
                 <h1 className="display-4 fw-bold mb-3">
                   {t('form.title')}
                 </h1>
-                <p className="lead text-muted mb-4" style={{ maxWidth: '800px', margin: '0 auto' }}>
+                <p className="text-muted mb-4" style={{ maxWidth: '800px', margin: '0 auto', fontSize: '0.95rem' }}>
                   {t('form.description')}
                 </p>
                 <button
