@@ -86,6 +86,8 @@ const VacationRentalDashboard = () => {
         return renderCasesContent();
       case 'promotion':
         return renderPromotionContent();
+      case 'subscription':
+        return renderSubscriptionContent();
       default:
         return renderCasesContent();
     }
@@ -211,6 +213,18 @@ const VacationRentalDashboard = () => {
         </div>
       )}
     </>
+  );
+
+  const renderSubscriptionContent = () => (
+    <div className="text-center py-5">
+      <div className="rounded-3 p-5 border border-secondary">
+        <i className="bi bi-credit-card display-1 text-muted mb-3"></i>
+        <h3 className="mb-3">{t('subscriptionTab.title')}</h3>
+        <p className="text-muted">
+          {t('subscriptionTab.description')}
+        </p>
+      </div>
+    </div>
   );
 
 
