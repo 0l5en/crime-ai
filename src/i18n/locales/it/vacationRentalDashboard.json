@@ -40,7 +40,7 @@
   },
   "form": {
     "title": "Crea il Tuo Caso per Affitto Vacanze",
-    "description": "Compila il modulo sottostante per creare un caso criminale unico per il tuo affitto vacanze. La generazione richiede fino a 24 ore. Sarai avvisato via email una volta che il tuo caso sarà pronto. Successivamente, potrai generare codici QR che i tuoi ospiti potranno scansionare per giocare il caso.",
+    "description": "Compila il modulo sottostante per creare un caso criminale unico per il tuo affitto vacanze. Con il completamento dell'abbonamento di prova gratuito di 7 giorni, inizierà la creazione del tuo caso investigativo individuale. La generazione richiede fino a 24 ore. Sarai avvisato via email una volta che il tuo caso sarà pronto. Successivamente, potrai generare codici QR che i tuoi ospiti potranno scansionare per giocare il caso.",
     "backToOverview": "Torna alla panoramica",
     "progress": {
       "title": "Progresso del modulo",

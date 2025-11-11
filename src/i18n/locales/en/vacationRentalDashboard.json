@@ -40,7 +40,7 @@
   },
   "form": {
     "title": "Create Your Vacation Rental Case",
-    "description": "Fill out the form below to create a unique crime case for your vacation rental. The generation takes up to 24 hours. You will be notified by email once your case is ready. Afterwards, you can generate QR codes that your guests can scan to play the case.",
+    "description": "Fill out the form below to create a unique crime case for your vacation rental. Upon completing the free 7-day trial subscription, the creation of your individual detective case will begin. The generation takes up to 24 hours. You will be notified by email once your case is ready. Afterwards, you can generate QR codes that your guests can scan to play the case.",
     "backToOverview": "Back to Overview",
     "progress": {
       "title": "Form Progress",
