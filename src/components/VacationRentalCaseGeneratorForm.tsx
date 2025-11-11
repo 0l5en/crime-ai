@@ -562,24 +562,22 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-4 p-3 border-top">
-              <div className="d-flex gap-2 justify-content-end">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={onCancel}
-                  disabled={isPending}
-                >
-                  {t('form.buttons.cancel')}
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={isPending}
-                >
-                  {isPending ? t('form.buttons.submitting') : t('form.buttons.submit')}
-                </button>
-              </div>
+            <div className="mt-4 d-flex gap-2 justify-content-end">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={onCancel}
+                disabled={isPending}
+              >
+                {t('form.buttons.cancel')}
+              </button>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={isPending}
+              >
+                {isPending ? t('form.buttons.submitting') : t('form.buttons.submit')}
+              </button>
             </div>
           </form>
         </div>
