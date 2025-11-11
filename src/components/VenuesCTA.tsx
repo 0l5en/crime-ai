@@ -112,6 +112,7 @@ const VenuesCTA = () => {
               </button>
               
               <button 
+                onClick={() => navigate('/contact')}
                 className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3 flex-grow-1" 
                 style={{ 
                   fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
