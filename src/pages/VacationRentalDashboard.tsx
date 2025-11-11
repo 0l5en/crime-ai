@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
-import QRCodeCard from "@/components/QRCodeCard";
+import FlyerDownloadCard from "@/components/FlyerDownloadCard";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
 import { useCrimeCases } from "@/hooks/useCrimeCasesVacationRental";
@@ -202,7 +202,7 @@ const VacationRentalDashboard = () => {
         <div className="row g-4">
           {cases.map((crimeCase) => (
             <div key={crimeCase.id} className="col-12 col-lg-6">
-              <QRCodeCard
+              <FlyerDownloadCard
                 caseId={crimeCase.id}
                 title={crimeCase.title}
               />

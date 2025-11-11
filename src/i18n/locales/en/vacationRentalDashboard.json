@@ -24,7 +24,9 @@
     "noQRCodesDescription": "Create some vacation rental cases first to generate QR codes for promotion.",
     "goToCases": "Go to Cases",
     "scanToAccess": "Scan to access case directly",
-    "downloadQRCode": "Download QR Code"
+    "downloadFlyer": "Download Flyer",
+    "flyerPreview": "Flyer Preview",
+    "flyerDescription": "This flyer contains the QR code to your case. Print it and hand it out to your guests."
   },
   "subscriptionTab": {
     "title": "Subscription",

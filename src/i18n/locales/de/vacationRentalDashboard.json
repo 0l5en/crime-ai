@@ -24,7 +24,9 @@
     "noQRCodesDescription": "Erstellen Sie zuerst einige Ferienwohnungs-Cases, um QR-Codes für die Promotion zu generieren.",
     "goToCases": "Zu den Cases",
     "scanToAccess": "Scannen Sie, um direkt auf den Case zuzugreifen",
-    "downloadQRCode": "QR-Code herunterladen"
+    "downloadFlyer": "Flyer herunterladen",
+    "flyerPreview": "Flyer-Vorschau",
+    "flyerDescription": "Dieser Flyer enthält den QR-Code zu Ihrem Fall. Drucken Sie ihn aus und geben Sie ihn an Ihre Gäste weiter."
   },
   "subscriptionTab": {
     "title": "Abonnement",

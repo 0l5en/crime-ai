@@ -24,7 +24,9 @@
     "noQRCodesDescription": "Créez d'abord des cas de location de vacances pour générer des QR codes pour la promotion.",
     "goToCases": "Aller aux cas",
     "scanToAccess": "Scannez pour accéder directement au cas",
-    "downloadQRCode": "Télécharger le QR code"
+    "downloadFlyer": "Télécharger le flyer",
+    "flyerPreview": "Aperçu du flyer",
+    "flyerDescription": "Ce flyer contient le code QR de votre affaire. Imprimez-le et distribuez-le à vos clients."
   },
   "subscriptionTab": {
     "title": "Abonnement",

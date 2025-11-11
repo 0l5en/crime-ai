@@ -24,7 +24,9 @@
     "noQRCodesDescription": "Crea prima alcuni casi di affitti vacanze per generare QR code per la promozione.",
     "goToCases": "Vai ai casi",
     "scanToAccess": "Scansiona per accedere direttamente al caso",
-    "downloadQRCode": "Scarica QR code"
+    "downloadFlyer": "Scarica volantino",
+    "flyerPreview": "Anteprima volantino",
+    "flyerDescription": "Questo volantino contiene il codice QR del tuo caso. Stampalo e distribuiscilo ai tuoi ospiti."
   },
   "subscriptionTab": {
     "title": "Abbonamento",
