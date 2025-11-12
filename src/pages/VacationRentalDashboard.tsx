@@ -123,13 +123,9 @@ const VacationRentalDashboard = () => {
             {cases.map((crimeCase) => (
               <div key={crimeCase.id} className="col-12 col-lg-6">
                 <GameCard
-                  caseId={crimeCase.id}
-                  title={crimeCase.title}
-                  description={crimeCase.description}
-                  imageUrl={crimeCase.imageUrl}
+                  crimaCase={crimeCase}
                   hideDescription={true}
                   showSubscriptionInfo={true}
-                  subscriptionId={crimeCase.id}
                 />
               </div>
             ))}

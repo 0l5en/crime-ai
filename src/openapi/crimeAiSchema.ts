@@ -38,23 +38,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/crimecase": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** get the latest crime cases */
-        get: operations["listCrimeCasesAll"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/crimecase-basic": {
         parameters: {
             query?: never;
@@ -205,6 +188,23 @@ export interface paths {
         };
         /** get the subscription of a crime case */
         get: operations["getSubscription"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/crimecase-generator-info": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** get crime case generator infos */
+        get: operations["listCrimeCaseGeneratorInfos"];
         put?: never;
         post?: never;
         delete?: never;
@@ -568,9 +568,7 @@ export interface components {
             textToImage: string;
             imageUrl?: string;
             /** @enum {string} */
-            status: "UNPUBLISHED" | "PUBLISHED" | "PREMIUM";
-            /** @enum {string} */
-            type?: "BASIC" | "VACATION_RENTAL";
+            status: "UNPUBLISHED" | "PUBLISHED";
         };
         ResultSetCrimeCase: {
             items?: components["schemas"]["CrimeCaseDto"][];
@@ -656,9 +654,12 @@ export interface components {
             personIds: number[];
         };
         SubscriptionDto: {
-            testPeriodEnd?: string;
-            subscriptionPeriodEnd?: string;
-            canceled?: boolean;
+            id: string;
+            testPeriodEnd: string;
+            subscriptionPeriodEnd: string;
+            /** @enum {string} */
+            status: "active" | "canceled" | "incomplete" | "incomplete_expired" | "past_due" | "paused" | "trialing" | "unpaid";
+            canceledAt?: string;
         };
         CreateCaseGeneratorFormBasicDto: {
             language: string;
@@ -687,6 +688,24 @@ export interface components {
         };
         Violations: {
             violations?: components["schemas"]["Violation"][];
+        };
+        CrimeCaseGeneratorInfoDto: {
+            /** Format: int64 */
+            id: number;
+            createdAt: string;
+            creator: string;
+            crimeCase?: components["schemas"]["CrimeCaseDto"];
+            generating: boolean;
+            /** Format: int32 */
+            generationAttempts: number;
+            /** Format: int32 */
+            generationProgress: number;
+            subscription?: components["schemas"]["SubscriptionDto"];
+            /** @enum {string} */
+            type: "BASIC" | "VACATION_RENTAL";
+        };
+        ResultSetCrimeCaseGeneratorInfoDto: {
+            items?: components["schemas"]["CrimeCaseGeneratorInfoDto"][];
         };
         CreateCaseGeneratorFormVacationRentalDto: {
             formBasic: components["schemas"]["CreateCaseGeneratorFormBasicDto"];
@@ -934,42 +953,6 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
-            };
-            /** @description if any internal error occurs while processing the request */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    listCrimeCasesAll: {
-        parameters: {
-            query?: {
-                /** @description The maximum number of elements that should be returned. If this parameter is not specified, the default value of 10 will be used. */
-                maxResults?: string;
-                /** @description The type of crime case used during the generation process. */
-                caseGeneratorFormType?: string;
-                /** @description The id of a logged in user playing a crime case. */
-                userId?: string;
-                /** @description The status of a crime case. Multiple status values are combined using an OR operator. For example, status=a&status=b selects all elements that have either status A or status B. */
-                status?: string;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ResultSetCrimeCase"];
-                };
             };
             /** @description if any internal error occurs while processing the request */
             500: {
@@ -1489,6 +1472,38 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description if any internal error occurs while processing the request */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    listCrimeCaseGeneratorInfos: {
+        parameters: {
+            query?: {
+                /** @description The index of the first result. If this parameter is not specified, the default value of 0 will be used. */
+                firstResult?: string;
+                /** @description The maximum number of elements that should be returned. If this parameter is not specified, the default value of 10 will be used. */
+                maxResults?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResultSetCrimeCaseGeneratorInfoDto"];
+                };
             };
             /** @description if any internal error occurs while processing the request */
             500: {

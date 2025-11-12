@@ -1,46 +1,32 @@
 import { useCaseSubscription } from '@/hooks/useCaseSubscription';
+import { components } from '@/openapi/crimeAiSchema';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import StarRating from './StarRating';
 
+type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
+
 interface GameCardProps {
-  title: string;
-  description: string;
-  imageUrl?: string;
-  caseId: string;
-  userId?: string;
-  difficulty?: 'Leicht' | 'Mittel' | 'Schwer';
-  estimatedTime?: string;
+  crimaCase: CrimeCaseDto;
   onClick?: () => void;
   hideDescription?: boolean;
   averageRating?: number;
   ratingCount?: number;
   showSubscriptionInfo?: boolean;
-  subscriptionId?: string;
 }
 
 const GameCard = ({
-  title,
-  description,
-  imageUrl,
-  caseId,
-  userId,
-  difficulty = 'Mittel',
-  estimatedTime = '30-45 min',
+  crimaCase,
   onClick,
   hideDescription = false,
   averageRating,
   ratingCount,
   showSubscriptionInfo = false,
-  subscriptionId
 }: GameCardProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation('cases');
   const { t: tDashboard } = useTranslation('vacationRentalDashboard');
-
-  const { data: subscription, isLoading: subscriptionLoading } = useCaseSubscription(
-    showSubscriptionInfo ? caseId : undefined
-  );
+  const { data: subscription } = useCaseSubscription(crimaCase.id);
 
   const formatDate = (isoDate: string) => {
     const date = new Date(isoDate);
@@ -51,7 +37,7 @@ const GameCard = ({
     if (onClick) {
       onClick();
     }
-    navigate(`/case/${caseId}`);
+    navigate(`/case/${crimaCase.id}`);
   };
 
   const getDifficultyColor = (level: string) => {
@@ -68,23 +54,25 @@ const GameCard = ({
       className="card border-secondary card-hover h-100"
       onClick={handleCardClick}
       data-testid="case-card"
-      data-case-id={caseId}
+      data-case-id={crimaCase.id}
       style={{ cursor: 'pointer' }}
     >
-      <img className="card-img-top" src={imageUrl} alt="Crime case image"></img>
+      {crimaCase.imageUrl &&
+        <img className="card-img-top" src={crimaCase.imageUrl} alt="Crime case image"></img>
+      }
       <div className="card-body p-4 d-flex flex-column">
         <div className="d-flex justify-content-between align-items-start mb-3">
-          <h5 className="card-title mb-0" data-testid="case-title">{title}</h5>
-          {showSubscriptionInfo && subscriptionId && (
+          <h5 className="card-title mb-0" data-testid="case-title">{crimaCase.title}</h5>
+          {showSubscriptionInfo && subscription && (
             <span className="badge bg-info text-dark ms-2 flex-shrink-0">
-              ID: {subscriptionId.slice(0, 8)}
+              ID: {subscription.id.slice(0, 8)}
             </span>
           )}
         </div>
 
         {!hideDescription && (
           <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
-            {description}
+            {crimaCase.description}
           </p>
         )}
 
@@ -98,13 +86,13 @@ const GameCard = ({
                 {tDashboard('subscription.trialEnds')} {formatDate(subscription.testPeriodEnd)}
               </p>
             )}
-            {subscription?.subscriptionPeriodEnd && !subscription?.canceled && (
+            {subscription?.subscriptionPeriodEnd && subscription?.status !== 'canceled' && (
               <p className="text-success small mb-2">
                 <i className="bi bi-check-circle me-1"></i>
                 {tDashboard('subscription.activeUntil')} {formatDate(subscription.subscriptionPeriodEnd)}
               </p>
             )}
-            {subscription?.canceled && (
+            {subscription?.status === 'canceled' && (
               <p className="text-danger small mb-2">
                 <i className="bi bi-x-circle me-1"></i>
                 {tDashboard('subscription.canceled')}{' '}{subscription?.subscriptionPeriodEnd && formatDate(subscription.subscriptionPeriodEnd)}

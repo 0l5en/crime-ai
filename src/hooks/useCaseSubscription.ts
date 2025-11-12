@@ -2,7 +2,6 @@ import type { paths } from '@/openapi/crimeAiSchema';
 import { useQuery } from '@tanstack/react-query';
 import createClient from 'openapi-fetch';
 import { PATH_CRIME_AI_API } from './constants';
-import { getCsrfToken } from './util';
 
 export const useCaseSubscription = (caseId: string | undefined) => {
   const client = createClient<paths>({ baseUrl: PATH_CRIME_AI_API });
@@ -17,10 +16,6 @@ export const useCaseSubscription = (caseId: string | undefined) => {
         params: {
           path: { id: caseId },
         },
-        headers: {
-          'X-XSRF-TOKEN': getCsrfToken(),
-        },
-        credentials: 'include',
       });
 
       if (response.error) {

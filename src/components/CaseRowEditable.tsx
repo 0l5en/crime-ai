@@ -4,15 +4,18 @@ import { usePerpetratorsByCaseId } from "@/hooks/usePerpetratorsByCaseId";
 import { useSolutionEvidences } from "@/hooks/useSolutionEvidences";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
 import { components } from "@/openapi/crimeAiSchema";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Coins } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { toLocalizedString } from "./ui/DateTimeFormatter";
 
+type CrimeCaseGeneratorInfoDto = components['schemas']['CrimeCaseGeneratorInfoDto'];
 type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
+type SubscriptionDto = components['schemas']['SubscriptionDto'];
 type ExpansionState = 'SolutionExpanded' | 'DeleteWarningExpanded' | 'None';
 
-const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
+const CaseRowEditable = ({ crimeCaseGeneratorInfo }: { crimeCaseGeneratorInfo: CrimeCaseGeneratorInfoDto }) => {
     const navigate = useNavigate();
     const updateCrimeCase = useUpdateCrimeCase();
     const deleteCrimeCase = useDeleteCrimeCase();
@@ -21,7 +24,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 
     const handleStatusUpdate = async (crimeCaseDto: CrimeCaseDto) => {
         try {
-            await updateCrimeCase.mutateAsync({ caseId: crimeCaseDto.id, crimeCaseDto });
+            // await updateCrimeCase.mutateAsync({ caseId: crimeCaseDto.id, crimeCaseDto });
             toast.success('Status wurde geändert.');
         } catch (error) {
             toast.error('Status konnte nicht geändert werden: ' + error.message);
@@ -30,7 +33,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 
     const handleCrimeCaseDelete = async () => {
         try {
-            await deleteCrimeCase.mutateAsync({ caseId: crimeCase.id });
+            //await deleteCrimeCase.mutateAsync({ caseId: crimeCase.id });
             toast.success('Kriminalfall wurde gelöscht.');
         } catch (error) {
             toast.error('Fehler beim Löschen des Kriminallfalls: ' + error.message);
@@ -39,8 +42,32 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 
     return (
         <>
-            <tr key={crimeCase.id} className="border-secondary align-middle">
-                <td className="ps-4">
+            <tr key={crimeCaseGeneratorInfo.id} className="border-secondary align-middle">
+
+                <td>
+                    {crimeCaseGeneratorInfo.id}
+                </td>
+                <td>
+                    {toLocalizedString(crimeCaseGeneratorInfo.createdAt)}
+                </td>
+                <td>
+                    {crimeCaseGeneratorInfo.creator}
+                </td>
+                <td>
+                    {crimeCaseGeneratorInfo.type}
+                </td>
+
+                {crimeCaseGeneratorInfo.subscription
+                    ? <td>subscription</td>
+                    : <td>no subscription</td>}
+
+                <td>{crimeCaseGeneratorInfo.generationAttempts}</td>
+
+                {crimeCaseGeneratorInfo.crimeCase
+                    ? <td>crime case</td>
+                    : <td>no crime case</td>}
+
+                {/* <td className="ps-4">
                     {pending ? (
                         <span className="spinner-border spinner-border-sm me-2" />
                     ) : (
@@ -52,6 +79,12 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                 </td>
                 <td className="text-muted" style={{ maxWidth: '300px' }}>
                     <div className="text-truncate small">{crimeCase.description}</div>
+                </td>
+                <td>
+                    {crimeCase.owner}
+                </td>
+                <td>
+                    {crimeCase.subscription && <SubscriptionStatus subscription={crimeCase.subscription} />}
                 </td>
                 <td>
                     <div className="d-flex">
@@ -137,14 +170,14 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
                     >
                         <i className="bi bi-trash"></i>
                     </button>
-                </td>
+                </td> */}
             </tr>
-            {expanded === 'SolutionExpanded' && (
+            {/* {expanded === 'SolutionExpanded' && (
                 <SolutionRow caseId={crimeCase.id} />
             )}
             {expanded === 'DeleteWarningExpanded' && (
                 <DeleteWarningRow pending={pending} deleteCrimeCase={handleCrimeCaseDelete} cancelDelete={() => setExpanded('None')} />
-            )}
+            )} */}
         </>
     );
 
@@ -153,7 +186,7 @@ const CaseRowEditable = ({ crimeCase }: { crimeCase: CrimeCaseDto }) => {
 const DeleteWarningRow = ({ pending, deleteCrimeCase, cancelDelete }: { pending: boolean; deleteCrimeCase: () => void; cancelDelete: () => void }) => {
     return (
         <tr>
-            <td colSpan={8} className="bg-dark border-secondary">
+            <td colSpan={10} className="bg-dark border-secondary">
                 <div className="d-flex flex-column">
                     <h1 className="text-danger mb-3 text-center">⚠️ Achtung ⚠️</h1>
                     <h2 className="text-center">Beim Löschen werden sämtliche Daten für den Fall gelöscht!</h2>
@@ -200,7 +233,7 @@ const SolutionRow = ({ caseId }: { caseId: string }) => {
 
     return (
         <tr>
-            <td colSpan={8} className="bg-dark border-secondary">
+            <td colSpan={10} className="bg-dark border-secondary">
                 <div className="p-4">
                     {isLoading && (
                         <div className="d-flex align-items-center gap-2 text-muted">
@@ -288,5 +321,45 @@ const SolutionRow = ({ caseId }: { caseId: string }) => {
         </tr>
     );
 };
+
+const SubscriptionStatus = ({ subscription }: { subscription: SubscriptionDto }) => {
+
+    const getColor = (subscription: SubscriptionDto) => {
+        if (subscription.canceledAt) {
+            return 'text-secondary';
+        }
+        if (subscription.status === 'trialing') {
+            return 'text-warning';
+        }
+        if (subscription.status === 'active') {
+            return 'text-success'
+        }
+        return 'text-danger';
+    }
+
+    const getLabel = (subscription: SubscriptionDto) => {
+        if (subscription.canceledAt) {
+            return 'gekündigt';
+        }
+        if (subscription.status === 'trialing') {
+            return 'testen';
+        }
+        if (subscription.status === 'active') {
+            return 'bezahlt'
+        }
+        return 'unbezahlt';
+    }
+
+    const bgColor = getColor(subscription);
+    const label = getLabel(subscription);
+
+    return (
+        <div className="d-flex">
+            {/* <span className={`d-flex align-items-center badge ${bgColor}`}> */}
+            <span className={`me-2 ${bgColor}`}><Coins /></span> {label}
+            {/* </span> */}
+        </div>
+    );
+}
 
 export default CaseRowEditable;

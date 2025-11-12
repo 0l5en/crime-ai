@@ -1,18 +1,18 @@
 import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import Header from "@/components/Header";
-import { useUserContext } from '@/contexts/UserContext';
 import { useCrimeCases } from "@/hooks/useCrimeCasesBasic";
+import { components } from "@/openapi/crimeAiSchema";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
 const Cases = () => {
   const { t } = useTranslation("cases");
   const [page, setPage] = useState(1);
-  const [allCases, setAllCases] = useState<any[]>([]);
+  const [allCases, setAllCases] = useState<CrimeCaseDto[]>([]);
   const [hasMore, setHasMore] = useState(true);
-
-  const user = useUserContext();
 
   const {
     data: crimeCases,
@@ -113,15 +113,9 @@ const Cases = () => {
           {!error && allCases.length > 0 && (
             <>
               <div className="row g-4 mb-4">
-                {allCases.map((crimeCase, index) => (
+                {allCases.map((crimeCase) => (
                   <div key={crimeCase.id} className="col-lg-4 col-md-6">
-                    <GameCard
-                      title={crimeCase.title}
-                      description={crimeCase.summary}
-                      imageUrl={crimeCase.imageUrl}
-                      caseId={crimeCase.id}
-                      userId={user?.email}
-                    />
+                    <GameCard crimaCase={crimeCase} />
                   </div>
                 ))}
               </div>

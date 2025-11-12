@@ -60,13 +60,7 @@ const GameShowcase = () => {
             <div className="row g-4 mb-5 justify-content-center">
               {crimeCases.items.slice(0, 3).map((crimeCase, index) => (
                 <div key={crimeCase.id} className="col-lg-4 col-md-6">
-                  <GameCard
-                    title={crimeCase.title}
-                    description={crimeCase.summary}
-                    imageUrl={crimeCase.imageUrl}
-                    caseId={crimeCase.id}
-                    userId={user?.email}
-                  />
+                  <GameCard crimaCase={crimeCase} />
                 </div>
               ))}
             </div>
