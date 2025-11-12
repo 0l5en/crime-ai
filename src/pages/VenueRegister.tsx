@@ -74,7 +74,7 @@ const VenueRegister = () => {
 
       <main className="flex-grow-1">
         <div className="container-fluid py-5">
-          <div className="row g-0">
+          <div className="row g-0 min-vh-100">
             {/* Left side - Features */}
             <div
               className="col-lg-6 d-none d-lg-flex text-light"
