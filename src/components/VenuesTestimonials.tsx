@@ -11,9 +11,9 @@ const VenuesTestimonials = () => {
   const isDark = theme === 'dark';
 
   const testimonials = [
-    { avatar: thomasAvatar, key: '1' },
-    { avatar: lauraAvatar, key: '2' },
-    { avatar: marcusAvatar, key: '3' }
+    { avatar: thomasAvatar, key: 'sarah' },
+    { avatar: lauraAvatar, key: 'marcus' },
+    { avatar: marcusAvatar, key: 'elena' }
   ];
 
   return (
@@ -105,7 +105,7 @@ const VenuesTestimonials = () => {
                     fontStyle: 'italic'
                   }}
                 >
-                  "{t(`testimonials.items.${testimonial.key}.quote`)}"
+                  "{t(`testimonials.items.${testimonial.key}.text`)}"
                 </p>
 
                 {/* Author Info */}
@@ -115,7 +115,7 @@ const VenuesTestimonials = () => {
                       color: isDark ? undefined : '#2d3748', 
                       fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' 
                     }}>
-                      {t(`testimonials.items.${testimonial.key}.author`)}
+                      {t(`testimonials.items.${testimonial.key}.name`)}
                     </p>
                     <p className={isDark ? "mb-0 text-light" : "mb-0"} style={{ 
                       color: isDark ? undefined : '#4a5568',
