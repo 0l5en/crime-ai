@@ -37,7 +37,7 @@ const VenuesHero = () => {
     <section 
       className="position-relative d-flex align-items-center justify-content-center px-4"
       style={{
-        minHeight: '100vh',
+        height: 'calc(100vh - 63px)',
         backgroundImage: isDark 
           ? `linear-gradient(rgba(24, 29, 53, 0.85), rgba(24, 29, 53, 0.85)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`
           : `linear-gradient(rgba(247, 250, 252, 0.82), rgba(247, 250, 252, 0.82)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
