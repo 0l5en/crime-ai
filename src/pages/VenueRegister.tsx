@@ -303,7 +303,7 @@ const VenueRegister = () => {
                     title={t("inactive")}
                     style={{
                       padding: "16px",
-                      fontSize: "1.2rem",
+                      fontSize: "1.4rem",
                       borderRadius: "12px",
                       border: "none",
                       transition: "all 0.3s ease",
