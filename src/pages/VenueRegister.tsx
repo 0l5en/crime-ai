@@ -92,7 +92,7 @@ const VenueRegister = () => {
                 background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)",
                 borderRadius: "20px",
                 padding: "3rem",
-                paddingBottom: "2rem",
+                paddingBottom: "1rem",
                 display: "flex",
                 alignItems: "flex-start",
                 justifyContent: "center",
