@@ -83,19 +83,19 @@
           "answer": "Wir benötigen grundlegende Details wie Layout, Anzahl der Zimmer, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Ferienwohnung einzigartig machen. Dies hilft uns, das perfekte Mystery-Erlebnis zu gestalten."
         },
         "q3": {
-          "question": "Wie lange dauert die Erstellung meines individuellen Cases?",
-          "answer": "Ihr exklusiver und individueller Fall wird innerhalb von 24 Stunden nach Abschluss Ihrer Ferienwohnungs-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um ein einzigartiges Mystery zu erstellen, das auf Ihre spezifische Ferienwohnung zugeschnitten ist."
+          "question": "Wie lange dauert die Erstellung meines exklusiven Detektivfalls?",
+          "answer": "Ihr individueller Fall wird innerhalb von 24 Stunden nach Abschluss Ihrer Ferienwohnungs-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um ein einzigartiges Mystery zu erstellen, das auf Ihre spezifische Ferienwohnung zugeschnitten ist."
         }
       },
       "bookings": {
         "title": "Buchungen & Stornierungen",
         "q1": {
           "question": "Kann ich mein Abonnement jederzeit kündigen?",
-          "answer": "Ja, Sie können Ihr Abonnement jederzeit zum nächsten Buchungstermin kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
+          "answer": "Ja, Sie können Ihr Abonnement jederzeit zum nächsten Buchungstermin kündigen. Ihr Fall bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
         },
         "q2": {
           "question": "Was passiert während der 7-tägigen kostenlosen Testversion?",
-          "answer": "Während Ihrer kostenlosen Testversion erhalten Sie vollen Zugang zu unserer Plattform, individueller Case-Erstellung und allen Funktionen. Sie können vor Ende der Testversion kündigen, um Gebühren zu vermeiden."
+          "answer": "Während Ihrer kostenlosen Testversion erhalten Sie vollen Zugang zu unserer Plattform, individueller Fall-Erstellung und allen Funktionen. Sie können vor Ende der Testversion kündigen, um Gebühren zu vermeiden."
         },
         "q3": {
           "question": "Bieten Sie Rückerstattungen an?",
@@ -124,7 +124,7 @@
           "answer": "Wir bieten 24/7 Kundensupport per E-Mail und Chat. Unser Team hilft bei Setup, Fehlerbehebung, Case-Updates und allen Fragen zur Maximierung Ihres Gästeerlebnisses."
         },
         "q2": {
-          "question": "Wie greifen Gäste auf den Mystery-Case zu?",
+          "question": "Wie greifen Gäste auf den Detektivfall zu?",
           "answer": "Gäste scannen einfach einen einzigartigen QR-Code, den Sie in Ihrer Location anzeigen. Dies gibt ihnen sofortigen Zugriff auf ihr Mystery-Abenteuer auf jedem Smartphone oder Tablet - keine App-Downloads erforderlich."
         },
         "q3": {
