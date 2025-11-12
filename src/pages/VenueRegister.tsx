@@ -312,14 +312,14 @@ const VenueRegister = () => {
                   </button>
 
                   <div 
-                    className="text-center p-3"
+                    className="d-flex justify-content-between align-items-center p-3"
                     style={{
                       backgroundColor: 'rgba(255, 255, 255, 0.03)',
                       borderRadius: '12px',
                       border: '1px solid rgba(255, 255, 255, 0.1)'
                     }}
                   >
-                    <span className="text-muted">{t('form.alreadyRegistered')} </span>
+                    <span className="text-muted">{t('form.alreadyRegistered')}</span>
                     <SignInButton />
                   </div>
                 </form>
