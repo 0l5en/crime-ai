@@ -26,9 +26,12 @@ const VenuesHero = () => {
   const scrollToHowItWorks = () => {
     const howItWorksSection = document.querySelector('[data-section="how-it-works"]');
     if (howItWorksSection) {
-      howItWorksSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      const yOffset = -63; // Header height offset
+      const y = howItWorksSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
       });
     }
   };
