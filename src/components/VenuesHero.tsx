@@ -39,7 +39,7 @@ const VenuesHero = () => {
       style={{
         minHeight: '100vh',
         backgroundImage: isDark 
-          ? `linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 33, 62, 0.85)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`
+          ? `linear-gradient(rgba(24, 29, 53, 0.85), rgba(24, 29, 53, 0.85)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`
           : `linear-gradient(rgba(247, 250, 252, 0.82), rgba(247, 250, 252, 0.82)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
         backgroundSize: 'cover',
         backgroundPosition: `center ${scrollY * 0.3}px`,

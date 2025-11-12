@@ -16,7 +16,7 @@ const VenuesFAQ = () => {
   return (
     <section className="py-4 py-md-5 d-flex align-items-center" style={{ 
       minHeight: '100vh', 
-      backgroundColor: isDark ? '#16213e' : '#F7FAFC' 
+      backgroundColor: isDark ? '#181D35' : '#F7FAFC' 
     }}>
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">

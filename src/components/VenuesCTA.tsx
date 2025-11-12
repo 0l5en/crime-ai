@@ -14,7 +14,7 @@ const VenuesCTA = () => {
       className="py-4 py-md-5 d-flex align-items-center" 
       style={{ 
         minHeight: '100vh', 
-        backgroundColor: isDark ? '#16213e' : '#f7fafc' 
+        backgroundColor: isDark ? '#181D35' : '#f7fafc' 
       }} 
       data-section="contact"
     >

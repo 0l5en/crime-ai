@@ -10,7 +10,7 @@ const HowItWorks = () => {
   return (
     <section className="py-4 py-md-5 d-flex align-items-center" style={{ 
       minHeight: '100vh', 
-      backgroundColor: isDark ? '#16213e' : '#f7fafc' 
+      backgroundColor: isDark ? '#181D35' : '#f7fafc' 
     }} data-section="how-it-works">
       <div className="container px-3">
         <div className="row justify-content-center mb-4 mb-md-5">
