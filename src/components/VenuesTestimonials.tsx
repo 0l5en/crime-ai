@@ -1,19 +1,48 @@
 import { Quote } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/hooks/useTheme';
-import thomasAvatar from '@/assets/thomas-avatar.jpg';
-import lauraAvatar from '@/assets/laura-avatar.jpg';
-import marcusAvatar from '@/assets/marcus-avatar.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+// German avatars
+import thomasMuellerDe from '@/assets/avatars/thomas-mueller-de.jpg';
+import lauraSchmidtDe from '@/assets/avatars/laura-schmidt-de.jpg';
+import marcusWeberDe from '@/assets/avatars/marcus-weber-de.jpg';
+
+// English avatars
+import jamesAndersonEn from '@/assets/avatars/james-anderson-en.jpg';
+import emilyParkerEn from '@/assets/avatars/emily-parker-en.jpg';
+import oliverBennettEn from '@/assets/avatars/oliver-bennett-en.jpg';
+
+// Italian avatars
+import marcoBianchiIt from '@/assets/avatars/marco-bianchi-it.jpg';
+import sofiaRossiIt from '@/assets/avatars/sofia-rossi-it.jpg';
+import alessandroContiIt from '@/assets/avatars/alessandro-conti-it.jpg';
+
+// French avatars
+import thomasDuboisFr from '@/assets/avatars/thomas-dubois-fr.jpg';
+import sophieLaurentFr from '@/assets/avatars/sophie-laurent-fr.jpg';
+import marcRousseauFr from '@/assets/avatars/marc-rousseau-fr.jpg';
 
 const VenuesTestimonials = () => {
   const { t } = useTranslation('venues');
   const { theme } = useTheme();
+  const { currentLanguage } = useLanguage();
   const isDark = theme === 'dark';
 
+  // Select avatars based on current language
+  const avatarsByLanguage = {
+    de: [thomasMuellerDe, lauraSchmidtDe, marcusWeberDe],
+    en: [jamesAndersonEn, emilyParkerEn, oliverBennettEn],
+    it: [marcoBianchiIt, sofiaRossiIt, alessandroContiIt],
+    fr: [thomasDuboisFr, sophieLaurentFr, marcRousseauFr]
+  };
+
+  const selectedAvatars = avatarsByLanguage[currentLanguage] || avatarsByLanguage.de;
+
   const testimonials = [
-    { avatar: thomasAvatar, key: 'sarah' },
-    { avatar: lauraAvatar, key: 'marcus' },
-    { avatar: marcusAvatar, key: 'elena' }
+    { avatar: selectedAvatars[0], key: 'sarah' },
+    { avatar: selectedAvatars[1], key: 'marcus' },
+    { avatar: selectedAvatars[2], key: 'elena' }
   ];
 
   return (
