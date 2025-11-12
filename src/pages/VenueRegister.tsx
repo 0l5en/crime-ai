@@ -77,10 +77,11 @@ const VenueRegister = () => {
           <div className="row g-0 min-vh-100">
             {/* Left side - Features */}
             <div
-              className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center p-5 text-light"
+              className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center text-light"
               style={{
                 background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-                borderRadius: '20px'
+                borderRadius: '20px',
+                padding: '2rem 3rem'
               }}
             >
               <div className="w-100" style={{ maxWidth: '500px' }}>
