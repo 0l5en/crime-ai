@@ -19,7 +19,7 @@ const WhyVenueOwners = () => {
               color: isDark ? undefined : '#2d3748',
               fontSize: 'clamp(1.5rem, 5vw, 3rem)'
             }}>
-              {t('whyUs.title')}
+              {t('why.title')}
             </h2>
             <p className={isDark ? "px-2 text-light" : "px-2"} style={{ 
               color: isDark ? undefined : '#4a5568',
@@ -27,7 +27,7 @@ const WhyVenueOwners = () => {
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)',
               lineHeight: '1.7'
             }}>
-              {t('whyUs.subtitle')}
+              {t('why.subtitle')}
             </p>
           </div>
         </div>
@@ -80,7 +80,7 @@ const WhyVenueOwners = () => {
                     fontWeight: '700',
                     fontSize: 'clamp(1.1rem, 3vw, 1.5rem)'
                   }}>
-                    {t(`whyUs.benefits.${benefit.key}.title`)}
+                    {t(`why.benefits.${benefit.key}.title`)}
                   </h4>
                   <p className={isDark ? "mb-0 text-light" : "mb-0"} style={{ 
                     color: isDark ? undefined : '#4a5568',
@@ -88,7 +88,7 @@ const WhyVenueOwners = () => {
                     lineHeight: '1.7',
                     fontSize: 'clamp(0.9rem, 2vw, 1rem)'
                   }}>
-                    {t(`whyUs.benefits.${benefit.key}.description`)}
+                    {t(`why.benefits.${benefit.key}.description`)}
                   </p>
                 </div>
               </div>
