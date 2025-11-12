@@ -108,8 +108,8 @@ const VenueRegister = () => {
                       <div
                         className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
                         style={{
-                          width: "48px",
-                          height: "48px",
+                          width: "50px",
+                          height: "50px",
                           backgroundColor: "rgba(220, 38, 38, 0.2)",
                           border: "2px solid rgb(220, 38, 38)",
                         }}
