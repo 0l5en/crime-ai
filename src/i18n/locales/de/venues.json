@@ -80,7 +80,7 @@
         },
         "q2": {
           "question": "Welche Informationen benötigen Sie über meine Ferienunterkunft?",
-          "answer": "Wir benötigen grundlegende Details wie Layout, Anzahl der Zimmer, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Ferienwohnung einzigartig machen. Dies hilft uns, Ihr perfektes Detektiv-Erlebnis zu gestalten."
+          "answer": "Wir benötigen grundlegende Details wie Layout, Anzahl der Zimmer, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Ferienunterkunft einzigartig machen. Dies hilft uns, Ihr perfektes Detektiv-Erlebnis zu gestalten."
         },
         "q3": {
           "question": "Wie lange dauert die Erstellung meines exklusiven Detektivfalls?",
@@ -125,10 +125,10 @@
         },
         "q2": {
           "question": "Wie greifen Gäste auf den Detektivfall zu?",
-          "answer": "Gäste scannen einfach einen einzigartigen QR-Code, den Sie in Ihrer Location anzeigen. Dies gibt ihnen sofortigen Zugriff auf ihr Mystery-Abenteuer auf jedem Smartphone oder Tablet - keine App-Downloads erforderlich."
+          "answer": "Gäste scannen einfach einen einzigartigen QR-Code, den Sie in Ihrer Location anzeigen. Dies gibt ihnen sofortigen Zugriff auf ihr Detektiv-Abenteuer auf jedem Smartphone oder Tablet - keine App-Downloads erforderlich."
         },
         "q3": {
-          "question": "Können Sie meinen Case im Laufe der Zeit aktualisieren oder ändern?",
+          "question": "Können Sie meinen Fall im Laufe der Zeit aktualisieren oder ändern?",
           "answer": "Auf jeden Fall! Wir können saisonale Varianten erstellen, Handlungsstränge aktualisieren oder Cases basierend auf Gästefeedback ändern. Dies hält das Erlebnis für Wiederholungsbesucher frisch."
         }
       }
