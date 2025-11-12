@@ -46,7 +46,7 @@
     "subtitle": "Günstiges monatliches Abonnement mit risikofreier 7-Tage Testphase",
     "plan": {
       "name": "Ferienwohnungs-Plan",
-      "price": "$9.99",
+      "price": "9.99€",
       "period": "/Monat",
       "trial": "Nach 7-tägiger kostenloser Testversion"
     },
