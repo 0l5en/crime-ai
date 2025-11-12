@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useTheme } from '@/hooks/useTheme';
 
 const VenuesHero = () => {
   const { t } = useTranslation('venues');
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +38,9 @@ const VenuesHero = () => {
       className="position-relative d-flex align-items-center justify-content-center px-4"
       style={{
         minHeight: '100vh',
-        backgroundImage: `linear-gradient(rgba(247, 250, 252, 0.82), rgba(247, 250, 252, 0.82)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
+        backgroundImage: isDark 
+          ? `linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 33, 62, 0.85)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`
+          : `linear-gradient(rgba(247, 250, 252, 0.82), rgba(247, 250, 252, 0.82)), url('/lovable-uploads/06bb6f8b-cb6d-42cf-85f7-197f4ec4051b.png')`,
         backgroundSize: 'cover',
         backgroundPosition: `center ${scrollY * 0.3}px`,
         backgroundRepeat: 'no-repeat',
@@ -44,9 +49,9 @@ const VenuesHero = () => {
     >
       <div className="container text-center px-3">
         <h1 
-          className="fw-bold mb-3 mb-md-4" 
+          className={isDark ? "fw-bold text-light mb-3 mb-md-4" : "fw-bold mb-3 mb-md-4"}
           style={{ 
-            color: '#2d3748',
+            color: isDark ? undefined : '#2d3748',
             lineHeight: '1.2',
             fontSize: 'clamp(1.5rem, 4vw, 3.5rem)'
           }}
@@ -60,9 +65,10 @@ const VenuesHero = () => {
             ) : part
           ))}
         </h1>
-        <p className="lead mb-4 mb-md-5 mx-auto px-2" style={{ 
+        <p className={isDark ? "lead mb-4 mb-md-5 mx-auto px-2 text-light" : "lead mb-4 mb-md-5 mx-auto px-2"} style={{ 
           maxWidth: '800px', 
-          color: '#4a5568',
+          color: isDark ? undefined : '#4a5568',
+          opacity: isDark ? 0.85 : 1,
           fontSize: 'clamp(0.95rem, 2vw, 1.25rem)',
           lineHeight: '1.6'
         }}>
@@ -90,7 +96,11 @@ const VenuesHero = () => {
             {t('howItWorks.title')}
           </button>
         </div>
-        <p className="px-2" style={{ fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)', color: '#718096' }}>
+        <p className={isDark ? "px-2 text-light" : "px-2"} style={{ 
+          fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)', 
+          color: isDark ? undefined : '#718096',
+          opacity: isDark ? 0.85 : 1
+        }}>
           {t('hero.trial')}
         </p>
       </div>
