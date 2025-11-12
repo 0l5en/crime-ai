@@ -77,15 +77,19 @@ const VenueRegister = () => {
           <div className="row g-0 min-vh-100">
             {/* Left side - Features */}
             <div
-              className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center text-light"
+              className="col-lg-6 d-none d-lg-flex text-light"
               style={{
                 background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
                 borderRadius: '20px',
-                padding: '2rem 3rem'
+                padding: '3rem',
+                paddingBottom: '2rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center'
               }}
             >
-              <div className="w-100" style={{ maxWidth: '500px' }}>
-                <h2 className="h3 fw-bold mb-4 text-light">
+              <div className="w-100" style={{ maxWidth: '500px', marginTop: '0' }}>
+                <h2 className="h4 fw-bold mb-3 text-light">
                   {t('features.title')}
                 </h2>
                 <p className="lead mb-5 opacity-75">
