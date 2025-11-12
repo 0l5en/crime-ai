@@ -139,22 +139,22 @@
     "subtitle": "Rejoignez des centaines de propriétaires de lieux à succès qui ont transformé leur expérience client.",
     "items": {
       "sarah": {
-        "name": "Sarah Mitchell",
-        "venue": "Seaside Escape Airbnb",
-        "location": "Monterey, CA",
-        "text": "Notre taux de réservation a augmenté de 40% après avoir ajouté le cas mystère personnalisé. Les invités le mentionnent spécifiquement dans leurs avis 5 étoiles et beaucoup réservent des séjours de retour juste pour essayer les variations saisonnières!"
+        "name": "Thomas Dubois",
+        "venue": "Maison Provençale",
+        "location": "Aix-en-Provence",
+        "text": "Notre taux de réservation a augmenté de 40% depuis que nous proposons l'enquête personnalisée. Les invités le mentionnent dans chaque avis positif et beaucoup reviennent spécialement pour découvrir les variantes saisonnières!"
       },
       "marcus": {
-        "name": "Marcus Thompson",
-        "venue": "The Historic Inn",
-        "location": "Savannah, GA",
-        "text": "Le cas mystère capture parfaitement le charme historique de notre auberge. C'est devenu notre équipement signature - les invités prolongent souvent leurs séjours pour profiter pleinement de l'expérience. Vaut chaque centime!"
+        "name": "Sophie Laurent",
+        "venue": "Chalet Montagnard",
+        "location": "Chamonix",
+        "text": "L'enquête policière capture parfaitement l'ambiance alpine de notre chalet. C'est devenu notre atout principal - les invités prolongent souvent leur séjour pour résoudre le mystère tranquillement. Vaut chaque euro!"
       },
       "elena": {
-        "name": "Elena Rodriguez",
-        "venue": "Mountain View Resort",
-        "location": "Aspen, CO",
-        "text": "La mise en œuvre a été fluide et l'équipe de support était incroyable. Nos invités adorent les éléments interactifs et nous avons justifié une augmentation de tarif de 25%. Les analyses nous aident à optimiser constamment."
+        "name": "Marc Rousseau",
+        "venue": "Gîte Breton",
+        "location": "Saint-Malo",
+        "text": "La mise en place a été simple et l'équipe de support exceptionnelle. Nos invités adorent les énigmes interactives et nous avons justifié une augmentation de tarif de 25%. Les analyses nous aident à améliorer constamment l'expérience."
       }
     }
   },

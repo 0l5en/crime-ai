@@ -139,22 +139,22 @@
     "subtitle": "Join hundreds of successful venue owners who've transformed their guest experience.",
     "items": {
       "sarah": {
-        "name": "Sarah Mitchell",
-        "venue": "Seaside Escape Airbnb",
-        "location": "Monterey, CA",
-        "text": "Our booking rate increased by 40% after adding the custom mystery case. Guests specifically mention it in their 5-star reviews and many book return stays just to try seasonal variations!"
+        "name": "James Anderson",
+        "venue": "The Cotswold Cottage",
+        "location": "Bath, UK",
+        "text": "Our booking rate increased by 40% after adding the bespoke mystery case. Guests specifically mention it in their reviews and many return just to experience the seasonal variations. Absolutely brilliant!"
       },
       "marcus": {
-        "name": "Marcus Thompson",
-        "venue": "The Historic Inn",
-        "location": "Savannah, GA",
-        "text": "The mystery case perfectly captures our inn's historic charm. It's become our signature amenity - guests often extend their stays to fully enjoy the experience. Worth every penny!"
+        "name": "Emily Parker",
+        "venue": "Highland Retreat",
+        "location": "Edinburgh, Scotland",
+        "text": "The mystery case perfectly captures the atmosphere of our Scottish retreat. It's become our signature feature - guests often extend their stays to fully immerse themselves in the experience. Worth every penny!"
       },
       "elena": {
-        "name": "Elena Rodriguez",
-        "venue": "Mountain View Resort",
-        "location": "Aspen, CO",
-        "text": "Implementation was seamless and the support team was incredible. Our guests love the interactive elements, and we've justified a 25% rate increase. The analytics help us optimize constantly."
+        "name": "Oliver Bennett",
+        "venue": "Seaside Escape",
+        "location": "Cornwall, UK",
+        "text": "Implementation was seamless and the support team was fantastic. Our guests adore the interactive elements, and we've justified a 25% rate increase. The analytics help us refine the experience constantly."
       }
     }
   },

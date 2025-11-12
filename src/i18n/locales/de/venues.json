@@ -139,22 +139,22 @@
     "subtitle": "Schließen Sie sich hunderten erfolgreichen Ferienwohnungsbesitzern an, die ihr Gästeerlebnis transformiert haben.",
     "items": {
       "sarah": {
-        "name": "Sarah Mitchell",
-        "venue": "Seaside Escape Airbnb",
-        "location": "Monterey, CA",
-        "text": "Unsere Buchungsrate stieg um 40% nach Hinzufügen des individuellen Mystery-Cases. Gäste erwähnen es speziell in ihren 5-Sterne-Bewertungen und viele buchen Wiederholungsaufenthalte, nur um saisonale Varianten auszuprobieren!"
+        "name": "Thomas Müller",
+        "venue": "Ferienwohnung Alpenblick",
+        "location": "Garmisch-Partenkirchen",
+        "text": "Unsere Buchungsrate ist um 40% gestiegen, seit wir den maßgeschneiderten Kriminalfall anbieten. Gäste erwähnen ihn in jeder positiven Bewertung und viele buchen gezielt wieder bei uns, um neue saisonale Varianten zu spielen!"
       },
       "marcus": {
-        "name": "Marcus Thompson",
-        "venue": "The Historic Inn",
-        "location": "Savannah, GA",
-        "text": "Der Mystery-Case fängt perfekt den historischen Charme unseres Gasthauses ein. Es ist zu unserem Signature-Angebot geworden - Gäste verlängern oft ihre Aufenthalte, um das Erlebnis voll zu genießen. Jeden Cent wert!"
+        "name": "Laura Schmidt",
+        "venue": "Ostsee-Hideaway",
+        "location": "Rügen",
+        "text": "Der Detektivfall passt perfekt zum maritimen Charme unserer Ferienwohnung. Es ist unser Alleinstellungsmerkmal geworden - Gäste verlängern oft ihren Aufenthalt, um den Fall in Ruhe zu lösen. Jeden Euro wert!"
       },
       "elena": {
-        "name": "Elena Rodriguez",
-        "venue": "Mountain View Resort",
-        "location": "Aspen, CO",
-        "text": "Die Implementierung war nahtlos und das Support-Team war unglaublich. Unsere Gäste lieben die interaktiven Elemente, und wir haben eine 25%ige Preiserhöhung gerechtfertigt. Die Analysen helfen uns, konstant zu optimieren."
+        "name": "Marcus Weber",
+        "venue": "Schwarzwald-Chalet",
+        "location": "Titisee-Neustadt",
+        "text": "Die Einrichtung war kinderleicht und der Support hervorragend. Unsere Gäste sind begeistert von den interaktiven Rätseln und wir konnten unsere Preise um 25% erhöhen. Die Analysen helfen uns, das Angebot ständig zu verbessern."
       }
     }
   },
