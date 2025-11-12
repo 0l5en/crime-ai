@@ -24,15 +24,29 @@
     "noQRCodesDescription": "Create some vacation rental cases first to generate QR codes for promotion.",
     "goToCases": "Go to Cases",
     "scanToAccess": "Scan to access case directly",
-    "downloadQRCode": "Download QR Code"
+    "downloadFlyer": "Download Flyer",
+    "downloadPrintTemplate": "Download Print Template (A4, 5 Flyers)",
+    "flyerPreview": "Flyer Preview",
+    "flyerDescription": "Download a pre-made flyer with QR code that you can print and distribute.",
+    "printTemplateDescription": "Download an A4 print template with 5 flyers ready to cut out.",
+    "colorVariant": "Color Variant",
+    "originalColor": "Orange (Original)",
+    "accentColor": "Red (Accent)",
+    "tealColor": "Teal"
   },
   "subscriptionTab": {
     "title": "Subscription",
     "description": "Manage your subscription and billing information here."
   },
   "form": {
-    "title": "Create New Vacation Rental Case",
+    "title": "Create Your Vacation Rental Case",
+    "description": "Fill out the form below to create a unique crime case for your vacation rental. Upon completing the free 7-day trial subscription, the creation of your individual detective case will begin. The generation takes up to 24 hours. You will be notified by email once your case is ready. Afterwards, you can generate QR codes that your guests can scan to play the case.",
     "backToOverview": "Back to Overview",
+    "progress": {
+      "title": "Form Progress",
+      "completed": "{{completed}} of {{total}} required fields completed",
+      "percentage": "{{percentage}}% complete"
+    },
     "sections": {
       "basicSettings": "Basic Settings",
       "location": "Location",
@@ -121,12 +135,12 @@
       "addAttraction": "+ Add Attraction",
       "removeAttraction": "Remove",
       "cancel": "Cancel",
-      "submit": "Create Vacation Rental Case",
+      "submit": "Create Your Vacation Rental Case",
       "submitting": "Creating..."
     }
   },
   "addCaseCard": {
-    "title": "Add New Case",
+    "title": "Create Your Vacation Rental Case",
     "description": "Create a new vacation rental case"
   },
   "subscription": {
@@ -149,5 +163,10 @@
       "formValidationError": "Please correct the highlighted fields.",
       "unknownError": "An unknown error occurred."
     }
+  },
+  "autosave": {
+    "restored": "Your previously entered data has been restored.",
+    "saved": "Progress automatically saved",
+    "cleared": "Saved data cleared"
   }
 }

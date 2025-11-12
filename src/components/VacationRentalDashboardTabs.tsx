@@ -1,4 +1,4 @@
-import { FileText, Home } from 'lucide-react';
+import { FolderOpen, Megaphone } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useTranslation } from 'react-i18next';
 
@@ -12,8 +12,8 @@ const VacationRentalDashboardTabs = ({ activeTab, onTabChange }: VacationRentalD
   const isMobile = useIsMobile();
 
   const tabs = [
-    { id: 'cases', label: t('tabs.cases'), icon: Home },
-    { id: 'promotion', label: t('tabs.promotion'), icon: FileText },
+    { id: 'cases', label: t('tabs.cases'), icon: FolderOpen },
+    { id: 'promotion', label: t('tabs.promotion'), icon: Megaphone },
   ];
 
   return (

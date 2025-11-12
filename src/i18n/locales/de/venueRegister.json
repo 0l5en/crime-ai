@@ -1,29 +1,29 @@
 {
-  "title": "Als Venue-Besitzer registrieren",
-  "subtitle": "Erstellen Sie unvergessliche Mystery-Erlebnisse für Ihre Gäste",
+  "title": "Als Ferienunterkunftsbesitzer registrieren",
+  "subtitle": "Erstellen Sie unvergessliche Detektiv-Erlebnisse für Ihre Gäste",
   "features": {
-    "title": "Warum DetectivesGame für Ihr Venue?",
-    "subtitle": "Verwandeln Sie Ihre Location in ein interaktives Detektiv-Abenteuer",
+    "title": "Warum DetectivesGame für Ihre Ferienunterkunft?",
+    "subtitle": "Verwandeln Sie Ihre Ferienunterkunft in ein interaktives Detektiv-Abenteuer!",
     "items": {
       "exclusive": {
-        "title": "Exklusiver Case für Ihr Venue",
-        "description": "Erhalten Sie einen individuell erstellten Kriminalfall, der speziell auf Ihre Location zugeschnitten ist"
+        "title": "Exklusiver Fall für Ihre Ferienunterkunft",
+        "description": "Erhalten Sie einen individuell erstellten Kriminalfall, der speziell auf Ihre Unterkunft zugeschnitten ist"
       },
       "unlimited": {
         "title": "Unbegrenzter Gästezugang",
-        "description": "Alle Ihre Gäste können den Case kostenlos spielen - keine Limits"
+        "description": "Alle Ihre Gäste können den Detektivfall ganz einfach kostenlos spielen - keine Limits"
       },
       "qrCode": {
         "title": "Einfacher QR-Code Zugang",
-        "description": "Gäste scannen einfach einen QR-Code und starten sofort das Abenteuer"
+        "description": "Ihre Gäste scannen einfach einen QR-Code und starten sofort das Detektiv-Abenteuer"
       },
       "analytics": {
         "title": "Detaillierte Analysen",
-        "description": "Verfolgen Sie Engagement und sehen Sie, wie Gäste mit Ihrem Case interagieren"
+        "description": "Verfolgen Sie Engagement und sehen Sie, wie die Gäste mit Ihrem Detektivfall interagieren"
       },
       "free": {
         "title": "Kostenlos & unverbindlich",
-        "description": "Keine versteckten Kosten, keine Verpflichtungen - testen Sie es risikofrei"
+        "description": "Keine versteckten Kosten, keine Verpflichtungen - testen Sie Ihren Fall 7 Tage risikofrei"
       }
     }
   },
@@ -32,7 +32,7 @@
     "email": "E-Mail-Adresse",
     "password": "Passwort",
     "confirmPassword": "Passwort wiederholen",
-    "submit": "Jetzt registrieren",
+    "submit": "Jetzt kostenlos registrieren",
     "alreadyRegistered": "Bereits registriert?",
     "signIn": "Anmelden",
     "termsPrefix": "Durch die Registrierung akzeptieren Sie unsere",

@@ -3,12 +3,12 @@ import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
-import QRCodeCard from "@/components/QRCodeCard";
+import FlyerDownloadCard from "@/components/FlyerDownloadCard";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
 import { useCrimeCases } from "@/hooks/useCrimeCasesVacationRental";
 import { useMyCaseGenerationAttempts } from "@/hooks/useMyCaseGenerationAttempts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 
 const VacationRentalDashboard = () => {
@@ -25,6 +25,13 @@ const VacationRentalDashboard = () => {
 
   const isLoading = casesLoading || attemptsLoading;
   const error = casesError;
+
+  // Scroll to top when form is shown
+  useEffect(() => {
+    if (showCreateForm) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showCreateForm]);
 
   // Form handlers
   const handleCreateNewCase = () => {
@@ -191,7 +198,7 @@ const VacationRentalDashboard = () => {
         <div className="row g-4">
           {cases.map((crimeCase) => (
             <div key={crimeCase.id} className="col-12 col-lg-6">
-              <QRCodeCard
+              <FlyerDownloadCard
                 caseId={crimeCase.id}
                 title={crimeCase.title}
               />
@@ -238,9 +245,12 @@ const VacationRentalDashboard = () => {
             <div className="col-12 col-lg-10 col-xl-8">
               {/* Header Section for Form */}
               <div className="text-center mb-5">
-                <h1 className="display-4 fw-bold mb-3">
+                <h1 className="h2 fw-bold mb-3">
                   {t('form.title')}
                 </h1>
+                <p className="text-muted mb-4" style={{ maxWidth: '800px', margin: '0 auto', fontSize: '0.95rem' }}>
+                  {t('form.description')}
+                </p>
                 <button
                   onClick={handleFormCancel}
                   className="btn btn-outline-secondary mb-4"

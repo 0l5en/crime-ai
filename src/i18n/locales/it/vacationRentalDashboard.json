@@ -24,15 +24,29 @@
     "noQRCodesDescription": "Crea prima alcuni casi di affitti vacanze per generare QR code per la promozione.",
     "goToCases": "Vai ai casi",
     "scanToAccess": "Scansiona per accedere direttamente al caso",
-    "downloadQRCode": "Scarica QR code"
+    "downloadFlyer": "Scarica Volantino",
+    "downloadPrintTemplate": "Scarica Modello di Stampa (A4, 5 Volantini)",
+    "flyerPreview": "Anteprima volantino",
+    "flyerDescription": "Scarica un volantino già pronto con codice QR che puoi stampare e distribuire.",
+    "printTemplateDescription": "Scarica un modello di stampa A4 con 5 volantini pronti da ritagliare.",
+    "colorVariant": "Variante di colore",
+    "originalColor": "Arancione (Originale)",
+    "accentColor": "Rosso (Accento)",
+    "tealColor": "Verde-blu"
   },
   "subscriptionTab": {
     "title": "Abbonamento",
     "description": "Gestisci qui il tuo abbonamento e le informazioni di fatturazione."
   },
   "form": {
-    "title": "Crea nuovo caso di affitti vacanze",
+    "title": "Crea il Tuo Caso per Affitto Vacanze",
+    "description": "Compila il modulo sottostante per creare un caso criminale unico per il tuo affitto vacanze. Con il completamento dell'abbonamento di prova gratuito di 7 giorni, inizierà la creazione del tuo caso investigativo individuale. La generazione richiede fino a 24 ore. Sarai avvisato via email una volta che il tuo caso sarà pronto. Successivamente, potrai generare codici QR che i tuoi ospiti potranno scansionare per giocare il caso.",
     "backToOverview": "Torna alla panoramica",
+    "progress": {
+      "title": "Progresso del modulo",
+      "completed": "{{completed}} di {{total}} campi obbligatori completati",
+      "percentage": "{{percentage}}% completato"
+    },
     "sections": {
       "basicSettings": "Impostazioni di base",
       "location": "Posizione",
@@ -121,12 +135,12 @@
       "addAttraction": "+ Aggiungi attrazione",
       "removeAttraction": "Rimuovi",
       "cancel": "Annulla",
-      "submit": "Crea caso affitto vacanze",
+      "submit": "Crea il Tuo Caso per Affitto Vacanze",
       "submitting": "Creazione in corso..."
     }
   },
   "addCaseCard": {
-    "title": "Aggiungi nuovo caso",
+    "title": "Crea il Tuo Caso per Affitto Vacanze",
     "description": "Crea un nuovo caso di affitti vacanze"
   },
   "subscription": {
@@ -149,5 +163,10 @@
       "formValidationError": "Correggere i campi evidenziati.",
       "unknownError": "Si è verificato un errore sconosciuto."
     }
+  },
+  "autosave": {
+    "restored": "I tuoi dati inseriti in precedenza sono stati ripristinati.",
+    "saved": "Progresso salvato automaticamente",
+    "cleared": "Dati salvati cancellati"
   }
 }

@@ -24,15 +24,29 @@
     "noQRCodesDescription": "Créez d'abord des cas de location de vacances pour générer des QR codes pour la promotion.",
     "goToCases": "Aller aux cas",
     "scanToAccess": "Scannez pour accéder directement au cas",
-    "downloadQRCode": "Télécharger le QR code"
+    "downloadFlyer": "Télécharger le dépliant",
+    "downloadPrintTemplate": "Télécharger le modèle d'impression (A4, 5 dépliants)",
+    "flyerPreview": "Aperçu du dépliant",
+    "flyerDescription": "Téléchargez un dépliant pré-fait avec code QR que vous pouvez imprimer et distribuer.",
+    "printTemplateDescription": "Téléchargez un modèle d'impression A4 avec 5 dépliants prêts à découper.",
+    "colorVariant": "Variante de couleur",
+    "originalColor": "Orange (Original)",
+    "accentColor": "Rouge (Accent)",
+    "tealColor": "Bleu-vert"
   },
   "subscriptionTab": {
     "title": "Abonnement",
     "description": "Gérez votre abonnement et vos informations de facturation ici."
   },
   "form": {
-    "title": "Créer un nouveau cas de location de vacances",
+    "title": "Créez Votre Cas de Location de Vacances",
+    "description": "Remplissez le formulaire ci-dessous pour créer un cas criminel unique pour votre location de vacances. À la fin de l'abonnement d'essai gratuit de 7 jours, la création de votre cas de détective individuel commencera. La génération prend jusqu'à 24 heures. Vous serez notifié par e-mail une fois que votre cas sera prêt. Ensuite, vous pourrez générer des codes QR que vos invités pourront scanner pour jouer le cas.",
     "backToOverview": "Retour à l'aperçu",
+    "progress": {
+      "title": "Progression du formulaire",
+      "completed": "{{completed}} sur {{total}} champs obligatoires complétés",
+      "percentage": "{{percentage}}% terminé"
+    },
     "sections": {
       "basicSettings": "Paramètres de base",
       "location": "Localisation",
@@ -121,12 +135,12 @@
       "addAttraction": "+ Ajouter une attraction",
       "removeAttraction": "Supprimer",
       "cancel": "Annuler",
-      "submit": "Créer un cas de location de vacances",
+      "submit": "Créez Votre Cas de Location de Vacances",
       "submitting": "Création en cours..."
     }
   },
   "addCaseCard": {
-    "title": "Ajouter un nouveau cas",
+    "title": "Créez Votre Cas de Location de Vacances",
     "description": "Créer un nouveau cas de location de vacances"
   },
   "subscription": {
@@ -149,5 +163,10 @@
       "formValidationError": "Veuillez corriger les champs surlignés.",
       "unknownError": "Une erreur inconnue s'est produite."
     }
+  },
+  "autosave": {
+    "restored": "Vos données précédemment saisies ont été restaurées.",
+    "saved": "Progression enregistrée automatiquement",
+    "cleared": "Données enregistrées effacées"
   }
 }

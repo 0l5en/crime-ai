@@ -1,11 +1,11 @@
 {
   "title": "Ferienwohnungs-Dashboard",
-  "subtitle": "Verwalten Sie Ihre Ferienwohnungs-Cases, Promotions und Abonnement",
+  "subtitle": "Verwalten Sie Ihre Ferienwohnungsfälle, Promotions und Abonnemente",
   "loading": "Lädt...",
   "loadingCases": "Lade Ihre Ferienwohnungs-Cases...",
   "errorLoading": "Fehler beim Laden der Cases",
   "tabs": {
-    "cases": "Cases",
+    "cases": "Meine Fälle",
     "promotion": "Promotion",
     "subscription": "Abonnement"
   },
@@ -24,15 +24,29 @@
     "noQRCodesDescription": "Erstellen Sie zuerst einige Ferienwohnungs-Cases, um QR-Codes für die Promotion zu generieren.",
     "goToCases": "Zu den Cases",
     "scanToAccess": "Scannen Sie, um direkt auf den Case zuzugreifen",
-    "downloadQRCode": "QR-Code herunterladen"
+    "downloadFlyer": "Flyer herunterladen",
+    "downloadPrintTemplate": "Druckvorlage herunterladen (A4, 5 Flyer)",
+    "flyerPreview": "Flyer-Vorschau",
+    "flyerDescription": "Laden Sie einen vorgefertigten Flyer mit QR-Code herunter, den Sie ausdrucken und verteilen können.",
+    "printTemplateDescription": "Laden Sie eine A4-Druckvorlage mit 5 Flyern zum Ausschneiden herunter.",
+    "colorVariant": "Farbvariante",
+    "originalColor": "Orange (Original)",
+    "accentColor": "Rot (Akzent)",
+    "tealColor": "Grünblau"
   },
   "subscriptionTab": {
     "title": "Abonnement",
     "description": "Verwalten Sie hier Ihr Abonnement und Ihre Rechnungsinformationen."
   },
   "form": {
-    "title": "Neuen Ferienwohnungs-Case erstellen",
+    "title": "Erstellen Sie Ihren Ferienwohnungsfall",
+    "description": "Füllen Sie das folgende Formular aus, um einen einzigartigen Kriminalfall für Ihre Ferienwohnung zu erstellen. Mit Abschluss des kostenlosen 7 tägigen Test-Abonnements startet die Erstellung ihres individuellen Detektivfalls. Die Generierung dauert bis zu 24 Stunden. Sie werden per E-Mail benachrichtigt, sobald Ihr Fall bereit ist. Anschließend können Sie QR-Codes generieren, die Ihre Gäste scannen können, um den Fall zu spielen.",
     "backToOverview": "Zurück zur Übersicht",
+    "progress": {
+      "title": "Formular-Fortschritt",
+      "completed": "{{completed}} von {{total}} Pflichtfeldern ausgefüllt",
+      "percentage": "{{percentage}}% abgeschlossen"
+    },
     "sections": {
       "basicSettings": "Grundeinstellungen",
       "location": "Örtlichkeit",
@@ -121,12 +135,12 @@
       "addAttraction": "+ Sehenswürdigkeit hinzufügen",
       "removeAttraction": "Entfernen",
       "cancel": "Abbrechen",
-      "submit": "Ferienwohnungs-Fall erstellen",
+      "submit": "Ihren Ferienwohnungsfall erstellen",
       "submitting": "Wird erstellt..."
     }
   },
   "addCaseCard": {
-    "title": "Neuen Case hinzufügen",
+    "title": "Ihren Ferienwohnungsfall erstellen",
     "description": "Erstellen Sie einen neuen Ferienwohnungs-Case"
   },
   "subscription": {
@@ -149,5 +163,10 @@
       "formValidationError": "Bitte korrigieren Sie die markierten Felder.",
       "unknownError": "Es ist ein unbekannter Fehler aufgetreten."
     }
+  },
+  "autosave": {
+    "restored": "Ihre zuvor eingegebenen Daten wurden wiederhergestellt.",
+    "saved": "Fortschritt automatisch gespeichert",
+    "cleared": "Gespeicherte Daten gelöscht"
   }
 }

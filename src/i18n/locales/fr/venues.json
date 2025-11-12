@@ -46,7 +46,7 @@
     "subtitle": "Abonnement mensuel abordable avec période d'essai sans risque",
     "plan": {
       "name": "Plan Propriétaire de Lieu",
-      "price": "$9.99",
+      "price": "9.99 €",
       "period": "/mois",
       "trial": "Après l'essai gratuit de 7 jours"
     },
@@ -139,22 +139,22 @@
     "subtitle": "Rejoignez des centaines de propriétaires de lieux à succès qui ont transformé leur expérience client.",
     "items": {
       "sarah": {
-        "name": "Sarah Mitchell",
-        "venue": "Seaside Escape Airbnb",
-        "location": "Monterey, CA",
-        "text": "Notre taux de réservation a augmenté de 40% après avoir ajouté le cas mystère personnalisé. Les invités le mentionnent spécifiquement dans leurs avis 5 étoiles et beaucoup réservent des séjours de retour juste pour essayer les variations saisonnières!"
+        "name": "Thomas Dubois",
+        "venue": "Maison Provençale",
+        "location": "Aix-en-Provence",
+        "text": "Notre maison provençale racontait déjà une histoire, mais maintenant nos hôtes la vivent! L'intrigue mêle l'histoire de notre bastide avec les légendes locales. Les clients parisiens adorent ce côté immersif et nous recommandent activement. Un investissement qui se rentabilise rapidement!"
       },
       "marcus": {
-        "name": "Marcus Thompson",
-        "venue": "The Historic Inn",
-        "location": "Savannah, GA",
-        "text": "Le cas mystère capture parfaitement le charme historique de notre auberge. C'est devenu notre équipement signature - les invités prolongent souvent leurs séjours pour profiter pleinement de l'expérience. Vaut chaque centime!"
+        "name": "Sophie Laurent",
+        "venue": "Chalet Montagnard",
+        "location": "Chamonix",
+        "text": "Après une journée de ski, nos hôtes se réunissent au coin du feu pour résoudre le mystère ensemble. Cette atmosphère conviviale a complètement changé l'ambiance de notre chalet. Nous accueillons maintenant beaucoup de groupes d'amis qui reviennent chaque saison!"
       },
       "elena": {
-        "name": "Elena Rodriguez",
-        "venue": "Mountain View Resort",
-        "location": "Aspen, CO",
-        "text": "La mise en œuvre a été fluide et l'équipe de support était incroyable. Nos invités adorent les éléments interactifs et nous avons justifié une augmentation de tarif de 25%. Les analyses nous aident à optimiser constamment."
+        "name": "Marc Rousseau",
+        "venue": "Gîte Breton",
+        "location": "Saint-Malo",
+        "text": "Mon gîte breton bénéficie d'une histoire corsaire authentique, et l'enquête en tire pleinement parti! Les familles partent à la découverte des remparts en suivant les indices. C'est devenu notre signature, et TripAdvisor nous classe désormais dans le top 3 local!"
       }
     }
   },

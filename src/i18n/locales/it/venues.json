@@ -46,7 +46,7 @@
     "subtitle": "Abbonamento mensile conveniente con periodo di prova senza rischi",
     "plan": {
       "name": "Piano Proprietario Location",
-      "price": "$9.99",
+      "price": "9.99 €",
       "period": "/mese",
       "trial": "Dopo la prova gratuita di 7 giorni"
     },
@@ -139,22 +139,22 @@
     "subtitle": "Unisciti a centinaia di proprietari di location di successo che hanno trasformato la loro esperienza ospite.",
     "items": {
       "sarah": {
-        "name": "Sarah Mitchell",
-        "venue": "Seaside Escape Airbnb",
-        "location": "Monterey, CA",
-        "text": "Il nostro tasso di prenotazione è aumentato del 40% dopo aver aggiunto il caso mistero personalizzato. Gli ospiti lo menzionano specificamente nelle loro recensioni a 5 stelle e molti prenotano soggiorni di ritorno solo per provare varianti stagionali!"
+        "name": "Marco Bianchi",
+        "venue": "Villa Toscana",
+        "location": "Firenze",
+        "text": "La nostra villa nel cuore della Toscana ora offre molto più di un soggiorno - è un'avventura! Il giallo personalizzato intreccia la storia locale con elementi della nostra proprietà. Gli ospiti americani e tedeschi ne sono entusiasti e le prenotazioni sono triplicate in un anno!"
       },
       "marcus": {
-        "name": "Marcus Thompson",
-        "venue": "The Historic Inn",
-        "location": "Savannah, GA",
-        "text": "Il caso mistero cattura perfettamente il fascino storico della nostra locanda. È diventato il nostro servizio distintivo - gli ospiti spesso prolungano i loro soggiorni per godersi appieno l'esperienza. Vale ogni centesimo!"
+        "name": "Sofia Rossi",
+        "venue": "Casa Veneziana",
+        "location": "Venezia",
+        "text": "Gestisco questa casa veneziana da generazioni e il caso mistero è stata l'innovazione più brillante. Gli ospiti esplorano calli e campielli seguendo indizi, scoprendo Venezia in modo autentico. Abbiamo persino collaborazioni con gondolieri locali che fanno parte della storia!"
       },
       "elena": {
-        "name": "Elena Rodriguez",
-        "venue": "Mountain View Resort",
-        "location": "Aspen, CO",
-        "text": "L'implementazione è stata fluida e il team di supporto è stato incredibile. I nostri ospiti adorano gli elementi interattivi e abbiamo giustificato un aumento del 25% delle tariffe. Le analisi ci aiutano a ottimizzare costantemente."
+        "name": "Alessandro Conti",
+        "venue": "Rifugio Alpino",
+        "location": "Cortina d'Ampezzo",
+        "text": "In montagna, l'intrattenimento serale era sempre una sfida. Ora gli ospiti sono entusiasti di rientrare al rifugio per continuare l'indagine! Durante la bassa stagione, il mystery case ci ha permesso di mantenere l'occupazione al 90%. Straordinario!"
       }
     }
   },

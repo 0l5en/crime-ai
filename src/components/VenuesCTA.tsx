@@ -1,30 +1,38 @@
 import { ArrowRight, CreditCard, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '@/hooks/useTheme';
 
 const VenuesCTA = () => {
   const { t } = useTranslation('venues');
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <section 
-      className="py-4 py-md-5 bg-dark text-light d-flex align-items-center" 
-      style={{ minHeight: '100vh' }} 
+      className="py-4 py-md-5 d-flex align-items-center" 
+      style={{ 
+        minHeight: '100vh', 
+        backgroundColor: isDark ? '#181D35' : '#f7fafc' 
+      }} 
       data-section="contact"
     >
       <div className="container px-3">
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
-            <h3 className="fw-bold mb-3 mb-md-5 text-white" style={{
+            <h3 className={isDark ? "fw-bold mb-3 mb-md-5 text-light" : "fw-bold mb-3 mb-md-5"} style={{
               fontSize: 'clamp(1.1rem, 3.5vw, 2rem)',
-              lineHeight: '1.2'
+              lineHeight: '1.2',
+              color: isDark ? undefined : '#2d3748'
             }}>
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
             </h3>
             
-            <p className="mb-4 mb-md-5 text-light px-2" style={{ 
+            <p className={isDark ? "mb-4 mb-md-5 px-2 text-light" : "mb-4 mb-md-5 px-2"} style={{ 
               fontSize: 'clamp(0.9rem, 2vw, 1.25rem)', 
-              opacity: '0.85',
+              color: isDark ? undefined : '#4a5568',
+              opacity: isDark ? 0.75 : 1,
               lineHeight: '1.7',
               maxWidth: '800px',
               margin: '0 auto'
@@ -47,18 +55,20 @@ const VenuesCTA = () => {
                     <div 
                       className="d-flex align-items-center justify-content-center p-3"
                       style={{
-                        backgroundColor: 'rgba(203, 25, 28, 0.1)',
+                        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.03)' : '#fff5f5',
                         borderRadius: '12px',
-                        border: '1px solid rgba(203, 25, 28, 0.3)',
+                        border: isDark ? '2px solid rgba(255, 255, 255, 0.1)' : '2px solid rgba(203, 25, 28, 0.2)',
                         transition: 'all 0.3s ease'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.15)';
+                        e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(203, 25, 28, 0.08)';
                         e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.borderColor = isDark ? 'rgba(220, 38, 38, 0.4)' : 'var(--bs-danger)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.1)';
+                        e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.03)' : '#fff5f5';
                         e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(203, 25, 28, 0.2)';
                       }}
                     >
                       <div
@@ -72,7 +82,10 @@ const VenuesCTA = () => {
                       >
                         <IconComponent size={20} style={{ color: 'white' }} />
                       </div>
-                      <span className="text-light fw-semibold" style={{ fontSize: '1.1rem' }}>
+                      <span className={isDark ? "fw-semibold text-light" : "fw-semibold"} style={{ 
+                        fontSize: '1.1rem', 
+                        color: isDark ? undefined : '#2d3748' 
+                      }}>
                         {t(`cta.features.${feature.key}`)}
                       </span>
                     </div>
@@ -112,23 +125,24 @@ const VenuesCTA = () => {
               </button>
               
               <button 
+                onClick={() => navigate('/contact')}
                 className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3 flex-grow-1" 
                 style={{ 
                   fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                   borderRadius: '16px',
                   padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem)',
-                  backgroundColor: 'transparent',
-                  color: 'white',
-                  border: '2px solid var(--bs-danger)',
+                  backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'white',
+                  color: 'var(--bs-danger)',
+                  border: isDark ? '2px solid rgba(255, 255, 255, 0.2)' : '2px solid var(--bs-danger)',
                   transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.15)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.08)' : '#fff5f5';
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'white';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}

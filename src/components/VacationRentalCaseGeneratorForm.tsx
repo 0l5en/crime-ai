@@ -1,7 +1,7 @@
 import { useUserContext } from '@/contexts/UserContext';
 import { useCreateCrimeCaseVacationRental } from '@/hooks/useCreateCrimeCaseVacationRental';
-import { useState } from 'react';
-import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
+import { useState, useMemo, useEffect, useRef } from 'react';
+import { SubmitHandler, useFieldArray, useForm, useWatch } from 'react-hook-form';
 import toast from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
 import type { components } from "@/openapi/crimeAiSchema";
@@ -35,14 +35,30 @@ interface VacationRentalCaseGeneratorFormProps {
   onCancel: () => void;
 }
 
+const AUTOSAVE_KEY = 'vacationRentalForm_autosave';
+
 const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRentalCaseGeneratorFormProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
   const user = useUserContext();
   const { mutate: createCrimeCase, isPending } = useCreateCrimeCaseVacationRental();
   const [serverErrors, setServerErrors] = useState<{ [key: string]: string }>({});
+  const hasRestoredData = useRef(false);
 
-  const { register, handleSubmit, control, formState: { errors }, setError, clearErrors } = useForm<VacationRentalFormData>({
-    defaultValues: {
+  // Load saved data from localStorage
+  const getSavedFormData = (): Partial<VacationRentalFormData> | null => {
+    try {
+      const saved = localStorage.getItem(AUTOSAVE_KEY);
+      return saved ? JSON.parse(saved) : null;
+    } catch (error) {
+      console.error('Error loading autosaved data:', error);
+      return null;
+    }
+  };
+
+  const savedData = getSavedFormData();
+
+  const { register, handleSubmit, control, formState: { errors }, setError, clearErrors, reset } = useForm<VacationRentalFormData>({
+    defaultValues: savedData || {
       language: '',
       epoch: 'PRESENT',
       theme: 'MURDER',
@@ -61,10 +77,75 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     }
   });
 
+  // Show notification if data was restored
+  useEffect(() => {
+    if (savedData && !hasRestoredData.current) {
+      toast.success(t('autosave.restored'), {
+        duration: 4000,
+        icon: '💾'
+      });
+      hasRestoredData.current = true;
+    }
+  }, [savedData, t]);
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: "nearbySightseeingAttractions"
   });
+
+  // Watch all form values for progress calculation
+  const watchedValues = useWatch({ control });
+
+  // Calculate form completion progress
+  const formProgress = useMemo(() => {
+    const requiredFields = [
+      'language',
+      'fullAddress',
+      'venueName',
+      'venueDescription',
+      'venueFloors',
+      'venueBedrooms',
+      'venueBathrooms',
+      'maxGuests'
+    ];
+
+    const completedFields = requiredFields.filter(field => {
+      const value = watchedValues[field as keyof typeof watchedValues];
+      return value !== '' && value !== null && value !== undefined;
+    }).length;
+
+    const percentage = Math.round((completedFields / requiredFields.length) * 100);
+
+    return {
+      completed: completedFields,
+      total: requiredFields.length,
+      percentage
+    };
+  }, [watchedValues]);
+
+  // Autosave to localStorage with debounce
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (watchedValues && Object.keys(watchedValues).length > 0) {
+        try {
+          localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(watchedValues));
+        } catch (error) {
+          console.error('Error saving form data:', error);
+        }
+      }
+    }, 1000); // Save after 1 second of inactivity
+
+    return () => clearTimeout(timeoutId);
+  }, [watchedValues]);
+
+  // Clear autosave data
+  const clearAutosaveData = () => {
+    try {
+      localStorage.removeItem(AUTOSAVE_KEY);
+    } catch (error) {
+      console.error('Error clearing autosaved data:', error);
+    }
+  };
 
   // Parse property path from server errors (e.g., "formBasic.fullAddress" -> "fullAddress")
   const parsePropertyPath = (propertyPath: string): string => {
@@ -109,7 +190,6 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     // Prepare the data in the format expected by the API (new structure)
     const formData: CreateCaseGeneratorFormVacationRentalDto = {
       formBasic: {
-        caseGeneratorForm: "BASIC" as const,
         language: data.language,
         epoch: data.epoch,
         theme: data.theme,
@@ -130,6 +210,8 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
 
     createCrimeCase(formData, {
       onSuccess: (response) => {
+        // Clear autosaved data on successful submission
+        clearAutosaveData();
         // Redirect to Stripe Checkout
         window.location.href = response.locationUrl;
       },
@@ -157,6 +239,35 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
     <div className="container-fluid p-4">
       <div className="d-flex justify-content-center">
         <div style={{ maxWidth: '900px', width: '100%', margin: '0 auto' }}>
+          {/* Progress Bar */}
+          <div className="card mb-4 animate-fade-in">
+            <div className="card-body">
+              <div className="d-flex justify-content-between align-items-center mb-2">
+                <h6 className="mb-0 fw-semibold">{t('form.progress.title')}</h6>
+                <span className="badge bg-primary">{t('form.progress.percentage', { percentage: formProgress.percentage })}</span>
+              </div>
+              <div className="progress" style={{ height: '10px' }}>
+                <div 
+                  className="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                  role="progressbar"
+                  style={{ 
+                    width: `${formProgress.percentage}%`,
+                    transition: 'width 0.4s ease-in-out'
+                  }}
+                  aria-valuenow={formProgress.percentage}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+              <small className="text-muted mt-2 d-block">
+                {t('form.progress.completed', { 
+                  completed: formProgress.completed, 
+                  total: formProgress.total 
+                })}
+              </small>
+            </div>
+          </div>
+
           <form onSubmit={handleSubmit(onSubmit)}>
 
             {/* Grundeinstellungen Card */}
@@ -504,24 +615,22 @@ const VacationRentalCaseGeneratorForm = ({ onSuccess, onCancel }: VacationRental
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-4 p-3 border-top">
-              <div className="d-flex gap-2 justify-content-end">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={onCancel}
-                  disabled={isPending}
-                >
-                  {t('form.buttons.cancel')}
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={isPending}
-                >
-                  {isPending ? t('form.buttons.submitting') : t('form.buttons.submit')}
-                </button>
-              </div>
+            <div className="mt-4 d-flex gap-2 justify-content-end">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={onCancel}
+                disabled={isPending}
+              >
+                {t('form.buttons.cancel')}
+              </button>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={isPending}
+              >
+                {isPending ? t('form.buttons.submitting') : t('form.buttons.submit')}
+              </button>
             </div>
           </form>
         </div>

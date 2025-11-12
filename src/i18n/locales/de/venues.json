@@ -7,11 +7,11 @@
   },
   "why": {
     "title": "Warum Ferienwohnungen uns wählen",
-    "subtitle": "Schließen Sie sich hunderten von Ferienwohnungsbesitzern an, die ihre Gäste bereits mit individuellen Detektiv-Mysterien begeistern.",
+    "subtitle": "Schließen Sie sich hunderten von Ferienwohnungsbesitzern an, die ihre Gäste bereits mit exklusiven Detektivfällen begeistern.",
     "benefits": {
       "unique": {
         "title": "Einzigartiges Erlebnis",
-        "description": "Verwandeln Sie Ihre Ferienwohnung in den Schauplatz eines fesselnden Mysteriums, das ihre einzigartigen Merkmale und ihren lokalen Charakter zur Geltung bringt."
+        "description": "Verwandeln Sie Ihre Ferienwohnung in den Schauplatz eines fesselnden Mysteriums, das ihre Merkmale und den lokalen Charakter zur Geltung bringt."
       },
       "satisfaction": {
         "title": "Gästezufriedenheit",
@@ -25,81 +25,81 @@
   },
   "howItWorks": {
     "title": "So funktioniert's",
-    "subtitle": "Ihr individueller Ferienwohnungs-Case ist ganz einfach. Wir übernehmen die gesamte kreative Arbeit, während Sie sich auf das Hosten großartiger Erlebnisse konzentrieren.",
+    "subtitle": "Ihren individuellen Ferienwohnungsfall zu erhalten ist ganz einfach. Wir übernehmen die gesamte Kreativ-Arbeit und erstellen Ihnen interaktive KI-gestützte Detektivfälle die in Ihrer Ferienunterkunft spielen.",
     "steps": {
       "trial": {
-        "title": "Kostenlose Testversion starten",
-        "description": "Erstellen Sie Ihr Konto und beginnen Sie Ihre 7-tägige kostenlose Testversion. Legen Sie Ihre Ferienwohnung an, um zu starten."
+        "title": "Kostenlos registrieren",
+        "description": "Erstellen Sie Ihr kostenloses Konto und beginnen Sie die Fallgenerierung. Legen Sie ganz einfach Ihre Ferienwohnung an, um sofort zu starten."
       },
       "register": {
-        "title": "Ihre Ferienwohnung registrieren",
-        "description": "Teilen Sie uns Details über Ihre Ferienwohnung mit, einschließlich Zimmeranzahl, einzigartiger Merkmale und gewünschter Gästeerfahrung."
+        "title": "Ferienunterkunftsdetails",
+        "description": "Teilen Sie uns Details Ihrer Ferienunterkunft mit, einschließlich Zimmeranzahl und einzigartigen Merkmalen ihrer Ferienunterkunft."
       },
       "exclusive": {
-        "title": "Exklusiven Case erhalten",
-        "description": "Erhalten Sie Ihren individuellen, interaktiv spielbaren Detektivfall innerhalb von 24 Stunden, speziell auf den Charakter und das Layout Ihrer Ferienwohnung zugeschnitten."
+        "title": "Exklusiven Fall erhalten",
+        "description": "Erhalten Sie Ihren individuellen, interaktiv und KI-gestützt spielbaren Detektivfall innerhalb von 24 Stunden. Testen Sie den Fall 7 Tage kostenlos."
       }
     }
   },
   "pricing": {
     "title": "Einfache, transparente Preise",
-    "subtitle": "Erschwingliches monatliches Abonnement mit risikofreier Testphase",
+    "subtitle": "Günstiges monatliches Abonnement mit risikofreier 7-Tage Testphase",
     "plan": {
-      "name": "Ferienwohnungs-Plan",
-      "price": "$9.99",
+      "name": "Ferienunterkunfts-Abo",
+      "price": "9.99 €",
       "period": "/Monat",
-      "trial": "Nach 7-tägiger kostenloser Testversion"
+      "trial": "Nach 7-tägiger kostenloser Testphase"
     },
     "enhance": {
-      "title": "Verbessern Sie das Erlebnis Ihrer Ferienwohnung",
-      "description1": "Verwandeln Sie Ihre Ferienwohnung in ein interaktives Abenteuer, das Gäste sich merken und teilen werden. Unsere individuellen Detektiv-Cases bieten ein einzigartiges Erlebnis, das Ihre Ferienwohnung von anderen abhebt.",
-      "description2": "Perfekt für Ferienwohnungen, Apartments und Ferienhäuser. Testen Sie es risikofrei mit unserer 7-tägigen Testversion, um die Auswirkungen auf Gästezufriedenheit und Engagement zu sehen."
+      "title": "Bereichern Sie Ihre Ferienwohnung",
+      "description1": "Verwandeln Sie Ihre Ferienunterkunft in ein interaktives Abenteuer, das Gäste sich merken und teilen werden. Unsere individuellen Detektivfälle bieten ein einzigartiges Erlebnis, das Ihre Unterkunft von anderen abhebt. Perfekt für Ferienunterkünfte aller Art.",
+      "description2": "Testen Sie Ihren erstellten Fall jetzt 7 Tage kostenlos!"
     },
     "includes": "Beinhaltet:",
     "features": {
-      "exclusive": "Exklusiver individueller Detektiv-Case für Ihre Ferienwohnung",
-      "unlimited": "Unbegrenzter Gästezugang zu Ihrem Ferienwohnungs-Case",
-      "profile": "Dediziertes Ferienwohnungs-Profil mit QR-Code",
+      "exclusive": "Exklusiver Detektivfall für Ihre Ferienunterkunft",
+      "unlimited": "Unbegrenzter Zugang zu Ihrem Detektivfall",
+      "profile": "Dediziertes Ferienunterkunfts-Profil mit QR-Codes",
       "referral": "Personalisiertes Empfehlungssystem",
-      "public": "Möglichkeit, Ihren Case für Marketing öffentlich zu machen",
-      "analytics": "Monatliche Case-Performance-Analysen",
+      "public": "Möglichkeit, Ihren Fall öffentlich zu machen",
+      "analytics": "Monatliche Fall-Performance-Analysen",
       "support": "Prioritäts-Kundensupport"
     },
-    "cta": "Starten Sie Ihre kostenlose Testversion",
-    "noCommitment": "Keine langfristige Bindung. Jederzeit kündbar."
+    "cta": "Starten Sie Ihre kostenlose Testphase",
+    "noCommitment": "Keine langfristige Bindung - jederzeit kündbar"
   },
   "faq": {
     "title": "Häufig gestellte Fragen",
-    "subtitle": "Alles, was Sie über die Erstellung individueller Ferienwohnungs-Mystery-Cases wissen müssen.",
+    "subtitle": "Alles, was Sie über die Erstellung individueller Ferienunterkunftsfälle wissen müssen.",
     "categories": {
       "gettingStarted": {
         "title": "Erste Schritte",
         "q1": {
-          "question": "Wie beginne ich mit einem individuellen Ferienwohnungs-Case?",
-          "answer": "Melden Sie sich einfach für unsere 7-tägige kostenlose Testversion an. Sie geben Details über Ihre Ferienwohnung an, und unser Team erstellt einen individuellen Mystery-Case, der auf Ihre spezifische Ferienwohnung und Ihre Gästeerlebnis-Ziele zugeschnitten ist."
+          "question": "Wie erhalte ich meinen individuellen Ferienunterkunftsfall?",
+          "answer": "Melden Sie sich einfach für unsere 7-tägige kostenlose Testphase an. Sie geben Details über Ihre Ferienunterkunft an, und unser Team erstellt einen individuellen Detektivfall, der auf Ihre spezifische Ferienunterkunft und Ihr Gästeerlebnis-Ziel zugeschnitten ist."
         },
         "q2": {
-          "question": "Welche Informationen benötigen Sie über meine Ferienwohnung?",
-          "answer": "Wir benötigen grundlegende Details wie Layout, Anzahl der Zimmer, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Ferienwohnung einzigartig machen. Dies hilft uns, das perfekte Mystery-Erlebnis zu gestalten."
+          "question": "Welche Informationen benötigen Sie über meine Ferienunterkunft?",
+          "answer": "Wir benötigen grundlegende Details wie Layout, Anzahl der Zimmer, einzigartige Merkmale, Zielgruppen-Demografie und alle besonderen Eigenschaften, die Ihre Ferienunterkunft einzigartig machen. Dies hilft uns, Ihr perfektes Detektiv-Erlebnis zu gestalten."
         },
         "q3": {
-          "question": "Wie lange dauert die Erstellung meines individuellen Cases?",
-          "answer": "Ihr exklusiver individueller Case wird innerhalb von 24 Stunden nach Abschluss Ihrer Ferienwohnungs-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um ein einzigartiges Mystery zu erstellen, das auf Ihre spezifische Ferienwohnung zugeschnitten ist."
+          "question": "Wie lange dauert die Erstellung meines exklusiven Detektivfalls?",
+          "answer": "Ihr individueller Fall wird innerhalb von 24 Stunden nach Abschluss Ihrer Ferienunterkunfts-Registrierung generiert und geliefert. Wir verwenden fortschrittliche KI, um einzigartige Detektivfälle zu erstellen, die auf Ihre spezifische Ferienunterkunft ausgelegt sind."
         }
       },
       "bookings": {
         "title": "Buchungen & Stornierungen",
         "q1": {
           "question": "Kann ich mein Abonnement jederzeit kündigen?",
-          "answer": "Ja, Sie können Ihr Abonnement jederzeit zum nächsten Buchungstermin kündigen. Ihr Case bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
+          "answer": "Ja, Sie können Ihr Abonnement jederzeit zum nächsten Buchungstermin kündigen. Ihr Fall bleibt bis zum Ende Ihres aktuellen Abrechnungszeitraums aktiv."
         },
         "q2": {
-          "question": "Was passiert während der 7-tägigen kostenlosen Testversion?",
-          "answer": "Während Ihrer kostenlosen Testversion erhalten Sie vollen Zugang zu unserer Plattform, individueller Case-Erstellung und allen Funktionen. Sie können vor Ende der Testversion kündigen, um Gebühren zu vermeiden."
+          "question": "Was passiert während der 7-tägigen kostenlosen Testphase?",
+          "answer": "Während Ihrer kostenlosen Testphase erhalten Sie vollen Zugang zu unserer Plattform, individueller Fall-Erstellung und allen Funktionen. Sie können vor Ende der Testphase kündigen, sollten Sie nicht zufrieden sein."
         },
         "q3": {
           "question": "Bieten Sie Rückerstattungen an?",
-          "answer": "Wir bieten keine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Case nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität. Bei Problemen kontaktieren Sie uns einfach und wir werden eine Lösung finden."
+          "answer": "Wir bieten keine 30-tägige Geld-zurück-Garantie, wenn Sie mit Ihrem individuellen Fall nicht zufrieden sind. Wir sind zuversichtlich, dass Sie die Ergebnisse lieben werden, aber Ihre Zufriedenheit hat Priorität. Bei Problemen kontaktieren Sie uns einfach und wir werden eine Lösung finden."
         }
       },
       "analytics": {
@@ -124,11 +124,11 @@
           "answer": "Wir bieten 24/7 Kundensupport per E-Mail und Chat. Unser Team hilft bei Setup, Fehlerbehebung, Case-Updates und allen Fragen zur Maximierung Ihres Gästeerlebnisses."
         },
         "q2": {
-          "question": "Wie greifen Gäste auf den Mystery-Case zu?",
-          "answer": "Gäste scannen einfach einen einzigartigen QR-Code, den Sie in Ihrer Location anzeigen. Dies gibt ihnen sofortigen Zugriff auf ihr Mystery-Abenteuer auf jedem Smartphone oder Tablet - keine App-Downloads erforderlich."
+          "question": "Wie greifen Gäste auf den Detektivfall zu?",
+          "answer": "Gäste scannen einfach einen einzigartigen QR-Code, den Sie in Ihrer Location anzeigen. Dies gibt ihnen sofortigen Zugriff auf ihr Detektiv-Abenteuer auf jedem Smartphone oder Tablet - keine App-Downloads erforderlich."
         },
         "q3": {
-          "question": "Können Sie meinen Case im Laufe der Zeit aktualisieren oder ändern?",
+          "question": "Können Sie meinen Fall im Laufe der Zeit aktualisieren oder ändern?",
           "answer": "Auf jeden Fall! Wir können saisonale Varianten erstellen, Handlungsstränge aktualisieren oder Cases basierend auf Gästefeedback ändern. Dies hält das Erlebnis für Wiederholungsbesucher frisch."
         }
       }
@@ -139,40 +139,40 @@
     "subtitle": "Schließen Sie sich hunderten erfolgreichen Ferienwohnungsbesitzern an, die ihr Gästeerlebnis transformiert haben.",
     "items": {
       "sarah": {
-        "name": "Sarah Mitchell",
-        "venue": "Seaside Escape Airbnb",
-        "location": "Monterey, CA",
-        "text": "Unsere Buchungsrate stieg um 40% nach Hinzufügen des individuellen Mystery-Cases. Gäste erwähnen es speziell in ihren 5-Sterne-Bewertungen und viele buchen Wiederholungsaufenthalte, nur um saisonale Varianten auszuprobieren!"
+        "name": "Thomas Müller",
+        "venue": "Ferienwohnung Alpenblick",
+        "location": "Garmisch-Partenkirchen",
+        "text": "Der Detektivfall hat unsere Ferienwohnung komplett transformiert! Besonders Familien lieben es, gemeinsam Hinweise zu entdecken. Die Buchungsanfragen haben sich verdoppelt und die Gäste erwähnen das Mystery-Erlebnis in jeder Bewertung als Highlight ihres Urlaubs."
       },
       "marcus": {
-        "name": "Marcus Thompson",
-        "venue": "The Historic Inn",
-        "location": "Savannah, GA",
-        "text": "Der Mystery-Case fängt perfekt den historischen Charme unseres Gasthauses ein. Es ist zu unserem Signature-Angebot geworden - Gäste verlängern oft ihre Aufenthalte, um das Erlebnis voll zu genießen. Jeden Cent wert!"
+        "name": "Laura Schmidt",
+        "venue": "Ostsee-Hideaway",
+        "location": "Rügen",
+        "text": "Anfangs war ich skeptisch, aber nach der ersten Saison bin ich überzeugt! Gäste bleiben durchschnittlich 2 Tage länger und der Fall sorgt für authentisches Feedback in den Bewertungsportalen. Das Beste: Der Support erstellt mir jährlich neue Varianten."
       },
       "elena": {
-        "name": "Elena Rodriguez",
-        "venue": "Mountain View Resort",
-        "location": "Aspen, CO",
-        "text": "Die Implementierung war nahtlos und das Support-Team war unglaublich. Unsere Gäste lieben die interaktiven Elemente, und wir haben eine 25%ige Preiserhöhung gerechtfertigt. Die Analysen helfen uns, konstant zu optimieren."
+        "name": "Marcus Weber",
+        "venue": "Schwarzwald-Chalet",
+        "location": "Titisee-Neustadt",
+        "text": "Mein Chalet hatte schon immer Potenzial, aber mit dem individuellen Kriminalfall ist es zur Destination geworden. Wanderer kommen jetzt gezielt zu uns, um tagsüber die Natur zu erkunden und abends Detektiv zu spielen. Genial!"
       }
     }
   },
   "cta": {
     "title": "Verwandeln Sie Ihre",
-    "titleHighlight1": "Ferienwohnung",
+    "titleHighlight1": "Ferienunterkunft",
     "titleMiddle": "in ein",
-    "titleHighlight2": "Mystery-Abenteuer",
+    "titleHighlight2": "Detektiv-Abenteuer",
     "subtitle": "Bereichern Sie Ihre Ferienwohnung mit unseren",
-    "subtitleHighlight": "KI-gesteuerten",
-    "subtitleEnd": "Detektiverlebnissen. Unser Algorithmus erstellt individuelle Mysterien, die auf Ihre Ferienwohnung zugeschnitten sind und begeisterte Bewertungen und Wiederholungsbuchungen fördern.",
+    "subtitleHighlight": "KI-gestützten",
+    "subtitleEnd": "Detektiverlebnissen. Unsere Algorithmen erstellen exklusive Detektivfälle, die individuell auf Ihre Ferienwohnung zugeschnitten sind, Lokalkolorit transportieren und begeisterte Bewertungen und Wiederholungsbuchungen fördern.",
     "features": {
-      "ai": "KI-gesteuerte Cases",
+      "ai": "KI-gestützte Fälle",
       "trial": "7-tägige Testphase",
       "cancel": "Jederzeit kündbar"
     },
     "buttons": {
-      "register": "Als Ferienwohnungsbesitzer registrieren",
+      "register": "Als Ferienunterkunftsbesitzer registrieren",
       "contact": "Kontaktieren Sie uns"
     }
   }

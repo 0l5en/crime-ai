@@ -104,9 +104,8 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
       clearErrors();
       setServerErrors({});
 
-      // Prepare form data with hidden caseGeneratorForm field
+      // Prepare form data
       const formData: CreateCrimeCaseBasicDto = {
-        caseGeneratorForm: "BASIC", // Hidden field, always BASIC
         language: data.language,
         epoch: data.epoch,
         theme: data.theme,
