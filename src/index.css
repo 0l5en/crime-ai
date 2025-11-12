@@ -11,15 +11,15 @@ body {
 
 /* Custom CSS Variables for our theme */
 :root {
-  /* Color palette: 090909 (dark), 5F5F5F (medium), FFFFFF (light), CB191C (red accent) */
-  --bs-primary: #dc3545;
-  --bs-primary-rgb: 220, 53, 69;
+  /* Color palette: 090909 (dark), 5F5F5F (medium), FFFFFF (light), DC4245 (red accent) */
+  --bs-primary: #DC4245;
+  --bs-primary-rgb: 220, 66, 69;
   --bs-secondary: #5F5F5F;
   --bs-secondary-rgb: 95, 95, 95;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
-  --bs-danger: #CB191C;
+  --bs-danger: #DC4245;
   --bs-light: #F8F9FA;
   --bs-dark: #090909;
   --bs-body-bg: #FFFFFF;
