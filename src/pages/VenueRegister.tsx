@@ -82,8 +82,7 @@ const VenueRegister = () => {
                 style={{
                   background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
                   borderRadius: '20px',
-                  padding: '3rem',
-                  paddingBottom: '2rem'
+                  padding: '2.5rem 3rem 1.5rem 3rem'
                 }}
               >
               <div className="w-100" style={{ maxWidth: '500px', marginTop: '0' }}>
