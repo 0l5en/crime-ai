@@ -99,8 +99,8 @@ const VenueRegister = () => {
               }}
             >
               <div className="w-100" style={{ maxWidth: "500px", marginTop: "0" }}>
-                <h2 className="h4 fw-bold mb-3 text-light">{t("features.title")}</h2>
-                <p className="lead mb-5 opacity-75">{t("features.subtitle")}</p>
+                <h2 className="h5 fw-bold mb-3 text-light">{t("features.title")}</h2>
+                <p className="mb-5 opacity-75">{t("features.subtitle")}</p>
 
                 <div className="d-flex flex-column gap-4">
                   {features.map(({ icon: Icon, key }) => (
