@@ -37,7 +37,7 @@ const WhyVenueOwners = () => {
                 <div className="text-center h-100" style={{
                   border: '2px solid rgba(203, 25, 28, 0.2)',
                   borderRadius: '16px',
-                  backgroundColor: '#fff5f5',
+                  backgroundColor: 'white',
                   transition: 'all 0.3s ease',
                   padding: 'clamp(1.5rem, 4vw, 3rem)'
                 }}
@@ -45,13 +45,13 @@ const WhyVenueOwners = () => {
                   e.currentTarget.style.borderColor = 'var(--bs-danger)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                   e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(203, 25, 28, 0.08)';
+                  e.currentTarget.style.backgroundColor = '#fff5f5';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(203, 25, 28, 0.2)';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.backgroundColor = '#fff5f5';
+                  e.currentTarget.style.backgroundColor = 'white';
                 }}>
                   <div className="mb-3 mb-md-4" style={{
                     width: 'clamp(60px, 15vw, 80px)',
