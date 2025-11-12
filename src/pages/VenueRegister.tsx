@@ -74,17 +74,20 @@ const VenueRegister = () => {
 
       <main className="flex-grow-1">
         <div className="container-fluid py-5">
-          <div className="row g-4 align-items-stretch">
+          <div className="row g-0">
             {/* Left side - Features */}
-            <div className="col-lg-6 d-none d-lg-flex">
-              <div
-                className="text-light w-100 d-flex flex-column"
-                style={{
-                  background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-                  borderRadius: '20px',
-                  padding: '2.5rem 3rem 1.5rem 3rem'
-                }}
-              >
+            <div
+              className="col-lg-6 d-none d-lg-flex text-light"
+              style={{
+                background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+                borderRadius: '20px',
+                padding: '3rem',
+                paddingBottom: '2rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center'
+              }}
+            >
               <div className="w-100" style={{ maxWidth: '500px', marginTop: '0' }}>
                 <h2 className="h4 fw-bold mb-3 text-light">
                   {t('features.title')}
@@ -119,12 +122,10 @@ const VenueRegister = () => {
                   ))}
                 </div>
               </div>
-              </div>
             </div>
 
             {/* Right side - Form */}
-            <div className="col-lg-6 d-flex align-items-stretch">
-              <div className="w-100 d-flex align-items-center justify-content-center p-4 p-md-5">
+            <div className="col-lg-6 d-flex align-items-center justify-content-center p-4 p-md-5">
               <div className="w-100" style={{ maxWidth: '500px' }}>
                 <div className="text-center mb-5">
                   <h1 className="h4 fw-bold mb-3" style={{ color: 'var(--bs-danger)' }}>
@@ -328,7 +329,6 @@ const VenueRegister = () => {
                     <SignInButton />
                   </div>
                 </form>
-              </div>
               </div>
             </div>
           </div>
