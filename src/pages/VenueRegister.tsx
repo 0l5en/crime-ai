@@ -123,7 +123,7 @@ const VenueRegister = () => {
             <div className="col-lg-6 d-flex align-items-center justify-content-center p-4 p-md-5">
               <div className="w-100" style={{ maxWidth: '500px' }}>
                 <div className="text-center mb-5">
-                  <h1 className="h4 fw-bold mb-3">
+                  <h1 className="h4 fw-bold mb-3" style={{ color: 'var(--bs-danger)' }}>
                     {t('title')}
                   </h1>
                   <p className="text-muted fs-6">
@@ -133,7 +133,7 @@ const VenueRegister = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-4">
-                    <label htmlFor="userName" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
+                    <label htmlFor="userName" className="form-label fw-semibold mb-2" style={{ color: 'var(--bs-danger)' }}>
                       {t('form.userName')}
                     </label>
                     <input
@@ -166,7 +166,7 @@ const VenueRegister = () => {
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="email" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
+                    <label htmlFor="email" className="form-label fw-semibold mb-2" style={{ color: 'var(--bs-danger)' }}>
                       {t('form.email')}
                     </label>
                     <input
@@ -199,7 +199,7 @@ const VenueRegister = () => {
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="password" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
+                    <label htmlFor="password" className="form-label fw-semibold mb-2" style={{ color: 'var(--bs-danger)' }}>
                       {t('form.password')}
                     </label>
                     <input
@@ -232,7 +232,7 @@ const VenueRegister = () => {
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="confirmPassword" className="form-label fw-semibold mb-2" style={{ color: '#2d3748' }}>
+                    <label htmlFor="confirmPassword" className="form-label fw-semibold mb-2" style={{ color: 'var(--bs-danger)' }}>
                       {t('form.confirmPassword')}
                     </label>
                     <input
