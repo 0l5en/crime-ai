@@ -302,7 +302,7 @@ const VenueRegister = () => {
                     className="btn btn-danger w-100 fw-semibold mb-4"
                     title={t("inactive")}
                     style={{
-                      padding: "16px",
+                      padding: "20px",
                       fontSize: "1.4rem",
                       borderRadius: "12px",
                       border: "none",
