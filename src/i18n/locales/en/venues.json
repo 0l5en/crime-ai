@@ -46,7 +46,7 @@
     "subtitle": "Affordable monthly subscription with a risk-free trial period",
     "plan": {
       "name": "Venue Owner Plan",
-      "price": "$9.99",
+      "price": "9.99€",
       "period": "/month",
       "trial": "After 7-day free trial"
     },

@@ -46,7 +46,7 @@
     "subtitle": "Abonnement mensuel abordable avec période d'essai sans risque",
     "plan": {
       "name": "Plan Propriétaire de Lieu",
-      "price": "$9.99",
+      "price": "9.99€",
       "period": "/mois",
       "trial": "Après l'essai gratuit de 7 jours"
     },
