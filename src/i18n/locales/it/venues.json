@@ -175,5 +175,9 @@
       "register": "Registrati come Proprietario di Location",
       "contact": "Contattaci"
     }
+  },
+  "partnersButton": {
+    "text": "I Nostri Partner",
+    "subtitle": "Scopri i partner di successo"
   }
 }

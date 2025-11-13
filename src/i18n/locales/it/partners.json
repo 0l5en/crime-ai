@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "I Nostri Partner",
+    "subtitle": "Scopri le location di successo che hanno già creato più di 3 casi detective",
+    "criteria": "I partner con 3 o più casi generati sono presentati qui in modo prominente e beneficiano di visibilità aggiuntiva."
+  },
+  "partner": {
+    "registeredSince": "Registrato dal",
+    "cases": "Casi Detective",
+    "website": "Visita il Sito",
+    "address": "Indirizzo",
+    "badge": "Partner Premium",
+    "features": "Caratteristiche"
+  },
+  "motivation": {
+    "title": "Diventa Partner Premium",
+    "subtitle": "Con 3 o più casi generati, sarai presentato qui in modo prominente!",
+    "benefits": {
+      "visibility": "Maggiore visibilità sulla nostra piattaforma",
+      "badge": "Badge esclusivo Partner Premium",
+      "marketing": "Supporto marketing gratuito"
+    },
+    "cta": "Registrati come Proprietario di Location Ora"
+  }
+}

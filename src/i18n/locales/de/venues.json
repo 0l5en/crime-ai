@@ -175,5 +175,9 @@
       "register": "Als Ferienunterkunftsbesitzer registrieren",
       "contact": "Kontaktieren Sie uns"
     }
+  },
+  "partnersButton": {
+    "text": "Unsere Unterkunftspartner",
+    "subtitle": "Entdecken Sie erfolgreiche Partner"
   }
 }

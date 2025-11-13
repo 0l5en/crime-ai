@@ -6,6 +6,7 @@ import HowItWorks from "@/components/HowItWorks";
 import VenuesPricing from "@/components/VenuesPricing";
 import VenuesFAQ from "@/components/VenuesFAQ";
 import VenuesTestimonials from "@/components/VenuesTestimonials";
+import VenuesPartnersButton from "@/components/VenuesPartnersButton";
 import VenuesCTA from "@/components/VenuesCTA";
 
 const VenuesPage = () => {
@@ -18,6 +19,7 @@ const VenuesPage = () => {
       <VenuesPricing />
       <VenuesFAQ />
       <VenuesTestimonials />
+      <VenuesPartnersButton />
       <VenuesCTA />
       <Footer />
     </div>
