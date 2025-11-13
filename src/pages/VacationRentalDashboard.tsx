@@ -26,6 +26,11 @@ const VacationRentalDashboard = () => {
   const isLoading = casesLoading || attemptsLoading;
   const error = casesError;
 
+  // Scroll to top on initial load
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
   // Scroll to top when form is shown
   useEffect(() => {
     if (showCreateForm) {
