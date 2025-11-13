@@ -7,6 +7,7 @@ import PartnersGrid from "@/components/PartnersGrid";
 import { PartnerVenueData } from "@/components/PartnerVenueCard";
 import { Link } from "react-router-dom";
 import { Award } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 // Avatar imports
 import thomasMuellerAvatar from "@/assets/avatars/thomas-mueller-de.jpg";
@@ -24,6 +25,8 @@ import alessandroContiAvatar from "@/assets/avatars/alessandro-conti-it.jpg";
 
 const PartnersPage = () => {
   const { t, i18n } = useTranslation(['partners', 'venues']);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   // Partner data based on current language
   const getPartnerData = (): PartnerVenueData[] => {
@@ -301,7 +304,7 @@ const PartnersPage = () => {
   const partners = getPartnerData();
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
+    <div className="min-vh-100" style={{ backgroundColor: isDark ? '#181D35' : '#F7FAFC' }}>
       <Helmet>
         <title>{t('hero.title')} | DetectivesGame</title>
         <meta name="description" content={t('hero.subtitle')} />
@@ -309,7 +312,16 @@ const PartnersPage = () => {
       
       <Header />
       <PartnersHero />
-      <PartnersGrid partners={partners} />
+      
+      {/* Partners Grid with alternating background */}
+      <section 
+        className="py-5"
+        style={{ 
+          backgroundColor: isDark ? '#181D35' : '#F7FAFC' 
+        }}
+      >
+        <PartnersGrid partners={partners} />
+      </section>
       
       {/* Motivation CTA */}
       <section 
