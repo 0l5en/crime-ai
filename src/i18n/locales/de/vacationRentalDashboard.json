@@ -140,8 +140,8 @@
     }
   },
   "addCaseCard": {
-    "title": "Ihren Ferienunterkunftsfall erstellen",
-    "description": "Erstellen Sie einen neuen Ferienunterkunftsfall"
+    "title": "Ferienunterkunftsfall erstellen",
+    "description": "Erstellen Sie Ihren Ferienunterkunftsfall"
   },
   "subscription": {
     "subscriptionId": "Abonnement-ID",
