@@ -1,9 +1,9 @@
 {
   "title": "Ferienwohnungs-Dashboard",
-  "subtitle": "Verwalten Sie Ihre Ferienwohnungsfälle, Promotions und Abonnemente",
+  "subtitle": "Verwalten Sie Ihre Ferienunterkunftsfälle, Promotions und Abonnemente",
   "loading": "Lädt...",
-  "loadingCases": "Lade Ihre Ferienwohnungs-Cases...",
-  "errorLoading": "Fehler beim Laden der Cases",
+  "loadingCases": "Lade Ihre Ferienunterkunftsfälle...",
+  "errorLoading": "Fehler beim Laden der Fälle",
   "tabs": {
     "cases": "Meine Fälle",
     "promotion": "Promotion",
@@ -11,23 +11,23 @@
   },
   "casesTab": {
     "noCasesTitle": "Noch keine Cases verfügbar",
-    "noCasesDescription": "Sie haben noch keine Ferienwohnungs-Cases erstellt. Erstellen Sie Ihren ersten Case über den Admin-Bereich.",
-    "createFirstCase": "Ersten Case erstellen",
+    "noCasesDescription": "Sie haben noch keine Ferienunterkunftsfälle erstellt. Erstellen Sie Ihren ersten Fall über den Admin-Bereich.",
+    "createFirstCase": "Ersten Fall erstellen",
     "stats": {
-      "readyCases": "Fertige Cases",
-      "generatingCases": "Cases in Erstellung",
-      "totalCases": "Cases gesamt"
+      "readyCases": "Fertige Fälle",
+      "generatingCases": "Fälle in Erstellung",
+      "totalCases": "Fälle gesamt"
     }
   },
   "promotionTab": {
     "noQRCodesTitle": "Keine QR-Codes verfügbar",
-    "noQRCodesDescription": "Erstellen Sie zuerst einige Ferienwohnungs-Cases, um QR-Codes für die Promotion zu generieren.",
+    "noQRCodesDescription": "Erstellen Sie zuerst einen Ferienunterkunftsfälle, um QR-Codes für die Promotion zu generieren.",
     "goToCases": "Zu den Cases",
-    "scanToAccess": "Scannen Sie, um direkt auf den Case zuzugreifen",
+    "scanToAccess": "Scannen Sie, um direkt auf den Fall zuzugreifen",
     "downloadFlyer": "Flyer herunterladen",
     "downloadPrintTemplate": "Druckvorlage herunterladen (A4, 5 Flyer)",
     "flyerPreview": "Flyer-Vorschau",
-    "flyerDescription": "Laden Sie einen vorgefertigten Flyer mit QR-Code herunter, den Sie ausdrucken und verteilen können.",
+    "flyerDescription": "Laden Sie einen vorgefertigten Flyer mit QR-Code herunter, den Sie ausdrucken und an Ihre Gäste verteilen können.",
     "printTemplateDescription": "Laden Sie eine A4-Druckvorlage mit 5 Flyern zum Ausschneiden herunter.",
     "colorVariant": "Farbvariante",
     "originalColor": "Orange (Original)",
@@ -39,8 +39,8 @@
     "description": "Verwalten Sie hier Ihr Abonnement und Ihre Rechnungsinformationen."
   },
   "form": {
-    "title": "Erstellen Sie Ihren Ferienwohnungsfall",
-    "description": "Füllen Sie das folgende Formular aus, um einen einzigartigen Kriminalfall für Ihre Ferienwohnung zu erstellen. Mit Abschluss des kostenlosen 7 tägigen Test-Abonnements startet die Erstellung ihres individuellen Detektivfalls. Die Generierung dauert bis zu 24 Stunden. Sie werden per E-Mail benachrichtigt, sobald Ihr Fall bereit ist. Anschließend können Sie QR-Codes generieren, die Ihre Gäste scannen können, um den Fall zu spielen.",
+    "title": "Erstellen Sie Ihren Ferienunterkunftsfall",
+    "description": "Füllen Sie das folgende Formular aus, um einen einzigartigen Kriminalfall für Ihre Ferienunterkunft zu erstellen. Mit Abschluss des kostenlosen 7 tägigen Test-Abonnements startet die Erstellung ihres individuellen Detektivfalls. Die Generierung dauert bis zu 24 Stunden. Sie werden per E-Mail benachrichtigt, sobald Ihr Fall bereit ist. Anschließend können Sie QR-Codes generieren, die Ihre Gäste scannen können, um den Fall zu spielen.",
     "backToOverview": "Zurück zur Übersicht",
     "progress": {
       "title": "Formular-Fortschritt",
@@ -50,7 +50,7 @@
     "sections": {
       "basicSettings": "Grundeinstellungen",
       "location": "Örtlichkeit",
-      "rentalDetails": "Ferienwohnungs-Details",
+      "rentalDetails": "Ferienunterkunft-Details",
       "attractions": "Sehenswürdigkeiten in der Nähe",
       "historicalInfo": "Historische Informationen (optional)"
     },
@@ -87,8 +87,8 @@
         "required": "Name ist erforderlich"
       },
       "venueDescription": {
-        "label": "Beschreibung der Unterkunft",
-        "helpText": "Beschreiben Sie Architektur, Einrichtungsstil und Besonderheiten",
+        "label": "Beschreibung der Ferienunterkunft",
+        "helpText": "Beschreiben Sie Architektur, Einrichtungsstil und Besonderheiten.",
         "required": "Beschreibung ist erforderlich"
       },
       "venueFloors": {
@@ -126,7 +126,7 @@
         "required": "Name ist erforderlich"
       },
       "attractionDistance": {
-        "placeholder": "Entfernung (km)",
+        "placeholder": "Entfernung (m)",
         "required": "Entfernung ist erforderlich",
         "min": "Entfernung muss positiv sein"
       }
@@ -140,8 +140,8 @@
     }
   },
   "addCaseCard": {
-    "title": "Ihren Ferienwohnungsfall erstellen",
-    "description": "Erstellen Sie einen neuen Ferienwohnungs-Case"
+    "title": "Ihren Ferienunterkunftsfall erstellen",
+    "description": "Erstellen Sie einen neuen Ferienunterkunftsfall"
   },
   "subscription": {
     "subscriptionId": "Abonnement-ID",
@@ -155,7 +155,7 @@
     "status": "Status",
     "statusInProgress": "In Bearbeitung",
     "created": "Erstellt",
-    "description": "Ihr Ferienhaus-Fall wird generiert... Dies dauert normalerweise bis zu 24 Stunden."
+    "description": "Ihr Ferienunterkunftsfall wird generiert... Dies dauert normalerweise bis zu 24 Stunden."
   },
   "error": {
     "messages": {
@@ -165,7 +165,7 @@
     }
   },
   "autosave": {
-    "restored": "Ihre zuvor eingegebenen Daten wurden wiederhergestellt.",
+    "restored": "Ihre Eingaben wurden wiederhergestellt.",
     "saved": "Fortschritt automatisch gespeichert",
     "cleared": "Gespeicherte Daten gelöscht"
   }
