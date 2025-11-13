@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Award } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/hooks/useTheme";
@@ -17,17 +16,19 @@ const VenuesPartnersButton = () => {
     >
       <div className="container">
         <div className="text-center">
-          <Link 
-            to="/partners"
+          <button 
             className="btn btn-outline-danger btn-lg d-inline-flex align-items-center gap-2"
             style={{
               borderWidth: '2px',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              cursor: 'not-allowed',
+              opacity: 0.6
             }}
+            disabled
           >
             <Award size={20} />
             <span>{t('partnersButton.text')}</span>
-          </Link>
+          </button>
         </div>
       </div>
     </section>
