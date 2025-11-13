@@ -43,7 +43,7 @@ body {
 
 /* Dark theme */
 [data-bs-theme="dark"] {
-  --bs-body-bg: #121522;
+  --bs-body-bg: #090909;
   --bs-body-color: #cccccc;
   --bs-border-color: #5f5f5f;
   --bs-secondary: #5f5f5f;
