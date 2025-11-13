@@ -9,7 +9,7 @@ const PartnersGrid = ({ partners }: PartnersGridProps) => {
     <div className="container">
       <div className="row g-4">
         {partners.map((partner) => (
-          <div key={partner.id} className="col-12 col-lg-6">
+          <div key={partner.id} className="col-12">
             <PartnerVenueCard venue={partner} />
           </div>
         ))}

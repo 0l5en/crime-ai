@@ -47,6 +47,7 @@ const PartnersPage = () => {
           ownerAvatar: thomasMuellerAvatar,
           website: 'alpenblick-fewo.de',
           address: 'Alpspitzstraße 12, 82467 Garmisch-Partenkirchen',
+          image: '/placeholder.svg',
           features: [
             'Individueller Detektivfall für die Alpenregion',
             '4-Zimmer-Wohnung mit Bergblick',
@@ -68,6 +69,7 @@ const PartnersPage = () => {
           ownerAvatar: lauraSchmidtAvatar,
           website: 'ostsee-hideaway.de',
           address: 'Strandweg 8, 18609 Binz, Rügen',
+          image: '/placeholder.svg',
           features: [
             'Maritime Detektivgeschichte',
             'Strandnahes Ferienhaus',
@@ -87,6 +89,7 @@ const PartnersPage = () => {
           testimonial: t('venues:testimonials.items.elena.text'),
           ownerName: 'Marcus Weber',
           ownerAvatar: marcusWeberAvatar,
+          image: '/placeholder.svg',
           website: 'schwarzwald-chalet.de',
           address: 'Waldweg 5, 79822 Titisee-Neustadt',
           features: [
@@ -113,6 +116,7 @@ const PartnersPage = () => {
           ownerAvatar: jamesAndersonAvatar,
           website: 'cotswold-cottage.co.uk',
           address: '12 Honey Lane, Bath BA1 2QR, UK',
+          image: '/placeholder.svg',
           features: [
             'Bespoke mystery case set in Cotswolds',
             'Traditional English cottage atmosphere',
@@ -134,6 +138,7 @@ const PartnersPage = () => {
           ownerAvatar: emilyParkerAvatar,
           website: 'highland-retreat.scot',
           address: '45 Castle View, Edinburgh EH1 3AT, Scotland',
+          image: '/placeholder.svg',
           features: [
             'Scottish folklore mystery integration',
             'Luxury highland accommodation',
@@ -155,6 +160,7 @@ const PartnersPage = () => {
           ownerAvatar: oliverBennettAvatar,
           website: 'seaside-escape-cornwall.co.uk',
           address: '8 Harbour Road, St Ives TR26 1LP, Cornwall',
+          image: '/placeholder.svg',
           features: [
             'Coastal path mystery trails',
             'Family-friendly detective games',
@@ -179,6 +185,7 @@ const PartnersPage = () => {
           ownerAvatar: thomasDuboisAvatar,
           website: 'maison-provencale.fr',
           address: '15 Chemin des Lavandes, 13100 Aix-en-Provence',
+          image: '/placeholder.svg',
           features: [
             'Mystère intégrant l\'histoire provençale',
             'Bastide authentique du 18ème siècle',
@@ -200,6 +207,7 @@ const PartnersPage = () => {
           ownerAvatar: sophieLaurentAvatar,
           website: 'chalet-montagnard-chamonix.fr',
           address: '28 Route des Pèlerins, 74400 Chamonix-Mont-Blanc',
+          image: '/placeholder.svg',
           features: [
             'Mystère au coin du feu après-ski',
             'Chalet de luxe face au Mont-Blanc',
@@ -221,6 +229,7 @@ const PartnersPage = () => {
           ownerAvatar: marcRousseauAvatar,
           website: 'gite-breton-saintmalo.fr',
           address: '12 Rue des Corsaires, 35400 Saint-Malo',
+          image: '/placeholder.svg',
           features: [
             'Histoire corsaire authentique',
             'Enquête sur les remparts',
@@ -245,6 +254,7 @@ const PartnersPage = () => {
           ownerAvatar: marcoBianchiAvatar,
           website: 'villa-toscana-firenze.it',
           address: 'Via dei Colli 23, 50125 Firenze',
+          image: '/placeholder.svg',
           features: [
             'Giallo personalizzato con storia locale',
             'Villa storica del Rinascimento',
@@ -266,6 +276,7 @@ const PartnersPage = () => {
           ownerAvatar: sofiaRossiAvatar,
           website: 'casa-veneziana.it',
           address: 'Calle della Misericordia 3456, 30121 Venezia',
+          image: '/placeholder.svg',
           features: [
             'Esplorazione autentica di Venezia',
             'Casa gestita da generazioni',
@@ -287,6 +298,7 @@ const PartnersPage = () => {
           ownerAvatar: alessandroContiAvatar,
           website: 'rifugio-alpino-cortina.it',
           address: 'Via Faloria 15, 32043 Cortina d\'Ampezzo',
+          image: '/placeholder.svg',
           features: [
             'Intrattenimento serale innovativo',
             'Rifugio esclusivo nelle Dolomiti',
