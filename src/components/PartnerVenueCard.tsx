@@ -41,6 +41,18 @@ const PartnerVenueCard = ({ venue }: PartnerVenueCardProps) => {
         e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
       }}
     >
+      {/* Venue Image */}
+      {venue.image && (
+        <div style={{ height: '300px', overflow: 'hidden' }}>
+          <img 
+            src={venue.image} 
+            alt={venue.name}
+            className="w-100 h-100"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+      )}
+      
       {/* Header with Badge */}
       <div 
         className="card-header border-0 text-white position-relative"
