@@ -1,31 +1,33 @@
 /* Bootstrap import */
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 /* Ensure proper theme application to body */
 html,
 body {
   background-color: var(--bs-body-bg) !important;
   color: var(--bs-body-color) !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Custom CSS Variables for our theme */
 :root {
   /* Color palette: 090909 (dark), 5F5F5F (medium), FFFFFF (light), DC4245 (red accent) */
-  --bs-primary: #DC4245;
+  --bs-primary: #dc4245;
   --bs-primary-rgb: 220, 66, 69;
-  --bs-secondary: #5F5F5F;
+  --bs-secondary: #5f5f5f;
   --bs-secondary-rgb: 95, 95, 95;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
-  --bs-danger: #DC4245;
-  --bs-light: #F8F9FA;
+  --bs-danger: #dc4245;
+  --bs-light: #f8f9fa;
   --bs-dark: #090909;
-  --bs-body-bg: #FFFFFF;
+  --bs-body-bg: #ffffff;
   --bs-body-bg-rgb: 230, 230, 230;
   --bs-body-color: #090909;
-  --bs-border-color: #E0E0E0;
+  --bs-border-color: #e0e0e0;
   --bs-link-hover-color-rgb: red;
   /* Custom game card colors */
   --card-red: #dc3545;
@@ -41,12 +43,12 @@ body {
 
 /* Dark theme */
 [data-bs-theme="dark"] {
-  --bs-body-bg: #090909;
-  --bs-body-color: #CCCCCC;
-  --bs-border-color: #5F5F5F;
-  --bs-secondary: #5F5F5F;
-  --bs-light: #5F5F5F;
-  --bs-dark: #CCCCCC;
+  --bs-body-bg: #121522;
+  --bs-body-color: #cccccc;
+  --bs-border-color: #5f5f5f;
+  --bs-secondary: #5f5f5f;
+  --bs-light: #5f5f5f;
+  --bs-dark: #cccccc;
   --bs-body-bg-rgb: 33, 37, 41;
 }
 
@@ -280,7 +282,7 @@ body {
   color: var(--bs-body-color);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 0.9rem;
 }
 
@@ -516,7 +518,9 @@ body {
   background-color: #1a1f2e;
   border: none;
   border-radius: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .analytics-kpi-card:hover {
