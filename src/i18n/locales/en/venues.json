@@ -175,5 +175,9 @@
       "register": "Register as Venue Owner",
       "contact": "Contact Us"
     }
+  },
+  "partnersButton": {
+    "text": "Our Venue Partners",
+    "subtitle": "Discover successful partners"
   }
 }

@@ -28,6 +28,7 @@ import VacationRentalCaseGenerator from "./pages/VacationRentalCaseGenerator";
 import VacationRentalDashboard from "./pages/VacationRentalDashboard";
 import VenueRegister from "./pages/VenueRegister";
 import VenuesPage from "./pages/VenuesPage";
+import PartnersPage from "./pages/PartnersPage";
 import Contact from "./pages/Contact";
 import FAQPage from "./pages/FAQPage";
 
@@ -46,6 +47,7 @@ const App = () => {
               <Route path="/cases" element={<Cases />} />
               <Route path="/case-preview/:caseId" element={<CaseTeaser />} />
               <Route path="/venues" element={<VenuesPage />} />
+              <Route path="/partners" element={<PartnersPage />} />
               <Route path="/register" element={<Register />} />
               <Route path="/venue-register" element={<VenueRegister />} />
               <Route path="/terms" element={<Terms />} />
