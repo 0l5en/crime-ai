@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import { Award } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@/hooks/useTheme";
 
 const VenuesPartnersButton = () => {
   const { t } = useTranslation('venues');
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
-    <section className="py-5" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
+    <section 
+      className="py-5" 
+      style={{ 
+        backgroundColor: isDark ? '#181D35' : '#F7FAFC' 
+      }}
+    >
       <div className="container">
         <div className="text-center">
           <Link 
