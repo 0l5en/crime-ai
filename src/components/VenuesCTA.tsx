@@ -11,16 +11,17 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-4 py-md-5" 
+      className="py-5 py-md-6" 
       style={{ 
-        backgroundColor: isDark ? '#181D35' : '#f7fafc'
+        backgroundColor: isDark ? '#181D35' : '#f7fafc',
+        marginTop: 'clamp(2rem, 4vw, 4rem)'
       }} 
       data-section="contact"
     >
       <div className="container px-3">
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
-            <h3 className={isDark ? "fw-bold mb-3 text-light" : "fw-bold mb-3"} style={{
+            <h3 className={isDark ? "fw-bold mb-3 mb-md-4 text-light" : "fw-bold mb-3 mb-md-4"} style={{
               fontSize: 'clamp(1.1rem, 3.5vw, 1.85rem)',
               lineHeight: '1.2',
               color: isDark ? undefined : '#2d3748'
@@ -28,7 +29,7 @@ const VenuesCTA = () => {
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
             </h3>
             
-            <p className={isDark ? "mb-4 px-2 text-light" : "mb-4 px-2"} style={{ 
+            <p className={isDark ? "mb-4 mb-md-5 px-2 text-light" : "mb-4 mb-md-5 px-2"} style={{ 
               fontSize: 'clamp(0.9rem, 2vw, 1.15rem)', 
               color: isDark ? undefined : '#4a5568',
               opacity: isDark ? 0.75 : 1,
@@ -42,7 +43,7 @@ const VenuesCTA = () => {
             
 
             {/* Feature Benefits */}
-            <div className="row justify-content-center mb-4 g-2 g-md-3">
+            <div className="row justify-content-center mb-4 mb-md-5 g-3">
               {[
                 { icon: CreditCard, key: 'ai' },
                 { icon: MessageCircle, key: 'trial' },
@@ -52,7 +53,7 @@ const VenuesCTA = () => {
                 return (
                   <div key={index} className="col-md-4">
                     <div 
-                      className="d-flex align-items-center justify-content-center py-2 px-3"
+                      className="d-flex align-items-center justify-content-center py-3 px-3"
                       style={{
                         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.03)' : '#fff5f5',
                         borderRadius: '10px',
