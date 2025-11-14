@@ -11,10 +11,10 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-5 py-md-6" 
       style={{ 
         backgroundColor: isDark ? '#181D35' : '#f7fafc',
-        marginTop: 'clamp(2rem, 4vw, 4rem)'
+        paddingTop: 'clamp(3rem, 6vw, 5rem)',
+        paddingBottom: 'clamp(2rem, 4vw, 3rem)'
       }} 
       data-section="contact"
     >
