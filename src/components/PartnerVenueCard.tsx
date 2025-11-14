@@ -134,7 +134,7 @@ const PartnerVenueCard = ({ venue }: PartnerVenueCardProps) => {
             borderRadius: '8px'
           }}
         >
-          <p className={isDark ? "mb-1 fst-italic text-light" : "mb-1 fst-italic"} style={{
+          <p className={isDark ? "mb-2 fst-italic text-light" : "mb-2 fst-italic"} style={{
             fontSize: '0.9rem',
             color: isDark ? undefined : '#2d3748',
             opacity: isDark ? 0.9 : 1,
@@ -142,12 +142,31 @@ const PartnerVenueCard = ({ venue }: PartnerVenueCardProps) => {
           }}>
             "{venue.testimonial}"
           </p>
-          <div className={isDark ? "text-light" : ""} style={{ 
-            fontSize: '0.85rem',
-            color: isDark ? undefined : '#718096',
-            opacity: isDark ? 0.7 : 1
-          }}>
-            - {venue.ownerName}, {venue.registeredSince}
+          <div className="d-flex align-items-center gap-2">
+            <img 
+              src={venue.ownerAvatar} 
+              alt={venue.ownerName}
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '2px solid var(--bs-danger)'
+              }}
+            />
+            <div className={isDark ? "text-light" : ""} style={{ 
+              fontSize: '0.85rem',
+              color: isDark ? undefined : '#718096',
+              opacity: isDark ? 0.7 : 1
+            }}>
+              <div className="fw-semibold" style={{ 
+                color: isDark ? '#e2e8f0' : '#2d3748',
+                opacity: 1
+              }}>
+                {venue.ownerName}
+              </div>
+              <div>{venue.registeredSince}</div>
+            </div>
           </div>
         </div>
 
