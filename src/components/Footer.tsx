@@ -34,10 +34,10 @@ const Footer = () => {
                 BETA
               </span>
             </div>
-            <p className="mb-3 mb-md-0 text-secondary text-center text-md-start" style={{ fontSize: "0.95rem" }}>
+            <p className="mb-3 mb-md-0 text-secondary text-center text-md-start d-none d-md-block" style={{ fontSize: "0.95rem" }}>
               {t("footer.description")}
             </p>
-            <div className="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-3 mb-md-0 mt-3">
+            <div className="d-none d-md-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-3 mb-md-0 mt-3">
               <StarRating
                 rating={stats.averageRating}
                 onRatingChange={handleRatingChange}
