@@ -11,7 +11,7 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-3 py-md-4" 
+      className="py-4 py-md-5" 
       style={{ 
         backgroundColor: isDark ? '#181D35' : '#f7fafc'
       }} 
@@ -20,20 +20,20 @@ const VenuesCTA = () => {
       <div className="container px-3">
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
-            <h3 className={isDark ? "fw-bold mb-2 mb-md-3 text-light" : "fw-bold mb-2 mb-md-3"} style={{
-              fontSize: 'clamp(1.1rem, 3.5vw, 1.75rem)',
+            <h3 className={isDark ? "fw-bold mb-3 text-light" : "fw-bold mb-3"} style={{
+              fontSize: 'clamp(1.1rem, 3.5vw, 1.85rem)',
               lineHeight: '1.2',
               color: isDark ? undefined : '#2d3748'
             }}>
               {t('cta.title')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight1')}</span> {t('cta.titleMiddle')} <span style={{ color: 'var(--bs-danger)' }}>{t('cta.titleHighlight2')}</span>!
             </h3>
             
-            <p className={isDark ? "mb-3 mb-md-4 px-2 text-light" : "mb-3 mb-md-4 px-2"} style={{ 
-              fontSize: 'clamp(0.85rem, 2vw, 1.1rem)', 
+            <p className={isDark ? "mb-4 px-2 text-light" : "mb-4 px-2"} style={{ 
+              fontSize: 'clamp(0.9rem, 2vw, 1.15rem)', 
               color: isDark ? undefined : '#4a5568',
               opacity: isDark ? 0.75 : 1,
               lineHeight: '1.6',
-              maxWidth: '700px',
+              maxWidth: '750px',
               margin: '0 auto'
             }}>
               {t('cta.subtitle')} <span style={{ color: 'var(--bs-danger)', fontWeight: '600' }}>{t('cta.subtitleHighlight')}</span> {t('cta.subtitleEnd')}
@@ -42,7 +42,7 @@ const VenuesCTA = () => {
             
 
             {/* Feature Benefits */}
-            <div className="row justify-content-center mb-3 g-2">
+            <div className="row justify-content-center mb-4 g-2 g-md-3">
               {[
                 { icon: CreditCard, key: 'ai' },
                 { icon: MessageCircle, key: 'trial' },
@@ -52,7 +52,7 @@ const VenuesCTA = () => {
                 return (
                   <div key={index} className="col-md-4">
                     <div 
-                      className="d-flex align-items-center justify-content-center p-2"
+                      className="d-flex align-items-center justify-content-center py-2 px-3"
                       style={{
                         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.03)' : '#fff5f5',
                         borderRadius: '10px',
@@ -82,7 +82,7 @@ const VenuesCTA = () => {
                         <IconComponent size={18} style={{ color: 'white' }} />
                       </div>
                       <span className={isDark ? "fw-semibold text-light" : "fw-semibold"} style={{ 
-                        fontSize: '0.95rem', 
+                        fontSize: '1rem', 
                         color: isDark ? undefined : '#2d3748' 
                       }}>
                         {t(`cta.features.${feature.key}`)}
@@ -94,14 +94,14 @@ const VenuesCTA = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="d-flex flex-column flex-md-row gap-2 justify-content-center mx-auto" style={{ maxWidth: '100%' }}>
+            <div className="d-flex flex-column flex-md-row gap-2 gap-md-3 justify-content-center mx-auto" style={{ maxWidth: '100%' }}>
               <button 
                 onClick={() => navigate('/venue-register')}
                 className="fw-bold d-flex align-items-center justify-content-center gap-2 flex-grow-1" 
                 style={{ 
-                  fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)',
-                  borderRadius: '12px',
-                  padding: 'clamp(0.65rem, 2vw, 0.85rem) clamp(1rem, 3vw, 1.25rem)',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+                  borderRadius: '14px',
+                  padding: 'clamp(0.7rem, 2vw, 0.9rem) clamp(1rem, 3vw, 1.35rem)',
                   backgroundColor: 'var(--bs-danger)',
                   color: 'white',
                   border: 'none',
@@ -127,9 +127,9 @@ const VenuesCTA = () => {
                 onClick={() => navigate('/contact')}
                 className="fw-bold d-flex align-items-center justify-content-center gap-2 flex-grow-1" 
                 style={{ 
-                  fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)',
-                  borderRadius: '12px',
-                  padding: 'clamp(0.65rem, 2vw, 0.85rem) clamp(1rem, 3vw, 1.25rem)',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+                  borderRadius: '14px',
+                  padding: 'clamp(0.7rem, 2vw, 0.9rem) clamp(1rem, 3vw, 1.35rem)',
                   backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'white',
                   color: 'var(--bs-danger)',
                   border: isDark ? '2px solid rgba(255, 255, 255, 0.2)' : '2px solid var(--bs-danger)',
