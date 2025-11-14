@@ -24,7 +24,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-4 mt-auto" style={{ backgroundColor: 'hsl(var(--bs-footer-bg))' }}>
+    <footer className="bg-body py-4 mt-auto">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-6">
