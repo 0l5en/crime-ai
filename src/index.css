@@ -52,12 +52,6 @@ body {
   --bs-body-bg-rgb: 33, 37, 41;
 }
 
-/* Venues page dark theme override for header and footer */
-.venues-page[data-bs-theme="dark"] nav.bg-body,
-.venues-page[data-bs-theme="dark"] footer.bg-body {
-  background-color: #090B14 !important;
-}
-
 /* Smooth transitions for theme changes */
 * {
   transition: var(--theme-transition);
