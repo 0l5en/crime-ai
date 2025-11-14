@@ -24,7 +24,7 @@ const PartnersHero = () => {
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <Award size={40} className="text-light" />
+                <Award size={40} className="text-danger" />
               </div>
             </div>
             <h1 className="display-4 fw-bold mb-4 text-light">
