@@ -15,7 +15,7 @@ const VenuesCTA = () => {
       style={{ 
         minHeight: '100vh', 
         backgroundColor: isDark ? '#181D35' : '#f7fafc',
-        paddingBottom: 'clamp(1.08rem, 2vw, 2.16rem)'
+        paddingBottom: 'clamp(0.756rem, 2vw, 1.512rem)'
       }} 
       data-section="contact"
     >
