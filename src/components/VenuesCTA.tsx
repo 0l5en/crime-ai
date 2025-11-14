@@ -11,10 +11,11 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-4 py-md-5 d-flex align-items-center" 
+      className="pt-4 pt-md-5 d-flex align-items-center" 
       style={{ 
         minHeight: '100vh', 
-        backgroundColor: isDark ? '#181D35' : '#f7fafc' 
+        backgroundColor: isDark ? '#181D35' : '#f7fafc',
+        paddingBottom: 'clamp(1.35rem, 2vw, 2.7rem)'
       }} 
       data-section="contact"
     >
