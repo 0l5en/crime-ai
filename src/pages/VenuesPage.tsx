@@ -19,7 +19,7 @@ const VenuesPage = () => {
       <VenuesFAQ />
       <VenuesTestimonials />
       <VenuesCTA />
-      <Footer />
+      <Footer backgroundColor="#090B14" />
     </div>
   );
 };

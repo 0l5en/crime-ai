@@ -6,7 +6,11 @@ import { useUserContext } from "@/contexts/UserContext";
 import { updateSchemaRating } from "@/utils/updateSchemaRating";
 import { useEffect } from "react";
 
-const Footer = () => {
+interface FooterProps {
+  backgroundColor?: string;
+}
+
+const Footer = ({ backgroundColor }: FooterProps) => {
   const { t } = useTranslation("common");
   const user = useUserContext();
   const { setRating, getUserRating, getSiteStats } = useSiteRating(user.name || undefined);
@@ -24,7 +28,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-body py-4 mt-auto">
+    <footer className={backgroundColor ? "py-4 mt-auto" : "bg-body py-4 mt-auto"} style={backgroundColor ? { backgroundColor } : undefined}>
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-6">
