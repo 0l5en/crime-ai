@@ -1,5 +1,7 @@
-import { MapPin, Calendar, Briefcase, ExternalLink, Award } from "lucide-react";
+import React from "react";
+import { MapPin, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@/hooks/useTheme";
 
 export interface PartnerVenueData {
   id: string;
@@ -24,145 +26,156 @@ interface PartnerVenueCardProps {
 
 const PartnerVenueCard = ({ venue }: PartnerVenueCardProps) => {
   const { t } = useTranslation('partners');
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  const [isLiked, setIsLiked] = React.useState(false);
 
   return (
-    <div 
-      className="card h-100 border-0 shadow-sm"
+    <div
+      className="position-relative d-flex flex-column h-100"
       style={{
+        border: isDark ? '2px solid rgba(255, 255, 255, 0.1)' : '2px solid rgba(203, 25, 28, 0.2)',
+        borderRadius: '20px',
+        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.03)' : 'white',
         transition: 'all 0.3s ease',
         overflow: 'hidden'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-8px)';
-        e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.15)';
+        e.currentTarget.style.borderColor = isDark ? 'rgba(220, 38, 38, 0.4)' : 'var(--bs-danger)';
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
+        e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.06)' : '#fff5f5';
       }}
       onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(203, 25, 28, 0.2)';
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.03)' : 'white';
       }}
     >
-      {/* Venue Image */}
-      {venue.image && (
-        <div style={{ height: '300px', overflow: 'hidden' }}>
-          <img 
-            src={venue.image} 
-            alt={venue.name}
-            className="w-100 h-100"
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
-      )}
-      
-      {/* Header with Badge */}
+      {/* Image Section with Heart Icon */}
       <div 
-        className="card-header border-0 text-white position-relative"
+        className="position-relative"
         style={{
-          background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-variant)) 100%)',
-          padding: '1.5rem'
+          width: '100%',
+          height: '240px',
+          overflow: 'hidden'
         }}
       >
-        <div className="position-absolute top-0 end-0 m-3">
-          <span 
-            className="badge d-flex align-items-center gap-1"
-            style={{
-              background: 'rgba(255, 255, 255, 0.2)',
-              backdropFilter: 'blur(10px)',
-              padding: '0.5rem 0.75rem',
-              fontSize: '0.75rem'
-            }}
-          >
-            <Award size={14} />
-            {t('partner.badge')}
-          </span>
-        </div>
-        <h3 className="h4 mb-2">{venue.name}</h3>
-        <div className="d-flex align-items-center gap-2 text-white opacity-75">
-          <MapPin size={16} />
-          <span>{venue.location}, {venue.country}</span>
-        </div>
+        <img
+          src={venue.image}
+          alt={venue.name}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: isDark ? 'brightness(0.9)' : 'none'
+          }}
+        />
+        {/* Heart Icon - Top Right */}
+        <button
+          onClick={() => setIsLiked(!isLiked)}
+          className="position-absolute top-0 end-0 m-3 btn btn-sm rounded-circle d-flex align-items-center justify-content-center"
+          style={{
+            width: '40px',
+            height: '40px',
+            background: 'rgba(0, 0, 0, 0.5)',
+            border: 'none',
+            backdropFilter: 'blur(10px)',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          <Heart 
+            size={20} 
+            fill={isLiked ? 'var(--bs-danger)' : 'none'} 
+            color={isLiked ? 'var(--bs-danger)' : 'white'} 
+          />
+        </button>
       </div>
 
-      <div className="card-body p-4">
-        {/* Stats */}
-        <div className="row g-3 mb-4">
-          <div className="col-6">
-            <div className="d-flex align-items-center gap-2 text-muted">
-              <Calendar size={18} className="text-danger" />
-              <div>
-                <div className="small text-muted">{t('partner.registeredSince')}</div>
-                <div className="fw-semibold">{venue.registeredSince}</div>
-              </div>
-            </div>
-          </div>
-          <div className="col-6">
-            <div className="d-flex align-items-center gap-2 text-muted">
-              <Briefcase size={18} className="text-danger" />
-              <div>
-                <div className="small text-muted">{t('partner.cases')}</div>
-                <div className="fw-semibold">{venue.caseCount} {t('partner.cases')}</div>
-              </div>
-            </div>
-          </div>
+      {/* Content Section */}
+      <div className="p-4 flex-grow-1 d-flex flex-column">
+        {/* Title */}
+        <h3 className={isDark ? "fw-bold mb-2 text-light" : "fw-bold mb-2"} style={{
+          color: isDark ? undefined : '#2d3748',
+          fontSize: '1.35rem'
+        }}>
+          {venue.name}
+        </h3>
+        
+        {/* Location */}
+        <div className="d-flex align-items-center mb-3">
+          <MapPin size={16} className="me-1" style={{ color: 'var(--bs-primary)' }} />
+          <span className={isDark ? "text-light" : ""} style={{ 
+            fontSize: '0.9rem',
+            color: isDark ? undefined : '#718096',
+            opacity: isDark ? 0.8 : 1
+          }}>
+            {venue.location}, {venue.country}
+          </span>
         </div>
 
         {/* Description */}
-        <p className="mb-4">{venue.description}</p>
+        <p className={isDark ? "mb-3 text-light" : "mb-3"} style={{
+          color: isDark ? undefined : '#4a5568',
+          opacity: isDark ? 0.8 : 1,
+          lineHeight: '1.6',
+          fontSize: '0.95rem'
+        }}>
+          {venue.description}
+        </p>
 
-        {/* Features */}
-        {venue.features && venue.features.length > 0 && (
-          <div className="mb-4">
-            <h5 className="h6 fw-semibold mb-3">{t('partner.features')}</h5>
-            <ul className="list-unstyled mb-0">
-              {venue.features.map((feature, idx) => (
-                <li key={idx} className="mb-2 d-flex align-items-start gap-2">
-                  <span className="text-danger" style={{ marginTop: '2px' }}>✓</span>
-                  <span className="small">{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Testimonial */}
+        {/* Testimonial Quote */}
         <div 
-          className="p-3 rounded mb-4"
+          className="p-3 mb-3"
           style={{
-            background: 'hsl(var(--muted))',
-            borderLeft: '3px solid hsl(var(--primary))'
+            backgroundColor: isDark ? 'rgba(203, 25, 28, 0.1)' : 'rgba(203, 25, 28, 0.05)',
+            borderLeft: '3px solid var(--bs-danger)',
+            borderRadius: '8px'
           }}
         >
-          <p className="mb-2 small fst-italic">"{venue.testimonial}"</p>
-          <div className="d-flex align-items-center gap-2">
-            <img 
-              src={venue.ownerAvatar} 
-              alt={venue.ownerName}
-              className="rounded-circle"
-              style={{ width: '32px', height: '32px', objectFit: 'cover' }}
-            />
-            <div>
-              <div className="small fw-semibold">{venue.ownerName}</div>
-              <div className="small text-muted">{venue.name}</div>
-            </div>
+          <p className={isDark ? "mb-1 fst-italic text-light" : "mb-1 fst-italic"} style={{
+            fontSize: '0.9rem',
+            color: isDark ? undefined : '#2d3748',
+            opacity: isDark ? 0.9 : 1,
+            lineHeight: '1.5'
+          }}>
+            "{venue.testimonial}"
+          </p>
+          <div className={isDark ? "text-light" : ""} style={{ 
+            fontSize: '0.85rem',
+            color: isDark ? undefined : '#718096',
+            opacity: isDark ? 0.7 : 1
+          }}>
+            - {venue.ownerName}, {venue.registeredSince}
           </div>
         </div>
 
-        {/* Contact Info */}
-        <div className="border-top pt-3">
-          <div className="small text-muted mb-2">
-            <MapPin size={14} className="d-inline me-1" />
-            {venue.address}
-          </div>
-          {venue.website && (
-            <a 
-              href={`https://${venue.website}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline-danger btn-sm d-inline-flex align-items-center gap-2"
-            >
-              <ExternalLink size={16} />
-              {t('partner.website')}
-            </a>
-          )}
+        {/* View Property Button */}
+        <div className="mt-auto">
+          <a 
+            href={`https://${venue.website}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn w-100"
+            style={{
+              background: 'var(--bs-primary)',
+              color: 'white',
+              borderRadius: '10px',
+              padding: '0.75rem',
+              fontWeight: '500',
+              border: 'none',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '0.9';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+          >
+            {t('partner.website')}
+          </a>
         </div>
       </div>
     </div>
