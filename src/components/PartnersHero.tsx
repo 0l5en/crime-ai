@@ -38,12 +38,14 @@ const PartnersHero = () => {
               style={{
                 background: 'rgba(255, 255, 255, 0.15)',
                 backdropFilter: 'blur(10px)',
-                border: 'none',
-                color: 'white'
+                border: 'none'
               }}
             >
-              <p className="mb-0 small">
-                <strong>💡 {t('hero.criteria')}</strong>
+              <p className="mb-0" style={{ 
+                fontSize: '0.6125rem',
+                color: 'var(--bs-danger)'
+              }}>
+                <strong>{t('hero.criteria')}</strong>
               </p>
             </div>
           </div>
