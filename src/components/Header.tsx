@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg sticky-top bg-body">
+      <nav className="navbar navbar-expand-lg sticky-top bg-body" style={{ paddingTop: '0.6rem', paddingBottom: '0.6rem' }}>
         <div className="container-fluid px-4">
           {/* Brand */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
