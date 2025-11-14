@@ -33,21 +33,6 @@ const PartnersHero = () => {
             <p className="lead mb-4 text-light opacity-75" style={{ fontSize: '1.1rem' }}>
               {t('hero.subtitle')}
             </p>
-            <div 
-              className="alert d-inline-block px-4 py-3"
-              style={{
-                background: 'rgba(255, 255, 255, 0.15)',
-                backdropFilter: 'blur(10px)',
-                border: 'none'
-              }}
-            >
-              <p className="mb-0" style={{ 
-                fontSize: '0.6125rem',
-                color: 'var(--bs-danger)'
-              }}>
-                <strong>{t('hero.criteria')}</strong>
-              </p>
-            </div>
           </div>
         </div>
       </div>
