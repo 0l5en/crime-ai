@@ -10,14 +10,7 @@ import VenuesCTA from "@/components/VenuesCTA";
 
 const VenuesPage = () => {
   return (
-    <div className="min-vh-100 venues-page" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
-      <style>{`
-        @media (prefers-color-scheme: dark) {
-          .venues-page footer.bg-body {
-            background-color: #090B14 !important;
-          }
-        }
-      `}</style>
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
       <Header />
       <VenuesHero />
       <WhyVenueOwners />
