@@ -689,6 +689,12 @@ export interface components {
         Violations: {
             violations?: components["schemas"]["Violation"][];
         };
+        CaseGenerationDto: {
+            currentStep: string;
+            /** Format: int32 */
+            progressPercentage: number;
+            error?: string;
+        };
         CrimeCaseGeneratorInfoDto: {
             /** Format: int64 */
             id: number;
@@ -698,11 +704,10 @@ export interface components {
             generating: boolean;
             /** Format: int32 */
             generationAttempts: number;
-            /** Format: int32 */
-            generationProgress: number;
             subscription?: components["schemas"]["SubscriptionDto"];
             /** @enum {string} */
             type: "BASIC" | "VACATION_RENTAL";
+            latestGeneration?: components["schemas"]["CaseGenerationDto"];
         };
         ResultSetCrimeCaseGeneratorInfoDto: {
             items?: components["schemas"]["CrimeCaseGeneratorInfoDto"][];

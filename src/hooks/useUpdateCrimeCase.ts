@@ -1,6 +1,7 @@
 import type { paths } from '@/openapi/crimeAiSchema';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';
+import { QUERY_KEY as crimeCaseGeneratorInfosQueryKey } from './useCrimeCaseGeneratorInfos';
 import { REQUEST_PATH as crimeCasesQueryKey } from './useCrimeCases';
 import { getCsrfToken } from './util';
 
@@ -30,6 +31,7 @@ export const useUpdateCrimeCase = () => {
     onSuccess: () => {
       // Invalidate and refetch crime cases list
       queryClient.invalidateQueries({ queryKey: [crimeCasesQueryKey] });
+      queryClient.invalidateQueries({ queryKey: [crimeCaseGeneratorInfosQueryKey] });
     },
   });
 };

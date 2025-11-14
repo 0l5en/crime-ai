@@ -111,13 +111,14 @@ const AdminCaseManagement = () => {
                 <table className="table table-dark table-hover mb-0">
                   <thead className="border-bottom border-secondary">
                     <tr>
-                      <th className="text-muted fw-semibold ps-4">ID</th>
+                      <th className="text-muted fw-semibold">ID</th>
                       <th className="text-muted fw-semibold">erstellt am</th>
                       <th className="text-muted fw-semibold">Ersteller</th>
                       <th className="text-muted fw-semibold">Typ</th>
                       <th className="text-muted fw-semibold">Abonnement</th>
                       <th className="text-muted fw-semibold">Anzahl Versuche <br /> Fallgenerierung</th>
                       <th className="text-muted fw-semibold">Titel</th>
+                      <th className="text-muted fw-semibold">Status</th>
                       <th className="text-muted fw-semibold">Aktionen</th>
                       <th className="text-muted fw-semibold text-center">Lösung</th>
                       <th className="text-muted fw-semibold text-center pe-4">Löschen</th>

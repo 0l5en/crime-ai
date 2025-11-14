@@ -3,11 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 import createClient from 'openapi-fetch';
 import { PATH_CRIME_AI_API } from './constants';
 
+export const QUERY_KEY = 'crimeCaseGeneratorInfos';
+
 export const useCrimeCaseGeneratorInfos = ({ firstResult = 0, maxResults = 10 }: { firstResult?: number; maxResults?: number }) => {
     const client = createClient<paths>({ baseUrl: PATH_CRIME_AI_API });
 
     return useQuery({
-        queryKey: ['crimeCaseGeneratorInfos'],
+        queryKey: [QUERY_KEY],
         queryFn: async () => {
             const response = await client.GET('/crimecase-generator-info', {
                 params: {
@@ -24,6 +26,6 @@ export const useCrimeCaseGeneratorInfos = ({ firstResult = 0, maxResults = 10 }:
 
             return response.data;
         },
-        staleTime: 5 * 60 * 1000, // 5 minutes
+        refetchInterval: 60 * 1000, // 1 minute
     });
 };

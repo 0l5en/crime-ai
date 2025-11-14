@@ -22,7 +22,7 @@
     "i18next": "^25.5.2",
     "i18next-browser-languagedetector": "^8.2.0",
     "keycloak-js": "^26.2.1",
-    "lucide-react": "^0.462.0",
+    "lucide-react": "^0.528.0",
     "openapi-fetch": "^0.15.0",
     "openapi-react-query": "^0.5.0",
     "qrcode": "^1.5.4",

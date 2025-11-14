@@ -4,10 +4,11 @@ import { usePerpetratorsByCaseId } from "@/hooks/usePerpetratorsByCaseId";
 import { useSolutionEvidences } from "@/hooks/useSolutionEvidences";
 import { useUpdateCrimeCase } from "@/hooks/useUpdateCrimeCase";
 import { components } from "@/openapi/crimeAiSchema";
-import { Coins } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, ChevronUp, CircleCheck, CircleX, Coins, HatGlasses, House } from "lucide-react";
+import { SetStateAction, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import ProgressBar from "./ProgressBar";
 import { toLocalizedString } from "./ui/DateTimeFormatter";
 
 type CrimeCaseGeneratorInfoDto = components['schemas']['CrimeCaseGeneratorInfoDto'];
@@ -16,24 +17,29 @@ type SubscriptionDto = components['schemas']['SubscriptionDto'];
 type ExpansionState = 'SolutionExpanded' | 'DeleteWarningExpanded' | 'None';
 
 const CaseRowEditable = ({ crimeCaseGeneratorInfo }: { crimeCaseGeneratorInfo: CrimeCaseGeneratorInfoDto }) => {
-    const navigate = useNavigate();
+
+    const [expanded, setExpanded] = useState<ExpansionState>();
     const updateCrimeCase = useUpdateCrimeCase();
     const deleteCrimeCase = useDeleteCrimeCase();
-    const [expanded, setExpanded] = useState<ExpansionState>('None');
     const pending = updateCrimeCase.isPending || deleteCrimeCase.isPending;
 
-    const handleStatusUpdate = async (crimeCaseDto: CrimeCaseDto) => {
+
+    const typeColor = crimeCaseGeneratorInfo.type === 'BASIC' ? 'bg-secondary' : 'bg-info';
+    const typeLabel = crimeCaseGeneratorInfo.type === 'BASIC' ? 'Basis' : 'Ferienwohnung';
+    const typeIcon = crimeCaseGeneratorInfo.type === 'BASIC' ? <span className="me-1"><HatGlasses /></span> : <span className="me-1"><House /></span>
+
+    const handleStatusUpdate = async (crimeCase: CrimeCaseDto) => {
         try {
-            // await updateCrimeCase.mutateAsync({ caseId: crimeCaseDto.id, crimeCaseDto });
+            await updateCrimeCase.mutateAsync({ caseId: crimeCase.id, crimeCaseDto: crimeCase });
             toast.success('Status wurde geändert.');
         } catch (error) {
             toast.error('Status konnte nicht geändert werden: ' + error.message);
         }
     };
 
-    const handleCrimeCaseDelete = async () => {
+    const handleCrimeCaseDelete = async (crimeCase: CrimeCaseDto) => {
         try {
-            //await deleteCrimeCase.mutateAsync({ caseId: crimeCase.id });
+            await deleteCrimeCase.mutateAsync({ caseId: crimeCase.id });
             toast.success('Kriminalfall wurde gelöscht.');
         } catch (error) {
             toast.error('Fehler beim Löschen des Kriminallfalls: ' + error.message);
@@ -54,139 +60,146 @@ const CaseRowEditable = ({ crimeCaseGeneratorInfo }: { crimeCaseGeneratorInfo: C
                     {crimeCaseGeneratorInfo.creator}
                 </td>
                 <td>
-                    {crimeCaseGeneratorInfo.type}
+                    <div className={`badge ${typeColor}`} style={{ minWidth: '140px' }}>
+                        <div className="d-flex align-items-center">{typeIcon}{typeLabel}</div>
+                    </div>
                 </td>
 
                 {crimeCaseGeneratorInfo.subscription
-                    ? <td>subscription</td>
-                    : <td>no subscription</td>}
+                    ? <td><SubscriptionStatus subscription={crimeCaseGeneratorInfo.subscription} /></td>
+                    : <td></td>}
 
                 <td>{crimeCaseGeneratorInfo.generationAttempts}</td>
 
                 {crimeCaseGeneratorInfo.crimeCase
-                    ? <td>crime case</td>
-                    : <td>no crime case</td>}
+                    ? <CrimeCaseColumns
+                        crimeCase={crimeCaseGeneratorInfo.crimeCase}
+                        handleStatusUpdate={handleStatusUpdate}
+                        pending={pending}
+                        expanded={expanded}
+                        setExpanded={setExpanded} />
+                    : <td colSpan={5}>
+                        {crimeCaseGeneratorInfo.latestGeneration &&
+                            <ProgressBar progressPercentage={crimeCaseGeneratorInfo.latestGeneration.progressPercentage} title={crimeCaseGeneratorInfo.latestGeneration.currentStep} />
+                        }
+                    </td>
+                }
 
-                {/* <td className="ps-4">
-                    {pending ? (
-                        <span className="spinner-border spinner-border-sm me-2" />
-                    ) : (
-                        <code className="text-info small">{crimeCase.id.substring(0, 8)}...</code>
-                    )}
-                </td>
-                <td className="fw-bold text-white">
-                    {crimeCase.title}
-                </td>
-                <td className="text-muted" style={{ maxWidth: '300px' }}>
-                    <div className="text-truncate small">{crimeCase.description}</div>
-                </td>
-                <td>
-                    {crimeCase.owner}
-                </td>
-                <td>
-                    {crimeCase.subscription && <SubscriptionStatus subscription={crimeCase.subscription} />}
-                </td>
-                <td>
-                    <div className="d-flex">
-                        <span className={`d-flex align-items-center badge ${crimeCase.type === 'VACATION_RENTAL' ? 'bg-info' : 'bg-primary'}`}>
-                            <span>{crimeCase.type === 'VACATION_RENTAL' ? 'Ferienwohnung' : 'Basis'}</span>
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <span className={`badge ${crimeCase.status === 'PUBLISHED' ? 'bg-success' :
-                        crimeCase.status === 'PREMIUM' ? 'bg-warning text-dark' :
-                            'bg-secondary'
-                        }`}>
-                        {crimeCase.status === 'PUBLISHED' ? 'Veröffentlicht' :
-                            crimeCase.status === 'PREMIUM' ? 'Premium' :
-                                'Unveröffentlicht'}
-                    </span>
-                </td>
-                <td>
-                    <div className="d-flex gap-2">
-                        <button
-                            className="btn btn-primary btn-sm"
-                            disabled={pending}
-                            onClick={() => navigate(`/case/${crimeCase.id}`)}
-                        >
-                            <i className="bi bi-eye me-1"></i>
-                            Ansehen
-                        </button>
-                        <div className="dropdown">
-                            <button
-                                className="btn btn-outline-light btn-sm dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                disabled={pending}
-                                style={{ zIndex: 1000 }}
-                            >
-                                <i className="bi bi-pencil-square me-1"></i>
-                                Status ändern
-                            </button>
-                            <ul
-                                className="dropdown-menu dropdown-menu-dark bg-dark border-secondary"
-                                style={{ zIndex: 1050 }}
-                            >
-                                <li>
-                                    <button
-                                        className="dropdown-item"
-                                        onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
-                                        disabled={crimeCase.status === 'UNPUBLISHED'}
-                                    >
-                                        <i className="bi bi-x-circle me-2"></i>
-                                        Unveröffentlicht
-                                    </button>
-                                </li>
-                                <li>
-                                    <button
-                                        className="dropdown-item"
-                                        onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
-                                        disabled={crimeCase.status === 'PUBLISHED'}
-                                    >
-                                        <i className="bi bi-check-circle me-2"></i>
-                                        Veröffentlicht
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td className="text-center">
-                    <button
-                        className="btn btn-sm btn-outline-info"
-                        onClick={() => expanded === 'SolutionExpanded' ? setExpanded('None') : setExpanded('SolutionExpanded')}
-                        disabled={pending}
-                        title={expanded === 'SolutionExpanded' ? 'Lösung verbergen' : 'Lösung anzeigen'}
-                    >
-                        {expanded === 'SolutionExpanded' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </button>
-                </td>
-                <td className="text-center pe-4">
-                    <button
-                        className="btn btn-danger btn-sm"
-                        onClick={() => setExpanded('DeleteWarningExpanded')}
-                        disabled={pending}
-                        title="Fall löschen"
-                    >
-                        <i className="bi bi-trash"></i>
-                    </button>
-                </td> */}
             </tr>
-            {/* {expanded === 'SolutionExpanded' && (
-                <SolutionRow caseId={crimeCase.id} />
+            {expanded === 'SolutionExpanded' && crimeCaseGeneratorInfo.crimeCase && (
+                <SolutionRow caseId={crimeCaseGeneratorInfo.crimeCase.id} />
             )}
-            {expanded === 'DeleteWarningExpanded' && (
-                <DeleteWarningRow pending={pending} deleteCrimeCase={handleCrimeCaseDelete} cancelDelete={() => setExpanded('None')} />
-            )} */}
+            {expanded === 'DeleteWarningExpanded' && crimeCaseGeneratorInfo.crimeCase && (
+                <DeleteWarningRow pending={pending} deleteCrimeCase={() => handleCrimeCaseDelete(crimeCaseGeneratorInfo.crimeCase)} cancelDelete={() => setExpanded('None')} />
+            )}
         </>
     );
 
 }
 
+const CrimeCaseColumns = ({
+    crimeCase,
+    handleStatusUpdate,
+    pending,
+    expanded,
+    setExpanded
+}: {
+    crimeCase: CrimeCaseDto,
+    handleStatusUpdate: (crimeCaseDto: CrimeCaseDto) => Promise<void>,
+    pending: boolean,
+    expanded: ExpansionState,
+    setExpanded: (value: SetStateAction<ExpansionState>) => void
+}) => {
+
+    const navigate = useNavigate();
+    const statusColor = crimeCase.status === 'PUBLISHED' ? 'bg-success' : 'bg-secondary';
+    const statusLabel = crimeCase.status === 'PUBLISHED' ? 'Veröffentlicht' : 'Unveröffentlicht';
+    const statusIcon = crimeCase.status === 'PUBLISHED' ? <span className="me-1"><CircleCheck /></span> : <span className="me-1"><CircleX /></span>
+
+    return (
+        <>
+            <td>{crimeCase.title}</td>
+            <td className="">
+                <div className={`badge ${statusColor}`} style={{ minWidth: '140px' }}>
+                    <div className="d-flex align-items-center">{statusIcon}{statusLabel}</div>
+                </div>
+            </td>
+            <td>
+                <div className="d-flex gap-2">
+                    <button
+                        className="btn btn-primary btn-sm"
+                        disabled={pending}
+                        onClick={() => navigate(`/case/${crimeCase.id}`)}
+                    >
+                        <i className="bi bi-eye me-1"></i>
+                        Ansehen
+                    </button>
+                    <div className="dropdown">
+                        <button
+                            className="btn btn-outline-light btn-sm dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            disabled={pending}
+                            style={{ zIndex: 1000 }}
+                        >
+                            <i className="bi bi-pencil-square me-1"></i>
+                            Status ändern
+                        </button>
+                        <ul
+                            className="dropdown-menu dropdown-menu-dark bg-dark border-secondary"
+                            style={{ zIndex: 1050 }}
+                        >
+                            <li>
+                                <button
+                                    className="dropdown-item"
+                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'UNPUBLISHED' })}
+                                    disabled={crimeCase.status === 'UNPUBLISHED'}
+                                >
+                                    <i className="bi bi-x-circle me-2"></i>
+                                    Unveröffentlicht
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className="dropdown-item"
+                                    onClick={() => handleStatusUpdate({ ...crimeCase, status: 'PUBLISHED' })}
+                                    disabled={crimeCase.status === 'PUBLISHED'}
+                                >
+                                    <i className="bi bi-check-circle me-2"></i>
+                                    Veröffentlicht
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td className="text-center">
+                <button
+                    className="btn btn-sm btn-outline-info"
+                    onClick={() => expanded === 'SolutionExpanded' ? setExpanded('None') : setExpanded('SolutionExpanded')}
+                    disabled={pending}
+                    title={expanded === 'SolutionExpanded' ? 'Lösung verbergen' : 'Lösung anzeigen'}
+                >
+                    {expanded === 'SolutionExpanded' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </button>
+            </td>
+            <td className="text-center">
+                <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => setExpanded('DeleteWarningExpanded')}
+                    disabled={pending}
+                    title="Fall löschen"
+                >
+                    <i className="bi bi-trash"></i>
+                </button>
+            </td>
+        </>
+    );
+}
+
 const DeleteWarningRow = ({ pending, deleteCrimeCase, cancelDelete }: { pending: boolean; deleteCrimeCase: () => void; cancelDelete: () => void }) => {
     return (
         <tr>
-            <td colSpan={10} className="bg-dark border-secondary">
+            <td colSpan={11} className="bg-dark border-secondary">
                 <div className="d-flex flex-column">
                     <h1 className="text-danger mb-3 text-center">⚠️ Achtung ⚠️</h1>
                     <h2 className="text-center">Beim Löschen werden sämtliche Daten für den Fall gelöscht!</h2>
@@ -233,7 +246,7 @@ const SolutionRow = ({ caseId }: { caseId: string }) => {
 
     return (
         <tr>
-            <td colSpan={10} className="bg-dark border-secondary">
+            <td colSpan={11} className="bg-dark border-secondary">
                 <div className="p-4">
                     {isLoading && (
                         <div className="d-flex align-items-center gap-2 text-muted">
@@ -354,10 +367,8 @@ const SubscriptionStatus = ({ subscription }: { subscription: SubscriptionDto })
     const label = getLabel(subscription);
 
     return (
-        <div className="d-flex">
-            {/* <span className={`d-flex align-items-center badge ${bgColor}`}> */}
-            <span className={`me-2 ${bgColor}`}><Coins /></span> {label}
-            {/* </span> */}
+        <div>
+            <span className={`me-1 ${bgColor}`}><Coins /></span> {label}
         </div>
     );
 }

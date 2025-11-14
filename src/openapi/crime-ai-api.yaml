@@ -1259,6 +1259,20 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Violation"
+    CaseGenerationDto:
+      type: object
+      properties:
+        currentStep:
+          type: string
+          minLength: 1
+        progressPercentage:
+          type: integer
+          format: int32
+        error:
+          type: string
+      required:
+      - currentStep
+      - progressPercentage
     CrimeCaseGeneratorInfoDto:
       type: object
       properties:
@@ -1278,9 +1292,6 @@ components:
         generationAttempts:
           type: integer
           format: int32
-        generationProgress:
-          type: integer
-          format: int32
         subscription:
           $ref: "#/components/schemas/SubscriptionDto"
         type:
@@ -1288,12 +1299,13 @@ components:
           enum:
           - BASIC
           - VACATION_RENTAL
+        latestGeneration:
+          $ref: "#/components/schemas/CaseGenerationDto"
       required:
       - createdAt
       - creator
       - generating
       - generationAttempts
-      - generationProgress
       - id
       - type
     ResultSetCrimeCaseGeneratorInfoDto:
