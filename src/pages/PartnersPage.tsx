@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PartnersHero from "@/components/PartnersHero";
@@ -27,6 +28,11 @@ const PartnersPage = () => {
   const { t, i18n } = useTranslation(['partners', 'venues']);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Partner data based on current language
   const getPartnerData = (): PartnerVenueData[] => {
@@ -346,7 +352,7 @@ const PartnersPage = () => {
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
               <div className="d-flex justify-content-center mb-4">
-                <Award size={48} className="text-light" />
+                <Award size={48} className="text-danger" />
               </div>
               <h2 className="display-5 fw-bold text-light mb-3">
                 {t('motivation.title')}
@@ -391,7 +397,13 @@ const PartnersPage = () => {
               </div>
               <Link 
                 to="/venue-register"
-                className="btn btn-light btn-lg px-5"
+                className="btn btn-lg px-5"
+                style={{
+                  backgroundColor: 'var(--bs-danger)',
+                  color: 'white',
+                  border: 'none',
+                  fontWeight: '600'
+                }}
               >
                 {t('motivation.cta')}
               </Link>
