@@ -1,21 +1,21 @@
 {
   "hero": {
-    "title": "Verwandeln Sie Ihre Ferienwohnung in ein unvergessliches Krimi-Erlebnis",
-    "subtitle": "Bieten Sie Ihren Gästen ein interaktives Detektivspiel das in Ihrer Ferienwohnung spielt.",
+    "title": "Verwandeln Sie Ihre Ferienunterkunft in ein unvergessliches Krimi-Erlebnis",
+    "subtitle": "Bieten Sie Ihren Gästen ein KI-gestütztes Detektivspiel das in Ihrer Ferienunterkunft spielt.",
     "cta": "Jetzt kostenlos starten",
     "trial": "7-tägige Testphase · Danach 9.99€/Monat"
   },
   "why": {
-    "title": "Warum Ferienwohnungen uns wählen",
-    "subtitle": "Schließen Sie sich hunderten von Ferienwohnungsbesitzern an, die ihre Gäste bereits mit exklusiven Detektivfällen begeistern.",
+    "title": "Warum Ferienunterkünfte uns wählen",
+    "subtitle": "Schließen Sie sich hunderten von Ferienunterkunftsbesitzern an, die ihre Gäste bereits mit exklusiven Detektivfällen begeistern.",
     "benefits": {
       "unique": {
         "title": "Einzigartiges Erlebnis",
-        "description": "Verwandeln Sie Ihre Ferienwohnung in den Schauplatz eines fesselnden Mysteriums, das ihre Merkmale und den lokalen Charakter zur Geltung bringt."
+        "description": "Verwandeln Sie Ihre Ferienunterkunft in den Schauplatz eines fesselnden Mysteriums, das ihre Merkmale und den lokalen Charakter zur Geltung bringt."
       },
       "satisfaction": {
         "title": "Gästezufriedenheit",
-        "description": "Bieten Sie eine unvergessliche Aktivität, die Ihre Ferienwohnung in Bewertungen hervorhebt und Gäste für weitere Aufenthalte zurückkehren lässt."
+        "description": "Bieten Sie eine unvergessliche Aktivität, die Ihre Ferienunterkunft in Bewertungen hervorhebt und Gäste für weitere Aufenthalte zurückkehren lässt."
       },
       "growth": {
         "title": "Mehr Buchungen",
@@ -25,11 +25,11 @@
   },
   "howItWorks": {
     "title": "So funktioniert's",
-    "subtitle": "Ihren individuellen Ferienwohnungsfall zu erhalten ist ganz einfach. Wir übernehmen die gesamte Kreativ-Arbeit und erstellen Ihnen interaktive KI-gestützte Detektivfälle die in Ihrer Ferienunterkunft spielen.",
+    "subtitle": "Ihren individuellen Ferienunterkunftsfall zu erhalten ist ganz einfach. Wir übernehmen die gesamte Kreativ-Arbeit und erstellen Ihnen interaktive KI-gestützte Detektivfälle die in Ihrer Ferienunterkunft spielen.",
     "steps": {
       "trial": {
         "title": "Kostenlos registrieren",
-        "description": "Erstellen Sie Ihr kostenloses Konto und beginnen Sie die Fallgenerierung. Legen Sie ganz einfach Ihre Ferienwohnung an, um sofort zu starten."
+        "description": "Erstellen Sie Ihr kostenloses Konto und beginnen Sie die Fallgenerierung. Legen Sie ganz einfach Ihre Ferienunterkunft an, um sofort zu starten."
       },
       "register": {
         "title": "Ferienunterkunftsdetails",
@@ -135,8 +135,8 @@
     }
   },
   "testimonials": {
-    "title": "Was Ferienwohnungsbesitzer sagen",
-    "subtitle": "Schließen Sie sich hunderten erfolgreichen Ferienwohnungsbesitzern an, die ihr Gästeerlebnis transformiert haben.",
+    "title": "Was Unterkunftspartner sagen",
+    "subtitle": "Schließen Sie sich hunderten erfolgreichen Ferienunterkunftsbesitzern an, die ihr Gästeerlebnis transformiert haben.",
     "items": {
       "sarah": {
         "name": "Thomas Müller",
@@ -163,9 +163,9 @@
     "titleHighlight1": "Ferienunterkunft",
     "titleMiddle": "in ein",
     "titleHighlight2": "Detektiv-Abenteuer",
-    "subtitle": "Bereichern Sie Ihre Ferienwohnung mit unseren",
+    "subtitle": "Bereichern Sie Ihre Ferienunterkunft mit unseren",
     "subtitleHighlight": "KI-gestützten",
-    "subtitleEnd": "Detektiverlebnissen. Unsere Algorithmen erstellen exklusive Detektivfälle, die individuell auf Ihre Ferienwohnung zugeschnitten sind, Lokalkolorit transportieren und begeisterte Bewertungen und Wiederholungsbuchungen fördern.",
+    "subtitleEnd": "Detektiverlebnissen. Unsere Algorithmen erstellen exklusive Detektivfälle, die individuell auf Ihre Ferienunterkunft zugeschnitten sind, Lokalkolorit transportieren und begeisterte Bewertungen und Wiederholungsbuchungen fördern.",
     "features": {
       "ai": "KI-gestützte Fälle",
       "trial": "7-tägige Testphase",
@@ -175,5 +175,9 @@
       "register": "Als Ferienunterkunftsbesitzer registrieren",
       "contact": "Kontaktieren Sie uns"
     }
+  },
+  "partnersButton": {
+    "text": "Unsere Unterkunftspartner",
+    "subtitle": "Entdecken Sie erfolgreiche Partner"
   }
 }

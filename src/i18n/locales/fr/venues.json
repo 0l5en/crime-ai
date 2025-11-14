@@ -175,5 +175,9 @@
       "register": "S'inscrire en tant que Propriétaire de Lieu",
       "contact": "Nous Contacter"
     }
+  },
+  "partnersButton": {
+    "text": "Nos Partenaires",
+    "subtitle": "Découvrez nos partenaires à succès"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Our Venue Partners",
+    "subtitle": "Discover successful venues that have already created more than 3 detective cases",
+    "criteria": "Partners with 3+ generated cases are featured here prominently and benefit from additional visibility."
+  },
+  "partner": {
+    "registeredSince": "Registered since",
+    "cases": "Detective Cases",
+    "website": "Visit Website",
+    "address": "Address",
+    "badge": "Premium Partner",
+    "features": "Highlights"
+  },
+  "motivation": {
+    "title": "Become a Premium Partner",
+    "subtitle": "With 3+ generated cases, you'll be featured here prominently!",
+    "benefits": {
+      "visibility": "Increased visibility on our platform",
+      "badge": "Exclusive Premium Partner badge",
+      "marketing": "Free marketing support"
+    },
+    "cta": "Register as Venue Owner Now"
+  }
+}

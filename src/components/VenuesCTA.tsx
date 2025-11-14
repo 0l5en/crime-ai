@@ -11,18 +11,18 @@ const VenuesCTA = () => {
 
   return (
     <section 
-      className="py-4 py-md-5 d-flex align-items-center" 
       style={{ 
-        minHeight: '100vh', 
-        backgroundColor: isDark ? '#181D35' : '#f7fafc' 
+        backgroundColor: isDark ? '#181D35' : '#f7fafc',
+        paddingTop: 'clamp(3rem, 6vw, 5rem)',
+        paddingBottom: 'clamp(2rem, 4vw, 3rem)'
       }} 
       data-section="contact"
     >
       <div className="container px-3">
         <div className="row justify-content-center text-center">
           <div className="col-lg-10">
-            <h3 className={isDark ? "fw-bold mb-3 mb-md-5 text-light" : "fw-bold mb-3 mb-md-5"} style={{
-              fontSize: 'clamp(1.1rem, 3.5vw, 2rem)',
+            <h3 className={isDark ? "fw-bold mb-3 mb-md-4 text-light" : "fw-bold mb-3 mb-md-4"} style={{
+              fontSize: 'clamp(1.1rem, 3.5vw, 1.85rem)',
               lineHeight: '1.2',
               color: isDark ? undefined : '#2d3748'
             }}>
@@ -30,11 +30,11 @@ const VenuesCTA = () => {
             </h3>
             
             <p className={isDark ? "mb-4 mb-md-5 px-2 text-light" : "mb-4 mb-md-5 px-2"} style={{ 
-              fontSize: 'clamp(0.9rem, 2vw, 1.25rem)', 
+              fontSize: 'clamp(0.9rem, 2vw, 1.15rem)', 
               color: isDark ? undefined : '#4a5568',
               opacity: isDark ? 0.75 : 1,
-              lineHeight: '1.7',
-              maxWidth: '800px',
+              lineHeight: '1.6',
+              maxWidth: '750px',
               margin: '0 auto'
             }}>
               {t('cta.subtitle')} <span style={{ color: 'var(--bs-danger)', fontWeight: '600' }}>{t('cta.subtitleHighlight')}</span> {t('cta.subtitleEnd')}
@@ -43,7 +43,7 @@ const VenuesCTA = () => {
             
 
             {/* Feature Benefits */}
-            <div className="row justify-content-center mb-3 mb-md-5 g-2 g-md-4">
+            <div className="row justify-content-center mb-4 mb-md-5 g-3">
               {[
                 { icon: CreditCard, key: 'ai' },
                 { icon: MessageCircle, key: 'trial' },
@@ -53,10 +53,10 @@ const VenuesCTA = () => {
                 return (
                   <div key={index} className="col-md-4">
                     <div 
-                      className="d-flex align-items-center justify-content-center p-3"
+                      className="d-flex align-items-center justify-content-center py-3 px-3"
                       style={{
                         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.03)' : '#fff5f5',
-                        borderRadius: '12px',
+                        borderRadius: '10px',
                         border: isDark ? '2px solid rgba(255, 255, 255, 0.1)' : '2px solid rgba(203, 25, 28, 0.2)',
                         transition: 'all 0.3s ease'
                       }}
@@ -72,18 +72,18 @@ const VenuesCTA = () => {
                       }}
                     >
                       <div
-                        className="me-3 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+                        className="me-2 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
                         style={{
-                          width: '40px',
-                          height: '40px',
+                          width: '36px',
+                          height: '36px',
                           backgroundColor: 'var(--bs-danger)',
                           boxShadow: '0 4px 12px rgba(203, 25, 28, 0.3)'
                         }}
                       >
-                        <IconComponent size={20} style={{ color: 'white' }} />
+                        <IconComponent size={18} style={{ color: 'white' }} />
                       </div>
                       <span className={isDark ? "fw-semibold text-light" : "fw-semibold"} style={{ 
-                        fontSize: '1.1rem', 
+                        fontSize: '1rem', 
                         color: isDark ? undefined : '#2d3748' 
                       }}>
                         {t(`cta.features.${feature.key}`)}
@@ -95,42 +95,42 @@ const VenuesCTA = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="d-flex flex-column flex-md-row gap-2 gap-md-4 justify-content-center mx-auto" style={{ maxWidth: '100%' }}>
+            <div className="d-flex flex-column flex-md-row gap-2 gap-md-3 justify-content-center mx-auto" style={{ maxWidth: '100%' }}>
               <button 
                 onClick={() => navigate('/venue-register')}
-                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3 flex-grow-1" 
+                className="fw-bold d-flex align-items-center justify-content-center gap-2 flex-grow-1" 
                 style={{ 
-                  fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
-                  borderRadius: '16px',
-                  padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem)',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+                  borderRadius: '14px',
+                  padding: 'clamp(0.7rem, 2vw, 0.9rem) clamp(1rem, 3vw, 1.35rem)',
                   backgroundColor: 'var(--bs-danger)',
                   color: 'white',
                   border: 'none',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 6px 25px rgba(203, 25, 28, 0.4)'
+                  boxShadow: '0 4px 20px rgba(203, 25, 28, 0.3)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#a8161a';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.5)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(203, 25, 28, 0.4)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = 'var(--bs-danger)';
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 6px 25px rgba(203, 25, 28, 0.4)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(203, 25, 28, 0.3)';
                 }}
               >
-                <CreditCard size={24} />
+                <CreditCard size={20} />
                 {t('cta.buttons.register')}
               </button>
               
               <button 
                 onClick={() => navigate('/contact')}
-                className="fw-bold d-flex align-items-center justify-content-center gap-2 gap-md-3 flex-grow-1" 
+                className="fw-bold d-flex align-items-center justify-content-center gap-2 flex-grow-1" 
                 style={{ 
-                  fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
-                  borderRadius: '16px',
-                  padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem)',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+                  borderRadius: '14px',
+                  padding: 'clamp(0.7rem, 2vw, 0.9rem) clamp(1rem, 3vw, 1.35rem)',
                   backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'white',
                   color: 'var(--bs-danger)',
                   border: isDark ? '2px solid rgba(255, 255, 255, 0.2)' : '2px solid var(--bs-danger)',
@@ -138,8 +138,8 @@ const VenuesCTA = () => {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.08)' : '#fff5f5';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(203, 25, 28, 0.2)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(203, 25, 28, 0.2)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'white';
@@ -147,9 +147,9 @@ const VenuesCTA = () => {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <MessageCircle size={24} />
+                <MessageCircle size={20} />
                 {t('cta.buttons.contact')}
-                <ArrowRight size={20} />
+                <ArrowRight size={18} />
               </button>
             </div>
           </div>

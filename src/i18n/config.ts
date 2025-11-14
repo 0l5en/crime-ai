@@ -78,6 +78,11 @@ import useMyUserProfilePasswordEN from './locales/en/useMyUserProfilePassword.js
 import useMyUserProfilePasswordFR from './locales/fr/useMyUserProfilePassword.json';
 import useMyUserProfilePasswordIT from './locales/it/useMyUserProfilePassword.json';
 
+import partnersDE from './locales/de/partners.json';
+import partnersEN from './locales/en/partners.json';
+import partnersFR from './locales/fr/partners.json';
+import partnersIT from './locales/it/partners.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -95,6 +100,7 @@ const resources = {
     profile: profileDE,
     faq: faqDE,
     useMyUserProfilePassword: useMyUserProfilePasswordDE,
+    partners: partnersDE,
   },
   en: {
     common: commonEN,
@@ -112,6 +118,7 @@ const resources = {
     profile: profileEN,
     faq: faqEN,
     useMyUserProfilePassword: useMyUserProfilePasswordEN,
+    partners: partnersEN,
   },
   it: {
     common: commonIT,
@@ -129,6 +136,7 @@ const resources = {
     profile: profileIT,
     faq: faqIT,
     useMyUserProfilePassword: useMyUserProfilePasswordIT,
+    partners: partnersIT,
   },
   fr: {
     common: commonFR,
@@ -146,6 +154,7 @@ const resources = {
     profile: profileFR,
     faq: faqFR,
     useMyUserProfilePassword: useMyUserProfilePasswordFR,
+    partners: partnersFR,
   },
 };
 
