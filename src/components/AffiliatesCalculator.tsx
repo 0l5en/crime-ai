@@ -58,68 +58,72 @@ const AffiliatesCalculator = () => {
                 border: '1px solid rgba(64, 249, 155, 0.2)'
               }}
             >
-              {/* Sliders */}
-              <div className="mb-5">
-                <div className="mb-4">
-                  <label className="form-label text-light fw-semibold mb-3">
-                    {t('calculator.directReferrals')}: <span style={{ color: '#40F99B', fontSize: '1.2rem' }}>{directReferrals}</span>
-                  </label>
-                  <input
-                    type="range"
-                    className="form-range"
-                    min="0"
-                    max="100"
-                    value={directReferrals}
-                    onChange={(e) => setDirectReferrals(Number(e.target.value))}
-                    style={{
-                      accentColor: '#40F99B'
-                    }}
-                  />
+              <div className="row mb-5">
+                {/* Sliders - Left Side */}
+                <div className="col-lg-6 mb-4 mb-lg-0">
+                  <div className="mb-4">
+                    <label className="form-label text-light fw-semibold mb-3">
+                      {t('calculator.directReferrals')}: <span style={{ color: '#40F99B', fontSize: '1.2rem' }}>{directReferrals}</span>
+                    </label>
+                    <input
+                      type="range"
+                      className="form-range"
+                      min="0"
+                      max="100"
+                      value={directReferrals}
+                      onChange={(e) => setDirectReferrals(Number(e.target.value))}
+                      style={{
+                        accentColor: '#40F99B'
+                      }}
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="form-label text-light fw-semibold mb-3">
+                      {t('calculator.referralsPerPerson')}: <span style={{ color: '#40F99B', fontSize: '1.2rem' }}>{referralsPerPerson}</span>
+                    </label>
+                    <input
+                      type="range"
+                      className="form-range"
+                      min="0"
+                      max="50"
+                      value={referralsPerPerson}
+                      onChange={(e) => setReferralsPerPerson(Number(e.target.value))}
+                      style={{
+                        accentColor: '#40F99B'
+                      }}
+                    />
+                  </div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="form-label text-light fw-semibold mb-3">
-                    {t('calculator.referralsPerPerson')}: <span style={{ color: '#40F99B', fontSize: '1.2rem' }}>{referralsPerPerson}</span>
-                  </label>
-                  <input
-                    type="range"
-                    className="form-range"
-                    min="0"
-                    max="50"
-                    value={referralsPerPerson}
-                    onChange={(e) => setReferralsPerPerson(Number(e.target.value))}
+                {/* Total Earnings Display - Right Side */}
+                <div className="col-lg-6 d-flex align-items-center">
+                  <div 
+                    className="text-center p-4 w-100"
                     style={{
-                      accentColor: '#40F99B'
+                      background: 'linear-gradient(135deg, rgba(64, 249, 155, 0.1), rgba(45, 212, 191, 0.1))',
+                      borderRadius: '15px',
+                      border: '2px solid rgba(64, 249, 155, 0.3)'
                     }}
-                  />
-                </div>
-              </div>
-
-              {/* Total Earnings Display */}
-              <div 
-                className="text-center mb-5 p-4"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(64, 249, 155, 0.1), rgba(45, 212, 191, 0.1))',
-                  borderRadius: '15px',
-                  border: '2px solid rgba(64, 249, 155, 0.3)'
-                }}
-              >
-                <div className="text-light mb-2" style={{ opacity: 0.8, fontSize: '1.1rem' }}>
-                  {t('calculator.totalMonthly')}
-                </div>
-                <div 
-                  style={{
-                    color: '#40F99B',
-                    fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-                    fontWeight: '700',
-                    lineHeight: '1',
-                    textShadow: '0 0 30px rgba(64, 249, 155, 0.5)'
-                  }}
-                >
-                  €{totalEarnings.toFixed(2)}
-                </div>
-                <div className="text-light mt-2" style={{ opacity: 0.7, fontSize: '1rem' }}>
-                  {t('calculator.perMonth')}
+                  >
+                    <div className="text-light mb-2" style={{ opacity: 0.8, fontSize: '1.1rem' }}>
+                      {t('calculator.totalMonthly')}
+                    </div>
+                    <div 
+                      style={{
+                        color: '#40F99B',
+                        fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                        fontWeight: '700',
+                        lineHeight: '1',
+                        textShadow: '0 0 30px rgba(64, 249, 155, 0.5)'
+                      }}
+                    >
+                      €{totalEarnings.toFixed(2)}
+                    </div>
+                    <div className="text-light mt-2" style={{ opacity: 0.7, fontSize: '1rem' }}>
+                      {t('calculator.perMonth')}
+                    </div>
+                  </div>
                 </div>
               </div>
 
