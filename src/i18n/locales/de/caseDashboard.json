@@ -69,7 +69,7 @@
     "successTitle": "Herzlichen Glückwunsch! Du hast den Fall gelöst!",
     "failureTitle": "Leider ist diese Lösung nicht korrekt.",
     "successMessage": "Großartige Detektivarbeit! Du hast den Täter, die Beweise und das Motiv korrekt identifiziert.",
-    "failureMessage": "Bitte versuche es erneut mit einer anderen Kombination von Verdächtigen, Beweisen und Motiven.",
+    "failureMessage": "Bitte versuche es erneut.",
     "solutionSummary": "Lösungs-Zusammenfassung",
     "rateCase": "Fall bewerten",
     "thankYou": "Vielen Dank für Deine Bewertung!",
