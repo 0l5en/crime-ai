@@ -83,6 +83,11 @@ import partnersEN from './locales/en/partners.json';
 import partnersFR from './locales/fr/partners.json';
 import partnersIT from './locales/it/partners.json';
 
+import affiliatesDE from './locales/de/affiliates.json';
+import affiliatesEN from './locales/en/affiliates.json';
+import affiliatesFR from './locales/fr/affiliates.json';
+import affiliatesIT from './locales/it/affiliates.json';
+
 const resources = {
   de: {
     common: commonDE,
@@ -101,6 +106,7 @@ const resources = {
     faq: faqDE,
     useMyUserProfilePassword: useMyUserProfilePasswordDE,
     partners: partnersDE,
+    affiliates: affiliatesDE,
   },
   en: {
     common: commonEN,
@@ -119,6 +125,7 @@ const resources = {
     faq: faqEN,
     useMyUserProfilePassword: useMyUserProfilePasswordEN,
     partners: partnersEN,
+    affiliates: affiliatesEN,
   },
   it: {
     common: commonIT,
@@ -137,6 +144,7 @@ const resources = {
     faq: faqIT,
     useMyUserProfilePassword: useMyUserProfilePasswordIT,
     partners: partnersIT,
+    affiliates: affiliatesIT,
   },
   fr: {
     common: commonFR,
@@ -155,6 +163,7 @@ const resources = {
     faq: faqFR,
     useMyUserProfilePassword: useMyUserProfilePasswordFR,
     partners: partnersFR,
+    affiliates: affiliatesFR,
   },
 };
 
