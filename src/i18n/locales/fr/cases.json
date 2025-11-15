@@ -34,6 +34,7 @@
   "card": {
     "notYetRated": "Pas encore noté",
     "rating": "note",
-    "ratings": "notes"
+    "ratings": "notes",
+    "solved": "Résolu"
   }
 }

@@ -51,12 +51,25 @@ const GameCard = ({
 
   return (
     <div
-      className="card border-secondary card-hover h-100"
+      className="card border-secondary card-hover h-100 position-relative"
       onClick={handleCardClick}
       data-testid="case-card"
       data-case-id={crimaCase.id}
       style={{ cursor: 'pointer' }}
     >
+      {isSolved && (
+        <span 
+          className="badge bg-success position-absolute top-0 end-0 m-2" 
+          style={{ 
+            fontSize: '0.9rem',
+            zIndex: 10,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+          }}
+        >
+          <i className="bi bi-check-circle me-1"></i>
+          {t('card.solved')}
+        </span>
+      )}
       {crimaCase.imageUrl &&
         <img className="card-img-top" src={crimaCase.imageUrl} alt="Crime case image"></img>
       }

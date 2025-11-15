@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';
-import { REQUEST_PATH as crimeCasesQueryKey } from './useCrimeCases';
+import { REQUEST_PATH as crimeCasesBasicQueryKey } from './useCrimeCasesBasic';
+import { REQUEST_PATH as crimeCasesVacationRentalQueryKey } from './useCrimeCasesVacationRental';
 import { getCsrfToken } from './util';
 
 const REQUEST_PATH = '/crimecase/{id}';
@@ -26,7 +27,8 @@ export const useDeleteCrimeCase = () => {
     },
     onSuccess: () => {
       // Invalidate and refetch crime cases list
-      queryClient.invalidateQueries({ queryKey: [crimeCasesQueryKey] });
+      queryClient.invalidateQueries({ queryKey: [crimeCasesBasicQueryKey] });
+      queryClient.invalidateQueries({ queryKey: [crimeCasesVacationRentalQueryKey] });
     },
   });
 };

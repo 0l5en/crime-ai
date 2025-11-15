@@ -1,7 +1,7 @@
 import { paths } from '@/openapi/crimeAiSchema';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';
-import { REQUEST_PATH as crimeCasesQueryKey } from './useCrimeCases';
+import { REQUEST_PATH as crimeCasesQueryKey } from './useCrimeCasesVacationRental';
 import { getCsrfToken } from './util';
 
 const REQUEST_PATH = '/crimecase-vacation-rental';
