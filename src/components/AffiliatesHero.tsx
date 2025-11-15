@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const AffiliatesHero = () => {
   const { t } = useTranslation('affiliates');
@@ -38,8 +37,13 @@ const AffiliatesHero = () => {
               >
                 {t('hero.subtitle')}
               </p>
-              <Link
-                to="/register"
+              <button
+                onClick={() => {
+                  document.getElementById('calculator-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
                 className="btn btn-lg px-5 py-3 d-inline-flex align-items-center gap-2"
                 style={{
                   backgroundColor: '#40F99B',
@@ -61,7 +65,7 @@ const AffiliatesHero = () => {
               >
                 <TrendingUp size={24} />
                 {t('hero.cta')}
-              </Link>
+              </button>
             </div>
           </div>
           
