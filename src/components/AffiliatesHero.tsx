@@ -10,7 +10,7 @@ const AffiliatesHero = () => {
       className="py-5"
       style={{
         background: 'linear-gradient(135deg, #181d35 0%, #1a2744 100%)',
-        minHeight: '70vh',
+        minHeight: 'calc(100vh - 70px)',
         display: 'flex',
         alignItems: 'center'
       }}
