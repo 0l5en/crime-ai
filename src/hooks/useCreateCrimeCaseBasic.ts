@@ -34,9 +34,9 @@ export const useCreateCrimeCaseBasic = () => {
         throw data;
       }
 
-      // Check for success response (202 request was accepted)
-      if (response.status === 202) {
-        return { locationUrl: response.headers.get('location') };
+      // Check for success response
+      if (response.ok) {
+        return;
       }
 
       throw new Error('Server returned error response: ' + response.status);

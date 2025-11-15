@@ -572,6 +572,8 @@ export interface components {
         };
         ResultSetCrimeCase: {
             items?: components["schemas"]["CrimeCaseDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CrimeSceneDto: {
             /** Format: int64 */
@@ -596,6 +598,8 @@ export interface components {
         };
         ResultSetEvidence: {
             items?: components["schemas"]["EvidenceDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         MotiveDto: {
             /** Format: int64 */
@@ -605,6 +609,8 @@ export interface components {
         };
         ResultSetMotive: {
             items?: components["schemas"]["MotiveDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         AlibiDto: {
             /** Format: int64 */
@@ -633,9 +639,13 @@ export interface components {
         };
         ResultSetPerson: {
             items?: components["schemas"]["PersonDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         ResultSetSolutionAttempt: {
             items?: components["schemas"]["SolutionAttemptDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         SolutionAttemptDto: {
             /** Format: int64 */
@@ -711,6 +721,8 @@ export interface components {
         };
         ResultSetCrimeCaseGeneratorInfoDto: {
             items?: components["schemas"]["CrimeCaseGeneratorInfoDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CreateCaseGeneratorFormVacationRentalDto: {
             formBasic: components["schemas"]["CreateCaseGeneratorFormBasicDto"];
@@ -733,6 +745,8 @@ export interface components {
         };
         ResultSetInterrogation: {
             items?: components["schemas"]["InterrogationDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CreateInterrogationAnswerDto: {
             question: string;
@@ -754,6 +768,8 @@ export interface components {
         };
         ResultSetQuestionAndAnswer: {
             items?: components["schemas"]["QuestionAndAnswerDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CreatePromptTemplateDto: {
             name: string;
@@ -766,6 +782,8 @@ export interface components {
         };
         ResultSetPromptTemplateVersion: {
             items?: components["schemas"]["PromptTemplateVersionDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         PromptTemplateIdentifierDto: {
             /** Format: int64 */
@@ -774,6 +792,8 @@ export interface components {
         };
         ResultSetPromptTemplateIdentifier: {
             items?: components["schemas"]["PromptTemplateIdentifierDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         PromptTemplateDto: {
             /** Format: int64 */
@@ -800,6 +820,8 @@ export interface components {
         };
         ResultSetEvidenceReport: {
             items?: components["schemas"]["EvidenceReportDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CreateEvidenceReportDto: {
             /** Format: int64 */
@@ -826,6 +848,8 @@ export interface components {
         };
         ResultSetAutopsyReport: {
             items?: components["schemas"]["AutopsyReportDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         AutopsyReportRequestDto: {
             /** Format: int64 */
@@ -835,6 +859,8 @@ export interface components {
         };
         ResultSetAutopsyReportRequest: {
             items?: components["schemas"]["AutopsyReportRequestDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CreateAutopsyReportRequestDto: {
             /** Format: int64 */
@@ -860,6 +886,8 @@ export interface components {
         };
         ResultSetNotification: {
             items?: components["schemas"]["NotificationDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         CrimeCaseGenerationAttemptDto: {
             /** Format: int64 */
@@ -870,6 +898,8 @@ export interface components {
         };
         ResultSetCrimeCaseGenerationAttemptDto: {
             items?: components["schemas"]["CrimeCaseGenerationAttemptDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         UserProfileFilterDto: {
             groupName?: string;
@@ -882,6 +912,8 @@ export interface components {
         };
         ResultSetUserProfileDto: {
             items?: components["schemas"]["UserProfileDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         UserProfileDto: {
             id: string;
@@ -1012,8 +1044,8 @@ export interface operations {
             };
         };
         responses: {
-            /** @description If the task was started successfully. The response will contain a Location Header to get the status of the task. */
-            202: {
+            /** @description If the task was created successfully. */
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };

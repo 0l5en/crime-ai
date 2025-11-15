@@ -1,7 +1,7 @@
 import type { paths } from '@/openapi/crimeAiSchema';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PATH_CRIME_AI_API } from './constants';
-import { QUERY_KEY as crimeCaseGeneratorInfosQueryKey } from './useCrimeCaseGeneratorInfos';
+import { QUERY_KEY as crimeCaseGeneratorInfosQueryKey } from './useCrimeCaseGeneratorInfo';
 import { REQUEST_PATH as crimeCasesQueryKey } from './useCrimeCases';
 import { getCsrfToken } from './util';
 

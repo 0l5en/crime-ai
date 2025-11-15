@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: http://localhost:8090
+- url: https://crime-ai.0l5en.de/bff/crime-ai-api
   description: Generated server url
 paths:
   /me:
@@ -68,9 +68,8 @@ paths:
               $ref: "#/components/schemas/CreateCaseGeneratorFormBasicDto"
         required: true
       responses:
-        "202":
-          description: If the task was started successfully. The response will contain
-            a Location Header to get the status of the task.
+        "201":
+          description: If the task was created successfully.
         "400":
           description: If the request contains faulty input data.
           content:
@@ -928,6 +927,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/CrimeCaseDto"
+        total:
+          type: integer
+          format: int64
     CrimeSceneDto:
       type: object
       properties:
@@ -991,6 +993,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/EvidenceDto"
+        total:
+          type: integer
+          format: int64
     MotiveDto:
       type: object
       properties:
@@ -1012,6 +1017,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MotiveDto"
+        total:
+          type: integer
+          format: int64
     AlibiDto:
       type: object
       properties:
@@ -1098,6 +1106,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/PersonDto"
+        total:
+          type: integer
+          format: int64
     ResultSetSolutionAttempt:
       type: object
       properties:
@@ -1105,6 +1116,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/SolutionAttemptDto"
+        total:
+          type: integer
+          format: int64
     SolutionAttemptDto:
       type: object
       properties:
@@ -1315,6 +1329,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/CrimeCaseGeneratorInfoDto"
+        total:
+          type: integer
+          format: int64
     CreateCaseGeneratorFormVacationRentalDto:
       type: object
       properties:
@@ -1362,6 +1379,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/InterrogationDto"
+        total:
+          type: integer
+          format: int64
     CreateInterrogationAnswerDto:
       type: object
       properties:
@@ -1411,6 +1431,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/QuestionAndAnswerDto"
+        total:
+          type: integer
+          format: int64
     CreatePromptTemplateDto:
       type: object
       properties:
@@ -1441,6 +1464,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/PromptTemplateVersionDto"
+        total:
+          type: integer
+          format: int64
     PromptTemplateIdentifierDto:
       type: object
       properties:
@@ -1460,6 +1486,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/PromptTemplateIdentifierDto"
+        total:
+          type: integer
+          format: int64
     PromptTemplateDto:
       type: object
       properties:
@@ -1529,6 +1558,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/EvidenceReportDto"
+        total:
+          type: integer
+          format: int64
     CreateEvidenceReportDto:
       type: object
       properties:
@@ -1590,6 +1622,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AutopsyReportDto"
+        total:
+          type: integer
+          format: int64
     AutopsyReportRequestDto:
       type: object
       properties:
@@ -1613,6 +1648,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AutopsyReportRequestDto"
+        total:
+          type: integer
+          format: int64
     CreateAutopsyReportRequestDto:
       type: object
       properties:
@@ -1674,6 +1712,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NotificationDto"
+        total:
+          type: integer
+          format: int64
     CrimeCaseGenerationAttemptDto:
       type: object
       properties:
@@ -1699,6 +1740,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/CrimeCaseGenerationAttemptDto"
+        total:
+          type: integer
+          format: int64
     UserProfileFilterDto:
       type: object
       properties:
@@ -1721,6 +1765,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/UserProfileDto"
+        total:
+          type: integer
+          format: int64
     UserProfileDto:
       type: object
       properties:

@@ -5,17 +5,17 @@ import { PATH_CRIME_AI_API } from './constants';
 
 export const QUERY_KEY = 'crimeCaseGeneratorInfos';
 
-export const useCrimeCaseGeneratorInfos = ({ firstResult = 0, maxResults = 10 }: { firstResult?: number; maxResults?: number }) => {
+export const useCrimeCaseGeneratorInfo = (filter: { firstResult?: number; maxResults?: number }) => {
     const client = createClient<paths>({ baseUrl: PATH_CRIME_AI_API });
 
     return useQuery({
-        queryKey: [QUERY_KEY],
+        queryKey: [QUERY_KEY, filter],
         queryFn: async () => {
             const response = await client.GET('/crimecase-generator-info', {
                 params: {
                     query: {
-                        firstResult: firstResult + '',
-                        maxResults: maxResults + ''
+                        firstResult: filter.firstResult + '',
+                        maxResults: filter.maxResults + ''
                     }
                 }
             });

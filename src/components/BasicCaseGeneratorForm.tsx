@@ -1,12 +1,12 @@
 import { RequestBody as CreateCrimeCaseBasicDto, useCreateCrimeCaseBasic } from "@/hooks/useCreateCrimeCaseBasic";
+import type { components } from "@/openapi/crimeAiSchema";
 import { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import toast from "react-hot-toast";
-import type { components } from "@/openapi/crimeAiSchema";
 
 type Violations = components['schemas']['Violations'];
 interface BasicCaseGeneratorFormProps {
-  onSuccess: (locationUrl: string) => void;
+  onSuccess: () => void;
   onCancel: () => void;
 }
 
@@ -119,9 +119,9 @@ const BasicCaseGeneratorForm = ({ onSuccess, onCancel }: BasicCaseGeneratorFormP
         historicalCulturalContext: data.historicalCulturalContext || undefined
       };
 
-      const result = await createCaseMutation.mutateAsync(formData);
-      toast.success('Die Fallerstellung wurde gestartet. Bitte warten Sie...');
-      onSuccess(result.locationUrl);
+      await createCaseMutation.mutateAsync(formData);
+      toast.success('Die Fallerstellung wurde gestartet...');
+      onSuccess();
 
     } catch (error: any) {
       // Handle validation errors from server

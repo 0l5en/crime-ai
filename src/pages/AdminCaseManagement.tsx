@@ -1,15 +1,34 @@
 
 import CaseRowEditable from "@/components/CaseRowEditable";
 import Header from "@/components/Header";
-import { useCrimeCaseGeneratorInfos } from "@/hooks/useCrimeCaseGeneratorInfos";
+import { useCrimeCaseGeneratorInfo } from "@/hooks/useCrimeCaseGeneratorInfo";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+type CrimeCaseGeneratorInfoFilterDto = { firstResult: number; maxResults: number };
 
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  //const { data: crimeCases, isLoading, error } = useCrimeCases({ maxResults: '1000' });
-  const { data: crimeCaseGeneratorInfos, isPending: crimeCaseGeneratorInfosPending, isError: crimeCaseGeneratorInfosIsError, error: crimeCaseGeneratorInfosError } = useCrimeCaseGeneratorInfos({});
+  const [crimeCaseGeneratorInfoFilter, setCrimeCaseGeneratorInfoFilter] = useState<CrimeCaseGeneratorInfoFilterDto>({ firstResult: 0, maxResults: 4 });
+  const { data: crimeCaseGeneratorInfos, isPending: crimeCaseGeneratorInfosPending, isError: crimeCaseGeneratorInfosIsError, error: crimeCaseGeneratorInfosError } = useCrimeCaseGeneratorInfo(crimeCaseGeneratorInfoFilter);
+  const pagesTotal = crimeCaseGeneratorInfos?.total ? Math.ceil(crimeCaseGeneratorInfos.total / crimeCaseGeneratorInfoFilter.maxResults) : 1;
+  const pageCurrent = crimeCaseGeneratorInfos?.total ? crimeCaseGeneratorInfoFilter.firstResult / crimeCaseGeneratorInfoFilter.maxResults + 1 : 1;
+  const hasPreviousPage = crimeCaseGeneratorInfoFilter.firstResult > 0;
+  const hasNextPage = crimeCaseGeneratorInfos?.total ? crimeCaseGeneratorInfoFilter.firstResult + crimeCaseGeneratorInfoFilter.maxResults < crimeCaseGeneratorInfos.total : false;
+
+  const previousPage = () => {
+    if (hasPreviousPage) {
+      setCrimeCaseGeneratorInfoFilter({ ...crimeCaseGeneratorInfoFilter, firstResult: crimeCaseGeneratorInfoFilter.firstResult - crimeCaseGeneratorInfoFilter.maxResults });
+    }
+  }
+
+  const nextPage = () => {
+    if (hasNextPage) {
+      setCrimeCaseGeneratorInfoFilter({ ...crimeCaseGeneratorInfoFilter, firstResult: crimeCaseGeneratorInfoFilter.firstResult + crimeCaseGeneratorInfoFilter.maxResults });
+    }
+  }
 
   return (
     <div className="min-vh-100">
@@ -135,11 +154,13 @@ const AdminCaseManagement = () => {
 
         {!crimeCaseGeneratorInfosPending && !crimeCaseGeneratorInfosIsError && crimeCaseGeneratorInfos.items && crimeCaseGeneratorInfos.items.length > 0 && (
           <div className="mt-4">
-            <div className="text-center">
-              <p className="text-muted">
-                Zeige {crimeCaseGeneratorInfos.items.length} von {crimeCaseGeneratorInfos.items.length} {crimeCaseGeneratorInfos.items.length === 1 ? 'Fall' : 'Fällen'}
+            <div className="d-flex justify-content-center align-items-center">
+              <button className="me-4 btn btn-secondary btn-sm" disabled={!hasPreviousPage} onClick={previousPage}><ChevronLeft /></button>
+              <div className="text-muted">
+                Seite {pageCurrent} von {pagesTotal} {pagesTotal === 1 ? 'Seite' : 'Seiten'}
                 {searchTerm && ` (gefiltert von ${crimeCaseGeneratorInfos.items.length || 0} gesamt)`}
-              </p>
+              </div>
+              <button className="ms-4 btn btn-secondary btn-sm" disabled={!hasNextPage} onClick={nextPage}><ChevronRight /></button>
             </div>
           </div>
         )}

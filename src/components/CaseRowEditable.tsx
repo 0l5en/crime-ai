@@ -56,18 +56,19 @@ const CaseRowEditable = ({ crimeCaseGeneratorInfo }: { crimeCaseGeneratorInfo: C
                 <td>
                     {toLocalizedString(crimeCaseGeneratorInfo.createdAt)}
                 </td>
-                <td>
+                <td style={{ width: '140px' }}>
                     {crimeCaseGeneratorInfo.creator}
                 </td>
-                <td>
+                <td style={{ width: '140px' }}>
                     <div className={`badge ${typeColor}`} style={{ minWidth: '140px' }}>
                         <div className="d-flex align-items-center">{typeIcon}{typeLabel}</div>
                     </div>
                 </td>
-
-                {crimeCaseGeneratorInfo.subscription
-                    ? <td><SubscriptionStatus subscription={crimeCaseGeneratorInfo.subscription} /></td>
-                    : <td></td>}
+                <td style={{ width: '140px' }}>
+                    {crimeCaseGeneratorInfo.subscription &&
+                        <SubscriptionStatus subscription={crimeCaseGeneratorInfo.subscription} />
+                    }
+                </td>
 
                 <td>{crimeCaseGeneratorInfo.generationAttempts}</td>
 
@@ -118,7 +119,9 @@ const CrimeCaseColumns = ({
 
     return (
         <>
-            <td>{crimeCase.title}</td>
+            <td style={{ width: '300px' }}>
+                {crimeCase.title}
+            </td>
             <td className="">
                 <div className={`badge ${statusColor}`} style={{ minWidth: '140px' }}>
                     <div className="d-flex align-items-center">{statusIcon}{statusLabel}</div>
