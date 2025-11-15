@@ -9,31 +9,31 @@
     "subtitle": "Berechne, wie viel du jeden Monat verdienen kannst",
     "directReferrals": "Deine direkten Empfehlungen",
     "referralsPerPerson": "Empfehlungen pro Netzwerk-Person",
-    "totalMonthly": "Gesamtes Monatliches Einkommen",
+    "totalMonthly": "Potentielles monatliches Einkommen",
     "perMonth": "pro Monat",
     "breakdown": "Aufschlüsselung nach Levels",
     "level": "Level",
     "users": "Nutzer",
     "commission": "Provision",
-    "earnings": "Verdienst"
+    "earnings": "Dein Verdienst"
   },
   "howItWorks": {
     "title": "So Funktioniert's",
     "subtitle": "In 4 einfachen Schritten zum passiven Einkommen",
     "step1": {
-      "title": "Registrieren & Link Erhalten",
+      "title": "Registrieren & Link erhalten",
       "description": "Kostenlose Anmeldung und deinen persönlichen Referral-Link erhalten. Keine Investition erforderlich."
     },
     "step2": {
-      "title": "Link Teilen",
+      "title": "Deinen Link teilen",
       "description": "Teile deinen Link in Social Media, Blog, Email oder direkt mit Freunden und Familie."
     },
     "step3": {
-      "title": "An Direkten Empfehlungen Verdienen",
+      "title": "An direkten Empfehlungen verdienen",
       "description": "Verdiene 0,50€ pro Monat für jeden Premium-User, den du direkt vermittelst."
     },
     "step4": {
-      "title": "An Deren Empfehlungen Verdienen",
+      "title": "An deren Empfehlungen verdienen",
       "description": "Verdiene zusätzlich an den Empfehlungen deiner Empfehlungen durch unser 5-Level-System."
     }
   },
