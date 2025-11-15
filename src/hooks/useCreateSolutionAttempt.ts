@@ -29,13 +29,10 @@ export const useCreateSolutionAttempt = (caseId: string) => {
 
       throw new Error('Server returned error response: ' + response.status);
     },
-    onSuccess: (_, variables) => {
+    onSuccess: () => {
       // Invalidate related queries to refresh data
       queryClient.invalidateQueries({
         queryKey: [solutionAttemptsQueryKey, caseId]
-      });
-      queryClient.invalidateQueries({
-        queryKey: [solutionAttemptsQueryKey, caseId, variables.userId]
       });
     },
   });

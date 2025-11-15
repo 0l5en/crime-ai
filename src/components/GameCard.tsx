@@ -1,3 +1,4 @@
+import { useCaseSolved } from '@/hooks/useCaseSolved';
 import { useCaseSubscription } from '@/hooks/useCaseSubscription';
 import { components } from '@/openapi/crimeAiSchema';
 import { useTranslation } from 'react-i18next';
@@ -25,6 +26,7 @@ const GameCard = ({
   const { t } = useTranslation('cases');
   const { t: tDashboard } = useTranslation('vacationRentalDashboard');
   const { data: subscription } = useCaseSubscription(crimaCase.id);
+  const { isSolved } = useCaseSolved(crimaCase.id);
 
   const formatDate = (isoDate: string) => {
     const date = new Date(isoDate);

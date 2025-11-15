@@ -294,18 +294,13 @@ paths:
           description: if any internal error occurs while processing the request
   /crimecase/{id}/solution-attempt:
     get:
-      summary: Get a list of solution attempts.
+      summary: Get a list of solution attempts for the authenticated user.
       operationId: listSolutionAttempts
       parameters:
       - name: id
         in: path
         description: crime case id
         required: true
-        schema:
-          type: string
-      - name: userId
-        in: query
-        description: the id of a logged in user playing a crime case
         schema:
           type: string
       - name: success
@@ -1137,17 +1132,6 @@ components:
       - id
       - userId
     CreateSolutionAttemptDto:
-      type: object
-      properties:
-        solution:
-          $ref: "#/components/schemas/SolutionDto"
-        userId:
-          type: string
-          minLength: 1
-      required:
-      - solution
-      - userId
-    SolutionDto:
       type: object
       properties:
         evidenceIds:

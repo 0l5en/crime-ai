@@ -13,8 +13,8 @@ import { useCaseSuspects } from "@/hooks/useCaseSuspects";
 import { useCreateSolutionAttempt } from "@/hooks/useCreateSolutionAttempt";
 import { useCrimeCase } from "@/hooks/useCrimeCase";
 import { useSolutionAttempts } from "@/hooks/useSolutionAttempts";
-import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, CheckCircle, Fingerprint, XCircle } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -42,9 +42,8 @@ const CaseSolution = () => {
   const { setRating } = useCaseRating(caseId || '', user?.email);
 
   // Query for checking successful attempts (will be triggered after solution submission)
-  const { data: successfulAttempts, refetch: checkSolutionSuccess } = useSolutionAttempts(
+  const { data: successfulAttempts, refetch: checkSolutionSuccess, isPending: successfulAttemptsPending } = useSolutionAttempts(
     caseId || '',
-    user?.email,
     "1" // success = true
   );
 
@@ -109,12 +108,9 @@ const CaseSolution = () => {
 
       // Submit the solution attempt
       await createSolutionMutation.mutateAsync({
-        solution: {
-          evidenceIds: selectedEvidences,
-          motiveIds: selectedMotives,
-          personIds: selectedSuspects,
-        },
-        userId: user.email,
+        evidenceIds: selectedEvidences,
+        motiveIds: selectedMotives,
+        personIds: selectedSuspects
       });
 
       // Check if the solution was successful by refetching successful attempts
@@ -135,6 +131,21 @@ const CaseSolution = () => {
     }
   };
 
+  useEffect(() => {
+    if (successfulAttempts?.items?.length > 0) {
+      setIsSolved(true);
+      setShowResult(true);
+    }
+  }, [successfulAttempts]);
+
+  if (successfulAttemptsPending) {
+    return (
+      <div className="d-flex justify-content-center vh-100 align-items-center">
+        <Fingerprint className="animate-spin-fingerprint text-primary" size={64} />
+      </div>
+    );
+  }
+
   if (showResult) {
     return (
       <div className="min-vh-100">
@@ -142,13 +153,15 @@ const CaseSolution = () => {
 
         <div className="container py-5">
           <div className="d-flex align-items-center mb-5">
-            <button
-              className="btn btn-secondary btn-sm me-3"
-              onClick={resetSelections}
-            >
-              <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-              {t('solutionPage.tryAgain')}
-            </button>
+            {!isSolved &&
+              <button
+                className="btn btn-secondary btn-sm me-3"
+                onClick={resetSelections}
+              >
+                <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
+                {t('solutionPage.tryAgain')}
+              </button>
+            }
 
             <h1 className={`${isMobile ? 'h5' : 'h2'} mb-0`}>{t('solutionPage.resultTitle')}</h1>
           </div>
@@ -209,12 +222,14 @@ const CaseSolution = () => {
                   )}
 
                   <div className="d-flex justify-content-center gap-3">
-                    <button
-                      onClick={resetSelections}
-                      className="btn btn-secondary"
-                    >
-                      {t('solutionPage.tryAgain')}
-                    </button>
+                    {!isSolved &&
+                      <button
+                        onClick={resetSelections}
+                        className="btn btn-secondary"
+                      >
+                        {t('solutionPage.tryAgain')}
+                      </button>
+                    }
                     <button
                       onClick={() => navigate(`/case/${caseId}`)}
                       className="btn btn-primary"

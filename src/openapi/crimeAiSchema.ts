@@ -168,7 +168,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Get a list of solution attempts. */
+        /** Get a list of solution attempts for the authenticated user. */
         get: operations["listSolutionAttempts"];
         put?: never;
         /** create a new attempt at a solution */
@@ -655,10 +655,6 @@ export interface components {
             createdAt: string;
         };
         CreateSolutionAttemptDto: {
-            solution: components["schemas"]["SolutionDto"];
-            userId: string;
-        };
-        SolutionDto: {
             evidenceIds: number[];
             motiveIds: number[];
             personIds: number[];
@@ -1417,8 +1413,6 @@ export interface operations {
     listSolutionAttempts: {
         parameters: {
             query?: {
-                /** @description the id of a logged in user playing a crime case */
-                userId?: string;
                 /** @description If the value '0' is specified, only unsuccessful solution attempts are selected; if a value other than '0' is specified, only successful solution attempts are selected. */
                 success?: string;
             };

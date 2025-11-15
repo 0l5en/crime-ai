@@ -1,11 +1,9 @@
 
-import { useQuery } from '@tanstack/react-query';
 import { useSolutionAttempts } from './useSolutionAttempts';
 
-export const useCaseSolved = (caseId: string, userId?: string) => {
+export const useCaseSolved = (caseId: string) => {
   const { data: successfulAttempts, isLoading, error } = useSolutionAttempts(
-    caseId, 
-    userId, 
+    caseId,
     "1" // success = true
   );
 
