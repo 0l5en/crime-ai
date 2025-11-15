@@ -1,14 +1,14 @@
 import AddCaseCard from "@/components/AddCaseCard";
+import FlyerDownloadCard from "@/components/FlyerDownloadCard";
 import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
-import FlyerDownloadCard from "@/components/FlyerDownloadCard";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
 import { useCrimeCases } from "@/hooks/useCrimeCasesVacationRental";
 import { useMyCaseGenerationAttempts } from "@/hooks/useMyCaseGenerationAttempts";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 
 const VacationRentalDashboard = () => {
@@ -136,7 +136,6 @@ const VacationRentalDashboard = () => {
               <div key={crimeCase.id} className="col-12 col-lg-6">
                 <GameCard
                   crimaCase={crimeCase}
-                  hideDescription={true}
                   showSubscriptionInfo={true}
                 />
               </div>

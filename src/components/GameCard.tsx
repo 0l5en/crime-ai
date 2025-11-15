@@ -9,7 +9,6 @@ type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 interface GameCardProps {
   crimaCase: CrimeCaseDto;
   onClick?: () => void;
-  hideDescription?: boolean;
   averageRating?: number;
   ratingCount?: number;
   showSubscriptionInfo?: boolean;
@@ -18,7 +17,6 @@ interface GameCardProps {
 const GameCard = ({
   crimaCase,
   onClick,
-  hideDescription = false,
   averageRating,
   ratingCount,
   showSubscriptionInfo = false,
@@ -70,11 +68,9 @@ const GameCard = ({
           )}
         </div>
 
-        {!hideDescription && (
-          <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
-            {crimaCase.description}
-          </p>
-        )}
+        <p className="card-text text-muted flex-grow-1 mb-4" data-testid="case-description" style={{ textAlign: 'justify' }}>
+          {crimaCase.summary}
+        </p>
 
         {/* Subscription Info oder Rating Display */}
         {showSubscriptionInfo ? (
