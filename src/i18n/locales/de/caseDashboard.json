@@ -17,12 +17,12 @@
     "selectMotive": "Motiv auswählen",
     "selectEvidence": "Beweise auswählen",
     "submitSolution": "Lösung einreichen",
-    "success": "Herzlichen Glückwunsch! Sie haben den Fall gelöst!",
-    "failure": "Leider ist das nicht die richtige Lösung. Versuchen Sie es erneut!",
-    "rateCase": "Bewerten Sie diesen Fall"
+    "success": "Herzlichen Glückwunsch! Du hast den Fall gelöst!",
+    "failure": "Leider ist das nicht die richtige Lösung. Versuche es erneut!",
+    "rateCase": "Bewerte diesen Fall"
   },
   "rating": {
-    "rate": "Bewerten Sie diesen Fall",
+    "rate": "Bewerte diesen Fall",
     "rating": "Bewertung",
     "ratings": "Bewertungen"
   },
@@ -37,12 +37,12 @@
   },
   "interrogation": {
     "back": "Zurück",
-    "interrogationWith": "Verhör mit",
+    "interrogationWith": "Verhör von",
     "questioningOf": "Befragung von",
     "yearsOld": "Jahre alt",
     "askQuestion": "Frage stellen",
-    "typePlaceholder": "Geben Sie hier Ihre Frage ein...",
-    "processing": "Ihre Frage wird verarbeitet...",
+    "typePlaceholder": "Gib hier Deine Frage ein...",
+    "processing": "Deine Frage wird verarbeitet...",
     "roles": {
       "criminalAssistant": "Krimineller Assistent",
       "digitalExpert": "Digital-Experte",
@@ -60,34 +60,34 @@
     "methods": "Methoden",
     "conclusion": "Schlussfolgerung",
     "discussion": "Beweis-Diskussion",
-    "askPlaceholder": "Stellen Sie eine Frage zu diesem Beweis-Bericht...",
+    "askPlaceholder": "Stelle eine Frage zu diesem Beweis-Bericht...",
     "loading": "Lädt..."
   },
   "solutionPage": {
     "tryAgain": "Erneut versuchen",
     "resultTitle": "Fall-Lösungs-Ergebnis",
-    "successTitle": "Herzlichen Glückwunsch! Sie haben den Fall gelöst!",
+    "successTitle": "Herzlichen Glückwunsch! Du hast den Fall gelöst!",
     "failureTitle": "Leider ist diese Lösung nicht korrekt.",
-    "successMessage": "Großartige Detektivarbeit! Sie haben den Täter, die Beweise und das Motiv korrekt identifiziert.",
-    "failureMessage": "Bitte versuchen Sie es erneut mit einer anderen Kombination von Verdächtigen, Beweisen und Motiven.",
+    "successMessage": "Großartige Detektivarbeit! Du hast den Täter, die Beweise und das Motiv korrekt identifiziert.",
+    "failureMessage": "Bitte versuche es erneut mit einer anderen Kombination von Verdächtigen, Beweisen und Motiven.",
     "solutionSummary": "Lösungs-Zusammenfassung",
     "rateCase": "Fall bewerten",
     "thankYou": "Vielen Dank für Ihre Bewertung!",
     "backToCase": "Zurück zum Fall",
     "backToCases": "Zurück zu den Fällen",
     "solveTheCase": "Lösen Sie den Fall",
-    "selectInstruction": "Wählen Sie Verdächtige, Beweise und Motive aus, um diesen Fall zu lösen (mindestens eins von jedem)",
+    "selectInstruction": "Wähle Verdächtige, Beweise und Motiv aus, um diesen Fall zu lösen (mindestens eins von jedem)",
     "selectSuspects": "Verdächtige auswählen",
     "selected": "ausgewählt",
     "noSuspects": "Keine Verdächtigen verfügbar",
     "selectEvidence": "Wichtige Beweise auswählen",
     "noEvidence": "Keine Beweise verfügbar",
-    "selectMotives": "Motive auswählen",
+    "selectMotives": "Motiv auswählen",
     "noMotives": "Keine Motive verfügbar",
     "validating": "Lösung wird überprüft...",
     "submitting": "Wird gesendet...",
     "submitSolution": "Lösung einreichen",
-    "pleaseSelect": "Bitte wählen Sie mindestens einen Verdächtigen, ein Beweisstück und ein Motiv aus"
+    "pleaseSelect": "Bitte wähle mindestens einen Verdächtigen, ein Beweisstück und ein Motiv aus"
   },
   "overview": {
     "caseDescription": "Fallbeschreibung",
@@ -119,7 +119,7 @@
     "alive": "lebendig"
   },
   "evidence": {
-    "back": "Zurück zu Beweise",
+    "back": "Zurück zu den Beweisen",
     "documentContent": "Dokumenteninhalt",
     "evidenceReportsTitle": "Beweisgutachten",
     "loadingReports": "Beweisgutachten werden geladen...",
