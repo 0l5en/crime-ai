@@ -147,7 +147,7 @@
     "noWitnesses": "Keine Zeugen für diesen Fall identifiziert"
   },
   "caseNotes": {
-    "title": "Fallnotizen",
+    "title": "Deine Fallnotizen",
     "openNotes": "Fallnotizen öffnen",
     "closeNotes": "Notizen schließen",
     "placeholder": "Notizen zu diesem Fall...\n\n• Verdächtige Personen\n• Wichtige Beweise\n• Theorien und Annahmen\n• Nächste Schritte",
