@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "title": "Baue Dein Wiederkehrendes Passives Einkommen Auf, Dollar für Dollar",
+    "subtitle": "Werde Partner im DetectivesGame Affiliate-Programm und verdiene monatlich wiederkehrende Provisionen durch ein einzigartiges 5-Level-Referral-System. Keine Obergrenzen. Keine versteckten Gebühren. Nur reines passives Einkommen.",
+    "cta": "Jetzt Verdienen Starten"
+  },
+  "calculator": {
+    "title": "Dein Passives Einkommens-Potenzial",
+    "subtitle": "Berechne, wie viel du jeden Monat verdienen kannst",
+    "directReferrals": "Deine direkten Empfehlungen",
+    "referralsPerPerson": "Empfehlungen pro Netzwerk-Person",
+    "totalMonthly": "Gesamtes Monatliches Einkommen",
+    "perMonth": "pro Monat",
+    "breakdown": "Aufschlüsselung nach Levels",
+    "level": "Level",
+    "users": "Nutzer",
+    "commission": "Provision",
+    "earnings": "Verdienst"
+  },
+  "howItWorks": {
+    "title": "So Funktioniert's",
+    "subtitle": "In 4 einfachen Schritten zum passiven Einkommen",
+    "step1": {
+      "title": "Registrieren & Link Erhalten",
+      "description": "Kostenlose Anmeldung und deinen persönlichen Referral-Link erhalten. Keine Investition erforderlich."
+    },
+    "step2": {
+      "title": "Link Teilen",
+      "description": "Teile deinen Link in Social Media, Blog, Email oder direkt mit Freunden und Familie."
+    },
+    "step3": {
+      "title": "An Direkten Empfehlungen Verdienen",
+      "description": "Verdiene 0,50€ pro Monat für jeden Premium-User, den du direkt vermittelst."
+    },
+    "step4": {
+      "title": "An Deren Empfehlungen Verdienen",
+      "description": "Verdiene zusätzlich an den Empfehlungen deiner Empfehlungen durch unser 5-Level-System."
+    }
+  },
+  "benefits": {
+    "title": "Warum Unser Partner-Programm?",
+    "subtitle": "Die besten Konditionen im Markt",
+    "recurring": {
+      "title": "Wiederkehrendes Einkommen",
+      "description": "Monatliche Zahlungen solange deine Empfehlungen Premium-Mitglieder bleiben"
+    },
+    "fiveLevel": {
+      "title": "5-Level-System",
+      "description": "Verdiene bis zu 5 Ebenen tief in deinem Netzwerk"
+    },
+    "noLimits": {
+      "title": "Keine Grenzen",
+      "description": "Keine Obergrenze für deine Einnahmen oder Anzahl der Empfehlungen"
+    },
+    "tracking": {
+      "title": "Einfaches Tracking",
+      "description": "Dashboard mit Echtzeit-Statistiken und detaillierten Reports"
+    },
+    "materials": {
+      "title": "Marketing-Materialien",
+      "description": "Fertige Banner, Texte und Werbemittel für deine Kampagnen"
+    },
+    "payouts": {
+      "title": "Schnelle Auszahlungen",
+      "description": "Monatliche Auszahlungen ab 50€ direkt auf dein Konto"
+    }
+  },
+  "cta": {
+    "title": "Bereit, Deine Finanzielle Zukunft Aufzubauen?",
+    "subtitle": "Schließe dich Hunderten von Affiliates an, die bereits passives Einkommen mit DetectivesGame verdienen. Starte noch heute und baue dir ein stabiles, wiederkehrendes Einkommen auf.",
+    "button": "Jetzt Partner Werden",
+    "guarantee": "Kostenlos • Keine Verpflichtungen • Sofort Starten"
+  }
+}
