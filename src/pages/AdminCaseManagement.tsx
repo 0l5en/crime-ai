@@ -11,7 +11,7 @@ type CrimeCaseGeneratorInfoFilterDto = { firstResult: number; maxResults: number
 const AdminCaseManagement = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const [crimeCaseGeneratorInfoFilter, setCrimeCaseGeneratorInfoFilter] = useState<CrimeCaseGeneratorInfoFilterDto>({ firstResult: 0, maxResults: 4 });
+  const [crimeCaseGeneratorInfoFilter, setCrimeCaseGeneratorInfoFilter] = useState<CrimeCaseGeneratorInfoFilterDto>({ firstResult: 0, maxResults: 10 });
   const { data: crimeCaseGeneratorInfos, isPending: crimeCaseGeneratorInfosPending, isError: crimeCaseGeneratorInfosIsError, error: crimeCaseGeneratorInfosError } = useCrimeCaseGeneratorInfo(crimeCaseGeneratorInfoFilter);
   const pagesTotal = crimeCaseGeneratorInfos?.total ? Math.ceil(crimeCaseGeneratorInfos.total / crimeCaseGeneratorInfoFilter.maxResults) : 1;
   const pageCurrent = crimeCaseGeneratorInfos?.total ? crimeCaseGeneratorInfoFilter.firstResult / crimeCaseGeneratorInfoFilter.maxResults + 1 : 1;
