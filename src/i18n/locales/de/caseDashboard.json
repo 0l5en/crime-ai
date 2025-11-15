@@ -76,7 +76,7 @@
     "backToCase": "Zurück zum Fall",
     "backToCases": "Zurück zu den Fällen",
     "solveTheCase": "Löse den Fall",
-    "selectInstruction": "Wähle Verdächtige, Beweise und Motiv aus, um diesen Fall zu lösen (mindestens eins von jedem)",
+    "selectInstruction": "Wähle Verdächtige, Beweise und Motiv aus, um diesen Fall zu lösen.",
     "selectSuspects": "Verdächtige auswählen",
     "selected": "ausgewählt",
     "noSuspects": "Keine Verdächtigen verfügbar",
