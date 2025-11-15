@@ -907,10 +907,13 @@ components:
           enum:
           - UNPUBLISHED
           - PUBLISHED
+        solutionSummary:
+          type: string
       required:
       - description
       - id
       - language
+      - solutionSummary
       - status
       - summary
       - textToImage

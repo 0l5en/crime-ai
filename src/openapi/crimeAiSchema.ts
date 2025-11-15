@@ -569,6 +569,7 @@ export interface components {
             imageUrl?: string;
             /** @enum {string} */
             status: "UNPUBLISHED" | "PUBLISHED";
+            solutionSummary: string;
         };
         ResultSetCrimeCase: {
             items?: components["schemas"]["CrimeCaseDto"][];

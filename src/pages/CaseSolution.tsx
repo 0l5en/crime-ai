@@ -190,11 +190,11 @@ const CaseSolution = () => {
                   </div>
 
                   {/* Solution Summary - nur bei erfolgreicher Lösung */}
-                  {isSolved && crimeCase?.summary && (
+                  {isSolved && crimeCase?.solutionSummary && (
                     <div className="mb-4 p-4 bg-light border rounded">
                       <h3 className="h5 mb-3 text-success">{t('solutionPage.solutionSummary')}</h3>
                       <p className="text-start" style={{ whiteSpace: 'pre-line' }}>
-                        {crimeCase.summary}
+                        {crimeCase.solutionSummary}
                       </p>
                     </div>
                   )}
