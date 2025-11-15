@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "title": "Costruisci il Tuo Reddito Passivo Ricorrente, Un Detective alla Volta",
+    "subtitle": "Diventa partner di DetectivesGame e guadagna commissioni mensili ricorrenti attraverso il nostro sistema di referral unico a 5 livelli. Nessun limite. Nessuna tariffa nascosta. Solo reddito passivo puro.",
+    "cta": "Inizia a Guadagnare"
+  },
+  "calculator": {
+    "title": "Il Tuo Potenziale di Reddito Passivo",
+    "subtitle": "Calcola quanto puoi guadagnare ogni mese",
+    "directReferrals": "I Tuoi Referral Diretti",
+    "referralsPerPerson": "Referral per Persona della Rete",
+    "totalMonthly": "Reddito Mensile Totale",
+    "perMonth": "al mese",
+    "breakdown": "Suddivisione per Livelli",
+    "level": "Livello",
+    "users": "Utenti",
+    "commission": "Commissione",
+    "earnings": "Guadagni"
+  },
+  "howItWorks": {
+    "title": "Come Funziona",
+    "subtitle": "4 semplici passi verso il reddito passivo",
+    "step1": {
+      "title": "Registrati & Ottieni il Tuo Link",
+      "description": "Registrazione gratuita e ricevi il tuo link di referral personale. Nessun investimento richiesto."
+    },
+    "step2": {
+      "title": "Condividi il Tuo Link",
+      "description": "Condividi il tuo link sui social media, blog, email o direttamente con amici e famiglia."
+    },
+    "step3": {
+      "title": "Guadagna sui Referral Diretti",
+      "description": "Guadagna €0,50 al mese per ogni utente Premium che segnali direttamente."
+    },
+    "step4": {
+      "title": "Guadagna sui Loro Referral",
+      "description": "Guadagna inoltre sui referral dei tuoi referral attraverso il nostro sistema a 5 livelli."
+    }
+  },
+  "benefits": {
+    "title": "Perché il Nostro Programma Partner?",
+    "subtitle": "Le migliori condizioni sul mercato",
+    "recurring": {
+      "title": "Reddito Ricorrente",
+      "description": "Pagamenti mensili finché i tuoi referral rimangono membri Premium"
+    },
+    "fiveLevel": {
+      "title": "Sistema a 5 Livelli",
+      "description": "Guadagna fino a 5 livelli di profondità nella tua rete"
+    },
+    "noLimits": {
+      "title": "Nessun Limite",
+      "description": "Nessun limite sui tuoi guadagni o sul numero di referral"
+    },
+    "tracking": {
+      "title": "Tracciamento Facile",
+      "description": "Dashboard con statistiche in tempo reale e report dettagliati"
+    },
+    "materials": {
+      "title": "Materiali Marketing",
+      "description": "Banner, testi e materiali promozionali pronti per le tue campagne"
+    },
+    "payouts": {
+      "title": "Pagamenti Veloci",
+      "description": "Pagamenti mensili da €50 direttamente sul tuo conto"
+    }
+  },
+  "cta": {
+    "title": "Pronto a Costruire il Tuo Futuro Finanziario?",
+    "subtitle": "Unisciti a centinaia di affiliati che stanno già guadagnando reddito passivo con DetectivesGame. Inizia oggi e costruisci un flusso di reddito stabile e ricorrente.",
+    "button": "Diventa Partner Ora",
+    "guarantee": "Gratuito • Nessun Obbligo • Inizia Subito"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "title": "Build Your Recurring Passive Income Stream, One Detective at a Time",
+    "subtitle": "Become a DetectivesGame Partner and earn monthly recurring commissions through our unique 5-level referral system. No limits. No hidden fees. Just pure passive income.",
+    "cta": "Start Earning Now"
+  },
+  "calculator": {
+    "title": "Your Passive Income Potential",
+    "subtitle": "Calculate how much you can earn every month",
+    "directReferrals": "Your Direct Referrals",
+    "referralsPerPerson": "Referrals per Network Person",
+    "totalMonthly": "Total Monthly Income",
+    "perMonth": "per month",
+    "breakdown": "Breakdown by Levels",
+    "level": "Level",
+    "users": "Users",
+    "commission": "Commission",
+    "earnings": "Earnings"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "4 simple steps to passive income",
+    "step1": {
+      "title": "Sign Up & Get Your Link",
+      "description": "Free registration and receive your personal referral link. No investment required."
+    },
+    "step2": {
+      "title": "Share Your Link",
+      "description": "Share your link on social media, blog, email or directly with friends and family."
+    },
+    "step3": {
+      "title": "Earn on Direct Referrals",
+      "description": "Earn €0.50 per month for every Premium user you directly refer."
+    },
+    "step4": {
+      "title": "Earn on Their Referrals",
+      "description": "Earn additionally on the referrals of your referrals through our 5-level system."
+    }
+  },
+  "benefits": {
+    "title": "Why Our Partner Program?",
+    "subtitle": "The best conditions in the market",
+    "recurring": {
+      "title": "Recurring Income",
+      "description": "Monthly payments as long as your referrals remain Premium members"
+    },
+    "fiveLevel": {
+      "title": "5-Level System",
+      "description": "Earn up to 5 levels deep in your network"
+    },
+    "noLimits": {
+      "title": "No Limits",
+      "description": "No cap on your earnings or number of referrals"
+    },
+    "tracking": {
+      "title": "Easy Tracking",
+      "description": "Dashboard with real-time statistics and detailed reports"
+    },
+    "materials": {
+      "title": "Marketing Materials",
+      "description": "Ready-made banners, texts and promotional materials for your campaigns"
+    },
+    "payouts": {
+      "title": "Fast Payouts",
+      "description": "Monthly payouts from €50 directly to your account"
+    }
+  },
+  "cta": {
+    "title": "Ready to Build Your Financial Future?",
+    "subtitle": "Join hundreds of affiliates already earning passive income with DetectivesGame. Start today and build a stable, recurring income stream.",
+    "button": "Become a Partner Now",
+    "guarantee": "Free • No Obligations • Start Immediately"
+  }
+}

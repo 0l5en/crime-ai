@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "title": "Construisez Votre Revenu Passif Récurrent, Un Détective à la Fois",
+    "subtitle": "Devenez partenaire DetectivesGame et gagnez des commissions mensuelles récurrentes grâce à notre système de parrainage unique à 5 niveaux. Aucune limite. Aucun frais caché. Juste un revenu passif pur.",
+    "cta": "Commencer à Gagner"
+  },
+  "calculator": {
+    "title": "Votre Potentiel de Revenu Passif",
+    "subtitle": "Calculez combien vous pouvez gagner chaque mois",
+    "directReferrals": "Vos Parrainages Directs",
+    "referralsPerPerson": "Parrainages par Personne du Réseau",
+    "totalMonthly": "Revenu Mensuel Total",
+    "perMonth": "par mois",
+    "breakdown": "Répartition par Niveaux",
+    "level": "Niveau",
+    "users": "Utilisateurs",
+    "commission": "Commission",
+    "earnings": "Gains"
+  },
+  "howItWorks": {
+    "title": "Comment Ça Marche",
+    "subtitle": "4 étapes simples vers le revenu passif",
+    "step1": {
+      "title": "Inscrivez-vous & Obtenez Votre Lien",
+      "description": "Inscription gratuite et recevez votre lien de parrainage personnel. Aucun investissement requis."
+    },
+    "step2": {
+      "title": "Partagez Votre Lien",
+      "description": "Partagez votre lien sur les réseaux sociaux, blog, email ou directement avec amis et famille."
+    },
+    "step3": {
+      "title": "Gagnez sur les Parrainages Directs",
+      "description": "Gagnez 0,50€ par mois pour chaque utilisateur Premium que vous parrainez directement."
+    },
+    "step4": {
+      "title": "Gagnez sur Leurs Parrainages",
+      "description": "Gagnez en plus sur les parrainages de vos parrainages grâce à notre système à 5 niveaux."
+    }
+  },
+  "benefits": {
+    "title": "Pourquoi Notre Programme Partenaire?",
+    "subtitle": "Les meilleures conditions du marché",
+    "recurring": {
+      "title": "Revenu Récurrent",
+      "description": "Paiements mensuels tant que vos parrainages restent membres Premium"
+    },
+    "fiveLevel": {
+      "title": "Système 5 Niveaux",
+      "description": "Gagnez jusqu'à 5 niveaux de profondeur dans votre réseau"
+    },
+    "noLimits": {
+      "title": "Aucune Limite",
+      "description": "Aucun plafond sur vos gains ou le nombre de parrainages"
+    },
+    "tracking": {
+      "title": "Suivi Facile",
+      "description": "Tableau de bord avec statistiques en temps réel et rapports détaillés"
+    },
+    "materials": {
+      "title": "Matériel Marketing",
+      "description": "Bannières, textes et matériel promotionnel prêts pour vos campagnes"
+    },
+    "payouts": {
+      "title": "Paiements Rapides",
+      "description": "Paiements mensuels à partir de 50€ directement sur votre compte"
+    }
+  },
+  "cta": {
+    "title": "Prêt à Construire Votre Avenir Financier?",
+    "subtitle": "Rejoignez des centaines d'affiliés qui gagnent déjà un revenu passif avec DetectivesGame. Commencez aujourd'hui et construisez un flux de revenus stable et récurrent.",
+    "button": "Devenir Partenaire Maintenant",
+    "guarantee": "Gratuit • Sans Engagement • Démarrage Immédiat"
+  }
+}
