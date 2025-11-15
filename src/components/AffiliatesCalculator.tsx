@@ -28,6 +28,7 @@ const AffiliatesCalculator = () => {
 
   return (
     <section 
+      id="calculator-section"
       className="py-5"
       style={{
         backgroundColor: '#0f1629',
