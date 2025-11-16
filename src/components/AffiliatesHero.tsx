@@ -39,10 +39,16 @@ const AffiliatesHero = () => {
               </p>
               <button
                 onClick={() => {
-                  document.getElementById('calculator-section')?.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                  });
+                  const calculatorSection = document.getElementById('calculator-section');
+                  if (calculatorSection) {
+                    const yOffset = -70; // Header height offset
+                    const y = calculatorSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    
+                    window.scrollTo({
+                      top: y,
+                      behavior: 'smooth'
+                    });
+                  }
                 }}
                 className="btn btn-lg px-5 py-3 d-inline-flex align-items-center gap-2"
                 style={{
