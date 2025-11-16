@@ -213,17 +213,17 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/crimecase-vacation-rental/{id}": {
+    "/crimecase-generator-vacation-rental": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /** list crime case generator forms of type vacation rental for the authenticated user. */
+        get: operations["listCaseGeneratorFormVacationRental"];
         put?: never;
-        /** get payment link for vacation rental form data */
-        post: operations["createPaymentLinkVacationRental"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -683,6 +683,7 @@ export interface components {
             approximateYearOfConstruction?: number;
             historicalFeaturesAndLegends?: string;
             historicalCulturalContext?: string;
+            paymentLink?: string;
         };
         CreateSightseeingAttractionDto: {
             attractionName: string;
@@ -721,6 +722,14 @@ export interface components {
             /** Format: int64 */
             total?: number;
         };
+        CaseGeneratorFormVacationRentalDto: {
+            /** Format: int64 */
+            id: number;
+            /** Format: int64 */
+            formBasicId: number;
+            createdAt: string;
+            create: components["schemas"]["CreateCaseGeneratorFormVacationRentalDto"];
+        };
         CreateCaseGeneratorFormVacationRentalDto: {
             formBasic: components["schemas"]["CreateCaseGeneratorFormBasicDto"];
             /** Format: int32 */
@@ -732,6 +741,11 @@ export interface components {
             /** Format: int32 */
             maxGuests: number;
             roomLayoutDescription?: string;
+        };
+        ResultSetCaseGeneratorFormVacationRentalDto: {
+            items?: components["schemas"]["CaseGeneratorFormVacationRentalDto"][];
+            /** Format: int64 */
+            total?: number;
         };
         InterrogationDto: {
             /** Format: int64 */
@@ -1546,31 +1560,23 @@ export interface operations {
             };
         };
     };
-    createPaymentLinkVacationRental: {
+    listCaseGeneratorFormVacationRental: {
         parameters: {
-            query?: {
-                /** @description the id of the data submitted in the vacation rental form */
-                id?: string;
-            };
+            query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description If the payment link created successfully. The response will contain a Location Header that belongs to the checkout page for the vacation rental crime case. */
-            202: {
+            /** @description successful operation */
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
-            };
-            /** @description If the request contains faulty input data. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
+                content: {
+                    "application/json": components["schemas"]["ResultSetCaseGeneratorFormVacationRentalDto"];
                 };
-                content?: never;
             };
             /** @description if any internal error occurs while processing the request */
             500: {

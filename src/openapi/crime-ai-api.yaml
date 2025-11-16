@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: https://crime-ai.0l5en.de/bff/crime-ai-api
+- url: http://localhost:8090
   description: Generated server url
 paths:
   /me:
@@ -393,23 +393,18 @@ paths:
                 $ref: "#/components/schemas/ResultSetCrimeCaseGeneratorInfoDto"
         "500":
           description: if any internal error occurs while processing the request
-  /crimecase-vacation-rental/{id}:
-    post:
-      summary: get payment link for vacation rental form data
-      operationId: createPaymentLinkVacationRental
-      parameters:
-      - name: id
-        in: query
-        description: the id of the data submitted in the vacation rental form
-        schema:
-          type: string
+  /crimecase-generator-vacation-rental:
+    get:
+      summary: list crime case generator forms of type vacation rental for the authenticated
+        user.
+      operationId: listCaseGeneratorFormVacationRental
       responses:
-        "202":
-          description: If the payment link created successfully. The response will
-            contain a Location Header that belongs to the checkout page for the vacation
-            rental crime case.
-        "400":
-          description: If the request contains faulty input data.
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultSetCaseGeneratorFormVacationRentalDto"
         "500":
           description: if any internal error occurs while processing the request
   /interrogation:
@@ -1226,6 +1221,8 @@ components:
           type: string
         historicalCulturalContext:
           type: string
+        paymentLink:
+          type: string
       required:
       - epoch
       - fullAddress
@@ -1319,6 +1316,24 @@ components:
         total:
           type: integer
           format: int64
+    CaseGeneratorFormVacationRentalDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        formBasicId:
+          type: integer
+          format: int64
+        createdAt:
+          type: string
+        create:
+          $ref: "#/components/schemas/CreateCaseGeneratorFormVacationRentalDto"
+      required:
+      - create
+      - createdAt
+      - formBasicId
+      - id
     CreateCaseGeneratorFormVacationRentalDto:
       type: object
       properties:
@@ -1344,6 +1359,16 @@ components:
       - venueBathrooms
       - venueBedrooms
       - venueFloors
+    ResultSetCaseGeneratorFormVacationRentalDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/CaseGeneratorFormVacationRentalDto"
+        total:
+          type: integer
+          format: int64
     InterrogationDto:
       type: object
       properties:

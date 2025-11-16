@@ -153,9 +153,12 @@
   "generatingCard": {
     "title": "Case #{{id}}",
     "status": "Status",
+    "subscription": "Subscription",
     "statusInProgress": "In Progress",
+    "statusWaitingForPayment": "Awaiting completion of the subscription",
     "created": "Created",
-    "description": "Generating your vacation rental case... This usually takes up to 24 hours."
+    "description": "Generating your vacation rental case... This usually takes up to 24 hours.",
+    "nowComplete": "now complete"
   },
   "error": {
     "messages": {

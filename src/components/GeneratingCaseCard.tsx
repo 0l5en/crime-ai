@@ -1,35 +1,47 @@
-import { format } from 'date-fns';
+import { components } from '@/openapi/crimeAiSchema';
 import { useTranslation } from 'react-i18next';
+import { toLocalizedString } from './ui/DateTimeFormatter';
+
+type CaseGeneratorFormVacationRentalDto = components['schemas']['CaseGeneratorFormVacationRentalDto'];
 
 interface GeneratingCaseCardProps {
-  attemptId: number;
-  created: string;
+  caseGeneratorFormVacationRentalDto: CaseGeneratorFormVacationRentalDto;
 }
 
-const GeneratingCaseCard = ({ attemptId, created }: GeneratingCaseCardProps) => {
+const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCaseCardProps) => {
   const { t } = useTranslation('vacationRentalDashboard');
-  const createdDate = new Date(created);
-  const formattedDate = format(createdDate, 'dd.MM.yyyy HH:mm');
+  const formattedDate = toLocalizedString(caseGeneratorFormVacationRentalDto.createdAt);
+
+  const statusLabel = caseGeneratorFormVacationRentalDto.create.formBasic.paymentLink
+    ? t('generatingCard.statusWaitingForPayment')
+    : t('generatingCard.statusInProgress');
 
   return (
     <div className="card border-secondary card-hover h-100" style={{ minHeight: '400px' }}>
       <div className="card-body d-flex flex-column justify-content-between p-4">
         <div className="flex-grow-1">
-          <div className="d-flex align-items-center mb-3">
-            <div className="spinner-border spinner-border-sm text-primary me-2" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-            <h5 className="card-title mb-0">{t('generatingCard.title', { id: attemptId })}</h5>
+          <div className="card-text text-muted">
+            <strong>{t('form.fields.venueName.label')}:</strong> {caseGeneratorFormVacationRentalDto.create.formBasic.venueName}
           </div>
-          <p className="card-text text-muted mb-2">
-            <strong>{t('generatingCard.status')}:</strong> {t('generatingCard.statusInProgress')}
-          </p>
-          <p className="card-text text-muted mb-4">
+          <div className="card-text text-muted">
+            <strong>{t('form.fields.fullAddress.label')}:</strong> {caseGeneratorFormVacationRentalDto.create.formBasic.fullAddress}
+          </div>
+          <div className="card-text text-muted mt-4">
             <strong>{t('generatingCard.created')}:</strong> {formattedDate}
-          </p>
-          <p className="card-text text-muted" style={{ textAlign: 'justify' }}>
-            {t('generatingCard.description')}
-          </p>
+          </div>
+          <div className="card-text text-muted">
+            <strong>{t('generatingCard.status')}:</strong> {statusLabel}
+          </div>
+
+          {caseGeneratorFormVacationRentalDto.create.formBasic.paymentLink ? (
+            <div className="card-text text-muted mt-4 d-flex align-items-center">
+              <strong>{t('generatingCard.subscription')}:</strong> <button className='btn btn-link p-0 ms-2' onClick={() => window.location.href = caseGeneratorFormVacationRentalDto.create.formBasic.paymentLink}>{t('generatingCard.nowComplete')}</button>
+            </div>
+          ) : (
+            <div className="card-text text-muted mt-4">
+              {t('generatingCard.description')}
+            </div>
+          )}
         </div>
       </div>
     </div>

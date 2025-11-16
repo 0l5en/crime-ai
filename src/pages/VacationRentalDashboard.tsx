@@ -6,8 +6,8 @@ import GeneratingCaseCard from "@/components/GeneratingCaseCard";
 import Header from "@/components/Header";
 import VacationRentalCaseGeneratorForm from "@/components/VacationRentalCaseGeneratorForm";
 import VacationRentalDashboardTabs from "@/components/VacationRentalDashboardTabs";
+import { useCaseGeneratorFormVacationRental } from "@/hooks/useCaseGeneratorFormVacationRental";
 import { useCrimeCases } from "@/hooks/useCrimeCasesVacationRental";
-import { useMyCaseGenerationAttempts } from "@/hooks/useMyCaseGenerationAttempts";
 import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 
@@ -18,12 +18,12 @@ const VacationRentalDashboard = () => {
   const { data: crimeCases, isLoading: casesLoading, error: casesError } = useCrimeCases();
 
   // Generation Attempts Hook (in Bearbeitung)
-  const { data: generationAttempts, isLoading: attemptsLoading } = useMyCaseGenerationAttempts();
+  const { data: resultSetCaseGeneratorFormVacationRental, isLoading: resultSetCaseGeneratorFormVacationRentalLoading } = useCaseGeneratorFormVacationRental();
 
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [activeTab, setActiveTab] = useState('cases');
 
-  const isLoading = casesLoading || attemptsLoading;
+  const isLoading = casesLoading || resultSetCaseGeneratorFormVacationRentalLoading;
   const error = casesError;
 
   // Scroll to top on initial load
@@ -98,11 +98,11 @@ const VacationRentalDashboard = () => {
 
   const renderCasesContent = () => {
     const cases = crimeCases?.items || [];
-    const attempts = generationAttempts?.items || [];
+    const caseGeneratorFormVacationRental = resultSetCaseGeneratorFormVacationRental?.items || [];
 
     return (
       <>
-        {cases.length === 0 && attempts.length === 0 ? (
+        {cases.length === 0 && caseGeneratorFormVacationRental.length === 0 ? (
           <div className="text-center py-5">
             <div className="rounded-3 p-5 border border-secondary">
               <i className="bi bi-house-door display-1 text-muted mb-3"></i>
@@ -122,12 +122,9 @@ const VacationRentalDashboard = () => {
         ) : (
           <div className="row g-4">
             {/* all attempts */}
-            {attempts.map((attempt) => (
-              <div key={attempt.id} className="col-12 col-lg-6">
-                <GeneratingCaseCard
-                  attemptId={attempt.id}
-                  created={attempt.created}
-                />
+            {caseGeneratorFormVacationRental.map((item) => (
+              <div key={item.id} className="col-12 col-lg-6">
+                <GeneratingCaseCard caseGeneratorFormVacationRentalDto={item} />
               </div>
             ))}
 
@@ -149,7 +146,7 @@ const VacationRentalDashboard = () => {
         )}
 
         {/* Stats Section */}
-        {(cases.length > 0 || attempts.length > 0) && (
+        {(cases.length > 0 || caseGeneratorFormVacationRental.length > 0) && (
           <div className="mt-5 pt-4 border-top border-secondary">
             <div className="row text-center">
               <div className="col-md-4">
@@ -160,14 +157,14 @@ const VacationRentalDashboard = () => {
               </div>
               <div className="col-md-4">
                 <div className="bg-body rounded p-3">
-                  <div className="display-6 text-primary fw-bold">{attempts.length}</div>
+                  <div className="display-6 text-primary fw-bold">{caseGeneratorFormVacationRental.length}</div>
                   <div className="text-muted small">{t('casesTab.stats.generatingCases')}</div>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="bg-body rounded p-3">
                   <div className="display-6 text-primary fw-bold">
-                    {cases.length + attempts.length}
+                    {cases.length + caseGeneratorFormVacationRental.length}
                   </div>
                   <div className="text-muted small">{t('casesTab.stats.totalCases')}</div>
                 </div>

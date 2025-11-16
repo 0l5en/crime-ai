@@ -153,9 +153,12 @@
   "generatingCard": {
     "title": "Caso #{{id}}",
     "status": "Stato",
+    "subscription": "Abbonamento",
     "statusInProgress": "In corso",
+    "statusWaitingForPayment": "in attesa del completamento dell'abbonamento",
     "created": "Creato",
-    "description": "Generazione del caso di affitto vacanze... Questo di solito richiede fino a 24 ore."
+    "description": "Generazione del caso di affitto vacanze... Questo di solito richiede fino a 24 ore.",
+    "nowComplete": "ora completo"
   },
   "error": {
     "messages": {

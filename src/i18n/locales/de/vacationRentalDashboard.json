@@ -153,9 +153,12 @@
   "generatingCard": {
     "title": "Fall #{{id}}",
     "status": "Status",
+    "subscription": "Abonnement",
     "statusInProgress": "In Bearbeitung",
+    "statusWaitingForPayment": "wartet auf Abschluss des Abonnements",
     "created": "Erstellt",
-    "description": "Ihr Ferienunterkunftsfall wird generiert... Dies dauert normalerweise bis zu 24 Stunden."
+    "description": "Ihr Ferienunterkunftsfall wird generiert... Dies dauert normalerweise bis zu 24 Stunden.",
+    "nowComplete": "jetzt abschliessen"
   },
   "error": {
     "messages": {
