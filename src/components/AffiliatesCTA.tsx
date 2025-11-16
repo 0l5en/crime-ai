@@ -7,11 +7,12 @@ const AffiliatesCTA = () => {
 
   return (
     <section 
-      className="py-5"
+      className="py-5 d-flex align-items-center"
       style={{
         background: 'linear-gradient(135deg, #181d35 0%, #1a2744 100%)',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        minHeight: 'calc(100vh - 200px)'
       }}
     >
       {/* Background decorative elements */}
