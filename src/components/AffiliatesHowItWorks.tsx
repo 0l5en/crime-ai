@@ -35,7 +35,7 @@ const AffiliatesHowItWorks = () => {
     <section 
       className="py-5"
       style={{
-        background: 'linear-gradient(180deg, #0f1629 0%, #181d35 100%)'
+        background: 'linear-gradient(180deg, #12182d 0%, #181d35 100%)'
       }}
     >
       <div className="container">
