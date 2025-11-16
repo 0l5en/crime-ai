@@ -31,7 +31,7 @@ const AffiliatesCalculator = () => {
       id="calculator-section"
       className="py-5"
       style={{
-        backgroundColor: '#0f1629',
+        background: 'linear-gradient(180deg, #0f1629 0%, #12182d 100%)',
         position: 'relative'
       }}
     >

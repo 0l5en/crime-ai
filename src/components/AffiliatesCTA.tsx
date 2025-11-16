@@ -9,7 +9,7 @@ const AffiliatesCTA = () => {
     <section 
       className="py-5 d-flex align-items-center"
       style={{
-        background: 'linear-gradient(135deg, #181d35 0%, #1a2744 100%)',
+        background: 'linear-gradient(180deg, #1a2238 0%, #1a2744 100%)',
         position: 'relative',
         overflow: 'hidden',
         minHeight: 'calc(100vh - 200px)'
