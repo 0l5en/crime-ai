@@ -138,8 +138,9 @@ const AffiliatesCalculator = () => {
                   style={{
                     borderRadius: '20px',
                     overflow: 'hidden',
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(64, 249, 155, 0.2)'
+                    background: '#0f1629',
+                    border: '1px solid rgba(64, 249, 155, 0.2)',
+                    padding: '1.5rem'
                   }}
                 >
                   <table className="table table-dark mb-0" style={{ 
