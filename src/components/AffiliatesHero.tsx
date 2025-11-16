@@ -11,9 +11,37 @@ const AffiliatesHero = () => {
         background: 'linear-gradient(135deg, #181d35 0%, #1a2744 100%)',
         minHeight: 'calc(100vh - 70px)',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden'
       }}
     >
+      {/* Background decorative elements */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: '-50%',
+          right: '-10%',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(64, 249, 155, 0.1) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(60px)'
+        }}
+      />
+      <div 
+        style={{
+          position: 'absolute',
+          bottom: '-50%',
+          left: '-10%',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(64, 249, 155, 0.1) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(60px)'
+        }}
+      />
+
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-6 mb-4 mb-lg-0">
@@ -22,7 +50,7 @@ const AffiliatesHero = () => {
                 className="display-4 fw-bold text-light mb-4"
                 style={{
                   lineHeight: '1.2',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)'
+                  fontSize: 'clamp(1.8rem, 4.5vw, 3rem)'
                 }}
               >
                 {t('hero.title')}
