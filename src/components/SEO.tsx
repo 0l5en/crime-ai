@@ -20,7 +20,7 @@ const SEO = ({
 }: SEOProps) => {
   const { currentLanguage } = useLanguage();
   const baseUrl = 'https://detectivesgame.com';
-  const fullCanonical = `${baseUrl}${canonical}`;
+  const fullCanonical = canonical === '/' ? baseUrl : `${baseUrl}${canonical}`;
   
   // Available languages for hreflang
   const languages = ['en', 'de', 'fr', 'it'];
