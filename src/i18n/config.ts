@@ -88,26 +88,13 @@ import affiliatesEN from './locales/en/affiliates.json';
 import affiliatesFR from './locales/fr/affiliates.json';
 import affiliatesIT from './locales/it/affiliates.json';
 
+// Import meta translations
+import metaEN from './locales/en/meta.json';
+import metaDE from './locales/de/meta.json';
+import metaFR from './locales/fr/meta.json';
+import metaIT from './locales/it/meta.json';
+
 const resources = {
-  de: {
-    common: commonDE,
-    home: homeDE,
-    venues: venuesDE,
-    cases: casesDE,
-    caseDashboard: caseDashboardDE,
-    legal: legalDE,
-    register: registerDE,
-    venueRegister: venueRegisterDE,
-    emails: emailsDE,
-    vacationRentalDashboard: vacationRentalDashboardDE,
-    contact: contactDE,
-    createAutopsyReportRequest: createAutopsyReportRequestDE,
-    profile: profileDE,
-    faq: faqDE,
-    useMyUserProfilePassword: useMyUserProfilePasswordDE,
-    partners: partnersDE,
-    affiliates: affiliatesDE,
-  },
   en: {
     common: commonEN,
     home: homeEN,
@@ -126,25 +113,27 @@ const resources = {
     useMyUserProfilePassword: useMyUserProfilePasswordEN,
     partners: partnersEN,
     affiliates: affiliatesEN,
+    meta: metaEN,
   },
-  it: {
-    common: commonIT,
-    home: homeIT,
-    venues: venuesIT,
-    cases: casesIT,
-    caseDashboard: caseDashboardIT,
-    legal: legalIT,
-    register: registerIT,
-    venueRegister: venueRegisterIT,
-    emails: emailsIT,
-    vacationRentalDashboard: vacationRentalDashboardIT,
-    contact: contactIT,
-    createAutopsyReportRequest: createAutopsyReportRequestIT,
-    profile: profileIT,
-    faq: faqIT,
-    useMyUserProfilePassword: useMyUserProfilePasswordIT,
-    partners: partnersIT,
-    affiliates: affiliatesIT,
+  de: {
+    common: commonDE,
+    home: homeDE,
+    venues: venuesDE,
+    cases: casesDE,
+    caseDashboard: caseDashboardDE,
+    legal: legalDE,
+    register: registerDE,
+    venueRegister: venueRegisterDE,
+    emails: emailsDE,
+    vacationRentalDashboard: vacationRentalDashboardDE,
+    contact: contactDE,
+    createAutopsyReportRequest: createAutopsyReportRequestDE,
+    profile: profileDE,
+    faq: faqDE,
+    useMyUserProfilePassword: useMyUserProfilePasswordDE,
+    partners: partnersDE,
+    affiliates: affiliatesDE,
+    meta: metaDE,
   },
   fr: {
     common: commonFR,
@@ -164,8 +153,29 @@ const resources = {
     useMyUserProfilePassword: useMyUserProfilePasswordFR,
     partners: partnersFR,
     affiliates: affiliatesFR,
+    meta: metaFR,
   },
-};
+  it: {
+    common: commonIT,
+    home: homeIT,
+    venues: venuesIT,
+    cases: casesIT,
+    caseDashboard: caseDashboardIT,
+    legal: legalIT,
+    register: registerIT,
+    venueRegister: venueRegisterIT,
+    emails: emailsIT,
+    vacationRentalDashboard: vacationRentalDashboardIT,
+    contact: contactIT,
+    createAutopsyReportRequest: createAutopsyReportRequestIT,
+    profile: profileIT,
+    faq: faqIT,
+    useMyUserProfilePassword: useMyUserProfilePasswordIT,
+    partners: partnersIT,
+    affiliates: affiliatesIT,
+    meta: metaIT,
+  },
+} as const;
 
 i18n
   .use(LanguageDetector)
@@ -174,6 +184,26 @@ i18n
     resources,
     fallbackLng: 'de',
     defaultNS: 'common',
+    ns: [
+      'common',
+      'home',
+      'venues',
+      'cases',
+      'caseDashboard',
+      'legal',
+      'register',
+      'venueRegister',
+      'emails',
+      'vacationRentalDashboard',
+      'contact',
+      'createAutopsyReportRequest',
+      'profile',
+      'faq',
+      'useMyUserProfilePassword',
+      'partners',
+      'affiliates',
+      'meta',
+    ],
     interpolation: {
       escapeValue: false,
     },
