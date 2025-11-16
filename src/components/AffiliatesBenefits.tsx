@@ -41,7 +41,7 @@ const AffiliatesBenefits = () => {
     <section 
       className="py-5"
       style={{
-        backgroundColor: '#0f1629'
+        background: 'linear-gradient(180deg, #181d35 0%, #1a2238 100%)'
       }}
     >
       <div className="container">
