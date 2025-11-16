@@ -65,30 +65,61 @@ const AffiliatesCTA = () => {
               {t('cta.subtitle')}
             </p>
 
-            <Link
-              to="/register"
-              className="btn btn-lg px-5 py-3 mb-4 d-inline-flex align-items-center gap-2"
-              style={{
-                backgroundColor: '#40F99B',
-                color: '#181d35',
-                border: 'none',
-                fontWeight: '600',
-                fontSize: '1.2rem',
-                boxShadow: '0 15px 40px rgba(64, 249, 155, 0.4)',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 20px 50px rgba(64, 249, 155, 0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(64, 249, 155, 0.4)';
-              }}
-            >
-              {t('cta.button')}
-              <ArrowRight size={24} />
-            </Link>
+            <div className="d-flex gap-3 mb-4 flex-wrap justify-content-center">
+              <Link
+                to="/register"
+                className="btn btn-lg px-5 py-3 d-inline-flex align-items-center gap-2"
+                style={{
+                  backgroundColor: '#40F99B',
+                  color: '#181d35',
+                  border: 'none',
+                  fontWeight: '600',
+                  fontSize: '1.2rem',
+                  boxShadow: '0 15px 40px rgba(64, 249, 155, 0.4)',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 20px 50px rgba(64, 249, 155, 0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 15px 40px rgba(64, 249, 155, 0.4)';
+                }}
+              >
+                {t('cta.button')}
+                <ArrowRight size={24} />
+              </Link>
+
+              <a
+                href="https://detectivesgame.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-lg px-5 py-3 d-inline-flex align-items-center gap-2"
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#40F99B',
+                  border: '2px solid #40F99B',
+                  fontWeight: '600',
+                  fontSize: '1.2rem',
+                  boxShadow: '0 0 0 rgba(64, 249, 155, 0)',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                  e.currentTarget.style.backgroundColor = 'rgba(64, 249, 155, 0.1)';
+                  e.currentTarget.style.boxShadow = '0 15px 40px rgba(64, 249, 155, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.boxShadow = '0 0 0 rgba(64, 249, 155, 0)';
+                }}
+              >
+                {t('cta.productButton')}
+                <ArrowRight size={24} />
+              </a>
+            </div>
 
             <div className="d-flex justify-content-center align-items-center gap-4 flex-wrap">
               {t('cta.guarantee').split(' • ').map((item, index) => (
