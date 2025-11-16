@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import PartnersHero from "@/components/PartnersHero";
 import PartnersGrid from "@/components/PartnersGrid";
 import { PartnerVenueData } from "@/components/PartnerVenueCard";
@@ -25,9 +27,10 @@ import sofiaRossiAvatar from "@/assets/avatars/sofia-rossi-it.jpg";
 import alessandroContiAvatar from "@/assets/avatars/alessandro-conti-it.jpg";
 
 const PartnersPage = () => {
-  const { t, i18n } = useTranslation(['partners', 'venues']);
+  const { t, i18n } = useTranslation(['partners', 'venues', 'meta']);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const breadcrumbData = useBreadcrumb();
 
   // Scroll to top when page loads
   useEffect(() => {
@@ -322,14 +325,17 @@ const PartnersPage = () => {
   const partners = getPartnerData();
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: isDark ? '#181D35' : '#F7FAFC' }}>
-      <Helmet>
-        <title>{t('hero.title')} | DetectivesGame</title>
-        <meta name="description" content={t('hero.subtitle')} />
-      </Helmet>
-      
-      <Header />
-      <PartnersHero />
+    <>
+      <SEO 
+        title={t('meta:partners.title')}
+        description={t('meta:partners.description')}
+        canonical="/partners"
+        keywords={t('meta:partners.keywords')}
+      />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
+      <div className="min-vh-100" style={{ backgroundColor: isDark ? '#181D35' : '#F7FAFC' }}>
+        <Header />
+        <PartnersHero />
       
       {/* Partners Grid with alternating background */}
       <section 
@@ -411,9 +417,10 @@ const PartnersPage = () => {
           </div>
         </div>
       </section>
-
+      
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

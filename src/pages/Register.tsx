@@ -1,5 +1,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import SignInButton from "@/components/SignInButton";
 import useRegisterUser from "@/hooks/useRegisterUser";
 import useSignIn from "@/hooks/useSignIn";
@@ -10,7 +13,8 @@ import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 const Register = () => {
-  const { t } = useTranslation('register');
+  const { t } = useTranslation(['register', 'meta']);
+  const breadcrumbData = useBreadcrumb();
   const registerUser = useRegisterUser();
   const postLoginSuccessUri = new URL(window.location.href).origin + '/';
   const { signIn } = useSignIn({ postLoginSuccessUri });
@@ -55,8 +59,16 @@ const Register = () => {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <Header />
+    <>
+      <SEO 
+        title={t('meta:register.title')}
+        description={t('meta:register.description')}
+        canonical="/register"
+        keywords={t('meta:register.keywords')}
+      />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
 
       <main className="flex-grow-1 py-5">
         <div className="container-fluid" style={{ maxWidth: '1400px' }}>
@@ -199,7 +211,8 @@ const Register = () => {
       </main>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

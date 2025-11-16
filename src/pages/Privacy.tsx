@@ -2,17 +2,29 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
+import StructuredData from '@/components/StructuredData';
+import { useBreadcrumb } from '@/hooks/useBreadcrumb';
 
 const Privacy = () => {
-  const { t } = useTranslation('legal');
+  const { t } = useTranslation(['legal', 'meta']);
+  const breadcrumbData = useBreadcrumb();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
-      <Header />
+    <>
+      <SEO 
+        title={t('meta:privacy.title')}
+        description={t('meta:privacy.description')}
+        canonical="/privacy"
+        keywords={t('meta:privacy.keywords')}
+      />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
+      <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
+        <Header />
       <main className="container my-5">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -91,7 +103,8 @@ const Privacy = () => {
         </div>
       </main>
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
