@@ -133,10 +133,17 @@ const AffiliatesCalculator = () => {
                 <h4 className="text-light mb-4 fw-semibold">
                   {t('calculator.breakdown')}
                 </h4>
-                <div className="table-responsive">
-                  <table className="table table-dark" style={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(64, 249, 155, 0.1)'
+                <div 
+                  className="table-responsive"
+                  style={{
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(64, 249, 155, 0.2)'
+                  }}
+                >
+                  <table className="table table-dark mb-0" style={{ 
+                    backgroundColor: 'transparent'
                   }}>
                     <thead>
                       <tr style={{ borderBottom: '2px solid rgba(64, 249, 155, 0.3)' }}>
