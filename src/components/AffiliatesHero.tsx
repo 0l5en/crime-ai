@@ -41,7 +41,7 @@ const AffiliatesHero = () => {
                 onClick={() => {
                   const calculatorSection = document.getElementById('calculator-section');
                   if (calculatorSection) {
-                    const yOffset = -67; // Header height offset
+                    const yOffset = -66; // Header height offset
                     const y = calculatorSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
                     
                     window.scrollTo({
