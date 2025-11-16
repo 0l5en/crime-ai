@@ -4,9 +4,12 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 
 const Contact = () => {
   const { t } = useTranslation(["contact", "meta"]);
+  const breadcrumbData = useBreadcrumb();
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const [formData, setFormData] = useState({
@@ -56,6 +59,7 @@ const Contact = () => {
         canonical="/contact"
         keywords={t('meta:contact.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       <div className="d-flex flex-column min-vh-100">
         <Header />
 
