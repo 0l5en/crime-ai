@@ -2,17 +2,25 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 const Cookies = () => {
-  const { t } = useTranslation('legal');
+  const { t } = useTranslation(['legal', 'meta']);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
-      <Header />
+    <>
+      <SEO 
+        title={t('meta:cookies.title')}
+        description={t('meta:cookies.description')}
+        canonical="/cookies"
+        keywords={t('meta:cookies.keywords')}
+      />
+      <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
+        <Header />
       <main className="container my-5">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -90,7 +98,8 @@ const Cookies = () => {
         </div>
       </main>
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
