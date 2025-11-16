@@ -103,9 +103,9 @@ const AffiliatesHowItWorks = () => {
                   </div>
 
                   {/* Title */}
-                  <h4 className="text-light fw-bold mb-3">
+                  <h5 className="text-light fw-bold mb-3">
                     {t(`howItWorks.${step.titleKey}`)}
-                  </h4>
+                  </h5>
 
                   {/* Description */}
                   <p className="text-light" style={{ opacity: 0.8, lineHeight: '1.6' }}>
