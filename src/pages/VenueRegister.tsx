@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SEO from "@/components/SEO";
 import SignInButton from "@/components/SignInButton";
 import useRegisterUser from "@/hooks/useRegisterUser";
 import useSignIn from "@/hooks/useSignIn";
@@ -11,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 const VenueRegister = () => {
-  const { t } = useTranslation("venueRegister");
+  const { t } = useTranslation(["venueRegister", "meta"]);
   const registerUser = useRegisterUser();
   const { signIn } = useSignIn({
     postLoginSuccessUri: new URL(window.location.href).origin + "/vacation-rental-dashboard",
@@ -79,8 +80,15 @@ const VenueRegister = () => {
   ];
 
   return (
-    <div className="min-vh-100 d-flex flex-column" style={{ backgroundColor: "var(--bs-body-bg)" }}>
-      <Header />
+    <>
+      <SEO 
+        title={t('meta:venueRegister.title')}
+        description={t('meta:venueRegister.description')}
+        canonical="/venue-register"
+        keywords={t('meta:venueRegister.keywords')}
+      />
+      <div className="min-vh-100 d-flex flex-column" style={{ backgroundColor: "var(--bs-body-bg)" }}>
+        <Header />
 
       <main className="flex-grow-1">
         <div className="container-fluid py-5">
@@ -342,7 +350,8 @@ const VenueRegister = () => {
       </main>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

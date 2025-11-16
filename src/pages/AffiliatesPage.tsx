@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import AffiliatesHero from "@/components/AffiliatesHero";
 import AffiliatesCalculator from "@/components/AffiliatesCalculator";
 import AffiliatesHowItWorks from "@/components/AffiliatesHowItWorks";
@@ -10,22 +10,20 @@ import AffiliatesBenefits from "@/components/AffiliatesBenefits";
 import AffiliatesCTA from "@/components/AffiliatesCTA";
 
 const AffiliatesPage = () => {
-  const { t, i18n } = useTranslation('affiliates');
+  const { t } = useTranslation(['affiliates', 'meta']);
 
-  // Scroll to top when page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <Helmet>
-        <title>{t('hero.title')} - DetectivesGame</title>
-        <meta name="description" content={t('hero.subtitle')} />
-        <meta property="og:title" content={`${t('hero.title')} - DetectivesGame`} />
-        <meta property="og:description" content={t('hero.subtitle')} />
-        <meta name="keywords" content="affiliate program, passive income, recurring income, referral system, online income, DetectivesGame partner" />
-      </Helmet>
+      <SEO 
+        title={t('meta:affiliates.title')}
+        description={t('meta:affiliates.description')}
+        canonical="/affiliates"
+        keywords={t('meta:affiliates.keywords')}
+      />
       
       <div 
         className="min-vh-100"

@@ -1,0 +1,67 @@
+{
+  "home": {
+    "title": "DetectivesGame - Löse interaktive KI-gestützte Kriminalfälle",
+    "description": "Teste deine Detektivfähigkeiten mit fesselnden KI-gestützten Kriminalfällen. Löse Verbrechen, decke Geheimnisse auf und werde der beste Detektiv.",
+    "keywords": "Detektivspiel, Mystery-Spiel, KI-Detektiv, interaktives Mystery, Krimi-Spiel, Detektivfälle"
+  },
+  "cases": {
+    "title": "Kriminalfälle - DetectivesGame",
+    "description": "Durchsuche und löse spannende Detektiv-Kriminalfälle. Jeder Fall bietet einzigartige Herausforderungen, Verdächtige und Beweise.",
+    "keywords": "Kriminalfälle, Detektivfälle, Verbrechen, Mysterien lösen, Detektivspiel Fälle"
+  },
+  "venues": {
+    "title": "Vermieter - DetectivesGame",
+    "description": "Verwandeln Sie Ihre Unterkunft in ein interaktives Mystery-Erlebnis. Generieren Sie individuelle Detektivfälle für Ihre Gäste.",
+    "keywords": "Ferienunterkunft Detektivspiel, Hotel Mystery-Spiel, interaktives Gästeerlebnis"
+  },
+  "partners": {
+    "title": "Unsere Premium-Partner - DetectivesGame",
+    "description": "Entdecken Sie erfolgreiche Unterkünfte, die spannende Detektiv-Erlebnisse für ihre Gäste geschaffen haben. Werden Sie Premium-Partner.",
+    "keywords": "Detektivspiel Partner, Unterkunftspartner, Premium-Partner, Ferienunterkunft Partner"
+  },
+  "affiliates": {
+    "title": "Partnerprogramm - DetectivesGame",
+    "description": "Werden Sie Teil unseres Partnerprogramms und verdienen Sie Provisionen durch die Bewerbung von DetectivesGame.",
+    "keywords": "Partnerprogramm, Detektivspiel Affiliate, Provision verdienen, Empfehlungsprogramm"
+  },
+  "faq": {
+    "title": "FAQ - Häufig gestellte Fragen | DetectivesGame",
+    "description": "Finden Sie Antworten auf häufige Fragen zu DetectivesGame, Spielablauf, Fällen, Abonnements und mehr.",
+    "keywords": "Detektivspiel FAQ, wie spielt man, Spielhilfe, Detektivspiel Fragen"
+  },
+  "contact": {
+    "title": "Kontakt - DetectivesGame",
+    "description": "Kontaktieren Sie das DetectivesGame-Team. Wir helfen Ihnen gerne bei Fragen, Feedback und Support.",
+    "keywords": "Kontakt Detektivspiel, Support, Kundenservice, Feedback"
+  },
+  "register": {
+    "title": "Registrierung - Melde dich bei DetectivesGame an",
+    "description": "Erstelle dein Detektiv-Konto und beginne heute mit dem Lösen von Mysterien. Kostenlos anmelden und exklusive Fälle freischalten.",
+    "keywords": "Anmeldung, Registrierung, Konto erstellen, Detektivspiel beitreten"
+  },
+  "venueRegister": {
+    "title": "Unterkunft registrieren - DetectivesGame",
+    "description": "Registrieren Sie Ihre Ferienunterkunft, um einzigartige Detektiv-Erlebnisse für Ihre Gäste zu schaffen. Generieren Sie individuelle Mystery-Fälle.",
+    "keywords": "Unterkunft Registrierung, Ferienunterkunft Registrierung, Hotel Registrierung, Unterkunft Anmeldung"
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen - DetectivesGame",
+    "description": "Lesen Sie unsere Nutzungsbedingungen und Richtlinien für DetectivesGame.",
+    "keywords": "Nutzungsbedingungen, AGB, rechtliche Bedingungen"
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung - DetectivesGame",
+    "description": "Erfahren Sie, wie wir Ihre Privatsphäre schützen und Ihre Daten bei DetectivesGame behandeln.",
+    "keywords": "Datenschutzerklärung, Datenschutz, DSGVO"
+  },
+  "cookies": {
+    "title": "Cookie-Richtlinie - DetectivesGame",
+    "description": "Erfahren Sie, wie wir Cookies bei DetectivesGame verwenden.",
+    "keywords": "Cookie-Richtlinie, Cookies, Tracking"
+  },
+  "imprint": {
+    "title": "Impressum - Rechtliche Informationen | DetectivesGame",
+    "description": "Rechtliche Informationen und Impressum für DetectivesGame.",
+    "keywords": "Impressum, rechtliche Informationen"
+  }
+}
