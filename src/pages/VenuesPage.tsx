@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import VenuesHero from "@/components/VenuesHero";
 import WhyVenueOwners from "@/components/WhyVenueOwners";
 import HowItWorks from "@/components/HowItWorks";
@@ -12,6 +14,7 @@ import { useTranslation } from "react-i18next";
 
 const VenuesPage = () => {
   const { t } = useTranslation('meta');
+  const breadcrumbData = useBreadcrumb();
   
   return (
     <>
@@ -21,6 +24,7 @@ const VenuesPage = () => {
         canonical="/venues"
         keywords={t('venues.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
         <Header />
         <VenuesHero />

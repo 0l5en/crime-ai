@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import AffiliatesHero from "@/components/AffiliatesHero";
 import AffiliatesCalculator from "@/components/AffiliatesCalculator";
 import AffiliatesHowItWorks from "@/components/AffiliatesHowItWorks";
@@ -11,6 +13,7 @@ import AffiliatesCTA from "@/components/AffiliatesCTA";
 
 const AffiliatesPage = () => {
   const { t } = useTranslation(['affiliates', 'meta']);
+  const breadcrumbData = useBreadcrumb();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,8 +27,9 @@ const AffiliatesPage = () => {
         canonical="/affiliates"
         keywords={t('meta:affiliates.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       
-      <div 
+      <div
         className="min-vh-100"
         style={{ 
           backgroundColor: '#181d35'

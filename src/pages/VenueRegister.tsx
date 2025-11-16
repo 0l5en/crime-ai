@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import SignInButton from "@/components/SignInButton";
 import useRegisterUser from "@/hooks/useRegisterUser";
 import useSignIn from "@/hooks/useSignIn";
@@ -13,6 +15,7 @@ import { z } from "zod";
 
 const VenueRegister = () => {
   const { t } = useTranslation(["venueRegister", "meta"]);
+  const breadcrumbData = useBreadcrumb();
   const registerUser = useRegisterUser();
   const { signIn } = useSignIn({
     postLoginSuccessUri: new URL(window.location.href).origin + "/vacation-rental-dashboard",
@@ -87,6 +90,7 @@ const VenueRegister = () => {
         canonical="/venue-register"
         keywords={t('meta:venueRegister.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       <div className="min-vh-100 d-flex flex-column" style={{ backgroundColor: "var(--bs-body-bg)" }}>
         <Header />
 

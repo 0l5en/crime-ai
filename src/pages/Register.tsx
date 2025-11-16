@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import SignInButton from "@/components/SignInButton";
 import useRegisterUser from "@/hooks/useRegisterUser";
 import useSignIn from "@/hooks/useSignIn";
@@ -12,6 +14,7 @@ import { z } from "zod";
 
 const Register = () => {
   const { t } = useTranslation(['register', 'meta']);
+  const breadcrumbData = useBreadcrumb();
   const registerUser = useRegisterUser();
   const postLoginSuccessUri = new URL(window.location.href).origin + '/';
   const { signIn } = useSignIn({ postLoginSuccessUri });
@@ -63,6 +66,7 @@ const Register = () => {
         canonical="/register"
         keywords={t('meta:register.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       <div className="d-flex flex-column min-vh-100">
         <Header />
 

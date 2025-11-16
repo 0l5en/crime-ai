@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import PartnersHero from "@/components/PartnersHero";
 import PartnersGrid from "@/components/PartnersGrid";
 import { PartnerVenueData } from "@/components/PartnerVenueCard";
@@ -28,6 +30,7 @@ const PartnersPage = () => {
   const { t, i18n } = useTranslation(['partners', 'venues', 'meta']);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const breadcrumbData = useBreadcrumb();
 
   // Scroll to top when page loads
   useEffect(() => {
@@ -329,6 +332,7 @@ const PartnersPage = () => {
         canonical="/partners"
         keywords={t('meta:partners.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       <div className="min-vh-100" style={{ backgroundColor: isDark ? '#181D35' : '#F7FAFC' }}>
         <Header />
         <PartnersHero />

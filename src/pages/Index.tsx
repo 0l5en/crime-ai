@@ -5,6 +5,7 @@ import GameFeatures from "@/components/GameFeatures";
 import GameReviews from "@/components/GameReviews";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -23,6 +24,7 @@ const Index = () => {
         canonical="/"
         keywords={t('home.keywords')}
       />
+      <StructuredData type="organization" />
       <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
         <Header />
         <Hero />

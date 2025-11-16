@@ -2,6 +2,8 @@ import Footer from "@/components/Footer";
 import GameCard from "@/components/GameCard";
 import Header from "@/components/Header";
 import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { useBreadcrumb } from "@/hooks/useBreadcrumb";
 import { useCrimeCases } from "@/hooks/useCrimeCasesBasic";
 import { components } from "@/openapi/crimeAiSchema";
 import { useCallback, useEffect, useState } from "react";
@@ -11,6 +13,7 @@ type CrimeCaseDto = components['schemas']['CrimeCaseDto'];
 
 const Cases = () => {
   const { t } = useTranslation(["cases", "meta"]);
+  const breadcrumbData = useBreadcrumb();
   const [page, setPage] = useState(1);
   const [allCases, setAllCases] = useState<CrimeCaseDto[]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -58,6 +61,7 @@ const Cases = () => {
         canonical="/cases"
         keywords={t('meta:cases.keywords')}
       />
+      {breadcrumbData && <StructuredData type="breadcrumb" data={breadcrumbData} />}
       <div className="min-vh-100" style={{ backgroundColor: "var(--bs-body-bg)" }}>
         <Header />
 
