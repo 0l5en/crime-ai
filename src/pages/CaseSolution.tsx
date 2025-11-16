@@ -152,20 +152,6 @@ const CaseSolution = () => {
         <Header />
 
         <div className="container py-5">
-          <div className="d-flex align-items-center mb-5">
-            {!isSolved &&
-              <button
-                className="btn btn-secondary btn-sm me-3"
-                onClick={resetSelections}
-              >
-                <ArrowLeft className="me-2" style={{ width: '16px', height: '16px' }} />
-                {t('solutionPage.tryAgain')}
-              </button>
-            }
-
-            <h1 className={`${isMobile ? 'h5' : 'h2'} mb-0`}>{t('solutionPage.resultTitle')}</h1>
-          </div>
-
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className={`card text-center border-3 ${isSolved ? 'border-success bg-success bg-opacity-10' : 'border-danger bg-danger bg-opacity-10'}`}>
