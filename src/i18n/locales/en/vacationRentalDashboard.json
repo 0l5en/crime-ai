@@ -151,14 +151,31 @@
     "manageButton": "Manage Subscription"
   },
   "generatingCard": {
-    "title": "Case #{{id}}",
+    "title": "Case Being Created",
     "status": "Status",
     "subscription": "Subscription",
-    "statusInProgress": "In Progress",
-    "statusWaitingForPayment": "Awaiting completion of the subscription",
-    "created": "Created",
+    "statusInProgress": "Your case is being generated",
+    "statusWaitingForPayment": "Subscription needs to be completed",
+    "created": "Created on",
     "description": "Generating your vacation rental case... This usually takes up to 24 hours.",
-    "nowComplete": "now complete"
+    "nowComplete": "now complete",
+    "paymentRequired": "Subscription Required",
+    "paymentDescription": "To start generating your unique detective case, please complete the subscription first.",
+    "completePayment": "Complete Subscription",
+    "duration": {
+      "title": "Generation Time: Up to 24 Hours",
+      "description": "The AI-powered creation of your unique crime case typically takes up to 24 hours."
+    },
+    "notification": {
+      "title": "Email Notification",
+      "description": "You will receive an email notification once your case is fully generated and available for your guests."
+    },
+    "qrCode": {
+      "title": "QR Code Download",
+      "description": "After publication, you can download the QR code for your case in the 'Promotion' tab and distribute it to your guests."
+    },
+    "progress": "Progress",
+    "inProgress": "Generating..."
   },
   "error": {
     "messages": {

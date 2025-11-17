@@ -151,14 +151,31 @@
     "manageButton": "Abonnement verwalten"
   },
   "generatingCard": {
-    "title": "Fall #{{id}}",
+    "title": "Fall wird erstellt",
     "status": "Status",
     "subscription": "Abonnement",
-    "statusInProgress": "In Bearbeitung",
-    "statusWaitingForPayment": "wartet auf Abschluss des Abonnements",
-    "created": "Erstellt",
+    "statusInProgress": "Ihr Fall wird gerade generiert",
+    "statusWaitingForPayment": "Abonnement muss abgeschlossen werden",
+    "created": "Erstellt am",
     "description": "Ihr Ferienunterkunftsfall wird generiert... Dies dauert normalerweise bis zu 24 Stunden.",
-    "nowComplete": "jetzt abschliessen"
+    "nowComplete": "jetzt abschliessen",
+    "paymentRequired": "Abonnement erforderlich",
+    "paymentDescription": "Um die Generierung Ihres individuellen Detektivfalls zu starten, schließen Sie bitte zunächst das Abonnement ab.",
+    "completePayment": "Abonnement abschließen",
+    "duration": {
+      "title": "Generierungsdauer: Bis zu 24 Stunden",
+      "description": "Die KI-gestützte Erstellung Ihres individuellen Kriminalfalls dauert in der Regel bis zu 24 Stunden."
+    },
+    "notification": {
+      "title": "Email-Benachrichtigung",
+      "description": "Sie erhalten eine Email-Benachrichtigung, sobald Ihr Fall fertig generiert und für Ihre Gäste verfügbar ist."
+    },
+    "qrCode": {
+      "title": "QR-Code Download",
+      "description": "Nach der Veröffentlichung können Sie den QR-Code für Ihren Fall im 'Promotion' Tab herunterladen und an Ihre Gäste verteilen."
+    },
+    "progress": "Fortschritt",
+    "inProgress": "Wird generiert..."
   },
   "error": {
     "messages": {
