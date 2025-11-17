@@ -151,14 +151,31 @@
     "manageButton": "Gérer l'abonnement"
   },
   "generatingCard": {
-    "title": "Cas #{{id}}",
+    "title": "Cas en cours de création",
     "status": "Statut",
     "subscription": "Abonnement",
-    "statusInProgress": "En cours",
-    "statusWaitingForPayment": "en attente de la finalisation de l'abonnement",
-    "created": "Créé",
+    "statusInProgress": "Votre cas est en cours de génération",
+    "statusWaitingForPayment": "L'abonnement doit être complété",
+    "created": "Créé le",
     "description": "Génération de votre cas de location de vacances... Cela prend généralement jusqu'à 24 heures.",
-    "nowComplete": "maintenant terminé"
+    "nowComplete": "maintenant terminé",
+    "paymentRequired": "Abonnement requis",
+    "paymentDescription": "Pour commencer la génération de votre cas de détective unique, veuillez d'abord compléter l'abonnement.",
+    "completePayment": "Compléter l'abonnement",
+    "duration": {
+      "title": "Durée de génération : Jusqu'à 24 heures",
+      "description": "La création assistée par IA de votre cas criminel unique prend généralement jusqu'à 24 heures."
+    },
+    "notification": {
+      "title": "Notification par email",
+      "description": "Vous recevrez une notification par email dès que votre cas sera entièrement généré et disponible pour vos invités."
+    },
+    "qrCode": {
+      "title": "Téléchargement du code QR",
+      "description": "Après publication, vous pourrez télécharger le code QR de votre cas dans l'onglet 'Promotion' et le distribuer à vos invités."
+    },
+    "progress": "Progression",
+    "inProgress": "Génération en cours..."
   },
   "error": {
     "messages": {

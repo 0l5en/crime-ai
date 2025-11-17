@@ -151,14 +151,31 @@
     "manageButton": "Gestisci abbonamento"
   },
   "generatingCard": {
-    "title": "Caso #{{id}}",
+    "title": "Caso in creazione",
     "status": "Stato",
     "subscription": "Abbonamento",
-    "statusInProgress": "In corso",
-    "statusWaitingForPayment": "in attesa del completamento dell'abbonamento",
-    "created": "Creato",
+    "statusInProgress": "Il tuo caso è in fase di generazione",
+    "statusWaitingForPayment": "L'abbonamento deve essere completato",
+    "created": "Creato il",
     "description": "Generazione del caso di affitto vacanze... Questo di solito richiede fino a 24 ore.",
-    "nowComplete": "ora completo"
+    "nowComplete": "ora completo",
+    "paymentRequired": "Abbonamento richiesto",
+    "paymentDescription": "Per iniziare la generazione del tuo caso investigativo unico, completa prima l'abbonamento.",
+    "completePayment": "Completa abbonamento",
+    "duration": {
+      "title": "Durata generazione: Fino a 24 ore",
+      "description": "La creazione assistita dall'IA del tuo caso criminale unico richiede solitamente fino a 24 ore."
+    },
+    "notification": {
+      "title": "Notifica via email",
+      "description": "Riceverai una notifica via email non appena il tuo caso sarà completamente generato e disponibile per i tuoi ospiti."
+    },
+    "qrCode": {
+      "title": "Download codice QR",
+      "description": "Dopo la pubblicazione, potrai scaricare il codice QR per il tuo caso nella scheda 'Promozione' e distribuirlo ai tuoi ospiti."
+    },
+    "progress": "Avanzamento",
+    "inProgress": "Generazione in corso..."
   },
   "error": {
     "messages": {
