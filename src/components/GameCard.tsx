@@ -97,7 +97,7 @@ const GameCard = ({
                 {tDashboard('subscription.trialEnds')} {formatDate(subscription.testPeriodEnd)}
               </p>
             )}
-            {subscription?.subscriptionPeriodEnd && subscription?.status === 'active' && !subscription.canceledAt && (
+            {subscription?.subscriptionPeriodEnd && (subscription?.status === 'active' || subscription?.status === 'trialing') && !subscription.canceledAt && (
               <p className="text-success small mb-2">
                 <i className="bi bi-check-circle me-1"></i>
                 {tDashboard('subscription.activeUntil')} {formatDate(subscription.subscriptionPeriodEnd)}
