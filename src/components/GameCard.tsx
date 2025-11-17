@@ -92,13 +92,13 @@ const GameCard = ({
           <div className="mt-auto">
             {/* Subscription Status */}
             {subscription?.testPeriodEnd && new Date(subscription.testPeriodEnd).getTime() > new Date().getTime() && (
-              <p className="text-warning small mb-2">
+              <p className="text-danger small mb-2">
                 <i className="bi bi-clock me-1"></i>
                 {tDashboard('subscription.trialEnds')} {formatDate(subscription.testPeriodEnd)}
               </p>
             )}
             {subscription?.subscriptionPeriodEnd && (subscription?.status === 'active' || subscription?.status === 'trialing') && !subscription.canceledAt && (
-              <p className="text-success small mb-2">
+              <p className="text-danger small mb-2">
                 <i className="bi bi-check-circle me-1"></i>
                 {tDashboard('subscription.activeUntil')} {formatDate(subscription.subscriptionPeriodEnd)}
               </p>
