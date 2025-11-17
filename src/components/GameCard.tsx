@@ -58,9 +58,9 @@ const GameCard = ({
       style={{ cursor: 'pointer' }}
     >
       {isSolved && (
-        <span 
-          className="badge bg-success position-absolute top-0 end-0 m-2" 
-          style={{ 
+        <span
+          className="badge bg-success position-absolute top-0 end-0 m-2"
+          style={{
             fontSize: '0.9rem',
             zIndex: 10,
             boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
@@ -97,13 +97,13 @@ const GameCard = ({
                 {tDashboard('subscription.trialEnds')} {formatDate(subscription.testPeriodEnd)}
               </p>
             )}
-            {subscription?.subscriptionPeriodEnd && subscription?.status !== 'canceled' && (
+            {subscription?.subscriptionPeriodEnd && subscription?.status === 'active' && !subscription.canceledAt && (
               <p className="text-success small mb-2">
                 <i className="bi bi-check-circle me-1"></i>
                 {tDashboard('subscription.activeUntil')} {formatDate(subscription.subscriptionPeriodEnd)}
               </p>
             )}
-            {subscription?.status === 'canceled' && (
+            {(subscription?.status === 'canceled' || (subscription?.status === 'active' && subscription.canceledAt)) && (
               <p className="text-danger small mb-2">
                 <i className="bi bi-x-circle me-1"></i>
                 {tDashboard('subscription.canceled')}{' '}{subscription?.subscriptionPeriodEnd && formatDate(subscription.subscriptionPeriodEnd)}
