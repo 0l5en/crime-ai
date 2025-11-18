@@ -163,7 +163,7 @@
     "paymentDescription": "Um die Generierung Ihres individuellen Detektivfalls zu starten, schließen Sie bitte zunächst das Abonnement ab.",
     "completePayment": "Abonnement abschließen",
     "duration": {
-      "title": "Generierungsdauer: Bis zu 24 Stunden",
+      "title": "Generierungsdauer",
       "description": "Die KI-gestützte Erstellung Ihres individuellen Kriminalfalls dauert in der Regel bis zu 24 Stunden."
     },
     "notification": {
