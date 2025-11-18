@@ -100,7 +100,7 @@ const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCa
                 <span className="small text-muted">{t('generatingCard.progress')}</span>
                 <span className="small fw-semibold text-primary">{t('generatingCard.inProgress')}</span>
               </div>
-              <div className="progress" style={{ height: '8px' }}>
+              <div className="progress" style={{ height: '48px' }}>
                 <div 
                   className="progress-bar progress-bar-striped progress-bar-animated bg-primary" 
                   role="progressbar" 
