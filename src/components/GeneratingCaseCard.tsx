@@ -16,7 +16,7 @@ const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCa
   const isWaitingForPayment = !!caseGeneratorFormVacationRentalDto.create.formBasic.paymentLink;
 
   return (
-    <div className="card border-secondary h-100 overflow-hidden" style={{ minHeight: '400px' }}>
+    <div className="card border-secondary card-hover h-100 overflow-hidden" style={{ minHeight: '400px' }}>
       {/* Header with gradient background */}
       <div className="position-relative" style={{ 
         background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%)',
