@@ -34,9 +34,10 @@ const Hero = () => {
         height: 'calc(100vh - 63px)',
         backgroundImage: `url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
         backgroundSize: 'cover',
-        backgroundPosition: `center ${scrollY * 0.3}px`,
+        backgroundPosition: `center ${scrollY * 0.15}px`,
         backgroundRepeat: 'no-repeat',
-        willChange: 'background-position'
+        willChange: 'background-position',
+        transition: 'background-position 0.1s ease-out'
       }}
     >
       <div className="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
