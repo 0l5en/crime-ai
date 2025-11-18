@@ -26,12 +26,12 @@ const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCa
           <Sparkles className="text-danger" size={28} />
           <h3 className="text-danger mb-0 fw-bold">{t('generatingCard.title')}</h3>
         </div>
-        <p className="text-white opacity-90 mb-0 small">
+        <p className="text-danger mb-0 small fw-semibold">
           {isWaitingForPayment ? t('generatingCard.statusWaitingForPayment') : t('generatingCard.statusInProgress')}
         </p>
       </div>
 
-      <div className="card-body p-4">
+      <div className="card-body p-4 d-flex flex-column" style={{ minHeight: '350px' }}>
         {/* Venue Information */}
         <div className="mb-4">
           <div className="mb-3">
@@ -68,7 +68,7 @@ const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCa
         ) : (
           <>
             {/* Generation Process Info */}
-            <div className="mb-4">
+            <div className="mb-4 flex-grow-1">
               <div className="d-flex align-items-start gap-3 mb-3">
                 <Clock size={20} className="text-primary flex-shrink-0 mt-1" />
                 <div>
@@ -94,8 +94,8 @@ const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCa
               </div>
             </div>
 
-            {/* Progress Indicator */}
-            <div className="mt-4">
+            {/* Progress Indicator - positioned at bottom */}
+            <div className="mt-auto">
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <span className="small text-muted">{t('generatingCard.progress')}</span>
                 <span className="small fw-semibold text-primary">{t('generatingCard.inProgress')}</span>
