@@ -1,7 +1,18 @@
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
   const { t } = useTranslation('home');
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const scrollToCases = () => {
     const casesSection = document.querySelector('[data-section="cases"]');
@@ -23,8 +34,9 @@ const Hero = () => {
         height: 'calc(100vh - 63px)',
         backgroundImage: `url('/lovable-uploads/bef17c67-6c7c-42bd-ad1a-2e9df5f98525.png')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundPosition: `center ${scrollY * 0.3}px`,
+        backgroundRepeat: 'no-repeat',
+        willChange: 'background-position'
       }}
     >
       <div className="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
