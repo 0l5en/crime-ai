@@ -28,8 +28,8 @@ const VenuesPage = () => {
       <div className="min-vh-100" style={{ backgroundColor: 'var(--bs-body-bg)' }}>
         <Header />
         <VenuesHero />
-        <WhyVenueOwners />
         <HowItWorks />
+        <WhyVenueOwners />
         <VenuesPricing />
         <VenuesFAQ />
         <VenuesTestimonials />
