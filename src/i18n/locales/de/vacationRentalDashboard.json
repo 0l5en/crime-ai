@@ -154,7 +154,7 @@
     "title": "Ihr Fall wird erstellt",
     "status": "Status",
     "subscription": "Abonnement",
-    "statusInProgress": "Ihr exklusiver Ferienunterkunftsfall wird jetzt generiert",
+    "statusInProgress": "Ihr exklusiver Ferienunterkunftsfall wird jetzt generiert...",
     "statusWaitingForPayment": "Ihr Abonnement muss noch abgeschlossen werden",
     "created": "Fallgenerierung gestartet",
     "description": "Ihr Ferienunterkunftsfall wird generiert... Dies dauert normalerweise bis zu 24 Stunden.",
