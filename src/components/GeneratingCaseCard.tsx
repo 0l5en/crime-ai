@@ -23,8 +23,8 @@ const GeneratingCaseCard = ({ caseGeneratorFormVacationRentalDto }: GeneratingCa
         padding: '1.5rem'
       }}>
         <div className="d-flex align-items-center gap-2 mb-2">
-          <Sparkles className="text-white" size={24} />
-          <h5 className="text-white mb-0 fw-bold">{t('generatingCard.title')}</h5>
+          <Sparkles className="text-danger" size={28} />
+          <h3 className="text-danger mb-0 fw-bold">{t('generatingCard.title')}</h3>
         </div>
         <p className="text-white opacity-90 mb-0 small">
           {isWaitingForPayment ? t('generatingCard.statusWaitingForPayment') : t('generatingCard.statusInProgress')}
