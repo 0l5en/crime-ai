@@ -152,5 +152,11 @@
     "closeNotes": "Chiudi note",
     "placeholder": "Note per questo caso...\n\n• Persone sospette\n• Prove importanti\n• Teorie e ipotesi\n• Prossimi passi",
     "autoSaved": "Salvato automaticamente"
+  },
+  "share": {
+    "title": "Condividi DetectivesGame:",
+    "text": "Metti alla prova le tue abilità da detective con casi criminali avvincenti alimentati dall'IA!",
+    "copyLink": "Copia link",
+    "copied": "Copiato!"
   }
 }
