@@ -2,6 +2,7 @@
 import EvidenceSelectionCard from "@/components/EvidenceSelectionCard";
 import Header from "@/components/Header";
 import MotiveSelectionCard from "@/components/MotiveSelectionCard";
+import SocialShareButtons from "@/components/SocialShareButtons";
 import StarRating from "@/components/StarRating";
 import SuspectSelectionCard from "@/components/SuspectSelectionCard";
 import { useUserContext } from '@/contexts/UserContext';
@@ -204,6 +205,9 @@ const CaseSolution = () => {
                           {t('solutionPage.thankYou')}
                         </p>
                       )}
+                      
+                      {/* Social Share Buttons */}
+                      <SocialShareButtons />
                     </div>
                   )}
 

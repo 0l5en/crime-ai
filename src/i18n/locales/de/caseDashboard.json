@@ -152,5 +152,11 @@
     "closeNotes": "Notizen schließen",
     "placeholder": "Notizen zu diesem Fall...\n\n• Verdächtige Personen\n• Wichtige Beweise\n• Theorien und Annahmen\n• Nächste Schritte",
     "autoSaved": "Automatisch gespeichert"
+  },
+  "share": {
+    "title": "Teile DetectivesGame:",
+    "text": "Teste deine Detektiv-Fähigkeiten mit spannenden KI-gesteuerten Kriminalfällen!",
+    "copyLink": "Link kopieren",
+    "copied": "Kopiert!"
   }
 }

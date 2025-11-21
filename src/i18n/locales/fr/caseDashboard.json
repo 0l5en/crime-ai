@@ -152,5 +152,11 @@
     "closeNotes": "Fermer les notes",
     "placeholder": "Notes pour cette affaire...\n\n• Personnes suspectes\n• Preuves importantes\n• Théories et hypothèses\n• Prochaines étapes",
     "autoSaved": "Enregistrement automatique"
+  },
+  "share": {
+    "title": "Partager DetectivesGame:",
+    "text": "Testez vos compétences de détective avec des affaires criminelles captivantes alimentées par l'IA!",
+    "copyLink": "Copier le lien",
+    "copied": "Copié!"
   }
 }

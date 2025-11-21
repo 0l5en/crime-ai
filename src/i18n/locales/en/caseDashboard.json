@@ -152,5 +152,11 @@
     "closeNotes": "Close notes",
     "placeholder": "Notes for this case...\n\n• Suspicious persons\n• Important evidence\n• Theories and assumptions\n• Next steps",
     "autoSaved": "Auto-saved"
+  },
+  "share": {
+    "title": "Share DetectivesGame:",
+    "text": "Test your detective skills with exciting AI-powered mystery cases!",
+    "copyLink": "Copy link",
+    "copied": "Copied!"
   }
 }
