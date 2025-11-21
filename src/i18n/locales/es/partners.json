@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Nuestros Socios de Alojamiento",
+    "subtitle": "Descubre alojamientos exitosos que ya han creado más de 3 casos de detective",
+    "criteria": "Los socios con 3 o más casos generados se presentan aquí de forma destacada y se benefician de visibilidad adicional."
+  },
+  "partner": {
+    "registeredSince": "Registrado desde",
+    "cases": "Casos de Detective",
+    "website": "Visitar Sitio Web",
+    "address": "Dirección",
+    "badge": "Socio Premium",
+    "features": "Destacados"
+  },
+  "motivation": {
+    "title": "Conviértete en Socio Premium",
+    "subtitle": "¡Con 3 o más casos generados, serás presentado aquí de forma destacada!",
+    "benefits": {
+      "visibility": "Mayor visibilidad en nuestra plataforma",
+      "badge": "Insignia exclusiva de Socio Premium",
+      "marketing": "Apoyo de marketing gratuito"
+    },
+    "cta": "Regístrate como Propietario de Alojamiento Ahora"
+  }
+}

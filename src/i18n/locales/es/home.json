@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "title": "Descubre la verdad - una pista tras otra",
+    "subtitle": "Sumérgete en un mundo lleno de misterios e intrigas con nuestros juegos de detective interactivos impulsados por IA. Resuelve casos complejos, interroga sospechosos y descubre secretos ocultos.",
+    "exploreCases": "Explorar casos"
+  },
+  "showcase": {
+    "title": "Últimos casos criminales",
+    "loadingCases": "Cargando casos...",
+    "failedToLoad": "Error al cargar los casos criminales",
+    "noCasesAvailable": "No hay casos criminales disponibles",
+    "viewAllCases": "Ver todos los casos"
+  },
+  "features": {
+    "title": "Características de DetectivesGame",
+    "subtitle": "Utiliza métodos de investigación de última generación para resolver los casos más complicados",
+    "forensicAnalysis": {
+      "title": "Análisis Forense",
+      "description": "Analiza huellas dactilares, rastros de ADN y otras pruebas con métodos forenses de última generación en este juego de detective interactivo."
+    },
+    "witnessesAndSuspects": {
+      "title": "Testigos y Sospechosos",
+      "description": "Interroga testigos y sospechosos con nuestro avanzado sistema de IA que permite conversaciones realistas en este juego de detective interactivo."
+    },
+    "caseFiles": {
+      "title": "Archivos de Casos",
+      "description": "Accede a archivos digitales detallados que contienen toda la información importante, pruebas e informes de investigación necesarios para resolver casos en este juego de detective interactivo."
+    },
+    "interactiveMaps": {
+      "title": "Mapas Interactivos",
+      "description": "Explora escenas del crimen y rastrea movimientos de sospechosos con mapas interactivos detallados que revelan importantes conexiones espaciales en esta experiencia de detective cautivadora."
+    },
+    "premiumContent": {
+      "title": "Contenido Premium",
+      "description": "Desbloquea casos premium exclusivos con escenarios más complejos, contenido adicional y misterios desafiantes en nuestra colección de juegos de detective interactivos."
+    },
+    "referralProgram": {
+      "title": "Programa de Referidos",
+      "description": "Gana dinero real invitando amigos a DetectivesGame. Recibe un mes de membresía premium por cada nuevo miembro premium que traigas."
+    }
+  },
+  "reviews": {
+    "title": "Lo que dicen nuestros detectives",
+    "subtitle": "Experiencias de investigadores que ya han resuelto casos",
+    "review1": {
+      "role": "Detective Aficionado",
+      "text": "¡Los casos están increíblemente bien investigados y la IA hace que la investigación sea una experiencia real. ¡El Inspector Kruger siempre me hace sonreír!"
+    },
+    "review2": {
+      "role": "Miembro Premium",
+      "text": "He probado muchos juegos de detectives, pero ninguno es tan cautivador como DetectivesGame. ¡Los casos premium valen cada centavo!"
+    },
+    "review3": {
+      "role": "Entusiasta del Crimen",
+      "text": "La posibilidad de interrogar testigos y analizar pruebas se siente como estar en una serie de crímenes real. ¡Absolutamente adictivo!"
+    }
+  }
+}

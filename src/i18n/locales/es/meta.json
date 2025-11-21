@@ -1,0 +1,67 @@
+{
+  "home": {
+    "title": "DetectivesGame | Resuelve casos criminales interactivos impulsados por IA",
+    "description": "Pon a prueba tus habilidades de detective con emocionantes casos criminales impulsados por IA. Resuelve crímenes, descubre secretos y conviértete en el mejor detective.",
+    "keywords": "juego de detective, juego de misterio, detective IA, misterio interactivo, juego criminal, casos de detective"
+  },
+  "cases": {
+    "title": "Todos los Casos Criminales | DetectivesGame",
+    "description": "Busca y resuelve emocionantes casos criminales de detective. Cada caso ofrece desafíos únicos, sospechosos y pruebas.",
+    "keywords": "casos criminales, casos de detective, crímenes, resolver misterios, casos de juego de detective"
+  },
+  "venues": {
+    "title": "Para Propietarios | DetectivesGame",
+    "description": "Transforma tu alojamiento en una experiencia de misterio interactiva. Genera casos de detective personalizados para tus huéspedes.",
+    "keywords": "juego de detective alojamiento vacacional, juego de misterio hotel, experiencia interactiva para huéspedes"
+  },
+  "partners": {
+    "title": "Nuestros Socios de Alojamiento | DetectivesGame",
+    "description": "Descubre alojamientos exitosos que han creado emocionantes experiencias de detective para sus huéspedes. Conviértete en Socio Premium.",
+    "keywords": "socios juego de detective, socios de alojamiento, socio premium, socios alojamiento vacacional"
+  },
+  "affiliates": {
+    "title": "Nuestro Programa de Afiliados | DetectivesGame",
+    "description": "Conviértete en parte de nuestro programa de afiliados y gana comisiones promocionando DetectivesGame.",
+    "keywords": "programa de afiliados, afiliado juego de detective, ganar comisiones, programa de referidos"
+  },
+  "faq": {
+    "title": "FAQ - Preguntas Frecuentes | DetectivesGame",
+    "description": "Encuentra respuestas a preguntas frecuentes sobre DetectivesGame, jugabilidad, casos, suscripciones y más.",
+    "keywords": "FAQ juego de detective, cómo jugar, ayuda del juego, preguntas juego de detective"
+  },
+  "contact": {
+    "title": "Contacto | DetectivesGame",
+    "description": "Contacta al equipo de DetectivesGame. Estaremos encantados de ayudarte con preguntas, comentarios y soporte.",
+    "keywords": "contacto juego de detective, soporte, servicio al cliente, comentarios"
+  },
+  "register": {
+    "title": "Registro - Únete a DetectivesGame",
+    "description": "Crea tu cuenta de detective y comienza a resolver misterios hoy. Regístrate gratis y desbloquea casos exclusivos.",
+    "keywords": "registro, inscripción, crear cuenta, unirse al juego de detective"
+  },
+  "venueRegister": {
+    "title": "Registrar Alojamiento | DetectivesGame",
+    "description": "Registra tu alojamiento vacacional para crear experiencias de detective únicas para tus huéspedes. Genera casos de misterio personalizados.",
+    "keywords": "registro alojamiento, registro alojamiento vacacional, registro hotel, inscripción alojamiento"
+  },
+  "terms": {
+    "title": "Términos de Uso | DetectivesGame",
+    "description": "Lee nuestros términos de uso y políticas para DetectivesGame.",
+    "keywords": "términos de uso, términos y condiciones, condiciones legales"
+  },
+  "privacy": {
+    "title": "Política de Privacidad | DetectivesGame",
+    "description": "Aprende cómo protegemos tu privacidad y manejamos tus datos en DetectivesGame.",
+    "keywords": "política de privacidad, protección de datos, RGPD"
+  },
+  "cookies": {
+    "title": "Política de Cookies | DetectivesGame",
+    "description": "Aprende cómo usamos cookies en DetectivesGame.",
+    "keywords": "política de cookies, cookies, seguimiento"
+  },
+  "imprint": {
+    "title": "Aviso Legal - Información Legal | DetectivesGame",
+    "description": "Información legal y aviso legal para DetectivesGame.",
+    "keywords": "aviso legal, información legal"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "title": "Panel de Alojamientos Vacacionales",
+  "subtitle": "Gestiona tus casos de alojamientos vacacionales, promociones y suscripciones",
+  "loading": "Cargando...",
+  "loadingCases": "Cargando tus casos de alojamientos vacacionales...",
+  "errorLoading": "Error al cargar los casos",
+  "tabs": {
+    "cases": "Mis Casos",
+    "promotion": "Promoción",
+    "subscription": "Suscripción"
+  },
+  "casesTab": {
+    "noCasesTitle": "Aún no hay casos disponibles",
+    "noCasesDescription": "Aún no has creado casos de alojamientos vacacionales. Crea tu primer caso a través del área de administración.",
+    "createFirstCase": "Crear primer caso",
+    "stats": {
+      "readyCases": "Casos Listos",
+      "generatingCases": "Casos en Creación",
+      "totalCases": "Total de Casos"
+    }
+  },
+  "promotionTab": {
+    "noQRCodesTitle": "No hay códigos QR disponibles",
+    "noQRCodesDescription": "Primero crea un caso de alojamiento vacacional para generar códigos QR para promoción.",
+    "goToCases": "Ir a los Casos",
+    "scanToAccess": "Escanea para acceder directamente al caso",
+    "downloadFlyer": "Descargar folleto",
+    "downloadPrintTemplate": "Descargar plantilla de impresión (A4, 5 folletos)",
+    "flyerPreview": "Vista previa del folleto",
+    "flyerDescription": "Descarga un folleto prefabricado con código QR que puedes imprimir y distribuir a tus huéspedes.",
+    "printTemplateDescription": "Descarga una plantilla de impresión A4 con 5 folletos para recortar.",
+    "colorVariant": "Variante de color",
+    "originalColor": "Naranja (Original)",
+    "accentColor": "Rojo (Acento)",
+    "tealColor": "Verde azulado"
+  },
+  "subscriptionTab": {
+    "title": "Suscripción",
+    "description": "Gestiona aquí tu suscripción e información de facturación."
+  },
+  "form": {
+    "title": "Crea tu caso de alojamiento vacacional",
+    "description": "Completa el siguiente formulario para crear un caso criminal único para tu alojamiento vacacional. Al completar la suscripción de prueba gratuita de 7 días, comienza la creación de tu caso de detective personalizado. La generación tarda hasta 24 horas. Serás notificado por correo electrónico una vez que tu caso esté listo. Luego puedes generar códigos QR que tus huéspedes pueden escanear para jugar el caso.",
+    "backToOverview": "Volver al resumen",
+    "progress": {
+      "title": "Progreso del Formulario",
+      "completed": "{{completed}} de {{total}} campos obligatorios completados",
+      "percentage": "{{percentage}}% completado"
+    },
+    "sections": {
+      "basicSettings": "Configuración Básica",
+      "location": "Ubicación",
+      "rentalDetails": "Detalles del Alojamiento Vacacional",
+      "attractions": "Atracciones Cercanas",
+      "historicalInfo": "Información Histórica (opcional)"
+    },
+    "fields": {
+      "language": {
+        "label": "Idioma",
+        "placeholder": "p.ej. Español, English, Français",
+        "required": "El idioma es obligatorio"
+      },
+      "epoch": {
+        "label": "Época",
+        "required": "La época es obligatoria",
+        "options": {
+          "twenties": "Años 1920",
+          "present": "Presente",
+          "future": "Futuro"
+        }
+      },
+      "theme": {
+        "label": "Tema",
+        "required": "El tema es obligatorio",
+        "options": {
+          "murder": "Asesinato",
+          "robbery": "Robo",
+          "kidnapping": "Secuestro"
+        }
+      },
+      "fullAddress": {
+        "label": "Dirección Completa",
+        "required": "La dirección es obligatoria"
+      },
+      "venueName": {
+        "label": "Nombre del Alojamiento",
+        "required": "El nombre es obligatorio"
+      },
+      "venueDescription": {
+        "label": "Descripción del Alojamiento Vacacional",
+        "helpText": "Describe la arquitectura, estilo de decoración y características especiales.",
+        "required": "La descripción es obligatoria"
+      },
+      "venueFloors": {
+        "label": "Número de Plantas",
+        "required": "El número de plantas es obligatorio",
+        "min": "Se requiere al menos 1 planta"
+      },
+      "venueBedrooms": {
+        "label": "Número de Dormitorios",
+        "required": "El número de dormitorios es obligatorio",
+        "min": "Se requiere al menos 1 dormitorio"
+      },
+      "venueBathrooms": {
+        "label": "Número de Baños",
+        "required": "El número de baños es obligatorio",
+        "min": "Se requiere al menos 1 baño"
+      },
+      "maxGuests": {
+        "label": "Número Máximo de Huéspedes",
+        "required": "El número máximo de huéspedes es obligatorio",
+        "min": "Se requiere al menos 1 huésped"
+      },
+      "roomLayoutDescription": {
+        "label": "Distribución de Habitaciones (opcional)",
+        "helpText": "Describe la distribución de habitaciones en todas las plantas"
+      },
+      "approximateYearOfConstruction": {
+        "label": "Año Aproximado de Construcción"
+      },
+      "historicalFeaturesAndLegends": {
+        "label": "Características Históricas y Leyendas"
+      },
+      "attractionName": {
+        "placeholder": "Nombre de la atracción",
+        "required": "El nombre es obligatorio"
+      },
+      "attractionDistance": {
+        "placeholder": "Distancia (m)",
+        "required": "La distancia es obligatoria",
+        "min": "La distancia debe ser positiva"
+      }
+    },
+    "buttons": {
+      "addAttraction": "+ Agregar atracción",
+      "removeAttraction": "Eliminar",
+      "cancel": "Cancelar",
+      "submit": "Crear tu caso de alojamiento vacacional",
+      "submitting": "Creando..."
+    }
+  },
+  "addCaseCard": {
+    "title": "Crear nuevo caso",
+    "description": "Crea tu caso de alojamiento vacacional"
+  },
+  "subscription": {
+    "subscriptionId": "ID de Suscripción",
+    "trialEnds": "La prueba termina el:",
+    "activeUntil": "Próxima fecha de pago:",
+    "canceled": "Suscripción cancelada el:",
+    "manageButton": "Gestionar Suscripción"
+  },
+  "generatingCard": {
+    "title": "Tu caso está siendo creado",
+    "status": "Estado",
+    "subscription": "Suscripción",
+    "statusInProgress": "Tu caso exclusivo de alojamiento vacacional está siendo generado ahora...",
+    "statusWaitingForPayment": "Tu suscripción aún debe ser completada",
+    "created": "Generación de caso iniciada",
+    "description": "Tu caso de alojamiento vacacional está siendo generado... Esto normalmente tarda hasta 24 horas.",
+    "nowComplete": "completar ahora",
+    "paymentRequired": "Suscripción requerida",
+    "paymentDescription": "Para iniciar la generación de tu caso de detective personalizado, por favor completa primero la suscripción.",
+    "completePayment": "Completar suscripción",
+    "duration": {
+      "title": "Duración de Generación",
+      "description": "La creación impulsada por IA de tu caso criminal personalizado normalmente tarda hasta 24 horas."
+    },
+    "notification": {
+      "title": "Notificación por Correo Electrónico",
+      "description": "Recibirás una notificación por correo electrónico una vez que tu caso esté generado y disponible para tus huéspedes."
+    },
+    "qrCode": {
+      "title": "Descarga de Código QR",
+      "description": "Después de la publicación, puedes descargar el código QR para tu caso en la pestaña 'Promoción' y distribuirlo a tus huéspedes."
+    },
+    "progress": "Progreso",
+    "inProgress": "Generando..."
+  },
+  "error": {
+    "messages": {
+      "noUsername": "Nombre de usuario no disponible. Por favor inicia sesión de nuevo.",
+      "formValidationError": "Por favor corrige los campos marcados.",
+      "unknownError": "Ha ocurrido un error desconocido."
+    }
+  },
+  "autosave": {
+    "restored": "Tus entradas han sido restauradas.",
+    "saved": "Progreso guardado automáticamente",
+    "cleared": "Datos guardados eliminados"
+  }
+}
