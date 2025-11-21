@@ -1,0 +1,50 @@
+{
+  "title": "Regístrate como Propietario de Alojamiento",
+  "subtitle": "Crea experiencias de misterio inolvidables para tus huéspedes",
+  "features": {
+    "title": "¿Por qué DetectivesGame para tu Alojamiento?",
+    "subtitle": "Transforma tu ubicación en una aventura de detective interactiva",
+    "items": {
+      "exclusive": {
+        "title": "Caso Exclusivo para tu Alojamiento",
+        "description": "Obtén un caso criminal personalizado específicamente diseñado para tu ubicación"
+      },
+      "unlimited": {
+        "title": "Acceso Ilimitado para Huéspedes",
+        "description": "Todos tus huéspedes pueden jugar el caso gratis - sin límites"
+      },
+      "qrCode": {
+        "title": "Acceso Fácil con Código QR",
+        "description": "Los huéspedes simplemente escanean un código QR y comienzan la aventura instantáneamente"
+      },
+      "analytics": {
+        "title": "Análisis Detallados",
+        "description": "Rastrea el compromiso y observa cómo los huéspedes interactúan con tu caso"
+      },
+      "free": {
+        "title": "Gratis y Sin Compromiso",
+        "description": "Sin costos ocultos, sin obligaciones - pruébalo sin riesgos"
+      }
+    }
+  },
+  "form": {
+    "userName": "Nombre de Usuario",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "submit": "Regístrate Ahora",
+    "alreadyRegistered": "¿Ya estás registrado?",
+    "signIn": "Iniciar Sesión",
+    "termsPrefix": "Al registrarte, aceptas nuestros",
+    "termsLink": "Términos y Condiciones"
+  },
+  "validation": {
+    "userNameMin": "El nombre de usuario debe tener al menos 2 caracteres",
+    "emailInvalid": "Por favor introduce una dirección de correo electrónico válida",
+    "passwordMin": "La contraseña debe tener al menos 8 caracteres",
+    "passwordUppercase": "La contraseña debe contener al menos una letra mayúscula",
+    "passwordLowercase": "La contraseña debe contener al menos una letra minúscula",
+    "passwordNumber": "La contraseña debe contener al menos un número",
+    "passwordMismatch": "Las contraseñas no coinciden"
+  }
+}

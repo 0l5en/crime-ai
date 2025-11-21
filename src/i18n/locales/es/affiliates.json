@@ -1,0 +1,75 @@
+{
+  "hero": {
+    "title": "Ingresos pasivos recurrentes - un detective tras otro",
+    "subtitle": "Conviértete en socio del programa de afiliados de DetectivesGame y gana comisiones recurrentes mensuales a través de nuestro único sistema de referidos de 5 niveles. Sin límites. Sin tarifas ocultas. Solo ingresos pasivos y matemáticas puras.",
+    "cta": "Comenzar ahora"
+  },
+  "calculator": {
+    "title": "Tu Potencial de Ingresos Pasivos",
+    "subtitle": "Calcula cuánto puedes ganar cada mes",
+    "directReferrals": "Tus referidos directos",
+    "referralsPerPerson": "Referidos por persona de red",
+    "totalMonthly": "Tus Ingresos Potenciales:",
+    "perMonth": "al mes",
+    "breakdown": "Desglose por Niveles",
+    "level": "Nivel",
+    "users": "Usuarios",
+    "commission": "Comisión",
+    "earnings": "Tus Ganancias"
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "En 4 sencillos pasos hacia ingresos pasivos",
+    "step1": {
+      "title": "Registro",
+      "description": "Regístrate gratis y obtén tu enlace personal de socio."
+    },
+    "step2": {
+      "title": "Compartir enlace",
+      "description": "Comparte tu enlace en redes sociales, blogs, foros o directamente con amigos y familiares."
+    },
+    "step3": {
+      "title": "Referidos directos",
+      "description": "Gana 0,50€ al mes por cada usuario Premium que nos refieras directamente."
+    },
+    "step4": {
+      "title": "Referidos indirectos",
+      "description": "Gana adicionalmente de los referidos de tus referidos."
+    }
+  },
+  "benefits": {
+    "title": "¿Por qué Nuestro Programa de Socios?",
+    "subtitle": "Las mejores condiciones del mercado",
+    "recurring": {
+      "title": "Ingresos Recurrentes",
+      "description": "Pagos mensuales mientras tus referidos permanezcan como miembros Premium"
+    },
+    "fiveLevel": {
+      "title": "Sistema de 5 Niveles",
+      "description": "Gana hasta 5 niveles de profundidad en tu red"
+    },
+    "noLimits": {
+      "title": "Sin Límites",
+      "description": "Sin límite superior para tus ingresos o número de referidos"
+    },
+    "tracking": {
+      "title": "Seguimiento Fácil",
+      "description": "Panel de control con estadísticas en tiempo real y reportes detallados"
+    },
+    "materials": {
+      "title": "Materiales de Marketing",
+      "description": "Banners listos, textos y materiales publicitarios para tus campañas"
+    },
+    "payouts": {
+      "title": "Pagos Rápidos",
+      "description": "Pagos mensuales desde 50€ directamente a tu cuenta"
+    }
+  },
+  "cta": {
+    "title": "¿Listo para construir tu futuro financiero?",
+    "subtitle": "Únete a cientos de afiliados que ya están ganando ingresos pasivos con DetectivesGame. Comienza hoy y construye un ingreso estable y recurrente.",
+    "button": "Convertirse en Socio Ahora",
+    "productButton": "Ir a DetectivesGame",
+    "guarantee": "Gratis • Sin Obligaciones • Matemáticas Puras • Comenzar Inmediatamente"
+  }
+}

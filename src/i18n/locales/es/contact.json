@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes preguntas o sugerencias? ¡Nos encantaría saber de ti!"
+  },
+  "form": {
+    "title": "Formulario de Contacto",
+    "name": "Nombre",
+    "namePlaceholder": "Tu Nombre",
+    "email": "Correo Electrónico",
+    "emailPlaceholder": "tu.email@ejemplo.com",
+    "subject": "Asunto",
+    "subjectPlaceholder": "¿De qué se trata?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Tu mensaje...",
+    "submit": "Enviar Mensaje",
+    "comingSoon": "El formulario de contacto estará activo pronto.",
+    "recaptchaRequired": "Por favor verifica que no eres un robot"
+  },
+  "validation": {
+    "nameRequired": "Por favor introduce tu nombre",
+    "emailRequired": "Por favor introduce tu correo electrónico",
+    "emailInvalid": "Por favor introduce una dirección de correo electrónico válida",
+    "subjectRequired": "Por favor introduce un asunto",
+    "messageRequired": "Por favor introduce un mensaje"
+  }
+}

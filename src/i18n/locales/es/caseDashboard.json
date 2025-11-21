@@ -1,0 +1,156 @@
+{
+  "tabs": {
+    "overview": "Resumen",
+    "evidence": "Pruebas",
+    "witnesses": "Testigos",
+    "suspects": "Sospechosos"
+  },
+  "header": {
+    "loading": "Cargando...",
+    "loadingDetails": "Cargando detalles del caso...",
+    "solveCase": "Resolver caso"
+  },
+  "solution": {
+    "title": "Resolver caso",
+    "summary": "Resumen",
+    "selectSuspect": "Seleccionar sospechoso",
+    "selectMotive": "Seleccionar motivo",
+    "selectEvidence": "Seleccionar pruebas",
+    "submitSolution": "Enviar solución",
+    "success": "¡Felicitaciones! ¡Has resuelto el caso!",
+    "failure": "Lamentablemente esa no es la solución correcta. ¡Inténtalo de nuevo!",
+    "rateCase": "Califica este caso"
+  },
+  "rating": {
+    "rate": "Califica este caso",
+    "rating": "Calificación",
+    "ratings": "Calificaciones"
+  },
+  "cards": {
+    "years": "Años",
+    "profession": "Profesión",
+    "maritalStatus": "Estado Civil",
+    "relationshipToCase": "Relación con el Caso",
+    "alibi": "Coartada",
+    "interrogate": "Interrogar",
+    "question": "Preguntar"
+  },
+  "interrogation": {
+    "back": "Atrás",
+    "interrogationWith": "Interrogatorio de",
+    "questioningOf": "Cuestionamiento de",
+    "yearsOld": "años",
+    "askQuestion": "Hacer pregunta",
+    "typePlaceholder": "Escribe tu pregunta aquí...",
+    "processing": "Tu pregunta está siendo procesada...",
+    "roles": {
+      "criminalAssistant": "Asistente Criminal",
+      "digitalExpert": "Experto Digital",
+      "forensicExpert": "Experto Forense",
+      "ballisticExpert": "Experto en Balística",
+      "documentExpert": "Experto en Documentos",
+      "traceExpert": "Experto en Rastros",
+      "forensicPathologist": "Patólogo Forense",
+      "perpetrator": "Perpetrador"
+    }
+  },
+  "evidenceReport": {
+    "title": "Informe de Pruebas",
+    "analysis": "Análisis",
+    "methods": "Métodos",
+    "conclusion": "Conclusión",
+    "discussion": "Discusión de Pruebas",
+    "askPlaceholder": "Haz una pregunta sobre este informe de pruebas...",
+    "loading": "Cargando..."
+  },
+  "solutionPage": {
+    "tryAgain": "Intentar de nuevo",
+    "resultTitle": "Resultado de la Solución del Caso",
+    "successTitle": "¡Felicitaciones! ¡Has resuelto el caso!",
+    "failureTitle": "Lamentablemente esta solución no es correcta.",
+    "successMessage": "¡Gran trabajo de detective! Has identificado correctamente al perpetrador, las pruebas y el motivo.",
+    "failureMessage": "Por favor inténtalo de nuevo.",
+    "solutionSummary": "Resumen de la Solución",
+    "rateCase": "Calificar caso",
+    "thankYou": "¡Gracias por tu calificación!",
+    "backToCase": "Volver al caso",
+    "backToCases": "Volver a los casos",
+    "solveTheCase": "Resolver el caso",
+    "selectInstruction": "Selecciona sospechosos, pruebas y motivo para resolver este caso.",
+    "selectSuspects": "Seleccionar sospechosos",
+    "selected": "seleccionado",
+    "noSuspects": "No hay sospechosos disponibles",
+    "selectEvidence": "Seleccionar pruebas importantes",
+    "noEvidence": "No hay pruebas disponibles",
+    "selectMotives": "Seleccionar motivo",
+    "noMotives": "No hay motivos disponibles",
+    "validating": "Validando solución...",
+    "submitting": "Enviando...",
+    "submitSolution": "Enviar solución",
+    "pleaseSelect": "Por favor selecciona al menos un sospechoso, una prueba y un motivo"
+  },
+  "overview": {
+    "caseDescription": "Descripción del Caso",
+    "loadingCaseDetails": "Cargando detalles del caso...",
+    "criminalAssistant": "Asistente Criminal",
+    "loadingAssistant": "Cargando asistente criminal...",
+    "yearsOld": "años",
+    "noAssignedAssistant": "No hay asistente criminal asignado para este caso",
+    "crimeScene": "Escena del Crimen",
+    "loadingSceneDetails": "Cargando detalles de la escena del crimen...",
+    "crimeSceneImage": "Imagen de la escena del crimen",
+    "noAssignedScene": "No hay escena del crimen asignada para este caso",
+    "victimInformation": "Información de la Víctima",
+    "victim": "Víctima",
+    "requestAutopsyReport": "Solicitar informe de autopsia",
+    "autopsyReportRequested": "Informe de autopsia solicitado el",
+    "yearsOldSuffix": "años",
+    "male": "masculino",
+    "female": "femenino",
+    "worksAs": "trabaja como",
+    "maritalStatus": "Estado Civil",
+    "relationshipToCase": "Relación con el Caso",
+    "personality": "Personalidad",
+    "financialSituation": "Situación Financiera",
+    "previousConvictions": "Condenas Previas",
+    "alibi": "Coartada",
+    "status": "Estado",
+    "deceased": "fallecido",
+    "alive": "vivo"
+  },
+  "evidence": {
+    "back": "Volver a las pruebas",
+    "documentContent": "Contenido del Documento",
+    "evidenceReportsTitle": "Informes de Pruebas",
+    "loadingReports": "Cargando informes de pruebas...",
+    "noReports": "No hay informes de pruebas disponibles para esta prueba",
+    "loadingEvidence": "Cargando pruebas...",
+    "unknownLocation": "Ubicación desconocida",
+    "pendingAnalysis": "Análisis pendiente",
+    "noEvidence": "No hay pruebas disponibles para este caso",
+    "location": "Lugar del hallazgo",
+    "evidenceTypes": {
+      "DIGITAL": "DIGITAL",
+      "FORENSIC": "FORENSE",
+      "BALLISTIC": "BALÍSTICO",
+      "DOCUMENT": "DOCUMENTO",
+      "TRACE": "RASTRO",
+      "OTHER": "OTRO"
+    }
+  },
+  "suspects": {
+    "loadingSuspects": "Cargando sospechosos...",
+    "noSuspects": "No se han identificado sospechosos para este caso"
+  },
+  "witnesses": {
+    "loadingWitnesses": "Cargando testigos...",
+    "noWitnesses": "No se han identificado testigos para este caso"
+  },
+  "caseNotes": {
+    "title": "Tus Notas del Caso",
+    "openNotes": "Abrir notas del caso",
+    "closeNotes": "Cerrar notas",
+    "placeholder": "Notas sobre este caso...\n\n• Personas sospechosas\n• Pruebas importantes\n• Teorías y suposiciones\n• Próximos pasos",
+    "autoSaved": "Guardado automáticamente"
+  }
+}

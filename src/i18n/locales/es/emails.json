@@ -1,0 +1,16 @@
+{
+  "loading": "Cargando correos...",
+  "error": "Error al cargar los correos. Por favor, inténtalo de nuevo.",
+  "inboxEmpty": "Bandeja de Entrada Vacía",
+  "noEmailsYet": "Aún no has recibido correos.",
+  "inbox": "Bandeja de Entrada",
+  "email": "Correo",
+  "emails": "Correos",
+  "selectEmail": "Seleccionar un Correo",
+  "selectEmailDescription": "Selecciona un correo de la lista para ver su contenido.",
+  "autopsyReport": "Informe de Autopsia",
+  "report": "Informe",
+  "unknown": "Desconocido",
+  "reply": "Responder",
+  "notImplemented": "El contenido para este tipo de informe aún no está implementado."
+}

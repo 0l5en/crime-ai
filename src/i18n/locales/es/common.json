@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "admin": "Admin",
+    "vacationRentalDashboard": "Panel de Alquileres Vacacionales",
+    "myCases": "Mis Casos",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse",
+    "logout": "Cerrar Sesión"
+  },
+  "footer": {
+    "description": "Pon a prueba tus habilidades de detective con nuestros emocionantes casos de misterio. Resuelve crímenes, descubre secretos y conviértete en el mejor detective.",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "imprint": "Aviso Legal",
+    "contact": "Contacto",
+    "copyright": "© 2025 moo.codes | Todos los derechos reservados",
+    "rateUs": "Califica DetectivesGame",
+    "thankYouRating": "¡Gracias por tu calificación!"
+  },
+  "buttons": {
+    "learnMore": "Más información",
+    "getStarted": "Comenzar ahora",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar"
+  },
+  "status": {
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "success": "¡Éxito!",
+    "notFound": "No encontrado"
+  }
+}

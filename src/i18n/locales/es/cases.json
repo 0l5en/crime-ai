@@ -1,0 +1,40 @@
+{
+  "title": "Todos los Casos Criminales",
+  "subtitle": "Descubre y resuelve desafiantes casos criminales de diferentes épocas y lugares",
+  "filters": {
+    "title": "Filtrar Casos",
+    "caseType": {
+      "label": "Tipo de Caso",
+      "all": "Todos los Casos",
+      "free": "Casos Gratuitos",
+      "premium": "Casos Premium"
+    },
+    "timePeriod": {
+      "label": "Período de Tiempo",
+      "all": "Todos los Períodos",
+      "ancient": "Antiguo",
+      "medieval": "Medieval",
+      "modern": "Moderno",
+      "contemporary": "Contemporáneo"
+    },
+    "language": {
+      "label": "Idioma",
+      "all": "Todos los Idiomas",
+      "german": "Alemán",
+      "english": "Inglés"
+    },
+    "reset": "Restablecer Filtros"
+  },
+  "loading": "Cargando...",
+  "loadingCases": "Cargando casos...",
+  "loadingMore": "Cargando más casos...",
+  "error": "Error al cargar los casos criminales",
+  "noCases": "No hay casos criminales disponibles",
+  "allViewed": "Has visto todos los casos disponibles",
+  "card": {
+    "notYetRated": "Aún no calificado",
+    "rating": "calificación",
+    "ratings": "calificaciones",
+    "solved": "Resuelto"
+  }
+}

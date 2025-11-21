@@ -1,0 +1,41 @@
+{
+  "title": "Mi Perfil",
+  "subtitle": "Gestiona la configuración de tu cuenta",
+  "changeAvatar": "Cambiar Avatar",
+  "accountSettings": "Configuración de Cuenta",
+  "emailAddress": "Correo Electrónico",
+  "password": "Contraseña",
+  "changePassword": "Cambiar Contraseña",
+  "subscription": "Suscripción",
+  "premiumMember": "Miembro Premium",
+  "freePlan": "Plan Gratuito",
+  "upgradeText": "¡Actualiza a Premium para desbloquear casos exclusivos, funciones avanzadas y más!",
+  "upgradeToPremium": "Actualizar a Premium",
+  "premiumInfo": "¡Estás disfrutando actualmente de todas las funciones Premium!",
+  "manageSubscription": "Gestionar Suscripción",
+  "referralLink": "Enlace de Referidos",
+  "referralText": "¡Comparte tu enlace único y gana recompensas!",
+  "copy": "Copiar",
+  "copied": "¡Copiado!",
+  "memberSince": "Miembro desde",
+  "lastActivity": "Última Actividad",
+  "changePasswordModal": {
+    "title": "Cambiar Contraseña",
+    "currentPassword": "Contraseña Actual",
+    "newPassword": "Nueva Contraseña",
+    "confirmPassword": "Confirmar Nueva Contraseña",
+    "cancel": "Cancelar",
+    "update": "Actualizar Contraseña"
+  },
+  "changeAvatarModal": {
+    "title": "Cambiar Avatar",
+    "message": "La función de carga de avatar estará disponible pronto.",
+    "close": "Cerrar"
+  },
+  "shareSection": {
+    "title": "Compartir DetectivesGame",
+    "description": "¡Ayúdanos a crecer compartiendo DetectivesGame con tus amigos!",
+    "shareText": "Echa un vistazo a DetectivesGame - ¡resuelve emocionantes casos criminales!",
+    "emailSubject": "Descubre DetectivesGame"
+  }
+}

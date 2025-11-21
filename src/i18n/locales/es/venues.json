@@ -1,0 +1,183 @@
+{
+  "hero": {
+    "title": "Transforma tu alojamiento vacacional en una experiencia criminal inolvidable",
+    "subtitle": "Ofrece a tus huéspedes un juego de detective impulsado por IA que se desarrolla en tu alojamiento vacacional.",
+    "cta": "Comenzar gratis ahora",
+    "trial": "Período de prueba de 7 días · Luego 9.99€/mes"
+  },
+  "why": {
+    "title": "Por qué los alojamientos vacacionales nos eligen",
+    "subtitle": "Únete a cientos de propietarios de alojamientos vacacionales que ya están emocionando a sus huéspedes con casos de detective exclusivos.",
+    "benefits": {
+      "unique": {
+        "title": "Experiencia Única",
+        "description": "Transforma tu alojamiento vacacional en el escenario de un misterio cautivador que destaca sus características y el carácter local."
+      },
+      "satisfaction": {
+        "title": "Satisfacción de Huéspedes",
+        "description": "Ofrece una actividad inolvidable que destaca tu alojamiento vacacional en las reseñas y hace que los huéspedes regresen para más estancias."
+      },
+      "growth": {
+        "title": "Más Reservas",
+        "description": "Aumenta tu tasa de reservas, promueve estancias más largas y crea una fuente adicional de ingresos con experiencias de misterio premium."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Obtener tu caso de alojamiento vacacional personalizado es muy simple. Nos encargamos de todo el trabajo creativo y creamos juegos de detective interactivos impulsados por IA que se desarrollan en tu alojamiento vacacional.",
+    "steps": {
+      "trial": {
+        "title": "Regístrate gratis",
+        "description": "Crea tu cuenta gratuita y comienza la generación del caso. Simplemente configura tu alojamiento vacacional para comenzar de inmediato."
+      },
+      "register": {
+        "title": "Detalles del alojamiento vacacional",
+        "description": "Comparte detalles de tu alojamiento vacacional con nosotros, incluyendo el número de habitaciones y características únicas de tu alojamiento vacacional."
+      },
+      "exclusive": {
+        "title": "Recibe caso exclusivo",
+        "description": "Recibe tu caso de detective personalizado, interactivo e impulsado por IA en 24 horas. Prueba el caso gratis durante 7 días."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Precios simples y transparentes",
+    "subtitle": "Suscripción mensual económica con período de prueba sin riesgo de 7 días",
+    "plan": {
+      "name": "Suscripción de Alojamiento Vacacional",
+      "price": "9.99 €",
+      "period": "/mes",
+      "trial": "Después del período de prueba gratuito de 7 días"
+    },
+    "enhance": {
+      "title": "Enriquece tu alojamiento vacacional",
+      "description1": "Transforma tu alojamiento vacacional en una aventura interactiva que los huéspedes recordarán y compartirán. Nuestros casos de detective personalizados ofrecen una experiencia única que distingue tu alojamiento de otros. Perfecto para alojamientos vacacionales de todo tipo.",
+      "description2": "¡Prueba tu caso creado gratis durante 7 días!"
+    },
+    "includes": "Incluye:",
+    "features": {
+      "exclusive": "Caso de detective exclusivo para tu alojamiento vacacional",
+      "unlimited": "Acceso ilimitado a tu caso de detective",
+      "profile": "Perfil dedicado de alojamiento vacacional con códigos QR",
+      "referral": "Sistema de referidos personalizado",
+      "public": "Posibilidad de hacer público tu caso",
+      "analytics": "Análisis mensuales de rendimiento del caso",
+      "support": "Soporte al cliente prioritario"
+    },
+    "cta": "Comienza tu período de prueba gratuito",
+    "noCommitment": "Sin compromiso a largo plazo - cancelable en cualquier momento"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre la creación de casos personalizados para alojamientos vacacionales.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Primeros Pasos",
+        "q1": {
+          "question": "¿Cómo obtengo mi caso personalizado de alojamiento vacacional?",
+          "answer": "Simplemente regístrate para nuestro período de prueba gratuito de 7 días. Proporcionas detalles sobre tu alojamiento vacacional y nuestro equipo crea un caso de detective personalizado adaptado a tu alojamiento vacacional específico y objetivo de experiencia del huésped."
+        },
+        "q2": {
+          "question": "¿Qué información necesitas sobre mi alojamiento vacacional?",
+          "answer": "Necesitamos detalles básicos como diseño, número de habitaciones, características únicas, demografía del público objetivo y cualquier propiedad especial que haga único tu alojamiento vacacional. Esto nos ayuda a diseñar tu experiencia de detective perfecta."
+        },
+        "q3": {
+          "question": "¿Cuánto tiempo tarda la creación de mi caso de detective exclusivo?",
+          "answer": "Tu caso personalizado se genera y entrega dentro de 24 horas después de completar el registro de tu alojamiento vacacional. Usamos IA avanzada para crear casos de detective únicos diseñados para tu alojamiento vacacional específico."
+        }
+      },
+      "bookings": {
+        "title": "Reservas y Cancelaciones",
+        "q1": {
+          "question": "¿Puedo cancelar mi suscripción en cualquier momento?",
+          "answer": "Sí, puedes cancelar tu suscripción en cualquier momento para la próxima fecha de reserva. Tu caso permanecerá activo hasta el final de tu período de facturación actual."
+        },
+        "q2": {
+          "question": "¿Qué sucede durante el período de prueba gratuito de 7 días?",
+          "answer": "Durante tu período de prueba gratuito, obtienes acceso completo a nuestra plataforma, creación de caso personalizado y todas las características. Puedes cancelar antes de que termine el período de prueba si no estás satisfecho."
+        },
+        "q3": {
+          "question": "¿Ofrecen reembolsos?",
+          "answer": "No ofrecemos garantía de devolución de dinero de 30 días si no estás satisfecho con tu caso personalizado. Estamos seguros de que te encantarán los resultados, pero tu satisfacción es nuestra prioridad. Si hay problemas, simplemente contáctanos y encontraremos una solución."
+        }
+      },
+      "analytics": {
+        "title": "Análisis y Estadísticas",
+        "q1": {
+          "question": "¿Qué tipo de análisis ofrecen?",
+          "answer": "Recibes información detallada que incluye tasas de participación de huéspedes, estadísticas de finalización, tiempo promedio de juego, puntuaciones de comentarios de huéspedes y tendencias de rendimiento estacional para optimizar tu experiencia de huésped."
+        },
+        "q2": {
+          "question": "¿Cómo rastrea la participación de los huéspedes?",
+          "answer": "Nuestra plataforma ofrece seguimiento en tiempo real de las interacciones de los huéspedes, incluyendo quién juega, qué tan lejos han progresado y sus calificaciones de satisfacción. Perfecto para entender tu ROI."
+        },
+        "q3": {
+          "question": "¿Puedo ver las reseñas y comentarios de los huéspedes?",
+          "answer": "Sí, tienes acceso a comentarios anónimos de huéspedes y calificaciones a través de tu panel de control, lo que te ayuda a entender qué es lo que más aman los huéspedes de su experiencia de misterio."
+        }
+      },
+      "support": {
+        "title": "Soporte y Detalles Técnicos",
+        "q1": {
+          "question": "¿Qué soporte ofrecen?",
+          "answer": "Ofrecemos soporte al cliente 24/7 por correo electrónico y chat. Nuestro equipo ayuda con la configuración, solución de problemas, actualizaciones de casos y cualquier pregunta sobre maximizar tu experiencia de huésped."
+        },
+        "q2": {
+          "question": "¿Cómo acceden los huéspedes al caso de detective?",
+          "answer": "Los huéspedes simplemente escanean un código QR único que muestras en tu ubicación. Esto les da acceso instantáneo a su aventura de detective en cualquier smartphone o tablet - no se requieren descargas de aplicaciones."
+        },
+        "q3": {
+          "question": "¿Pueden actualizar o cambiar mi caso con el tiempo?",
+          "answer": "¡Por supuesto! Podemos crear variantes estacionales, actualizar tramas de historias o cambiar casos basados en comentarios de huéspedes. Esto mantiene la experiencia fresca para visitantes repetidos."
+        }
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Lo que dicen los socios de alojamiento",
+    "subtitle": "Únete a cientos de propietarios exitosos de alojamientos vacacionales que han transformado su experiencia de huéspedes.",
+    "items": {
+      "sarah": {
+        "name": "Thomas Müller",
+        "venue": "Apartamento Vacacional Alpenblick",
+        "location": "Garmisch-Partenkirchen",
+        "text": "¡El caso de detective ha transformado completamente nuestro apartamento vacacional! Especialmente las familias aman descubrir pistas juntos. Las solicitudes de reserva se han duplicado y los huéspedes mencionan la experiencia de misterio en cada reseña como el punto culminante de sus vacaciones."
+      },
+      "marcus": {
+        "name": "Laura Schmidt",
+        "venue": "Refugio del Mar Báltico",
+        "location": "Rügen",
+        "text": "Al principio era escéptica, pero después de la primera temporada estoy convencida! Los huéspedes se quedan un promedio de 2 días más y el caso proporciona comentarios auténticos en los portales de reseñas. Lo mejor: El soporte me crea nuevas variantes anualmente."
+      },
+      "elena": {
+        "name": "Marcus Weber",
+        "venue": "Chalet Selva Negra",
+        "location": "Titisee-Neustadt",
+        "text": "Mi chalet siempre tuvo potencial, pero con el caso criminal personalizado se ha convertido en un destino. Los excursionistas ahora vienen específicamente a nosotros para explorar la naturaleza durante el día y jugar a detective por la noche. ¡Genial!"
+      }
+    }
+  },
+  "cta": {
+    "title": "Transforma tu",
+    "titleHighlight1": "alojamiento vacacional",
+    "titleMiddle": "en una",
+    "titleHighlight2": "aventura de detective",
+    "subtitle": "Enriquece tu alojamiento vacacional con nuestras",
+    "subtitleHighlight": "experiencias de detective impulsadas por IA",
+    "subtitleEnd": ". Nuestros algoritmos crean casos de detective exclusivos que están personalizados individualmente para tu alojamiento vacacional, transmiten el color local y promueven reseñas entusiastas y reservas repetidas.",
+    "features": {
+      "ai": "Casos impulsados por IA",
+      "trial": "Período de prueba de 7 días",
+      "cancel": "Cancelable en cualquier momento"
+    },
+    "buttons": {
+      "register": "Registrarse como propietario de alojamiento vacacional",
+      "contact": "Contáctanos"
+    }
+  },
+  "partnersButton": {
+    "text": "Nuestros socios de alojamiento",
+    "subtitle": "Descubre socios exitosos"
+  }
+}
