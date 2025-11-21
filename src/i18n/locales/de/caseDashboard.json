@@ -68,7 +68,7 @@
     "resultTitle": "Fall-Lösungs-Ergebnis",
     "successTitle": "Herzlichen Glückwunsch! Du hast den Fall gelöst!",
     "failureTitle": "Leider ist diese Lösung nicht korrekt.",
-    "successMessage": "Großartige Detektivarbeit! Du hast den Täter, die Beweise und das Motiv korrekt identifiziert.",
+    "successMessage": "Großartige Detektivarbeit! Du hast den Täter, die Beweise und das Motiv identifiziert.",
     "failureMessage": "Bitte versuche es erneut.",
     "solutionSummary": "Lösungs-Zusammenfassung",
     "rateCase": "Fall bewerten",
