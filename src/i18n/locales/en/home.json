@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Unravel the Truth, One Clue at a Time",
+    "title": "Discover the Truth - One Clue at a Time",
     "subtitle": "Dive into a world of mystery and intrigue with our AI-powered interactive detective games. Solve complex cases, interrogate suspects, and uncover hidden secrets.",
     "exploreCases": "Explore Cases"
   },
@@ -16,15 +16,15 @@
     "subtitle": "Use cutting-edge investigation methods to solve the most complicated cases",
     "forensicAnalysis": {
       "title": "Forensic Analysis",
-      "description": "Analyze fingerprints, DNA traces, and other evidence using cutting-edge forensic methods in this interactive detective game experience."
+      "description": "Analyze fingerprints, DNA traces, and other evidence using cutting-edge forensic methods in this interactive detective game."
     },
     "witnessesAndSuspects": {
       "title": "Witnesses & Suspects",
-      "description": "Interview witnesses and interrogate suspects with our advanced AI system that creates realistic conversations in this interactive detective game."
+      "description": "Interview witnesses and interrogate suspects with our advanced AI system that enables realistic conversations in this interactive detective game."
     },
     "caseFiles": {
       "title": "Case Files",
-      "description": "Access detailed digital case files containing all the vital information, evidence, and investigation reports needed to solve cases in this interactive detective game."
+      "description": "Access detailed digital case files containing all vital information, evidence, and investigation reports needed to solve cases in this interactive detective game."
     },
     "interactiveMaps": {
       "title": "Interactive Maps",
@@ -52,7 +52,7 @@
     },
     "review3": {
       "role": "Crime Enthusiast",
-      "text": "The ability to question witnesses and analyze evidence feels like being in a real crime drama. Absolutely addictive!"
+      "text": "The ability to question witnesses and analyze evidence feels like being in a real crime series. Absolutely addictive!"
     }
   }
 }

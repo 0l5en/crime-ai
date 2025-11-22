@@ -1,22 +1,22 @@
 {
   "home": {
-    "title": "DetectivesGame | Risolvi casi di mistero interattivi alimentati dall'IA",
-    "description": "Metti alla prova le tue abilità da detective con casi di mistero immersivi alimentati dall'IA. Risolvi crimini, scopri segreti e diventa il miglior detective.",
+    "title": "DetectivesGame | Risolvi Casi Misteriosi Interattivi Basati sull'IA",
+    "description": "Metti alla prova le tue abilità da detective con casi misteriosi immersivi basati sull'IA. Risolvi crimini, scopri segreti e diventa il miglior detective.",
     "keywords": "gioco da detective, gioco di mistero, detective IA, mistero interattivo, gioco di risoluzione crimini"
   },
   "cases": {
-    "title": "Casi di Mistero | DetectivesGame",
-    "description": "Sfoglia e risolvi coinvolgenti casi di mistero da detective. Ogni caso offre sfide uniche, sospetti e prove da scoprire.",
-    "keywords": "casi di mistero, casi da detective, casi criminali, risolvere misteri"
+    "title": "Casi Misteriosi | DetectivesGame",
+    "description": "Sfoglia e risolvi coinvolgenti casi misteriosi da detective. Ogni caso offre sfide uniche, sospetti e prove.",
+    "keywords": "casi misteriosi, casi da detective, casi criminali, risolvere misteri"
   },
   "venues": {
-    "title": "Proprietari di Strutture | DetectivesGame",
-    "description": "Trasforma la tua struttura in un'esperienza di mistero interattiva. Genera casi da detective personalizzati per i tuoi ospiti.",
+    "title": "Per Proprietari di Strutture | DetectivesGame",
+    "description": "Trasforma la tua struttura in un'esperienza misteriosa interattiva. Genera casi da detective personalizzati per i tuoi ospiti.",
     "keywords": "gioco detective per affitti, gioco mistero hotel, esperienza interattiva ospiti"
   },
   "partners": {
     "title": "I Nostri Partner Premium | DetectivesGame",
-    "description": "Scopri strutture di successo che hanno creato esperienze da detective coinvolgenti per i loro ospiti. Unisciti alla nostra rete di partner premium.",
+    "description": "Scopri strutture di successo che hanno creato esperienze investigative coinvolgenti per i loro ospiti. Unisciti alla nostra rete di partner premium.",
     "keywords": "partner gioco detective, partner strutture, partner premium"
   },
   "affiliates": {
@@ -41,7 +41,7 @@
   },
   "venueRegister": {
     "title": "Registra la Tua Struttura | DetectivesGame",
-    "description": "Registra la tua casa vacanze o struttura per creare esperienze da detective uniche per i tuoi ospiti.",
+    "description": "Registra la tua casa vacanze o struttura per creare esperienze investigative uniche per i tuoi ospiti.",
     "keywords": "registrazione struttura, registrazione casa vacanze, registrazione hotel"
   },
   "terms": {
