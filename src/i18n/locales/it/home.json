@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Svela la Verità, Un Indizio alla Volta",
-    "subtitle": "Immergiti in un mondo di mistero e intrighi con i nostri giochi di detective interattivi basati sull'IA. Risolvi casi complessi, interroga sospetti e scopri segreti nascosti.",
+    "title": "Scopri la Verità - Un Indizio alla Volta",
+    "subtitle": "Immergiti in un mondo di mistero e intrigo con i nostri giochi investigativi interattivi basati sull'IA. Risolvi casi complessi, interroga sospetti e scopri segreti nascosti.",
     "exploreCases": "Esplora i Casi"
   },
   "showcase": {
@@ -13,18 +13,18 @@
   },
   "features": {
     "title": "Caratteristiche di DetectivesGame",
-    "subtitle": "Usa metodi di indagine e strumenti all'avanguardia per risolvere i casi più complicati",
+    "subtitle": "Usa metodi di indagine all'avanguardia per risolvere i casi più complicati",
     "forensicAnalysis": {
       "title": "Analisi Forense",
-      "description": "Analizza impronte digitali, tracce di DNA e altre prove utilizzando metodi forensi all'avanguardia in questa esperienza di gioco investigativo interattivo."
+      "description": "Analizza impronte digitali, tracce di DNA e altre prove utilizzando metodi forensi all'avanguardia in questo gioco investigativo interattivo."
     },
     "witnessesAndSuspects": {
       "title": "Testimoni e Sospetti",
-      "description": "Intervista testimoni e interroga sospetti con il nostro sistema AI avanzato che crea conversazioni realistiche in questo gioco investigativo interattivo."
+      "description": "Intervista testimoni e interroga sospetti con il nostro sistema AI avanzato che consente conversazioni realistiche in questo gioco investigativo interattivo."
     },
     "caseFiles": {
       "title": "Fascicoli del Caso",
-      "description": "Accedi a fascicoli digitali dettagliati contenenti tutte le informazioni vitali, prove e rapporti di indagine necessari per risolvere i casi in questo gioco investigativo interattivo."
+      "description": "Accedi a fascicoli digitali dettagliati contenenti tutte le informazioni vitali, prove e rapporti investigativi necessari per risolvere i casi in questo gioco investigativo interattivo."
     },
     "interactiveMaps": {
       "title": "Mappe Interattive",
@@ -52,7 +52,7 @@
     },
     "review3": {
       "role": "Appassionato di Crimini",
-      "text": "La possibilità di interrogare testimoni e analizzare prove sembra di essere in un vero giallo. Assolutamente avvincente!"
+      "text": "La possibilità di interrogare testimoni e analizzare prove sembra di essere in una vera serie poliziesca. Assolutamente avvincente!"
     }
   }
 }

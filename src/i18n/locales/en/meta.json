@@ -1,28 +1,28 @@
 {
   "home": {
-    "title": "DetectivesGame | AI Powered Interactive Detective Games Online",
-    "description": "Solve exciting criminal cases, investigate evidence, interview witnesses and catch the perpetrators in our AI-powered interactive detective games online.",
-    "keywords": "detective game, mystery game, AI detective, interactive mystery, crime solving game, detective cases"
+    "title": "DetectivesGame | Solve Interactive AI-Powered Mystery Cases",
+    "description": "Test your detective skills with immersive AI-powered mystery cases. Solve crimes, uncover secrets, and become the best detective.",
+    "keywords": "detective game, mystery game, AI detective, interactive mystery, crime solving game"
   },
   "cases": {
-    "title": "All Mystery Cases | DetectivesGame",
-    "description": "Browse and solve engaging detective mystery cases. Each case offers unique challenges, suspects, and evidence to uncover the truth.",
-    "keywords": "mystery cases, detective cases, crime cases, solve mysteries, detective game cases"
+    "title": "Mystery Cases | DetectivesGame",
+    "description": "Browse and solve engaging detective mystery cases. Each case offers unique challenges, suspects, and evidence.",
+    "keywords": "mystery cases, detective cases, crime cases, solve mysteries"
   },
   "venues": {
     "title": "For Venue Owners | DetectivesGame",
-    "description": "Transform your venue into an interactive mystery experience. Generate custom detective cases for your guests and enhance their stay.",
-    "keywords": "venue detective game, vacation rental game, hotel mystery game, interactive guest experience"
+    "description": "Transform your venue into an interactive mystery experience. Generate custom detective cases for your guests.",
+    "keywords": "vacation rental detective game, hotel mystery game, interactive guest experience"
   },
   "partners": {
-    "title": "Our Rental-Partners | DetectivesGame",
+    "title": "Our Premium Partners | DetectivesGame",
     "description": "Discover successful venues that have created engaging detective experiences for their guests. Join our premium partner network.",
-    "keywords": "detective game partners, venue partners, premium partners, vacation rental partners"
+    "keywords": "detective game partners, venue partners, premium partners"
   },
   "affiliates": {
-    "title": "Our Affiliate Program | DetectivesGame",
-    "description": "Join our affiliate program and earn commissions by promoting DetectivesGame. Get exclusive benefits and marketing materials.",
-    "keywords": "affiliate program, detective game affiliate, earn commission, referral program"
+    "title": "Affiliate Program | DetectivesGame",
+    "description": "Join our affiliate program and earn commissions by promoting DetectivesGame.",
+    "keywords": "affiliate program, detective game affiliate, earn commission"
   },
   "faq": {
     "title": "FAQ - Frequently Asked Questions | DetectivesGame",
@@ -31,22 +31,22 @@
   },
   "contact": {
     "title": "Contact Us | DetectivesGame",
-    "description": "Get in touch with the DetectivesGame team. We're here to help with questions, feedback, and support.",
+    "description": "Contact the DetectivesGame team. We're here to help with questions, feedback, and support.",
     "keywords": "contact detective game, support, customer service, feedback"
   },
   "register": {
-    "title": "Sign Up - Join DetectivesGame",
-    "description": "Create your detective account and start solving mysteries today. Sign up for free and access exclusive cases.",
+    "title": "Registration - Join DetectivesGame",
+    "description": "Create your detective account and start solving mysteries today. Sign up for free.",
     "keywords": "sign up, register, create account, join detective game"
   },
   "venueRegister": {
     "title": "Register Your Venue | DetectivesGame",
-    "description": "Register your vacation rental or venue to create unique detective experiences for your guests. Generate custom mystery cases.",
-    "keywords": "venue registration, vacation rental registration, hotel registration, venue signup"
+    "description": "Register your vacation rental or venue to create unique detective experiences for your guests.",
+    "keywords": "venue registration, vacation rental registration, hotel registration"
   },
   "terms": {
     "title": "Terms of Service | DetectivesGame",
-    "description": "Read our terms of service and usage guidelines for DetectivesGame.",
+    "description": "Read our terms of service and guidelines for DetectivesGame.",
     "keywords": "terms of service, terms and conditions, legal terms"
   },
   "privacy": {
@@ -56,12 +56,12 @@
   },
   "cookies": {
     "title": "Cookie Policy | DetectivesGame",
-    "description": "Learn about how we use cookies on DetectivesGame.",
+    "description": "Learn how we use cookies on DetectivesGame.",
     "keywords": "cookie policy, cookies, tracking"
   },
   "imprint": {
-    "title": "Imprint | Legal Information | DetectivesGame",
+    "title": "Imprint | DetectivesGame",
     "description": "Legal information and imprint for DetectivesGame.",
-    "keywords": "imprint, legal information, impressum"
+    "keywords": "imprint, legal information"
   }
 }

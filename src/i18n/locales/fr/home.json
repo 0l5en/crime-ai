@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Découvrez la Vérité, Un Indice à la Fois",
+    "title": "Découvrez la Vérité - Un Indice à la Fois",
     "subtitle": "Plongez dans un monde de mystère et d'intrigue avec nos jeux de détective interactifs alimentés par l'IA. Résolvez des affaires complexes, interrogez des suspects et découvrez des secrets cachés.",
     "exploreCases": "Explorer les Affaires"
   },
@@ -20,7 +20,7 @@
     },
     "witnessesAndSuspects": {
       "title": "Témoins et Suspects",
-      "description": "Interviewez des témoins et interrogez des suspects avec notre système d'IA avancé qui crée des conversations réalistes dans ce jeu de détective interactif."
+      "description": "Interviewez des témoins et interrogez des suspects avec notre système d'IA avancé qui permet des conversations réalistes dans ce jeu de détective interactif."
     },
     "caseFiles": {
       "title": "Dossiers d'Affaire",
